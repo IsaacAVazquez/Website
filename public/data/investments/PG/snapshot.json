@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 24.35,
-      "pegRatio": 29.34,
-      "marketCap": 375456366000,
-      "psRatio": 4.27,
-      "pbRatio": 6.81
+      "ttmPe": 25.32,
+      "pegRatio": 30.51,
+      "marketCap": 390468114000,
+      "psRatio": 4.44,
+      "pbRatio": 7.09
     },
     "profitability": {
       "roe": 8.53,
@@ -664,11 +664,11 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "2329100000.0",
-          "2026-09-30": "2323700000.0",
+          "2026-09-30": "2365500000.0",
           "2026-06-30": "2378125000.0",
-          "2026-03-31": "2328500000.0",
-          "2025-12-31": "2335300000.0",
-          "2025-09-30": "2342100000.0",
+          "2026-03-31": "2368674699.0",
+          "2025-12-31": "2373076923.0",
+          "2025-09-30": "2375000000.0",
           "2025-06-30": "2394039735.0",
           "2025-03-31": "2385443038.0",
           "2024-12-31": "2386597938.0",
@@ -1380,8 +1380,8 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2026-06-30": "2333700000.0",
-          "2025-06-30": "2350100000.0",
+          "2026-06-30": "2377185185.0",
+          "2025-06-30": "2394902549.0",
           "2024-06-30": "2407605178.0",
           "2023-06-30": "2414003295.0",
           "2022-06-30": "2457000000.0",
@@ -5955,97 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.109999999999999,
-      "costOfEquity": 7.8,
+      "wacc": 7.21,
+      "costOfEquity": 7.88,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3602,
-      "marketCap": 375456366000
+      "beta": 0.3576,
+      "marketCap": 390468114000
     },
     "beta": {
-      "beta5y": 0.3602
+      "beta5y": 0.3576
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 149.47,
-        "high": 150.8,
-        "low": 149.34,
-        "close": 149.58,
-        "volume": 6760700
-      },
-      {
-        "date": "2025-10-31",
-        "open": 148.71,
-        "high": 151.1,
-        "low": 148.53,
-        "close": 150.37,
-        "volume": 7930300
-      },
-      {
-        "date": "2025-11-03",
-        "open": 150.1,
-        "high": 150.22,
-        "low": 147.77,
-        "close": 148.02,
-        "volume": 8946400
-      },
-      {
-        "date": "2025-11-04",
-        "open": 148.6,
-        "high": 149.5,
-        "low": 146.25,
-        "close": 147.17,
-        "volume": 9295400
-      },
-      {
-        "date": "2025-11-05",
-        "open": 146.87,
-        "high": 147.42,
-        "low": 145.65,
-        "close": 145.79,
-        "volume": 11199900
-      },
-      {
-        "date": "2025-11-06",
-        "open": 145.88,
-        "high": 146.68,
-        "low": 144.46,
-        "close": 146.13,
-        "volume": 10024500
-      },
-      {
-        "date": "2025-11-07",
-        "open": 146.95,
-        "high": 147.94,
-        "low": 146,
-        "close": 146.98,
-        "volume": 8500100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 146.38,
-        "high": 146.62,
-        "low": 144.09,
-        "close": 145.5,
-        "volume": 10208100
-      },
-      {
-        "date": "2025-11-11",
-        "open": 145.96,
-        "high": 148.65,
-        "low": 145.67,
-        "close": 148.54,
-        "volume": 7332500
-      },
-      {
-        "date": "2025-11-12",
-        "open": 148.53,
-        "high": 149.15,
-        "low": 147.51,
-        "close": 148.01,
-        "volume": 7851100
-      },
       {
         "date": "2025-11-13",
         "open": 148.18,
@@ -7981,6 +7901,86 @@
         "low": 161.03,
         "close": 161.57,
         "volume": 11628500
+      },
+      {
+        "date": "2026-11-02",
+        "open": 162.24,
+        "high": 164.36,
+        "low": 162.24,
+        "close": 163.56,
+        "volume": 9724500
+      },
+      {
+        "date": "2026-11-03",
+        "open": 162.69,
+        "high": 163.3,
+        "low": 161.47,
+        "close": 162.06,
+        "volume": 10683600
+      },
+      {
+        "date": "2026-11-04",
+        "open": 164.65,
+        "high": 168.17,
+        "low": 164.65,
+        "close": 167.32,
+        "volume": 13960000
+      },
+      {
+        "date": "2026-11-05",
+        "open": 169,
+        "high": 170.52,
+        "low": 166.32,
+        "close": 167.1,
+        "volume": 16244600
+      },
+      {
+        "date": "2026-11-06",
+        "open": 162.36,
+        "high": 166.83,
+        "low": 162.13,
+        "close": 165.4,
+        "volume": 7875300
+      },
+      {
+        "date": "2026-11-09",
+        "open": 166,
+        "high": 168.74,
+        "low": 165.23,
+        "close": 168.32,
+        "volume": 9252000
+      },
+      {
+        "date": "2026-11-10",
+        "open": 169.18,
+        "high": 169.79,
+        "low": 167.19,
+        "close": 168.66,
+        "volume": 8422300
+      },
+      {
+        "date": "2026-11-11",
+        "open": 166.19,
+        "high": 168,
+        "low": 165.88,
+        "close": 167.67,
+        "volume": 7535800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 169.04,
+        "high": 169.95,
+        "low": 167.96,
+        "close": 168.03,
+        "volume": 7172800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 168.97,
+        "high": 170.73,
+        "low": 167.2,
+        "close": 169.8,
+        "volume": 6943100
       }
     ],
     "news": [
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
-        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
-        "publisher": "The Wall Street Journal",
+        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
+        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
+        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
         "type": "STORY"
       }
     ],
@@ -8130,43 +8130,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.35,
-        "industryAvg": 26.43
+        "value": 25.32,
+        "industryAvg": 25.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.27,
-        "industryAvg": 3.14
+        "value": 4.44,
+        "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.81,
-        "industryAvg": 6.77
+        "value": 7.09,
+        "industryAvg": 7.04
       },
       {
         "metric": "ROE",
         "value": 8.53,
-        "industryAvg": 24.27
+        "industryAvg": 25.729999999999997
       },
       {
         "metric": "ROA",
         "value": 3.5900000000000003,
-        "industryAvg": 8.06
+        "industryAvg": 8.7
       },
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 51.72
+        "industryAvg": 51.970000000000006
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.31,
-        "industryAvg": 20.4
+        "industryAvg": 20.31
       },
       {
         "metric": "Net Margin",
         "value": 20.01,
-        "industryAvg": 10.96
+        "industryAvg": 11.67
       }
     ]
   }

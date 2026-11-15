@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 30.1,
-      "marketCap": 85161987231,
-      "psRatio": 10.42,
-      "pbRatio": 26.06,
-      "pegRatio": 1.7
+      "ttmPe": 30.97,
+      "marketCap": 87625927620,
+      "psRatio": 10.72,
+      "pbRatio": 26.81,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,97 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.99,
-      "costOfEquity": 15.17,
+      "wacc": 13.94,
+      "costOfEquity": 15.079999999999998,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2903,
-      "marketCap": 85161987231
+      "beta": 1.2868,
+      "marketCap": 87625927620
     },
     "beta": {
-      "beta5y": 1.2903
+      "beta5y": 1.2868
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 474.27,
-        "high": 487.53,
-        "low": 472.89,
-        "close": 478.97,
-        "volume": 785900
-      },
-      {
-        "date": "2025-10-31",
-        "open": 475.93,
-        "high": 483.28,
-        "low": 475.01,
-        "close": 480.3,
-        "volume": 687600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 478.95,
-        "high": 485.97,
-        "low": 474.03,
-        "close": 485.95,
-        "volume": 871600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 484.92,
-        "high": 489.32,
-        "low": 482.73,
-        "close": 487.46,
-        "volume": 1127000
-      },
-      {
-        "date": "2025-11-05",
-        "open": 487,
-        "high": 489.34,
-        "low": 482.86,
-        "close": 486.46,
-        "volume": 799300
-      },
-      {
-        "date": "2025-11-06",
-        "open": 482.86,
-        "high": 488.67,
-        "low": 479.45,
-        "close": 482.21,
-        "volume": 577200
-      },
-      {
-        "date": "2025-11-07",
-        "open": 480.6,
-        "high": 488.15,
-        "low": 479.17,
-        "close": 487.98,
-        "volume": 656100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 487.03,
-        "high": 487.68,
-        "low": 480.16,
-        "close": 484.93,
-        "volume": 572600
-      },
-      {
-        "date": "2025-11-11",
-        "open": 486.86,
-        "high": 495.01,
-        "low": 485.42,
-        "close": 493,
-        "volume": 575200
-      },
-      {
-        "date": "2025-11-12",
-        "open": 494.4,
-        "high": 499,
-        "low": 490.41,
-        "close": 490.84,
-        "volume": 904100
-      },
       {
         "date": "2025-11-13",
         "open": 490.27,
@@ -8658,6 +8578,86 @@
         "low": 489.14,
         "close": 493.91,
         "volume": 1630400
+      },
+      {
+        "date": "2026-11-02",
+        "open": 497.48,
+        "high": 509.27,
+        "low": 495,
+        "close": 506.02,
+        "volume": 926400
+      },
+      {
+        "date": "2026-11-03",
+        "open": 506.25,
+        "high": 506.63,
+        "low": 495.96,
+        "close": 503.69,
+        "volume": 911100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 515.06,
+        "high": 531.13,
+        "low": 512.23,
+        "close": 528.34,
+        "volume": 1162800
+      },
+      {
+        "date": "2026-11-05",
+        "open": 531.86,
+        "high": 533,
+        "low": 509.18,
+        "close": 515.34,
+        "volume": 1176300
+      },
+      {
+        "date": "2026-11-06",
+        "open": 501.68,
+        "high": 510.64,
+        "low": 501.68,
+        "close": 505.67,
+        "volume": 682400
+      },
+      {
+        "date": "2026-11-09",
+        "open": 510.75,
+        "high": 511.12,
+        "low": 503.19,
+        "close": 511.08,
+        "volume": 1020700
+      },
+      {
+        "date": "2026-11-10",
+        "open": 510.79,
+        "high": 514.39,
+        "low": 504.77,
+        "close": 510.71,
+        "volume": 936100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 507.41,
+        "high": 515.32,
+        "low": 505.45,
+        "close": 514.93,
+        "volume": 634600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 518.32,
+        "high": 520,
+        "low": 506.27,
+        "close": 506.56,
+        "volume": 451300
+      },
+      {
+        "date": "2026-11-13",
+        "open": 506.84,
+        "high": 512.66,
+        "low": 505.67,
+        "close": 508.2,
+        "volume": 545300
       }
     ],
     "news": [
@@ -8670,19 +8670,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
-        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
         "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-17",
         "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
+        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
         "type": "STORY"
       },
       {
@@ -8718,6 +8718,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
+        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
         "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
@@ -8726,19 +8734,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
-        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8803,43 +8803,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.1,
-        "industryAvg": 26.06
+        "value": 30.97,
+        "industryAvg": 26.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.42,
-        "industryAvg": 8.12
+        "value": 10.72,
+        "industryAvg": 8.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.06,
-        "industryAvg": 4.48
+        "value": 26.81,
+        "industryAvg": 4.64
       },
       {
         "metric": "ROE",
         "value": 23.330000000000002,
-        "industryAvg": 18.13
+        "industryAvg": 19.139999999999997
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 4.31
+        "industryAvg": 4.29
       },
       {
         "metric": "Gross Margin",
         "value": 74.1,
-        "industryAvg": 64.14999999999999
+        "industryAvg": 64.75
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.089999999999996,
-        "industryAvg": 48.43
+        "industryAvg": 51.41
       },
       {
         "metric": "Net Margin",
         "value": 36.28,
-        "industryAvg": 28.4
+        "industryAvg": 30.270000000000003
       }
     ]
   }

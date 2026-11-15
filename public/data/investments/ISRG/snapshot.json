@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2651,
-      "ttmPe": 52.27,
+      "ttmPe": 54.39,
       "pegRatio": 1.77,
-      "marketCap": 149734666000,
-      "psRatio": 12.93,
-      "pbRatio": 9.37
+      "marketCap": 155807098000,
+      "psRatio": 13.46,
+      "pbRatio": 9.75
     },
     "profitability": {
       "roe": 3.06,
@@ -5242,89 +5242,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4201
+      "beta5y": 1.4188
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 534.37,
-        "high": 538,
-        "low": 529.31,
-        "close": 530.02,
-        "volume": 1777000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 528.63,
-        "high": 538.14,
-        "low": 526.2,
-        "close": 534.28,
-        "volume": 1757600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 532.06,
-        "high": 544.84,
-        "low": 527.6,
-        "close": 544.21,
-        "volume": 2075000
-      },
-      {
-        "date": "2025-11-04",
-        "open": 545.09,
-        "high": 546,
-        "low": 535.4,
-        "close": 538.82,
-        "volume": 1780200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 538,
-        "high": 552,
-        "low": 536.15,
-        "close": 548.55,
-        "volume": 2863400
-      },
-      {
-        "date": "2025-11-06",
-        "open": 547.03,
-        "high": 548.55,
-        "low": 538.07,
-        "close": 547.78,
-        "volume": 2052500
-      },
-      {
-        "date": "2025-11-07",
-        "open": 543.24,
-        "high": 562.65,
-        "low": 541.74,
-        "close": 560,
-        "volume": 2712200
-      },
-      {
-        "date": "2025-11-10",
-        "open": 560,
-        "high": 578.3,
-        "low": 560,
-        "close": 576.2,
-        "volume": 3070200
-      },
-      {
-        "date": "2025-11-11",
-        "open": 575.06,
-        "high": 579.22,
-        "low": 570.5,
-        "close": 572.17,
-        "volume": 1609700
-      },
-      {
-        "date": "2025-11-12",
-        "open": 574.13,
-        "high": 580.47,
-        "low": 569.71,
-        "close": 572.45,
-        "volume": 1633200
-      },
       {
         "date": "2025-11-13",
         "open": 566.86,
@@ -7260,6 +7180,86 @@
         "low": 431.19,
         "close": 432.01,
         "volume": 3480900
+      },
+      {
+        "date": "2026-11-02",
+        "open": 439.79,
+        "high": 446.46,
+        "low": 436.04,
+        "close": 436.87,
+        "volume": 3811000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 436.65,
+        "high": 443.58,
+        "low": 434.05,
+        "close": 440.75,
+        "volume": 1744300
+      },
+      {
+        "date": "2026-11-04",
+        "open": 458.99,
+        "high": 485.85,
+        "low": 453.69,
+        "close": 482.1,
+        "volume": 4825000
+      },
+      {
+        "date": "2026-11-05",
+        "open": 482.88,
+        "high": 485.17,
+        "low": 461.19,
+        "close": 468.52,
+        "volume": 4696400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 457,
+        "high": 463.25,
+        "low": 450.51,
+        "close": 452.8,
+        "volume": 2150400
+      },
+      {
+        "date": "2026-11-09",
+        "open": 456.66,
+        "high": 463,
+        "low": 454.04,
+        "close": 460.56,
+        "volume": 2154800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 460.48,
+        "high": 460.48,
+        "low": 444.16,
+        "close": 450.04,
+        "volume": 1664200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 446,
+        "high": 451,
+        "low": 443.24,
+        "close": 449.53,
+        "volume": 1751600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 449,
+        "high": 451.26,
+        "low": 438.44,
+        "close": 439.89,
+        "volume": 1793400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 443.69,
+        "high": 448.85,
+        "low": 441,
+        "close": 443.59,
+        "volume": 1604300
       }
     ],
     "news": [
@@ -7336,11 +7336,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
-        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
-        "publisher": "StockStory",
+        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
+        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
         "type": "STORY"
       }
     ],
@@ -7393,54 +7393,57 @@
         "totalPay": 1481816
       },
       {
-        "name": "Mr. Milind Wagle",
-        "title": "Chief Information Officer"
+        "name": "Mr. Mark P. Brosius",
+        "title": "EVP, Chief Manufacturing & Supply Chain Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 1018593
       },
       {
-        "name": "Mr. Taylor Patton",
-        "title": "Chief Commercial and Marketing Officer"
+        "name": "Mr. Milind Wagle",
+        "title": "Chief Information Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.27,
-        "industryAvg": 38.48
+        "value": 54.39,
+        "industryAvg": 41.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.93,
-        "industryAvg": 3.73
+        "value": 13.46,
+        "industryAvg": 3.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.37,
-        "industryAvg": 3.25
+        "value": 9.75,
+        "industryAvg": 3.42
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": 6.2700000000000005
+        "industryAvg": 7.17
       },
       {
         "metric": "ROA",
         "value": 2.6,
-        "industryAvg": 3.44
+        "industryAvg": 3.6999999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 68.37,
-        "industryAvg": 50.78
+        "industryAvg": 46.39
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.18,
-        "industryAvg": 21.98
+        "industryAvg": 19.78
       },
       {
         "metric": "Net Margin",
         "value": 17.150000000000002,
-        "industryAvg": 7.109999999999999
+        "industryAvg": 7.1
       }
     ]
   }

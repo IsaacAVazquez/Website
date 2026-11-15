@@ -1,10 +1,10 @@
 {
   "symbol": "STZ",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.1501,
-      "ttmPe": 12.14,
-      "marketCap": 22979832447,
-      "psRatio": 2.5,
-      "pbRatio": 2.68,
-      "pegRatio": 0.48
+      "ttmPe": 13.06,
+      "marketCap": 24725437099,
+      "psRatio": 2.69,
+      "pbRatio": 2.88,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 6.72,
@@ -6403,97 +6403,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.79,
-      "costOfEquity": 8.09,
+      "wacc": 5.949999999999999,
+      "costOfEquity": 8.15,
       "costOfDebt": 0.83,
       "taxRate": 20,
-      "beta": 0.3969,
-      "marketCap": 22979832447
+      "beta": 0.3888,
+      "marketCap": 24725437099
     },
     "beta": {
-      "beta5y": 0.3969
+      "beta5y": 0.3888
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 130,
-        "high": 130.98,
-        "low": 128.8,
-        "close": 128.88,
-        "volume": 2773600
-      },
-      {
-        "date": "2025-10-31",
-        "open": 128.1,
-        "high": 132.32,
-        "low": 127,
-        "close": 131.38,
-        "volume": 3878900
-      },
-      {
-        "date": "2025-11-03",
-        "open": 131,
-        "high": 131.62,
-        "low": 129.91,
-        "close": 130.82,
-        "volume": 1962600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 130.53,
-        "high": 131.58,
-        "low": 128.2,
-        "close": 129.18,
-        "volume": 2129600
-      },
-      {
-        "date": "2025-11-05",
-        "open": 128.82,
-        "high": 131.96,
-        "low": 128.29,
-        "close": 130.62,
-        "volume": 1744400
-      },
-      {
-        "date": "2025-11-06",
-        "open": 129.01,
-        "high": 130.78,
-        "low": 127.95,
-        "close": 127.95,
-        "volume": 2004400
-      },
-      {
-        "date": "2025-11-07",
-        "open": 128.68,
-        "high": 129.5,
-        "low": 126.64,
-        "close": 127.65,
-        "volume": 3760400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 127.96,
-        "high": 128.91,
-        "low": 126.45,
-        "close": 128.47,
-        "volume": 2268400
-      },
-      {
-        "date": "2025-11-11",
-        "open": 128.88,
-        "high": 133,
-        "low": 128.88,
-        "close": 131.81,
-        "volume": 2920700
-      },
-      {
-        "date": "2025-11-12",
-        "open": 132.11,
-        "high": 132.69,
-        "low": 130.38,
-        "close": 130.38,
-        "volume": 1318600
-      },
       {
         "date": "2025-11-13",
         "open": 129.71,
@@ -8429,6 +8349,86 @@
         "low": 132,
         "close": 135.33,
         "volume": 3423700
+      },
+      {
+        "date": "2026-11-02",
+        "open": 137.27,
+        "high": 141.3,
+        "low": 136.66,
+        "close": 140.67,
+        "volume": 2810900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 138.75,
+        "high": 139.34,
+        "low": 136.04,
+        "close": 138.13,
+        "volume": 2361500
+      },
+      {
+        "date": "2026-11-04",
+        "open": 142.42,
+        "high": 149.43,
+        "low": 142.42,
+        "close": 145.49,
+        "volume": 3605300
+      },
+      {
+        "date": "2026-11-05",
+        "open": 146.84,
+        "high": 148.75,
+        "low": 143.59,
+        "close": 144.56,
+        "volume": 2235700
+      },
+      {
+        "date": "2026-11-06",
+        "open": 140.21,
+        "high": 143.31,
+        "low": 138.88,
+        "close": 141.97,
+        "volume": 1608600
+      },
+      {
+        "date": "2026-11-09",
+        "open": 142.25,
+        "high": 145.98,
+        "low": 142.21,
+        "close": 145.51,
+        "volume": 3280500
+      },
+      {
+        "date": "2026-11-10",
+        "open": 145,
+        "high": 146.81,
+        "low": 143.65,
+        "close": 145.51,
+        "volume": 2085100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 143.63,
+        "high": 144.94,
+        "low": 142.75,
+        "close": 144.12,
+        "volume": 1556700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 144.65,
+        "high": 145.88,
+        "low": 143.62,
+        "close": 144.6,
+        "volume": 1788800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 145.63,
+        "high": 147,
+        "low": 144.72,
+        "close": 145.61,
+        "volume": 1873500
       }
     ],
     "news": [
@@ -8497,19 +8497,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
-        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4dfed969-a57e-390c-b7a0-861961cd04d9",
         "title": "NYSE Content Advisory: Pre-Market update + Warren Buffett to step down as Berkshire Hathaway CEO",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500699.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
+        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
         "type": "STORY"
       }
     ],
@@ -8577,43 +8577,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.14,
-        "industryAvg": 14.97
+        "value": 13.06,
+        "industryAvg": 15.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.5,
-        "industryAvg": 1.81
+        "value": 2.69,
+        "industryAvg": 1.9
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.68,
-        "industryAvg": 1.73
+        "value": 2.88,
+        "industryAvg": 1.82
       },
       {
         "metric": "ROE",
         "value": 6.72,
-        "industryAvg": 3.8600000000000003
+        "industryAvg": 14.299999999999999
       },
       {
         "metric": "ROA",
         "value": 2.56,
-        "industryAvg": 1.6199999999999999
+        "industryAvg": 6.069999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 52.910000000000004,
-        "industryAvg": 50.46000000000001
+        "industryAvg": 50.36000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 34.62,
-        "industryAvg": 20.3
+        "industryAvg": 20.23
       },
       {
         "metric": "Net Margin",
         "value": 21.490000000000002,
-        "industryAvg": 9.56
+        "industryAvg": 12.34
       }
     ]
   }

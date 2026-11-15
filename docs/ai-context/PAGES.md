@@ -50,6 +50,7 @@ Fast route reference for the current app.
 | `/food-map` | `src/app/food-map/page.tsx` | Server page for food map content |
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Server page for recipe finder content |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Server page for wine cellar content |
+| `/blackjack-trainer` | `src/app/blackjack-trainer/page.tsx` | Server page for the blackjack basic strategy trainer |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Server page for museum log content |
 | `/travel` | `src/app/travel/page.tsx` | Server page -> `TravelPlannerClient` (browser-persisted planner) |
 | `/travel-deals` | `src/app/travel-deals/page.tsx` | Server page -> `TravelDealLabClient` |

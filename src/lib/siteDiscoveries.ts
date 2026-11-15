@@ -30,6 +30,7 @@ export const VISIT_NAMES: Readonly<Record<string, string>> = {
   "/recipe-finder": "Something for dinner",
   "/travel": "Trip daydreaming",
   "/travel-deals": "Flight browsing",
+  "/blackjack-trainer": "Basic strategy practice",
   "/bay-area-transit": "Waiting for a train",
   "/spacex-mission-control": "Waiting for a rocket",
   "/investments": "Investment research",

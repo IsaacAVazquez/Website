@@ -50,6 +50,7 @@ export function isCatalog97Route(pathname: string): boolean {
 export const DASHBOARD_ROUTES: readonly string[] = [
   "/ai-dev-tools",
   "/bay-area-transit",
+  "/blackjack-trainer",
   "/decision-lab",
   "/earthquake-pulse",
   "/enablement-assistant",

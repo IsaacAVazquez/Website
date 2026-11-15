@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 64.67,
-      "marketCap": 172203520000,
-      "psRatio": 18.22,
-      "pbRatio": 9.29,
-      "pegRatio": 1.31
+      "ttmPe": 51.62,
+      "marketCap": 137447168000,
+      "psRatio": 14.54,
+      "pbRatio": 7.42,
+      "pegRatio": 1.04
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,97 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.42,
-      "costOfEquity": 23.07,
+      "wacc": 22.15,
+      "costOfEquity": 22.95,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2858,
-      "marketCap": 172203520000
+      "beta": 2.3057,
+      "marketCap": 137447168000
     },
     "beta": {
-      "beta5y": 2.2858
+      "beta5y": 2.3057
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 89.28,
-        "high": 90.46,
-        "low": 88.36,
-        "close": 88.57,
-        "volume": 11903800
-      },
-      {
-        "date": "2025-10-31",
-        "open": 93.4,
-        "high": 97.57,
-        "low": 90.96,
-        "close": 93.74,
-        "volume": 29320800
-      },
-      {
-        "date": "2025-11-03",
-        "open": 93.39,
-        "high": 94.84,
-        "low": 90.01,
-        "close": 90.37,
-        "volume": 14308700
-      },
-      {
-        "date": "2025-11-04",
-        "open": 87.76,
-        "high": 90.84,
-        "low": 87.22,
-        "close": 87.59,
-        "volume": 13630000
-      },
-      {
-        "date": "2025-11-05",
-        "open": 88.33,
-        "high": 95.39,
-        "low": 88.15,
-        "close": 92.9,
-        "volume": 17194500
-      },
-      {
-        "date": "2025-11-06",
-        "open": 96.21,
-        "high": 98.13,
-        "low": 92.42,
-        "close": 93.33,
-        "volume": 28022500
-      },
-      {
-        "date": "2025-11-07",
-        "open": 91.68,
-        "high": 92.18,
-        "low": 85.11,
-        "close": 90.92,
-        "volume": 20898700
-      },
-      {
-        "date": "2025-11-10",
-        "open": 93.17,
-        "high": 94.47,
-        "low": 92.2,
-        "close": 93.23,
-        "volume": 14570700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 92.03,
-        "high": 92.67,
-        "low": 88.52,
-        "close": 89.33,
-        "volume": 13538500
-      },
-      {
-        "date": "2025-11-12",
-        "open": 90.56,
-        "high": 92.87,
-        "low": 88.87,
-        "close": 89.33,
-        "volume": 11846700
-      },
       {
         "date": "2025-11-13",
         "open": 87.59,
@@ -7980,7 +7900,87 @@
         "high": 207.61,
         "low": 190.15,
         "close": 196.4,
-        "volume": 43099300
+        "volume": 43190100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 191.56,
+        "high": 192.31,
+        "low": 168.52,
+        "close": 171.41,
+        "volume": 61467100
+      },
+      {
+        "date": "2026-11-03",
+        "open": 174.28,
+        "high": 177.31,
+        "low": 167.4,
+        "close": 171.97,
+        "volume": 39412100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 165.26,
+        "high": 166.32,
+        "low": 154.78,
+        "close": 159.8,
+        "volume": 46568100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 151.41,
+        "high": 152.15,
+        "low": 132.54,
+        "close": 133.55,
+        "volume": 66645300
+      },
+      {
+        "date": "2026-11-06",
+        "open": 145.07,
+        "high": 146.32,
+        "low": 135.34,
+        "close": 141.2,
+        "volume": 33562100
+      },
+      {
+        "date": "2026-11-09",
+        "open": 143.75,
+        "high": 157.68,
+        "low": 142.25,
+        "close": 154.6,
+        "volume": 33768200
+      },
+      {
+        "date": "2026-11-10",
+        "open": 149.97,
+        "high": 158.6,
+        "low": 147.79,
+        "close": 154.39,
+        "volume": 24738500
+      },
+      {
+        "date": "2026-11-11",
+        "open": 167.05,
+        "high": 174.53,
+        "low": 162.5,
+        "close": 168.8,
+        "volume": 33939800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 157.16,
+        "high": 169.58,
+        "low": 155.97,
+        "close": 164.45,
+        "volume": 21641200
+      },
+      {
+        "date": "2026-11-13",
+        "open": 161.6,
+        "high": 163.89,
+        "low": 149.17,
+        "close": 156.76,
+        "volume": 23688400
       }
     ],
     "news": [
@@ -8041,6 +8041,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
+        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
         "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
         "publisher": "StockStory",
@@ -8054,14 +8062,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 64.67,
-        "industryAvg": 24.02
+        "value": 51.62,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.22,
-        "industryAvg": 11.64
+        "value": 14.54,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.29,
-        "industryAvg": 10.35
+        "value": 7.42,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",
@@ -8151,17 +8151,17 @@
       {
         "metric": "ROA",
         "value": 1.13,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 53.14,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.03,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

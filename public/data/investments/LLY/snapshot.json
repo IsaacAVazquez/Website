@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.218,
-      "ttmPe": 61.05,
+      "ttmPe": 61.9,
       "pegRatio": 1.54,
-      "marketCap": 1334188648000,
-      "psRatio": 15.43,
-      "pbRatio": 33.13
+      "marketCap": 1352777348000,
+      "psRatio": 15.65,
+      "pbRatio": 33.59
     },
     "profitability": {
       "roe": 17.4,
@@ -752,11 +752,11 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "30.85",
-          "2026-09-30": "7.23",
-          "2026-06-30": "7.95",
-          "2026-03-31": "8.27",
+          "2026-09-30": "7.24",
+          "2026-06-30": "7.96",
+          "2026-03-31": "8.28",
           "2025-12-31": "7.42",
-          "2025-09-30": "6.22",
+          "2025-09-30": "6.23",
           "2025-06-30": "6.3",
           "2025-03-31": "3.07",
           "2024-12-31": "4.91",
@@ -796,11 +796,11 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "893625000.0",
-          "2026-09-30": "891900000.0",
-          "2026-06-30": "892400000.0",
-          "2026-03-31": "894500000.0",
+          "2026-09-30": "891200000.0",
+          "2026-06-30": "891500000.0",
+          "2026-03-31": "893500000.0",
           "2025-12-31": "894800000.0",
-          "2025-09-30": "896900000.0",
+          "2025-09-30": "895841000.0",
           "2025-06-30": "897900000.0",
           "2025-03-31": "897730000.0",
           "2024-12-31": "897538000.0",
@@ -818,11 +818,11 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "895325000.0",
-          "2026-09-30": "893400000.0",
-          "2026-06-30": "893700000.0",
-          "2026-03-31": "895900000.0",
+          "2026-09-30": "893439000.0",
+          "2026-06-30": "893671000.0",
+          "2026-03-31": "895918000.0",
           "2025-12-31": "898002000.0",
-          "2025-09-30": "898800000.0",
+          "2025-09-30": "898804000.0",
           "2025-06-30": "899800000.0",
           "2025-03-31": "900604000.0",
           "2024-12-31": "903158000.0",
@@ -1545,7 +1545,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "23.0",
+          "2025-12-31": "23.07",
           "2024-12-31": "11.8",
           "2023-12-31": "5.83",
           "2022-12-31": "6.57",
@@ -1565,7 +1565,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "897300000.0",
+          "2025-12-31": "894800000.0",
           "2024-12-31": "897538000.0",
           "2023-12-31": "899379000.0",
           "2022-12-31": "950182000.0",
@@ -1575,7 +1575,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "899300000.0",
+          "2025-12-31": "899301000.0",
           "2024-12-31": "904059000.0",
           "2023-12-31": "903284000.0",
           "2022-12-31": "950182000.0",
@@ -6202,97 +6202,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.739999999999999,
-      "costOfEquity": 7.9799999999999995,
+      "wacc": 7.779999999999999,
+      "costOfEquity": 8.01,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.383,
-      "marketCap": 1334188648000
+      "beta": 0.3837,
+      "marketCap": 1352777348000
     },
     "beta": {
-      "beta5y": 0.383
+      "beta5y": 0.3837
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 837.5,
-        "high": 853,
-        "low": 812.25,
-        "close": 844.5,
-        "volume": 6037200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 839.16,
-        "high": 869.91,
-        "low": 834.19,
-        "close": 862.86,
-        "volume": 5015000
-      },
-      {
-        "date": "2025-11-03",
-        "open": 866.53,
-        "high": 901.34,
-        "low": 862.62,
-        "close": 896.53,
-        "volume": 5401500
-      },
-      {
-        "date": "2025-11-04",
-        "open": 891.41,
-        "high": 915.22,
-        "low": 883.64,
-        "close": 906.86,
-        "volume": 5911500
-      },
-      {
-        "date": "2025-11-05",
-        "open": 911,
-        "high": 955.46,
-        "low": 907.86,
-        "close": 925.81,
-        "volume": 7272900
-      },
-      {
-        "date": "2025-11-06",
-        "open": 928,
-        "high": 949.9,
-        "low": 916.26,
-        "close": 937.44,
-        "volume": 6417400
-      },
-      {
-        "date": "2025-11-07",
-        "open": 931.17,
-        "high": 932,
-        "low": 900.9,
-        "close": 924.37,
-        "volume": 4373400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 939.74,
-        "high": 981.99,
-        "low": 938.41,
-        "close": 966.64,
-        "volume": 5696600
-      },
-      {
-        "date": "2025-11-11",
-        "open": 966.55,
-        "high": 999.95,
-        "low": 965.29,
-        "close": 988.62,
-        "volume": 4166400
-      },
-      {
-        "date": "2025-11-12",
-        "open": 993.12,
-        "high": 1022.42,
-        "low": 990.1,
-        "close": 1017.78,
-        "volume": 5185200
-      },
       {
         "date": "2025-11-13",
         "open": 1010.09,
@@ -8228,6 +8148,86 @@
         "low": 1408.36,
         "close": 1417.54,
         "volume": 5247800
+      },
+      {
+        "date": "2026-11-02",
+        "open": 1393.15,
+        "high": 1421.99,
+        "low": 1382.02,
+        "close": 1410.99,
+        "volume": 3730600
+      },
+      {
+        "date": "2026-11-03",
+        "open": 1399.63,
+        "high": 1437,
+        "low": 1393.47,
+        "close": 1409.38,
+        "volume": 2841300
+      },
+      {
+        "date": "2026-11-04",
+        "open": 1440,
+        "high": 1445.96,
+        "low": 1401.59,
+        "close": 1417.99,
+        "volume": 3637300
+      },
+      {
+        "date": "2026-11-05",
+        "open": 1434,
+        "high": 1453,
+        "low": 1364.73,
+        "close": 1364.73,
+        "volume": 4878900
+      },
+      {
+        "date": "2026-11-06",
+        "open": 1350.45,
+        "high": 1377.28,
+        "low": 1333.22,
+        "close": 1354,
+        "volume": 3803200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 1365.4,
+        "high": 1419.67,
+        "low": 1364.58,
+        "close": 1411.95,
+        "volume": 4029800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 1408.49,
+        "high": 1438.88,
+        "low": 1400,
+        "close": 1432.29,
+        "volume": 3017000
+      },
+      {
+        "date": "2026-11-11",
+        "open": 1418.08,
+        "high": 1440.47,
+        "low": 1414.37,
+        "close": 1437.29,
+        "volume": 1872700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 1446.55,
+        "high": 1460,
+        "low": 1427.28,
+        "close": 1427.28,
+        "volume": 2407800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 1429.91,
+        "high": 1449.64,
+        "low": 1419.77,
+        "close": 1443.5,
+        "volume": 2081600
       }
     ],
     "news": [
@@ -8256,19 +8256,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
-        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
         "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
+        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
         "type": "STORY"
       },
       {
@@ -8296,19 +8296,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
+        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
         "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
-        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
         "type": "STORY"
       }
     ],
@@ -8379,43 +8379,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 61.05,
-        "industryAvg": 31.06
+        "value": 61.9,
+        "industryAvg": 30.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.43,
-        "industryAvg": 5.21
+        "value": 15.65,
+        "industryAvg": 5.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 33.13,
-        "industryAvg": 6.52
+        "value": 33.59,
+        "industryAvg": 6.43
       },
       {
         "metric": "ROE",
         "value": 17.4,
-        "industryAvg": 22.32
+        "industryAvg": 21.94
       },
       {
         "metric": "ROA",
         "value": 4.44,
-        "industryAvg": 7.8
+        "industryAvg": 7.64
       },
       {
         "metric": "Gross Margin",
         "value": 83.88,
-        "industryAvg": 73.8
+        "industryAvg": 73.97
       },
       {
         "metric": "EBITDA Margin",
         "value": 55.900000000000006,
-        "industryAvg": 31.91
+        "industryAvg": 32.28
       },
       {
         "metric": "Net Margin",
         "value": 26.44,
-        "industryAvg": 15.740000000000002
+        "industryAvg": 15.89
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 12.74,
-      "marketCap": 140417052080,
-      "psRatio": 2.25,
-      "pbRatio": 1.92,
-      "pegRatio": 2.81
+      "ttmPe": 13.15,
+      "marketCap": 144898119160,
+      "psRatio": 2.32,
+      "pbRatio": 1.98,
+      "pegRatio": 2.9
     },
     "profitability": {
       "roe": 3.83,
@@ -962,11 +962,11 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "28.83",
-          "2026-09-30": "7.38",
-          "2026-06-30": "7.37",
-          "2026-03-31": "5.94",
+          "2026-09-30": "7.43",
+          "2026-06-30": "7.4",
+          "2026-03-31": "5.97",
           "2025-12-31": "8.21",
-          "2025-09-30": "7.05",
+          "2025-09-30": "7.1",
           "2025-06-30": "7.44",
           "2025-03-31": "3.32",
           "2024-12-31": "6.33",
@@ -1006,11 +1006,11 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "388994874.0",
-          "2026-09-30": "385554748.0",
-          "2026-06-30": "387413573.0",
-          "2026-03-31": "390485934.0",
+          "2026-09-30": "382530069.0",
+          "2026-06-30": "385634049.0",
+          "2026-03-31": "388495580.0",
           "2025-12-31": "391101227.0",
-          "2025-09-30": "397336568.0",
+          "2025-09-30": "394324438.0",
           "2025-06-30": "398660788.0",
           "2025-03-31": "400748485.0",
           "2024-12-31": "406900000.0",
@@ -1028,11 +1028,11 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "392994860.0",
-          "2026-09-30": "389371023.0",
-          "2026-06-30": "391250616.0",
-          "2026-03-31": "394599504.0",
+          "2026-09-30": "389400000.0",
+          "2026-06-30": "391300000.0",
+          "2026-03-31": "394600000.0",
           "2025-12-31": "396500000.0",
-          "2025-09-30": "400868891.0",
+          "2025-09-30": "400900000.0",
           "2025-06-30": "403800000.0",
           "2025-03-31": "404700000.0",
           "2024-12-31": "427740864.0",
@@ -1715,7 +1715,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "25.93",
+          "2025-12-31": "26.36",
           "2024-12-31": "22.7",
           "2023-12-31": "21.98",
           "2022-12-31": "12.81",
@@ -1735,7 +1735,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "397611884.0",
+          "2025-12-31": "391101227.0",
           "2024-12-31": "408500000.0",
           "2023-12-31": "410800000.0",
           "2022-12-31": "414594856.0",
@@ -1745,7 +1745,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "401513338.0",
+          "2025-12-31": "401500000.0",
           "2024-12-31": "411905820.0",
           "2023-12-31": "414200000.0",
           "2022-12-31": "423500000.0",
@@ -5728,97 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.4799999999999995,
-      "costOfEquity": 7.23,
+      "wacc": 6.619999999999999,
+      "costOfEquity": 7.359999999999999,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2882,
-      "marketCap": 140417052080
+      "beta": 0.2861,
+      "marketCap": 144898119160
     },
     "beta": {
-      "beta5y": 0.2882
+      "beta5y": 0.2861
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 279.26,
-        "high": 280.87,
-        "low": 277.33,
-        "close": 278.06,
-        "volume": 2180300
-      },
-      {
-        "date": "2025-10-31",
-        "open": 275.73,
-        "high": 278.07,
-        "low": 275.62,
-        "close": 276.94,
-        "volume": 1892400
-      },
-      {
-        "date": "2025-11-03",
-        "open": 276,
-        "high": 278.36,
-        "low": 273.35,
-        "close": 278.25,
-        "volume": 1843600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 279.98,
-        "high": 285.76,
-        "low": 279.98,
-        "close": 285.65,
-        "volume": 1925400
-      },
-      {
-        "date": "2025-11-05",
-        "open": 285.51,
-        "high": 286.57,
-        "low": 282.65,
-        "close": 283.26,
-        "volume": 1373200
-      },
-      {
-        "date": "2025-11-06",
-        "open": 284.18,
-        "high": 285.85,
-        "low": 282.11,
-        "close": 283.05,
-        "volume": 1263300
-      },
-      {
-        "date": "2025-11-07",
-        "open": 282.99,
-        "high": 287.64,
-        "low": 282.99,
-        "close": 287.55,
-        "volume": 1303500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 285.44,
-        "high": 288.5,
-        "low": 284.63,
-        "close": 288.25,
-        "volume": 1573700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 289.16,
-        "high": 292.7,
-        "low": 288.39,
-        "close": 292.42,
-        "volume": 1442400
-      },
-      {
-        "date": "2025-11-12",
-        "open": 292.57,
-        "high": 295.47,
-        "low": 291.8,
-        "close": 294.93,
-        "volume": 1336000
-      },
       {
         "date": "2025-11-13",
         "open": 294.97,
@@ -7754,6 +7674,86 @@
         "low": 363.23,
         "close": 364.12,
         "volume": 1630100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 365,
+        "high": 370.29,
+        "low": 364.12,
+        "close": 368.98,
+        "volume": 1431000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 366.42,
+        "high": 369.1,
+        "low": 364.58,
+        "close": 366.54,
+        "volume": 1203300
+      },
+      {
+        "date": "2026-11-04",
+        "open": 370.16,
+        "high": 374.6,
+        "low": 366.1,
+        "close": 374.17,
+        "volume": 1726600
+      },
+      {
+        "date": "2026-11-05",
+        "open": 378.88,
+        "high": 384.26,
+        "low": 371.05,
+        "close": 371.63,
+        "volume": 2056400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 362.3,
+        "high": 368.3,
+        "low": 362.3,
+        "close": 365.02,
+        "volume": 1627100
+      },
+      {
+        "date": "2026-11-09",
+        "open": 367.17,
+        "high": 367.17,
+        "low": 360.48,
+        "close": 363.45,
+        "volume": 1203200
+      },
+      {
+        "date": "2026-11-10",
+        "open": 364.44,
+        "high": 370.05,
+        "low": 363.6,
+        "close": 369.11,
+        "volume": 969900
+      },
+      {
+        "date": "2026-11-11",
+        "open": 366.16,
+        "high": 370.57,
+        "low": 365.52,
+        "close": 370.33,
+        "volume": 1369500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 375.98,
+        "high": 376.06,
+        "low": 371.02,
+        "close": 371.76,
+        "volume": 887100
+      },
+      {
+        "date": "2026-11-13",
+        "open": 375.32,
+        "high": 377.93,
+        "low": 373.8,
+        "close": 375.74,
+        "volume": 1516400
       }
     ],
     "news": [
@@ -7774,19 +7774,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
-        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
         "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
+        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
         "type": "STORY"
       },
       {
@@ -7798,19 +7798,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c50f9178-bc22-3ab0-a07c-8cb31d7541f4",
-        "title": "Zacks Industry Outlook Highlights Berkshire Hathaway, The Progressive, Chubb, The Travelers Companies and The Allstate",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-berkshire-132800117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7157263e-9335-325f-9342-9023ba098971",
         "title": "5 Stocks to Watch From the Prospering P&C Insurance Industry",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/5-stocks-watch-prospering-p-192300678.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c50f9178-bc22-3ab0-a07c-8cb31d7541f4",
+        "title": "Zacks Industry Outlook Highlights Berkshire Hathaway, The Progressive, Chubb, The Travelers Companies and The Allstate",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-berkshire-132800117.html",
         "type": "STORY"
       },
       {
@@ -7822,19 +7822,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
+        "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
         "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
-        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
         "type": "STORY"
       }
     ],
@@ -7902,32 +7902,32 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.74,
-        "industryAvg": 30.94
+        "value": 13.15,
+        "industryAvg": 33.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.25,
-        "industryAvg": 3.97
+        "value": 2.32,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.92,
-        "industryAvg": 5.29
+        "value": 1.98,
+        "industryAvg": 5.47
       },
       {
         "metric": "ROE",
         "value": 3.83,
-        "industryAvg": 21.94
+        "industryAvg": 20.380000000000003
       },
       {
         "metric": "ROA",
         "value": 1.01,
-        "industryAvg": 5.18
+        "industryAvg": 4.81
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 29.57
+        "industryAvg": 29.470000000000002
       },
       {
         "metric": "EBITDA Margin",
@@ -7936,7 +7936,7 @@
       {
         "metric": "Net Margin",
         "value": 17.41,
-        "industryAvg": 14.35
+        "industryAvg": 13.389999999999999
       }
     ]
   }

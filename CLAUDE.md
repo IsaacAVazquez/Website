@@ -41,7 +41,7 @@ secondary authority-building content — not a generic blog template. The surfac
 6. **Fintech tools** — calculators under `/fintech-tools/*`
 7. **Full-time job search tracker** — `/mba-internship-notifications` (full-time and internship feed, candidate triage, application pipeline with interview rounds and fit grading, dev-mode file sync)
 8. **Personal-interest tools** — browser-persisted (`/travel`, `/food-map`,
-   `/recipe-finder`, `/wine-cellar`, `/museum-log`)
+   `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/blackjack-trainer`)
 
 ---
 

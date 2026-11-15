@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "profitability",
@@ -45,9 +45,9 @@
     "fundamentals": {
       "ttmEps": -0.5799,
       "ttmPe": 141.68,
-      "marketCap": 170679367418,
-      "psRatio": 14.73,
-      "pbRatio": 3.51,
+      "marketCap": 178943595484,
+      "psRatio": 15.45,
+      "pbRatio": 3.68,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5559,97 +5559,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.05,
+      "wacc": 10.100000000000001,
       "costOfEquity": 11.19,
       "costOfDebt": 0.91,
       "taxRate": 2,
-      "beta": 0.7877,
-      "marketCap": 170679367418
+      "beta": 0.7828,
+      "marketCap": 178943595484
     },
     "beta": {
-      "beta5y": 0.7877
+      "beta5y": 0.7828
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 177.77,
-        "high": 181.52,
-        "low": 177.45,
-        "close": 180.88,
-        "volume": 2802000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 179.48,
-        "high": 181.84,
-        "low": 178.19,
-        "close": 181.04,
-        "volume": 4039900
-      },
-      {
-        "date": "2025-11-03",
-        "open": 179.78,
-        "high": 182.77,
-        "low": 179.24,
-        "close": 182.32,
-        "volume": 2926400
-      },
-      {
-        "date": "2025-11-04",
-        "open": 183.31,
-        "high": 184.9,
-        "low": 180.97,
-        "close": 184.35,
-        "volume": 2578100
-      },
-      {
-        "date": "2025-11-05",
-        "open": 186.02,
-        "high": 188.12,
-        "low": 185.19,
-        "close": 186.35,
-        "volume": 3129600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 187.09,
-        "high": 188.93,
-        "low": 185.42,
-        "close": 187.76,
-        "volume": 3826900
-      },
-      {
-        "date": "2025-11-07",
-        "open": 188.03,
-        "high": 190.68,
-        "low": 186.23,
-        "close": 190.25,
-        "volume": 3319400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 189.65,
-        "high": 192.12,
-        "low": 189,
-        "close": 191.06,
-        "volume": 3429100
-      },
-      {
-        "date": "2025-11-11",
-        "open": 191.41,
-        "high": 192.79,
-        "low": 189.72,
-        "close": 192.31,
-        "volume": 2139400
-      },
-      {
-        "date": "2025-11-12",
-        "open": 191.75,
-        "high": 192.81,
-        "low": 191.02,
-        "close": 191.64,
-        "volume": 3879400
-      },
       {
         "date": "2025-11-13",
         "open": 192.14,
@@ -7585,23 +7505,103 @@
         "low": 234.17,
         "close": 234.6,
         "volume": 3577200
+      },
+      {
+        "date": "2026-11-02",
+        "open": 234.66,
+        "high": 239.16,
+        "low": 234.18,
+        "close": 239,
+        "volume": 2681000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 238.12,
+        "high": 242.61,
+        "low": 238.12,
+        "close": 241.17,
+        "volume": 2440400
+      },
+      {
+        "date": "2026-11-04",
+        "open": 243.88,
+        "high": 248.55,
+        "low": 241.01,
+        "close": 247.99,
+        "volume": 4008500
+      },
+      {
+        "date": "2026-11-05",
+        "open": 248.64,
+        "high": 249.12,
+        "low": 244.12,
+        "close": 245.43,
+        "volume": 4736800
+      },
+      {
+        "date": "2026-11-06",
+        "open": 242.28,
+        "high": 246.97,
+        "low": 241.19,
+        "close": 245.01,
+        "volume": 2459200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 246.82,
+        "high": 247.9,
+        "low": 244.8,
+        "close": 247.35,
+        "volume": 3071300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 245.8,
+        "high": 248.83,
+        "low": 243.4,
+        "close": 247.66,
+        "volume": 2308800
+      },
+      {
+        "date": "2026-11-11",
+        "open": 245.9,
+        "high": 247.41,
+        "low": 243.8,
+        "close": 247.35,
+        "volume": 2678600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 248.51,
+        "high": 249.75,
+        "low": 244.65,
+        "close": 244.93,
+        "volume": 2380900
+      },
+      {
+        "date": "2026-11-13",
+        "open": 246.44,
+        "high": 247.27,
+        "low": 242.9,
+        "close": 244.46,
+        "volume": 1918600
       }
     ],
     "news": [
-      {
-        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
-        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
-        "type": "STORY"
-      },
       {
         "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
         "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
+        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
         "type": "STORY"
       },
       {
@@ -7621,19 +7621,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
-        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
         "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
+        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
         "type": "STORY"
       },
       {
@@ -7732,42 +7732,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 73.95
+        "industryAvg": 59.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.73,
-        "industryAvg": 8.95
+        "value": 15.45,
+        "industryAvg": 9.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.51,
-        "industryAvg": 2.73
+        "value": 3.68,
+        "industryAvg": 2.79
       },
       {
         "metric": "ROE",
         "value": 1.7000000000000002,
-        "industryAvg": 2.4699999999999998
+        "industryAvg": 3.73
       },
       {
         "metric": "ROA",
         "value": 1.08,
-        "industryAvg": 1.25
+        "industryAvg": 1.9
       },
       {
         "metric": "Gross Margin",
         "value": 39.18,
-        "industryAvg": 48.89
+        "industryAvg": 48.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.77,
-        "industryAvg": 46.81
+        "industryAvg": 49.97
       },
       {
         "metric": "Net Margin",
         "value": 10.74,
-        "industryAvg": 7.42
+        "industryAvg": 11.29
       }
     ]
   }

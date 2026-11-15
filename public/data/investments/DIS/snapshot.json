@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.88,
-      "marketCap": 191874300000,
-      "psRatio": 1.94,
-      "pbRatio": 1.74,
+      "ttmPe": 24.39,
+      "marketCap": 204537900000,
+      "psRatio": 2.07,
+      "pbRatio": 1.86,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6072,96 +6072,16 @@
     },
     "wacc": {
       "wacc": 13.28,
-      "costOfEquity": 16.28,
+      "costOfEquity": 16.09,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4322,
-      "marketCap": 191874300000
+      "beta": 1.4143,
+      "marketCap": 204537900000
     },
     "beta": {
-      "beta5y": 1.4322
+      "beta5y": 1.4143
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 110.13,
-        "high": 113.58,
-        "low": 109.55,
-        "close": 111.84,
-        "volume": 8311300
-      },
-      {
-        "date": "2025-10-31",
-        "open": 111.58,
-        "high": 113.1,
-        "low": 110.53,
-        "close": 112.62,
-        "volume": 8700600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 112.55,
-        "high": 112.81,
-        "low": 111.03,
-        "close": 112.12,
-        "volume": 8542300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 110.97,
-        "high": 111.79,
-        "low": 110.64,
-        "close": 111.47,
-        "volume": 7950100
-      },
-      {
-        "date": "2025-11-05",
-        "open": 111.35,
-        "high": 111.97,
-        "low": 110.6,
-        "close": 111.36,
-        "volume": 5746000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 111.17,
-        "high": 111.71,
-        "low": 109.18,
-        "close": 110.49,
-        "volume": 10291800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 110.26,
-        "high": 111.43,
-        "low": 110.04,
-        "close": 110.74,
-        "volume": 8782100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 111.15,
-        "high": 112.79,
-        "low": 111.03,
-        "close": 112.24,
-        "volume": 9158700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 112.65,
-        "high": 114.97,
-        "low": 112.42,
-        "close": 114.85,
-        "volume": 9713300
-      },
-      {
-        "date": "2025-11-12",
-        "open": 114.57,
-        "high": 117.09,
-        "low": 114.39,
-        "close": 116.65,
-        "volume": 15248700
-      },
       {
         "date": "2025-11-13",
         "open": 108.89,
@@ -8097,6 +8017,86 @@
         "low": 110.76,
         "close": 110.94,
         "volume": 6341200
+      },
+      {
+        "date": "2026-11-02",
+        "open": 111.78,
+        "high": 113.79,
+        "low": 111.77,
+        "close": 113.11,
+        "volume": 7437700
+      },
+      {
+        "date": "2026-11-03",
+        "open": 112.98,
+        "high": 114.46,
+        "low": 111.94,
+        "close": 114.18,
+        "volume": 11568600
+      },
+      {
+        "date": "2026-11-04",
+        "open": 116.3,
+        "high": 119.96,
+        "low": 116.3,
+        "close": 118.95,
+        "volume": 13404900
+      },
+      {
+        "date": "2026-11-05",
+        "open": 119.87,
+        "high": 120.8,
+        "low": 116.85,
+        "close": 117.22,
+        "volume": 11748100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 114.44,
+        "high": 117.81,
+        "low": 113.79,
+        "close": 116.75,
+        "volume": 8576900
+      },
+      {
+        "date": "2026-11-09",
+        "open": 117.94,
+        "high": 119.38,
+        "low": 117.23,
+        "close": 119.12,
+        "volume": 7583300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 118.69,
+        "high": 119.5,
+        "low": 117.42,
+        "close": 119.21,
+        "volume": 8000200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 118.29,
+        "high": 119.79,
+        "low": 118.25,
+        "close": 119.65,
+        "volume": 5283200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 119.53,
+        "high": 120.44,
+        "low": 118.01,
+        "close": 118.23,
+        "volume": 5766700
+      },
+      {
+        "date": "2026-11-13",
+        "open": 118.43,
+        "high": 119.47,
+        "low": 118,
+        "close": 118.97,
+        "volume": 7717000
       }
     ],
     "news": [
@@ -8133,22 +8133,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
         "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
         "publisher": "Investor's Business Daily",
@@ -8162,6 +8146,22 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -8242,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.88,
-        "industryAvg": 21.91
+        "value": 24.39,
+        "industryAvg": 20.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.94,
-        "industryAvg": 2.59
+        "value": 2.07,
+        "industryAvg": 2.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.74,
-        "industryAvg": 2.97
+        "value": 1.86,
+        "industryAvg": 3.02
       },
       {
         "metric": "ROE",
         "value": 2.41,
-        "industryAvg": 9.06
+        "industryAvg": 9.9
       },
       {
         "metric": "ROA",
         "value": 1.29,
-        "industryAvg": 3.82
+        "industryAvg": 4.22
       },
       {
         "metric": "Gross Margin",
         "value": 40.17,
-        "industryAvg": 40.96
+        "industryAvg": 41.099999999999994
       },
       {
         "metric": "EBITDA Margin",
         "value": 21.87,
-        "industryAvg": 26.38
+        "industryAvg": 26.8
       },
       {
         "metric": "Net Margin",
         "value": 10.45,
-        "industryAvg": 7.03
+        "industryAvg": 7.62
       }
     ]
   }

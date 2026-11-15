@@ -1,0 +1,40 @@
+---
+title: "Drawing Tiers the Weekly Rankings Never Published"
+excerpt: "In season, the expert consensus I build on publishes a flex board and a quarterback board with no overall ranking and no tiers. Here is how the weekly board draws its own tiers, why the waiver list is a single subtraction, and where that subtraction falls short."
+publishedAt: "2026-11-02"
+category: "Fantasy Football Analytics"
+tags: ["Fantasy Football", "Weekly Rankings", "Waiver Wire", "Tiers", "Data Products", "Fantasy Football 2026"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-weekly-fantasy-tiers-and-waivers/opengraph-image"
+coverImageAlt: "Editorial card for an article about weekly fantasy football tiers and waiver targets"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Weekly Board"
+  description: "See this week's flex and quarterback consensus in tiers, with the expert spread beside each player and the waiver targets one click away."
+  href: "/fantasy-football/weekly"
+  actionLabel: "Open the weekly board"
+seo:
+  title: "Building Weekly Fantasy Tiers and Waivers"
+  description: "How I draw weekly fantasy football tiers from expert averages and spreads, and rank waiver adds by board percentile minus rostered percentage."
+  keywords: ["weekly fantasy football tiers", "fantasy football waiver wire", "waiver wire targets", "weekly fantasy rankings", "fantasy rostered percentage", "in-season fantasy tools"]
+---
+
+# Drawing Tiers the Weekly Rankings Never Published
+
+If you want the tools first, the [weekly board](/fantasy-football/weekly) and the [waiver list](/fantasy-football/waivers) both read the same weekly snapshot.
+
+Once the season starts, most of what I built for draft day stops being the useful part, and the questions turn into who to start this week and who to pick up. FantasyPros, the expert consensus my fantasy tools build on, keeps publishing in season, but the weekly boards are shaped differently from the draft cheat sheets in ways that matter. There is a flex board that covers running backs, receivers, and tight ends, and a separate quarterback board, with no single overall ranking. When I checked on October 15, none of the weekly or rest-of-season pages carried tiers either. My [draft board](/writing/building-a-fantasy-football-rankings-platform) leans on tiers more than on raw ranks, so the in-season version had to decide what to do about both gaps.
+
+The missing overall board was the easier call. I could have merged the two lists into one ordering, but a flex rank of 12 and a quarterback rank of 12 come from different expert pools ranking different sets of players, and any merge would be an ordering I invented and then printed under FantasyPros' name. So the page keeps two boards in two rank spaces, uses the flex board for the overall tab, and says why right above the table.
+
+The tiers were harder, because I had to draw them myself and then say so on the page. The rule walks down the board and measures each gap between neighbors, meaning how far the published expert average moves from one player to the next, divided by how much the experts disagree about that pair, using the average of their two standard deviations with a floor of one rank. Then it splits the list at its widest gap, and keeps splitting each piece the same way until no tier holds more than ten players, without ever leaving a tier of one. Dividing by the disagreement is the part I care about most. A four-spot jump between two players the experts agree on is a real break in the board, while the same jump between two players the experts are split on is mostly noise, and a raw gap can't tell those apart. A tie between gaps goes to the one nearest the middle, so a board that arrives without published averages, where every gap is one rank, halves into even tiers instead of peeling pairs off the top.
+
+On the Week 8 PPR flex board, published November 1 by 40 experts across 344 players, the rule drew 58 tiers. The first holds Jaxon Smith-Njigba, Jahmyr Gibbs, and Puka Nacua, and the second holds Bijan Robinson, CeeDee Lamb, Ja'Marr Chase, and Kenneth Walker III. The quarterback board, 52 players from 44 experts, came out in nine tiers, with Josh Allen, Joe Burrow, Dak Prescott, Lamar Jackson, Drake Maye, and Trevor Lawrence in the first. Filtering the flex board to one position redraws the tiers on what is left, so the running back view gets running back tiers, while a name search only hides rows and leaves the tiers alone. I would read the top of the board and the deep end of it differently, though. Near the top, where the averages jump, the breaks are real. Deep in the board the averages move in small even steps, and there the ten-player cap is doing more of the work than the gaps are, so tier 3 means something and tier 40 is mostly a convenient grouping.
+
+The waiver list is one subtraction. It takes a player's percentile on the board, where first of 344 is the 100th percentile, and subtracts FantasyPros' average rostered percentage for that player. The idea is that a player the experts rank well ahead of how often leagues roster him is probably sitting on your wire. Three filters keep the list honest. Anyone rostered in 60% or more of leagues is out, since that player is not really available. A gap has to be at least 20 points to be listed. And only players inside startable depth count, meaning the top 120 on the flex board and the top 24 quarterbacks, because twelve teams starting roughly two backs, two receivers, a tight end, and a flex use about 84 flex-eligible players a week. Without that depth limit, the largest gap on the first board I built belonged to a receiver ranked 142nd of 284 and rostered in 2.9% of leagues, which is a real discrepancy and also not someone anybody should start. Both inputs print beside every gap so any row can be checked by hand, and the list models no bids, projections, or points. It also stays empty until Week 1, because rostered rates before leagues have drafted only describe the preseason.
+
+The Week 8 list shows where the subtraction falls short. All ten of the top candidates sit between 88th and 120th on the flex board, rostered in 1.8% to 10.9% of leagues. Eli Raridon, the Patriots tight end, leads at 109th and 1.9% rostered for a gap of 66.7, just ahead of Kendrick Bourne, the Cardinals receiver, at 88th and 8.6%. What I think this means is that at that depth a player's percentile still sits between about 65 and 75, because the board runs 344 deep, while his rostered rate is close to zero, so inside the top 120 the sort mostly becomes a sort by how few leagues roster someone. Those are real discrepancies, and for most leagues they are bench and bye-week adds. The version I would like to try next compares a player's rostered rate against what is typical for his rank, which should let a 40th-ranked player rostered in half of leagues outrank a 110th-ranked player nobody holds.
+
+The same snapshot also carries FantasyPros' rest-of-season board, which only the [trade calculator](/writing/building-a-fantasy-trade-calculator) reads once the season starts. The pattern I would pull out of all this is that in-season source data has holes, from the missing overall ranking, to the missing tiers, to rostered rates that only mean something after the drafts. My rule has been to fill a hole only when I can describe the fill on the page in a sentence a reader can check, and to leave it empty otherwise.

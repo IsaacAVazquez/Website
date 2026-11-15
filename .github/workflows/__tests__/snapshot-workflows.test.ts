@@ -74,6 +74,8 @@ describe("snapshot refresh workflow infrastructure", () => {
 
       expect(checkoutBlock).toBeDefined();
       expect(checkoutBlock).toContain("ref: main");
+      // The ruleset on main exempts deploy keys only, so a token push is rejected.
+      expect(checkoutBlock).toContain("ssh-key: \${{ secrets.SNAPSHOT_DEPLOY_KEY }}");
     }
   });
 

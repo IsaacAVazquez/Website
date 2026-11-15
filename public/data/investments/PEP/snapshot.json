@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9572,
-      "ttmPe": 17.26,
-      "pegRatio": 0.98,
-      "marketCap": 187331760000,
-      "psRatio": 1.91,
-      "pbRatio": 8.4
+      "ttmPe": 17.88,
+      "pegRatio": 1.02,
+      "marketCap": 194042640000,
+      "psRatio": 1.98,
+      "pbRatio": 8.7
     },
     "profitability": {
       "roe": 13.73,
@@ -6068,97 +6068,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.96,
-      "costOfEquity": 7.51,
+      "wacc": 6.069999999999999,
+      "costOfEquity": 7.6,
       "costOfDebt": 0.47000000000000003,
       "taxRate": 21,
-      "beta": 0.3247,
-      "marketCap": 187331760000
+      "beta": 0.3222,
+      "marketCap": 194042640000
     },
     "beta": {
-      "beta5y": 0.3247
+      "beta5y": 0.3222
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 146.34,
-        "high": 148.09,
-        "low": 146.25,
-        "close": 147.55,
-        "volume": 5752700
-      },
-      {
-        "date": "2025-10-31",
-        "open": 146.2,
-        "high": 147,
-        "low": 145.3,
-        "close": 146.09,
-        "volume": 6313600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 145.86,
-        "high": 145.91,
-        "low": 143.25,
-        "close": 143.6,
-        "volume": 8331500
-      },
-      {
-        "date": "2025-11-04",
-        "open": 144.7,
-        "high": 144.93,
-        "low": 142.06,
-        "close": 142.9,
-        "volume": 8302900
-      },
-      {
-        "date": "2025-11-05",
-        "open": 142.9,
-        "high": 143.28,
-        "low": 141.58,
-        "close": 142.86,
-        "volume": 7136400
-      },
-      {
-        "date": "2025-11-06",
-        "open": 142.41,
-        "high": 143.21,
-        "low": 141.3,
-        "close": 141.58,
-        "volume": 6449400
-      },
-      {
-        "date": "2025-11-07",
-        "open": 142.93,
-        "high": 144.05,
-        "low": 141.65,
-        "close": 142.95,
-        "volume": 7592300
-      },
-      {
-        "date": "2025-11-10",
-        "open": 142.49,
-        "high": 143.02,
-        "low": 141.26,
-        "close": 142.62,
-        "volume": 6617500
-      },
-      {
-        "date": "2025-11-11",
-        "open": 143.28,
-        "high": 145.76,
-        "low": 142.68,
-        "close": 145.08,
-        "volume": 7683600
-      },
-      {
-        "date": "2025-11-12",
-        "open": 144.56,
-        "high": 145.5,
-        "low": 144.06,
-        "close": 144.39,
-        "volume": 5790100
-      },
       {
         "date": "2025-11-13",
         "open": 144.1,
@@ -8094,6 +8014,86 @@
         "low": 135.8,
         "close": 137.34,
         "volume": 19503900
+      },
+      {
+        "date": "2026-11-02",
+        "open": 138.28,
+        "high": 140.66,
+        "low": 137.92,
+        "close": 140.42,
+        "volume": 9351900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 139.37,
+        "high": 139.83,
+        "low": 137.09,
+        "close": 137.27,
+        "volume": 8395800
+      },
+      {
+        "date": "2026-11-04",
+        "open": 140.2,
+        "high": 143.96,
+        "low": 138.82,
+        "close": 142.42,
+        "volume": 12078200
+      },
+      {
+        "date": "2026-11-05",
+        "open": 144.05,
+        "high": 145.55,
+        "low": 142.36,
+        "close": 142.71,
+        "volume": 13176500
+      },
+      {
+        "date": "2026-11-06",
+        "open": 138.31,
+        "high": 142.17,
+        "low": 138,
+        "close": 141.34,
+        "volume": 8709300
+      },
+      {
+        "date": "2026-11-09",
+        "open": 141.56,
+        "high": 143.48,
+        "low": 140.58,
+        "close": 141.88,
+        "volume": 11449700
+      },
+      {
+        "date": "2026-11-10",
+        "open": 141.67,
+        "high": 143.71,
+        "low": 140.8,
+        "close": 143.61,
+        "volume": 7007100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 141.82,
+        "high": 144.02,
+        "low": 140.53,
+        "close": 143.94,
+        "volume": 10359800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 144.43,
+        "high": 144.58,
+        "low": 142.14,
+        "close": 142.26,
+        "volume": 8161500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 142.8,
+        "high": 145.78,
+        "low": 142.53,
+        "close": 145.44,
+        "volume": 7912000
       }
     ],
     "news": [
@@ -8106,19 +8106,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
-        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
         "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
+        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
         "type": "STORY"
       },
       {
@@ -8130,19 +8130,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
-        "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
         "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
         "publisher": "TipRanks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
+        "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
         "type": "STORY"
       },
       {
@@ -8180,6 +8180,16 @@
     ],
     "officers": [
       {
+        "name": "Mr. David J. Flavell",
+        "title": "Executive VP, Chief Legal and Corporate Affairs Officer and Corporate Secretary"
+      },
+      {
+        "name": "Mr. Eugene Willemsen",
+        "title": "Chief Executive Officer of International Beverages",
+        "age": 58,
+        "yearBorn": 1967
+      },
+      {
         "name": "Mr. Ramon Luis Laguarta",
         "title": "Chairman & CEO",
         "age": 61,
@@ -8199,6 +8209,17 @@
         "age": 51,
         "yearBorn": 1974,
         "totalPay": 3196609
+      },
+      {
+        "name": "Mr. Steven C. Williams",
+        "title": "Executive VP, Vice Chairman & Global Chief Commercial Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 2634533
+      },
+      {
+        "name": "Ms. Cynthia A. Nastanski",
+        "title": "Senior VP of Corporate Law & Deputy Corporate Secretary"
       },
       {
         "name": "Ms. Jane Caroline Wakely",
@@ -8221,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.26,
-        "industryAvg": 24.12
+        "value": 17.88,
+        "industryAvg": 24.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.91,
-        "industryAvg": 3.28
+        "value": 1.98,
+        "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.4,
-        "industryAvg": 6.41
+        "value": 8.7,
+        "industryAvg": 6.46
       },
       {
         "metric": "ROE",
         "value": 13.73,
-        "industryAvg": 28.199999999999996
+        "industryAvg": 28.48
       },
       {
         "metric": "ROA",
         "value": 2.7199999999999998,
-        "industryAvg": 8.89
+        "industryAvg": 9.07
       },
       {
         "metric": "Gross Margin",
         "value": 54.42,
-        "industryAvg": 51.970000000000006
+        "industryAvg": 51.959999999999994
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.66,
-        "industryAvg": 22.99
+        "industryAvg": 23.24
       },
       {
         "metric": "Net Margin",
         "value": 12.06,
-        "industryAvg": 13.5
+        "industryAvg": 13.56
       }
     ]
   }

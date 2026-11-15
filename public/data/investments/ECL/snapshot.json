@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 41.2,
-      "marketCap": 84933959228,
-      "psRatio": 4.89,
-      "pbRatio": 8.15,
+      "ttmPe": 42.05,
+      "marketCap": 86697226122,
+      "psRatio": 4.99,
+      "pbRatio": 8.32,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,97 +6315,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
-      "costOfEquity": 11.67,
+      "wacc": 10.17,
+      "costOfEquity": 11.68,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8483,
-      "marketCap": 84933959228
+      "beta": 0.8462,
+      "marketCap": 86697226122
     },
     "beta": {
-      "beta5y": 0.8483
+      "beta5y": 0.8462
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 255.34,
-        "high": 261.66,
-        "low": 255.16,
-        "close": 257.1,
-        "volume": 1659200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 256.18,
-        "high": 259.32,
-        "low": 255.35,
-        "close": 256.4,
-        "volume": 1519700
-      },
-      {
-        "date": "2025-11-03",
-        "open": 259,
-        "high": 259,
-        "low": 251.74,
-        "close": 257.45,
-        "volume": 1973700
-      },
-      {
-        "date": "2025-11-04",
-        "open": 257.33,
-        "high": 259.05,
-        "low": 255.85,
-        "close": 258.66,
-        "volume": 1625200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 259.61,
-        "high": 260.33,
-        "low": 255.2,
-        "close": 258.93,
-        "volume": 1560000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 258.36,
-        "high": 260.39,
-        "low": 252.36,
-        "close": 253.06,
-        "volume": 1732400
-      },
-      {
-        "date": "2025-11-07",
-        "open": 252.82,
-        "high": 256.38,
-        "low": 252.17,
-        "close": 256.13,
-        "volume": 1728300
-      },
-      {
-        "date": "2025-11-10",
-        "open": 256.38,
-        "high": 259.08,
-        "low": 253.9,
-        "close": 258.56,
-        "volume": 1294700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 259.81,
-        "high": 262.51,
-        "low": 258.24,
-        "close": 262.05,
-        "volume": 899000
-      },
-      {
-        "date": "2025-11-12",
-        "open": 262.15,
-        "high": 263.86,
-        "low": 260.19,
-        "close": 261.06,
-        "volume": 1015600
-      },
       {
         "date": "2025-11-13",
         "open": 260.73,
@@ -8341,6 +8261,86 @@
         "low": 300.71,
         "close": 302.98,
         "volume": 1743600
+      },
+      {
+        "date": "2026-11-02",
+        "open": 305.99,
+        "high": 310,
+        "low": 302.7,
+        "close": 308.38,
+        "volume": 1491500
+      },
+      {
+        "date": "2026-11-03",
+        "open": 307.6,
+        "high": 307.88,
+        "low": 303.58,
+        "close": 304.68,
+        "volume": 1261100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 311,
+        "high": 315.58,
+        "low": 305.82,
+        "close": 315.01,
+        "volume": 2747100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 318.85,
+        "high": 318.93,
+        "low": 303.68,
+        "close": 305.83,
+        "volume": 2630400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 300,
+        "high": 304.15,
+        "low": 297,
+        "close": 300.68,
+        "volume": 2219200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 304.45,
+        "high": 309.59,
+        "low": 301.63,
+        "close": 306.74,
+        "volume": 1614300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 305.69,
+        "high": 308.5,
+        "low": 304.59,
+        "close": 306.03,
+        "volume": 1293600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 305.15,
+        "high": 307.93,
+        "low": 302.5,
+        "close": 307.86,
+        "volume": 1172600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 309.83,
+        "high": 311.3,
+        "low": 304.32,
+        "close": 304.41,
+        "volume": 1066400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 309.57,
+        "high": 310.66,
+        "low": 307,
+        "close": 309.27,
+        "volume": 1208500
       }
     ],
     "news": [
@@ -8377,19 +8377,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
-        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
         "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
+        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
         "type": "STORY"
       },
       {
@@ -8409,19 +8409,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
-        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
         "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
         "publisher": "Business Wire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
+        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
         "type": "STORY"
       }
     ],
@@ -8491,43 +8491,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.2,
-        "industryAvg": 29.53
+        "value": 42.05,
+        "industryAvg": 28.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.89,
-        "industryAvg": 2.5
+        "value": 4.99,
+        "industryAvg": 2.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.15,
-        "industryAvg": 3.41
+        "value": 8.32,
+        "industryAvg": 3.45
       },
       {
         "metric": "ROE",
         "value": 5.38,
-        "industryAvg": 7.06
+        "industryAvg": 9.030000000000001
       },
       {
         "metric": "ROA",
         "value": 1.81,
-        "industryAvg": 2.85
+        "industryAvg": 3.66
       },
       {
         "metric": "Gross Margin",
         "value": 44.080000000000005,
-        "industryAvg": 30.31
+        "industryAvg": 29.98
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.810000000000002,
-        "industryAvg": 16.25
+        "industryAvg": 16.88
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 4.8500000000000005
+        "industryAvg": 5.96
       }
     ]
   }

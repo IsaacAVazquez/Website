@@ -1,10 +1,10 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -27,7 +27,7 @@
   },
   "sections": {
     "info": {
-      "address": "Grand Canal Harbour, 1 Grand Canal Square",
+      "address": "Grand Canal Harbour Dublin 2, 1 Grand Canal Square",
       "city": "Dublin",
       "country": "Ireland",
       "industry": "Information Technology Services",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.5663,
-      "ttmPe": 19.04,
-      "marketCap": 153790467744,
-      "psRatio": 2.07,
-      "pbRatio": 4.87,
-      "pegRatio": 0.41
+      "ttmPe": 18.46,
+      "marketCap": 149175086219,
+      "psRatio": 2.01,
+      "pbRatio": 4.73,
+      "pegRatio": 0.4
     },
     "profitability": {
       "roe": 6.279999999999999,
@@ -3286,7 +3286,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2026-05-31": "667466373.0",
           "2026-02-28": "665095184.0",
           "2025-11-30": "660352923.0",
@@ -3307,7 +3307,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2026-05-31": "611861944.0",
           "2026-02-28": "614841122.0",
           "2025-11-30": "615355540.0",
@@ -4154,7 +4154,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2025-08-31": "657964764.0",
           "2024-08-31": "672484852.0",
           "2023-08-31": "664616285.0",
@@ -4165,7 +4165,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2025-08-31": "621855922.0",
           "2024-08-31": "625280287.0",
           "2023-08-31": "628265148.0",
@@ -6020,97 +6020,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.899999999999999,
-      "costOfEquity": 12.889999999999999,
+      "wacc": 11.89,
+      "costOfEquity": 12.91,
       "costOfDebt": 0.77,
       "taxRate": 27,
-      "beta": 1.0029,
-      "marketCap": 153790467744
+      "beta": 1.0047,
+      "marketCap": 149175086219
     },
     "beta": {
-      "beta5y": 1.0029
+      "beta5y": 1.0047
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 245.81,
-        "high": 251.88,
-        "low": 245.48,
-        "close": 249.25,
-        "volume": 3982200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 249.66,
-        "high": 250.88,
-        "low": 248.06,
-        "close": 250.1,
-        "volume": 3847800
-      },
-      {
-        "date": "2025-11-03",
-        "open": 249.53,
-        "high": 249.53,
-        "low": 242.94,
-        "close": 248.44,
-        "volume": 4196300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 246.97,
-        "high": 248.57,
-        "low": 241.07,
-        "close": 242.9,
-        "volume": 3688300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 243.38,
-        "high": 248.99,
-        "low": 242.76,
-        "close": 247.82,
-        "volume": 3631800
-      },
-      {
-        "date": "2025-11-06",
-        "open": 247.73,
-        "high": 248.67,
-        "low": 240.18,
-        "close": 241.34,
-        "volume": 3512400
-      },
-      {
-        "date": "2025-11-07",
-        "open": 240,
-        "high": 246.55,
-        "low": 239.44,
-        "close": 245.76,
-        "volume": 4047400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 247.34,
-        "high": 248.26,
-        "low": 240.4,
-        "close": 244.55,
-        "volume": 2818600
-      },
-      {
-        "date": "2025-11-11",
-        "open": 244.89,
-        "high": 244.89,
-        "low": 238.53,
-        "close": 242.56,
-        "volume": 3766700
-      },
-      {
-        "date": "2025-11-12",
-        "open": 244,
-        "high": 246.97,
-        "low": 242.31,
-        "close": 246.53,
-        "volume": 3230700
-      },
       {
         "date": "2025-11-13",
         "open": 245.43,
@@ -8046,6 +7966,86 @@
         "low": 250.85,
         "close": 258.24,
         "volume": 10354400
+      },
+      {
+        "date": "2026-11-02",
+        "open": 255.7,
+        "high": 263.66,
+        "low": 253.68,
+        "close": 260.94,
+        "volume": 5783400
+      },
+      {
+        "date": "2026-11-03",
+        "open": 254.56,
+        "high": 256.37,
+        "low": 246.86,
+        "close": 254.56,
+        "volume": 5681400
+      },
+      {
+        "date": "2026-11-04",
+        "open": 258.59,
+        "high": 267.47,
+        "low": 256.77,
+        "close": 264.27,
+        "volume": 6085900
+      },
+      {
+        "date": "2026-11-05",
+        "open": 267.81,
+        "high": 271.76,
+        "low": 264.98,
+        "close": 265.16,
+        "volume": 8201300
+      },
+      {
+        "date": "2026-11-06",
+        "open": 258.53,
+        "high": 261.22,
+        "low": 255.41,
+        "close": 260.5,
+        "volume": 4262700
+      },
+      {
+        "date": "2026-11-09",
+        "open": 260,
+        "high": 262.15,
+        "low": 253.89,
+        "close": 254.37,
+        "volume": 4146700
+      },
+      {
+        "date": "2026-11-10",
+        "open": 253.38,
+        "high": 260.24,
+        "low": 250.31,
+        "close": 258.51,
+        "volume": 4076200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 255.18,
+        "high": 255.95,
+        "low": 250.98,
+        "close": 253.66,
+        "volume": 3385400
+      },
+      {
+        "date": "2026-11-12",
+        "open": 255.22,
+        "high": 256.98,
+        "low": 249.78,
+        "close": 249.95,
+        "volume": 3409700
+      },
+      {
+        "date": "2026-11-13",
+        "open": 251.95,
+        "high": 254.76,
+        "low": 249,
+        "close": 250.49,
+        "volume": 3400400
       }
     ],
     "news": [
@@ -8143,6 +8143,13 @@
         "totalPay": 3078144
       },
       {
+        "name": "Mr. Manish Sharma",
+        "title": "Chief Strategy & Reinvention Services Officer",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 3208848
+      },
+      {
         "name": "Mr. Mauro Macchi",
         "title": "Chief Executive Officer of EMEA",
         "age": 59,
@@ -8163,12 +8170,6 @@
         "age": 52,
         "yearBorn": 1973,
         "totalPay": 2031116
-      },
-      {
-        "name": "Ms. Emma Chalwin",
-        "title": "Chief Marketing Officer",
-        "age": 51,
-        "yearBorn": 1974
       },
       {
         "name": "Ms. Julie T. Spellman Sweet J.D.",
@@ -8193,43 +8194,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.04,
-        "industryAvg": 17
+        "value": 18.46,
+        "industryAvg": 16.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.07,
-        "industryAvg": 1.62
+        "value": 2.01,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.87,
-        "industryAvg": 3.73
+        "value": 4.73,
+        "industryAvg": 3.61
       },
       {
         "metric": "ROE",
         "value": 6.279999999999999,
-        "industryAvg": 17.47
+        "industryAvg": 17.560000000000002
       },
       {
         "metric": "ROA",
         "value": 2.8000000000000003,
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 5.92
       },
       {
         "metric": "Gross Margin",
         "value": 32.04,
-        "industryAvg": 31.8
+        "industryAvg": 31.680000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.25,
-        "industryAvg": 16.04
+        "industryAvg": 16.14
       },
       {
         "metric": "Net Margin",
         "value": 10.66,
-        "industryAvg": 7.9799999999999995
+        "industryAvg": 7.9399999999999995
       }
     ]
   }

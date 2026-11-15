@@ -1,10 +1,10 @@
 {
   "symbol": "GM",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.3632,
-      "ttmPe": 20.03,
-      "marketCap": 74202600000,
-      "psRatio": 0.4,
-      "pbRatio": 1.18,
+      "ttmPe": 19.71,
+      "marketCap": 73014000000,
+      "psRatio": 0.39,
+      "pbRatio": 1.16,
       "pegRatio": 0.11
     },
     "profitability": {
@@ -3129,7 +3129,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "877451541.0",
+          "2026-09-30": "849000000.0",
           "2026-06-30": "877451541.0",
           "2026-03-31": "902000000.0",
           "2025-12-31": "904000000.0",
@@ -3150,7 +3150,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "877451541.0",
+          "2026-09-30": "849000000.0",
           "2026-06-30": "877451541.0",
           "2026-03-31": "902000000.0",
           "2025-12-31": "904000000.0",
@@ -5859,97 +5859,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.9799999999999995,
-      "costOfEquity": 16.150000000000002,
+      "wacc": 5.89,
+      "costOfEquity": 16.07,
       "costOfDebt": 0.13,
       "taxRate": 14.000000000000002,
-      "beta": 1.413,
-      "marketCap": 74202600000
+      "beta": 1.4141,
+      "marketCap": 73014000000
     },
     "beta": {
-      "beta5y": 1.413
+      "beta5y": 1.4141
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 68.66,
-        "high": 69.78,
-        "low": 68.39,
-        "close": 68.67,
-        "volume": 7559500
-      },
-      {
-        "date": "2025-10-31",
-        "open": 68.78,
-        "high": 69.32,
-        "low": 68.63,
-        "close": 69.09,
-        "volume": 6993600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 68.89,
-        "high": 68.93,
-        "low": 67.78,
-        "close": 68.22,
-        "volume": 10252300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 68,
-        "high": 68.13,
-        "low": 66.75,
-        "close": 66.87,
-        "volume": 8478200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 67.04,
-        "high": 69.26,
-        "low": 67.04,
-        "close": 68.77,
-        "volume": 7807000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 68.69,
-        "high": 69.4,
-        "low": 68.21,
-        "close": 68.84,
-        "volume": 6086300
-      },
-      {
-        "date": "2025-11-07",
-        "open": 68.95,
-        "high": 70.76,
-        "low": 68.58,
-        "close": 70.75,
-        "volume": 8408500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 71,
-        "high": 71.34,
-        "low": 69.87,
-        "close": 71.05,
-        "volume": 8592700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 71.12,
-        "high": 71.64,
-        "low": 70.99,
-        "close": 71.22,
-        "volume": 6164000
-      },
-      {
-        "date": "2025-11-12",
-        "open": 71.17,
-        "high": 72.39,
-        "low": 70.99,
-        "close": 71.84,
-        "volume": 9167200
-      },
       {
         "date": "2025-11-13",
         "open": 72.16,
@@ -7885,6 +7805,86 @@
         "low": 84.73,
         "close": 87.4,
         "volume": 11693900
+      },
+      {
+        "date": "2026-11-02",
+        "open": 88.5,
+        "high": 90.04,
+        "low": 87.92,
+        "close": 89.94,
+        "volume": 8431300
+      },
+      {
+        "date": "2026-11-03",
+        "open": 89.89,
+        "high": 89.89,
+        "low": 87.92,
+        "close": 88.34,
+        "volume": 6436300
+      },
+      {
+        "date": "2026-11-04",
+        "open": 89.56,
+        "high": 93.7,
+        "low": 89.3,
+        "close": 92.43,
+        "volume": 7607100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 93.03,
+        "high": 93.53,
+        "low": 88.39,
+        "close": 89.33,
+        "volume": 11315800
+      },
+      {
+        "date": "2026-11-06",
+        "open": 87.42,
+        "high": 88.54,
+        "low": 86.08,
+        "close": 86.16,
+        "volume": 9046100
+      },
+      {
+        "date": "2026-11-09",
+        "open": 87.45,
+        "high": 90.11,
+        "low": 87.09,
+        "close": 89.65,
+        "volume": 7208400
+      },
+      {
+        "date": "2026-11-10",
+        "open": 88.81,
+        "high": 89.44,
+        "low": 88.35,
+        "close": 88.69,
+        "volume": 6833700
+      },
+      {
+        "date": "2026-11-11",
+        "open": 88.4,
+        "high": 88.92,
+        "low": 87.97,
+        "close": 88.9,
+        "volume": 3945900
+      },
+      {
+        "date": "2026-11-12",
+        "open": 88.55,
+        "high": 88.89,
+        "low": 86.17,
+        "close": 86.25,
+        "volume": 3774600
+      },
+      {
+        "date": "2026-11-13",
+        "open": 86.5,
+        "high": 87.54,
+        "low": 85.91,
+        "close": 86,
+        "volume": 3378400
       }
     ],
     "news": [
@@ -7977,10 +7977,10 @@
         "yearBorn": 1969
       },
       {
-        "name": "Mr. Duncan Aldred",
-        "title": "Senior VP and President of North America",
-        "age": 53,
-        "yearBorn": 1972
+        "name": "Mr. Christopher T. Hatto",
+        "title": "VP of Global Business Solutions & Chief Accounting Officer",
+        "age": 54,
+        "yearBorn": 1971
       },
       {
         "name": "Mr. Grant M. Dixton",
@@ -8039,43 +8039,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.03,
-        "industryAvg": 30.77
+        "value": 19.71,
+        "industryAvg": 30.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.4,
-        "industryAvg": 1.31
+        "value": 0.39,
+        "industryAvg": 1.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.18,
-        "industryAvg": 2.36
+        "value": 1.16,
+        "industryAvg": 2.32
       },
       {
         "metric": "ROE",
         "value": 5.3,
-        "industryAvg": 4.44
+        "industryAvg": 4.34
       },
       {
         "metric": "ROA",
         "value": 1.16,
-        "industryAvg": 1.46
+        "industryAvg": 1.43
       },
       {
         "metric": "Gross Margin",
         "value": 11.25,
-        "industryAvg": 14.7
+        "industryAvg": 14.89
       },
       {
         "metric": "EBITDA Margin",
         "value": 8.21,
-        "industryAvg": 9.16
+        "industryAvg": 9.049999999999999
       },
       {
         "metric": "Net Margin",
         "value": 6.61,
-        "industryAvg": 2.42
+        "industryAvg": 2.36
       }
     ]
   }

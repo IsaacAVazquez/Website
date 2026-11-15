@@ -66,6 +66,7 @@ Current route inventory and page ownership for the live app.
 | `/food-map` | `src/app/food-map/page.tsx` | Food map |
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Recipe finder |
 | `/wine-cellar` | `src/app/wine-cellar/page.tsx` | Wine cellar |
+| `/blackjack-trainer` | `src/app/blackjack-trainer/page.tsx` | Blackjack basic strategy trainer |
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
 | `/travel` | `src/app/travel/page.tsx` | Browser-persisted travel planner (trips, day-by-day itineraries, journaling) via `useTravelPlanner` |
 | `/travel-deals` | `src/app/travel-deals/page.tsx` | Travel Deal Lab: browser-persisted trip cost optimizer (booking-window timing, fare deal score, cash vs points, budget split) over a curated, unverified deals dataset |

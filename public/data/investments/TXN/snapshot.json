@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.7074,
-      "ttmPe": 40.6,
-      "marketCap": 286027160000,
-      "psRatio": 13.77,
-      "pbRatio": 14.91,
-      "pegRatio": 0.53
+      "ttmPe": 39.39,
+      "marketCap": 277490400000,
+      "psRatio": 13.36,
+      "pbRatio": 14.46,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 12.97,
@@ -643,7 +643,7 @@
           "2026-06-30": "2.17",
           "2026-03-31": "1.7",
           "2025-12-31": "1.28",
-          "2025-09-30": "1.49",
+          "2025-09-30": "1.5",
           "2025-06-30": "1.43",
           "2025-03-31": "1.3",
           "2024-12-31": "1.32",
@@ -1330,7 +1330,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "5.47",
+          "2025-12-31": "5.5",
           "2024-12-31": "5.26",
           "2023-12-31": "7.17",
           "2022-12-31": "9.55",
@@ -5771,97 +5771,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.28,
-      "costOfEquity": 15.959999999999999,
+      "wacc": 15.1,
+      "costOfEquity": 15.790000000000001,
       "costOfDebt": 1.04,
       "taxRate": 14.000000000000002,
-      "beta": 1.3921,
-      "marketCap": 286027160000
+      "beta": 1.3778,
+      "marketCap": 277490400000
     },
     "beta": {
-      "beta5y": 1.3921
+      "beta5y": 1.3778
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 160.15,
-        "high": 162.64,
-        "low": 159.97,
-        "close": 160.51,
-        "volume": 9477600
-      },
-      {
-        "date": "2025-10-31",
-        "open": 158.36,
-        "high": 162,
-        "low": 157.8,
-        "close": 161.46,
-        "volume": 8707900
-      },
-      {
-        "date": "2025-11-03",
-        "open": 162.34,
-        "high": 163.45,
-        "low": 160.07,
-        "close": 161.46,
-        "volume": 5208300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 161.18,
-        "high": 162.31,
-        "low": 158.13,
-        "close": 159.36,
-        "volume": 11462300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 159.39,
-        "high": 165.62,
-        "low": 159.39,
-        "close": 163.57,
-        "volume": 9770200
-      },
-      {
-        "date": "2025-11-06",
-        "open": 162.75,
-        "high": 163.81,
-        "low": 161.09,
-        "close": 161.38,
-        "volume": 5859500
-      },
-      {
-        "date": "2025-11-07",
-        "open": 160.38,
-        "high": 160.6,
-        "low": 156.89,
-        "close": 160.55,
-        "volume": 8837700
-      },
-      {
-        "date": "2025-11-10",
-        "open": 162,
-        "high": 163.37,
-        "low": 158.49,
-        "close": 160.58,
-        "volume": 7677900
-      },
-      {
-        "date": "2025-11-11",
-        "open": 160.42,
-        "high": 162.17,
-        "low": 159.24,
-        "close": 159.73,
-        "volume": 7274200
-      },
-      {
-        "date": "2025-11-12",
-        "open": 160.85,
-        "high": 164.53,
-        "low": 160.4,
-        "close": 163.09,
-        "volume": 6241200
-      },
       {
         "date": "2025-11-13",
         "open": 162.53,
@@ -7797,6 +7717,86 @@
         "low": 294.7,
         "close": 300.84,
         "volume": 12998300
+      },
+      {
+        "date": "2026-11-02",
+        "open": 304.1,
+        "high": 311.52,
+        "low": 301.24,
+        "close": 302.02,
+        "volume": 11078400
+      },
+      {
+        "date": "2026-11-03",
+        "open": 309.83,
+        "high": 316.75,
+        "low": 305.18,
+        "close": 312.49,
+        "volume": 9905100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 313.44,
+        "high": 317.2,
+        "low": 303.9,
+        "close": 311.49,
+        "volume": 10154100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 301.92,
+        "high": 307,
+        "low": 277.87,
+        "close": 278.15,
+        "volume": 19201100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 282.78,
+        "high": 285.1,
+        "low": 271.23,
+        "close": 277.36,
+        "volume": 10094200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 280.83,
+        "high": 297.8,
+        "low": 280,
+        "close": 295.73,
+        "volume": 10278700
+      },
+      {
+        "date": "2026-11-10",
+        "open": 288.9,
+        "high": 302.22,
+        "low": 287.25,
+        "close": 300.52,
+        "volume": 6119500
+      },
+      {
+        "date": "2026-11-11",
+        "open": 310.67,
+        "high": 314.75,
+        "low": 303.72,
+        "close": 309.81,
+        "volume": 7865300
+      },
+      {
+        "date": "2026-11-12",
+        "open": 307.25,
+        "high": 316.97,
+        "low": 305.77,
+        "close": 312.48,
+        "volume": 6171400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 311.78,
+        "high": 312,
+        "low": 294.73,
+        "close": 303.6,
+        "volume": 5229700
       }
     ],
     "news": [
@@ -7806,6 +7806,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-04-12",
         "link": "https://finance.yahoo.com/news/top-midday-decliners-182911186.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
+        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
         "type": "STORY"
       },
       {
@@ -7822,14 +7830,6 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
-        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
         "type": "STORY"
       },
       {
@@ -7873,11 +7873,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b2cc4bf-9dd6-3dd1-8f5f-d7f25e81db45",
-        "title": "Texas Instruments Insiders Sell US$5.5m Of Stock, Possibly Signalling Caution",
-        "publisher": "Simply Wall St.",
+        "uuid": "aef3881f-6223-3d99-9975-d3c24cfd8228",
+        "title": "Why the Market Dipped But Texas Instruments (TXN) Gained Today",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/texas-instruments-insiders-sell-us-130022300.html",
+        "link": "https://finance.yahoo.com/news/why-market-dipped-texas-instruments-215009732.html",
         "type": "STORY"
       }
     ],
@@ -7944,23 +7944,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.6,
-        "industryAvg": 25.55
+        "value": 39.39,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.77,
-        "industryAvg": 12.49
+        "value": 13.36,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.91,
-        "industryAvg": 11.09
+        "value": 14.46,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",
         "value": 12.97,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
@@ -7975,7 +7975,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 58.17,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

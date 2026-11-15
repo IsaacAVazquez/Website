@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 17.53,
-      "marketCap": 116284080000,
-      "psRatio": 1.29,
-      "pbRatio": -15.64,
-      "pegRatio": 438.25
+      "ttmPe": 19.23,
+      "marketCap": 127605060000,
+      "psRatio": 1.41,
+      "pbRatio": -17.16,
+      "pegRatio": 480.75
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,97 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.63,
-      "costOfEquity": 11.49,
+      "wacc": 8.67,
+      "costOfEquity": 11.29,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8252,
-      "marketCap": 116284080000
+      "beta": 0.7963,
+      "marketCap": 127605060000
     },
     "beta": {
-      "beta5y": 0.8252
+      "beta5y": 0.7963
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 238.07,
-        "high": 243.32,
-        "low": 237.01,
-        "close": 239.82,
-        "volume": 2076700
-      },
-      {
-        "date": "2025-10-31",
-        "open": 238.08,
-        "high": 239.34,
-        "low": 236.45,
-        "close": 238.13,
-        "volume": 2404700
-      },
-      {
-        "date": "2025-11-03",
-        "open": 236.41,
-        "high": 237.32,
-        "low": 232.98,
-        "close": 235.64,
-        "volume": 2333700
-      },
-      {
-        "date": "2025-11-04",
-        "open": 235.52,
-        "high": 238.01,
-        "low": 233.47,
-        "close": 237.76,
-        "volume": 2632600
-      },
-      {
-        "date": "2025-11-05",
-        "open": 236.55,
-        "high": 238.13,
-        "low": 231.62,
-        "close": 234.35,
-        "volume": 2749600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 233.08,
-        "high": 234.97,
-        "low": 231.12,
-        "close": 231.35,
-        "volume": 3272700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 231.84,
-        "high": 234.18,
-        "low": 231.12,
-        "close": 233.16,
-        "volume": 3053800
-      },
-      {
-        "date": "2025-11-10",
-        "open": 232.61,
-        "high": 234.11,
-        "low": 229.18,
-        "close": 233.03,
-        "volume": 2588000
-      },
-      {
-        "date": "2025-11-11",
-        "open": 233.75,
-        "high": 236.86,
-        "low": 233.68,
-        "close": 235.34,
-        "volume": 1968100
-      },
-      {
-        "date": "2025-11-12",
-        "open": 234.39,
-        "high": 236.71,
-        "low": 232.88,
-        "close": 234.7,
-        "volume": 2587500
-      },
       {
         "date": "2025-11-13",
         "open": 234.45,
@@ -7842,6 +7762,86 @@
         "low": 207.83,
         "close": 209.07,
         "volume": 4249100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 212,
+        "high": 218.25,
+        "low": 212,
+        "close": 218.15,
+        "volume": 3695500
+      },
+      {
+        "date": "2026-11-03",
+        "open": 215.8,
+        "high": 216.25,
+        "low": 212.51,
+        "close": 213.38,
+        "volume": 3058800
+      },
+      {
+        "date": "2026-11-04",
+        "open": 222.9,
+        "high": 229.79,
+        "low": 221.1,
+        "close": 229.38,
+        "volume": 4877300
+      },
+      {
+        "date": "2026-11-05",
+        "open": 233.51,
+        "high": 234.75,
+        "low": 226.19,
+        "close": 227.24,
+        "volume": 5275700
+      },
+      {
+        "date": "2026-11-06",
+        "open": 220.34,
+        "high": 226.23,
+        "low": 220.32,
+        "close": 224.55,
+        "volume": 3530500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 231.76,
+        "high": 234.43,
+        "low": 227.23,
+        "close": 232.1,
+        "volume": 3072900
+      },
+      {
+        "date": "2026-11-10",
+        "open": 228.5,
+        "high": 232.46,
+        "low": 227.33,
+        "close": 231.87,
+        "volume": 2516100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 228.87,
+        "high": 231.69,
+        "low": 227.33,
+        "close": 231.6,
+        "volume": 2746500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 233.7,
+        "high": 235,
+        "low": 227.39,
+        "close": 227.46,
+        "volume": 3819500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 225,
+        "high": 228.06,
+        "low": 223.62,
+        "close": 227.73,
+        "volume": 3200500
       }
     ],
     "news": [
@@ -7862,19 +7862,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
         "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       },
       {
@@ -7886,20 +7886,20 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
-        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
         "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
         "publisher": "CNW Group",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500529.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
+        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
@@ -7991,23 +7991,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.53,
-        "industryAvg": 21.34
+        "value": 19.23,
+        "industryAvg": 24.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.29,
-        "industryAvg": 1.69
+        "value": 1.41,
+        "industryAvg": 1.8
       },
       {
         "metric": "P/B Ratio",
-        "value": -15.64,
-        "industryAvg": 16.84
+        "value": -17.16,
+        "industryAvg": 17.79
       },
       {
         "metric": "ROE",
         "value": -28.63,
-        "industryAvg": 243.57000000000002
+        "industryAvg": 243.01
       },
       {
         "metric": "ROA",
@@ -8017,7 +8017,7 @@
       {
         "metric": "Gross Margin",
         "value": 33.040000000000006,
-        "industryAvg": 33.56
+        "industryAvg": 33.57
       },
       {
         "metric": "EBITDA Margin",

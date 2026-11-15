@@ -1,10 +1,10 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.5559,
-      "ttmPe": 14.78,
-      "marketCap": 172247580000,
-      "psRatio": 5.98,
-      "pbRatio": 2.8,
+      "ttmPe": 15.32,
+      "marketCap": 178496640000,
+      "psRatio": 6.19,
+      "pbRatio": 2.9,
       "pegRatio": 0.16
     },
     "profitability": {
@@ -6068,97 +6068,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.1,
-      "costOfEquity": 9.84,
+      "wacc": 6.13,
+      "costOfEquity": 9.75,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.6154,
-      "marketCap": 172247580000
+      "beta": 0.5959,
+      "marketCap": 178496640000
     },
     "beta": {
-      "beta5y": 0.6154
+      "beta5y": 0.5959
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 81.82,
-        "high": 82.58,
-        "low": 81.44,
-        "close": 81.64,
-        "volume": 7620100
-      },
-      {
-        "date": "2025-10-31",
-        "open": 81.34,
-        "high": 82.03,
-        "low": 80.86,
-        "close": 81.4,
-        "volume": 9407300
-      },
-      {
-        "date": "2025-11-03",
-        "open": 81.3,
-        "high": 82.1,
-        "low": 80.6,
-        "close": 81.78,
-        "volume": 8508200
-      },
-      {
-        "date": "2025-11-04",
-        "open": 81.78,
-        "high": 82.21,
-        "low": 80.8,
-        "close": 81.69,
-        "volume": 6474500
-      },
-      {
-        "date": "2025-11-05",
-        "open": 81.42,
-        "high": 82.63,
-        "low": 81.11,
-        "close": 82.14,
-        "volume": 7291000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 82.12,
-        "high": 82.97,
-        "low": 81.99,
-        "close": 82,
-        "volume": 6212700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 81.91,
-        "high": 84,
-        "low": 81.62,
-        "close": 83.93,
-        "volume": 9167100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 84.18,
-        "high": 85.47,
-        "low": 83.69,
-        "close": 84.77,
-        "volume": 11701700
-      },
-      {
-        "date": "2025-11-11",
-        "open": 84.69,
-        "high": 85.83,
-        "low": 84.55,
-        "close": 85.76,
-        "volume": 11733900
-      },
-      {
-        "date": "2025-11-12",
-        "open": 85.43,
-        "high": 86.26,
-        "low": 85.01,
-        "close": 85.89,
-        "volume": 7604800
-      },
       {
         "date": "2025-11-13",
         "open": 85.78,
@@ -8094,6 +8014,86 @@
         "low": 82.92,
         "close": 83.71,
         "volume": 23507500
+      },
+      {
+        "date": "2026-11-02",
+        "open": 83.28,
+        "high": 85.57,
+        "low": 83.27,
+        "close": 85.03,
+        "volume": 14543200
+      },
+      {
+        "date": "2026-11-03",
+        "open": 84.6,
+        "high": 85.01,
+        "low": 83.8,
+        "close": 84.33,
+        "volume": 11359400
+      },
+      {
+        "date": "2026-11-04",
+        "open": 87.47,
+        "high": 88.79,
+        "low": 86.49,
+        "close": 88.45,
+        "volume": 27510400
+      },
+      {
+        "date": "2026-11-05",
+        "open": 89.95,
+        "high": 90.04,
+        "low": 87.62,
+        "close": 88.25,
+        "volume": 19279100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 86.27,
+        "high": 87.79,
+        "low": 85.64,
+        "close": 86.95,
+        "volume": 11876900
+      },
+      {
+        "date": "2026-11-09",
+        "open": 87.61,
+        "high": 87.72,
+        "low": 86.83,
+        "close": 86.86,
+        "volume": 12058400
+      },
+      {
+        "date": "2026-11-10",
+        "open": 86.15,
+        "high": 86.98,
+        "low": 85.83,
+        "close": 86.27,
+        "volume": 11247300
+      },
+      {
+        "date": "2026-11-11",
+        "open": 85.81,
+        "high": 86.23,
+        "low": 85.57,
+        "close": 85.99,
+        "volume": 10218400
+      },
+      {
+        "date": "2026-11-12",
+        "open": 86.93,
+        "high": 87.08,
+        "low": 85.18,
+        "close": 85.29,
+        "volume": 10355400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 84.98,
+        "high": 85.45,
+        "low": 84.37,
+        "close": 85.12,
+        "volume": 11747700
       }
     ],
     "news": [
@@ -8106,20 +8106,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
-        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "859dd69c-4623-34ec-8e42-7e8ce3600f4e",
         "title": "Bitcoin and crypto stocks rally, solar stocks hit, IonQ surges",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/video/bitcoin-crypto-stocks-rally-solar-161156560.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
+        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
+        "type": "STORY"
       },
       {
         "uuid": "bbf85e9c-6c76-348e-af03-add4ed60974d",
@@ -8154,19 +8154,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
-        "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
-        "publisher": "TipRanks",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
         "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
         "publisher": "Zacks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
+        "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
         "type": "STORY"
       },
       {
@@ -8179,6 +8179,13 @@
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Armando Pimentel Jr.",
+        "title": "Vice Chairman",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 3408271
+      },
       {
         "name": "Mr. Brian W. Bolster",
         "title": "President & CEO of NextEra Energy Resources",
@@ -8194,6 +8201,10 @@
         "totalPay": 3666743
       },
       {
+        "name": "Mr. Christopher Chapel",
+        "title": "Senior Vice President of Marketing, Communications & Corporate Affairs"
+      },
+      {
         "name": "Mr. David Flechner",
         "title": "VP of Compliance & Corporate Secretary"
       },
@@ -8203,6 +8214,12 @@
         "age": 54,
         "yearBorn": 1971,
         "totalPay": 7241427
+      },
+      {
+        "name": "Mr. Mark E. Hickson",
+        "title": "Executive Vice President of Corporate Development & Strategy",
+        "age": 57,
+        "yearBorn": 1968
       },
       {
         "name": "Mr. Michael Dowling",
@@ -8225,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.78,
-        "industryAvg": 16.75
+        "value": 15.32,
+        "industryAvg": 17.21
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.98,
+        "value": 6.19,
         "industryAvg": 2.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.8,
-        "industryAvg": 1.86
+        "value": 2.9,
+        "industryAvg": 1.87
       },
       {
         "metric": "ROE",
         "value": 8.05,
-        "industryAvg": 11.86
+        "industryAvg": 11.99
       },
       {
         "metric": "ROA",
         "value": 2,
-        "industryAvg": 3.2399999999999998
+        "industryAvg": 3.29
       },
       {
         "metric": "Gross Margin",
         "value": 61.35,
-        "industryAvg": 46.64
+        "industryAvg": 46.67
       },
       {
         "metric": "EBITDA Margin",
         "value": 54.279999999999994,
-        "industryAvg": 44.019999999999996
+        "industryAvg": 43.53
       },
       {
         "metric": "Net Margin",
         "value": 59.019999999999996,
-        "industryAvg": 16.82
+        "industryAvg": 16.830000000000002
       }
     ]
   }
