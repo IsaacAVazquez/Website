@@ -1,5 +1,7 @@
 "use client";
 
+import { FollowedPlayers } from "./FollowedPlayers";
+
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CircleAlert } from "lucide-react";
@@ -448,6 +450,8 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
             </p>
           </div>
         </div>
+
+        <FollowedPlayers summary={summary} onSelect={handlePlayerChange} />
 
         <section className="golf-board" aria-label="Leaderboard">
           <div className="golf-toolbar">

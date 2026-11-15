@@ -1,8 +1,8 @@
-# Project workflow tasks
+# Saved project workflow tasks
 
-- [x] Budget copying, carry forward, and recurring bills
-- [x] Wine inventory, wishlist, and opening bottles
-- [x] News observations and changes since last visit
-- [x] Museum calendars and trip integration
-- [x] Repository shortlist and comparison
-- [x] Integration checks, browser verification, review, and documentation
+- [x] Rent versus buy saved scenarios and sensitivity
+- [x] Food Map personal records, trip integration, and source checks
+- [x] Travel Deal Lab saved flight comparisons
+- [x] Formula 1 entered prices and recorded outcomes
+- [x] NBA and NFL favorites, calendars, and observed standings changes
+- [x] Full checks, browser verification, review, and documentation

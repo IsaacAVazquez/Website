@@ -38,6 +38,8 @@
   font-variant-numeric: tabular-nums;
 }
 
+.golf-root .pw-root { background: var(--golf-slat); padding: var(--c97-sp-2); --c97-accent: var(--golf-focus-slat); }
+
 .dark .golf-root {
   --golf-ground: #0a2117;
   --golf-on-ground: #eef0e6;

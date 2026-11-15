@@ -33,11 +33,14 @@ import {
 } from "@/lib/date-formatters";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { FollowedRacing } from "./FollowedRacing";
+import type { Formula1RaceRow } from "./raceFollowing";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
   summary: Formula1Summary;
   initialMeeting: Formula1MeetingSummary | null;
+  raceResults?: Formula1RaceRow[];
 }
 
 /** The board's anchor, where a view switch made from further down the page scrolls back to. */
@@ -620,7 +623,7 @@ function getRaceStripMeetings(summary: Formula1Summary, selectedMeeting: Formula
   return raceStrip.slice(0, 6);
 }
 
-export function Formula1Client({ initialState, summary, initialMeeting }: Formula1ClientProps) {
+export function Formula1Client({ initialState, summary, initialMeeting, raceResults = [] }: Formula1ClientProps) {
   const searchParams = useSearchParams();
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("meeting") !== null;
   const routeState = hasManagedParams ? normalizeFormula1State(searchParams) : initialState;
@@ -770,6 +773,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       <div className={`c97-shell c97-frame ${styles.page}`}>
         {titleRow}
 
+        <a className="pw-jump" href="#followed-racing">Follow drivers and compare results</a>
         <div className={styles.toolbar}>
           <div className={styles.switch} role="group" aria-label="Season view">
             {FORMULA1_VIEW_OPTIONS.map((view: Formula1View) => (
@@ -885,6 +889,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           </div>
         </div>
 
+        <FollowedRacing summary={summary} races={raceResults} />
         <p className={styles.source}>
           From OpenF1&apos;s community-run and unofficial historical feeds (
           <a href={summary.sourceUrls.docs}>docs</a>), frozen into a checked-in snapshot on a schedule.

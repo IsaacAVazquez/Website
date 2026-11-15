@@ -273,7 +273,7 @@ describe("EarthquakeClient", () => {
     currentSearchParams = new URLSearchParams("quake=hv75044217");
     renderClient();
 
-    expect(screen.getAllByRole("heading").map((heading) => Number(heading.tagName.slice(1)))).toEqual([1, 2, 3]);
+    expect(screen.getAllByRole("heading").map((heading) => Number(heading.tagName.slice(1)))).toEqual([1, 2, 3, 2]);
     expect(screen.getByRole("region", { name: "Earthquake log" })).toContainElement(
       screen.getByRole("heading", { level: 2, name: "Earthquake log" })
     );

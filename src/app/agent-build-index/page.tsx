@@ -4,6 +4,7 @@ import "./agent-build-index.css";
 import { StructuredData } from "@/components/StructuredData";
 import { githubTrendingSnapshot } from "@/data/githubTrendingSnapshot";
 import { getAgentBuildIndex } from "@/lib/agentBuildIndex";
+import { WeeklyEditions } from "./WeeklyEditions";
 import { formatGitHubCompactNumber } from "@/lib/githubTrending";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -218,6 +219,7 @@ export default function AgentBuildIndexPage() {
             </p>
           </section>
 
+          <WeeklyEditions editions={githubTrendingSnapshot.agentEditions ?? []} />
           <div className="abi-context">
             <section aria-labelledby="topic-movement-heading">
               <h2 id="topic-movement-heading" className="abi-h3">

@@ -8,9 +8,9 @@ import { normalizeFrontierModelsState } from "./frontier-models-state";
 export const metadata = constructMetadata({
   title: "Frontier Model Tracker",
   description:
-    "Curated tracker of frontier large language models with context windows, pricing, modality coverage, and editorial notes, built for product teams comparing frontier models as the gaps between price and capability tiers narrow.",
+    "Compare frontier models by pricing, context window, and listed capabilities. Estimate monthly text-token costs for your workload and save model comparisons in your browser.",
   canonicalUrl: "/frontier-models",
-  dateModified: laterDate(frontierModelsSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(frontierModelsSnapshot.generatedAt.slice(0, 10), "2026-10-24"),
 });
 
 interface FrontierModelsPageProps {
@@ -58,6 +58,8 @@ export default async function FrontierModelsPage({
             "Cost-versus-context scatter plot across providers",
             "Filter by provider, modality, and price tier",
             "Deep-linkable filter and selection state",
+            "Workload cost estimates with capability and token-limit checks",
+            "Named model comparisons saved in the browser",
           ],
           dateModified: snapshot.generatedAt,
         }}

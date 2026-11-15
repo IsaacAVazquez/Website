@@ -1,0 +1,230 @@
+/* A route that owns its design sets --pw-heading-font and --pw-radius on an
+   ancestor so the workspace matches its headings and corners. */
+.pw-root {
+  min-width: 0;
+  display: grid;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-3);
+  border-top: 1px solid var(--c97-rule);
+  color: var(--c97-ink);
+  scroll-margin-top: 6rem;
+}
+.pw-jump {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.pw-root h2 {
+  font-family: var(--pw-heading-font, var(--c97-font-body));
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+.pw-root h3 {
+  font-family: var(--pw-heading-font, var(--c97-font-body));
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+.pw-root p,
+.pw-root ul {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+.pw-root ul {
+  list-style: none;
+}
+.pw-root .pw-note {
+  color: var(--c97-ink-2);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.pw-fields,
+.pw-actions,
+.pw-follow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+.pw-field {
+  display: grid;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.875rem;
+  flex: 1 1 10rem;
+}
+.pw-root input:not([type="checkbox"]),
+.pw-root select,
+.pw-root textarea {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--c97-rule);
+  border-radius: var(--pw-radius, 4px);
+  padding: var(--c97-sp-1);
+  background: var(--c97-field);
+  color: var(--c97-ink);
+  font: inherit;
+}
+.pw-root textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+.pw-root button {
+  min-height: 44px;
+  padding: var(--c97-sp-1);
+  border: 1px solid var(--c97-rule);
+  border-radius: var(--pw-radius, 4px);
+  background: transparent;
+  color: var(--c97-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.pw-root button:hover {
+  background: var(--c97-field);
+}
+.pw-root button:disabled {
+  opacity: 1;
+  cursor: default;
+  background: var(--c97-field);
+  color: var(--c97-ink-2);
+  border-style: dashed;
+}
+
+.pw-root input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--c97-rule);
+}
+.pw-root input:user-invalid:not(:focus):not(:placeholder-shown) {
+  border-color: var(--c97-negative);
+}
+.pw-root :is(input, select, textarea, button, a):focus-visible {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 2px;
+}
+.pw-root .pw-primary {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
+.pw-root .pw-primary:hover {
+  background: var(--c97-ink-2);
+}
+.pw-root .pw-check {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  font-size: 0.875rem;
+}
+.pw-root input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--c97-accent);
+}
+.pw-followed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  flex-basis: 100%;
+}
+.pw-followed li {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.pw-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.pw-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: left;
+}
+.pw-table :is(th, td) {
+  padding: var(--c97-sp-1);
+  vertical-align: top;
+  border-bottom: 1px solid var(--c97-rule);
+  min-width: 7rem;
+  overflow-wrap: anywhere;
+}
+.pw-table th {
+  font-weight: 600;
+}
+.pw-table--tools {
+  table-layout: fixed;
+  min-width: 60rem;
+}
+.pw-table--tools :is(th, td):first-child {
+  width: 10rem;
+}
+.pw-table--tools :is(th, td):nth-child(2),
+.pw-table--tools :is(th, td):nth-child(3) {
+  width: 18rem;
+}
+.pw-table--tools :is(th, td):last-child {
+  width: 14rem;
+}
+.pw-table caption {
+  text-align: left;
+  padding-block: var(--c97-sp-1);
+}
+.pw-list {
+  display: grid;
+  gap: var(--c97-sp-2);
+}
+.pw-list > li {
+  display: grid;
+  gap: var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-rule);
+  padding-bottom: var(--c97-sp-2);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.pw-root a {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.pw-root .pw-source {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media screen and (max-width: 479px) {
+  .pw-fields {
+    align-items: stretch;
+  }
+  .pw-field {
+    flex-basis: 100%;
+  }
+  .pw-followed li {
+    flex-wrap: wrap;
+  }
+}
+@media print {
+  .pw-root {
+    break-inside: auto;
+  }
+  .pw-root button,
+  .pw-fields {
+    display: none;
+  }
+  .pw-scroll {
+    overflow: visible;
+  }
+}

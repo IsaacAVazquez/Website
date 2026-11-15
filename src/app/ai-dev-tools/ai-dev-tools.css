@@ -74,6 +74,8 @@
   gap: var(--c97-sp-1);
 }
 
+.adt-compare-link { display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; color: var(--adt-accent); text-decoration: underline; text-underline-offset: .2em; }
+
 .adt-title {
   font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
   font-weight: 800;

@@ -49,6 +49,9 @@ export async function openTool(page: Page, route: string) {
   watchPrefetches(page);
   if (page.url() !== "about:blank") await waitForPrefetches(page);
   expect((await page.goto(route))?.status()).toBeLessThan(400);
+  // Streaming can briefly retain a hidden copy of a boundary's heading.
+  // Wait for the unique document heading before using a strict locator.
+  await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.locator("h1")).toBeVisible();
   await waitForControls(page);
 }

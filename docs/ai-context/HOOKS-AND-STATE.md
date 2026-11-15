@@ -146,7 +146,7 @@ These hooks follow the same browser-local pattern (localStorage, no account) and
 - `useBudgetPlanner` keeps the monthly budgets for `/fintech-tools/budget-planner` and computes the active month's summary (key `budget_planner_months_v1`)
 - `useRentVsBuy` keeps the inputs for `/fintech-tools/rent-vs-buy` (key `rent_vs_buy_input_v1`)
 
-`/recipe-finder` keeps its meal plan through the generic `useBrowserRecord` and its pantry through `useLocalStorageString` directly, and `/food-map` keeps no state.
+`/recipe-finder` keeps its meal plan through the generic `useBrowserRecord` and its pantry through `useLocalStorageString` directly, and `/food-map` keeps a saved flag, a visited flag, and a note per place through `useBrowserRecord` under `food-map-records-v1`.
 
 The recipe finder's keys are `recipe-finder-plan-v1` for the meal plan and `recipe-finder:pantry:v1` for the pantry, and `useBrowserRecord` also keeps the decision lab's saved bets under `decision-lab-bets-v1`, the enablement assistant's teams under `enablement-teams-v1`, and the Bay Area transit commute under `bay-area-transit-commute-v1`. Three routes keep browser state through `useLocalStorageString` or the `src/lib/browserStorage.ts` helpers directly, with no hook of their own, which are `/travel-deals` (`travel-deals:v1`), `/fantasy-formula-1` (one lineup per season under `fantasy-formula-1-lineup-v1-<season>`), and `/arcade` (its high score, `arcade-reactor-hiscore-v1`).
 

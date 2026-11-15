@@ -12,6 +12,7 @@ import type {
 import { withRetry } from "@/lib/fetchRetry";
 import { setTimeout as sleep } from "node:timers/promises";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
+import { readAgentEditions, updateAgentEditions } from "../src/lib/agentEditions";
 
 interface BuildOptions {
   projectRoot?: string;
@@ -431,6 +432,7 @@ export async function buildGitHubTrendingSnapshot(
     },
   };
 
+  snapshot.agentEditions = updateAgentEditions(readAgentEditions(previousSnapshot?.agentEditions), snapshot);
   const fileContents = JSON.stringify(snapshot, null, 2) + "\n";
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });

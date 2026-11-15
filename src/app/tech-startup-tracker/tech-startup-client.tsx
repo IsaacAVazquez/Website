@@ -1,5 +1,7 @@
 "use client";
 
+import { CompanyResearch } from "./StartupResearchWorkspace";
+
 import { ExternalLink } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useClientNow } from "@/hooks/useClientNow";
@@ -166,6 +168,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             hold most of the value.
           </p>
         </header>
+        <a className="pw-jump" href="#company-research">Follow companies and keep research</a>
 
         <section className="ts-map" aria-labelledby="ts-map-heading">
           {/* The treemap groups by sector in both views, so the heading does too. */}
@@ -293,6 +296,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             </p>
           </div>
         </section>
+        <CompanyResearch snapshot={snapshot} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { getFormula1Meeting, getFormula1Summary } from "@/lib/formula1Snapshot";
 import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { Formula1Client } from "./formula-1-client";
 import { normalizeFormula1State, resolveFormula1State } from "./formula-1-state";
+import { formula1RaceRows } from "./raceFollowing";
 
 export const metadata = constructMetadata({
   title: "Formula 1 Pulse",
@@ -66,6 +67,7 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
         initialState={initialState}
         summary={summary}
         initialMeeting={initialMeeting}
+        raceResults={formula1RaceRows(formula1Snapshot)}
       />
     </>
   );

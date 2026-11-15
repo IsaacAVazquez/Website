@@ -21,6 +21,7 @@ import {
   type StoredPool,
 } from "@/lib/scorePools/persistence";
 import type { ContextFlags, Scoreline } from "@/lib/scorePools";
+import type { SavedPickReview } from "@/lib/scorePools/pickReview";
 
 const EMPTY_SNAPSHOT = "";
 
@@ -111,7 +112,7 @@ export function useScorePools() {
   const setSubmissions = useCallback(
     (
       poolId: string,
-      entries: Array<{ fixtureId: string; score: Scoreline }>,
+      entries: Array<{ fixtureId: string; score: Scoreline; review?: SavedPickReview }>,
       submittedAt: string,
     ) => {
       if (entries.length) trackToolAction({ tool_name: "score_pools", action: "pick_set" });
@@ -120,7 +121,11 @@ export function useScorePools() {
         submissions: {
           ...pool.submissions,
           ...Object.fromEntries(
-            entries.map(({ fixtureId, score }) => [fixtureId, { score, submittedAt }]),
+            entries.map(({ fixtureId, score, review }) => {
+              const old = pool.submissions[fixtureId];
+              const unchanged = old && old.score.home === score.home && old.score.away === score.away;
+              return [fixtureId, unchanged ? old : { score, submittedAt, ...(review ? { review } : {}) }];
+            }),
           ),
         },
       }));

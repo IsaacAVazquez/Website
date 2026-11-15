@@ -25,6 +25,12 @@ The route paints its own paper with `--frm-*` properties on `.frm-root`, a white
 
 Cut, and not to be restored. The pink hero sheet and the poster h1, the "Models tracked" readout (the "N of N models shown" line beside the spec sheet's heading carries the count), the other two readouts as tiles (now a sentence), the paper plate and offset around the chart, the torn seam, the poster "The spec sheet" heading (now a plain h2), and the EmptyPanel card, now a plain block. The route stopped reading its `PROJECT_PRESS` row.
 
+## Workload calculator, 2026-10-24
+
+The chart and spec sheet keep their order, and a second jump link reaches a workload calculator after the sheet. It uses the same route tokens, plain headings, native fields, ruled table, and 44 pixel controls. Three fields hold requests and input and output tokens, followed by optional capability requirements and a picker for up to four models. The monthly total is the second table column. The table scrolls inside a labeled, keyboard-accessible region on narrow screens. The form fields stack below 600 pixels.
+
+A saved-comparison list follows the estimate and its assumptions. Loading keeps missing model identifiers visible and recalculates with the displayed dataset. Saved dates use the visitor's calendar after browser storage restores. The feature lives in `components/FrontierWorkload.tsx`, `FrontierWorkloadResults.tsx`, and `FrontierSavedComparisons.tsx`, with the pure calculations and record validator in `src/lib/frontierWorkload.ts`. The contract is `docs/superpowers/specs/2026-10-24-frontier-workload-comparison.md`.
+
 ## Pinned, and kept
 
 `frontier-models-client.test.tsx` covers the h1, the chart and the table, the Provider group outside the `details` and Modality and Price tier inside it, "Jump to the spec sheet" pointing at the element that holds the table, and the fact-check sentence, and it now also holds that the summary's click is cancelled while a modality or price tier is set and goes through while neither is. The chart suite now holds the token styles on a dot edge, a tick label, and a grid line. `metadata.test.ts` holds the page's modified date to the day the sitemap gives the route. `frontier-models-css.test.ts` holds that the dark palette is declared for the screen only. The table, state, and readouts suites hold unchanged. `e2e/project-workflows.spec.ts` (the Provider restore) holds unchanged, and the `provider`, `modality`, `tier`, and `model` parameters are unchanged.

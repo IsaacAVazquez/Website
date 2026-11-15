@@ -43,7 +43,7 @@ secondary authority-building content — not a generic blog template. The surfac
 6. **Fintech tools** — calculators under `/fintech-tools/*`
 7. **Full-time job search tracker** — `/mba-internship-notifications` (full-time and internship feed, candidate triage, application pipeline with interview rounds and fit grading, dev-mode file sync)
 8. **Personal-interest tools** — browser-persisted (`/travel`, `/recipe-finder`,
-   `/wine-cellar`, `/museum-log`, `/blackjack-trainer`), plus the curated `/food-map`, which saves nothing
+   `/wine-cellar`, `/museum-log`, `/blackjack-trainer`), plus the curated `/food-map`, which saves a saved flag, a visited flag, and a note per place
 
 The site also has utility pages (`/now`, `/changelog`, `/search`, `/privacy`,
 `/accessibility`), the `/arcade` reflex game, and the easter-egg pages under
@@ -205,8 +205,8 @@ Shared conventions worth internalizing:
 
 `/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, the
 investments portfolio, retirement plan, and fantasy draft tracker keep state in
-localStorage via dedicated hooks. `/food-map` saves nothing and keeps its filters in the
-URL. All local stores subscribe to browser storage
+localStorage via dedicated hooks. `/food-map` keeps its filters in the URL and saves each place's saved flag, visited flag,
+and note under `food-map-records-v1`. All local stores subscribe to browser storage
 events and merge edits with the latest validated save to prevent multi-tab data
 loss. Before each write the redraft and best ball trackers also compare the stored save
 with the last one the tab read, and when another tab has saved since, they load that save

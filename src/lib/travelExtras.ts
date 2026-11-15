@@ -44,6 +44,7 @@ function fold(line: string): string {
   chunks.push(current);
   return chunks.join("\r\n");
 }
+export { escapeText as escapeCalendarText, fold as foldCalendarLine };
 export function tripCalendar(trip: Trip, now = new Date()): string {
   const lines = [
     "BEGIN:VCALENDAR",

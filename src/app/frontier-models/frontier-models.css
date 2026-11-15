@@ -282,3 +282,267 @@
     min-width: 5.75rem;
   }
 }
+
+/* A workload uses the same ruled sheet and type as the model catalog. */
+.frm-workload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-inline-size: 0;
+  padding-block: var(--c97-sp-3);
+  border-top: 1px solid var(--frm-rule-strong);
+  scroll-margin-top: var(--c97-sp-4);
+}
+
+.frm-root .frm-workload-intro,
+.frm-root .frm-workload-note {
+  max-inline-size: 75ch;
+  line-height: 1.6;
+}
+
+.frm-workload-note {
+  color: var(--frm-ink-2);
+  font-size: 0.875rem;
+}
+
+.frm-workload-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--c97-sp-2);
+}
+
+.frm-workload-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-inline-size: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.frm-workload-field :is(input, select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 44px;
+  padding: var(--c97-sp-1);
+  border: 1px solid var(--frm-rule-strong);
+  border-radius: 0;
+  background: var(--frm-bg);
+  color: var(--frm-ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  caret-color: var(--frm-ink);
+}
+
+.frm-workload-field input[aria-invalid="true"] {
+  border-color: var(--frm-warn);
+}
+
+.frm-workload-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+}
+
+.frm-workload-requirements legend {
+  padding-block-end: var(--c97-sp-1);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.frm-workload-check {
+  display: inline-flex;
+  gap: var(--c97-sp-1);
+  align-items: center;
+  min-block-size: 44px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.frm-workload-check input {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  accent-color: var(--frm-focus);
+}
+
+.frm-workload-picker {
+  max-inline-size: 36rem;
+}
+
+.frm-workload-scroll {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: var(--frm-ink-2) var(--frm-bg);
+}
+
+.frm-workload-table {
+  inline-size: 100%;
+  min-inline-size: 48rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: start;
+}
+
+.frm-workload-table caption {
+  padding-block-end: var(--c97-sp-1);
+  color: var(--frm-ink-2);
+  text-align: start;
+}
+
+.frm-workload-table :is(th, td) {
+  padding: var(--c97-sp-2) var(--c97-sp-1);
+  border-bottom: 1px solid var(--frm-rule);
+  vertical-align: top;
+  text-align: start;
+}
+
+.frm-workload-table :is(th, td):last-child {
+  min-inline-size: 22ch;
+}
+
+.frm-workload-table tbody th {
+  min-inline-size: 18ch;
+  font-weight: 400;
+}
+
+.frm-workload-model {
+  display: block;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.frm-workload-total {
+  font-weight: 700;
+}
+
+.frm-root .frm-workload-meta {
+  display: block;
+  margin-block-start: var(--c97-sp-1);
+  color: var(--frm-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.frm-workload-link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 0;
+  background: transparent;
+  color: var(--frm-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: start;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.frm-workload-saved {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-block-start: var(--c97-sp-3);
+  border-top: 1px solid var(--frm-rule);
+}
+
+.frm-workload-saved h3 {
+  margin: 0;
+  color: var(--frm-ink);
+  font: inherit;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.frm-workload-save-form,
+.frm-workload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--c97-sp-2);
+}
+
+.frm-workload-save-form .frm-workload-field {
+  flex: 1 1 14rem;
+  max-inline-size: 36rem;
+}
+
+.frm-workload-button {
+  min-block-size: 44px;
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  border: 1px solid var(--frm-ink);
+  background: var(--frm-ink);
+  color: var(--frm-bg);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.frm-workload-button:disabled {
+  border: 1px dashed var(--frm-ink-2);
+  background: transparent;
+  color: var(--frm-ink-2);
+  cursor: default;
+}
+
+.frm-workload-link:hover,
+.frm-workload-button:not(:disabled):hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.frm-root .frm-workload-saved-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.frm-workload-saved-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-block: var(--c97-sp-2);
+  border-top: 1px solid var(--frm-rule);
+}
+
+.frm-workload-saved-list li > div {
+  min-inline-size: 0;
+}
+
+.frm-workload :is(input, select, button, a, [tabindex]):focus-visible {
+  outline: 2px solid var(--frm-focus);
+  outline-offset: 3px;
+}
+
+.frm-workload ::selection {
+  background: var(--frm-ink);
+  color: var(--frm-bg);
+}
+
+@media (max-width: 600px) {
+  .frm-workload-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  .frm-workload-picker,
+  .frm-workload-link,
+  .frm-workload-saved {
+    display: none;
+  }
+
+  .frm-workload-table {
+    min-inline-size: 0;
+  }
+}

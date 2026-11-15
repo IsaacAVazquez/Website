@@ -1,3 +1,5 @@
+import type { AgentEdition } from "@/lib/agentEditions";
+
 export type GitHubTrendingSegmentKind = "language" | "topic";
 
 export type GitHubTrendingSortKey = "momentum" | "stars" | "updated";
@@ -61,6 +63,7 @@ interface GitHubTrendingSnapshotTotals {
 }
 
 export interface GitHubTrendingSnapshot {
+  agentEditions?: AgentEdition[];
   generatedAt: string;
   windowDays: number;
   activityWindowDays: number;

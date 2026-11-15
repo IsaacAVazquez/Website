@@ -52,6 +52,16 @@
 .terminalScope :where(h1, h2, h3, h4) { font-family: var(--c97-font-mono); font-weight: 400; }
 .terminalScope :where(p) { max-inline-size: none; }
 
+/* The shared workspace takes the terminal's heading face and square corners. */
+.terminalScope {
+  --pw-heading-font: var(--c97-font-mono);
+  --pw-radius: 0;
+}
+
+.terminalScope :global(#retirement-comparisons) {
+  --c97-field: var(--c97-surface);
+}
+
 /* ---- Title bar ------------------------------------------------------------ */
 /* The app's own chrome: name, workspace switch, data date and quote status,
    and the one Add holding. A row, never a sheet. */

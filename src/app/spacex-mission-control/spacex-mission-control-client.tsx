@@ -1,5 +1,7 @@
 "use client";
 
+import { FollowedLaunches } from "./FollowedLaunches";
+
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AlertTriangle, RefreshCcw } from "lucide-react";
@@ -145,6 +147,12 @@ export function SpaceXMissionControlClient({
   const tapeRecentLaunches = initialData?.tapeRecentLaunches ?? [];
   const tapeUpcomingLaunches = initialData?.tapeUpcomingLaunches ?? [];
   const vehicleCatalogDetails = initialData?.launchDetails ?? {};
+  const trackerLaunches = useMemo(() => [...new Map([
+    ...Object.values(initialData?.launchDetails ?? {}),
+    ...(initialData?.tapeRecentLaunches ?? []),
+    ...(initialData?.tapeUpcomingLaunches ?? []),
+    ...(initialData?.launches ?? []),
+  ].map((launch) => [launch.id, launch])).values()], [initialData]);
   const cadence = initialData?.cadence ?? null;
 
   const summaryRequestId = useRef(0);
@@ -584,6 +592,20 @@ export function SpaceXMissionControlClient({
       </div>
 
       <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-labelledby="mission-manifest-title">
+        <FollowedLaunches launches={trackerLaunches} sourceAt={initialData?.summary?.generatedAt ?? null} onSelect={(id) => {
+          const launch = trackerLaunches.find((item) => item.id === id);
+          if (!launch) return;
+          const status = launch.upcoming ? "upcoming" : "past";
+          if (status !== routeState.status) {
+            setLaunchesLoading(true);
+            setLaunchesError(null);
+            setLaunches([]);
+          }
+          setDetailLoading(true);
+          setDetailError(null);
+          setDetail(null);
+          updateRouteState({ status, launch: id, panel: "overview" });
+        }} />
         <h2 id="mission-manifest-title" className="sr-only">Launch manifest</h2>
         <div className="sx-toolbar">
           <div role="tablist" aria-label="Mission control sections" className="sx-tabs">

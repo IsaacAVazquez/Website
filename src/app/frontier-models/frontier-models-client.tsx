@@ -12,6 +12,7 @@ import {
 import { frontierReadouts } from "./readouts";
 import { FrontierModelsTable } from "./components/FrontierModelsTable";
 import { FrontierCostContextChart } from "./components/FrontierCostContextChart";
+import { FrontierWorkload } from "./components/FrontierWorkload";
 import {
   buildFrontierModelsHref,
   FRONTIER_MODALITY_LABELS,
@@ -139,6 +140,7 @@ export function FrontierModelsClient({
             <a href={`#${SPEC_SHEET_ID}`} className="frm-jump">
               Jump to the spec sheet
             </a>
+            {" · "}<a href="#frontier-workload" className="frm-jump">Estimate monthly cost</a>
           </p>
         </header>
 
@@ -257,6 +259,7 @@ export function FrontierModelsClient({
             />
           )}
         </section>
+        <FrontierWorkload models={snapshot.models} snapshotGeneratedAt={snapshot.generatedAt} factsAsOf={asOf} reviewIsOverdue={reviewIsOverdue} />
       </div>
     </div>
   );

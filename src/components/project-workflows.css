@@ -1,0 +1,106 @@
+.project-workflow {
+  min-width: 0;
+  margin-block: var(--c97-sp-3);
+  border-block-start: 1px solid var(--c97-rule);
+  padding-block: var(--c97-sp-2);
+  color: var(--c97-ink);
+}
+.project-workflow > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.project-workflow h2,
+.project-workflow h3 {
+  font-size: var(--c97-fs-h3);
+  margin-block: var(--c97-sp-2);
+}
+.project-workflow p {
+  margin-block: var(--c97-sp-1);
+}
+.project-workflow-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--c97-sp-2);
+  margin-block: var(--c97-sp-2);
+}
+.project-workflow label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+.project-workflow input,
+.project-workflow select,
+.project-workflow textarea {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+}
+.project-workflow textarea {
+  min-height: 88px;
+}
+.project-workflow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  margin-block: var(--c97-sp-1);
+}
+.project-workflow .project-workflow-check {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--c97-sp-1);
+}
+.project-workflow-check input {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+.project-workflow-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: var(--c97-sp-2);
+}
+.project-workflow table {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.project-workflow th,
+.project-workflow td {
+  padding: var(--c97-sp-1);
+  text-align: start;
+  border-bottom: 1px solid var(--c97-rule);
+  vertical-align: top;
+  min-width: 100px;
+  overflow-wrap: anywhere;
+}
+.project-workflow small {
+  display: block;
+  color: var(--c97-ink-2);
+}
+.project-workflow-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+  padding: 0;
+  list-style: none;
+}
+.project-workflow-list > li {
+  min-width: 0;
+  border-bottom: 1px solid var(--c97-rule);
+  padding-block: var(--c97-sp-1);
+  overflow-wrap: anywhere;
+}
+.project-workflow .c97-btn,
+.project-workflow .c97-btn-ghost {
+  max-inline-size: 100%;
+  white-space: normal;
+  text-align: start;
+  overflow-wrap: anywhere;
+}

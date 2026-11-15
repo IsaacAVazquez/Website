@@ -16,8 +16,7 @@ export const metadata = constructMetadata({
     "Snapshot-backed PGA Tour tournament dashboard for leaderboard scanning, player drilldowns, round-by-round movement, and weekend cut-line context.",
   canonicalUrl: "/golf",
   image: "/golf/opengraph-image",
-  // The redesign shipped on 2026-10-12, so the page is at least that new.
-  dateModified: [golfSnapshot.summary.tournament?.generatedAt?.slice(0, 10) ?? "", "2026-10-12"].toSorted()[1],
+  dateModified: [golfSnapshot.summary.tournament?.generatedAt?.slice(0, 10) ?? "", "2026-10-25"].toSorted()[1],
 });
 
 interface GolfPageProps {
@@ -68,7 +67,7 @@ export default async function GolfPage({ searchParams }: GolfPageProps) {
             "Local snapshot rendering without a live third-party runtime dependency",
           ],
           offers: freeApplicationOffer,
-          dateModified: [golfSnapshot.summary.tournament?.generatedAt ?? "", "2026-10-12T00:00:00.000Z"].toSorted()[1],
+          dateModified: [golfSnapshot.summary.tournament?.generatedAt ?? "", "2026-10-25T00:00:00.000Z"].toSorted()[1],
         }}
       />
       <GolfClient

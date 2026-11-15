@@ -41,6 +41,7 @@ import {
   resolveDefaultState,
 } from "./nfl-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { PersonalTeams } from "@/components/football/PersonalTeams";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface NflClientProps {
@@ -357,6 +358,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   return (
     <Root>
       {titleRow}
+
+      <PersonalTeams league="nfl" season={summary.season} sourceAt={summary.generatedAt ?? summary.updatedAt} teams={teams.map(team => ({ id: team.id, name: team.name, conference: team.conference, rank: team.conferenceRank, wins: team.wins, losses: team.losses, ties: team.ties }))} onOpen={handleTeamChange} />
 
       <section className="sb-board" aria-label="NFL standings">
         <div className="sb-toolbar">

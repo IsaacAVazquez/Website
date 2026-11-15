@@ -14837,5 +14837,109 @@
     "status": "fresh",
     "failedSegments": [],
     "reusedSegments": []
-  }
+  },
+  "agentEditions": [
+    {
+      "weekStart": "2026-10-19",
+      "observedAt": "2026-10-22T13:12:30.115Z",
+      "repositories": [
+        {
+          "id": 1195360525,
+          "fullName": "calesthio/OpenMontage",
+          "rank": 1,
+          "stars": 70781,
+          "weeklyStars": 2324,
+          "status": "measured"
+        },
+        {
+          "id": 1129940957,
+          "fullName": "headroomlabs-ai/headroom",
+          "rank": 2,
+          "stars": 77503,
+          "weeklyStars": 2097,
+          "status": "measured"
+        },
+        {
+          "id": 909213664,
+          "fullName": "TauricResearch/TradingAgents",
+          "rank": 3,
+          "stars": 112754,
+          "weeklyStars": 1456,
+          "status": "measured"
+        },
+        {
+          "id": 1053118194,
+          "fullName": "bojieli/ai-agent-book",
+          "rank": 4,
+          "stars": 55438,
+          "weeklyStars": 1068,
+          "status": "measured"
+        },
+        {
+          "id": 1052050442,
+          "fullName": "datawhalechina/hello-agents",
+          "rank": 5,
+          "stars": 84174,
+          "weeklyStars": 922,
+          "status": "measured"
+        },
+        {
+          "id": 626805178,
+          "fullName": "langgenius/dify",
+          "rank": 6,
+          "stars": 159247,
+          "weeklyStars": 698,
+          "status": "measured"
+        },
+        {
+          "id": 1130564872,
+          "fullName": "koala73/worldmonitor",
+          "rank": 7,
+          "stars": 89179,
+          "weeklyStars": 687,
+          "status": "measured"
+        },
+        {
+          "id": 771302083,
+          "fullName": "OpenHands/OpenHands",
+          "rank": 8,
+          "stars": 91558,
+          "weeklyStars": 600,
+          "status": "measured"
+        },
+        {
+          "id": 1010681419,
+          "fullName": "shareAI-lab/learn-claude-code",
+          "rank": 9,
+          "stars": 79012,
+          "weeklyStars": 386,
+          "status": "measured"
+        },
+        {
+          "id": 979115477,
+          "fullName": "bytedance/deer-flow",
+          "rank": 10,
+          "stars": 84280,
+          "weeklyStars": 380,
+          "status": "measured"
+        },
+        {
+          "id": 725205304,
+          "fullName": "unslothai/unsloth",
+          "rank": 11,
+          "stars": 78413,
+          "weeklyStars": 371,
+          "status": "measured"
+        },
+        {
+          "id": 643445235,
+          "fullName": "lobehub/lobehub",
+          "rank": 12,
+          "stars": 83416,
+          "weeklyStars": 174,
+          "status": "measured"
+        }
+      ]
+    }
+  ]
 }

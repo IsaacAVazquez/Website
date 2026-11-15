@@ -35,6 +35,7 @@ import {
   resolveDefaultState,
 } from "./nba-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { PersonalTeams } from "@/components/football/PersonalTeams";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 import "@/components/football/sports-board.css";
 import "./nba.css";
@@ -319,6 +320,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   return (
     <Root>
       {titleRow}
+
+      <PersonalTeams league="nba" season={summary.season} sourceAt={summary.generatedAt} teams={allTeams.map(team => ({ id: team.id, name: team.name, conference: team.conference, rank: team.conferenceSeed, wins: team.wins, losses: team.losses, ties: 0 }))} onOpen={handleTeamChange} />
 
       <section className="sb-board" aria-label="NBA standings">
         <div className="sb-toolbar">

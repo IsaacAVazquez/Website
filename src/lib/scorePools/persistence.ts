@@ -27,6 +27,7 @@ import type {
   StandingContext,
 } from "./types";
 import { isRecord, boundedNumber, enumValue, prefixedId } from "@/lib/utils";
+import { decodePickReview, type SavedPickReview } from "./pickReview";
 
 export const SCORE_POOLS_STORAGE_KEY = "score_pools_store_v1";
 const SCORE_POOLS_STORAGE_VERSION = 1;
@@ -34,6 +35,7 @@ const SCORE_POOLS_STORAGE_VERSION = 1;
 interface StoredSubmission {
   score: Scoreline;
   submittedAt: string;
+  review?: SavedPickReview;
 }
 
 export interface StoredManualResult {
@@ -205,6 +207,7 @@ function decodePool(value: unknown): StoredPool | undefined {
       submissions[fixtureId] = {
         score,
         submittedAt: stringValue(raw.submittedAt, ""),
+        ...(decodePickReview(raw.review) ? { review: decodePickReview(raw.review) } : {}),
       };
     }
   }

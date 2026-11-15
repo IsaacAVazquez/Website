@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import {
   useLocalStoragePersistenceStatus,
   useLocalStorageString,
@@ -15,11 +15,11 @@ export function useBrowserRecord<T>(key: string, parse: (raw: string) => T) {
   const raw = useLocalStorageString(key);
   const value = useMemo(() => parse(raw), [raw, parse]);
   const status = useLocalStoragePersistenceStatus(key);
-  function update(edit: (latest: T) => T) {
+  const update = useCallback((edit: (latest: T) => T) => {
     const latest = parse(readBrowserStorageString(key).value ?? "");
     const next = edit(latest);
-    writeBrowserStorageJson(key, next);
+    if (next !== latest) writeBrowserStorageJson(key, next);
     return next;
-  }
+  }, [key, parse]);
   return { value, update, status };
 }
