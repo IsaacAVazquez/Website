@@ -6,6 +6,8 @@ positioning, because the design system is now in good enough shape that the next
 the portfolio says rather than how it is styled. The durable best-practice rules still live in
 [`DESIGN_CHECKLIST.md`](../DESIGN_CHECKLIST.md); this file is the point-in-time findings plus the roadmap.
 
+> Status note, 2026-11-02. This review predates the site's move to Catalog 97. The seven portfolio routes moved on 2026-08-05, which deleted `PortfolioInstrument.tsx` and `AboutInstrument.tsx`, both of which it cites. Every other route moved onto the Catalog 97 shell in #449 on 2026-09-16, and the `--home-*` tokens and `.home-*` classes it reviews were deleted in #483 on 2026-09-27. The project routes it samples were redesigned in the project-specific UI work merged on 2026-09-27 and again in stage 2 of the project sovereign design, merged in #595 on 2026-10-12. This note does not recheck its open defects or its roadmap against the code, so check each item against the current code before acting on it.
+
 **Date:** 2026-07-07 · **Method:** a live screenshot pass across the flagship surfaces and a sample of
 dashboards in light and dark on desktop and mobile, plus a multi-agent verification pass that reconciled
 the 28-item June backlog against current code, audited the surfaces changed since June, and adversarially

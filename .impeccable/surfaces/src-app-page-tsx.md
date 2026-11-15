@@ -8,14 +8,15 @@ related_targets: []
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Home surface brief (superseded pointer)
+Checked against the code on 2026-11-02.
 
-**Read `.impeccable/surfaces/route.md` instead.** That brief is the live one for this surface. This file exists because `src/app/page.tsx` is still a valid target name and would otherwise resolve to the stale Atlas brief that this replaces.
+**Read `.impeccable/surfaces/route.md` instead.** That brief is the live one for this surface. This file exists because `src/app/page.tsx` is still a valid target name, and it sends a pass on that target to the live brief. The Atlas brief it replaced survives only in git history.
 
 **What changed.** `/` moved from The Working Instrument to Catalog 97 and now renders `Catalog97Home`. `HomeInstrument.tsx` is deleted. The Atlas direction, `TERRITORY`, `PROJECT_PLOTS`, and the 2026-08-02 cartography ruling all went with it. The route carries no map. Do not apply any of that to the current page; the prior record is kept in git history rather than here.
 
 **Visual world: Catalog 97.** `DESIGN.md` describes Catalog 97 as shipped, and `context.mjs` loading it now points a pass at the right spec here. Tokens live in `src/app/catalog97.css`.
 
-**Do not re-litigate.** Tobacco is large-text-only (`--c97-fs-h2` floor, 4.36:1 paper ink). Anton draws numerals at `--c97-fs-plate` only. The type, spacing, line-height and measure scales are frozen. Every `--c97-*` is declared under `[data-c97]` or `[data-c97-surface]`, never a class. Image slots are flat Stone or Tobacco fields by design, not missing assets. The h1 wording is a test anchor.
+**Do not re-litigate.** Tobacco is large-text-only (`--c97-fs-h2` floor, 4.36:1 paper ink). Anton draws numerals at `--c97-fs-plate` only. The type, spacing, line-height and measure scales are frozen. Every `--c97-*` is declared under `[data-c97]` or `[data-c97-surface]`, never a class. Image slots are flat Stone or Tobacco fields by design, not missing assets. The h1 wording is a test anchor. As of 2026-11-02 the tobacco and Anton rules are retired (see the note above), the type and spacing scales have grown and some tokens are declared outside those scopes (see the note in `route.md`), the Home portrait shows the headshot, and the anchor is "I’m a second-year MBA at Berkeley Haas, moving into product.", which `src/app/__tests__/portfolio-shell.test.tsx` and `e2e/homepage.spec.ts` match.
 
 **Verified state.** 0 contrast failures across 2774 text nodes in both themes. Zero shadows, zero radii above 2px, zero off-palette hex in components. One `aria-current` per route.
 

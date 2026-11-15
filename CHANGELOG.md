@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-11-15
+
+- Correct race results in nine 2026 F1 posts ([#681](https://github.com/IsaacAVazquez/Website/pull/681)).
+
+---
+
 ## 2026-11-12
 
 - Put typescript back on 6 so npm ci resolves again ([#677](https://github.com/IsaacAVazquez/Website/pull/677)).
@@ -56,6 +62,18 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump numpy from 2.5.3 to 2.5.4 in /scripts ([#624](https://github.com/IsaacAVazquez/Website/pull/624)).
 - Drop eslint-disable comments for the removed react-refresh plugin ([#632](https://github.com/IsaacAVazquez/Website/pull/632)).
 - Hold the contact links at 44px where Firefox rounds the padding down ([#634](https://github.com/IsaacAVazquez/Website/pull/634)).
+- One name for the work page, and captions that say what they are ([#620](https://github.com/IsaacAVazquez/Website/pull/620)).
+- Integrate the four critique passes and walk the whole path ([#621](https://github.com/IsaacAVazquez/Website/pull/621)).
+- Put the three heading inversions back in order ([#619](https://github.com/IsaacAVazquez/Website/pull/619)).
+- Bring the first dashboards run above the fold ([#618](https://github.com/IsaacAVazquez/Website/pull/618)).
+- A11y: name the content bands and size the contact links to 44px ([#627](https://github.com/IsaacAVazquez/Website/pull/627)).
+- Set the writing h1 on the 56px step the other index pages use ([#628](https://github.com/IsaacAVazquez/Website/pull/628)).
+- Drop the surface brief for the deleted .tool-* shell ([#626](https://github.com/IsaacAVazquez/Website/pull/626)).
+- Seven more easter eggs ([#630](https://github.com/IsaacAVazquez/Website/pull/630)).
+- Bump next from 16.4.0 to 16.4.2 in the next group ([#622](https://github.com/IsaacAVazquez/Website/pull/622)).
+- Bump postcss from 8.5.28 to 8.5.30 ([#623](https://github.com/IsaacAVazquez/Website/pull/623)).
+- Bump eslint from 10.2.0 to 10.13.0 ([#625](https://github.com/IsaacAVazquez/Website/pull/625)).
+- Bump the testing group across 1 directory with 2 updates ([#612](https://github.com/IsaacAVazquez/Website/pull/612)).
 
 ---
 
@@ -96,6 +114,13 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Let project routes own their design inside the site frame ([#582](https://github.com/IsaacAVazquez/Website/pull/582)).
 - Stage 2, the remaining project routes on their own designs ([#595](https://github.com/IsaacAVazquez/Website/pull/595)).
 - Trackers and references get their own pages ([#587](https://github.com/IsaacAVazquez/Website/pull/587)).
+- Personal tools as a trip planner, a fare calculator, a city map, a recipe box, and a museum log ([#593](https://github.com/IsaacAVazquez/Website/pull/593)).
+- Job search, enablement, and march madness on their own designs ([#594](https://github.com/IsaacAVazquez/Website/pull/594)).
+- Polling, earthquake, transit, SpaceX, and news boards ([#592](https://github.com/IsaacAVazquez/Website/pull/592)).
+- Formula 1, fantasy formula 1, and score pools on their own designs ([#591](https://github.com/IsaacAVazquez/Website/pull/591)).
+- Sports boards for MLB, NBA, NFL, golf, and the World Cup ([#590](https://github.com/IsaacAVazquez/Website/pull/590)).
+- Take the fantasy pages off the press frame ([#589](https://github.com/IsaacAVazquez/Website/pull/589)).
+- Fintech calculators and decision lab on their own pages ([#588](https://github.com/IsaacAVazquez/Website/pull/588)).
 
 ---
 
@@ -120,6 +145,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-07
 
 - Combine the seven open dependency bumps ([#576](https://github.com/IsaacAVazquez/Website/pull/576)).
+- Full-time job search system on the MBA tracker ([#577](https://github.com/IsaacAVazquez/Website/pull/577)).
 
 ---
 
@@ -133,6 +159,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Fix dated draft practice and verified email configuration ([#564](https://github.com/IsaacAVazquez/Website/pull/564)).
 - Feat/transit street map ([#563](https://github.com/IsaacAVazquez/Website/pull/563)).
+- Record verified production setup status ([#565](https://github.com/IsaacAVazquez/Website/pull/565)).
+- Record approved production email configuration ([#566](https://github.com/IsaacAVazquez/Website/pull/566)).
 
 ---
 
@@ -141,6 +169,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Redesign passes 2 and 3 across every route ([#557](https://github.com/IsaacAVazquez/Website/pull/557)).
 - Fix Safari dashboard hydration and saved fantasy teams ([#559](https://github.com/IsaacAVazquez/Website/pull/559)).
 - Coverage audit, plus score pools lock and settings fixes ([#560](https://github.com/IsaacAVazquez/Website/pull/560)).
+- Record production browser verification ([#561](https://github.com/IsaacAVazquez/Website/pull/561)).
 
 ---
 
@@ -157,6 +186,9 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Synchronize documentation and clean up finnhub import after PR #551 ([#554](https://github.com/IsaacAVazquez/Website/pull/554)).
 - Redesign pass across every route ([#555](https://github.com/IsaacAVazquez/Website/pull/555)).
 - Add Before You Buy at /investments/before-you-buy ([#556](https://github.com/IsaacAVazquez/Website/pull/556)).
+- Bump eslint-plugin-react-refresh from 0.5.2 to 0.5.7 ([#545](https://github.com/IsaacAVazquez/Website/pull/545)).
+- Bump numpy from 2.4.6 to 2.5.3 in /scripts ([#547](https://github.com/IsaacAVazquez/Website/pull/547)).
+- Bump @types/node from 26.5.1 to 26.6.3 ([#548](https://github.com/IsaacAVazquez/Website/pull/548)).
 
 ---
 
@@ -166,6 +198,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Add agent skills from addyosmani/agent-skills and taste-skill ([#541](https://github.com/IsaacAVazquez/Website/pull/541)).
 - Sync route, API, and hook references with the code ([#539](https://github.com/IsaacAVazquez/Website/pull/539)).
 - Link related articles and tools across 53 articles ([#542](https://github.com/IsaacAVazquez/Website/pull/542)).
+- Expire the weekly fantasy board cache so open tabs pick up new weeks ([#534](https://github.com/IsaacAVazquez/Website/pull/534)).
+- Make points ladder marks keyboard selectable ([#535](https://github.com/IsaacAVazquez/Website/pull/535)).
+- Link article bylines and schema to the canonical author and page ([#536](https://github.com/IsaacAVazquez/Website/pull/536)).
+- Move viewport and theme color into Next metadata and update llms.txt ([#537](https://github.com/IsaacAVazquez/Website/pull/537)).
+- Rewrite search titles and descriptions for professional topic articles ([#538](https://github.com/IsaacAVazquez/Website/pull/538)).
+- Add the September 30 repo project audit and its evidence ([#540](https://github.com/IsaacAVazquez/Website/pull/540)).
 
 ---
 
@@ -178,6 +216,11 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Land a fresh load on the section its fragment names ([#526](https://github.com/IsaacAVazquez/Website/pull/526)).
 - Print the shared grids, the seams, and Home through Safari's engine ([#527](https://github.com/IsaacAVazquez/Website/pull/527)).
 - Add four project build notes and carry three small fixes ([#530](https://github.com/IsaacAVazquez/Website/pull/530)).
+- Gate search recency bonus on an existing match ([#520](https://github.com/IsaacAVazquez/Website/pull/520)).
+- Follow same-page links from the page's current address ([#521](https://github.com/IsaacAVazquez/Website/pull/521)).
+- Print the site in Firefox's and Safari's engines ([#524](https://github.com/IsaacAVazquez/Website/pull/524)).
+- Print photographs and logos through Firefox's engine ([#525](https://github.com/IsaacAVazquez/Website/pull/525)).
+- Print the résumé's contact link on its column ([#528](https://github.com/IsaacAVazquez/Website/pull/528)).
 
 ---
 
@@ -198,6 +241,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Fit the projection chart's margins to its type ([#514](https://github.com/IsaacAVazquez/Website/pull/514)).
 - Add seven easter eggs ([#516](https://github.com/IsaacAVazquez/Website/pull/516)).
 - Add the monthly Anthropic, Apple, and Microsoft company series ([#518](https://github.com/IsaacAVazquez/Website/pull/518)).
+- Correct date and fact errors in seven writing posts ([#512](https://github.com/IsaacAVazquez/Website/pull/512)).
+- Keep a symbol when its industry section times out ([#515](https://github.com/IsaacAVazquez/Website/pull/515)).
 
 ---
 

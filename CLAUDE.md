@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-10-13
+**Last updated:** 2026-11-02
 
 ---
 
@@ -12,7 +12,7 @@ Claude Code loads this file into context at the start of every session, walking 
 from the working directory. Keep it focused: durable, cross-cutting context that an
 agent needs in *most* sessions. Anything narrower belongs elsewhere.
 
-- **`AGENTS.md`** is the shorter start-here companion (route map, command reference,
+- **`AGENTS.md`** is the start-here companion (route map, command reference,
   data-workflow runbooks, guardrails). Read it first; this file holds the deeper
   "why" and the patterns that span surfaces.
 - **`CLAUDE.local.md`** (gitignored) is for personal, machine-specific notes —
@@ -34,14 +34,20 @@ secondary authority-building content — not a generic blog template. The surfac
 
 1. **Portfolio** — homepage, about, projects, resume, contact
 2. **Writing** — long-form MDX under `/writing`
-3. **Fantasy football analytics** — rankings, tiers, draft tooling
+3. **Fantasy football analytics** — rankings, tiers, draft tooling, the in-season weekly
+   and waiver boards, and a trade calculator
 4. **Investments + seasonal** — `/investments`, `/march-madness-2026`
-5. **Experimental dashboards** — ~20 standalone data tools (sports, civic, space,
-   news, markets); see the Route Map in `AGENTS.md`
+5. **Experimental dashboards** — ~20 standalone data tools (sports, civic polls, science
+   and space, news and data, AI and dev tools, and decision tools); see the route list in
+   `AGENTS.md`
 6. **Fintech tools** — calculators under `/fintech-tools/*`
 7. **Full-time job search tracker** — `/mba-internship-notifications` (full-time and internship feed, candidate triage, application pipeline with interview rounds and fit grading, dev-mode file sync)
-8. **Personal-interest tools** — browser-persisted (`/travel`, `/food-map`,
-   `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/blackjack-trainer`)
+8. **Personal-interest tools** — browser-persisted (`/travel`, `/recipe-finder`,
+   `/wine-cellar`, `/museum-log`, `/blackjack-trainer`), plus the curated `/food-map`, which saves nothing
+
+The site also has utility pages (`/now`, `/changelog`, `/search`, `/privacy`,
+`/accessibility`), the `/arcade` reflex game, and the easter-egg pages under
+`/back-room/[discovery]`.
 
 ---
 
@@ -49,10 +55,20 @@ secondary authority-building content — not a generic blog template. The surfac
 
 - Next.js 16 App Router · React 19 · TypeScript · Tailwind CSS v4
 - D3 (charting) · `next-themes` (dark mode)
-- Netlify deployment via `@netlify/plugin-nextjs`
+- Leaflet 1.9.4 for the `/food-map` and `/bay-area-transit` maps, loaded from unpkg at
+  runtime by `src/lib/leaflet.ts` and not installed from npm
+- Netlify hosting via `@netlify/plugin-nextjs`. Production is built and deployed from
+  GitHub Actions by `.github/workflows/publish-data.yml` on each push to `main`, at 01:15,
+  07:15, 13:15, and 19:15 UTC, and on dispatch, while `scripts/ci/netlify-ignore.sh` stops
+  Netlify from building `main` or dependabot branches itself (a pull request from any other
+  branch still gets a deploy preview). Refresh commits carry `[skip ci]`, so they go live at
+  the next scheduled run. `DEPLOYMENT.md` has the details.
+- Node 22 (`.nvmrc`, with `engines` set to `>=22.12.0`)
 
-Build pipeline: `npm run build` consumes committed snapshots without mutating data;
-`postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`. Production
+Build pipeline: `npm run build` (`next build --webpack`) consumes committed snapshots without
+mutating data; `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/buildLlmsFull.mjs`,
+which rewrite the committed `public/sitemap.xml` and `public/llms-full.txt`, then
+`scripts/patch-nft-sharp.mjs`. Production
 webpack snapshots validate module and dependency contents with hashes (`next.config.mjs`) to
 prevent cached symlink context hash failures on repeated builds. Full command and
 data-refresh runbooks live in `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
@@ -72,7 +88,8 @@ The full route map and header links live in
   untouched because their page components render `Catalog97Shell` themselves.
   Every other route is wrapped in
   `src/components/catalog97/Catalog97ToolShell.tsx`, which supplies the header,
-  the only page-level `main`, the espresso footer, and the build-note aside.
+  the only page-level `main`, the espresso footer, and, on the routes
+  `src/components/projectBuildNoteLinks.ts` lists, the build-note aside.
   Leaf sections use `div`/`section`, never a nested `main`. Every route exposes
   exactly one page-level `h1`.
 - Header links are the seven in `catalog97NavLinks`. The Working Instrument
@@ -80,16 +97,20 @@ The full route map and header links live in
   the current section (`aria-current="true"`) on every live tool route and the pages
   below it, through `isDashboardRoute` and `DASHBOARD_ROUTES` in the same file.
   `src/constants/__tests__/project-routes-complete.test.ts` fails if that list drifts
-  from the case studies' links, so a new tool adds its route there.
+  from the case studies' links, so a new tool adds its route there. The same test fails
+  on any `page.tsx` route that is not a designed route, at or below a `DASHBOARD_ROUTES`
+  entry, or in the test's own `UTILITY_ROUTES` set, so a new page goes in one of the three.
 - `src/app/catalog97.css` holds every Catalog 97 token, scoped under
-  `[data-c97]` and `[data-c97-surface]`, and every component class. The
+  `[data-c97]` and `[data-c97-surface]` apart from the stacking and easing tokens on
+  `:root`, and every component class. The
   Working Instrument tokens, helpers, and the bridge that aliased them were
   deleted on 2026-09-27 when the unification closed
   (`docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`).
 
 Redirects (`next.config.mjs`): `/projects`,`/work` → `/portfolio`; `/blog` →
-`/writing`; `/blog/:slug` → `/writing/:slug`; plus fantasy-football shortcuts/typos.
-Never create real pages at `/projects`, `/work`, or `/blog`.
+`/writing`; `/blog/:slug` → `/writing/:slug`; `/fintech-tools` → `/dashboards`; plus
+fantasy-football shortcuts/typos and other aliases, including `/cv`, `/hire-me`, and the
+feed paths. Never create real pages at `/projects`, `/work`, `/blog`, or `/fintech-tools`.
 
 ### Error boundaries
 
@@ -116,8 +137,14 @@ specifics live in the subsystem docs.
 commits refreshes → **accessors** → pages and thin **API routes** that read the
 committed snapshot. Within this pattern the only request-time external fetches are
 the three routes that pass `preferLive: true`, which are the earthquake summary, the Bay
-Area transit summary, and the Bay Area transit station board. Canonical reference:
-`SNAPSHOT_DRIVEN_DASHBOARDS.md`. Per-tool sources, schedules, and route state are in
+Area transit summary, and the Bay Area transit station board. `/frontier-models` and
+`/polling-aggregator` also have a Netlify scheduled function in `netlify/functions/` that
+writes a Netlify Blob, which their accessors read before the committed seed. Outside the
+pattern, the RSS feeds behind `/news-pulse` (`src/lib/newsPulseServer.ts`), the company job
+boards behind the job feed on `/mba-internship-notifications` (`src/lib/mbaJobsServer.ts`),
+and the live portfolio quotes on `/investments`, which `/api/investments/quotes` reads from
+Finnhub, are fetched at request time. The first two keep a last-good copy in Netlify Blobs.
+Canonical reference: `SNAPSHOT_DRIVEN_DASHBOARDS.md`. Per-tool sources, schedules, and route state are in
 `AGENTS.md` and `docs/DATA_UPDATE_OPERATIONS.md`.
 
 Shared conventions worth internalizing:
@@ -134,13 +161,19 @@ Shared conventions worth internalizing:
   correction. Keep the on-page source and estimate disclosures intact.
 - **Shared football components** in `src/components/football/*` back the soccer, NBA,
   MLB, and NFL dashboards (`FixtureLedgerSection`, `LeaderLedger`, `StatFascia`, etc.).
+  Golf, Frontier Models, Decision Lab, and GitHub Trending each import a part from the
+  same folder, so a change there reaches those pages too.
+- Most dashboards keep their route state, such as a view, a filter, or a selected team, in
+  the query string, and read and write it through `src/lib/searchParams.ts` (`readParam`,
+  `readEnum`, `buildHref`).
 
 ### Portfolio / writing
 
 - Project data: `src/constants/caseStudies.ts`. `/portfolio` reads it through
   `getPortfolioProjects` and renders `Catalog97Portfolio`.
 - Writing posts live in `content/blog/`; `src/lib/blog.ts` reads frontmatter and
-  converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`.
+  converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`,
+  `/writing/topics/[topic]`.
   The article HTML renders inside `.c97-article` (`catalog97.css`), which styles the
   whole remark tree; the cover is a `Catalog97Slot` with the credit as its caption.
 - **Cover images are part of publishing, not an afterthought.** Every post has a
@@ -152,6 +185,13 @@ Shared conventions worth internalizing:
   add a post, add its plan entry in the same change. The fetch is blocked in the
   agent sandbox (image hosts are egress-denied) and runs in CI or locally.
   Runbook: `docs/ARTICLE_IMAGE_WORKFLOW.md`.
+- An edit to the body text of an existing post needs a new `updatedAt` in the same change,
+  or CI's `npm run check:blog-dates` fails. The new date also moves the post's entry in
+  `public/sitemap.xml`, so run `npm run generate:sitemap` as well, or
+  `src/lib/__tests__/sitemap-consistency.test.ts` fails.
+- A new post needs exactly one of `cluster` or `archiveBucket` in its frontmatter, which
+  `src/lib/__tests__/blog-taxonomy.test.ts` checks, and a regenerated `public/sitemap.xml`.
+  `docs/SEO_CONTENT_MAP.md` has the topic hubs and the publishing checklist.
 - **Voice reference articles** (the worked examples for `WRITING_VOICE.md`):
   `content/blog/rb-vs-wr-draft-strategy-modeling-positional-value.mdx` (data woven into
   prose, clear positional argument) and
@@ -163,19 +203,25 @@ Shared conventions worth internalizing:
 
 ### Browser-persisted tools
 
-`/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, `/food-map`, the
+`/travel`, `/wine-cellar`, `/museum-log`, `/recipe-finder`, the
 investments portfolio, retirement plan, and fantasy draft tracker keep state in
-localStorage via dedicated hooks. All local stores subscribe to browser storage
+localStorage via dedicated hooks. `/food-map` saves nothing and keeps its filters in the
+URL. All local stores subscribe to browser storage
 events and merge edits with the latest validated save to prevent multi-tab data
-loss. Draft trackers additionally maintain revisions so conflicting saves in
-separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
+loss. Before each write the redraft and best ball trackers also compare the stored save
+with the last one the tab read, and when another tab has saved since, they load that save
+and ask for the action again. These stores go through `src/lib/browserStorage.ts`, which
+guards each read and write, keeps the newest value in memory when storage is blocked, and
+relays other tabs' `storage` events, and `src/hooks/useBrowserRecord.ts` applies each edit
+to the latest validated save. Reference: `PERSONAL_INTEREST_TOOLS.md`, and
+`docs/PROJECT_TOOL_WORKFLOWS.md` for the stores added on 2026-10-22.
 
 ### Engines worth knowing
 
 - **Retirement planner** (`src/lib/retirement/*`) — framework-free, unit-tested
   projection + seeded Monte Carlo engine surfaced in the investments dashboard.
   Returns/volatility are derived from the allocation via dated capital-market
-  assumptions (`capitalMarketAssumptions.ts`, currently `CMA_VERIFIED = false`).
+  assumptions (`capitalMarketAssumptions.ts`, with `CMA_VERIFIED = false` as of 2026-11-02).
   Output is **educational only** — keep the disclaimer and assumption disclosure
   intact (compliance). Full spec: `RETIREMENT_PLANNER_ENGINE.md`.
 - **Draft analytics** (`src/lib/draftAnalytics.ts`) — pure, unit-tested engine
@@ -225,20 +271,21 @@ separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS
   their markup. Read `docs/FANTASY_FOOTBALL_KIT.md` before writing markup for one of these
   pages. The spec is `docs/superpowers/specs/2026-10-13-fantasy-football-redesign-design.md`.
 - Rankings ship as static JSON: `public/data/fantasy/{ppr,half_ppr,standard}.json`
-  (schema v9), generated by `npm run update:fantasy` (FantasyPros scrape + mock-draft
-  ADP + prior-season per-game scoring). `/api/fantasy-data` is a server-side fallback reading the same snapshots —
-  there are no live FantasyPros calls at runtime.
+  (schema v9), generated by `npm run update:fantasy:redraft`, the first step of
+  `npm run update:fantasy` (FantasyPros consensus scrape, FantasyPros VORP reports,
+  mock-draft ADP, and nflverse per-game scoring). `/api/fantasy-data` is a server-side
+  fallback reading the same snapshots, and there are no live FantasyPros calls at runtime.
 - ADP is build-time only (`src/lib/fantasyAdpMatcher.ts`, tiered exact matching, never
   fuzzy); when the `adpSource` is `null` the UI hides every ADP surface.
-- Per-game scoring (`player.gameLog`) is the prior completed regular season from
+- Per-game scoring (`player.gameLog`) is the newest regular season with enough games in
   nflverse's weekly `stats_player` release, built by
   `scripts/buildFantasyGameLogData.ts` and matched onto the consensus board through
   the same exact matcher ADP uses. It backs the points-per-game block in the player
   drawers only, and it is history rather than a projection, so never let it read as a
-  forecast. Players under the four-game floor and anyone unmatched (rookies, most
-  notably) carry no `gameLog` and the block simply does not render. The builder
-  tries the current season first and falls back to the prior one, so the rollover
-  needs no manual edit; `gameLog.throughWeek` carries the last covered week and
+  forecast. Players under the four-game floor and anyone unmatched carry no `gameLog`
+  and the block simply does not render. The builder tries the current season first and
+  falls back to the prior one until at least 100 players clear the four-game floor, so
+  the rollover needs no manual edit; `gameLog.throughWeek` carries the last covered week and
   `getFantasyPointsPerGameTooltip` names the actual season instead of assuming the
   prior one.
 - The snapshot build also maintains `src/data/fantasyRankHistory.generated.json`, a
@@ -248,12 +295,12 @@ separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS
   means up the board). Position boards stay unstamped because they rank on their
   own scale.
 - The redraft tracker keeps two localStorage surfaces beyond the room itself:
-  per-turn recommendation telemetry (`fantasy-draft-telemetry-v1-<draftId>`,
+  per-turn recommendation telemetry (`fantasy-draft-telemetry-v2-<draftId>`,
   `src/lib/draftTelemetry.ts` — outcomes derive from the final pick log, never
   stored) behind the post-draft recap and turn replay, and named league presets
   (`fantasy-draft-presets-v1`, `src/lib/draftPresets.ts`) on the setup screen.
-- `useFantasySnapshot` is the single client entry point.
-- Best ball ships separately at `public/data/fantasy/best-ball.json`, with consensus rankings, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall/` owns contest presets and draft recommendations (`contests.ts`, `draft.ts`, `rankings.ts`, `recommendations.ts`, `strategy.ts`). Keep best ball state and roster logic separate from the redraft tracker.
+- `useFantasySnapshot` is the single client entry point for the redraft snapshots.
+- Best ball ships separately at `public/data/fantasy/best-ball.json`, built by `npm run update:fantasy:best-ball` (`scripts/buildBestBallSnapshot.ts`), with consensus rankings, a separate half PPR Superflex consensus, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall/` owns contest presets and draft recommendations (`contests.ts`, `draft.ts`, `rankings.ts`, `recommendations.ts`, `strategy.ts`). Keep best ball state and roster logic separate from the redraft tracker.
 - The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. Each scoring format also carries FantasyPros' rest-of-season overall board (`restOfSeason`, fetched fail-soft after the weekly pages) for the trade calculator; the server seed leaves it out of the weekly and waiver pages' HTML. The weekly board prints in tiers that `src/lib/fantasyWeeklyTiers.ts` draws from the published averages, since FantasyPros publishes none for weekly boards, through the same `TierSection` and `ExpertSpread` (`src/components/fantasy/TierSection.tsx`) the draft board uses. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); when the file is missing, as it is before a season's first weekly board publishes, the hook maps that to a `notPublished` state and the route explains that the board opens with Week 1.
 - `src/components/fantasy/DraftValuePanel.tsx` is the shared UI for Draft Outlook and expected return math. Best Ball Mania VII field economics are published inputs from the dated contest preset. Weekly Winners, Sit and Go, and other variable lobby cards must not receive invented static economics.
 - `/fantasy-football/trade-calculator` reads the same redraft snapshot through `src/lib/fantasyTrade.ts` and `src/hooks/useFantasyTradeCalculator.ts`, and in season the weekly snapshot's rest-of-season board through `useFantasyWeeklySnapshot` (`buildInSeasonTradeBoard` makes the player pool). Selected player IDs persist under `fantasy-trade-calculator-v1-<season>-<scoring>` via `src/lib/fantasyTradePersistence.ts`; scoring, team count, roster size, and lineup preset stay in the URL. It never issues a verdict when the expert board is stale, or, on the preseason basis, when any selected player lacks a reliable current-market reading. In season a player with no scoring log is priced on the experts alone at limited coverage.
@@ -282,8 +329,8 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   Working Instrument `--home-*` tokens, the legacy `--surface-*`, `--text-*`,
   `--border-*`, and `--color-*` aliases, `--radius-*`, `--shadow-*`, and the `.home-*`,
   `.section-*`, and `.tool-*` helpers no longer exist, and
-  `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads
-  one of those tokens or imports the deleted `HomeStatsPanel`.
+  `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` or `e2e`
+  reads one of those tokens or imports the deleted `HomeStatsPanel`.
 - The seven designed routes use the print shop layout (2026-09-23): two lead inks per page, left
   unlabelled, `c97-sheet` bands with `data-seam` wherever the surface changes,
   `.c97-poster`/`.c97-poster-sm` Anton headings with the
@@ -340,10 +387,11 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   constant. Set them on each mark as `var(--c97-…)` through `.style()`, which follows a theme
   change with no redraw; `ComparisonRadarChart` and `FrontierCostContextChart` are the
   references. Resolve with `getComputedStyle` only where a colour feeds a computation, and
-  read it from the chart's own element, since the tokens are scoped to the `[data-c97]`
+  read it from the chart's own element, since the colour tokens are scoped to the `[data-c97]`
   container and `document.documentElement` resolves none of them. An effect keyed on
   `resolvedTheme` can run before the theme class moves, so it can read the old theme.
-- No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
+- No arbitrary `text-[Npx]` micro-type. Use `text-3xs` (10px), `text-2xs` (11px), or
+  `text-1xs` (a fixed 12px), which `src/app/globals.css` registers (see `STYLING.md`).
 - CSS-Module surfaces must alias the tokens (`--x-ink: var(--c97-ink)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.
 - Keep light/dark mode support, 44px minimum touch targets, and `prefers-reduced-motion`
@@ -362,8 +410,14 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   are not dependencies, so do not add imports of either.
 - Every easter egg is listed in `docs/EASTER_EGGS.md`. A change that adds, alters, or
   removes one updates that file in the same change.
-- `/api/search` is still a limited, mostly hardcoded index — do not describe it as
-  comprehensive site search.
+- `/api/search` matches substrings and tags across the published articles' text, the case
+  studies, and a hand-kept list of the other pages, and it indexes no dashboard data, so do
+  not describe it as a search of the whole site.
+- The enforcing Content-Security-Policy on every page route comes from `src/proxy.ts`,
+  Next.js 16's replacement for `middleware.ts`, so a script, stylesheet, font, or fetch
+  from a new host needs that host added there. Redirects stay in `next.config.mjs`,
+  since on Netlify the proxy answers first and a redirect in it would shadow the config's
+  rules.
 - All user-facing text (articles, UI copy, page descriptions, bios, hero text) must
   follow `WRITING_VOICE.md`. Read it before editing or creating any copy; rewrite
   non-conforming copy to match it rather than patching around it.
@@ -383,6 +437,9 @@ npx jest -t "name of test"               # single test by name
 npm run test:e2e                         # Playwright (default subset)
 npx playwright test e2e/homepage.spec.ts # single spec
 ```
+
+CI (`.github/workflows/test.yml`) also runs `npm run check:blog-dates`, `npm run typecheck`,
+`npm run build`, and `npm run lint`.
 
 ---
 
@@ -410,17 +467,19 @@ Subsystem references:
   ranking refresh, automatic pick sync, and the opt-in away controller
 - `docs/FANTASY_FOOTBALL_KIT.md` — the kit the eight fantasy football pages draw with, covering
   its tokens, classes, cascade, shared parts, and how a page is put together
+- `docs/BEFORE_YOU_BUY.md`, the comparison model and saved state behind `/investments/before-you-buy`
+- `docs/PROJECT_TOOL_WORKFLOWS.md`, the workflows added to the project tools on 2026-10-22 and where each keeps its records
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 - `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
 - `docs/JOB_SEARCH_PRIVATE_DATA.md` — private job-search pipeline data contract, local directory structure (`private/job-search/`), ATS candidates extraction script, and development sync route
 - `docs/TODO.md` — open items that need Isaac (secrets, dashboards, decisions) or a scheduled run; add blocked work here and delete an item when it is done
 
-**Legacy / historical** (do not quote as current without checking code): root-level
-SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO
-reference; older root-level SEO audits are historical. The former `docs/archive/*` and
-`content-redesign/*` trees were deleted in August 2026; read them from git history if
-you need them.
+**Legacy / historical** (do not quote as current without checking code): the files
+`docs/README.md` lists under "Historical Or Reference Docs". `SEO.md` is the current SEO
+reference. The older root-level SEO, UX, and performance summaries were all gone by
+2026-08-22, the `docs/archive/*` and `content-redesign/*` trees were deleted on 2026-08-11,
+and the historical snapshots under `content/` on 2026-10-02. Git history keeps all of them.
 
 ---
 
@@ -437,4 +496,6 @@ you need them.
   (snapshot, builder, fail-soft fetch, accessors, API route, and a `loading.tsx`).
 - A dashboard page is cached at Netlify's CDN only if it is listed in `cdnCachedPages`
   in `next.config.mjs`. It belongs there when its server render reads no clock, random
-  number, live data, or Blobs. `SNAPSHOT_DRIVEN_DASHBOARDS.md` has the rule.
+  number, live data, or Blobs. `SNAPSHOT_DRIVEN_DASHBOARDS.md` has the rule, and
+  `src/lib/__tests__/edge-cache-policy.test.ts` names every page on the list and the
+  dashboards kept off it, so a change to the list edits that test too.

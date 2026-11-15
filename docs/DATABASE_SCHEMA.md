@@ -2,7 +2,7 @@
 
 Historical reference for the removed SQLite-backed fantasy football data layer.
 
-**Last updated:** 2026-06-08
+**Last updated:** 2026-11-02
 
 ---
 
@@ -12,12 +12,10 @@ There is no live `src/lib/database.ts` file in the current app tree, and the pub
 
 Current fantasy data flow:
 
-- `npm run update:fantasy`
-- `scripts/buildFantasyPositionData.ts`
-- `scripts/buildFantasySnapshots.ts`
-- `src/data/fantasyPositionData.generated.json`
-- `src/data/fantasySnapshotRevision.generated.ts`
-- `public/data/fantasy/{ppr,half_ppr,standard}.json`
+- `npm run update:fantasy`, which chains the `update:fantasy:redraft`, `update:fantasy:best-ball`, and `update:fantasy:weekly` scripts in `package.json`
+- the redraft builders `scripts/buildFantasyPositionData.ts`, `scripts/buildFantasyAdpData.ts`, `scripts/buildFantasyGameLogData.ts`, `scripts/buildFantasyVorpData.ts`, and `scripts/buildFantasySnapshots.ts`
+- the generated `src/data/fantasy*.generated.*` files, including `src/data/fantasyPositionData.generated.json` and `src/data/fantasySnapshotRevision.generated.ts`
+- `public/data/fantasy/{ppr,half_ppr,standard}.json`, plus `best-ball.json` from `scripts/buildBestBallSnapshot.ts` and `weekly.json` from `scripts/buildFantasyWeeklySnapshot.ts`
 - `/api/fantasy-data`, which reads the generated public snapshots through `src/lib/fantasySnapshotServer.ts`
 
 Draft tracker state is browser-local. The live app does not expose `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update`.

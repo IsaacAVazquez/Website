@@ -4,35 +4,42 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-10-13 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. Its line on class names, sticky bars, and maps was added on 2026-10-12, and its line on the fantasy football kit on 2026-10-13. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-11-02 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and from that date the colour, typography, consistency, and print shop sections bound the frame and the seven designed pages. Its line on class names, sticky bars, and maps was added on 2026-10-12, and its line on the fantasy football kit on 2026-10-13. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`). On 2026-11-02 a line under the reference implementations was added to name the pages the colour, typography, and consistency sections bind, and the index pages' h1 step, the print query form, the layout sweep's sizes, and the notes on token reads were brought in line with the code. A second check the same day added the contrast sweep and the old font variables, held the motion curve and the arrow classes to pages outside a project route, put overlays in the project routes' stacking line, replaced the route class scoping rule with the prefix rule the stylesheet test enforces, and noted the dark-theme field, the touch-target exception to the spacing ladder, and the small poster type inside the 2026-10-19 objects.
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `wine-cellar.css` and `league-table.css` show a project route on its own
 > design inside the frame, `src/components/fantasy/fantasy.css` shows several routes sharing one kit
 > (`docs/FANTASY_FOOTBALL_KIT.md`), `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker`
-> shows the error, loading, and verified disclosure with correct row semantics.
+> shows the loading state and the verified disclosure with correct row semantics.
+
+The "Color & tokens", "Typography", and "Consistency" sections bind every page but a project route,
+meaning the site frame, the seven designed pages, and the utility pages. A project route follows the
+"Project routes" section instead, which names the shared rules it keeps.
 
 ---
 
 ## Color & tokens
 
 - [ ] No hardcoded hex in components. Every section sets `data-c97-surface` and reads the `--c97-*`
-      tokens in `catalog97.css`. The Working Instrument `--home-*` tokens, the legacy `--surface-*`,
-      `--text-*`, `--border-*`, and `--color-*` aliases, and the `--radius-*` and `--shadow-*` tokens no
-      longer exist, and `src/app/__tests__/catalog97-closeout.test.ts` fails on any read of them.
+      tokens in `catalog97.css`. The Working Instrument `--home-*` tokens, the legacy `--surface-*`
+      aliases, the colour aliases such as `--text-primary`, `--border-primary`, and `--color-accent`, and
+      the `--radius-*` and `--shadow-*` tokens no longer exist, and
+      `src/app/__tests__/catalog97-closeout.test.ts` fails on any read of them and on a read of the
+      old font variables such as `var(--font-mono)` and `var(--font-heading)`.
 - [ ] Every section is a surface. A band that changes surface from the one above carries `c97-sheet`
       and a `data-seam`, and a raised block is `.c97-panel` on its sheet, never a `color-mix` toward
       white or black.
 - [ ] Gain, loss, and status use `--c97-positive`, `--c97-negative`, and `--c97-warning`, never green or
       red hex. On ink-green those tokens fall back to ink, so status lines there sit on a paper plate.
 - [ ] One accent. `--c97-accent` marks data, state, or action and is never a decorative wash or band.
-- [ ] Fields (`.c97-field`, chips, code) paint the pale `--c97-field`, so a field inside an espresso,
-      chocolate, or lead-ink sheet sits on a paper plate.
+- [ ] Fields (`.c97-field`, chips, code) paint `--c97-field`, which is pale paper or bone in the light
+      theme and near-black in the dark, where saffron and peach keep a dark ink, so a field inside an
+      espresso, chocolate, or lead-ink sheet sits on a paper plate.
 - [ ] CSS Modules alias the tokens (`--x-ink: var(--c97-ink)`) and never re-declare the palette as fresh
       hex with its own `.dark` mirror.
 - [ ] No arbitrary z-index on an overlay. A tray, toast, drawer, modal, or sheet reads its
-      `--c97-z-*` token (`z-[var(--c97-z-drawer)]`), declared on `:root` because some layers portal to
-      the body.
+      `--c97-z-*` token (`z-[var(--c97-z-drawer)]`), declared on `:root` so a layer that lands outside
+      the page root still resolves it.
 - [ ] No raw Tailwind colour literals (`text-gray-500`, `bg-slate-100`), no radius, and no blurred shadow.
       The Tailwind radius and shadow scales compile to nothing, so a leftover `rounded-lg` or `shadow-sm`
       is dead markup to remove.
@@ -40,19 +47,25 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 ## Dark mode
 
 - [ ] Every surface has a `.dark` story, so verify the page in both themes, not just light.
+- [ ] `node scripts/contrastSweep.mjs <baseUrl> <routes…>` reports no failures. It measures every visible
+      text element against its background in both themes at 1440 by 900 and fails anything under 4.5:1,
+      or under 3:1 for large text.
 - [ ] D3 and SVG charts put token colours on their marks as CSS variables through `.style()`
       (`.style("fill", "var(--c97-…, currentColor)")`), which follows a theme change with no redraw.
       Resolve a colour with `getComputedStyle(svgElement).getPropertyValue('--c97-…')` only where it
       feeds a computation, read from the chart's own element because the document root resolves no
-      Catalog 97 token. An effect keyed on `useTheme().resolvedTheme` can read the old theme there,
+      Catalog 97 colour token. An effect keyed on `useTheme().resolvedTheme` can read the old theme there,
       since a child's effect runs before `next-themes` moves the class on `<html>`, so a manual
       toggle keeps the old ink. Never bake a token's hex into a constant.
       Chromium resolves `var()` in SVG *presentation attributes* (the investments growth bars and
       the retirement band computed to the token's colour on 2026-10-09), and WebKit and Gecko were
       not checked, so resolve the token at render time whenever the colour feeds a computation,
       and use `.style()` otherwise. References for `.style()`: `ComparisonRadarChart` and
-      `FrontierCostContextChart`. No chart reads a computed colour as of 2026-10-12, and
-      `logConsoleNote` in `Catalog97EasterEggs.tsx` is the one token read of that kind in the code.
+      `FrontierCostContextChart`. No chart reads a computed colour as of 2026-11-02. The token reads of
+      that kind in the code are `logConsoleNote` in `Catalog97EasterEggs.tsx`, which reads two inks off
+      the page root for the console, and, since 2026-10-21, `downloadPrint` and `downloadPoster` in
+      `src/components/discoveries/downloadPrint.ts`, which read the colours of the element they export
+      onto a canvas.
       Investments visuals share one categorical
       palette: `src/components/investments/holdingPalette.ts`.
 - [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles, since they vanish on dark paper.
@@ -67,7 +80,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
       unlayered and a Tailwind margin or padding utility on the same element silently loses.
 - [ ] Every gap, margin, and padding is on the `--c97-sp-0` through `--c97-sp-7` ladder. `sp-0` is the
       hairline step, for an icon beside its label and the padding in a chip or a dense cell, and only an
-      optical nudge of 2px or less sits off it. Spacing that changes at a breakpoint uses token utilities
+      optical nudge of 2px or less sits off it. The touch-target constants `--c97-touch-y` and
+      `--c97-touch-x` are the other exception, since the padding they give a small link to reach 44px
+      is taken back by an equal negative margin. Spacing that changes at a breakpoint uses token utilities
       at every breakpoint, the base one included (`p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]`), and never
       an inline base beside responsive utilities, because the inline style beats every breakpoint. A
       vertical stack is a flex column with a token gap, not `space-y-*`.
@@ -106,9 +121,10 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] A hover or state change that should animate declares its own transition. The default in
       `globals.css` covers colour, background, and border at 150ms, and it gives way to any
       transition the element declares.
-- [ ] Interface transitions use `var(--c97-ease)`, not the generic `ease`, `ease-in-out`, or `linear`
-      keywords. Looping keyframes and `/arcade` are the exceptions.
-- [ ] A trailing → or ↗ inside a link or button carries `.c97-arrow` or `.c97-arrow-out`.
+- [ ] Outside a project route, interface transitions use `var(--c97-ease)`, not the generic `ease`,
+      `ease-in-out`, or `linear` keywords. Looping keyframes and `/arcade` are the exceptions.
+- [ ] Outside a project route, a trailing → or ↗ inside a link or button carries `.c97-arrow` or
+      `.c97-arrow-out`. A project route may draw its own, as the fantasy kit does with `ffb-link-arrow`.
 - [ ] No `backdrop-filter` on anything that scrolls, and full-height sections use `dvh`, not `vh`.
 
 ## Responsive
@@ -118,8 +134,8 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
       and a label (progressive column-hiding is a plus).
 - [ ] Grids collapse to one column on mobile (responsive `grid-cols-*`).
 - [ ] A grid of three or four cards never leaves one alone on its last row; `.c97-columns` and `.c97-mosaic` handle both counts.
-- [ ] The h1, any breadcrumb, and the footer start on the header's content edge at every width, including the wide tool routes.
-- [ ] Run `node scripts/layoutSweep.mjs <baseUrl> <routes…>` against a production build and clear every fail at phone (320 to 430), tablet, laptop (1280 to 1512), and big-monitor (1920 and 2560) sizes.
+- [ ] The h1, any breadcrumb, and the footer start on the header's content edge at every width, including the wide tool routes. An h1 inside a `data-c97-object` (the proof, sheet, or card on `/about`, `/resume`, and `/contact`) is inset by design and exempt.
+- [ ] Run `node scripts/layoutSweep.mjs <baseUrl> <routes…>` against a production build and clear every fail at phone (320 to 430), landscape phone (844 by 390), tablet, laptop (1280 to 1512), and big-monitor (1920 and 2560) sizes.
 - [ ] In-page section nav has a mobile equivalent (don't `display:none` it away with no replacement).
 - [ ] Hero value-prop + primary CTA stay above the fold on mobile for portfolio/hero routes.
 
@@ -134,7 +150,7 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
       inside `@supports (-moz-appearance: none)`, as it does on `.c97-slot-img`, and
       `e2e/print.spec.ts` checks `/about`, `/resume`, and an article in the Firefox project.
 - [ ] A layout that would not fit a page about 700px wide narrows under `print` as well as under its
-      width query, as in `@media (max-width: 900px), print`, since Safari's engine answers a width
+      width query, as in `@media print, screen and (max-width: 900px)`, since Safari's engine answers a width
       query with the window's width.
 - [ ] A layout that widens with the window holds its wide rule to the screen, as in
       `@media screen and (min-width: 881px)`, so paper takes the narrow arrangement in every engine
@@ -157,8 +173,8 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
 
 ## Project routes
 
-Since 2026-10-11 a project route (the 35 in `DASHBOARD_ROUTES`, the fantasy sub-routes, Score Pools, and
-`/agent-build-index`) owns its design inside the site frame. The spec is
+Since 2026-10-11 a project route (every route in `DASHBOARD_ROUTES`, the fantasy sub-routes, Score Pools
+with its tracker and settings, and `/agent-build-index`) owns its design inside the site frame. The spec is
 `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, and its brief for the route names the
 genre, the first screen, what is cut, and what is pinned. Before merging a redesigned project route:
 
@@ -191,8 +207,9 @@ genre, the first screen, what is cut, and what is pinned. Before merging a redes
 - [ ] The route's class names are its own. A plain stylesheet stays on the page through every later
       client-side navigation, so every class a route sheet names carries the route's prefix, and
       `src/app/__tests__/route-stylesheets.test.ts` fails when two route folders name a class the same
-      way. A sticky bar inside the page reads `--c97-z-sticky`, and a Leaflet map takes `.c97-basemap`,
-      which keeps Leaflet's pane and control z-indexes inside the map.
+      way. A sticky bar inside the page reads `--c97-z-sticky`, a tray, toast, drawer, modal, or sheet
+      reads its own `--c97-z-*` token, and a Leaflet map takes `.c97-basemap`, which keeps Leaflet's pane
+      and control z-indexes inside the map.
 - [ ] A fantasy football page follows its kit. The eight routes draw with `src/components/fantasy/fantasy.css`
       and one area sheet per page or family of shared parts, all under `src/components/fantasy/`, which the
       route stylesheet test treats as shared. `src/app/fantasy-football/__tests__/print-shop-rules.test.ts`
@@ -219,8 +236,12 @@ without the poster hero):
       vermilion tint), and nothing on the page labels or names the inks.
 - [ ] Every band that changes surface from the one above carries `c97-sheet` and a `data-seam`, and no
       band that continues the same surface does.
-- [ ] The h1 uses `.c97-poster` and section h2s use `.c97-poster-sm`; project and article titles stay in
-      Newsreader, and nothing below the h2 step is set in Anton.
+- [ ] The h1 uses `.c97-poster` on Home, About, Résumé, and Contact and `.c97-poster-sm` on Work, Writing,
+      and Dashboards (since 2026-10-19), and section h2s use `.c97-poster-sm`; project and article titles
+      stay in Newsreader, and nothing below the h2 step is set in Anton. The objects of 2026-10-19 are the
+      exception, since the résumé sheet's section headings (14px), the heading over the questions on
+      `/about` (the `--c97-fs-lead` step), and the name on the `/contact` stamp (12px) set the poster face
+      smaller in their CSS modules.
 - [ ] The only shadow is the hard `.c97-offset` in `--c97-overprint`, and it sits outside any element that
       declares its own surface so it prints in the sheet's second ink.
 - [ ] Hover and empty fields use the halftone screen, not a colour shift toward white or black.
@@ -232,7 +253,9 @@ without the poster hero):
 
 - [ ] Extends the existing visual language. Compose `c97-band` sections from the `catalog97.css`
       vocabulary (`.c97-row`, `.c97-columns`, `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`)
-      before writing route CSS, and scope any route CSS to a route class.
+      before writing route CSS, and give every class a route stylesheet adds the route's prefix, since
+      `src/app/__tests__/route-stylesheets.test.ts` fails when two route folders name a class that no
+      shared sheet defines.
 - [ ] Injected/`dangerouslySetInnerHTML` markup renders inside `.c97-article` (`catalog97.css`), which
       styles `a/ul/ol/code/pre/blockquote/table/img` in the palette. Don't leave links default-blue and
       don't hand-roll a second prose class.

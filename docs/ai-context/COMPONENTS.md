@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-10-13
+**Last updated:** 2026-11-02
 
 ---
 
@@ -11,13 +11,16 @@ Current component ownership reference.
 | Component | File | Notes |
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Picks the shell. The seven routes in `src/constants/catalog97Nav.ts` pass through and render `Catalog97Shell` themselves; every other route is wrapped in `Catalog97ToolShell` |
-| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Header, the only page-level `main`, and the espresso footer |
+| `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Header, the only page-level `main`, and the espresso footer, plus `VisitLedger` (`src/components/discoveries/`), which records each visit for the back room receipt |
 | `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus the build-note aside from `projectBuildNoteLinks` |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers`. Follows same-page `#` links from the current address, so Firefox does not load the page again after a route rewrote its URL |
 | `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers`. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, since React reveals a streamed route after the browser has looked the fragment up |
-| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback rendered by the root `src/app/error.tsx` |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback rendered by the root `src/app/error.tsx`, by `src/app/global-error.tsx`, and by `src/app/investments/before-you-buy/error.tsx` |
+| `RouteLoadingState` | `src/components/RouteLoadingState.tsx` | The matching loading band, rendered by every `loading.tsx` outside the eight fantasy football routes, which use `FantasyLoadingState` |
+| `ProjectBuildNote` | `src/components/ProjectBuildNote.tsx` | The build-note aside `Catalog97ToolShell` adds for a route listed in `projectBuildNoteLinks`, with its prose in `projectBuildNoteContent.ts` |
+| `NotFoundNote` | `src/components/NotFoundNote.tsx` | The line the 404 (`src/app/not-found.tsx`) prints for a few addresses people type on purpose or that scanners try, listed in `docs/EASTER_EGGS.md` |
 
 ---
 
@@ -35,7 +38,7 @@ The seven designed routes each render one page component from `src/components/ca
 | `/resume` | `Catalog97Resume` |
 | `/contact` | `Catalog97Contact` |
 
-`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. Tool routes open on their own root, since `SectionIntro` was deleted on 2026-09-27 and `Catalog97ProjectHero` on 2026-10-12, once every project route owned its design.
+`Catalog97Primitives.tsx` holds the shared `Catalog97Slot` image field, and `Catalog97Plate` was deleted from it on 2026-09-24. `Catalog97Collage.tsx` draws the home page's dashboards board, and `projectPlates.ts` maps a project slug to its riso plate for Home and Work. Tool routes open on their own root, since `SectionIntro` was deleted on 2026-09-27 and `Catalog97ProjectHero` on 2026-10-12, once every project route owned its design.
 
 The earlier homepage and portfolio components (`ModernHero`, `FeaturedWorkSection`, `PortfolioProjectCard`, `ThinkingPreview`, `ContactSection`, `About`, `ContactContent`, `ProjectsContent`, `WritingPreview`) no longer exist. See the root `COMPONENTS.md` and `AGENTS.md` for the wider component map.
 
@@ -48,6 +51,10 @@ The earlier homepage and portfolio components (`ModernHero`, `FeaturedWorkSectio
 | `StructuredData` | JSON-LD helper |
 | `AIStructuredData` | AI-oriented structured data helper |
 | `AuthorBio` | Writing article author block |
+| `NewsletterSignup` | Email opt-in in `src/components/newsletter/`, rendered only on `/agent-build-index`, posting to `/api/newsletter/subscribe` |
+| `ArticleEndMark` | The "-30-" button at the end of a post (`src/components/editorial/`), which says how long the reader took and names the next post |
+| `ArticlePostscript` | The "-30-" that opens a note from the build in place of `ArticleEndMark` on the posts listed in `src/lib/articlePostscripts.ts` (`src/components/discoveries/`) |
+| `ArticleCodeCopy` | Adds a Copy code button to each code block in a post and records the GA4 `code_copy` event (`src/components/analytics/`) |
 
 ---
 
@@ -67,6 +74,7 @@ Primary investments components:
 - `ResearchOverview`
 - `ResearchPosition`
 - `ResearchSection`
+- `ResearchWorkspace`
 - `ComparisonTab`
 - `PriceChartPanel`
 - `FinancialStatementsPanel`
@@ -92,20 +100,21 @@ Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and
 - `LeaderLedger`
 - `SeedLadder` (in `SeedLadderPanel.tsx`)
 - `DetailDrawer`, which the golf route opens its player detail in as well
-- `LeagueTableBoard`
+- `LeagueTableBoard`, with `ResultsTape`, `GoalsPulseStrip`, `SegmentedTabs`, and `PointsLadder` (in `PointsLadderChart.tsx`)
+- `ClubDrawer` and `DeferredClubDrawer`, the Premier League and La Liga club drawer, with `StatFascia` inside it
 - `InfoChip`
 - `CrestAvatar`
 - `TeamResultPill`
 - `SurfaceCard`
 - `EmptyPanel`
 
-Page-level clients live at `src/app/premier-league/premier-league-client.tsx` and `src/app/la-liga/la-liga-client.tsx`.
+Page-level clients live at `src/app/premier-league/premier-league-client.tsx`, `src/app/la-liga/la-liga-client.tsx`, `src/app/mlb/mlb-client.tsx`, `src/app/nba/nba-client.tsx`, `src/app/nfl/nfl-client.tsx`, and `src/app/world-cup-2026/world-cup-client.tsx`.
 
 ---
 
 ## Standalone Data Tools
 
-- `src/app/news-pulse/*` plus `src/lib/news-pulse-utils.ts`
+- `src/app/news-pulse/*` plus `src/lib/newsPulseServer.ts`, which reads six outlets' RSS feeds at request time, and `src/lib/news-pulse-utils.ts`
 - `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
 - `src/app/mlb/*`, `src/app/nba/*`, `src/app/nfl/*`, and `src/components/football/*`
 - `src/app/golf/*` plus `src/data/golfSnapshot.json`
@@ -118,6 +127,22 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`
 - `src/app/mba-internship-notifications/*` (`MBAJobsClient`, `CandidatesView`, `ApplicationEditDialog`) plus `src/constants/mba-companies.ts` and `src/lib/mba-applications.ts`
+- `src/app/formula-1/*` and `src/app/fantasy-formula-1/*` plus `src/data/formula1Snapshot.json`
+- `src/app/frontier-models/*` plus `src/data/frontierModelsSnapshot.json`
+- `src/app/ai-dev-tools/*`, whose curated data is `ai-dev-tools-data.ts` in the route folder
+- `src/app/github-trending-pulse/*` plus `src/data/githubTrendingSnapshot.json`, which `src/app/agent-build-index/*` also reads, ranking it through `src/lib/agentBuildIndex.ts`
+- `src/app/score-pools/*` plus `src/data/scorePoolsSnapshot.json`, `src/lib/scorePools/*`, and `src/hooks/useScorePools.ts`
+- `src/app/fintech-tools/rent-vs-buy/*` plus `src/lib/rentVsBuy/*` and `src/hooks/useRentVsBuy.ts`
+- `src/app/investments/before-you-buy/*` plus `src/lib/beforeYouBuy.ts`
+- `src/app/decision-lab/*` and `src/app/enablement-assistant/*`, which keep their data in the route folder (`decision-lab-data.ts`, `enablement-data.ts`)
+- `src/app/travel-deals/*` plus `src/data/travelDealsSnapshot.ts` and `src/lib/travelDeals.ts`
+- `src/app/museum-log/*` plus `src/data/museumSnapshot.ts` and `src/hooks/useMuseumLog.ts`
+- `src/app/wine-cellar/*` plus `src/hooks/useWineCellar.ts`
+- `src/app/recipe-finder/*` plus `src/data/recipesSnapshot.ts`
+- `src/app/food-map/*`, a curated map that keeps no browser state
+- `src/app/march-madness-2026/*` (`march-madness-client.tsx`, with its data in `march-madness-data.ts`)
+- `src/app/arcade/*`, the Reactor game in `ArcadeClient.tsx`, which keeps its high score in the browser
+- `src/app/back-room/[discovery]/page.tsx` plus `src/components/discoveries/*`, the easter egg pages and parts listed in `docs/EASTER_EGGS.md`
 
 ---
 
@@ -145,10 +170,12 @@ Shared components in `src/components/fantasy/` (no `index.ts`, so each is import
 - `SeasonalScopeNote` — the dated note a draft-season page prints from Week 1
 - `PositionFilterBar` (+ `PositionFilterOption` type) — the position switch, one radiogroup with a roving tab stop and a disabled "NA" state per option
 - `RankDistributionBar` — the expert spread plot, with the range as a line, one standard deviation as a thicker segment, and the mean as a tick
+- `TierSection` (+ `ExpertSpread`, `SpreadScaleLabels`), the tier break and the row spread plot the rankings board and the weekly board share
+- `IsaacScoutCard`, the novelty scouting card the rankings board shows for a search of `Isaac` or `Isaac Vazquez`, listed in `docs/EASTER_EGGS.md`
 - `PlayerPointsPerGame`, `PlayerNoteField` — the points per game block and the private note field every player drawer renders
 - `PlayerDetailDrawer` — the focus-trapped drawer, a bottom sheet on a phone (rank, tier, expert range, ADP, movement, points per game, queue and compare controls, private note); opened by the best ball board, the redraft room, and the best ball room through `DeferredPlayerDetailDrawer`, while the rankings board renders its own drawer in `fantasy-football-client.tsx`
 - `CompareTray`, `CompareModal` — the band pinned to the bottom of the screen for the compare selection (up to 3) and the side by side dialog it opens; rendered through `DeferredCompareTray`, and the best ball board is the one page that renders it
-- `DraftRoomParts` — `DraftScorebug`, `DraftScorebugCell`, `DraftLastPicks`, `DraftRoster`, and `DraftPickGrid`, shared by the redraft room, the mock draft, and the best ball room
+- `DraftRoomParts` holds `DraftScorebug`, `DraftScorebugCell`, `DraftLastPicks`, `DraftRoster`, and `DraftPickGrid`, which the redraft room, the mock draft, and the best ball room share, though the best ball room uses all of them except `DraftRoster`
 - `RedraftDecisionPanel` — the redraft room's reading of what waiting costs at each position
 - `DraftValuePanel` — Draft Outlook and the expected return calculator for both draft trackers
 - `MyTeamPanel` — the saved roster on the weekly board and waivers
@@ -167,13 +194,13 @@ Supporting libs:
 - `src/lib/draftAnalytics.ts` — pure steal/reach/position-run engine consumed by `DraftAnalyticsPanel`
 - `src/lib/fantasyLocal.ts` — parse/serialize helpers + storage-key constants for the queue/notes/compare stores
 
-These work with the generated fantasy snapshots (loaded through `useFantasySnapshot`) and `/api/fantasy-data` route described elsewhere in `docs/ai-context`.
+These work with the generated fantasy snapshots (the redraft boards through `useFantasySnapshot`, best ball through `useBestBallSnapshot`, and the weekly board through `useFantasyWeeklySnapshot`) and the `/api/fantasy-data` route described elsewhere in `docs/ai-context`.
 
 ---
 
 ## UI Primitives
 
-The React primitives still in use are `ModernButton`, `ThemeToggle`, `AuthorBio`, and `ServerIcons`. Most UI is composed from the `catalog97.css` classes instead (`.c97-panel`, `.c97-chip`, `.c97-btn`, `.c97-table`), and `WarmCard`, `Heading`, `Paragraph`, `Badge`, `Chip`, `Kicker`, and `SectionIntro` were deleted on 2026-09-27.
+The React primitives still in use are `ModernButton`, `ThemeToggle` (loaded through `DeferredThemeToggle`), `AuthorBio`, and `ServerIcons`. Most UI is composed from the `catalog97.css` classes instead (`.c97-panel`, `.c97-chip`, `.c97-btn`, `.c97-table`), and `WarmCard`, `Heading`, `Paragraph`, `Badge`, `Chip`, `Kicker`, and `SectionIntro` were deleted on 2026-09-27.
 
 Shared primitive rules:
 

@@ -2,6 +2,7 @@
 
 **Date:** 2026-10-18
 **Status:** Superseded on 2026-10-19 by `2026-10-19-about-resume-contact-objects-design.md`. Isaac read this build as PR #613 and did not accept it. The branch stays and carries the replacement.
+**Status, 2026-11-02.** The replacement merged in #613 (`d14ec2632`) on 2026-10-19, with this spec's build (`855761fb1`) as the first commit under it. The `design/about-resume-contact` branch is no longer on GitHub.
 
 ## What this is
 

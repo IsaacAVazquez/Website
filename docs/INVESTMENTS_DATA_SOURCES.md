@@ -1,6 +1,6 @@
 # Investments Data Sources
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-11-02
 
 This is the source, provenance, and public-display ledger for `/investments`.
 Code licensing and market-data display rights are separate questions. A package
@@ -11,9 +11,9 @@ being open source does not grant redistribution rights for the data it fetches.
 | Data | Current source | Runtime | Retention | Public-display status | Decision |
 | --- | --- | --- | --- | --- | --- |
 | Company profiles, statements, ratios, history, beta, and news | `defeatbeta-api==0.0.61`; its published dataset card lists Yahoo Finance, Nasdaq, Treasury, YCharts, StockAnalysis, and other public endpoints | Snapshot build only | Compact snapshots are committed; raw responses are builder inputs | Not yet verified for every upstream source | Temporary. Reject delayed prices, preserve source dates, and replace fundamentals with SEC data plus a licensed market feed. |
-| Market quotes | Finnhub quote API | Request time through `/api/investments/quotes` | 30-second server cache and short browser cache | Written public-display approval has not been recorded | Temporary. Preserve provider trade time and do not describe API response time as market freshness. |
+| Market quotes | Finnhub quote API | Request time through `/api/investments/quotes` | 30-second server cache. A fully priced response also carries a 30-second browser and Netlify CDN cache with 60 seconds of stale-while-revalidate, and the portfolio reuses the quotes it saved in `localStorage` for up to five minutes | Written public-display approval has not been recorded | Temporary. Preserve provider trade time and do not describe API response time as market freshness. |
 | Filings | SEC EDGAR links only | User follows an external link | None | SEC public data, subject to fair-access policy | Expand into the primary statements and filing-provenance source. |
-| User holdings | Browser `localStorage` | Client only | User-controlled browser storage | Symbols are validated (`isValidInvestmentSymbol`) and sent to the quote endpoint; shares, cost basis, notes, and portfolio history stay local; tooltips render via text nodes | Keep portfolio details local unless a deliberate account/sync product decision changes the privacy model. |
+| User holdings | Browser `localStorage` | Client only | User-controlled browser storage | Symbols are validated (`isValidSymbol` in `src/lib/investmentSymbol.ts`) and sent to the quote endpoint; shares, cost basis, notes, and portfolio history stay local; tooltips render via text nodes. Before You Buy keeps its own draft under `before-you-buy-portfolio-v1` and reads only the committed snapshot files, so its symbols never reach the quote endpoint | Keep portfolio details local unless a deliberate account/sync product decision changes the privacy model. |
 
 **Release gate:** Finnhub's published self-serve market-data plans are labeled
 for personal use. Written permission for public quote display or redistribution
@@ -34,10 +34,20 @@ dated price, but only 28 are within the seven-day recency target; 123 are
 explicitly marked delayed. The oldest preserved price is from 2026-02-20. This
 is now visible in the index and interface instead of being counted as fresh.
 
+As of 2026-11-02, the committed index (`priceHealth` in
+`public/data/investments/index.json`, assessed on 2026-10-31) shows all 151
+securities with a price inside the seven-day target, none delayed, and every
+price dated 2026-10-30. The bulk price query described under the expansion gate
+is what keeps price current for symbols the rotation did not reach. The 91 entries flagged `stale` in that index are
+symbols the run did not fully refetch, so their other sections are carried
+forward from their last full fetch.
+
 The quote endpoint has request, symbol, concurrency, and deadline limits, but
-its cache and provider budget are process-local. A multi-instance deployment
-still needs a shared cache and distributed provider quota before quote traffic
-can scale safely.
+its per-symbol quote cache and provider budget are process-local. The CDN copy
+of a fully priced response is shared, but it only answers a request for the
+same symbol list, since the route varies its cache on the query string. A
+multi-instance deployment still needs a shared cache and distributed provider
+quota before quote traffic can scale safely.
 
 ## Target architecture
 
@@ -59,8 +69,12 @@ app used by other people and require a business agreement.
 ## Expansion gate
 
 Do not add more symbols to the current all-sections-per-symbol job. The existing
-151-symbol universe already exceeds the weekday job's time budget, and expanding
-it would make the oldest data older. Expansion should follow a split pipeline:
+151-symbol universe already exceeds the scheduled job's 22-minute fetch budget,
+and expanding it would make the oldest data older. As of 2026-11-02, price
+history is the one section already split out. `write_bulk_prices` in
+`scripts/fetch_investments_data.py`, added on 2026-09-28, fetches it for the
+whole universe in one query at the start of each run, and the other sections
+rotate through the budget stalest first. Expansion should follow a split pipeline:
 
 1. active-security reference data daily;
 2. licensed quotes at request time with provider timestamps;

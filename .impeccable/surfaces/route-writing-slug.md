@@ -8,6 +8,7 @@ related_targets: ["src/app/writing/[slug]/page.tsx","src/components/analytics/Ar
 Updated on 2026-09-28 by the responsive pass. Inline code breaks anywhere, so a long path no longer pushes a phone sideways, and the previous and next links sit side by side from 640px with Next set right, but stack and set left on a phone.
 
 # Article reading view surface brief
+Checked against the code on 2026-11-02.
 
 The `/writing/[slug]` route, rendered by `src/app/writing/[slug]/page.tsx`, with the code copy control in `src/components/analytics/ArticleCodeCopy.tsx`, the end bio in `src/components/ui/AuthorBio.tsx`, and the cover plan in `scripts/data/articleCoverImages.ts`.
 
@@ -33,7 +34,7 @@ Across 56 combinations of four articles, two topic pages and `/investments` at 3
 
 ## False positives worth not re-deriving
 
-The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`. The detector reads nothing useful from Tailwind utility markup, and its broken-image warning in `src/app/writing/[slug]/__tests__/page-content.test.tsx` is a test fixture that never ships. Not-found pages carry two robots tags (`noindex` and `noindex, follow`), and both say noindex, so that is not an indexing bug. The regression sweep's console entries on articles are dev-server warnings about preloaded resources, not errors. `critique-storage latest` on a `route:` target closes the snapshot it reads, so read snapshots by filename or with `trend`.
+The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`. The detector reads nothing useful from Tailwind utility markup, and its broken-image warning in `src/app/writing/[slug]/__tests__/page-content.test.tsx` is a test fixture that never ships. Not-found pages carry two robots tags (`noindex` and `noindex, follow`), and both say noindex, so that is not an indexing bug. The regression sweep's console entries on articles are dev-server warnings about preloaded resources, not errors. `critique-storage latest` on a `route:` target closes the snapshot it reads, so read snapshots by filename or with `trend`. As of 2026-11-02, outside production the CSP in `src/proxy.ts` has allowed `http://localhost:8400` since 2026-09-24 so Impeccable live mode can load its picker, which means a dev server may now load the overlay. The snapshots under `.impeccable/critique/` were untracked on 2026-10-02 (c6ee4f4ed) and are gitignored, so the snapshot files named in this brief are not in the repository.
 
 ## Still open
 
@@ -50,3 +51,7 @@ Pre-fix snapshot `2026-09-14T19-48-31Z__route-writing-slug.md` scored 25/40 (62.
 ## Status, 2026-09-22
 
 This route moved off the bridge. It is composed from Catalog 97 bands inside `Catalog97ToolShell` and reads `--c97-*` directly, so the paragraphs above that describe `--home-*` names, hover-lift cards, radii, or the two-world header describe the state before this date. The contrast figures still need re-measuring against the surfaces the page now declares.
+
+## Status, 2026-11-02
+
+The body is `.c97-article` at `--c97-fs-body` (15px to 16px) in `--c97-ink`, inside the 720px `--c97-column`, so the "16px in muted ink" decision and the P2 about the body token describe the earlier page. The bio line "I write to work through ideas, not to summarize them." was replaced in the bio rewrite of 2026-09-28 (dff79715a), and the related heading "If this piece was useful, these should stack on top of it." is still on the page. A failed clipboard write has shown "Copy failed" and announced "Could not copy the code. Select it and copy it by hand." since 2026-10-02 (198e49312). The one headshot left is the `AuthorBio` portrait, a 64px square on a stone field, and the global 404 prints inside the tool shell as a Catalog 97 misprint sheet. Since 2026-10-21 the article ends on the "-30-" end mark (`ArticleEndMark`), or on an `ArticlePostscript` for the slugs in `ARTICLE_POSTSCRIPTS`, both listed in `docs/EASTER_EGGS.md`. Several tests pin parts of the page. `src/app/writing/[slug]/__tests__/page-content.test.tsx` holds the h1 and the body inside one `<article>` with the related rows outside it, and the topic linked twice, in the breadcrumb and in the kicker above the h1. `e2e/footer-cta.spec.ts` holds `/writing/2026-march-madness-bracket-analysis` to the Catalog 97 footer with its "Pages" nav and without the old "interested in learning more about product management or working together?" line, `e2e/print.spec.ts` prints that article in Firefox's engine with nothing under a filter or blend mode, and `e2e/project-routes.spec.ts` holds `/writing/complete-guide-qa-engineering` to the header's edges at 390, 1440 and 1920.
