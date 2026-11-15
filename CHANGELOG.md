@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Correct race results in nine 2026 F1 posts ([#681](https://github.com/IsaacAVazquez/Website/pull/681)).
 - Bring the markdown docs back in line with the code ([#683](https://github.com/IsaacAVazquez/Website/pull/683)).
+- Add the November 3 repository audit ([#685](https://github.com/IsaacAVazquez/Website/pull/685)).
 
 ---
 
