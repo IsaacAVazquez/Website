@@ -359,3 +359,36 @@
     display: none;
   }
 }
+.abi-edition {
+  min-width: 0;
+  padding-block: var(--c97-sp-2);
+  border-bottom: 1px solid var(--c97-rule);
+}
+.abi-edition summary {
+  min-height: 44px;
+  padding-block: var(--c97-sp-1);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.abi-archive-scroll {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: var(--c97-sp-2);
+}
+.abi-archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+.abi-archive-table :is(th, td) {
+  min-width: 7rem;
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-rule);
+}
+.abi-archive-table caption { text-align: left; }
+.abi-edition :focus-visible {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 2px;
+}

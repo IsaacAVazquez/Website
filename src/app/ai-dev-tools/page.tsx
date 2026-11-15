@@ -6,9 +6,9 @@ import { AiDevToolsClient } from "./ai-dev-tools-client";
 export const metadata = constructMetadata({
   title: "AI Dev Tool Directory",
   description:
-    "Directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and deep-linkable filters.",
+    "Compare coding tools against your working environment and team requirements, save named shortlists, and inspect sourced pricing and model support.",
   canonicalUrl: "/ai-dev-tools",
-  dateModified: laterDate(AI_DEV_TOOLS_GENERATED_AT.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(AI_DEV_TOOLS_GENERATED_AT.slice(0, 10), "2026-10-25"),
 });
 
 interface AiDevToolsPageProps {
@@ -50,8 +50,9 @@ export default async function AiDevToolsPage({ searchParams }: AiDevToolsPagePro
           applicationCategory: "DeveloperApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",
-          dateModified: AI_DEV_TOOLS_GENERATED_AT,
+          dateModified: "2026-10-25",
           featureList: [
+            "Named browser-saved shortlists and requirement comparisons for up to four tools",
             "Filter by category, pricing model, model support, and source status",
             "Deep-linkable tool selection and query state",
             "Tool details with pricing, model support, GitHub stars, release cadence, and source links",

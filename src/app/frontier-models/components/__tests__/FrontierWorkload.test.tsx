@@ -164,10 +164,10 @@ it("retains retired models and explains recalculation with the displayed dataset
     screen.getByRole("region", { name: "Workload comparison" }),
   ).toHaveTextContent("retired-model");
   expect(
-    screen.getByText(/This model is no longer in the displayed dataset/),
+    screen.getByText(/This model is no longer in the dataset on this page/),
   ).toBeVisible();
   expect(
-    screen.getByText(/Recalculated using the displayed dataset/),
+    screen.getByText(/Recalculated with the prices on this page/),
   ).toBeVisible();
   fireEvent.click(
     screen.getByRole("button", { name: "Remove model retired-model" }),

@@ -19,27 +19,32 @@ export const EMPTY_FOOD_RECORD: FoodRecord = {
   visited: false,
   note: "",
 };
+const KNOWN_PLACE_IDS = new Set(FOOD_MAP_PLACES.map((place) => place.id));
+// Records for places that left the catalog are kept, so a visitor's notes
+// survive a delisting. Bounded so a damaged save cannot grow without limit.
+const MAX_UNLISTED_RECORDS = 200;
 export function parseFoodRecords(raw: string): Record<string, FoodRecord> {
   try {
     const data: unknown = JSON.parse(raw);
     if (!isRecord(data)) return {};
+    const rows = Object.entries(data).filter(
+      ([id, row]) =>
+        !(id in Object.prototype) && id.length <= 100 && isRecord(row),
+    ) as [string, Record<string, unknown>][];
     return Object.fromEntries(
-      FOOD_MAP_PLACES.flatMap((place) => {
-        const row = Object.hasOwn(data, place.id) ? data[place.id] : null;
-        return isRecord(row)
-          ? [
-              [
-                place.id,
-                {
-                  saved: row.saved === true,
-                  visited: row.visited === true,
-                  note:
-                    typeof row.note === "string" ? row.note.slice(0, 2000) : "",
-                },
-              ],
-            ]
-          : [];
-      }),
+      [
+        ...rows.filter(([id]) => KNOWN_PLACE_IDS.has(id)),
+        ...rows
+          .filter(([id]) => !KNOWN_PLACE_IDS.has(id))
+          .slice(0, MAX_UNLISTED_RECORDS),
+      ].map(([id, row]) => [
+        id,
+        {
+          saved: row.saved === true,
+          visited: row.visited === true,
+          note: typeof row.note === "string" ? row.note.slice(0, 2000) : "",
+        },
+      ]),
     );
   } catch {
     return {};

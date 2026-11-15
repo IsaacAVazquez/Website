@@ -61,8 +61,9 @@ export interface AiDevTool {
   sourceUrls: AiDevToolSource[];
 }
 
-// Every entry was read against its own pricing, model, and release pages, and
-// against the GitHub API for stars and releases, on 2026-09-28. `latestRelease`
+// The original capability descriptions, stars, and releases were read on
+// 2026-09-28. Pricing and selected model descriptions were checked again on
+// 2026-10-25; toolComparisons.ts keeps that pricing date separate. `latestRelease`
 // is null for a managed product with no dated public changelog entry, since a
 // made-up date would lead the page's "Recently shipped" sort.
 export const AI_DEV_TOOLS_GENERATED_AT = "2026-09-28T08:00:00.000Z";
@@ -118,10 +119,10 @@ export const aiDevTools: AiDevTool[] = [
     surfaces: ["Desktop IDE", "Cloud agents", "MCP"],
     pricingModel: "subscription",
     pricingSummary:
-      "Free Hobby, Pro $20/mo, Pro+ $60/mo, Ultra $200/mo, Teams $40/user/mo Standard or $120/user/mo Premium, Enterprise custom.",
+      "Free, Plus $8/mo, Premium $30/mo, Super $100/mo, Ultra $200/mo, Teams from $30/seat/mo, Enterprise custom. Third-party models cost extra. Earlier plans continue for existing subscribers.",
     modelSupport: "curated-multi-model",
     modelSummary:
-      "Grok, Claude, GPT, Gemini, and Muse Spark models alongside Cursor's own Composer models.",
+      "Grok and Composer, with Anthropic, OpenAI, Google, and other providers on eligible plans. Third-party models use prepaid credit.",
     sourceStatus: "proprietary",
     githubRepo: null,
     githubStars: null,
@@ -150,7 +151,7 @@ export const aiDevTools: AiDevTool[] = [
     pricingModel: "subscription",
     pricingSummary: "Included with Claude Pro $20/mo, Max from $100/mo, Team, Enterprise, or API token billing.",
     modelSupport: "single-provider",
-    modelSummary: "Claude models only, with Fable, Opus, Sonnet, and Haiku tiers depending on plan and settings.",
+    modelSummary: "Claude models, with access depending on the account, plan, and selected provider.",
     sourceStatus: "public-repo",
     githubRepo: "https://github.com/anthropics/claude-code",
     githubStars: 148388,
@@ -186,7 +187,7 @@ export const aiDevTools: AiDevTool[] = [
     latestRelease: null,
     releaseCadence: "managed",
     releaseSummary:
-      "Managed GitHub service. Usage is billed in AI credits at $0.01 each, and a month includes 1,500 on Pro, 7,000 on Pro+, and 20,000 on Max.",
+      "Managed GitHub service with plan-specific AI credit allowances. The October 25 pricing table lists base allowances of 1,000 on Pro, 3,900 on Pro+, and 10,000 on Max.",
     status: "active",
     bestFor: "Teams already living in GitHub who need broad IDE coverage and enterprise controls.",
     watchOut: "Model access, multipliers, and billing rules vary by plan.",
@@ -216,10 +217,10 @@ export const aiDevTools: AiDevTool[] = [
     surfaces: ["CLI", "VS Code", "Cursor", "Windsurf", "Desktop", "Cloud", "GitHub review"],
     pricingModel: "subscription",
     pricingSummary:
-      "Free, Go $8/mo, Plus $20/mo, Pro from $100/mo, Business $20/user/mo billed annually, plus Edu and Enterprise.",
+      "Free, Go $8/mo, Plus $20/mo, Pro $100/$200/$500 per month. Business $25/user/mo monthly or $20 annually, minimum two users. Enterprise and Edu are custom. API billing is separate.",
     modelSupport: "single-provider",
     modelSummary:
-      "GPT-6 Sol and GPT-6 Luna are the recommended models, and the GPT-5.6 family stays available during the rollout. GPT-5.5 retires from Codex on Oct 14, 2026.",
+      "GPT-6.1 Sol and GPT-6 Luna are recommended when available. Other models depend on rollout, account, client, and sign-in method.",
     sourceStatus: "open-source",
     githubRepo: "https://github.com/openai/codex",
     githubStars: 126848,
@@ -275,7 +276,7 @@ export const aiDevTools: AiDevTool[] = [
     surfaces: ["VS Code", "Cursor", "Windsurf", "JetBrains", "CLI", "MCP"],
     pricingModel: "usage-based",
     pricingSummary:
-      "Free open-source extension. Pay for inference at cost through Cline or BYOK, or take ClinePass at $9.99/mo for open-weight models. Enterprise is custom.",
+      "The open-source extension has no seat charge. Inference is billed by usage through Cline or your own provider keys. Enterprise pricing is custom.",
     modelSupport: "byok-multi-provider",
     modelSummary: "Cline provider, OpenRouter, Anthropic, OpenAI, Gemini, Bedrock, Vertex, Ollama, LM Studio, and more.",
     sourceStatus: "open-source",
@@ -338,7 +339,7 @@ export const aiDevTools: AiDevTool[] = [
       "Standard $20/mo flat and Business $100/mo flat, each covering up to 50 seats with that much usage included. Enterprise custom.",
     modelSupport: "curated-multi-model",
     modelSummary:
-      "Claude Fable, Opus, Sonnet, and Haiku, GPT-6 Astra and the GPT-5.6 family, Gemini 3.8 Flash and 3.1 Pro, and Grok 4.6.",
+      "Anthropic, OpenAI, Google, DeepSeek, xAI, and other models, subject to the organization's model settings.",
     sourceStatus: "proprietary",
     githubRepo: null,
     githubStars: null,
@@ -393,7 +394,7 @@ export const aiDevTools: AiDevTool[] = [
     category: "editor-extension",
     surfaces: ["VS Code", "JetBrains", "CLI", "Kilo Gateway", "Teams"],
     pricingModel: "freemium",
-    pricingSummary: "Kilo Code is free and open source. Kilo Pass starts at $19/mo. Teams $15/user/mo.",
+    pricingSummary: "The open-source tool is free. Teams $15/user/mo, optional Kilo Pass from $19/mo. Inference and cloud compute are separate; credit purchases have a 5% processing fee.",
     modelSupport: "byok-multi-provider",
     modelSummary: "500+ models, Kilo Gateway, OpenRouter, Vercel, Bedrock, Azure, Google, local models, and BYOK.",
     sourceStatus: "open-source",

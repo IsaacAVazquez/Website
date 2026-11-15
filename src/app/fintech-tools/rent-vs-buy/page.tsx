@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment, and finds about how many years and months it takes buying to pull ahead.",
   canonicalUrl: "/fintech-tools/rent-vs-buy",
-  dateModified: "2026-10-11",
+  dateModified: "2026-10-25",
   image: "/fintech-tools/rent-vs-buy/opengraph-image",
 });
 

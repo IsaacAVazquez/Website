@@ -8,6 +8,7 @@
 import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
+import { capturePickReview } from "@/lib/scorePools/pickReview";
 import { analyzePoolFixtures, type PoolFixtureAnalysis } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import { DEFAULT_SCORING_RULES } from "@/lib/scorePools/defaults";
@@ -167,10 +168,14 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
   const savePicks = () => {
     if (!activePool) return;
+    const savedAt = new Date().toISOString();
     setSubmissions(
       activePool.id,
-      submissionRows.map((row) => ({ fixtureId: row.fixtureId, score: row.score })),
-      now,
+      submissionRows.map((row) => {
+        const item = analysisResult.analyzed.find((entry) => entry.fixture.id === row.fixtureId);
+        return { fixtureId: row.fixtureId, score: row.score, review: item ? capturePickReview(item, activePool, league?.generatedAt ?? snapshot.generatedAt, savedAt) : undefined };
+      }),
+      savedAt,
     );
     setSaveStatus("saved");
   };

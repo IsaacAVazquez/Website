@@ -186,7 +186,7 @@ export function FrontierWorkload({
         />
       ) : null}
       <p className="frm-workload-note">
-        Prices use the displayed dataset, built{" "}
+        Prices come from the dataset on this page, built{" "}
         {snapshotGeneratedAt.slice(0, 10)}, with curated facts as of{" "}
         {factsAsOf.slice(0, 10)}.{" "}
         {reviewIsOverdue

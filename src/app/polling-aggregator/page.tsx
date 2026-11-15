@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
     "Interactive polling dashboard using VoteHub data for presidential approval, the 2026 generic congressional ballot, and the 2026 Senate and governor races.",
   canonicalUrl: "/polling-aggregator",
   // The later of the redesign and the committed seed, which a daily job refreshes.
-  dateModified: laterDate(pollingSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(pollingSnapshot.generatedAt.slice(0, 10), "2026-10-25"),
 });
 
 interface PollingPageProps {

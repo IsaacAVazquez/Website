@@ -7,6 +7,8 @@ import { BrandGithub } from "@/components/ui/ServerIcons";
 import { useClientNow } from "@/hooks/useClientNow";
 import { formatLongUtcDate } from "@/lib/date-formatters";
 import { SurfaceMap } from "./SurfaceMap";
+import { ToolComparison } from "./ToolComparison";
+import { TOOL_PRICING_CHECKED_AT } from "./toolComparisons";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
   AI_DEV_TOOL_CATEGORY_LABELS,
@@ -298,6 +300,7 @@ export function AiDevToolsClient() {
             A hand-kept directory of the coding assistants and agents people argue about, with
             pricing, model access, GitHub traction, and release cadence side by side.
           </p>
+          <a className="adt-compare-link" href="#tool-comparison">Compare tools and save a shortlist</a>
         </header>
 
         <section className="adt-directory" aria-labelledby="dev-tools-directory">
@@ -360,7 +363,7 @@ export function AiDevToolsClient() {
               {filteredTools.length} of {aiDevTools.length} tools shown
             </p>
             <p className="adt-disclosure">
-              {`Curated by hand · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so directional"}`}
+              {`Stars and releases as of ${updatedAt} · pricing checked ${TOOL_PRICING_CHECKED_AT}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified"}`}
             </p>
             <div className="adt-view">
               <FilterSelect
@@ -401,6 +404,7 @@ export function AiDevToolsClient() {
             </div>
           )}
         </section>
+        <ToolComparison />
       </div>
 
       <ToolDrawer tool={selectedTool} onClose={handleCloseTool} />

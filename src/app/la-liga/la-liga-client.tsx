@@ -30,6 +30,7 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./la-liga-state.core";
+import { PersonalTeams } from "@/components/football/PersonalTeams";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
@@ -206,6 +207,7 @@ export function LaLigaClient({
     <LeagueTableBoard
       config={CONFIG}
       rows={rows}
+      personalTeams={<PersonalTeams league="la-liga" season={summary.season} sourceAt={summary.generatedAt} teams={rows.map((row) => ({ id: row.id, name: row.name, conference: "La Liga", rank: row.position, wins: row.won, losses: row.lost, ties: row.draw }))} onOpen={handleClubChange} />}
       visibleIds={new Set(visibleClubs.map((club) => club.id))}
       views={VIEW_OPTIONS.map((option) => ({
         id: option.id,

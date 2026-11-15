@@ -67,7 +67,7 @@ export function FrontierSavedComparisons({
       <h3>Saved comparisons</h3>
       <p className="frm-workload-note">
         Save up to 20 comparisons in this browser. Loading one recalculates it
-        using the displayed dataset.
+        with the prices on this page.
       </p>
       <form
         className="frm-workload-save-form"
@@ -124,7 +124,7 @@ export function FrontierSavedComparisons({
                   onClick={() => {
                     onLoad(item);
                     setMessage(
-                      `Loaded ${item.name}. Recalculated using the displayed dataset. The saved comparison used the dataset built ${item.snapshotGeneratedAt.slice(0, 10)}.`,
+                      `Loaded ${item.name}. Recalculated with the prices on this page. The saved comparison used the dataset built ${item.snapshotGeneratedAt.slice(0, 10)}.`,
                     );
                   }}
                 >

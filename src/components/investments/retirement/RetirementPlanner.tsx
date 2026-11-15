@@ -9,6 +9,7 @@ import { RetirementProjectionChart } from "./RetirementProjectionChart";
 import { RetirementLevers } from "./RetirementLevers";
 import { RetirementAssumptions } from "./RetirementAssumptions";
 import { RetirementDisclaimer } from "./RetirementDisclaimer";
+import { RetirementScenarios } from "./RetirementScenarios";
 
 interface Props {
   /** Current portfolio value, offered as a one-click balance seed. */
@@ -99,6 +100,7 @@ export function RetirementPlanner({ portfolioValue }: Props) {
         </div>
       </div>
 
+      {ready && <RetirementScenarios plan={controller.plan} onLoad={controller.updatePlan} />}
       {ready && result ? <RetirementAssumptions result={result} /> : null}
       {/* The educational disclaimer carries no data dependency and must stay
           present on every output state — including loading and error — per the

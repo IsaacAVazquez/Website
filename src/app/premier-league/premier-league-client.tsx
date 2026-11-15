@@ -27,6 +27,7 @@ import {
   PREMIER_LEAGUE_VIEW_LABELS,
   PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
+import { PersonalTeams } from "@/components/football/PersonalTeams";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
@@ -181,6 +182,7 @@ export function PremierLeagueClient({
     <LeagueTableBoard
       config={CONFIG}
       rows={rows}
+      personalTeams={<PersonalTeams league="premier-league" season={summary.competition?.seasonLabel ?? ""} sourceAt={summary.generatedAt} teams={rows.map((row) => ({ id: row.id, name: row.name, conference: "Premier League", rank: row.position, wins: row.won, losses: row.lost, ties: row.draw }))} onOpen={handleTeamChange} />}
       visibleIds={new Set(filterStandingsForView(summary.standings, routeState.view).map((r) => r.team.id))}
       views={PREMIER_LEAGUE_VIEW_OPTIONS.map((id) => ({
         id,

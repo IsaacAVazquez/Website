@@ -38,6 +38,7 @@ import { divisionBoard, wildCardBoard } from "./scoreboard";
 import { MlbScoreboard } from "./MlbScoreboard";
 import "@/components/football/sports-board.css";
 import "./mlb.css";
+import { PersonalTeams } from "@/components/football/PersonalTeams";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 import { formatFixed, formatRank } from "@/components/football/fixtureFormat";
@@ -336,6 +337,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </span>
           </p>
         </div>
+
+        <PersonalTeams league="mlb" season={summary.season} sourceAt={summary.generatedAt} teams={standings.map((team) => ({ id: team.id, name: team.name, conference: `${team.league}-${team.division}`, rank: team.divisionRank, wins: team.wins, losses: team.losses, ties: 0 }))} onOpen={handleTeamChange} />
 
         <section id="mlb-standings" className="sb-board" aria-label="MLB standings">
           <div className="sb-toolbar">

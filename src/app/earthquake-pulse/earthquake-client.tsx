@@ -1,5 +1,7 @@
 "use client";
 
+import { SavedPlaces } from "./PlacesWorkspace";
+
 import {
   Fragment,
   useEffect,
@@ -577,6 +579,7 @@ export function EarthquakeClient({
             matter, to where the ground is busiest.
           </p>
         </header>
+        <a className="pw-jump" href="#saved-places">Check earthquakes near a saved place</a>
 
         {!hasData ? (
           <p className="eq-muted">
@@ -708,6 +711,8 @@ export function EarthquakeClient({
             </div>
           </>
         )}
+
+        <SavedPlaces summary={summary} onSelect={(id) => handleSelectQuake(id, true)} />
 
         <p className="eq-source">
           This page reads the public USGS Earthquake Hazards Program feeds each time it loads,

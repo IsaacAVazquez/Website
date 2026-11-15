@@ -57,6 +57,9 @@ it("exports real UTC starts, omits unconfirmed dates, and escapes calendar text"
         status: "SCHEDULED",
       },
       { id: "b", utcDate: "TBD", home: "A", away: "B", status: "SCHEDULED" },
+      { id: "past", utcDate: "2026-10-01T20:00:00Z", home: "A", away: "B", status: "SCHEDULED" },
+      { id: "uncertain", utcDate: "2026-11-01T20:00:00Z", home: "A", away: "B", status: "SCHEDULED", startTimeTbd: true },
+      { id: "conditional", utcDate: "2026-11-01T20:00:00Z", home: "A", away: "B", status: "SCHEDULED", ifNecessary: true },
     ],
     new Date("2026-10-23T12:00:00Z"),
   );

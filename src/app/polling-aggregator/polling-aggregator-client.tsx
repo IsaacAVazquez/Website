@@ -1,5 +1,7 @@
 "use client";
 
+import { FollowedRaces } from "./FollowedRaces";
+
 import { useSearchParams } from "next/navigation";
 import { useClientNow } from "@/hooks/useClientNow";
 import { daysBetween, toLocalDateKey } from "@/lib/date-formatters";
@@ -520,6 +522,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
             recent named poll, averaged from VoteHub as new polls come in.
           </p>
         </header>
+        <a className="pw-jump" href="#followed-races">Follow races and compare readings</a>
 
         <section className="pa-national" aria-label="National polling">
           <TrendChart snapshot={snapshot} />
@@ -592,6 +595,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
             />
           )}
         </section>
+        <FollowedRaces snapshot={snapshot} onSelect={(id, office) => navigate({ view: office === "Senate" ? "senate" : "governors", race: id })} />
       </div>
     </div>
   );

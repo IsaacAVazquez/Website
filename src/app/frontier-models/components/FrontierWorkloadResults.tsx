@@ -63,7 +63,7 @@ export function FrontierWorkloadResults({
                     </button>
                   </th>
                   <td colSpan={4}>
-                    This model is no longer in the displayed dataset. Remove it
+                    This model is no longer in the dataset on this page. Remove it
                     or choose a replacement.
                   </td>
                 </tr>

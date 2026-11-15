@@ -44,6 +44,8 @@ AI-oriented technical references:
 Subsystem references (current):
 
 - `PROJECT_TOOL_WORKFLOWS.md` - saved decisions, meal planning, trip costs and calendar export, transit commutes, own team records, and payment channel comparisons
+- `PROJECT_FOLLOWING_WORKFLOWS.md` - following and saved research on the developer tools, startup tracker, SpaceX, golf, polling, and earthquake routes
+- `PROJECT_COMPARISON_WORKFLOWS.md` - saved retirement plans, score pool pick review, and the weekly agent index archive
 
 - `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
 - `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools

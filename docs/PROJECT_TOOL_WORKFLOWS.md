@@ -1,5 +1,7 @@
 # Project tool workflows
 
+The six following and research workflows added on October 25, 2026 are documented in [Project following workflows](PROJECT_FOLLOWING_WORKFLOWS.md).
+
 I added these workflows on October 22, 2026. The tools keep their existing routes and designs. Personal records stay in the visitor's browser, and downloads start only when the visitor chooses them.
 
 | Project | Workflow | Storage |

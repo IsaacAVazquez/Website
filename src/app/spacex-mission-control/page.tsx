@@ -13,7 +13,7 @@ export const metadata = constructMetadata({
   image: "/spacex-mission-control/opengraph-image",
   // The page changes with every snapshot refresh, so it is dated by the snapshot.
   // The later of the redesign and the committed snapshot.
-  dateModified: laterDate(getSpaceXSnapshot().generatedAt?.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(getSpaceXSnapshot().generatedAt?.slice(0, 10), "2026-10-25"),
 });
 
 interface SpaceXMissionControlPageProps {

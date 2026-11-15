@@ -1,6 +1,11 @@
 import { isRecord } from "./utils";
 import { escapeCalendarText, foldCalendarLine } from "./travelExtras";
 
+export type PersonalLeague = "nba" | "nfl" | "premier-league" | "la-liga" | "mlb";
+export function standingRankLabel(league: PersonalLeague) {
+  return league === "mlb" ? "Division rank" : league === "premier-league" || league === "la-liga" ? "League rank" : "Conference rank";
+}
+
 export interface PersonalStanding {
   id: string;
   name: string;
@@ -21,6 +26,8 @@ export interface PersonalFixture {
   home: string;
   away: string;
   status: string;
+  startTimeTbd?: boolean;
+  ifNecessary?: boolean;
 }
 const validId = (id: unknown): id is string =>
   typeof id === "string" && /^[a-zA-Z0-9_-]{1,50}$/.test(id);
@@ -130,7 +137,7 @@ export function standingsChanges(
   });
 }
 export function sportsCalendar(
-  league: "nba" | "nfl",
+  league: PersonalLeague,
   name: string,
   fixtures: PersonalFixture[],
   now = new Date(),
@@ -150,7 +157,8 @@ export function sportsCalendar(
     if (
       !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(fixture.utcDate) ||
       !Number.isFinite(Date.parse(fixture.utcDate)) ||
-      /POSTPONED|CANCELLED|TBD/i.test(fixture.status)
+      Date.parse(fixture.utcDate) <= now.getTime() ||
+      /POSTPONED|CANCELLED|CANCELED|TBD/i.test(fixture.status) || fixture.startTimeTbd || fixture.ifNecessary
     )
       continue;
     const start = new Date(fixture.utcDate)

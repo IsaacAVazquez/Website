@@ -75,6 +75,7 @@ interface LeagueTableBoardProps<V extends string> {
   assists: LeaderLedgerEntry[];
   /** The club drawer, rendered inside the root so it reads the route's palette. */
   drawer: ReactNode;
+  personalTeams?: ReactNode;
 }
 
 const RESULT_WORD: Record<FormResult, string> = { W: "won", D: "drew", L: "lost" };
@@ -111,6 +112,7 @@ export function LeagueTableBoard<V extends string>({
   scorers,
   assists,
   drawer,
+  personalTeams,
 }: LeagueTableBoardProps<V>) {
   const clubCount = rows.length;
   const visibleRows = rows.filter((row) => visibleIds.has(row.id));
@@ -179,6 +181,7 @@ export function LeagueTableBoard<V extends string>({
           ) : null}
         </div>
 
+        {personalTeams}
         {clubCount === 0 ? (
           <p className="lt-empty">The table fills in once the next standings snapshot publishes.</p>
         ) : (

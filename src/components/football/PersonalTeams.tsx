@@ -11,6 +11,8 @@ import {
   type PersonalStanding,
   type PersonalFixture,
   type SportsObservation,
+  type PersonalLeague,
+  standingRankLabel,
 } from "@/lib/sportsPersonal";
 import {
   readBrowserStorageString,
@@ -25,13 +27,14 @@ function FavoriteSchedule({
   team,
   onOpen,
 }: {
-  league: "nba" | "nfl";
+  league: PersonalLeague;
   team: PersonalStanding;
   onOpen: (id: string) => void;
 }) {
   const [fixtures, setFixtures] = useState<PersonalFixture[]>([]);
   const [status, setStatus] = useState("Loading published schedule…");
   const [retry, setRetry] = useState(0);
+  const hasDownload = sportsCalendar(league, team.name, fixtures).includes("BEGIN:VEVENT");
   useEffect(() => {
     const controller = new AbortController();
     fetch(`/api/${league}/teams/${encodeURIComponent(team.id)}`, {
@@ -40,21 +43,26 @@ function FavoriteSchedule({
       .then(async (response) => {
         if (!response.ok) throw new Error("Schedule unavailable");
         const data = await response.json();
-        if (!Array.isArray(data.upcomingFixtures))
+        const upcoming = league === "mlb" ? data.upcomingGames : data.upcomingFixtures;
+        if (!Array.isArray(upcoming))
           throw new Error("Schedule unavailable");
-        const rows: PersonalFixture[] = data.upcomingFixtures.map(
+        const rows: PersonalFixture[] = upcoming.map(
           (fixture: {
             id: string;
             utcDate: string;
             status: string;
             homeTeam: { shortName: string };
             awayTeam: { shortName: string };
+            startTimeTbd?: boolean;
+            ifNecessary?: boolean;
           }) => ({
             id: fixture.id,
             utcDate: fixture.utcDate,
             status: fixture.status,
             home: fixture.homeTeam.shortName,
             away: fixture.awayTeam.shortName,
+            startTimeTbd: fixture.startTimeTbd,
+            ifNecessary: fixture.ifNecessary,
           }),
         );
         if (!controller.signal.aborted) {
@@ -84,7 +92,7 @@ function FavoriteSchedule({
         </button>
         <span>
           {team.wins}-{team.losses}
-          {team.ties ? `-${team.ties}` : ""} · Conference rank{" "}
+          {team.ties ? `-${team.ties}` : ""} {league === "premier-league" || league === "la-liga" ? "(wins-losses-draws)" : ""} · {standingRankLabel(league)}{" "}
           {team.rank || "unavailable"}
         </span>
       </div>
@@ -101,12 +109,13 @@ function FavoriteSchedule({
       {fixtures.slice(0, 3).map((fixture) => (
         <p key={fixture.id}>
           {fixture.away} at {fixture.home} ·{" "}
-          {Number.isFinite(Date.parse(fixture.utcDate))
+          {!fixture.startTimeTbd && Number.isFinite(Date.parse(fixture.utcDate))
             ? formatDateTime(fixture.utcDate)
             : "Time unconfirmed"}
         </p>
       ))}
-      {fixtures.length > 0 && (
+      {fixtures.length > 0 && !hasDownload && <p>No confirmed future games are available to download.</p>}
+      {hasDownload && (
         <button
           className="c97-btn-ghost"
           type="button"
@@ -132,7 +141,7 @@ export function PersonalTeams({
   teams,
   onOpen,
 }: {
-  league: "nba" | "nfl";
+  league: PersonalLeague;
   season: string;
   sourceAt: string;
   teams: PersonalStanding[];
@@ -243,12 +252,13 @@ export function PersonalTeams({
           Downloads contain the upcoming games published in the snapshot with
           confirmed times. Reimport a new download after schedule changes.
         </small>
-        <h2>Changes between observed snapshots</h2>
+        {favorites.value.filter((id) => !teams.some((team) => team.id === id)).map((id) => <p key={id}>{id} (unavailable in this snapshot) <button className="c97-btn-ghost" type="button" onClick={() => favorites.update((latest) => latest.filter((item) => item !== id))}>Remove favorite {id}</button></p>)}
+        <h2>Standings changes between your visits</h2>
         {prior ? (
           <>
             <p>
               Comparing {prior.sourceAt} with {sourceAt}. These are snapshots
-              seen in this browser. Rank changes use conference rank and may
+              seen in this browser. Rank changes use {standingRankLabel(league).toLowerCase()} and may
               include source corrections.
             </p>
             <div
@@ -258,14 +268,14 @@ export function PersonalTeams({
               aria-label="Standings changes"
             >
               <table>
-                <caption>Conference rank and record changes</caption>
+                <caption>{standingRankLabel(league)} and record changes</caption>
                 <thead>
                   <tr>
                     <th scope="col">Team</th>
                     <th scope="col">Rank movement</th>
                     <th scope="col">Wins added</th>
                     <th scope="col">Losses added</th>
-                    {league === "nfl" && <th scope="col">Ties added</th>}
+                    {league !== "nba" && league !== "mlb" && <th scope="col">{league === "nfl" ? "Ties" : "Draws"} added</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -286,7 +296,7 @@ export function PersonalTeams({
                         </td>
                         <td>{team.winsChange}</td>
                         <td>{team.lossesChange}</td>
-                        {league === "nfl" && <td>{team.tiesChange}</td>}
+                        {league !== "nba" && league !== "mlb" && <td>{team.tiesChange}</td>}
                       </tr>
                     ))}
                 </tbody>
@@ -295,8 +305,8 @@ export function PersonalTeams({
           </>
         ) : (
           <p>
-            This is the first observed snapshot for this season. Changes appear
-            after this browser sees a newer snapshot.
+            This browser is seeing this season&apos;s standings for the first time, so
+            changes show up after the next refresh.
           </p>
         )}
         {message && <p role="status">{message}</p>}

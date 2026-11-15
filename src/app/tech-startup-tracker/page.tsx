@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "Curated dashboard of notable tech startups by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
   canonicalUrl: "/tech-startup-tracker",
-  dateModified: laterDate(techStartupSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(techStartupSnapshot.generatedAt.slice(0, 10), "2026-10-25"),
 });
 
 interface TechStartupPageProps {

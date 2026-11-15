@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-10-21T09:08:04.417Z",
         "reason": "Agent review: the remaining side border is the mobile transit diagram rail connecting station markers; it is map geometry, not a card accent."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/ai-dev-tools/ai-dev-tools.css"
+        ],
+        "createdAt": "2026-10-25T21:10:24.427Z",
+        "reason": "Review: this stripe appears only on .adt-row[aria-pressed=\"true\"] to identify the selected directory row. It is a functional selection indicator, present since commit 414338fbc on 2026-10-12, and is not a decorative card border."
       }
     ]
   }

@@ -2,6 +2,9 @@ import { act, cleanup, renderHook } from "@testing-library/react";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { createPool, SCORE_POOLS_STORAGE_KEY } from "@/lib/scorePools/persistence";
 import { useScorePools } from "../useScorePools";
+import { capturePickReview } from "@/lib/scorePools/pickReview";
+import { analyzePoolFixtures } from "@/lib/scorePools/poolAnalysis";
+import { fixture, league } from "@/app/score-pools/__tests__/fixtures/scorePoolsTestData";
 
 function stored() {
   const raw = window.localStorage.getItem(SCORE_POOLS_STORAGE_KEY);
@@ -42,6 +45,20 @@ describe("useScorePools", () => {
     expect(result.current.store).toEqual({ version: 1, activePoolId: null, pools: [] });
     expect(result.current.pools).toEqual([]);
     expect(result.current.activePool).toBeNull();
+  });
+
+  it("preserves the original reading when the same sheet is saved again", () => {
+    const { result } = renderHook(() => useScorePools());
+    act(() => { result.current.addPool("test-league", "Office"); });
+    const pool = result.current.activePool!;
+    const game = fixture();
+    const at = new Date().toISOString();
+    const analysis = analyzePoolFixtures([game], league(), pool, at).analyzed[0];
+    const review = capturePickReview(analysis, pool, league().generatedAt)!;
+    const score = review.recommended.score;
+    act(() => { result.current.setSubmissions(pool.id, [{ fixtureId: game.id, score, review }], at); });
+    act(() => { result.current.setSubmissions(pool.id, [{ fixtureId: game.id, score, review: { ...review, sourceAt: "2026-11-01T00:00:00Z" } }], "2026-11-01T00:00:00Z"); });
+    expect(result.current.activePool!.submissions[game.id]).toEqual({ score, submittedAt: at, review });
   });
 
   it("falls back to an empty store on corrupt or wrong-version storage", () => {

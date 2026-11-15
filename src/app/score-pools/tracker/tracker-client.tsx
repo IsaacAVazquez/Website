@@ -8,6 +8,7 @@
 import { useId, useMemo, useState } from "react";
 import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
+import { PickReview } from "../PickReview";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
@@ -350,6 +351,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                 No saved picks yet. Save a submission from the pick sheet and it lands here.
               </p>
             )}
+
+            <PickReview pool={activePool} league={league} />
 
             {needsResult.length > 0 ? (
               <section aria-label="Missing results">

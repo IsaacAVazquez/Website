@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
   canonicalUrl: "/earthquake-pulse",
   image: "/earthquake-pulse/opengraph-image",
   // The later of the redesign and the committed fallback snapshot.
-  dateModified: laterDate(earthquakeSnapshot.summary.generatedAt?.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(earthquakeSnapshot.summary.generatedAt?.slice(0, 10), "2026-10-25"),
 });
 
 interface EarthquakePageProps {

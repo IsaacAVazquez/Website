@@ -37,3 +37,9 @@ it("adds a restaurant once per date, preserves other stops, and rejects dates ou
   expect(addFoodToTrip(trip, FOOD_MAP_PLACES[0], "2026-02-30")).toBe(trip);
   expect(addFoodToTrip(trip, FOOD_MAP_PLACES[0], "2026-11-04")).toBe(trip);
 });
+
+it("keeps a record for a place that is no longer in the catalog", () => {
+  expect(
+    parseFoodRecords('{"delisted-place":{"saved":true,"note":"go back"}}'),
+  ).toEqual({ "delisted-place": { saved: true, visited: false, note: "go back" } });
+});
