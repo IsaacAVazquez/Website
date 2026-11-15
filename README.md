@@ -84,6 +84,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/fintech-tools/budget-planner` | Budget planner |
 | `/fintech-tools/interchange-iq` | Interchange fee analyzer |
 | `/fintech-tools/rent-vs-buy` | Rent vs buy calculator |
+| `/fintech-tools/offer-comparison` | Offer comparison calculator |
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
 | `/enablement-assistant` | Automation platform enablement assistant |

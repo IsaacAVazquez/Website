@@ -26,6 +26,7 @@ const FINTECH = new Set([
   "interchange-iq",
   "budget-planner",
   "rent-vs-buy-calculator",
+  "offer-comparison",
 ]);
 const AI = new Set([
   "frontier-model-tracker",

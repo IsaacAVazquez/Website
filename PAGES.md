@@ -61,6 +61,7 @@ Current route inventory and page ownership for the live app.
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 | `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Rent vs buy calculator over a month-by-month net-worth model (`src/lib/rentVsBuy/*`, educational only) |
+| `/fintech-tools/offer-comparison` | `src/app/fintech-tools/offer-comparison/page.tsx` | Offer comparison calculator for two or three job offers over a four year vest (`src/lib/offerComparison.ts`, pre-tax, saved in the browser under `offer_comparison_v1`) |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Full-time and internship job search tracker polling the public job boards of the tech companies in `src/constants/mba-companies.ts` for business and tech PM roles, with a career page link for the companies marked `manual` (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev file sync) |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Automation platform enablement assistant and program dashboard |
