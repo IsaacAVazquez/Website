@@ -4,6 +4,8 @@ I reviewed the feature and fix commits from October 7 through October 12, includ
 
 The five findings below record the original reproductions. I fixed them in a checkout from before #596 and added regression tests for the saved data and navigation failures, and the status section at the end says which of those fixes merged and how they changed.
 
+Status on November 2, 2026. The fixes that status section describes merged in PR #607 on October 14, and PR #609 on October 15 moved Food Map and Decision Lab to read their state from the URL only. The three smaller problems it lists as open are unchanged in the code. `scripts/jobSearch/dumpCandidates.ts` still merges inbox entries without the check against known roles, the candidate save in `src/hooks/useMBAApplications.ts` still drops a failed save without a message, a failed pipeline save still reports only its status code, and Save to pipeline still removes the candidate at once while the application is pushed 500 ms later. All ten of the October 12 audit's issues are fixed, the tenth in PR #637 on October 22.
+
 ## Fixes on October 14, as first written
 
 This section and the verification at the end describe that older checkout. The normal development command now binds to loopback, and an explicit hostname override disables the private file bridge. The API validates the raw Host and Origin headers, rejects malformed arrays and invalid records, and uses a content hash for each revision. Sourcing reads the latest candidate and pipeline files after fetching, and its final write shares a lock with API saves. Interrupted writers leave a lock with recovery instructions, so recovery requires stopping writers before removing it.

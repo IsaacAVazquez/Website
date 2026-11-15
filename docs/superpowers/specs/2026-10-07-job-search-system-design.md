@@ -2,6 +2,7 @@
 
 **Date:** 2026-10-07
 **Status:** Approved in conversation on 2026-10-07. Implementation on `feat/job-search-system`.
+**Status, 2026-11-02.** Merged as #577 (`0becae35a`) on 2026-10-07. The Sync section changed after that. Since #607 (2026-10-14) the route answers only when `JOB_SEARCH_PRIVATE_SYNC=1` and the request's `Host` is loopback, and `npm run dev` sets that flag through `scripts/dev.cjs` unless a hostname is passed or the flag is already `0`. The revision is a SHA-256 hash of the file's contents in place of its modification time. Since #609 (2026-10-15) the page's pipeline and candidates hooks sync only in a server that launcher started. `docs/JOB_SEARCH_PRIVATE_DATA.md` describes the current contract.
 
 ## What this is
 

@@ -2,6 +2,7 @@
 
 **Date:** 2026-10-13
 **Status:** Isaac asked for this on 2026-10-12 ("I want to redesign all of the fantasy football stuff") and again on 2026-10-13. I drew three directions as comps, chose one, and started the build the same night. He had not weighed in on the direction when the build started, so the choice is mine until he says otherwise, and the structure below holds under any of the three.
+**Status, 2026-11-02.** Built from the Board direction and merged as #598 (`c23c39ef6`) on 2026-10-14, right after #596, which it was stacked on. Isaac's GitHub account merged both. The kit is `src/components/fantasy/fantasy.css`, the product shell is `src/app/fantasy-football/layout.tsx`, and `docs/FANTASY_FOOTBALL_KIT.md` documents them.
 
 ## What this is
 

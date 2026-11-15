@@ -3,6 +3,7 @@
 **Date:** 2026-09-25
 **Status:** Direction, scope, ink set, and the shared rules approved in conversation on 2026-09-25. The per-project designs below await review.
 **Status, 2026-09-27.** Complete. All 33 project routes shipped and merged on 2026-09-27, PR 0 as #470, PR 1 as #471, PR 2 as #477 (a re-land of #474 after its stacked base merged), PR 3 as #478, PR 4 as #480, and PR 5 as #482. The unification close-out PR followed as #483 and deleted `HomeStatsPanel`, its `.home-stats-*` styles, and the `.tool-*` block once nothing read them.
+**Status, 2026-11-02.** Superseded by `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, which lets each project route leave the shared print shop system this spec kept. That spec's pilots merged in #582 on 2026-10-11 and the remaining routes through #595 on 2026-10-12. Its close-out merged in #596 on 2026-10-14 and deleted `Catalog97ProjectHero` and `src/constants/projectPress.ts`, which this spec's PR 0 (#470) added. The `/design/catalog-pages` canvas named under Open items was deleted in #551 on 2026-10-02.
 
 ## What this is
 

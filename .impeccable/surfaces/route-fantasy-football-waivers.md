@@ -13,6 +13,8 @@ Updated on 2026-09-28 by the responsive pass. The page uses the site gutter thro
 
 # Fantasy Football Waiver Targets
 
+Checked against the code on 2026-11-02.
+
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Mode
@@ -55,6 +57,12 @@ then labeled pairs with Gap first and bold, measured at 390 as a 316px list with
 on screen. From `md` up the table puts Gap directly after Player inside a labeled, focusable
 region.
 
+As of 2026-11-02 Gap still comes first on a phone, and since 2026-10-13 (8f7b870a0) the phone list
+reads as a table reflowed. Its values sit in five columns under one head pinned above the list (Gap, Board,
+Rank, Percentile, Rostered), and each row keeps its labels for assistive tech while the kit's
+`ffb-pairs-cols` hides them on screen. `weekly-client.test.tsx` holds a row's labels and the head
+to those five in that order.
+
 The freshness stamp was the second. `page.tsx` pins the route to the flex board and the
 client derived source and staleness from that board alone, so the header read "Sep 10, 7:26 PM
 · Current · 157 experts" while six of nineteen PPR rows came from the quarterback board, whose
@@ -81,8 +89,26 @@ credentials-mode mismatch are recorded, not fixed. The cap needs a product decis
 whether the list is "everyone who clears the gap" or "the top twenty", and the copy currently
 promises the former.
 
+As of 2026-11-02 the cap is biting and the preload item is fixed. Run against the committed
+`public/data/fantasy/weekly.json` (2026 Week 8, generated 2026-11-02T23:54Z),
+`getFantasyWeeklyWaiverCandidates` finds 43 players who clear the gap in PPR, 43 in Half PPR, and
+41 in Standard. Its default `limit = 20` leaves the page listing 20 in each format, and in PPR the
+count line reads "20 players clear the gap in PPR scoring", so the product decision above is now
+due. On 2026-09-13 (8dfa27dd2) the preload took `crossOrigin: "anonymous"`, which makes it a CORS
+request like the client's fetch, and I did not check Chrome's console after that change. The
+repeated opening sentence under the h2 still stands.
+
+The method's opening sentence is deliberate as of 2026-10-13. The move onto the kit dropped it
+that day (ecdc01bd5), the fix round the same day put it back (8f7b870a0), and
+`weekly-client.test.tsx` now pins it ("opens the method with the sentence that says what the list
+is"), so it is a pinned string.
+
 ## Frame removal, 2026-10-12
 
 Part of the project sovereign design's fantasy group (G3), frame removal only, and the waiver reading above stands. The route shares `weekly-client.tsx` with the weekly board, so the hero, plate, seam, and poster heads came off both together, and the weekly brief's section of the same date has the detail. The waiver header keeps its orienting copy and prints the flex and quarterback dates and expert counts as one muted line, with the staleness label in the negative colour when it is stale.
 
 Verified on a production build on 2026-10-12. The scoring toggle is at y343 at 1440 (from y855) and y483 at 390 (from 810), and the first waiver row at y1396 at 1440 (from 1938). No contrast failures, 0 layout fails, and the `project-workflows.spec.ts` waivers test passes on dev and production.
+
+## My team, 2026-09-15
+
+The saved team recorded in the weekly brief under "My team, 2026-09-15" is on this route too. For a saved team it puts "Compare an add and a drop" ahead of the lineup here, since that comparison works from the players marked available, which are the saved waiver targets. The `project-workflows.spec.ts` waivers test ("waivers saves a player marked available in the league") drives it through the "Find a player to roster or mark available" search box and the "Available in my league: <name>" toggle, whose pressed state has to survive a reload.
