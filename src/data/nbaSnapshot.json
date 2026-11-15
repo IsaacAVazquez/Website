@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-15T15:43:14.890Z",
+  "generatedAt": "2026-11-15T21:05:58.408Z",
   "updatedAt": "2026-11-15",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -41,18 +41,18 @@
         "division": null,
         "conferenceSeed": 2,
         "position": 2,
-        "wins": 10,
+        "wins": 11,
         "losses": 3,
-        "winPercent": 0.7692308,
-        "gamesBack": 0.5,
-        "gamesPlayed": 13,
-        "pointsFor": 111.15385,
-        "pointsAgainst": 109.38461,
-        "pointDifferential": 23,
-        "streak": "W1",
-        "homeRecord": "5-2",
+        "winPercent": 0.78571427,
+        "gamesBack": 0,
+        "gamesPlayed": 14,
+        "pointsFor": 112.57143,
+        "pointsAgainst": 110.42857,
+        "pointDifferential": 30,
+        "streak": "W2",
+        "homeRecord": "6-2",
         "awayRecord": "5-1",
-        "lastTen": "7-3"
+        "lastTen": "8-2"
       },
       {
         "id": "det",
@@ -218,16 +218,16 @@
         "conferenceSeed": 10,
         "position": 10,
         "wins": 5,
-        "losses": 8,
-        "winPercent": 0.3846154,
-        "gamesBack": 5.5,
-        "gamesPlayed": 13,
-        "pointsFor": 111.15385,
-        "pointsAgainst": 113.23077,
-        "pointDifferential": -27,
-        "streak": "W2",
+        "losses": 9,
+        "winPercent": 0.35714287,
+        "gamesBack": 6,
+        "gamesPlayed": 14,
+        "pointsFor": 112.07143,
+        "pointsAgainst": 114.5,
+        "pointDifferential": -34,
+        "streak": "L1",
         "homeRecord": "2-4",
-        "awayRecord": "3-3",
+        "awayRecord": "3-4",
         "lastTen": "3-7"
       },
       {
@@ -952,6 +952,32 @@
   ],
   "recentFixtures": [
     {
+      "id": "401909985",
+      "utcDate": "2026-11-15T18:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "phi",
+        "name": "Philadelphia 76ers",
+        "shortName": "76ers",
+        "abbreviation": "PHI",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png"
+      },
+      "awayTeam": {
+        "id": "ind",
+        "name": "Indiana Pacers",
+        "shortName": "Pacers",
+        "abbreviation": "IND",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 131,
+        "away": 124
+      }
+    },
+    {
       "id": "401909982",
       "utcDate": "2026-11-15T01:00Z",
       "status": "FINISHED",
@@ -1184,61 +1210,9 @@
         "home": 125,
         "away": 118
       }
-    },
-    {
-      "id": "401909298",
-      "utcDate": "2026-11-14T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "mia",
-        "name": "Miami Heat",
-        "shortName": "Heat",
-        "abbreviation": "MIA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png"
-      },
-      "awayTeam": {
-        "id": "cle",
-        "name": "Cleveland Cavaliers",
-        "shortName": "Cavaliers",
-        "abbreviation": "CLE",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 133,
-        "away": 121
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "401909985",
-      "utcDate": "2026-11-15T18:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "phi",
-        "name": "Philadelphia 76ers",
-        "shortName": "76ers",
-        "abbreviation": "PHI",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png"
-      },
-      "awayTeam": {
-        "id": "ind",
-        "name": "Indiana Pacers",
-        "shortName": "Pacers",
-        "abbreviation": "IND",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
     {
       "id": "401909986",
       "utcDate": "2026-11-15T21:00Z",
@@ -1466,6 +1440,32 @@
         "shortName": "Magic",
         "abbreviation": "ORL",
         "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909995",
+      "utcDate": "2026-11-17T00:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "cle",
+        "name": "Cleveland Cavaliers",
+        "shortName": "Cavaliers",
+        "abbreviation": "CLE",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
+      },
+      "awayTeam": {
+        "id": "chi",
+        "name": "Chicago Bulls",
+        "shortName": "Bulls",
+        "abbreviation": "CHI",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
       },
       "score": {
         "winner": null,
@@ -1792,6 +1792,32 @@
       },
       "recentFixtures": [
         {
+          "id": "401909985",
+          "utcDate": "2026-11-15T18:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 131,
+            "away": 124
+          }
+        },
+        {
           "id": "401909976",
           "utcDate": "2026-11-13T00:00Z",
           "status": "FINISHED",
@@ -1894,61 +1920,9 @@
             "home": 119,
             "away": 95
           }
-        },
-        {
-          "id": "401909922",
-          "utcDate": "2026-11-05T00:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "det",
-            "name": "Detroit Pistons",
-            "shortName": "Pistons",
-            "abbreviation": "DET",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
-          },
-          "awayTeam": {
-            "id": "phi",
-            "name": "Philadelphia 76ers",
-            "shortName": "76ers",
-            "abbreviation": "PHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 106,
-            "away": 112
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909985",
-          "utcDate": "2026-11-15T18:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "phi",
-            "name": "Philadelphia 76ers",
-            "shortName": "76ers",
-            "abbreviation": "PHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
-          },
-          "awayTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909997",
           "utcDate": "2026-11-17T00:30Z",
@@ -2052,22 +2026,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909317",
+          "utcDate": "2026-11-25T22:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "mia",
+            "name": "Miami Heat",
+            "shortName": "Heat",
+            "abbreviation": "MIA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
-          "L",
           "W",
           "L",
-          "W"
+          "W",
+          "L"
         ],
         "wins": 3,
         "losses": 2,
-        "pointsFor": 558,
-        "pointsAgainst": 581
+        "pointsFor": 577,
+        "pointsAgainst": 599
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "mil": {
       "team": {
@@ -2359,7 +2359,7 @@
         "pointsFor": 500,
         "pointsAgainst": 585
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "chi": {
       "team": {
@@ -2651,7 +2651,7 @@
         "pointsFor": 587,
         "pointsAgainst": 609
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "cle": {
       "team": {
@@ -2943,7 +2943,7 @@
         "pointsFor": 572,
         "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 566,
         "pointsAgainst": 473
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "lac": {
       "team": {
@@ -3527,7 +3527,7 @@
         "pointsFor": 596,
         "pointsAgainst": 610
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "mem": {
       "team": {
@@ -3819,7 +3819,7 @@
         "pointsFor": 604,
         "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "atl": {
       "team": {
@@ -4111,7 +4111,7 @@
         "pointsFor": 614,
         "pointsAgainst": 607
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "mia": {
       "team": {
@@ -4403,7 +4403,7 @@
         "pointsFor": 599,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "cha": {
       "team": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 495,
         "pointsAgainst": 570
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "utah": {
       "team": {
@@ -4987,7 +4987,7 @@
         "pointsFor": 535,
         "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "sac": {
       "team": {
@@ -5279,7 +5279,7 @@
         "pointsFor": 527,
         "pointsAgainst": 581
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "ny": {
       "team": {
@@ -5571,7 +5571,7 @@
         "pointsFor": 572,
         "pointsAgainst": 508
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 608,
         "pointsAgainst": 563
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "orl": {
       "team": {
@@ -6155,7 +6155,7 @@
         "pointsFor": 560,
         "pointsAgainst": 550
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "dal": {
       "team": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 578,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 583,
         "pointsAgainst": 598
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "den": {
       "team": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 581,
         "pointsAgainst": 547
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "ind": {
       "team": {
@@ -7047,6 +7047,32 @@
         "primaryColor": "0c2340"
       },
       "recentFixtures": [
+        {
+          "id": "401909985",
+          "utcDate": "2026-11-15T18:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 131,
+            "away": 124
+          }
+        },
         {
           "id": "401909296",
           "utcDate": "2026-11-14T00:00Z",
@@ -7150,61 +7176,9 @@
             "home": 102,
             "away": 114
           }
-        },
-        {
-          "id": "401909927",
-          "utcDate": "2026-11-05T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "mem",
-            "name": "Memphis Grizzlies",
-            "shortName": "Grizzlies",
-            "abbreviation": "MEM",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
-          },
-          "awayTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 103,
-            "away": 107
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909985",
-          "utcDate": "2026-11-15T18:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "phi",
-            "name": "Philadelphia 76ers",
-            "shortName": "76ers",
-            "abbreviation": "PHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
-          },
-          "awayTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401910008",
           "utcDate": "2026-11-19T00:00Z",
@@ -7308,22 +7282,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909328",
+          "utcDate": "2026-11-28T00:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "awayTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W",
           "L",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 3,
-        "losses": 2,
-        "pointsFor": 551,
-        "pointsAgainst": 547
+        "wins": 2,
+        "losses": 3,
+        "pointsFor": 568,
+        "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "no": {
       "team": {
@@ -7615,7 +7615,7 @@
         "pointsFor": 540,
         "pointsAgainst": 680
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "det": {
       "team": {
@@ -7907,7 +7907,7 @@
         "pointsFor": 605,
         "pointsAgainst": 621
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 537,
         "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "hou": {
       "team": {
@@ -8491,7 +8491,7 @@
         "pointsFor": 556,
         "pointsAgainst": 545
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "sa": {
       "team": {
@@ -8783,7 +8783,7 @@
         "pointsFor": 618,
         "pointsAgainst": 512
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 549,
         "pointsAgainst": 531
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "okc": {
       "team": {
@@ -9367,7 +9367,7 @@
         "pointsFor": 565,
         "pointsAgainst": 526
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 586,
         "pointsAgainst": 527
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "por": {
       "team": {
@@ -9951,7 +9951,7 @@
         "pointsFor": 582,
         "pointsAgainst": 567
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "gs": {
       "team": {
@@ -10243,7 +10243,7 @@
         "pointsFor": 577,
         "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     },
     "wsh": {
       "team": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 559,
         "pointsAgainst": 633
       },
-      "generatedAt": "2026-11-15T15:43:14.890Z"
+      "generatedAt": "2026-11-15T21:05:58.408Z"
     }
   }
 }
