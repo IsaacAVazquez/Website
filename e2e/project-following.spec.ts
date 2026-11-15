@@ -7,7 +7,9 @@ test.beforeEach(async ({ page }) => {
   browserErrors.set(page, errors);
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    // WebKit logs the report-only policy's missing report-to as an error.
+    if (message.type() === "error" && !/delivered in report-only mode/.test(message.text()))
+      errors.push(message.text());
   });
 });
 
