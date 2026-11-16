@@ -198,7 +198,6 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(verifier).toContain("Production did not serve data ledger");
 
     for (const workflowPath of updateWorkflowFiles) {
-      if (path.basename(workflowPath) === "update-article-images.yml") continue;
       const workflow = fs.readFileSync(workflowPath, "utf8");
       expect(workflow).not.toContain("NETLIFY_BUILD_HOOK");
       expect(workflow).not.toContain("Trigger Netlify deploy");

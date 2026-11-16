@@ -554,6 +554,11 @@ test.describe("Fantasy football draft tracker", () => {
   });
 
   test("applies a saved preset without changing the parked room", async ({ page }) => {
+    // New room focuses the setup heading, and under smooth scrolling WebKit is
+    // still moving the page when the next click lands, which dropped clicks and
+    // typed text on the two-core runners. Reduced motion makes that scroll instant.
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    const setupHeading = page.getByRole("heading", { name: "One screen, then draft." });
     await page.goto("/fantasy-football/draft-tracker");
     await waitForDraftTrackerHydration(page);
 
@@ -561,6 +566,7 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByText("PPR scoring", { exact: true })).toBeVisible();
 
     await page.getByRole("button", { name: "New room" }).click();
+    await expect(setupHeading).toBeFocused();
     // League name and the preset form sit behind the optional settings disclosure.
     await page.getByText("Show optional settings").click();
     await page.getByLabel("League name").fill("Saved standard league");
@@ -592,6 +598,7 @@ test.describe("Fantasy football draft tracker", () => {
     ).toBeVisible();
 
     await page.getByRole("button", { name: "New room" }).click();
+    await expect(setupHeading).toBeFocused();
     await page.getByText("Show optional settings").click();
     await expect(page.getByLabel("League name")).toHaveValue("My Fantasy League");
     await expect(page.getByLabel("Teams")).toHaveValue("12");

@@ -316,6 +316,12 @@ export function SpaceXMissionControlClient({
       return;
     }
 
+    // The board prints ten cards and the detail route serves every launch in
+    // the snapshot, so a launch whose detail loaded stays open off the board.
+    if (detailLoading || detail?.id === routeState.launch) {
+      return;
+    }
+
     const selectedLaunchStillVisible = launches.some((launch) => launch.id === routeState.launch);
     if (selectedLaunchStillVisible) {
       return;
@@ -334,7 +340,7 @@ export function SpaceXMissionControlClient({
         { scroll: false }
       );
     });
-  }, [launches, launchesLoading, launchesStatus, routeState, router, searchParams]);
+  }, [detail, detailLoading, launches, launchesLoading, launchesStatus, routeState, router, searchParams]);
 
   const refreshLiveData = useCallback(
     (options?: { showLoading?: boolean; dedupe?: boolean }) => {

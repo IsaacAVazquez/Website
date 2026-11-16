@@ -78,6 +78,19 @@ describe("mba applications storage helpers", () => {
     expect(application?.jobSnapshot.applyUrl).toBe("");
   });
 
+  it("keeps the line breaks typed into notes and collapses the spaces around them", () => {
+    const application = createManualMBAApplication({
+      companyName: "Acme",
+      title: "Strategy Manager",
+      location: "",
+      department: "",
+      applyUrl: "",
+      notes: "Recruiter:   Jane \r\n\n\n\n- call Monday\n- send deck\n",
+    });
+
+    expect(application?.notes).toBe("Recruiter: Jane\n\n- call Monday\n- send deck");
+  });
+
   it("recovers from corrupted storage and sanitizes imported exports", () => {
     expect(parseMBAApplications("{not-json")).toEqual([]);
 

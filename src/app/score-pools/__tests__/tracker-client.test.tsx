@@ -167,11 +167,11 @@ describe("TrackerClient", () => {
     expect(within(row).getAllByRole("cell")[2]).toHaveTextContent("1-1 (aet 1-1) · pens Northgate");
   });
 
-  it("compares rivals to my total including banked points", () => {
+  it("compares rivals to my entered standing, the total the engine reads", () => {
     seedStore([
       pool({
         submissions: MY_SUBMISSIONS,
-        standing: { myPoints: 2, nearestAbovePoints: null, nearestBelowPoints: null, poolSize: 10, gamesRemaining: 5, posture: "auto" },
+        standing: { myPoints: 12, nearestAbovePoints: null, nearestBelowPoints: null, poolSize: 10, gamesRemaining: 5, posture: "auto" },
         rivals: [
           { id: "r1", name: "Dana", pointsAdjustment: 3, picks: { f1: { home: 2, away: 1 } } },
           { id: "r2", name: "Eli", pointsAdjustment: 14, picks: {} },
@@ -180,13 +180,13 @@ describe("TrackerClient", () => {
       }),
     ]);
     renderTracker();
-    // Mine: 10 tracked + 2 banked = 12.
+    // Mine: 12 entered, which already holds the 10 tracked here.
     const table = screen.getByRole("table", { name: "Rival totals" });
     const cells = (name: string) => within(rowFor(table, name)).getAllByRole("cell").map((cell) => cell.textContent);
     expect(cells("Dana")).toEqual(["Dana", "5", "3", "8", "4 behind"]);
     expect(cells("Eli")).toEqual(["Eli", "0", "14", "14", "+2 on me"]);
     expect(cells("Fern")).toEqual(["Fern", "0", "12", "12", "level"]);
-    expect(within(screen.getByRole("region", { name: "Totals" })).getByText("Entered standing").nextElementSibling).toHaveTextContent("2");
+    expect(within(screen.getByRole("region", { name: "Totals" })).getByText("Entered standing").nextElementSibling).toHaveTextContent("12");
   });
 
   it("enters, validates, and clears a rival's picks", async () => {

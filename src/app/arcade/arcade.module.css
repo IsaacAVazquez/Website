@@ -30,6 +30,8 @@
   --ph-text-dim: rgba(236, 228, 255, 0.62);
   /* 0.34 measured 2.6:1 on the void; 0.58 clears 4.5:1 and still sits under dim. */
   --ph-text-faint: rgba(236, 228, 255, 0.58);
+  /* The frame's button focus ring reads this and outranks the rules below. */
+  --c97-accent: var(--ph-cyan);
 
   position: relative;
   isolation: isolate;

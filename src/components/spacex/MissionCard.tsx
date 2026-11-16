@@ -28,7 +28,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
   const metaCells = [
     { key: "Launchpad", value: launch.launchpadName ?? "Pending" },
     { key: "Location", value: launch.launchpadLocation ?? "Pending" },
-    { key: "Payloads", value: `${launch.payloadCount}` },
+    { key: "Payloads", value: launch.payloadCount === null ? "Not published" : `${launch.payloadCount}` },
     { key: "Cores", value: `${launch.coreCount}` },
   ];
 

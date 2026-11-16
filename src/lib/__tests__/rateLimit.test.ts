@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { mbaJobsRateLimiter, getClientIdentifier, rateLimitResponse } from '../rateLimit';
+import { mbaJobsRateLimiter, getClientIdentifier, getClientIp, rateLimitResponse } from '../rateLimit';
 import { NextRequest } from 'next/server';
 
 // Each test gets a unique client ID to avoid cross-test state contamination
@@ -87,6 +87,33 @@ describe('getClientIdentifier', () => {
   it('falls back to "unknown" when no IP headers are present', () => {
     const req = makeReq({ 'user-agent': 'browser' });
     expect(getClientIdentifier(req)).toBe('unknown:browser');
+  });
+});
+
+describe('getClientIp behind Cloudflare', () => {
+  const request = (headers: Record<string, string>) =>
+    new NextRequest('https://example.com/api/test', { headers });
+
+  it('keys two visitors behind one Cloudflare peer on their own addresses', () => {
+    const peer = { 'x-nf-client-connection-ip': '172.71.146.9' };
+    expect(getClientIp(request({ ...peer, 'cf-connecting-ip': '203.0.113.5' }))).toBe('203.0.113.5');
+    expect(getClientIp(request({ ...peer, 'cf-connecting-ip': '198.51.100.77' }))).toBe('198.51.100.77');
+    expect(
+      getClientIp(request({ 'x-nf-client-connection-ip': '2606:4700:10::1', 'cf-connecting-ip': '2001:db8::7' }))
+    ).toBe('2001:db8::7');
+  });
+
+  it('ignores cf-connecting-ip from a peer that is not Cloudflare', () => {
+    expect(
+      getClientIp(request({ 'x-nf-client-connection-ip': '203.0.113.9', 'cf-connecting-ip': '198.51.100.77' }))
+    ).toBe('203.0.113.9');
+  });
+
+  it('keeps the Cloudflare peer when the visitor header is missing or not an address', () => {
+    expect(getClientIp(request({ 'x-nf-client-connection-ip': '172.71.146.9' }))).toBe('172.71.146.9');
+    expect(
+      getClientIp(request({ 'x-nf-client-connection-ip': '172.71.146.9', 'cf-connecting-ip': 'not-an-ip' }))
+    ).toBe('172.71.146.9');
   });
 });
 

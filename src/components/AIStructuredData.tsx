@@ -6,18 +6,13 @@
  */
 
 import {
-  generateEnhancedPersonSchema,
-  generateProfessionalServiceSchema,
   generateArticleSchema,
-  generateProjectSchema,
   generateFAQSchema,
   generateBreadcrumbSchema,
   generateProfilePageSchema,
   generateItemListSchema,
-  generateNavigationSchema,
   type PersonSchemaData,
   type ArticleSchemaData,
-  type ProjectSchemaData,
   type FAQItem,
   type BreadcrumbItem,
 } from "@/lib/ai-seo";
@@ -25,13 +20,7 @@ import { safeJsonLd } from "@/lib/seo";
 
 interface AIStructuredDataProps {
   schema:
-    | { type: "Person"; data: PersonSchemaData }
-    | {
-        type: "ProfessionalService";
-        data: Parameters<typeof generateProfessionalServiceSchema>[0];
-      }
     | { type: "Article"; data: ArticleSchemaData }
-    | { type: "Project"; data: ProjectSchemaData }
     | { type: "FAQ"; data: { items: FAQItem[] } }
     | { type: "Breadcrumb"; data: { items: BreadcrumbItem[] } }
     | {
@@ -56,9 +45,7 @@ interface AIStructuredDataProps {
             image?: string;
           }>;
         };
-      }
-    | { type: "Navigation"; data: { items: BreadcrumbItem[] } }
-    | { type: "Custom"; data: object };
+      };
 }
 
 /**
@@ -70,13 +57,8 @@ interface AIStructuredDataProps {
  * ```tsx
  * <AIStructuredData
  *   schema={{
- *     type: "Person",
- *     data: {
- *       name: "Isaac Vazquez",
- *       jobTitle: profile.fullTitle,
- *       expertise: [...],
- *       awards: [...],
- *     }
+ *     type: "Breadcrumb",
+ *     data: { items: [{ name: "Home", url: "/" }] },
  *   }}
  * />
  * ```
@@ -85,17 +67,8 @@ export function AIStructuredData({ schema }: AIStructuredDataProps) {
   let structuredData: object;
 
   switch (schema.type) {
-    case "Person":
-      structuredData = generateEnhancedPersonSchema(schema.data);
-      break;
-    case "ProfessionalService":
-      structuredData = generateProfessionalServiceSchema(schema.data);
-      break;
     case "Article":
       structuredData = generateArticleSchema(schema.data);
-      break;
-    case "Project":
-      structuredData = generateProjectSchema(schema.data);
       break;
     case "FAQ":
       structuredData = generateFAQSchema(schema.data.items);
@@ -108,12 +81,6 @@ export function AIStructuredData({ schema }: AIStructuredDataProps) {
       break;
     case "ItemList":
       structuredData = generateItemListSchema(schema.data);
-      break;
-    case "Navigation":
-      structuredData = generateNavigationSchema(schema.data.items);
-      break;
-    case "Custom":
-      structuredData = schema.data;
       break;
     default:
       return null;

@@ -14,6 +14,10 @@ on:
 concurrency:
   group: changelog-on-merge
   cancel-in-progress: false
+  # The default queue holds one pending run and cancels it when a newer one
+  # queues, which dropped the middle of every merge burst. `max` keeps up to
+  # 100 pending runs, and they still push one at a time.
+  queue: max
 
 jobs:
   update-changelog:
@@ -35,7 +39,9 @@ jobs:
           # A deploy key, since the ruleset on main exempts deploy keys from required
           # checks and cannot exempt GITHUB_TOKEN on a personal repo.
           ssh-key: ${{ secrets.SNAPSHOT_DEPLOY_KEY }}
-          fetch-depth: 0
+          # The append reads only CHANGELOG.md, and the push helper's rebase works from
+          # a depth of one in every refresh lane.
+          fetch-depth: 1
 
       - name: Set up Node.js
         uses: actions/setup-node@v7

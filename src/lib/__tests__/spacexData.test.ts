@@ -43,6 +43,33 @@ const emptySnapshot: MissionControlSnapshot = {
   cadence: null,
 };
 
+const baseSpacecraftStage = {
+  spacecraft: {
+    id: 6,
+    name: "Crew Dragon Freedom",
+    serial_number: "C212",
+    status: {
+      id: 1,
+      name: "Active",
+    },
+    flights_count: 5,
+    spacecraft_config: {
+      id: 6,
+      name: "Crew Dragon 2",
+      type: {
+        id: 2,
+        name: "Capsule",
+      },
+      image_url: "https://images.example.com/spacecraft.png",
+      payload_capacity: 6000,
+    },
+  },
+  launch_crew: [],
+  onboard_crew: [],
+  landing_crew: [],
+};
+
+// Launch Library 2.2.0 nests both stage records under `rocket`.
 const baseLaunch = {
   id: "63aa7636-d2b7-457f-a3e6-27e564e42941",
   name: "Falcon 9 Block 5 | Starlink Group 10-58",
@@ -85,6 +112,8 @@ const baseLaunch = {
       description: "Falcon 9 Block 5 launch vehicle.",
       wiki_url: "https://en.wikipedia.org/wiki/Falcon_9",
     },
+    launcher_stage: [],
+    spacecraft_stage: baseSpacecraftStage,
   },
   mission: {
     id: 7546,
@@ -121,34 +150,8 @@ const baseLaunch = {
       image_url: "https://images.example.com/mission-patch.png",
     },
   ],
-  spacecraft_stage: {
-    spacecraft: {
-      id: 6,
-      name: "Crew Dragon Freedom",
-      serial_number: "C212",
-      status: {
-        id: 1,
-        name: "Active",
-      },
-      flights_count: 5,
-      spacecraft_config: {
-        id: 6,
-        name: "Crew Dragon 2",
-        type: {
-          id: 2,
-          name: "Capsule",
-        },
-        image_url: "https://images.example.com/spacecraft.png",
-        payload_capacity: 6000,
-      },
-    },
-    launch_crew: [],
-    onboard_crew: [],
-    landing_crew: [],
-  },
   infoURLs: [],
   vidURLs: [],
-  launcher_stage: [],
   agency_launch_attempt_count: 660,
   orbital_launch_attempt_count: 7247,
 };
@@ -203,13 +206,16 @@ describe("spacexData image normalization", () => {
           {
             ...baseLaunch,
             image: null,
-            spacecraft_stage: {
-              ...baseLaunch.spacecraft_stage,
-              spacecraft: {
-                ...baseLaunch.spacecraft_stage.spacecraft,
-                spacecraft_config: {
-                  ...baseLaunch.spacecraft_stage.spacecraft.spacecraft_config,
-                  image_url: null,
+            rocket: {
+              ...baseLaunch.rocket,
+              spacecraft_stage: {
+                ...baseSpacecraftStage,
+                spacecraft: {
+                  ...baseSpacecraftStage.spacecraft,
+                  spacecraft_config: {
+                    ...baseSpacecraftStage.spacecraft.spacecraft_config,
+                    image_url: null,
+                  },
                 },
               },
             },
@@ -1254,7 +1260,7 @@ describe("spacexData launch normalization", () => {
     expect(card.dateUtc).toBe("2026-10-01T00:00:00Z");
     expect(card.dateUnix).toBe(Date.parse("2026-10-01T00:00:00Z") / 1000);
     expect(card.net).toBe(false);
-    expect(card.payloadCount).toBe(0);
+    expect(card.payloadCount).toBeNull();
 
     const bare = await cardFor({
       mission: null,
@@ -1267,7 +1273,7 @@ describe("spacexData launch normalization", () => {
   });
 
   it.each([
-    [{ launcher_stage: [{}, {}] }, 2],
+    [{ rocket: { configuration: { name: "Falcon 9" }, launcher_stage: [{}, {}] } }, 2],
     [{ rocket: { configuration: { full_name: "Falcon Heavy" } } }, 3],
     [{ rocket: { configuration: { name: "Starship" } } }, 2],
     [{ rocket: { configuration: { name: "Falcon 9" } } }, 1],
@@ -1280,8 +1286,9 @@ describe("spacexData launch normalization", () => {
     ["A batch of 29 satellites for Starlink.", 29],
     ["The rocket is carrying 22 satellites to orbit.", 22],
     ["Deploys 40 satellites to a sun-synchronous orbit.", 40],
-    ["A batch of 0 test articles", 1],
-    ["Cargo resupply to the ISS.", 1],
+    ["A batch of 0 test articles", null],
+    ["Cargo resupply to the ISS.", null],
+    ["Dedicated rideshare flight with dozens of small microsatellites.", null],
   ])("reads the payload count from %p", async (description, expected) => {
     const card = await cardFor({ mission: { ...baseLaunch.mission, description } });
     expect(card.payloadCount).toBe(expected);
@@ -1290,23 +1297,22 @@ describe("spacexData launch normalization", () => {
   it("counts crew as payload when a crewed spacecraft flies", async () => {
     const crew = [1, 2, 3, 4].map((id) => ({ id, astronaut: { id, name: `Astronaut ${id}` } }));
     const card = await cardFor({
-      spacecraft_stage: { ...baseLaunch.spacecraft_stage, launch_crew: crew },
+      rocket: {
+        ...baseLaunch.rocket,
+        spacecraft_stage: { ...baseSpacecraftStage, launch_crew: crew },
+      },
     });
     expect(card.crewCount).toBe(4);
     expect(card.payloadCount).toBe(4);
     expect(card.capsuleCount).toBe(1);
   });
 
-  it("reads cores and crew from under rocket, where Launch Library 2.2.0 puts them", async () => {
+  it("falls back to stage records at the launch root when rocket carries none", async () => {
     const crew = [1, 2, 3, 4].map((id) => ({ id, astronaut: { id, name: `Astronaut ${id}` } }));
     const card = await cardFor({
-      launcher_stage: undefined,
-      spacecraft_stage: undefined,
-      rocket: {
-        ...baseLaunch.rocket,
-        launcher_stage: [{}, {}],
-        spacecraft_stage: { ...baseLaunch.spacecraft_stage, launch_crew: crew },
-      },
+      rocket: { configuration: baseLaunch.rocket.configuration },
+      launcher_stage: [{}, {}],
+      spacecraft_stage: { ...baseSpacecraftStage, launch_crew: crew },
     });
     expect(card.coreCount).toBe(2);
     expect(card.crewCount).toBe(4);
@@ -1396,44 +1402,61 @@ describe("spacexData launch normalization", () => {
         map_image: "https://images.example.com/pad-map.png",
         location: { name: "Cape Canaveral", timezone_name: "America/New_York", description: "Florida coast" },
       },
-      spacecraft_stage: {
-        ...baseLaunch.spacecraft_stage,
-        mission_end: "2027-04-12T00:00:00Z",
-        launch_crew: [
+      rocket: {
+        ...baseLaunch.rocket,
+        spacecraft_stage: {
+          ...baseSpacecraftStage,
+          mission_end: "2027-04-12T00:00:00Z",
+          launch_crew: [
+            {
+              role: { role: "Commander" },
+              astronaut: {
+                id: 11,
+                name: "Pilot One",
+                agency: { name: "NASA" },
+                status: { name: "Active" },
+                profile_image: "https://images.example.com/astronaut.png",
+                wiki: "https://en.wikipedia.org/wiki/Pilot_One",
+              },
+            },
+            { role: { role: "Specialist" }, astronaut: { id: 12 } },
+            { role: { role: "Guest" }, astronaut: null },
+          ],
+          onboard_crew: [{ role: { role: "Duplicate" }, astronaut: { id: 11, name: "Pilot One" } }],
+        },
+        launcher_stage: [
           {
-            role: { role: "Commander" },
-            astronaut: {
-              id: 11,
-              name: "Pilot One",
-              agency: { name: "NASA" },
-              status: { name: "Active" },
-              profile_image: "https://images.example.com/astronaut.png",
-              wiki: "https://en.wikipedia.org/wiki/Pilot_One",
+            reused: true,
+            launcher_flight_number: 22,
+            launcher: { id: 1080, serial_number: "B1080" },
+            landing: {
+              attempt: true,
+              success: true,
+              type: { name: "Autonomous Spaceport Drone Ship" },
+              location: { name: "A Shortfall of Gravitas", location: { name: "Atlantic Ocean" } },
             },
           },
-          { role: { role: "Specialist" }, astronaut: { id: 12 } },
-          { role: { role: "Guest" }, astronaut: null },
+          {},
         ],
-        onboard_crew: [{ role: { role: "Duplicate" }, astronaut: { id: 11, name: "Pilot One" } }],
       },
-      launcher_stage: [
-        {
-          reused: true,
-          launcher_flight_number: 22,
-          launcher: { id: 1080, serial_number: "B1080" },
-          landing: {
-            attempt: true,
-            success: true,
-            type: { name: "Autonomous Spaceport Drone Ship" },
-            location: { name: "A Shortfall of Gravitas", location: { name: "Atlantic Ocean" } },
-          },
-        },
-        {},
+      timeline: [
+        { type: { abbrev: "Prop Load" }, relative_time: "-PT35M" },
+        { type: { abbrev: "Liftoff" }, relative_time: "P0D" },
+        { type: { abbrev: "MECO" }, relative_time: "PT2M26S" },
+        { type: { abbrev: "Starlink Deployment" }, relative_time: "PT1H1M59S" },
+        { type: { abbrev: "Unreadable" }, relative_time: "soon" },
+        { type: null, relative_time: "PT5S" },
       ],
     });
 
     expect(detail.upcoming).toBe(true);
     expect(detail.window).toBe(1800);
+    expect(detail.timeline).toEqual([
+      { label: "T-35:00", event: "Prop Load" },
+      { label: "T-0:00", event: "Liftoff" },
+      { label: "T+2:26", event: "MECO" },
+      { label: "T+1:01:59", event: "Starlink Deployment" },
+    ]);
     expect(detail.failures).toEqual([{ time: null, altitude: null, reason: "Second stage anomaly" }]);
 
     expect(detail.rocket).toMatchObject({
@@ -1537,7 +1560,6 @@ describe("spacexData launch normalization", () => {
       failreason: "   ",
       mission: null,
       pad: null,
-      spacecraft_stage: null,
       rocket: {
         configuration: {
           name: "Falcon Heavy",
@@ -1618,6 +1640,23 @@ describe("spacexData snapshot build fallbacks", () => {
     expect(failedId).not.toBeNull();
     expect(Object.keys(snapshot.launchDetails)).not.toContain(failedId);
     expect(Object.keys(snapshot.launchDetails).length).toBeGreaterThan(0);
+  });
+
+  it("gives a hydrated launch's card and the hero the detail's links, which a list row lacks", async () => {
+    const webcast = "https://example.com/webcast";
+    routeSnapshotBuild((id) =>
+      llResponse({ ...LL2_NORMAL_ROW, id, vidURLs: [{ url: webcast, priority: 10 }] })
+    );
+
+    const snapshot = await buildMissionControlSnapshot();
+    const heroId = snapshot.summary?.heroLaunch?.id ?? "";
+
+    expect(snapshot.launchDetails[heroId].links.webcast).toBe(webcast);
+    expect(snapshot.summary?.heroLaunch?.links.webcast).toBe(webcast);
+    expect(snapshot.summary?.fallbackLaunch?.links.webcast).toBe(webcast);
+    expect(snapshot.pastLaunches[0].links.webcast).toBe(webcast);
+    // Past the hydration cap the card still comes from its list row.
+    expect(snapshot.pastLaunches.at(-1)?.links.webcast).toBeNull();
   });
 
   it("stops hydrating details at the first rate limit", async () => {

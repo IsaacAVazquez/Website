@@ -35,7 +35,7 @@ export default async function DiscoveryPage({ params }: { params: Promise<{ disc
   const discovery = await getDiscovery(params);
   const { title, description } = DISCOVERIES[discovery];
   return <section className={styles.page} data-c97-surface="paper">
-    <div className="c97-shell">
+    <div className="c97-shell c97-frame">
       <header className={styles.intro}>
         <Link className={styles.back} href="/">Back to the front of the shop</Link>
         <p className="c97-kicker">You found the back room</p>

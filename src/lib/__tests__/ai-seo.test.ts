@@ -4,10 +4,7 @@ import {
   generateEnhancedPersonSchema,
   generateFAQSchema,
   generateItemListSchema,
-  generateNavigationSchema,
-  generateProfessionalServiceSchema,
   generateProfilePageSchema,
-  generateProjectSchema,
   type PersonSchemaData,
 } from "../ai-seo";
 
@@ -49,21 +46,6 @@ describe("AI SEO structured-data generators", () => {
 
     expect(schema.datePublished).toBe("2026-04-10");
     expect(schema.dateModified).toBe("2026-04-10");
-  });
-
-  it("uses the supplied canonical project URL for the project schema id", () => {
-    const schema = generateProjectSchema({
-      name: "TextOut Platform",
-      description: "A case study about rebuilding a high-volume messaging platform.",
-      url: "https://isaacvazquez.com/portfolio/textout-platform",
-      datePublished: "2026-04-04",
-      dateModified: "2026-04-04",
-    }) as Record<string, unknown>;
-
-    expect(schema["@id"]).toBe(
-      "https://isaacvazquez.com/portfolio/textout-platform#project"
-    );
-    expect(schema.dateModified).toBe("2026-04-04");
   });
 
   it("only emits profile freshness when the caller provides a reviewed date", () => {
@@ -146,35 +128,6 @@ describe("AI SEO structured-data generators", () => {
   });
 });
 
-describe("generateProfessionalServiceSchema", () => {
-  it("falls back to defaults when nothing is provided", () => {
-    const schema = generateProfessionalServiceSchema({}) as Record<
-      string,
-      unknown
-    >;
-    expect(schema["@type"]).toBe("ProfessionalService");
-    expect(Array.isArray(schema.serviceType)).toBe(true);
-    expect((schema.provider as Record<string, unknown>)["@type"]).toBe("Person");
-    expect(schema.audience).toBeUndefined();
-  });
-
-  it("expands the provider schema and includes an audience when given", () => {
-    const schema = generateProfessionalServiceSchema({
-      name: "Advisory",
-      provider: { name: "Isaac", jobTitle: "PM" },
-      serviceType: ["Discovery"],
-      areaServed: ["Remote"],
-      audience: { "@type": "ProfessionalAudience", audienceType: "Founders" },
-    }) as Record<string, unknown>;
-
-    expect(schema.name).toBe("Advisory");
-    expect((schema.provider as Record<string, unknown>).jobTitle).toBe("PM");
-    expect((schema.audience as Record<string, unknown>).audienceType).toBe(
-      "Founders"
-    );
-  });
-});
-
 describe("generateArticleSchema (rich fields)", () => {
   it("normalizes images, multiple authors, keywords, and metadata blocks", () => {
     const schema = generateArticleSchema({
@@ -232,42 +185,6 @@ describe("generateArticleSchema (rich fields)", () => {
   });
 });
 
-describe("generateProjectSchema (rich fields)", () => {
-  it("derives the id from the slug and maps skills, tech, and narrative", () => {
-    const schema = generateProjectSchema({
-      name: "QA Platform",
-      description: "desc",
-      image: "cover.png",
-      author: { name: "Isaac" },
-      creator: { name: "Isaac" },
-      keywords: ["qa"],
-      programmingLanguage: ["TypeScript"],
-      applicationCategory: "DeveloperApplication",
-      about: [{ "@type": "Thing", name: "Testing" }],
-      skillsUsed: ["Playwright"],
-      problemSolved: "flaky tests",
-      solutionDescription: "stable harness",
-      impact: "faster releases",
-      technologies: ["Jest"],
-      isPartOf: { "@type": "Thing", name: "Portfolio" },
-    }) as Record<string, unknown>;
-
-    expect(schema["@id"]).toBe(
-      "https://isaacvazquez.com/portfolio/qa-platform#project"
-    );
-    expect(schema.image).toEqual(["cover.png"]);
-    expect((schema.teaches as Array<Record<string, unknown>>)[0].name).toBe(
-      "Playwright"
-    );
-    expect(schema.abstract).toContain("Problem: flaky tests");
-    expect(schema.abstract).toContain("Impact: faster releases");
-    expect((schema.mentions as Array<Record<string, unknown>>)[0].name).toBe(
-      "Jest"
-    );
-    expect(schema.isPartOf).toEqual({ "@type": "Thing", name: "Portfolio" });
-  });
-});
-
 describe("generateFAQSchema", () => {
   it("builds question/answer pairs with optional author and date", () => {
     const schema = generateFAQSchema([
@@ -313,19 +230,5 @@ describe("generateItemListSchema", () => {
     expect(items[0].description).toBe("d");
     expect(items[0].image).toBe("i.png");
     expect(items[1].description).toBeUndefined();
-  });
-});
-
-describe("generateNavigationSchema", () => {
-  it("builds webpage parts with resolved ids and urls", () => {
-    const schema = generateNavigationSchema([
-      { name: "About", url: "/about" },
-      { name: "Ext", url: "https://example.com/x" },
-    ]) as Record<string, unknown>;
-
-    const parts = schema.hasPart as Array<Record<string, unknown>>;
-    expect(parts[0]["@id"]).toBe("https://isaacvazquez.com/about#webpage");
-    expect(parts[1]["@id"]).toBe("https://example.com/x#webpage");
-    expect(parts[1].url).toBe("https://example.com/x");
   });
 });

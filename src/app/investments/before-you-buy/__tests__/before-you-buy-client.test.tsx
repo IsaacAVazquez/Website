@@ -213,6 +213,17 @@ describe("BeforeYouBuyClient", () => {
     expect(screen.queryByRole("heading", { name: "The market's five worst days" })).toBeNull();
   });
 
+  it("keeps the worst days table when only the alternative has no prices", async () => {
+    useUniverse(["KO"]);
+    await renderPage();
+    fireEvent.change(screen.getByLabelText("Alternative stock"), { target: { value: "KO" } });
+    await settle();
+    expect(screen.getByText(/Prices unavailable for KO/)).toBeInTheDocument();
+    const worst = rows("The market's five worst days");
+    expect(worst).toHaveLength(5);
+    expect(worst.every((row) => row.at(-1) === "Unavailable")).toBe(true);
+  });
+
   it("makes an excluded saved holding explicit and lets the user supply its value", async () => {
     mockSaved = [{ symbol: "AAPL", shares: 10, averageCost: 150 }, { symbol: "ZZZZ", shares: 5, averageCost: 20 }];
     useUniverse();

@@ -16,6 +16,7 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import {
+  isFantasyWeeklySeasonCurrent,
   normalizeFantasyWeeklySnapshot,
   type FantasyWeeklySeed,
   type FantasyWeeklySnapshot,
@@ -131,6 +132,8 @@ export async function loadFantasyWeeklySeed(
       expiresAt: Date.now() + SNAPSHOT_TTL_MS,
     };
   }
+
+  if (!isFantasyWeeklySeasonCurrent(weeklyCache.data)) return null;
 
   const { boards, ...snapshot } = weeklyCache.data;
   // The weekly and waiver pages never read the rest-of-season board, so it

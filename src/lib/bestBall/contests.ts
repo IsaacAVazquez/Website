@@ -335,7 +335,9 @@ export function normalizeContestId(
   fallback: BestBallContestId = DEFAULT_BEST_BALL_CONTEST_ID
 ): BestBallContestId {
   if (!value) return fallback;
-  return CONTEST_ALIASES[normalizeContestKey(value)] ?? fallback;
+  // Own keys only, so "constructor" and "__proto__" fall back like any unknown value.
+  const key = normalizeContestKey(value);
+  return Object.hasOwn(CONTEST_ALIASES, key) ? CONTEST_ALIASES[key] : fallback;
 }
 
 export function getContestPreset(

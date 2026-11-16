@@ -1,3 +1,4 @@
+import { BlockList, isIP } from "node:net";
 import { NextRequest } from "next/server";
 
 interface RateLimitConfig {
@@ -63,21 +64,65 @@ export const newsletterRateLimiter = createRateLimiter({
   uniqueTokenPerInterval: 5,
 });
 
+// Cloudflare's published ranges (cloudflare.com/ips-v4 and /ips-v6, read
+// 2026-11-16).
+// ponytail: a static list. A range Cloudflare adds later falls back to the
+// shared peer bucket until it is added here.
+const CLOUDFLARE_PEERS = new BlockList();
+for (const cidr of [
+  "173.245.48.0/20",
+  "103.21.244.0/22",
+  "103.22.200.0/22",
+  "103.31.4.0/22",
+  "141.101.64.0/18",
+  "108.162.192.0/18",
+  "190.93.240.0/20",
+  "188.114.96.0/20",
+  "197.234.240.0/22",
+  "198.41.128.0/17",
+  "162.158.0.0/15",
+  "104.16.0.0/13",
+  "104.24.0.0/14",
+  "172.64.0.0/13",
+  "131.0.72.0/22",
+  "2400:cb00::/32",
+  "2606:4700::/32",
+  "2803:f800::/32",
+  "2405:b500::/32",
+  "2405:8100::/32",
+  "2a06:98c0::/29",
+  "2c0f:f248::/32",
+]) {
+  const [network, prefix] = cidr.split("/");
+  CLOUDFLARE_PEERS.addSubnet(network, Number(prefix), network.includes(":") ? "ipv6" : "ipv4");
+}
+
 /**
  * Resolve the client IP for rate-limiting.
  *
  * Prefers `x-nf-client-connection-ip`, which Netlify sets from the real TCP
- * peer and a client cannot forge. `x-forwarded-for` / `x-real-ip` are only used
- * as a fallback for non-Netlify/local runs; note the leftmost `x-forwarded-for`
- * entry is client-supplied and spoofable, so it is intentionally the last
- * resort. Returns "unknown" when nothing is available (a single shared bucket).
+ * peer and a client cannot forge. The custom domain is proxied by Cloudflare,
+ * so that peer is a Cloudflare address many visitors share; only then is
+ * `cf-connecting-ip`, which Cloudflare sets to the visitor, used instead. A
+ * client that reaches the Netlify origin directly is not a Cloudflare peer, so
+ * a `cf-connecting-ip` it sends is ignored. `x-forwarded-for` / `x-real-ip`
+ * are only used as a fallback for non-Netlify/local runs; note the leftmost
+ * `x-forwarded-for` entry is client-supplied and spoofable, so it is
+ * intentionally the last resort. Returns "unknown" when nothing is available
+ * (a single shared bucket).
  */
 function resolveClientIp(
   getHeader: (name: string) => string | null | undefined
 ): string {
   const netlifyIp = getHeader("x-nf-client-connection-ip");
   if (netlifyIp) {
-    return netlifyIp.trim();
+    const peer = netlifyIp.trim();
+    const family = isIP(peer);
+    if (family && CLOUDFLARE_PEERS.check(peer, family === 6 ? "ipv6" : "ipv4")) {
+      const visitor = getHeader("cf-connecting-ip")?.trim();
+      if (visitor && isIP(visitor)) return visitor;
+    }
+    return peer;
   }
 
   const realIp = getHeader("x-real-ip");

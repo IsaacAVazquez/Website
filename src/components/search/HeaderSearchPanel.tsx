@@ -105,7 +105,8 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const goToAllResults = useCallback(() => {
     trackNavigationClick({
       link_text: "View all results",
-      link_url: allResultsHref,
+      // The href holds the typed query, which /privacy says no event carries.
+      link_url: "/search",
       nav_location: "header_search_view_all",
     });
     router.push(allResultsHref);
@@ -202,6 +203,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
               aria-activedescendant={
                 activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
               }
+              aria-autocomplete="list"
               autoComplete="off"
               className="min-h-[48px] w-full bg-transparent text-base outline-none placeholder:text-[var(--c97-ink-2)]"
               style={{ color: "var(--c97-ink)", paddingBlock: "var(--c97-sp-2)" }}
@@ -249,14 +251,16 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                 aria-label="Search results"
               >
                 {results.map((result, index) => (
-                  <li
-                    key={result.id}
-                    role="option"
-                    id={`${listboxId}-option-${index}`}
-                    aria-selected={index === activeIndex}
-                  >
+                  // The anchor is the option, so a result is one control. Arrow
+                  // keys and Enter reach it from the input, and it stays out of
+                  // the Tab order so the panel has a single keyboard path.
+                  <li key={result.id} role="presentation">
                     <Link
                       href={result.url}
+                      role="option"
+                      id={`${listboxId}-option-${index}`}
+                      aria-selected={index === activeIndex}
+                      tabIndex={-1}
                       onClick={(event) => {
                         trackNavigationClick({
                           link_text: result.title,

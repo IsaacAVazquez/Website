@@ -9,6 +9,7 @@ import { NextRequest } from "next/server";
 import { GET } from "../route";
 import { getBlogPostSearchEntries } from "@/lib/blog";
 import { DASHBOARD_ROUTES } from "@/constants/catalog97Nav";
+import { categories } from "@/components/search/SearchFilters";
 
 const mockGetBlogPostSearchEntries =
   getBlogPostSearchEntries as jest.MockedFunction<typeof getBlogPostSearchEntries>;
@@ -85,6 +86,8 @@ describe("GET /api/search", () => {
     expect(response.headers.get("Cache-Control")).toBe(
       "public, max-age=3600, stale-while-revalidate=86400"
     );
+    // Without it Netlify's edge serves one cached response for every query.
+    expect(response.headers.get("Netlify-Vary")).toBe("query");
 
     // Response envelope contract.
     expect(body).toMatchObject({
@@ -483,6 +486,17 @@ describe("GET /api/search corpus", () => {
     const urls = body.results.map((r: { url: string }) => r.url);
     expect(urls).toContain("/frontier-models");
     expect(urls).not.toContain("/portfolio/frontier-models");
+  });
+
+  it("returns at least one result for every category the filter row offers", async () => {
+    // The real posts, since half the options are frontmatter categories.
+    mockGetBlogPostSearchEntries.mockImplementation(
+      jest.requireActual("@/lib/blog").getBlogPostSearchEntries
+    );
+    for (const { id } of categories) {
+      const response = await GET(makeRequest(`?category=${encodeURIComponent(id)}&limit=1`));
+      expect([id, (await response.json()).total > 0]).toEqual([id, true]);
+    }
   });
 
   it("indexes the routes that were missing", async () => {

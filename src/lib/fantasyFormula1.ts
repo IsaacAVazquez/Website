@@ -65,37 +65,37 @@ function getShortName(name: string): string {
   return words.at(-1) ?? name;
 }
 
-function formatRiskReason(kind: "driver" | "constructor", delta: number, position: number | null): string {
+// One set of branches gives both the rating and the reason printed beside it.
+function getRisk(
+  kind: "driver" | "constructor",
+  delta: number,
+  position: number | null,
+  fieldSize: number
+): Pick<FantasyFormula1Asset, "risk" | "riskReason"> {
   if (position === null) {
-    return "Limited recent sample";
+    return { risk: "high", riskReason: "Limited recent sample" };
   }
 
   if (delta <= 0) {
-    return kind === "driver" ? "No last-race points" : "No last-race team gain";
+    return {
+      risk: "high",
+      riskReason: kind === "driver" ? "No last-race points" : "No last-race team gain",
+    };
   }
 
-  if (position > 14 && kind === "driver") {
-    return "Back-half standings profile";
+  if (position / Math.max(fieldSize, 1) > 0.68) {
+    return {
+      risk: "medium",
+      riskReason:
+        kind === "driver" ? "Back-half standings profile" : "Lower-table constructor profile",
+    };
   }
 
-  if (position > 7 && kind === "constructor") {
-    return "Lower-table constructor profile";
+  if (delta < 4) {
+    return { risk: "medium", riskReason: "Small last-race gain" };
   }
 
-  return "Stable recent production";
-}
-
-function getRisk(kind: "driver" | "constructor", delta: number, position: number | null, fieldSize: number) {
-  if (position === null || delta <= 0) {
-    return "high" as const;
-  }
-
-  const normalizedPosition = position / Math.max(fieldSize, 1);
-  if (normalizedPosition > 0.68 || delta < 4) {
-    return "medium" as const;
-  }
-
-  return "low" as const;
+  return { risk: "low", riskReason: "Stable recent production" };
 }
 
 // Reads the fallback classification from the last completed meeting, which is
@@ -202,8 +202,7 @@ function buildDriverAsset(
     projectedPoints,
     valueRating: roundTo((projectedPoints / Math.max(price, 0.1)) * 10),
     formScore: roundTo(formScore),
-    risk: getRisk("driver", standing.pointsDelta, standing.position, fieldSize),
-    riskReason: formatRiskReason("driver", standing.pointsDelta, standing.position),
+    ...getRisk("driver", standing.pointsDelta, standing.position, fieldSize),
   };
 }
 
@@ -245,8 +244,7 @@ function buildConstructorAsset(
     projectedPoints,
     valueRating: roundTo((projectedPoints / Math.max(price, 0.1)) * 10),
     formScore: roundTo(formScore),
-    risk: getRisk("constructor", standing.pointsDelta, standing.position, fieldSize),
-    riskReason: formatRiskReason("constructor", standing.pointsDelta, standing.position),
+    ...getRisk("constructor", standing.pointsDelta, standing.position, fieldSize),
   };
 }
 

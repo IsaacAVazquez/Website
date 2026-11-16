@@ -253,9 +253,9 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                 <p className="c97-stat-value c97-mono">{activePool.standing.myPoints}</p>
                 <p className="c97-stat-delta">
                   typed in{" "}
-                  <Link className="c97-link" href="/score-pools/settings">settings</Link>, and it
-                  stays as entered. The pick advice plans around it, and the rival gaps add it to
-                  the tracked points.
+                  <Link className="c97-link" href="/score-pools/settings">settings</Link> as your
+                  full pool total, and it stays as entered. The pick advice and the rival gaps both
+                  read it, so update it as rounds finish.
                 </p>
               </div>
               <div className="c97-stat">
@@ -405,9 +405,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                       <tbody>
                         {rivalScoring.map(({ rival, scoring }) => {
                           const total = scoring.total + rival.pointsAdjustment;
-                          // My banked points count too, the same way a rival's adjustment does.
-                          const myTotal = (myScoring?.total ?? 0) + activePool.standing.myPoints;
-                          const gap = total - myTotal;
+                          // The entered standing is my full total, the same number the engine's gaps read.
+                          const gap = total - activePool.standing.myPoints;
                           return (
                             <tr key={rival.id}>
                               <td className="font-semibold">{rival.name}</td>

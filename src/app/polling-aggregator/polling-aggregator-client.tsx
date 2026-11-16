@@ -20,6 +20,7 @@ import {
   formatMargin,
   formatNet,
   newestPollDate,
+  describeAverageWindow,
   buildPolyline,
   DEM_COLOR,
   REP_COLOR,
@@ -493,6 +494,8 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
 
   const approvalDate = newestPollDate(snapshot.approvalPolls);
   const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
+  const approvalWindow = describeAverageWindow(snapshot.approvalPolls);
+  const genericBallotWindow = describeAverageWindow(snapshot.genericBallotPolls);
   const now = useClientNow();
   // Calendar days on the visitor's own date, so the count turns over at their
   // midnight and election day reads as election day for the whole of Nov 3.
@@ -535,6 +538,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
                 <dd className="pa-muted pa-small">
                   {`${snapshot.approvalAvg.approve.toFixed(1)}% approve, ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`}
                 </dd>
+                {approvalWindow ? <dd className="pa-muted pa-small">{approvalWindow}</dd> : null}
               </div>
               <div>
                 <dt>Generic ballot margin</dt>
@@ -542,6 +546,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
                 <dd className="pa-muted pa-small">
                   {`D ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs R ${snapshot.genericBallotAvg.rep.toFixed(1)}%`}
                 </dd>
+                {genericBallotWindow ? <dd className="pa-muted pa-small">{genericBallotWindow}</dd> : null}
               </div>
             </dl>
             <GenericBallotBar dem={snapshot.genericBallotAvg.dem} rep={snapshot.genericBallotAvg.rep} />

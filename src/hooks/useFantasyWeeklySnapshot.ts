@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import {
   FANTASY_WEEKLY_SNAPSHOT_URL,
+  isFantasyWeeklySeasonCurrent,
   normalizeFantasyWeeklySnapshot,
   type FantasyWeeklySeed,
   type FantasyWeeklySnapshot,
@@ -51,8 +52,10 @@ async function loadWeeklySnapshot(seed: FantasyWeeklySeed | null): Promise<Weekl
 
   // An expired or superseded module cache needs an HTTP revalidation too.
   // Otherwise stale-while-revalidate can return the old file immediately and
-  // give it another full hour in the module cache.
-  const revalidateHttpCache = cachedResult !== null;
+  // give it another full hour in the module cache. A server seed can be newer
+  // than the browser's stored copy as well, and retry() clears the module
+  // cache, so a seeded load revalidates too.
+  const revalidateHttpCache = cachedResult !== null || seed !== null;
   inflightRequest = (async () => {
     try {
       const response = await fetch(FANTASY_WEEKLY_SNAPSHOT_URL, {
@@ -65,10 +68,11 @@ async function loadWeeklySnapshot(seed: FantasyWeeklySeed | null): Promise<Weekl
         if (!response.ok) {
           throw new Error(`Weekly board fetch failed (${response.status}).`);
         }
-        cachedResult = {
-          kind: "snapshot",
-          snapshot: normalizeFantasyWeeklySnapshot(await response.json()),
-        };
+        const snapshot = normalizeFantasyWeeklySnapshot(await response.json());
+        // Last season's final board is not this season's board.
+        cachedResult = isFantasyWeeklySeasonCurrent(snapshot)
+          ? { kind: "snapshot", snapshot }
+          : { kind: "not-published" };
       }
       cachedAt = Date.now();
       return cachedResult;

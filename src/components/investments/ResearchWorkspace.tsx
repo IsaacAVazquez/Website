@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
 import { ResearchLoading } from "./ResearchLoading";
 import { ResearchPosition } from "./ResearchPosition";
@@ -97,12 +97,6 @@ export function ResearchWorkspace({
   const showCuratedOnlyState = !!symbol && !symbolLoading && symbolNotFetched && !hasResearchContext;
   const showResearchErrorState = !!symbol && !symbolLoading && !!symbolError && !showCuratedOnlyState && !hasResearchContext;
   const showLoadingState = !!symbol && symbolLoading && !hasResearchContext;
-
-  useEffect(() => {
-    if (symbol && visibleTabs.length > 0 && !visibleTabs.some((tab) => tab.key === activeTab)) {
-      onTabChange("overview");
-    }
-  }, [activeTab, onTabChange, symbol, visibleTabs]);
 
   const handleVisibleTabKeyDown = useTablistKeyboard(
     visibleTabs,

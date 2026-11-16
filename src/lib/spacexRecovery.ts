@@ -55,15 +55,12 @@ function bucketLandingType(core: MissionCore): RecoverySplitBucket["label"] | nu
 }
 
 /**
- * Aggregates recovery-method split and fleet-leader rankings from whatever
- * MissionCore records are actually populated across the hydrated launch
- * details. Returns null when there's nothing usable — as of this writing,
- * Launch Library's launcher_stage/landing payload is empty for every SpaceX
- * launch this snapshot hydrates — so the UI can render an honest empty state
- * instead of a chart full of zeros. The normalizer (`normalizeCores` in
- * spacexData.ts) already maps this field whenever upstream populates it; this
- * function just needs real data to show up in a future refresh, no further
- * builder work.
+ * Aggregates recovery-method split and fleet-leader rankings from the
+ * MissionCore records on the hydrated launch details. `normalizeCores` in
+ * spacexData.ts fills those from `rocket.launcher_stage`, where Launch
+ * Library 2.2.0 puts them. Returns null when no detail carries a usable core
+ * (a card-derived detail has none), so the UI can render an empty state
+ * instead of a chart full of zeros.
  */
 export function aggregateMissionRecovery(
   launchDetails: Record<string, MissionLaunchDetail>

@@ -6,6 +6,12 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 5
+    # typescript-eslint's peer range stops below TypeScript 6.1, so a TypeScript 7
+    # bump cannot install. #603 merged on 2026-11-03 and #677 put it back. Drop
+    # this once typescript-eslint accepts 7.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       next:
         patterns:
@@ -37,3 +43,12 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 2
+    # defeatbeta-api caps ipython at 8.37.0 and pins duckdb exactly, and pydantic
+    # pins pydantic-core exactly, so a bump to any of them alone cannot install.
+    # CI installs none of the Python requirements, so those PRs go green anyway
+    # (#605 merged on 2026-11-03 and #677 put ipython back).
+    ignore:
+      - dependency-name: "ipython"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "pydantic-core"
+      - dependency-name: "duckdb"

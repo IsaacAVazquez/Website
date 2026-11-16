@@ -9,9 +9,9 @@ import {
 } from "@/lib/blog-config";
 import { getBlogPostPreviewsByTopicSlug, type BlogPostPreview } from "@/lib/blog";
 import {
+  absoluteUrl,
   constructMetadata,
   generateBreadcrumbStructuredData,
-  siteConfig,
 } from "@/lib/seo";
 import { publishedDateFormatter } from "@/lib/utils";
 
@@ -122,14 +122,12 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
           data: {
             name: `${topic.label} writing`,
             description: topic.description,
-            url: `${siteConfig.url}/writing/topics/${topic.slug}`,
+            url: absoluteUrl(`/writing/topics/${topic.slug}`),
             items: posts.map((post) => ({
               name: post.title,
               description: post.excerpt,
-              url: `${siteConfig.url}/writing/${post.slug}`,
-              image: post.coverImage.startsWith("http")
-                ? post.coverImage
-                : `${siteConfig.url}${post.coverImage}`,
+              url: absoluteUrl(`/writing/${post.slug}`),
+              image: absoluteUrl(post.coverImage),
             })),
           },
         }}

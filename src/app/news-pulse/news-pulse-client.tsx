@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, CircleAlert } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -123,9 +123,12 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
   const [fetchedAt, setFetchedAt] = useState(initialFeed?.fetchedAt ?? "");
   const [history, setHistory] = useState(() => parseNewsHistory(initialFeed?.history));
   const [reloadKey, setReloadKey] = useState(0);
-  const hasCompletedInitialRefresh = useRef(false);
 
   useEffect(() => {
+    // The server already read the feed cache this request would read, and the
+    // API's CDN copy can be older, so headlines the page arrived with stay.
+    if (hasUsableInitialFeed && reloadKey === 0) return;
+
     const controller = new AbortController();
     let timedOut = false;
     let unmounted = false;
@@ -135,10 +138,7 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
     }, 15000);
 
     async function loadFeeds() {
-      const showLoading =
-        hasCompletedInitialRefresh.current || !hasUsableInitialFeed;
-      hasCompletedInitialRefresh.current = true;
-      if (showLoading) setLoading(true);
+      setLoading(true);
       setError(null);
       setFeedErrors([]);
 

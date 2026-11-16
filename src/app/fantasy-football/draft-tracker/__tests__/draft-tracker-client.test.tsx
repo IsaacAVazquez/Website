@@ -315,6 +315,9 @@ describe("DraftTrackerClient", () => {
       ...snapshotResult,
       metadata: {
         ...snapshotResult.metadata,
+        // The season matches the reading's year, so from January to June this
+        // stays a stale reading and never becomes a prior-season reference.
+        season: 2020,
         adpSource: { asOf: "2020-01-01T00:00:00.000Z" },
       },
     });

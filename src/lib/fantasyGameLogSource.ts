@@ -225,6 +225,8 @@ async function loadWeeklyRows(
     const sourceUrl = buildWeeklyStatsUrl(season);
     const response = await fetchImpl(sourceUrl, {
       headers: { Accept: "text/csv,text/plain;q=0.9,*/*;q=0.8" },
+      // The CSV is about 8 MB, so it gets longer than the page fetchers' 20 seconds.
+      signal: AbortSignal.timeout(60_000),
     });
     if (!response.ok) {
       throw new FantasyGameLogFetchError(

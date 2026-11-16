@@ -6,8 +6,7 @@ import { useRouter } from "next/navigation";
 import { SearchResults } from "./SearchResults";
 import { SearchFilters } from "./SearchFilters";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useTrackedListingSearch } from "@/hooks/useTrackedListingSearch";
-import { trackListingFilter } from "@/lib/analytics";
+import { GA_EVENT, trackEvent } from "@/lib/analytics";
 import { logger } from "@/lib/logger";
 
 export interface SearchInterfaceProps {
@@ -99,9 +98,6 @@ export function SearchInterface({
   const debouncedQuery = useDebounce(searchState.query, 300);
   const effectiveQuery = searchState.query === "" ? "" : debouncedQuery;
 
-  // Report completed searches to GA4 (no-op unless analytics is enabled).
-  useTrackedListingSearch(searchState.query, searchState.totalResults);
-
   useEffect(() => {
     incomingUrlKeyRef.current = initialSearchKey;
     // A URL written by this input must not replace text typed since that write.
@@ -184,6 +180,10 @@ export function SearchInterface({
       const data: SearchApiResponse = await response.json();
       const searchTime = Date.now() - startTime;
       if (controller.signal.aborted) return;
+
+      // /privacy says no event carries what was typed or picked, so a finished
+      // search reports its result count and never the query or the filters.
+      trackEvent(GA_EVENT.listingSearch, { listing_id: "site_search", results_count: data.total || 0 });
 
       setSearchState(prev => ({
         ...prev,
@@ -280,12 +280,12 @@ export function SearchInterface({
   };
 
   const handleTypeChange = (type: string) => {
-    trackListingFilter({ listing_id: "site_search", filter_type: "content_type", filter_value: type });
+    trackEvent(GA_EVENT.listingFilter, { listing_id: "site_search", filter_type: "content_type" });
     setSearchState(prev => ({ ...prev, type }));
   };
 
   const handleCategoryChange = (category: string) => {
-    trackListingFilter({ listing_id: "site_search", filter_type: "category", filter_value: category });
+    trackEvent(GA_EVENT.listingFilter, { listing_id: "site_search", filter_type: "category" });
     setSearchState(prev => ({ ...prev, category }));
   };
 

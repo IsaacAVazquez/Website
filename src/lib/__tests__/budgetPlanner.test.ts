@@ -1,5 +1,7 @@
 import {
   calculateBudgetSummary,
+  createBudgetExpense,
+  createBudgetMonth,
   ensureBudgetMonth,
   formatBudgetMonthLabel,
   getAdjacentBudgetMonthKey,
@@ -113,6 +115,16 @@ describe("budgetPlanner helpers", () => {
 // from the runtime's calendar. These build each instant from local parts, so
 // they hold in any zone, and a helper that pinned Pacific time would fail
 // them in every zone east of it.
+describe("expense notes", () => {
+  it("saves a long note at the length a reload keeps", () => {
+    const expense = createBudgetExpense({ categoryId: "c", amount: 5, date: "2026-04-02", note: "n".repeat(200) });
+    const stored = { "2026-04": { ...createBudgetMonth("2026-04"), expenses: [expense] } };
+    const reloaded = parseBudgetMonths(JSON.stringify(stored));
+    expect(expense.note).toHaveLength(140);
+    expect(reloaded["2026-04"].expenses[0].note).toBe(expense.note);
+  });
+});
+
 describe("budget month and day", () => {
   it("resolves the current month key from the runtime's own calendar", () => {
     expect(getCurrentBudgetMonthKey(new Date(2026, 9, 1, 0, 30))).toBe("2026-10");

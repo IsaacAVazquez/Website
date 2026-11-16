@@ -149,32 +149,10 @@ interface SpeakableSpecification {
   xpath?: string[];
 }
 
-export interface Audience {
+interface Audience {
   "@type": "Audience" | "ProfessionalAudience" | "EducationalAudience";
   audienceType?: string;
   geographicArea?: Place;
-}
-
-export interface ProjectSchemaData {
-  name: string;
-  description: string;
-  image?: string | string[];
-  url?: string;
-  dateCreated?: string;
-  dateModified?: string;
-  datePublished?: string;
-  author?: PersonSchemaData;
-  creator?: PersonSchemaData;
-  keywords?: string[];
-  programmingLanguage?: string[];
-  applicationCategory?: string;
-  about?: Thing[];
-  skillsUsed?: string[];
-  problemSolved?: string;
-  solutionDescription?: string;
-  impact?: string;
-  technologies?: string[];
-  isPartOf?: Thing;
 }
 
 export interface FAQItem {
@@ -334,51 +312,6 @@ export function generateEnhancedPersonSchema(data: PersonSchemaData) {
 }
 
 // ============================================================================
-// PROFESSIONAL SERVICE SCHEMA
-// ============================================================================
-
-/**
- * Generates ProfessionalService schema for consulting/services pages
- */
-export function generateProfessionalServiceSchema(data: {
-  name?: string;
-  description?: string;
-  provider?: PersonSchemaData;
-  serviceType?: string[];
-  areaServed?: string[];
-  audience?: Audience;
-  url?: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: data.name || `${siteConfig.name} Product Management Consulting`,
-    description: data.description || siteConfig.description,
-    url: data.url || siteConfig.url,
-    areaServed: data.areaServed || [
-      "Austin, TX",
-      "San Francisco Bay Area, CA",
-      "Remote",
-    ],
-    serviceType: data.serviceType || [
-      "Product Strategy",
-      "Product Discovery",
-      "Product Operations",
-      "Quality Engineering Advisory",
-      "Technical Product Management",
-    ],
-    provider: data.provider
-      ? generateEnhancedPersonSchema(data.provider)
-      : {
-          "@type": "Person",
-          name: siteConfig.name,
-          url: siteConfig.url,
-        },
-    ...(data.audience && { audience: data.audience }),
-  };
-}
-
-// ============================================================================
 // ARTICLE SCHEMA
 // ============================================================================
 
@@ -487,97 +420,6 @@ export function generateArticleSchema(data: ArticleSchemaData) {
   // Target audience
   if (data.audience) {
     schema.audience = data.audience;
-  }
-
-  return schema;
-}
-
-// ============================================================================
-// PROJECT/CREATIVE WORK SCHEMA
-// ============================================================================
-
-/**
- * Generates enhanced CreativeWork schema for portfolio projects
- */
-export function generateProjectSchema(data: ProjectSchemaData) {
-  const slug = data.name.toLowerCase().replace(/\s+/g, "-");
-  const resolvedUrl = data.url || `${siteConfig.url}/portfolio/${slug}`;
-  const schema: Record<string, unknown> = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "@id": `${resolvedUrl}#project`,
-    name: data.name,
-    description: data.description,
-    url: resolvedUrl,
-    ...(data.dateCreated && { dateCreated: data.dateCreated }),
-    ...(data.dateModified && { dateModified: data.dateModified }),
-    ...(data.datePublished && { datePublished: data.datePublished }),
-    inLanguage: "en-US",
-    isAccessibleForFree: true,
-  };
-
-  // Images
-  if (data.image) {
-    schema.image = Array.isArray(data.image) ? data.image : [data.image];
-  }
-
-  // Author/Creator
-  if (data.author) {
-    schema.author = generateEnhancedPersonSchema(data.author);
-  }
-  if (data.creator) {
-    schema.creator = generateEnhancedPersonSchema(data.creator);
-  }
-
-  // Keywords
-  if (data.keywords) {
-    schema.keywords = Array.isArray(data.keywords) ? data.keywords.join(", ") : data.keywords;
-  }
-
-  // Programming languages used
-  if (data.programmingLanguage && data.programmingLanguage.length > 0) {
-    schema.programmingLanguage = data.programmingLanguage;
-  }
-
-  // Category
-  if (data.applicationCategory) {
-    schema.applicationCategory = data.applicationCategory;
-  }
-
-  // Topics the project is about
-  if (data.about && data.about.length > 0) {
-    schema.about = data.about;
-  }
-
-  // Skills demonstrated in the project
-  if (data.skillsUsed && data.skillsUsed.length > 0) {
-    schema.teaches = data.skillsUsed.map((skill) => ({
-      "@type": "DefinedTerm",
-      name: skill,
-      inDefinedTermSet: "Technical Skills",
-    }));
-  }
-
-  // Problem/Solution/Impact (AI-friendly narrative structure)
-  if (data.problemSolved || data.solutionDescription || data.impact) {
-    schema.abstract = `
-      ${data.problemSolved ? `Problem: ${data.problemSolved}. ` : ""}
-      ${data.solutionDescription ? `Solution: ${data.solutionDescription}. ` : ""}
-      ${data.impact ? `Impact: ${data.impact}` : ""}
-    `.trim();
-  }
-
-  // Technologies used
-  if (data.technologies && data.technologies.length > 0) {
-    schema.mentions = data.technologies.map((tech) => ({
-      "@type": "SoftwareApplication",
-      name: tech,
-    }));
-  }
-
-  // Part of a collection
-  if (data.isPartOf) {
-    schema.isPartOf = data.isPartOf;
   }
 
   return schema;
@@ -717,34 +559,3 @@ export function generateItemListSchema(data: {
     })),
   };
 }
-
-// ============================================================================
-// WEBSITE NAVIGATION SCHEMA
-// ============================================================================
-
-/**
- * Generates SiteNavigationElement schema for main navigation
- */
-export function generateNavigationSchema(items: BreadcrumbItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "SiteNavigationElement",
-    "@id": `${siteConfig.url}#navigation`,
-    name: "Main Navigation",
-    hasPart: items.map((item, index) => ({
-      "@type": "WebPage",
-      "@id": item.url.startsWith("http")
-        ? `${item.url}#webpage`
-        : `${siteConfig.url}${item.url}#webpage`,
-      name: item.name,
-      url: item.url.startsWith("http")
-        ? item.url
-        : `${siteConfig.url}${item.url}`,
-      position: item.position || index + 1,
-    })),
-  };
-}
-
-// ============================================================================
-// AI-FRIENDLY CONTENT SUMMARY
-// ============================================================================

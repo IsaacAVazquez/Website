@@ -12,10 +12,18 @@ import { StructuredData } from "@/components/StructuredData";
  * change what they collect or where they send it.
  */
 
-const UPDATED = "2026-10-21";
+const UPDATED = "2026-11-16";
+
+// The kicker prints the same date the metadata carries, so the two cannot drift.
+const UPDATED_LABEL = new Date(`${UPDATED}T00:00:00Z`).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 const privacyDescription =
-  "What this site collects and where it goes, from Google Analytics, to the tools that save your entries in your own browser, to the two forms that send an email address.";
+  "What this site collects and where it goes, from Google Analytics, to the tools that save your entries in your own browser, to the one form that sends an email address.";
 
 export const metadata: Metadata = constructMetadata({
   title: "Privacy | Isaac Vazquez",
@@ -25,16 +33,21 @@ export const metadata: Metadata = constructMetadata({
 });
 
 const storedTools = [
-  "the investments dashboard and its retirement planner",
-  "the budget planner and the rent versus buy calculator",
+  "the investments dashboard, its retirement planner, and Before You Buy",
+  "the budget planner, the rent versus buy calculator, and the offer comparison",
   "the fantasy football rankings, draft trackers, mock draft, and trade calculator",
-  "the fantasy Formula 1 lineup",
+  "the fantasy Formula 1 lineup, prices, and race notebook",
   "Score Pools",
   "the MBA internship tracker",
   "the travel planner and the travel deal lab",
-  "the wine cellar, the museum log, and the recipe finder's pantry",
-  "the arcade's high score",
-  "your entries in the hidden 1997 guestbook",
+  "the wine cellar, the museum log, the recipe finder, and the food map",
+  "the teams, players, races, launches, and companies you follow on the league pages, golf, Formula 1, the polling aggregator, SpaceX Mission Control, and the startup tracker",
+  "the comparisons, shortlists, and places you save on the AI dev tools, Frontier Models, GitHub Trending, and Earthquake Pulse pages",
+  "Decision Lab's saved bets and the enablement assistant's team records",
+  "your Bay Area Transit commute",
+  "the time of your last visit to News Pulse",
+  "the blackjack trainer's progress and the arcade's high score",
+  "your entries in the hidden 1997 guestbook and the count of hidden stamps you have left",
 ];
 
 const secondaryProseStyle = {
@@ -70,7 +83,7 @@ export default function PrivacyPage() {
 
       <section className="c97-band" data-c97-surface="paper" aria-label="Privacy">
         <div className="c97-shell">
-          <p className="c97-kicker">Privacy · Updated October 2, 2026</p>
+          <p className="c97-kicker">Privacy · Updated {UPDATED_LABEL}</p>
           <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
             What this site keeps track of, and where it goes.
           </h1>
@@ -93,19 +106,24 @@ export default function PrivacyPage() {
           <h2 className="c97-serif c97-h2">Analytics</h2>
           <p className="c97-prose" style={proseStyle}>
             I use Google Analytics 4 to see which pages people read. Its script loads from
-            googletagmanager.com, and the site sends Google a page view each time a page opens.
+            googletagmanager.com, and the site sends Google a page view each time a page opens. A
+            page view includes the page&apos;s address, and the search page keeps your search words
+            and filters in its address so a search can be linked to, which means a page view from a
+            search address can carry them to Google.
           </p>
           <p className="c97-prose" style={proseStyle}>
             On top of page views, the site sends a few events of its own, which are clicks on the
-            header and search result links, filter changes on the search page, copying a code
+            header and search result links, filter changes on the search page, how many results a
+            search returned, copying a code
             sample out of an article, how far down a long page you scroll (at 25, 50, 75, and 100
             percent), a newsletter signup, a click on the résumé download, and a click on my email
             address or my LinkedIn or GitHub profile. A few of the tools also send one event the
             first time you use a feature after a page loads, like making a pick in a draft tracker,
             adding a player to the trade calculator, or changing an input on the retirement or rent
-            versus buy calculators. None of these events carry what you typed or picked, only the
-            page and the name of the feature, and the signup event carries the page it happened on
-            and not your email address.
+            versus buy calculators. None of these events carry what you typed or which filter you
+            picked. They carry the page, the name of the feature or the link you clicked, and a
+            number where one applies, like the result count or the scroll percentage, and the
+            signup event carries the page it happened on and not your email address.
           </p>
           <p className="c97-prose" style={secondaryProseStyle}>
             I don&apos;t run session recordings or heatmaps on this site.
@@ -131,11 +149,12 @@ export default function PrivacyPage() {
             ))}
           </ul>
           <p className="c97-prose" style={proseStyle}>
-            The light or dark theme you pick is saved the same way. All of it stays in your
-            browser, and none of it is sent to a server I run, with one exception, which is that
-            the investments dashboard sends the ticker symbols you hold to this site&apos;s server
-            to look up their prices. Clearing your browser&apos;s data for isaacvazquez.com
-            removes everything the tools saved.
+            The light or dark theme you pick is saved the same way. What you save stays in your
+            browser and is not stored on a server I run. A few tools do ask this site&apos;s
+            server to look something up, so the investments dashboard sends the ticker symbols you
+            hold to get their prices, the league pages ask for the schedule of each team you
+            follow, and search sends the words you type to find matches. Clearing your
+            browser&apos;s data for isaacvazquez.com removes everything the tools saved.
           </p>
           <p className="c97-prose" style={proseStyle}>
             The hidden visit receipt keeps up to 40 public tools and main pages opened in the

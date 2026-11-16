@@ -57,6 +57,12 @@ describe("recipes", () => {
     expect(ingredientsMatch("rice", "rice vinegar")).toBe(false);
     expect(ingredientsMatch("egg", "eggplant")).toBe(false);
     expect(ingredientsMatch("", "tomato")).toBe(false);
+    // A plural typed into the pantry matches the singular, in either direction.
+    expect(ingredientsMatch("eggs", "egg")).toBe(true);
+    expect(ingredientsMatch("tomatoes", "cherry tomato")).toBe(true);
+    expect(ingredientsMatch("chickpea", "chickpeas")).toBe(true);
+    expect(ingredientsMatch("berry", "berries")).toBe(true);
+    expect(ingredientsMatch("eggs", "eggplant")).toBe(false);
   });
 
   it("scores recipes without counting pantry staples as missing", () => {

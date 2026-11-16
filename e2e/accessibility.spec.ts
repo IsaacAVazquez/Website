@@ -13,66 +13,39 @@ test.describe('Accessibility', () => {
   test('should support keyboard navigation', async ({ page }) => {
     await page.goto('/')
 
-    // Tab through interactive elements
+    // The skip link is first in the tab order, then the header's links.
     await page.keyboard.press('Tab')
     await page.keyboard.press('Tab')
     await page.keyboard.press('Tab')
 
-    // Verify focus is working (element should be focused)
-    const focusedElement = await page.evaluate(() => {
-      return document.activeElement?.tagName
-    })
-
-    expect(focusedElement).toBeDefined()
+    // With nothing focused, activeElement is the body, so name the tags that count.
+    const focusedTag = await page.evaluate(() => document.activeElement?.tagName)
+    expect(['A', 'BUTTON']).toContain(focusedTag)
   })
 
   test('should have alt text on images', async ({ page }) => {
     await page.goto('/')
 
-    // Get all images
     const images = page.locator('img')
     const imageCount = await images.count()
+    expect(imageCount).toBeGreaterThan(0)
 
-    // Check that each image has alt text or is decorative
+    // An empty alt marks a decorative image. A missing one reads as null.
     for (let i = 0; i < imageCount; i++) {
       const img = images.nth(i)
       const alt = await img.getAttribute('alt')
-
-      // Alt should either exist or be empty string for decorative images
-      expect(alt).toBeDefined()
+      expect(alt, await img.getAttribute('src') ?? `image ${i}`).not.toBeNull()
     }
   })
 
-  test('should have proper ARIA labels on interactive elements', async ({ page }) => {
+  test('should have accessible names on buttons', async ({ page }) => {
     await page.goto('/')
 
-    // Check buttons have accessible names
-    const buttons = page.locator('button')
+    const buttons = page.locator('button:visible')
     const buttonCount = await buttons.count()
 
     for (let i = 0; i < buttonCount; i++) {
-      const button = buttons.nth(i)
-      const ariaLabel = await button.getAttribute('aria-label')
-      const text = await button.textContent()
-
-      // Button should have either aria-label or visible text
-      expect(ariaLabel || text).toBeTruthy()
+      await expect(buttons.nth(i)).toHaveAccessibleName(/\S/)
     }
-  })
-
-  test('should have sufficient color contrast', async ({ page }) => {
-    await page.goto('/')
-
-    // This is a basic check - in production, you'd use axe-core or similar
-    const bodyStyles = await page.locator('body').evaluate((el) => {
-      const styles = window.getComputedStyle(el)
-      return {
-        color: styles.color,
-        backgroundColor: styles.backgroundColor,
-      }
-    })
-
-    expect(bodyStyles.color).toBeDefined()
-    expect(bodyStyles.backgroundColor).toBeDefined()
   })
 })

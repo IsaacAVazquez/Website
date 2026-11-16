@@ -99,6 +99,37 @@ describe("public sitemap", () => {
     }
   });
 
+  // The reader drops a post with a missing required field, so the article
+  // route 404s; the sitemap must not advertise that URL.
+  it("leaves out a post the reader would reject", () => {
+    const read = fs.readFileSync;
+    const list = fs.readdirSync;
+    const isBadPost = (file: unknown) => String(file).endsWith("content/blog/zz-bad-excerpt.mdx");
+    const readSpy = jest.spyOn(fs, "readFileSync").mockImplementation((file, options) =>
+      isBadPost(file)
+        ? '---\ntitle: "Bad"\nexcerpt: ""\ncategory: "Test"\npublishedAt: "2026-01-01"\n---\nBody'
+        : read(file, options)
+    );
+    const listSpy = jest.spyOn(fs, "readdirSync").mockImplementation(((dir: string, options: never) => {
+      const entries = list(dir, options) as unknown[];
+      return String(dir).endsWith("content/blog") ? [...entries, "zz-bad-excerpt.mdx"] : entries;
+    }) as typeof fs.readdirSync);
+    try {
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const { getPublicSitemapEntries: readEntries } = require("../sitemap.js") as {
+          getPublicSitemapEntries: typeof getPublicSitemapEntries;
+        };
+        const locs = readEntries().map(({ loc }) => loc);
+        expect(locs).toContain("/writing");
+        expect(locs).not.toContain("/writing/zz-bad-excerpt");
+      });
+    } finally {
+      readSpy.mockRestore();
+      listSpy.mockRestore();
+    }
+  });
+
   // Google only trusts lastmod when it tracks real changes, and a new post
   // changes the writing index and the topic page it is filed under.
   describe("writing freshness", () => {

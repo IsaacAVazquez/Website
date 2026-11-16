@@ -2,7 +2,7 @@
 
 Current reference for how scheduled data refreshes work across the site.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 ---
 
@@ -41,7 +41,7 @@ Golf has its own workflow, `update-golf.yml`. The surfaces with no scheduled ref
 - `scripts/ci/netlify-ignore.sh` is wired in as the `ignore` command in `netlify.toml`. It cancels Netlify's own builds of `main`, which would otherwise duplicate every deploy, and of dependabot branches, whose previews are what exhausted the quota. Human pull requests still get a deploy preview.
 - Publication needs the `NETLIFY_AUTH_TOKEN` repository secret. The site ID is set in the workflow and is an identifier rather than a credential.
 - The deploy is tried up to three times. After it, the workflow polls `/api/data-revisions` on the Netlify origin, `isaacvazquez.netlify.app` unless the optional `PRODUCTION_DATA_REVISION_URL` secret names another address, until production reports the committed data revision or a deploy built from that commit or a later one. It then asks the Netlify API whether the deploy stored its static assets. A failed step opens or updates a `data-publication-failure` issue, and the next successful run closes it.
-- The older lane pinged a Netlify build hook from cron-job.org, and publication no longer depends on it. The one workflow that still reads the `NETLIFY_BUILD_HOOK` secret is `update-article-images.yml`, which pings the hook after it commits new covers and skips that step when the secret is unset. The cron-job.org job and the secret can be retired once the Actions lane has run cleanly.
+- The older lane pinged a Netlify build hook from cron-job.org, and publication no longer depends on it. No workflow reads the `NETLIFY_BUILD_HOOK` secret since `update-article-images.yml` dropped its hook step on 2026-11-16, because a build hook starts a Netlify build of `main` that the ignore script cannot cancel. The cron-job.org job and the secret can be retired.
 - Premier League and La Liga data refresh through their dedicated GitHub Actions workflows or explicit local update commands.
 - Per-team snapshots (sidebar fixtures, form strip) refresh when a full league update runs and the resulting snapshots are committed.
 

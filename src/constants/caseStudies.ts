@@ -8,52 +8,10 @@ export interface CaseStudyData {
   timeline: string;
   tools: string[];
   metrics: string;
-  github?: string | null;
   link?: string | null;
-  featured?: boolean;
-  comingSoon?: boolean;
-
   overview: {
     summary: string;
-    impact: string;
   };
-  problem: {
-    context: string;
-    painPoints: string[];
-    stakes: string;
-  };
-  process: {
-    approach: string;
-    methodology: string[];
-    decisions: string[];
-    collaboration?: string;
-  };
-  result: {
-    outcomes: string[];
-    testimonial?: {
-      quote: string;
-      author: string;
-      role: string;
-    };
-    lessonsLearned: string[];
-  };
-  detailedMetrics?: {
-    label: string;
-    value: string;
-    improvement?: string;
-  }[];
-
-  // PM-specific fields
-  userSegments: string[];
-  northStarMetric: string;
-  tradeoffs: {
-    decision: string;
-    optionChosen: string;
-    optionRejected: string;
-    reasoning: string;
-  }[];
-  retrospective: string;
-  pmFramework?: string;
 }
 
 export const caseStudiesData: Record<string, CaseStudyData> = {
@@ -66,28 +24,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "Finnhub API", "Tailwind CSS"],
     metrics: "Committed snapshots · 30+ metrics per stock · Side-by-side comparison",
-    github: "https://github.com/IsaacAVazquez",
     link: "/investments",
-    featured: true,
 
     overview: {
       summary:
         "I built an investment research workspace for tracking positions, comparing stocks, and scanning valuation, profitability, and growth in one place.",
-      impact:
-        "Turns scattered market data into a faster decision surface for portfolio tracking and side-by-side equity research.",
     },
-    problem: {
-      context:
-        "Retail investors often jump between broker apps, spreadsheets, and finance sites to answer basic portfolio and comparison questions.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
 
@@ -100,28 +42,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Portfolio Analytics"],
     metrics: "Editable portfolio · Two purchase options · Shared historical comparison",
-    github: "https://github.com/IsaacAVazquez",
     link: "/investments/before-you-buy",
-    featured: true,
 
     overview: {
       summary:
         "An independent concept by Isaac Vazquez, not affiliated with or endorsed by Google. I built it for the moment right before a trade, when the question is what one more stock would do to the portfolio you already have.",
-      impact:
-        "Takes portfolio insights from describing what you hold to showing what a buy would change, in numbers you can check.",
     },
-    problem: {
-      context:
-        "Portfolio tools describe what you already own, but the decision people actually face is whether the next purchase piles onto a sector or a kind of risk they already carry.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "fantasy-football-analytics": {
@@ -133,29 +59,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2024–2026",
     tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
     metrics: "Live · Weekly FantasyPros snapshots · PPR / Half / Standard",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-football",
-    featured: true,
-    comingSoon: false,
 
     overview: {
       summary:
         "I built a fantasy football platform that combines consensus rankings, tier views, and an automated data refresh into a single workflow, with the refresh running daily from July into early January and weekly the rest of the year.",
-      impact:
-        "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
-    problem: {
-      context:
-        "Fantasy players usually stitch rankings, tiers, and matchup context together from scattered sources with little transparency into the underlying data.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "interchange-iq": {
@@ -167,28 +76,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "React", "Payments Economics"],
     metrics: "6 processors · Payment channel comparisons · Dated rate sources",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/interchange-iq",
-    featured: true,
 
     overview: {
       summary:
         "I created a payment fee analyzer that turns interchange tables into a clear processor comparison with live breakeven logic.",
-      impact:
-        "Makes processor tradeoffs legible before a business commits to flat-rate or interchange-plus pricing.",
     },
-    problem: {
-      context:
-        "Merchants and fintech founders struggle to compare flat-rate and interchange-plus pricing because processor economics are intentionally opaque.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "budget-planner": {
@@ -200,28 +93,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Personal Finance UX"],
     metrics: "Monthly planner · Browser persistence · Category insights",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/budget-planner",
-    featured: true,
 
     overview: {
       summary:
         "I designed a monthly budgeting workspace that keeps planning, savings targets, and manual expense tracking in one browser-persisted flow.",
-      impact:
-        "Keeps personal finance planning lightweight enough to use consistently without adding account-sync complexity.",
     },
-    problem: {
-      context:
-        "Many budgeting tools either over-automate around bank connections or make simple monthly planning feel rigid and noisy.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "rent-vs-buy-calculator": {
@@ -233,28 +110,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Financial Modeling"],
     metrics: "Break-even year · Opportunity-cost model · Browser persistence",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/rent-vs-buy",
-    featured: true,
 
     overview: {
       summary:
         "I created a housing-decision tool that models the full net-worth tradeoff between renting and buying, which goes further than comparing monthly payments.",
-      impact:
-        "Turns one of the most-searched personal finance questions into a transparent break-even year you can pressure-test against your own assumptions.",
     },
-    problem: {
-      context:
-        "Most rent-vs-buy calculators stop at the monthly payment and ignore the opportunity cost of the cash a buyer ties up in a down payment, so they quietly bias the answer toward buying.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "offer-comparison": {
@@ -266,28 +127,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Financial Modeling"],
     metrics: "Four year view · Vesting schedules · Browser persistence",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/offer-comparison",
-    featured: true,
 
     overview: {
       summary:
         "I created a job offer calculator that compares base, target bonus, signing bonus, equity vesting, and retirement match one year at a time instead of as a single headline number.",
-      impact:
-        "Shows when the offer that looks bigger in year one falls behind once a grant's later years vest, before any of it gets negotiated.",
     },
-    problem: {
-      context:
-        "Offers usually get compared on a first-year total compensation figure, which hides a back loaded vesting schedule and treats a one-time signing bonus as if it repeats.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "news-pulse-dashboard": {
@@ -299,28 +144,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "RSS", "Tailwind CSS"],
     metrics: "6 outlets · Live feeds · Client-side NLP",
-    github: "https://github.com/IsaacAVazquez",
     link: "/news-pulse",
-    featured: true,
 
     overview: {
       summary:
         "I built a media analytics dashboard that tracks coverage patterns, topic frequency, and tone across major outlets without external NLP services.",
-      impact:
-        "Turns RSS feeds into a faster comparison surface for media monitoring and story framing analysis.",
     },
-    problem: {
-      context:
-        "Following how multiple outlets frame the same story usually means scanning feeds manually with no lightweight way to compare patterns.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "decision-lab": {
@@ -332,28 +161,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Decision Support UX", "Tailwind CSS"],
     metrics: "6 presets · Deep-linkable state · Deterministic scoring model",
-    github: "https://github.com/IsaacAVazquez",
     link: "/decision-lab",
-    featured: true,
 
     overview: {
       summary:
         "I built a product-bet triage tool that keeps impact, confidence, effort, and reversibility separate before forcing a decision.",
-      impact:
-        "Makes roadmap debates more legible by turning fuzzy prioritization arguments into an explicit ship, test, or hold call.",
     },
-    problem: {
-      context:
-        "Product discussions often collapse multiple tradeoffs into one vague conviction, which makes it easier to argue confidently than to reason clearly.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "automation-enablement-assistant": {
@@ -365,28 +178,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Quality Engineering", "Decision Support UX"],
     metrics: "12 seeded teams · 7 scored toolchains · 5 ranked documentation gaps",
-    github: "https://github.com/IsaacAVazquez",
     link: "/enablement-assistant",
-    featured: true,
 
     overview: {
       summary:
         "I built a first line of support for central tooling teams that have more adoption demand than they can handle one team at a time.",
-      impact:
-        "Turns repeated onboarding work into a consistent recommendation, a concrete team plan, and a ranked record of where the shared documentation still fails.",
     },
-    problem: {
-      context:
-        "Independent product teams often choose separate automation stacks because the central tooling team can publish standards but cannot personally guide every adoption.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "food-map": {
@@ -398,28 +195,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "SVG", "Editorial UX"],
     metrics: "12 curated stops · 4 neighborhoods · Deep-linkable filters",
-    github: "https://github.com/IsaacAVazquez",
     link: "/food-map",
-    featured: true,
 
     overview: {
       summary:
         "I built a curated food map across ten cities, from Austin to Tokyo, that puts the restaurants I actually send people to next to Anthony Bourdain's picks and the top-rated spots on Google, all on one deep-linkable map.",
-      impact:
-        "Replaces the same restaurant text-thread I keep retyping with one shareable link that already filters by neighborhood, cuisine, and meal.",
     },
-    problem: {
-      context:
-        "Most food guides are either too long to be useful or too generic to be honest. A friend asking where to eat usually wants a short, opinionated answer, not a list of forty options.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "march-madness-2026": {
@@ -431,28 +212,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React"],
     metrics: "15 ranked teams · 20 picks · 4 regions",
-    github: "https://github.com/IsaacAVazquez",
     link: "/march-madness-2026",
-    featured: true,
 
     overview: {
       summary:
         "I created a bracket analysis product that combines rankings, seed context, injuries, and travel penalties into one picking workflow.",
-      impact:
-        "Makes each pick easier to justify with a transparent framework instead of isolated hot takes.",
     },
-    problem: {
-      context:
-        "Bracket picks are often based on seed bias or isolated stats instead of a consistent framework that weighs matchup context.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "la-liga-pulse": {
@@ -464,28 +229,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Sports Data", "UI Design"],
     metrics: "Matchday 30 snapshot · deep-linkable views · top-10 leaders",
-    github: "https://github.com/IsaacAVazquez",
     link: "/la-liga",
-    featured: true,
 
     overview: {
       summary:
         "I built a league dashboard for tracking title-race pressure, European qualification, relegation, and leaderboards in one view.",
-      impact:
-        "Compresses the season state into one product surface instead of forcing fans across standings, fixtures, and stat tables.",
     },
-    problem: {
-      context:
-        "League tables rarely combine standings pressure, leaderboards, and next-step context into a single product surface.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "mba-role-tracker": {
@@ -497,28 +246,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Job board parsing", "Notification UX"],
     metrics: `${MBA_COMPANIES.length} companies · ${MBA_COMPANIES.filter((company) => company.atsType !== "manual").length} live boards · Fit scores and pipeline`,
-    github: "https://github.com/IsaacAVazquez",
     link: "/mba-internship-notifications",
-    featured: false,
 
     overview: {
       summary:
         "I built a job search tracker that monitors public tech-company job boards for full-time business roles in one place and keeps my application pipeline beside the feed.",
-      impact:
-        "Compresses repetitive recruiting checks into a faster decision surface with filters, alerts, and manual fallbacks.",
     },
-    problem: {
-      context:
-        "MBA recruiting is fragmented across Greenhouse, Ashby, Lever, and manual career pages, which turns simple monitoring into repetitive tab work.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "spacex-mission-control": {
@@ -530,28 +263,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "REST APIs", "Product Design"],
     metrics: "Live API surface · deep-linked mission detail",
-    github: "https://github.com/IsaacAVazquez",
     link: "/spacex-mission-control",
-    featured: true,
 
     overview: {
       summary:
         "I designed a mission-control-style launch board that makes upcoming missions, recent launches, and mission detail easier to explore.",
-      impact:
-        "Turns public mission data into a more navigable story and planning surface for enthusiasts.",
     },
-    problem: {
-      context:
-        "Space launch information is often fragmented across plain tables, isolated articles, and inconsistent detail pages, and hard to aggregate for those that are curious.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "premier-league-pulse": {
@@ -563,28 +280,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Tailwind CSS"],
     metrics: "Checked-in standings · Fixture tracking · Club form drilldowns",
-    github: "https://github.com/IsaacAVazquez",
     link: "/premier-league",
-    featured: true,
 
     overview: {
       summary:
         "I built a Premier League dashboard that packages a checked-in competition snapshot into a deep-linkable page for standings, fixtures, and club-level recent form.",
-      impact:
-        "Turns a scheduled snapshot pipeline into a fast, shareable league exploration tool without a live runtime dependency.",
     },
-    problem: {
-      context:
-        "League standings, fixture schedules, and club form are typically scattered across separate tabs or sites with no unified deep-linkable view.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "frontier-model-tracker": {
@@ -597,26 +298,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
     metrics: "9 models · 7 providers · curated weekly",
     link: "/frontier-models",
-    featured: true,
 
     overview: {
       summary:
         "I built a side-by-side reference for frontier LLMs that surfaces the spec details product teams actually argue about: context window, blended price, modality coverage, and reasoning support.",
-      impact:
-        "Turns a moving market into a quick decision surface, paired with the model-economics writing on the same site.",
     },
-    problem: {
-      context:
-        "Provider docs read like marketing pages. Comparing five frontier models means a dozen open tabs and a spreadsheet.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "ai-dev-tool-ecosystem": {
@@ -629,26 +315,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tools: ["Next.js", "TypeScript", "Developer Tools", "Market Research"],
     metrics: "16 tools · pricing tiers · model support · release cadence",
     link: "/ai-dev-tools",
-    featured: true,
 
     overview: {
       summary:
         "I built a market map for AI coding tools that makes it easier to compare Cursor, Claude Code, Copilot, Devin, Cline, and the open-source agent layer without maintaining a spreadsheet.",
-      impact:
-        "Turns a fast-moving tool market into a shareable decision surface with filters, deep links, and sourced detail panels.",
     },
-    problem: {
-      context:
-        "AI coding tools change pricing, model access, and release pace constantly. The useful comparison is not just features, but cost model, model control, open-source traction, and update velocity.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "github-trending-pulse": {
@@ -660,28 +331,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "GitHub API", "Snapshot pipeline"],
     metrics: "14 segments · Daily refresh · Weekly star deltas",
-    github: "https://github.com/IsaacAVazquez",
     link: "/github-trending-pulse",
-    featured: true,
 
     overview: {
       summary:
         "I built a developer-trend dashboard that turns GitHub search data into a daily snapshot across languages, topics, and repository-level star movement.",
-      impact:
-        "Makes open source momentum easier to scan without treating GitHub Trending as a static leaderboard.",
     },
-    problem: {
-      context:
-        "GitHub discovery is noisy when popular projects, freshly active repos, and topic-specific momentum all sit in different search paths.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "tech-startup-tracker": {
@@ -693,28 +348,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Data design"],
     metrics: "24 startups · 6 sectors · Sector & stage views",
-    github: "https://github.com/IsaacAVazquez",
     link: "/tech-startup-tracker",
-    featured: true,
 
     overview: {
       summary:
         "I built a startup dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
-      impact:
-        "Turns scattered funding headlines into a single deep-linkable view, with a transparent as-of date and disclosure rather than implied precision.",
     },
-    problem: {
-      context:
-        "Startup funding data is fragmented across paywalled databases and one-off press releases, with no fast way to compare companies across sectors and stages.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "formula-1-pulse": {
@@ -726,28 +365,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "OpenF1 API", "Snapshot pipeline"],
     metrics: "Driver & constructor tables · Race-by-race context · Snapshot-driven",
-    github: "https://github.com/IsaacAVazquez",
     link: "/formula-1",
-    featured: true,
 
     overview: {
       summary:
         "I built a Formula 1 dashboard that puts the next Grand Prix, championship tables, and race-by-race context on a single snapshot-driven page.",
-      impact:
-        "Turns OpenF1 history into a fast season-state view without forcing fans across separate F1 sites and spreadsheets.",
     },
-    problem: {
-      context:
-        "F1 standings, driver form, and race calendars are typically fragmented across separate sites with no unified deep-linkable view.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "fantasy-formula-1-optimizer": {
@@ -759,28 +382,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "OpenF1 API", "Optimization UX"],
     metrics: "$100m budget model · 5 drivers + 2 constructors · Local lineup persistence",
-    github: "https://github.com/IsaacAVazquez",
     link: "/fantasy-formula-1",
-    featured: true,
 
     overview: {
       summary:
         "I built a Fantasy Formula 1 optimizer that turns the existing OpenF1 snapshot into a practical team-building tool with transparent pricing and projection assumptions.",
-      impact:
-        "Gives F1 fantasy players a faster way to compare lineup tradeoffs before a race weekend without pretending unofficial model data is official scoring.",
     },
-    problem: {
-      context:
-        "Fantasy Formula 1 decisions usually mix official-game constraints, subjective form reads, and scattered race context with little visibility into why a lineup works.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "pga-tour-pulse": {
@@ -792,28 +399,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Sports Data", "Snapshot pipeline"],
     metrics: "Tournament leaderboard · Round-by-round movement · Player drilldowns",
-    github: "https://github.com/IsaacAVazquez",
     link: "/golf",
-    featured: true,
 
     overview: {
       summary:
         "I built a PGA Tour tournament dashboard that turns a checked-in tournament snapshot into a deep-linkable page.",
-      impact:
-        "Makes weekend leaderboard scanning, round-by-round movement, and cut-line context legible without juggling separate live sites.",
     },
-    problem: {
-      context:
-        "Most tour leaderboards make it hard to compare round-by-round movement, cut-line pressure, and player form on a single screen.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "earthquake-pulse": {
@@ -825,28 +416,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Live feed with snapshot fallback"],
     metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
-    github: "https://github.com/IsaacAVazquez",
     link: "/earthquake-pulse",
-    featured: true,
 
     overview: {
       summary:
         "I built a global earthquake dashboard that polls the USGS GeoJSON feed every five minutes, falls back to a checked-in snapshot when the feed is down, and turns that data into one deep-linkable page for recent activity, significant events, and regional breakdowns.",
-      impact:
-        "Makes the planet's last day of seismic activity legible at a glance, what just moved, what was big enough to matter, and where the ground is busiest, without juggling separate live feeds.",
     },
-    problem: {
-      context:
-        "Raw USGS feeds carry everything but come at you like a firehose; most people just want a fast read on what's recent, what's significant, and where activity is concentrated.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "world-cup-pulse": {
@@ -858,28 +433,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
     metrics: "Group standings · 32-team knockout bracket · Schedule & host venues",
-    github: "https://github.com/IsaacAVazquez",
     link: "/world-cup-2026",
-    featured: true,
 
     overview: {
       summary:
         "I built a 2026 FIFA World Cup dashboard that turns an ESPN snapshot into one deep-linkable page for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
-      impact:
-        "Makes the largest World Cup ever legible on a single screen, from group qualifying math to the bracket, without juggling separate live sites.",
     },
-    problem: {
-      context:
-        "The 48-team format spreads 104 matches across 16 cities and three countries, and most trackers scatter standings, fixtures, and the bracket across separate pages.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "bay-area-transit-pulse": {
@@ -891,28 +450,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
     metrics: "Line map · Per-station departures · Service alerts",
-    github: "https://github.com/IsaacAVazquez",
     link: "/bay-area-transit",
-    featured: false,
 
     overview: {
       summary:
         "I built a BART dashboard that reads the BART public API about once a minute while the page is open, falls back to a checked-in snapshot when it can't, and puts the line map, the next trains at any station, and live service alerts on one page.",
-      impact:
-        "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
     },
-    problem: {
-      context:
-        "Checking whether a train is coming usually means bouncing between a route map, a station page, and a separate alerts feed, and none of them share a view.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "mlb-pulse": {
@@ -924,28 +467,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "MLB Stats API", "Snapshot pipeline"],
     metrics: "Division standings · Wild card race · Hitting & pitching leaders",
-    github: "https://github.com/IsaacAVazquez",
     link: "/mlb",
-    featured: true,
 
     overview: {
       summary:
         "I built an MLB dashboard that combines division standings, league splits, wild card pressure, and league-wide stat leaders into one snapshot-driven view.",
-      impact:
-        "Compresses scattered baseball data into a faster decision surface for tracking races, recent form, and league leaders.",
     },
-    problem: {
-      context:
-        "League standings, wild card context, and stat leaders are usually split across separate tabs with no unified view of what actually matters that week.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "nba-pulse": {
@@ -957,28 +484,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "ESPN API", "Snapshot pipeline"],
     metrics: "Conference standings · Play-in race · League stat leaders",
-    github: "https://github.com/IsaacAVazquez",
     link: "/nba",
-    featured: true,
 
     overview: {
       summary:
         "I built an NBA dashboard that packages conference standings, playoff seeding, play-in pressure, and league-wide stat leaders into one snapshot-driven view.",
-      impact:
-        "Turns scattered basketball context into a fast comparison surface for late-season races and league leaders.",
     },
-    problem: {
-      context:
-        "Conference standings, playoff seeding, the play-in picture, and stat leaders rarely live on a single shareable surface.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "nfl-pulse": {
@@ -990,28 +501,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "NFLverse", "Snapshot pipeline"],
     metrics: "Conference seeding · Playoff race · Passing, rushing, receiving, and sack leaders",
-    github: "https://github.com/IsaacAVazquez",
     link: "/nfl",
-    featured: true,
 
     overview: {
       summary:
         "I built an NFL dashboard that packages conference standings, division context, playoff pressure, and stat leaders into one snapshot-driven view.",
-      impact:
-        "Turns NFLverse data into a faster season-state view without forcing fans across standings pages, box scores, and stat tables.",
     },
-    problem: {
-      context:
-        "NFL standings, playoff seeding, point differential, and player leaders usually live in separate places, which makes the season picture harder to scan quickly.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "polling-aggregator": {
@@ -1023,28 +518,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Polling data", "Snapshot pipeline"],
     metrics: "Presidential approval · Generic ballot · 2026 Senate & governor races",
-    github: "https://github.com/IsaacAVazquez",
     link: "/polling-aggregator",
-    featured: true,
 
     overview: {
       summary:
         "I built a polling aggregator that combines presidential approval, the generic ballot, and competitive 2026 Senate and governor races into one snapshot-driven dashboard.",
-      impact:
-        "Turns scattered polling memos and single-state pages into a single deep-linkable view of where the cycle actually sits.",
     },
-    problem: {
-      context:
-        "Polling context is fragmented across separate aggregators, single-state pages, and partisan blogs with no shared deep-linkable surface.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "museum-log": {
@@ -1056,28 +535,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local-first state", "Editorial UX"],
     metrics: "Curated catalog · Watchlist & visit log · Local-first state",
-    github: "https://github.com/IsaacAVazquez",
     link: "/museum-log",
-    featured: true,
 
     overview: {
       summary:
         "I built a Letterboxd-style tracker for museums where users browse a curated catalog, save spots to a watchlist, and log visits with personal ratings.",
-      impact:
-        "Gives museum-goers one product surface for discovery, planning, and review instead of scattered notes and bookmarks.",
     },
-    problem: {
-      context:
-        "There is no equivalent of Letterboxd for museums, so visit notes, watchlists, and exhibit memories live across spreadsheets, photo albums, and group chats.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "wine-cellar": {
@@ -1089,28 +552,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local persistence", "Editorial UX"],
     metrics: "Tasting log · Bottle ratings · Browser-persisted cellar",
-    github: "https://github.com/IsaacAVazquez",
     link: "/wine-cellar",
-    featured: true,
 
     overview: {
       summary:
         "I built a personal wine reviewing app for logging tastings, rating bottles, and tracking the wines I've poured.",
-      impact:
-        "Keeps a wine journal lightweight enough to actually maintain without the friction of an account-backed tasting service.",
     },
-    problem: {
-      context:
-        "Most wine apps lean heavy on social or commerce features when the core need is a private journaling surface for tasting notes.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "recipe-finder": {
@@ -1122,28 +569,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Search UX", "Local persistence"],
     metrics: "Pantry-aware ranking · Curated recipe corpus · Client-side scoring",
-    github: "https://github.com/IsaacAVazquez",
     link: "/recipe-finder",
-    featured: true,
 
     overview: {
       summary:
         "I built an ingredient-driven recipe aggregator that ranks recipes by how much of each one your on-hand ingredients cover.",
-      impact:
-        "Turns 'what can I cook with what's already in the kitchen?' into a fast answer instead of a long scroll.",
     },
-    problem: {
-      context:
-        "Most recipe sites optimize for browsing inspiration, not for actually cooking with what is already in your pantry.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 
   "travel-planner": {
@@ -1155,28 +586,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Local persistence", "Itinerary UX"],
     metrics: "Day-by-day itinerary · Stop check-off · Per-trip journal",
-    github: "https://github.com/IsaacAVazquez",
     link: "/travel",
-    featured: true,
 
     overview: {
       summary:
         "I built a travel planner that lays a trip's dates out as a day-by-day itinerary, lets you check off stops, and keeps a journal entry per day.",
-      impact:
-        "Keeps trip planning, the live itinerary, and the trip diary on one surface instead of scattered across notes apps.",
     },
-    problem: {
-      context:
-        "Trip planning usually splits across a notes app, a calendar, and a separate journal, so nothing stays in sync once the trip starts.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
   "travel-deal-lab": {
     slug: "travel-deal-lab",
@@ -1187,28 +602,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Pure engine", "Local persistence"],
     metrics: "Booking-window timing · Fare deal-score · Cash-vs-points check",
-    github: "https://github.com/IsaacAVazquez",
     link: "/travel-deals",
-    featured: true,
 
     overview: {
       summary:
         "I built a travel optimizer that turns a trip's shape into concrete decisions: when to book for the destination, whether a quoted fare beats the typical band, and what an award redemption is really worth per point.",
-      impact:
-        "Puts the timing, valuation, and budgeting calls that actually move a trip's cost on one surface, backed by a pure, unit-tested engine and a curated deal-finding playbook.",
     },
-    problem: {
-      context:
-        "Finding travel deals is scattered across fare trackers, points blogs, and budgeting spreadsheets, and most of the advice is generic rather than tied to the trip in front of you.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
   "blackjack-trainer": {
     slug: "blackjack-trainer",
@@ -1219,28 +618,12 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Pure engine", "Local persistence"],
     metrics: "Graded decisions · Rule-aware strategy chart · Hi-Lo and REKO counting drill",
-    github: "https://github.com/IsaacAVazquez",
     link: "/blackjack-trainer",
-    featured: true,
 
     overview: {
       summary:
         "I built a blackjack trainer that deals from a shoe, grades each hit, stand, double, split, and surrender against basic strategy, and keeps a record of the plays I miss most.",
-      impact:
-        "Puts the practice table, the chart it grades against, and a counting drill on one surface, with the chart and the grader reading the same pure, unit-tested function so they cannot disagree.",
     },
-    problem: {
-      context:
-        "A printed basic strategy chart is easy to read and hard to remember at the table, and most charts do not say which plays change when the dealer hits soft 17 or surrender is off.",
-      painPoints: [],
-      stakes: "",
-    },
-    process: { approach: "", methodology: [], decisions: [] },
-    result: { outcomes: [], lessonsLearned: [] },
-    userSegments: [],
-    northStarMetric: "",
-    tradeoffs: [],
-    retrospective: "",
   },
 };
 
@@ -1343,12 +726,10 @@ export function getHomepageFeaturedCaseStudies(): CaseStudyData[] {
 }
 
 export function getPortfolioProjects(): CaseStudyData[] {
-  const orderedProjects = getStudiesByOrderedSlugs(PORTFOLIO_PROJECT_ORDER).filter(
-    (study) => !study.comingSoon
-  );
+  const orderedProjects = getStudiesByOrderedSlugs(PORTFOLIO_PROJECT_ORDER);
   const seen = new Set(orderedProjects.map((study) => study.slug));
   const unorderedProjects = Object.values(caseStudiesData).filter(
-    (study) => !study.comingSoon && !seen.has(study.slug)
+    (study) => !seen.has(study.slug)
   );
 
   return [...orderedProjects, ...unorderedProjects];

@@ -6,6 +6,7 @@ import {
   fetchBestBallScheduleBoard,
   fetchBestBallSuperflexRankingsBoard,
   getBestBallRefreshFallback,
+  isBestBallRefreshRedundant,
 } from "@/lib/bestBallSource";
 import {
   assertBestBallRankingCoverage,
@@ -114,6 +115,13 @@ async function main() {
       });
     }
     throw error;
+  }
+
+  if (isBestBallRefreshRedundant(previous, rankings)) {
+    console.log(
+      "The season has opened and the consensus has not moved since the committed snapshot, so the snapshot stays as it is."
+    );
+    return;
   }
 
   const sameSeasonPrevious = previous?.season === rankings.season ? previous : null;

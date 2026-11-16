@@ -15,7 +15,6 @@ import {
 import {
   buildLeagueTeamSnapshots,
   fetchLeagueSummary,
-  fetchLiveSections,
   getLeagueTeamSnapshot,
   normalizeTeamOption,
   type FootballLeague,
@@ -107,27 +106,6 @@ export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
       .map((entry, i) => normalizeScorer(entry, i + 1))
       .filter((s): s is PremierLeagueScorer => s !== null),
     goalsPerMatchday: feeds.goalsPerMatchday,
-    generatedAt: new Date().toISOString(),
-  };
-}
-
-/**
- * Request-time refresh used by the summary accessor when a football-data.org
- * token is configured. Only the standings and the recent/upcoming fixture
- * lists are refreshed; every other section keeps the committed snapshot's
- * value. See `fetchLiveSections` for the per-section rules.
- */
-export async function buildPremierLeagueLiveSummary(
-  baseSummary: PremierLeagueSummary
-): Promise<PremierLeagueSummary> {
-  const live = await fetchLiveSections(PREMIER_LEAGUE);
-  return {
-    ...baseSummary,
-    ...(live.standings
-      ? { standings: live.standings.rows, competition: buildCompetitionMeta(live.standings.response) }
-      : {}),
-    ...(live.recentFixtures ? { recentFixtures: live.recentFixtures } : {}),
-    ...(live.upcomingFixtures ? { upcomingFixtures: live.upcomingFixtures } : {}),
     generatedAt: new Date().toISOString(),
   };
 }

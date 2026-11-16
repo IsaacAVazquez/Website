@@ -444,7 +444,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Illinois over N. Carolina",
     reason: "Illinois KP#7 · stronger analytics profile than their 3-seed suggests · UNC overseeded",
-    body: "Illinois ranks 7th in the blended multi-system rankings, better than their 3-seed implies, with strong adjusted offensive efficiency (#2 nationally at 131.9) and a solid defensive profile. North Carolina (KP#24 blended) is a 6-seed that plays solid basketball but doesn't have the analytics profile to beat Illinois in a second-round game. Illinois advances to the Sweet 16 where they face Houston.",
+    body: "Illinois is tied for 9th in the blended multi-system rankings and 7th in KenPom, with strong adjusted offensive efficiency (#2 nationally at 131.9) and a solid defensive profile. North Carolina (KP#24 blended) is a 6-seed that plays solid basketball but doesn't have the analytics profile to beat Illinois in a second-round game. Illinois advances to the Sweet 16 where they face Houston.",
   },
   {
     group: "analytics",
@@ -461,8 +461,8 @@ export const PICKS: PickEntry[] = [
     round: "FF",
     region: "East",
     pick: "Duke wins the championship",
-    reason: "#1 in all 8 systems · 0% TZ penalty every round · best defense in country (90.8)",
-    body: "Duke is ranked #1 in every one of the 8 metric systems used in the Eisenberg Guide: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cameron Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time: Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
+    reason: "#1 in 6 of 8 systems · 0% TZ penalty every round · best defense in country (90.8)",
+    body: "Duke is ranked #1 in six of the 8 metric systems used in the Eisenberg Guide and first on the blended average: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cameron Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time: Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
   },
   {
     group: "confirm",
@@ -470,8 +470,8 @@ export const PICKS: PickEntry[] = [
     round: "FF",
     region: "Midwest",
     pick: "Michigan to the Final Four",
-    reason: "#2 in all 8 systems · #2 adj. def. eff. (91.0) · beats Alabama (worst defense) and Iowa St.",
-    body: "Michigan is #2 in the blended multi-system rankings across every metric. Their adjusted defensive efficiency of 91.0 is second only to Duke in the entire field. They face Alabama in the Sweet 16, the team with the worst defense in the tournament (356th nationally), and Iowa St. in the Elite Eight. The Chicago regional is one zone west for Michigan (−2% in the final slot), but that's a manageable penalty against inferior opponents. Michigan reaches Indianapolis at 0% penalty for the Final Four.",
+    reason: "#2 in the blended rankings · #2 adj. def. eff. (91.0) · beats Alabama (worst defense) and Iowa St.",
+    body: "Michigan is #2 in the blended multi-system rankings. Their adjusted defensive efficiency of 91.0 is second only to Duke in the entire field. They face Alabama in the Sweet 16, the team with the worst defense in the tournament (356th nationally), and Iowa St. in the Elite Eight. The Chicago regional is one zone west for Michigan (−2% in the final slot), but that's a manageable penalty against inferior opponents. Michigan reaches Indianapolis at 0% penalty for the Final Four.",
   },
   {
     group: "confirm",
@@ -480,7 +480,7 @@ export const PICKS: PickEntry[] = [
     region: "West",
     pick: "Arizona to the Final Four (then −9% in Indy)",
     reason: "Perfect PT path all the way, then the cliff: PT→ET −9% vs Duke at 0%",
-    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through six rounds. They're #2 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke, who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
+    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through six rounds. They're #3 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke, who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
   },
   {
     group: "confirm",

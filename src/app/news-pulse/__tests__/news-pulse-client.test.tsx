@@ -121,29 +121,23 @@ describe("NewsPulseClient", () => {
     expect(screen.queryByRole("link", { name: "Jump to the desk" })).toBeNull();
   });
 
-  it("renders server-provided headlines before the browser refresh resolves", () => {
-    mockFetch.mockImplementation(
-      () =>
-        new Promise(() => {
-          return undefined;
-        }),
-    );
-
-    const { unmount } = render(
+  it("keeps server-provided headlines and their feed note without refetching on mount", () => {
+    render(
       <NewsPulseClient
         initialFeed={{
           ...baseResponse,
-          dataStatus: "fresh",
+          dataStatus: "degraded",
+          errors: ["Reuters: timed out"],
         }}
       />,
     );
 
+    expect(mockFetch).not.toHaveBeenCalled();
     expect(
       screen.getByRole("heading", { level: 3, name: sampleArticles[0].title }),
     ).toBeVisible();
+    expect(screen.getByText(/Reuters: timed out/)).toBeVisible();
     expect(screen.queryByText("Refreshing live feeds")).not.toBeInTheDocument();
-
-    unmount();
   });
 
   it("keeps the source filter from an old view link and filters the headlines", async () => {

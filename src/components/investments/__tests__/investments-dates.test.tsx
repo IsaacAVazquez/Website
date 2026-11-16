@@ -129,6 +129,9 @@ describe("investments date labels", () => {
     });
 
     expect(container.textContent).toContain("Mar 21, 2025");
+    // The heading dates the feed by its newest item and does not call it latest.
+    expect(container.textContent).toContain("News through Mar 21, 2025");
+    expect(container.textContent).not.toContain("Latest news");
     expectEveryDateInUtc();
   });
 });

@@ -22,7 +22,7 @@ import rehypeStringify from 'rehype-stringify';
 import {
   getBlogPostSlugs,
   getBlogPostBySlug,
-  getAllBlogPosts,
+  getBlogFeedEntries,
   getAllBlogPostPreviews,
   getBlogPostSearchEntries,
   getRelatedBlogPosts,
@@ -414,11 +414,33 @@ describe('aggregation helpers (real functions)', () => {
     expect(previews.map((p) => p.slug)).toEqual(['published']);
   });
 
-  it('getAllBlogPosts renders and sorts every published post', async () => {
-    const all = await getAllBlogPosts();
+  it('getBlogFeedEntries sorts every published post and carries its seo block', () => {
+    setupPosts({
+      ...FIXTURE,
+      'tech-a': {
+        frontmatter: { ...FIXTURE['tech-a'].frontmatter, seo: { description: 'Feed line' } },
+      },
+    });
+    const all = getBlogFeedEntries();
     expect(all.map((p) => p.slug)).toEqual(['tech-a', 'tech-b', 'product-c']);
-    expect(all[0].content).toContain('Processed content');
+    expect(all[0].seo).toEqual({ description: 'Feed line' });
+    expect(all[0]).not.toHaveProperty('content');
   });
+
+  // Next decodes %2F in the [slug] param, so a traversal slug arrives as a path.
+  it.each(['../../AGENTS', 'a/b', '..', 'Post', 'post.mdx', ''])(
+    'rejects the slug %p without touching the filesystem',
+    async (slug) => {
+      (mockFs.readFileSync as jest.Mock).mockClear();
+      expect(await getBlogPostBySlug(slug)).toBeNull();
+      expect(await getRelatedBlogPosts(slug)).toEqual([]);
+      // Only the content directory itself may be probed, never a post path.
+      expect(
+        (mockFs.existsSync as jest.Mock).mock.calls.filter(([file]) => /\.mdx?$/.test(String(file)))
+      ).toEqual([]);
+      expect(mockFs.readFileSync).not.toHaveBeenCalled();
+    }
+  );
 
   it('getRelatedBlogPosts ranks same-category, shared-tag posts first', async () => {
     const related = await getRelatedBlogPosts('tech-a', 2);

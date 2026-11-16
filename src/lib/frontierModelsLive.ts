@@ -339,8 +339,8 @@ export function applyLiveModelFacts(
     if (facts.knowledgeCutoff && !pinned.has("knowledgeCutoff")) {
       next.knowledgeCutoff = facts.knowledgeCutoff;
     }
-    if (facts.reasoning !== undefined) next.reasoning = facts.reasoning;
-    if (facts.modalities) next.modalities = facts.modalities;
+    // Reasoning and modalities stay curated: they cannot be pinned, a change
+    // would not count as updated, and the editorial notes lean on them.
 
     const changed = CHECKED_FACT_KEYS.some(
       (key) => (next[key] ?? null) !== (model[key] ?? null)
