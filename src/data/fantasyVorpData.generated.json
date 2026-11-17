@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-15T21:52:59.269Z",
+  "generatedAt": "2026-11-17T00:51:31.366Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:00.059Z",
+        "accessedAt": "2026-11-17T00:51:32.318Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -4582,7 +4582,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 509,
@@ -4681,7 +4681,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 520,
@@ -5356,7 +5356,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-15T21:53:01.310Z",
+        "accessedAt": "2026-11-17T00:51:33.027Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -9647,7 +9647,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 476,
@@ -9710,7 +9710,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 483,
@@ -10718,7 +10718,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:02.242Z",
+        "accessedAt": "2026-11-17T00:51:33.810Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -15207,7 +15207,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 498,
@@ -15261,7 +15261,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 504,
@@ -16080,7 +16080,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:03.024Z",
+        "accessedAt": "2026-11-17T00:51:34.492Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20877,7 +20877,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 532,
@@ -20922,7 +20922,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 537,
@@ -21444,7 +21444,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-15T21:53:03.664Z",
+        "accessedAt": "2026-11-17T00:51:35.686Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25798,7 +25798,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 483,
@@ -25879,7 +25879,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 492,
@@ -26806,7 +26806,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:04.349Z",
+        "accessedAt": "2026-11-17T00:51:36.297Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -31295,7 +31295,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 498,
@@ -31349,7 +31349,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 504,
@@ -32168,7 +32168,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:05.260Z",
+        "accessedAt": "2026-11-17T00:51:37.284Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -36866,7 +36866,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 521,
@@ -36938,7 +36938,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 529,
@@ -37532,7 +37532,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-15T21:53:05.834Z",
+        "accessedAt": "2026-11-17T00:51:38.246Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42246,7 +42246,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 523,
@@ -42345,7 +42345,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 534,
@@ -42894,7 +42894,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:06.494Z",
+        "accessedAt": "2026-11-17T00:51:38.861Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -47329,7 +47329,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 492,
@@ -47401,7 +47401,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 500,
@@ -48256,7 +48256,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
