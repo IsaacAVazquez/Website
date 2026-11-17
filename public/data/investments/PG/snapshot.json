@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 25.32,
-      "pegRatio": 30.51,
-      "marketCap": 390468114000,
-      "psRatio": 4.44,
-      "pbRatio": 7.09
+      "ttmPe": 26.07,
+      "pegRatio": 31.41,
+      "marketCap": 402063876000,
+      "psRatio": 4.57,
+      "pbRatio": 7.3
     },
     "profitability": {
       "roe": 8.53,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.21,
-      "costOfEquity": 7.88,
+      "wacc": 7.109999999999999,
+      "costOfEquity": 7.76,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3576,
-      "marketCap": 390468114000
+      "beta": 0.3405,
+      "marketCap": 402063876000
     },
     "beta": {
-      "beta5y": 0.3576
+      "beta5y": 0.3405
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 148.18,
-        "high": 149,
-        "low": 147.64,
-        "close": 147.96,
-        "volume": 7566800
-      },
       {
         "date": "2025-11-14",
         "open": 149.1,
@@ -7981,23 +7973,31 @@
         "low": 167.2,
         "close": 169.8,
         "volume": 6943100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 172.16,
+        "high": 173.57,
+        "low": 171.93,
+        "close": 173.02,
+        "volume": 14068200
       }
     ],
     "news": [
-      {
-        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
-        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
         "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
+        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
         "type": "STORY"
       },
       {
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.32,
-        "industryAvg": 25.67
+        "value": 26.07,
+        "industryAvg": 26.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.44,
-        "industryAvg": 3.3
+        "value": 4.57,
+        "industryAvg": 3.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.09,
-        "industryAvg": 7.04
+        "value": 7.3,
+        "industryAvg": 7.2
       },
       {
         "metric": "ROE",
@@ -8151,7 +8151,7 @@
       {
         "metric": "ROA",
         "value": 3.5900000000000003,
-        "industryAvg": 8.7
+        "industryAvg": 8.690000000000001
       },
       {
         "metric": "Gross Margin",

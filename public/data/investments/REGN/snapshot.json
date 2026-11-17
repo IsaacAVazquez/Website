@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 45.2973,
-      "ttmPe": 21,
+      "ttmPe": 21.03,
       "pegRatio": 0.59,
-      "marketCap": 98353046000,
-      "psRatio": 5.82,
+      "marketCap": 98478160000,
+      "psRatio": 5.83,
       "pbRatio": 2.94
     },
     "profitability": {
@@ -5895,25 +5895,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.7,
-      "costOfEquity": 5.8500000000000005,
+      "wacc": 5.6899999999999995,
+      "costOfEquity": 5.84,
       "costOfDebt": 0.38999999999999996,
       "taxRate": 15,
-      "beta": 0.0967,
-      "marketCap": 98353046000
+      "beta": 0.093,
+      "marketCap": 98478160000
     },
     "beta": {
-      "beta5y": 0.0967
+      "beta5y": 0.093
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 683,
-        "high": 713.58,
-        "low": 679.93,
-        "close": 694.99,
-        "volume": 1505300
-      },
       {
         "date": "2025-11-14",
         "open": 697.19,
@@ -7921,6 +7913,14 @@
         "low": 942,
         "close": 955.47,
         "volume": 1165700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 963.32,
+        "high": 972.24,
+        "low": 947.81,
+        "close": 952.4,
+        "volume": 700600
       }
     ],
     "news": [
@@ -7973,19 +7973,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
-        "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
         "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
+        "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
         "type": "STORY"
       },
       {
@@ -8068,43 +8068,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21,
-        "industryAvg": 23.15
+        "value": 21.03,
+        "industryAvg": 22.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.82,
-        "industryAvg": 10.78
+        "value": 5.83,
+        "industryAvg": 10.54
       },
       {
         "metric": "P/B Ratio",
         "value": 2.94,
-        "industryAvg": 4.59
+        "industryAvg": 4.51
       },
       {
         "metric": "ROE",
         "value": 5.9799999999999995,
-        "industryAvg": -16.49
+        "industryAvg": -16.72
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": -10.03
+        "industryAvg": -10.14
       },
       {
         "metric": "Gross Margin",
         "value": 88.79,
-        "industryAvg": 82.3
+        "industryAvg": 82.28999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.22,
-        "industryAvg": -26.26
+        "industryAvg": -27.47
       },
       {
         "metric": "Net Margin",
         "value": 38.09,
-        "industryAvg": -29.28
+        "industryAvg": -29.87
       }
     ]
   }

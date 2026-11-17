@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.198,
-      "ttmPe": 17.23,
+      "ttmPe": 17.45,
       "pegRatio": 1.13,
-      "marketCap": 78126399000,
-      "psRatio": 0.27,
-      "pbRatio": 1.8
+      "marketCap": 79152192000,
+      "psRatio": 0.28,
+      "pbRatio": 1.82
     },
     "profitability": {
       "roe": 3.35,
@@ -6089,25 +6089,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.2299999999999995,
+      "wacc": 5.25,
       "costOfEquity": 6.97,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 19,
-      "beta": 0.2404,
-      "marketCap": 78126399000
+      "beta": 0.2387,
+      "marketCap": 79152192000
     },
     "beta": {
-      "beta5y": 0.2404
+      "beta5y": 0.2387
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 270.75,
-        "high": 275.41,
-        "low": 270.29,
-        "close": 270.89,
-        "volume": 2678100
-      },
       {
         "date": "2025-11-14",
         "open": 272,
@@ -8115,6 +8107,14 @@
         "low": 292.28,
         "close": 297,
         "volume": 1442200
+      },
+      {
+        "date": "2026-11-16",
+        "open": 301.8,
+        "high": 303.65,
+        "low": 298.12,
+        "close": 300.16,
+        "volume": 1328600
       }
     ],
     "news": [
@@ -8151,14 +8151,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
-        "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cms-recover-uncollected-overpayments-amid-205523484.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
         "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
         "publisher": "Insider Monkey",
@@ -8167,11 +8159,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
-        "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
+        "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
+        "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cms-recover-uncollected-overpayments-amid-205523484.html",
         "type": "STORY"
       },
       {
@@ -8180,6 +8172,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
+        "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
         "type": "STORY"
       },
       {
@@ -8261,18 +8261,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.23,
-        "industryAvg": 18.14
+        "value": 17.45,
+        "industryAvg": 18.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.27,
-        "industryAvg": 0.43
+        "value": 0.28,
+        "industryAvg": 0.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.8,
-        "industryAvg": 2.44
+        "value": 1.82,
+        "industryAvg": 2.48
       },
       {
         "metric": "ROE",

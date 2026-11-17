@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 18.63,
+      "ttmPe": 18.96,
       "pegRatio": 7.61,
-      "marketCap": 34358215840,
-      "psRatio": 3.61,
-      "pbRatio": 10.4
+      "marketCap": 34950456060,
+      "psRatio": 3.68,
+      "pbRatio": 10.58
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,25 +6195,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.219999999999999,
-      "costOfEquity": 10.290000000000001,
+      "wacc": 8.14,
+      "costOfEquity": 10.15,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6684,
-      "marketCap": 34358215840
+      "beta": 0.6491,
+      "marketCap": 34950456060
     },
     "beta": {
-      "beta5y": 0.6684
+      "beta5y": 0.6491
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 121.08,
-        "high": 122.52,
-        "low": 120.69,
-        "close": 121.16,
-        "volume": 3826400
-      },
       {
         "date": "2025-11-14",
         "open": 121.06,
@@ -8221,6 +8213,14 @@
         "low": 82.27,
         "close": 83.82,
         "volume": 3152000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 84.26,
+        "high": 84.57,
+        "low": 83.18,
+        "close": 84.39,
+        "volume": 4088500
       }
     ],
     "news": [
@@ -8273,19 +8273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
         "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
         "publisher": "Business Wire",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8373,18 +8373,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.63,
-        "industryAvg": 37.72
+        "value": 18.96,
+        "industryAvg": 37.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.61,
+        "value": 3.68,
         "industryAvg": 2.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.4,
-        "industryAvg": 2.57
+        "value": 10.58,
+        "industryAvg": 2.49
       },
       {
         "metric": "ROE",
@@ -8399,12 +8399,12 @@
       {
         "metric": "Gross Margin",
         "value": 70.81,
-        "industryAvg": 60.58
+        "industryAvg": 60.550000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.6,
-        "industryAvg": 16.93
+        "industryAvg": 16.91
       },
       {
         "metric": "Net Margin",

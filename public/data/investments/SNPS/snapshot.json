@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 81.74,
-      "marketCap": 88653717450,
-      "psRatio": 9.41,
-      "pbRatio": 2.85,
-      "pegRatio": 0.92
+      "ttmPe": 77.97,
+      "marketCap": 84561034650,
+      "psRatio": 8.98,
+      "pbRatio": 2.71,
+      "pegRatio": 0.87
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.870000000000001,
-      "costOfEquity": 14.32,
+      "wacc": 12.85,
+      "costOfEquity": 14.37,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1866,
-      "marketCap": 88653717450
+      "beta": 1.1935,
+      "marketCap": 84561034650
     },
     "beta": {
-      "beta5y": 1.1866
+      "beta5y": 1.1935
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 396.25,
-        "high": 403.64,
-        "low": 392.41,
-        "close": 393.93,
-        "volume": 2022600
-      },
       {
         "date": "2025-11-14",
         "open": 388.06,
@@ -8308,6 +8300,14 @@
         "low": 447.21,
         "close": 455.2,
         "volume": 2005500
+      },
+      {
+        "date": "2026-11-16",
+        "open": 447.81,
+        "high": 451,
+        "low": 437.37,
+        "close": 441.33,
+        "volume": 1435400
       }
     ],
     "news": [
@@ -8336,43 +8336,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
-        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
-        "publisher": "Insider Monkey",
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
-        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
-        "title": "US Tightens China Chip Curbs by Targeting Design Software",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8352,43 @@
         "type": "STORY"
       },
       {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
         "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
         "type": "STORY"
       }
     ],
@@ -8453,43 +8453,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 81.74,
-        "industryAvg": 31.02
+        "value": 77.97,
+        "industryAvg": 30.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.41,
-        "industryAvg": 7.28
+        "value": 8.98,
+        "industryAvg": 7.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.85,
-        "industryAvg": 7.92
+        "value": 2.71,
+        "industryAvg": 7.76
       },
       {
         "metric": "ROE",
         "value": 1.77,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 26.11
       },
       {
         "metric": "ROA",
         "value": 1.15,
-        "industryAvg": 10.36
+        "industryAvg": 10.18
       },
       {
         "metric": "Gross Margin",
         "value": 72.57000000000001,
-        "industryAvg": 51.129999999999995
+        "industryAvg": 51.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.78
+        "industryAvg": 36.7
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 20.52
+        "industryAvg": 20.3
       }
     ]
   }

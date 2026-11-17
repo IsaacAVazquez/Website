@@ -1,11 +1,14 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
-    }
+      "price": "2026-11-16"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.597,
-      "ttmPe": 36.88,
-      "marketCap": 577016547024,
-      "psRatio": 12.9,
-      "pbRatio": 23.09,
-      "pegRatio": 0.28
+      "ttmPe": 34.65,
+      "marketCap": 542201766183,
+      "psRatio": 12.13,
+      "pbRatio": 21.69,
+      "pegRatio": 0.26
     },
     "profitability": {
       "roe": 22.6,
@@ -6145,25 +6148,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.77,
-      "costOfEquity": 18.92,
+      "wacc": 18.84,
+      "costOfEquity": 19,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.778,
-      "marketCap": 577016547024
+      "beta": 1.7915,
+      "marketCap": 542201766183
     },
     "beta": {
-      "beta5y": 1.778
+      "beta5y": 1.7915
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 1040.99,
-        "high": 1041.86,
-        "low": 1009.51,
-        "close": 1019.86,
-        "volume": 1406300
-      },
       {
         "date": "2025-11-14",
         "open": 989.3,
@@ -8171,6 +8166,14 @@
         "low": 1462.3199,
         "close": 1495.16,
         "volume": 1364400
+      },
+      {
+        "date": "2026-11-16",
+        "open": 1436.64,
+        "high": 1446.36,
+        "low": 1404.0601,
+        "close": 1406.79,
+        "volume": 1590100
       }
     ],
     "news": [
@@ -8239,19 +8242,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
+        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
         "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
-        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
         "type": "STORY"
       }
     ],

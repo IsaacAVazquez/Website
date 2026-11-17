@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 24.86,
-      "pegRatio": 0.6,
-      "marketCap": 129271936431,
-      "psRatio": 3.44,
-      "pbRatio": 2.57
+      "ttmPe": 25.33,
+      "pegRatio": 0.61,
+      "marketCap": 131691225072,
+      "psRatio": 3.51,
+      "pbRatio": 2.62
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.86,
-      "costOfEquity": 9.45,
+      "wacc": 7.779999999999999,
+      "costOfEquity": 9.32,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5599,
-      "marketCap": 129271936431
+      "beta": 0.5425,
+      "marketCap": 131691225072
     },
     "beta": {
-      "beta5y": 0.5599
+      "beta5y": 0.5425
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 95,
-        "high": 96.71,
-        "low": 94.64,
-        "close": 96.14,
-        "volume": 5284400
-      },
       {
         "date": "2025-11-14",
         "open": 95.81,
@@ -7972,23 +7964,31 @@
         "low": 101.41,
         "close": 102.86,
         "volume": 5257200
+      },
+      {
+        "date": "2026-11-16",
+        "open": 103.82,
+        "high": 104.49,
+        "low": 102.85,
+        "close": 102.88,
+        "volume": 6804700
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
-        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
         "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
+        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
         "type": "STORY"
       }
     ],
@@ -8117,17 +8117,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.86,
-        "industryAvg": 26.26
+        "value": 25.33,
+        "industryAvg": 26.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.44,
-        "industryAvg": 3.28
+        "value": 3.51,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.57,
+        "value": 2.62,
         "industryAvg": 3.18
       },
       {
@@ -8148,7 +8148,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.51,
-        "industryAvg": 20.48
+        "industryAvg": 20.47
       },
       {
         "metric": "Net Margin",

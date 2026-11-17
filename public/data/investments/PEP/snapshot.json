@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9572,
-      "ttmPe": 17.88,
-      "pegRatio": 1.02,
-      "marketCap": 194042640000,
-      "psRatio": 1.98,
-      "pbRatio": 8.7
+      "ttmPe": 18.4,
+      "pegRatio": 1.05,
+      "marketCap": 199730520000,
+      "psRatio": 2.03,
+      "pbRatio": 8.96
     },
     "profitability": {
       "roe": 13.73,
@@ -6068,25 +6068,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.069999999999999,
-      "costOfEquity": 7.6,
+      "wacc": 6.02,
+      "costOfEquity": 7.489999999999999,
       "costOfDebt": 0.47000000000000003,
       "taxRate": 21,
-      "beta": 0.3222,
-      "marketCap": 194042640000
+      "beta": 0.3053,
+      "marketCap": 199730520000
     },
     "beta": {
-      "beta5y": 0.3222
+      "beta5y": 0.3053
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 144.1,
-        "high": 146.39,
-        "low": 143.65,
-        "close": 145.02,
-        "volume": 6663300
-      },
       {
         "date": "2025-11-14",
         "open": 145.89,
@@ -8094,6 +8086,14 @@
         "low": 142.53,
         "close": 145.44,
         "volume": 7912000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 146.73,
+        "high": 148.25,
+        "low": 146.18,
+        "close": 146.43,
+        "volume": 10596600
       }
     ],
     "news": [
@@ -8130,19 +8130,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
-        "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
         "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
         "publisher": "Motley Fool",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
+        "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
         "type": "STORY"
       },
       {
@@ -8242,28 +8242,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.88,
-        "industryAvg": 24.29
+        "value": 18.4,
+        "industryAvg": 24.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.98,
-        "industryAvg": 3.31
+        "value": 2.03,
+        "industryAvg": 3.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.7,
-        "industryAvg": 6.46
+        "value": 8.96,
+        "industryAvg": 6.59
       },
       {
         "metric": "ROE",
         "value": 13.73,
-        "industryAvg": 28.48
+        "industryAvg": 28.46
       },
       {
         "metric": "ROA",
         "value": 2.7199999999999998,
-        "industryAvg": 9.07
+        "industryAvg": 9.06
       },
       {
         "metric": "Gross Margin",
@@ -8273,12 +8273,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 20.66,
-        "industryAvg": 23.24
+        "industryAvg": 23.200000000000003
       },
       {
         "metric": "Net Margin",
         "value": 12.06,
-        "industryAvg": 13.56
+        "industryAvg": 13.54
       }
     ]
   }

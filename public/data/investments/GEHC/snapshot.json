@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7333,
-      "ttmPe": 17.29,
-      "pegRatio": 0.44,
-      "marketCap": 37002728400,
-      "psRatio": 1.71,
-      "pbRatio": 3.19
+      "ttmPe": 17.53,
+      "pegRatio": 0.45,
+      "marketCap": 37509119600,
+      "psRatio": 1.73,
+      "pbRatio": 3.23
     },
     "profitability": {
       "roe": 5.45,
@@ -6441,25 +6441,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.66,
-      "costOfEquity": 10.82,
+      "wacc": 8.41,
+      "costOfEquity": 10.48,
       "costOfDebt": 1.17,
       "taxRate": 17,
-      "beta": 0.7358,
-      "marketCap": 37002728400
+      "beta": 0.6913,
+      "marketCap": 37509119600
     },
     "beta": {
-      "beta5y": 0.7358
+      "beta5y": 0.6913
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 74.34,
-        "high": 75.59,
-        "low": 73.92,
-        "close": 73.97,
-        "volume": 2708200
-      },
       {
         "date": "2025-11-14",
         "open": 73.71,
@@ -8467,6 +8459,14 @@
         "low": 81.84,
         "close": 83.02,
         "volume": 2395000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 83.46,
+        "high": 84.11,
+        "low": 82.73,
+        "close": 82.96,
+        "volume": 3485800
       }
     ],
     "news": [
@@ -8487,6 +8487,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
+        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
         "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
         "publisher": "Yahoo Finance Video",
@@ -8503,12 +8511,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
-        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
-        "type": "VIDEO"
+        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
+        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
+        "type": "STORY"
       },
       {
         "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
@@ -8516,14 +8524,6 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
-        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
         "type": "STORY"
       },
       {
@@ -8560,12 +8560,6 @@
         "totalPay": 1902597
       },
       {
-        "name": "Mr. Adam Y. Holton",
-        "title": "Chief People Officer",
-        "age": 54,
-        "yearBorn": 1971
-      },
-      {
         "name": "Mr. Frank R. Jimenez Esq.",
         "title": "General Counsel & Corporate Secretary",
         "age": 60,
@@ -8573,60 +8567,27 @@
         "totalPay": 1907725
       },
       {
-        "name": "Mr. George Andrew Newcomb",
-        "title": "Controller & Chief Accounting Officer",
-        "age": 58,
-        "yearBorn": 1967
-      },
-      {
-        "name": "Mr. Jahidul H. Khandaker",
-        "title": "Chief Information Officer",
-        "age": 54,
-        "yearBorn": 1971
-      },
-      {
         "name": "Mr. Peter J. Arduini",
         "title": "President, CEO & Director",
         "age": 60,
         "yearBorn": 1965,
         "totalPay": 3682160
-      },
-      {
-        "name": "Mr. William K. Grogan",
-        "title": "Chief Financial Officer",
-        "age": 46,
-        "yearBorn": 1979
-      },
-      {
-        "name": "Ms. Carolynne Borders",
-        "title": "Chief Investor Relations Officer"
-      },
-      {
-        "name": "Ms. Jeannette Bankes",
-        "title": "President & CEO of Patient Care Solutions",
-        "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 1135663
-      },
-      {
-        "name": "Ms. Rana Strellis",
-        "title": "Chief Corporate Marketing & Communications Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.29,
-        "industryAvg": 26.26
+        "value": 17.53,
+        "industryAvg": 26.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.71,
-        "industryAvg": 3.28
+        "value": 1.73,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.19,
+        "value": 3.23,
         "industryAvg": 3.18
       },
       {
@@ -8647,7 +8608,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.81,
-        "industryAvg": 20.48
+        "industryAvg": 20.47
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.9745,
-      "ttmPe": 39.54,
-      "marketCap": 5157208073920,
-      "psRatio": 10.77,
-      "pbRatio": 46.01,
-      "pegRatio": 2.91
+      "ttmPe": 39.31,
+      "marketCap": 5126690330020,
+      "psRatio": 10.71,
+      "pbRatio": 45.74,
+      "pegRatio": 2.89
     },
     "profitability": {
       "roe": 27.97,
@@ -5486,25 +5486,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.22,
-      "costOfEquity": 13.489999999999998,
+      "wacc": 13.15,
+      "costOfEquity": 13.420000000000002,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0795,
-      "marketCap": 5157208073920
+      "beta": 1.0705,
+      "marketCap": 5126690330020
     },
     "beta": {
-      "beta5y": 1.0795
+      "beta5y": 1.0705
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 274.11,
-        "high": 276.7,
-        "low": 272.09,
-        "close": 272.95,
-        "volume": 49602800
-      },
       {
         "date": "2025-11-14",
         "open": 271.05,
@@ -7511,10 +7503,26 @@
         "high": 360.83,
         "low": 355.75,
         "close": 356.27,
-        "volume": 39985300
+        "volume": 40027500
+      },
+      {
+        "date": "2026-11-16",
+        "open": 357.13,
+        "high": 357.13,
+        "low": 351.31,
+        "close": 352.78,
+        "volume": 45945500
       }
     ],
     "news": [
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
       {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
@@ -7529,14 +7537,6 @@
         "publisher": "TipRanks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7659,18 +7659,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.54,
-        "industryAvg": 39.02
+        "value": 39.31,
+        "industryAvg": 38.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.77,
-        "industryAvg": 8.25
+        "value": 10.71,
+        "industryAvg": 8.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.01,
-        "industryAvg": 23.7
+        "value": 45.74,
+        "industryAvg": 23.58
       },
       {
         "metric": "ROE",

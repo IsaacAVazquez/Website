@@ -1,14 +1,13 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
-      "fundamentals",
-      "industry"
+      "fundamentals"
     ]
   },
   "source": "prefetched",
@@ -44,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5458,
-      "ttmPe": 35.19,
+      "ttmPe": 34.59,
       "pegRatio": 3.82,
-      "marketCap": 138684467878,
-      "psRatio": 10.71,
-      "pbRatio": 6.63
+      "marketCap": 136341919054,
+      "psRatio": 10.53,
+      "pbRatio": 6.52
     },
     "profitability": {
       "roe": 3.18,
@@ -5662,25 +5661,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.81,
-      "costOfEquity": 7.109999999999999,
+      "wacc": 6.99,
+      "costOfEquity": 7.3,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 17,
-      "beta": 0.2695,
-      "marketCap": 138684467878
+      "beta": 0.2808,
+      "marketCap": 136341919054
     },
     "beta": {
-      "beta5y": 0.2695
+      "beta5y": 0.2808
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 434.02,
-        "high": 441.23,
-        "low": 430.66,
-        "close": 434.52,
-        "volume": 1560000
-      },
       {
         "date": "2025-11-14",
         "open": 440.02,
@@ -7688,6 +7679,14 @@
         "low": 536.12,
         "close": 538.6,
         "volume": 755900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 547.86,
+        "high": 549.56,
+        "low": 534.12,
+        "close": 537.79,
+        "volume": 1212800
       }
     ],
     "news": [
@@ -7708,6 +7707,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
+        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
         "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
         "publisher": "Investor's Business Daily",
@@ -7722,14 +7729,6 @@
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
-        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
-        "type": "VIDEO"
       },
       {
         "uuid": "f9f53c24-fd35-3af4-8128-7145d69de473",
@@ -7840,43 +7839,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.51,
-        "industryAvg": 24.19
+        "value": 34.59,
+        "industryAvg": 22.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.25,
-        "industryAvg": 11.28
+        "value": 10.53,
+        "industryAvg": 10.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.99,
-        "industryAvg": 4.7
+        "value": 6.52,
+        "industryAvg": 4.51
       },
       {
         "metric": "ROE",
-        "value": 5.55,
-        "industryAvg": -17.43
+        "value": 3.18,
+        "industryAvg": -16.72
       },
       {
         "metric": "ROA",
-        "value": 4.08,
-        "industryAvg": -10.73
+        "value": 2.17,
+        "industryAvg": -10.14
       },
       {
         "metric": "Gross Margin",
-        "value": 85.33,
-        "industryAvg": 81.91000000000001
+        "value": 84.71,
+        "industryAvg": 82.28999999999999
       },
       {
         "metric": "EBITDA Margin",
-        "value": 39.75,
-        "industryAvg": -27.01
+        "value": 25.83,
+        "industryAvg": -27.47
       },
       {
         "metric": "Net Margin",
-        "value": 32.99,
-        "industryAvg": -31.52
+        "value": 19,
+        "industryAvg": -29.87
       }
     ]
   }

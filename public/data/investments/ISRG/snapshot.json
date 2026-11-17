@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2651,
-      "ttmPe": 54.39,
+      "ttmPe": 52.96,
       "pegRatio": 1.77,
-      "marketCap": 155807098000,
-      "psRatio": 13.46,
-      "pbRatio": 9.75
+      "marketCap": 151724150000,
+      "psRatio": 13.1,
+      "pbRatio": 9.49
     },
     "profitability": {
       "roe": 3.06,
@@ -5242,17 +5242,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4188
+      "beta5y": 1.4084
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 566.86,
-        "high": 573.32,
-        "low": 561,
-        "close": 565.51,
-        "volume": 2116700
-      },
       {
         "date": "2025-11-14",
         "open": 559.5,
@@ -7260,6 +7252,14 @@
         "low": 441,
         "close": 443.59,
         "volume": 1604300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 444.38,
+        "high": 446.2,
+        "low": 436.71,
+        "close": 437.75,
+        "volume": 1824300
       }
     ],
     "news": [
@@ -7304,19 +7304,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2a6e0e5-9c5e-3765-857d-f01059b77bae",
-        "title": "Q1 Earnings Highlights: Teleflex (NYSE:TFX) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/q1-earnings-highlights-teleflex-nyse-033148019.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0c543466-ad8e-305f-a9de-837e5ccce4d0",
         "title": "Q1 Earnings Highs And Lows: LeMaitre (NASDAQ:LMAT) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/q1-earnings-highs-lows-lemaitre-033104898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e2a6e0e5-9c5e-3765-857d-f01059b77bae",
+        "title": "Q1 Earnings Highlights: Teleflex (NYSE:TFX) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/q1-earnings-highlights-teleflex-nyse-033148019.html",
         "type": "STORY"
       },
       {
@@ -7407,28 +7407,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 54.39,
-        "industryAvg": 41.79
+        "value": 52.96,
+        "industryAvg": 41.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.46,
-        "industryAvg": 3.36
+        "value": 13.1,
+        "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.75,
-        "industryAvg": 3.42
+        "value": 9.49,
+        "industryAvg": 3.35
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": 7.17
+        "industryAvg": 7.19
       },
       {
         "metric": "ROA",
         "value": 2.6,
-        "industryAvg": 3.6999999999999997
+        "industryAvg": 3.71
       },
       {
         "metric": "Gross Margin",
@@ -7443,7 +7443,7 @@
       {
         "metric": "Net Margin",
         "value": 17.150000000000002,
-        "industryAvg": 7.1
+        "industryAvg": 7.109999999999999
       }
     ]
   }

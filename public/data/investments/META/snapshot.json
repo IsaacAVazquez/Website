@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 21.26,
-      "marketCap": 1594097637093,
-      "psRatio": 6.6,
-      "pbRatio": 5.85,
+      "ttmPe": 21.36,
+      "marketCap": 1601255112733,
+      "psRatio": 6.63,
+      "pbRatio": 5.88,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5806,25 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.900000000000002,
-      "costOfEquity": 14.860000000000001,
+      "wacc": 13.83,
+      "costOfEquity": 14.78,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
-      "beta": 1.2557,
-      "marketCap": 1594097637093
+      "beta": 1.2465,
+      "marketCap": 1601255112733
     },
     "beta": {
-      "beta5y": 1.2557
+      "beta5y": 1.2465
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 613.07,
-        "high": 617.65,
-        "low": 603,
-        "close": 609.89,
-        "volume": 20973800
-      },
       {
         "date": "2025-11-14",
         "open": 601.79,
@@ -7831,7 +7823,15 @@
         "high": 643.91,
         "low": 624.79,
         "close": 641.69,
-        "volume": 15127500
+        "volume": 15151000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 640,
+        "high": 640.7,
+        "low": 620.14,
+        "close": 626.41,
+        "volume": 11541500
       }
     ],
     "news": [
@@ -7868,19 +7868,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
         "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
         "publisher": "TipRanks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7985,43 +7985,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.26,
-        "industryAvg": 16.44
+        "value": 21.36,
+        "industryAvg": 15.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.6,
-        "industryAvg": 7.03
+        "value": 6.63,
+        "industryAvg": 6.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.85,
-        "industryAvg": 5.13
+        "value": 5.88,
+        "industryAvg": 4.92
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 38.84
+        "industryAvg": 38.879999999999995
       },
       {
         "metric": "ROA",
         "value": 2.12,
-        "industryAvg": 25.77
+        "industryAvg": 25.759999999999998
       },
       {
         "metric": "Gross Margin",
         "value": 79.31,
-        "industryAvg": 62.4
+        "industryAvg": 62.41
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.71,
-        "industryAvg": 61.370000000000005
+        "industryAvg": 61.419999999999995
       },
       {
         "metric": "Net Margin",
         "value": 15.260000000000002,
-        "industryAvg": 44.89
+        "industryAvg": 44.93
       }
     ]
   }

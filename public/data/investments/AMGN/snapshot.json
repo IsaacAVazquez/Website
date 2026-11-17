@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-16"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.2445,
-      "ttmPe": 27.15,
-      "pegRatio": 1.41,
-      "marketCap": 253247510000,
-      "psRatio": 6.51,
-      "pbRatio": 17.65
+      "ttmPe": 26.81,
+      "pegRatio": 1.39,
+      "marketCap": 250115120000,
+      "psRatio": 6.43,
+      "pbRatio": 17.43
     },
     "profitability": {
       "roe": 29.68,
@@ -5506,25 +5506,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.02,
-      "costOfEquity": 8.3,
+      "wacc": 7.08,
+      "costOfEquity": 8.4,
       "costOfDebt": 1.21,
       "taxRate": 18,
-      "beta": 0.4205,
-      "marketCap": 253247510000
+      "beta": 0.4232,
+      "marketCap": 250115120000
     },
     "beta": {
-      "beta5y": 0.4205
+      "beta5y": 0.4232
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 337.9,
-        "high": 345.84,
-        "low": 335.12,
-        "close": 336,
-        "volume": 3413500
-      },
       {
         "date": "2025-11-14",
         "open": 336.74,
@@ -7532,6 +7524,14 @@
         "low": 462.22,
         "close": 465.67,
         "volume": 2122100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 472.75,
+        "high": 474.4,
+        "low": 461.72,
+        "close": 462.32,
+        "volume": 1924400
       }
     ],
     "news": [
@@ -7568,19 +7568,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
-        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
         "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
+        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
         "type": "STORY"
       },
       {
@@ -7608,15 +7608,43 @@
         "type": "STORY"
       },
       {
-        "uuid": "a5c3d64b-cace-3675-a8fc-06676a70e152",
-        "title": "The Smartest High-Yielding Dividend Stocks in the Nasdaq Composite Index to Buy With $1,500 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "2ae33d5c-c3e6-3385-bf18-c31dafc8863f",
+        "title": "With 81% institutional ownership, Amgen Inc. (NASDAQ:AMGN) is a favorite amongst the big guns",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/a5c3d64b-cace-3675-a8fc-06676a70e152/the-smartest-high-yielding.html",
+        "link": "https://finance.yahoo.com/news/81-institutional-ownership-amgen-inc-140011063.html",
         "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Casey Capparelli",
+        "title": "Executive Director of Investor Relations"
+      },
+      {
+        "name": "Dr. James E. Bradner M.D.",
+        "title": "EVP of Research & Development, Artificial Intelligence and Data",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 3840115
+      },
+      {
+        "name": "Mr. Esteban Santos",
+        "title": "Executive Vice President of Operations",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 3006074
+      },
+      {
+        "name": "Mr. Howard Y. Chang M.D., Ph.D.",
+        "title": "Senior VP of Global Research & Chief Scientific Officer"
+      },
+      {
+        "name": "Mr. Matthew C. Busch",
+        "title": "Chief Accounting Officer & VP of Finance",
+        "age": 50,
+        "yearBorn": 1975
+      },
       {
         "name": "Mr. Murdo Gordon",
         "title": "Executive Vice President of Global Markets and Policy",
@@ -7630,23 +7658,37 @@
         "age": 62,
         "yearBorn": 1963,
         "totalPay": 6693535
+      },
+      {
+        "name": "Mr. Scott Skellenger",
+        "title": "Senior VP & Chief Information Officer"
+      },
+      {
+        "name": "Mr. Sean Bruich",
+        "title": "SVP & Chief Technology Officer"
+      },
+      {
+        "name": "Mr. Thomas J. W. Dittrich",
+        "title": "Executive VP & CFO",
+        "age": 61,
+        "yearBorn": 1964
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.15,
-        "industryAvg": 30.77
+        "value": 26.81,
+        "industryAvg": 30.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.51,
-        "industryAvg": 5.23
+        "value": 6.43,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.65,
-        "industryAvg": 6.43
+        "value": 17.43,
+        "industryAvg": 6.41
       },
       {
         "metric": "ROE",
