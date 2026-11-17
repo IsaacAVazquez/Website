@@ -1,8 +1,8 @@
 {
   "season": "2026",
-  "week": 9,
-  "updatedAt": "2026-11-16",
-  "generatedAt": "2026-11-16T20:39:09.761Z",
+  "week": 10,
+  "updatedAt": "2026-11-17",
+  "generatedAt": "2026-11-17T19:18:44.658Z",
   "sourceLabel": "NFLverse",
   "sourceUrls": {
     "standings": "https://github.com/nflverse/nfldata/raw/master/data/standings.csv",
@@ -164,25 +164,6 @@
       "playoffResult": null
     },
     {
-      "id": "bal",
-      "abbr": "BAL",
-      "name": "Baltimore Ravens",
-      "shortName": "Ravens",
-      "conference": "AFC",
-      "division": "AFC North",
-      "divisionRank": 4,
-      "conferenceRank": 9,
-      "wins": 4,
-      "losses": 5,
-      "ties": 0,
-      "winPct": 0.444444,
-      "pointsFor": 189,
-      "pointsAgainst": 236,
-      "pointDifferential": -47,
-      "seed": null,
-      "playoffResult": null
-    },
-    {
       "id": "lv",
       "abbr": "LV",
       "name": "Las Vegas Raiders",
@@ -190,7 +171,7 @@
       "conference": "AFC",
       "division": "AFC West",
       "divisionRank": 3,
-      "conferenceRank": 10,
+      "conferenceRank": 9,
       "wins": 4,
       "losses": 6,
       "ties": 0,
@@ -198,6 +179,25 @@
       "pointsFor": 251,
       "pointsAgainst": 289,
       "pointDifferential": -38,
+      "seed": null,
+      "playoffResult": null
+    },
+    {
+      "id": "bal",
+      "abbr": "BAL",
+      "name": "Baltimore Ravens",
+      "shortName": "Ravens",
+      "conference": "AFC",
+      "division": "AFC North",
+      "divisionRank": 4,
+      "conferenceRank": 10,
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "winPct": 0.4,
+      "pointsFor": 209,
+      "pointsAgainst": 259,
+      "pointDifferential": -50,
       "seed": null,
       "playoffResult": null
     },
@@ -305,13 +305,13 @@
       "division": "AFC West",
       "divisionRank": 4,
       "conferenceRank": 16,
-      "wins": 0,
+      "wins": 1,
       "losses": 8,
       "ties": 0,
-      "winPct": 0,
-      "pointsFor": 121,
-      "pointsAgainst": 219,
-      "pointDifferential": -98,
+      "winPct": 0.111111,
+      "pointsFor": 144,
+      "pointsAgainst": 239,
+      "pointDifferential": -95,
       "seed": null,
       "playoffResult": null
     },
@@ -806,6 +806,16 @@
       },
       {
         "rank": 9,
+        "name": "Derrick Henry",
+        "teamId": "bal",
+        "teamCode": "BAL",
+        "position": "RB",
+        "total": 699,
+        "games": 10,
+        "perGame": 69.9
+      },
+      {
+        "rank": 10,
         "name": "Javonte Williams",
         "teamId": "dal",
         "teamCode": "DAL",
@@ -813,16 +823,6 @@
         "total": 692,
         "games": 10,
         "perGame": 69.2
-      },
-      {
-        "rank": 10,
-        "name": "Derrick Henry",
-        "teamId": "bal",
-        "teamCode": "BAL",
-        "position": "RB",
-        "total": 689,
-        "games": 9,
-        "perGame": 76.55555555555556
       }
     ],
     "receiving": [
@@ -1032,6 +1032,31 @@
   },
   "recentFixtures": [
     {
+      "id": "2026_10_LAC_BAL",
+      "utcDate": "2026-11-17T01:15:00Z",
+      "status": "FINISHED",
+      "week": 10,
+      "matchday": 10,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "bal",
+        "abbr": "BAL",
+        "shortName": "Ravens",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+      },
+      "awayTeam": {
+        "id": "lac",
+        "abbr": "LAC",
+        "shortName": "Chargers",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 20,
+        "away": 23
+      }
+    },
+    {
       "id": "2026_10_PIT_CIN",
       "utcDate": "2026-11-16T01:20:00Z",
       "status": "FINISHED",
@@ -1205,59 +1230,9 @@
         "home": 10,
         "away": 30
       }
-    },
-    {
-      "id": "2026_10_MIA_IND",
-      "utcDate": "2026-11-15T18:00:00Z",
-      "status": "FINISHED",
-      "week": 10,
-      "matchday": 10,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "ind",
-        "abbr": "IND",
-        "shortName": "Colts",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
-      },
-      "awayTeam": {
-        "id": "mia",
-        "abbr": "MIA",
-        "shortName": "Dolphins",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 24,
-        "away": 22
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "2026_10_LAC_BAL",
-      "utcDate": "2026-11-17T01:15:00Z",
-      "status": "SCHEDULED",
-      "week": 10,
-      "matchday": 10,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "bal",
-        "abbr": "BAL",
-        "shortName": "Ravens",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-      },
-      "awayTeam": {
-        "id": "lac",
-        "abbr": "LAC",
-        "shortName": "Chargers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "2026_11_IND_HOU",
       "utcDate": "2026-11-20T01:15:00Z",
@@ -1426,6 +1401,31 @@
         "abbr": "ARI",
         "shortName": "Cardinals",
         "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "2026_11_JAX_NYG",
+      "utcDate": "2026-11-22T18:00:00Z",
+      "status": "SCHEDULED",
+      "week": 11,
+      "matchday": 11,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "nyg",
+        "abbr": "NYG",
+        "shortName": "Giants",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png"
+      },
+      "awayTeam": {
+        "id": "jax",
+        "abbr": "JAX",
+        "shortName": "Jaguars",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
       },
       "score": {
         "winner": null,
@@ -2136,7 +2136,7 @@
         "pointsFor": 160,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "kc": {
       "team": {
@@ -2421,7 +2421,7 @@
         "pointsFor": 119,
         "pointsAgainst": 79
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "jax": {
       "team": {
@@ -2593,7 +2593,7 @@
         },
         {
           "id": "2026_12_TEN_JAX",
-          "utcDate": "2026-11-29T21:05:00Z",
+          "utcDate": "2026-11-29T18:00:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -2706,7 +2706,7 @@
         "pointsFor": 165,
         "pointsAgainst": 91
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "cin": {
       "team": {
@@ -2991,7 +2991,7 @@
         "pointsFor": 181,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "den": {
       "team": {
@@ -3276,7 +3276,7 @@
         "pointsFor": 124,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "pit": {
       "team": {
@@ -3561,7 +3561,7 @@
         "pointsFor": 121,
         "pointsAgainst": 95
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "cle": {
       "team": {
@@ -3708,7 +3708,7 @@
       "upcomingFixtures": [
         {
           "id": "2026_12_LV_CLE",
-          "utcDate": "2026-11-29T18:00:00Z",
+          "utcDate": "2026-11-30T01:20:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -3846,7 +3846,7 @@
         "pointsFor": 95,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "ne": {
       "team": {
@@ -3993,7 +3993,7 @@
       "upcomingFixtures": [
         {
           "id": "2026_12_NE_LAC",
-          "utcDate": "2026-11-30T01:20:00Z",
+          "utcDate": "2026-11-29T21:05:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -4131,292 +4131,7 @@
         "pointsFor": 111,
         "pointsAgainst": 148
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
-    },
-    "bal": {
-      "team": {
-        "id": "bal",
-        "abbr": "BAL",
-        "name": "Baltimore Ravens",
-        "shortName": "Ravens",
-        "location": "Baltimore",
-        "nickname": "Ravens",
-        "conference": "AFC",
-        "division": "AFC North",
-        "primaryColor": "#241773",
-        "secondaryColor": "#9E7C0C",
-        "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
-        "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/BAL.png"
-      },
-      "recentFixtures": [
-        {
-          "id": "2026_09_JAX_BAL",
-          "utcDate": "2026-11-06T01:15:00Z",
-          "status": "FINISHED",
-          "week": 9,
-          "matchday": 9,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "awayTeam": {
-            "id": "jax",
-            "abbr": "JAX",
-            "shortName": "Jaguars",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 10,
-            "away": 33
-          }
-        },
-        {
-          "id": "2026_08_BAL_BUF",
-          "utcDate": "2026-11-01T18:00:00Z",
-          "status": "FINISHED",
-          "week": 8,
-          "matchday": 8,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "buf",
-            "abbr": "BUF",
-            "shortName": "Bills",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 36,
-            "away": 10
-          }
-        },
-        {
-          "id": "2026_07_CIN_BAL",
-          "utcDate": "2026-10-25T17:00:00Z",
-          "status": "FINISHED",
-          "week": 7,
-          "matchday": 7,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "awayTeam": {
-            "id": "cin",
-            "abbr": "CIN",
-            "shortName": "Bengals",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 13,
-            "away": 35
-          }
-        },
-        {
-          "id": "2026_06_BAL_CLE",
-          "utcDate": "2026-10-18T17:00:00Z",
-          "status": "FINISHED",
-          "week": 6,
-          "matchday": 6,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "cle",
-            "abbr": "CLE",
-            "shortName": "Browns",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 13,
-            "away": 10
-          }
-        },
-        {
-          "id": "2026_05_BAL_ATL",
-          "utcDate": "2026-10-12T00:20:00Z",
-          "status": "FINISHED",
-          "week": 5,
-          "matchday": 5,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "atl",
-            "abbr": "ATL",
-            "shortName": "Falcons",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 23,
-            "away": 30
-          }
-        }
-      ],
-      "upcomingFixtures": [
-        {
-          "id": "2026_10_LAC_BAL",
-          "utcDate": "2026-11-17T01:15:00Z",
-          "status": "SCHEDULED",
-          "week": 10,
-          "matchday": 10,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "awayTeam": {
-            "id": "lac",
-            "abbr": "LAC",
-            "shortName": "Chargers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_11_BAL_CAR",
-          "utcDate": "2026-11-22T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 11,
-          "matchday": 11,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "car",
-            "abbr": "CAR",
-            "shortName": "Panthers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_12_BAL_HOU",
-          "utcDate": "2026-11-29T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 12,
-          "matchday": 12,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_14_TB_BAL",
-          "utcDate": "2026-12-13T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 14,
-          "matchday": 14,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "awayTeam": {
-            "id": "tb",
-            "abbr": "TB",
-            "shortName": "Buccaneers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_15_BAL_PIT",
-          "utcDate": "2026-12-20T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 15,
-          "matchday": 15,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "pit",
-            "abbr": "PIT",
-            "shortName": "Steelers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "L",
-          "L",
-          "L",
-          "W"
-        ],
-        "wins": 1,
-        "ties": 0,
-        "losses": 4,
-        "pointsFor": 73,
-        "pointsAgainst": 140
-      },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "lv": {
       "team": {
@@ -4588,7 +4303,7 @@
         },
         {
           "id": "2026_12_LV_CLE",
-          "utcDate": "2026-11-29T18:00:00Z",
+          "utcDate": "2026-11-30T01:20:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -4701,7 +4416,292 @@
         "pointsFor": 119,
         "pointsAgainst": 160
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
+    },
+    "bal": {
+      "team": {
+        "id": "bal",
+        "abbr": "BAL",
+        "name": "Baltimore Ravens",
+        "shortName": "Ravens",
+        "location": "Baltimore",
+        "nickname": "Ravens",
+        "conference": "AFC",
+        "division": "AFC North",
+        "primaryColor": "#241773",
+        "secondaryColor": "#9E7C0C",
+        "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
+        "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/BAL.png"
+      },
+      "recentFixtures": [
+        {
+          "id": "2026_10_LAC_BAL",
+          "utcDate": "2026-11-17T01:15:00Z",
+          "status": "FINISHED",
+          "week": 10,
+          "matchday": 10,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "lac",
+            "abbr": "LAC",
+            "shortName": "Chargers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 20,
+            "away": 23
+          }
+        },
+        {
+          "id": "2026_09_JAX_BAL",
+          "utcDate": "2026-11-06T01:15:00Z",
+          "status": "FINISHED",
+          "week": 9,
+          "matchday": 9,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "jax",
+            "abbr": "JAX",
+            "shortName": "Jaguars",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 10,
+            "away": 33
+          }
+        },
+        {
+          "id": "2026_08_BAL_BUF",
+          "utcDate": "2026-11-01T18:00:00Z",
+          "status": "FINISHED",
+          "week": 8,
+          "matchday": 8,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "buf",
+            "abbr": "BUF",
+            "shortName": "Bills",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 36,
+            "away": 10
+          }
+        },
+        {
+          "id": "2026_07_CIN_BAL",
+          "utcDate": "2026-10-25T17:00:00Z",
+          "status": "FINISHED",
+          "week": 7,
+          "matchday": 7,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "cin",
+            "abbr": "CIN",
+            "shortName": "Bengals",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 13,
+            "away": 35
+          }
+        },
+        {
+          "id": "2026_06_BAL_CLE",
+          "utcDate": "2026-10-18T17:00:00Z",
+          "status": "FINISHED",
+          "week": 6,
+          "matchday": 6,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "cle",
+            "abbr": "CLE",
+            "shortName": "Browns",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 13,
+            "away": 10
+          }
+        }
+      ],
+      "upcomingFixtures": [
+        {
+          "id": "2026_11_BAL_CAR",
+          "utcDate": "2026-11-22T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 11,
+          "matchday": 11,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "car",
+            "abbr": "CAR",
+            "shortName": "Panthers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_12_BAL_HOU",
+          "utcDate": "2026-11-29T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 12,
+          "matchday": 12,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_14_TB_BAL",
+          "utcDate": "2026-12-13T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 14,
+          "matchday": 14,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "tb",
+            "abbr": "TB",
+            "shortName": "Buccaneers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_15_BAL_PIT",
+          "utcDate": "2026-12-20T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 15,
+          "matchday": 15,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "pit",
+            "abbr": "PIT",
+            "shortName": "Steelers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_16_CLE_BAL",
+          "utcDate": "2026-12-27T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 16,
+          "matchday": 16,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "cle",
+            "abbr": "CLE",
+            "shortName": "Browns",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "L",
+          "L",
+          "L",
+          "L",
+          "L"
+        ],
+        "wins": 0,
+        "ties": 0,
+        "losses": 5,
+        "pointsFor": 63,
+        "pointsAgainst": 140
+      },
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "hou": {
       "team": {
@@ -4986,7 +4986,7 @@
         "pointsFor": 149,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "ind": {
       "team": {
@@ -5271,7 +5271,7 @@
         "pointsFor": 84,
         "pointsAgainst": 133
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "nyj": {
       "team": {
@@ -5556,7 +5556,7 @@
         "pointsFor": 101,
         "pointsAgainst": 158
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "ten": {
       "team": {
@@ -5728,7 +5728,7 @@
         },
         {
           "id": "2026_12_TEN_JAX",
-          "utcDate": "2026-11-29T21:05:00Z",
+          "utcDate": "2026-11-29T18:00:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -5841,7 +5841,7 @@
         "pointsFor": 112,
         "pointsAgainst": 156
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "mia": {
       "team": {
@@ -6126,7 +6126,7 @@
         "pointsFor": 102,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "lac": {
       "team": {
@@ -6144,6 +6144,31 @@
         "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/LAC.png"
       },
       "recentFixtures": [
+        {
+          "id": "2026_10_LAC_BAL",
+          "utcDate": "2026-11-17T01:15:00Z",
+          "status": "FINISHED",
+          "week": 10,
+          "matchday": 10,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "awayTeam": {
+            "id": "lac",
+            "abbr": "LAC",
+            "shortName": "Chargers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 20,
+            "away": 23
+          }
+        },
         {
           "id": "2026_09_HOU_LAC",
           "utcDate": "2026-11-08T21:05:00Z",
@@ -6243,59 +6268,9 @@
             "home": 17,
             "away": 23
           }
-        },
-        {
-          "id": "2026_04_LAC_SEA",
-          "utcDate": "2026-10-04T20:25:00Z",
-          "status": "FINISHED",
-          "week": 4,
-          "matchday": 4,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "sea",
-            "abbr": "SEA",
-            "shortName": "Seahawks",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png"
-          },
-          "awayTeam": {
-            "id": "lac",
-            "abbr": "LAC",
-            "shortName": "Chargers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 30,
-            "away": 23
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "2026_10_LAC_BAL",
-          "utcDate": "2026-11-17T01:15:00Z",
-          "status": "SCHEDULED",
-          "week": 10,
-          "matchday": 10,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "awayTeam": {
-            "id": "lac",
-            "abbr": "LAC",
-            "shortName": "Chargers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "2026_11_NYJ_LAC",
           "utcDate": "2026-11-22T21:05:00Z",
@@ -6323,7 +6298,7 @@
         },
         {
           "id": "2026_12_NE_LAC",
-          "utcDate": "2026-11-30T01:20:00Z",
+          "utcDate": "2026-11-29T21:05:00Z",
           "status": "SCHEDULED",
           "week": 12,
           "matchday": 12,
@@ -6395,23 +6370,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "2026_15_SF_LAC",
+          "utcDate": "2026-12-18T01:15:00Z",
+          "status": "SCHEDULED",
+          "week": 15,
+          "matchday": 15,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "lac",
+            "abbr": "LAC",
+            "shortName": "Chargers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+          },
+          "awayTeam": {
+            "id": "sf",
+            "abbr": "SF",
+            "shortName": "49ers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
-          "L",
+          "W",
           "L",
           "L",
           "L",
           "L"
         ],
-        "wins": 0,
+        "wins": 1,
         "ties": 0,
-        "losses": 5,
+        "losses": 4,
         "pointsFor": 77,
-        "pointsAgainst": 143
+        "pointsAgainst": 133
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "sf": {
       "team": {
@@ -6696,7 +6696,7 @@
         "pointsFor": 159,
         "pointsAgainst": 132
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "det": {
       "team": {
@@ -6981,7 +6981,7 @@
         "pointsFor": 138,
         "pointsAgainst": 72
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "nyg": {
       "team": {
@@ -7266,7 +7266,7 @@
         "pointsFor": 121,
         "pointsAgainst": 117
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "car": {
       "team": {
@@ -7551,7 +7551,7 @@
         "pointsFor": 98,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "min": {
       "team": {
@@ -7836,7 +7836,7 @@
         "pointsFor": 90,
         "pointsAgainst": 75
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "chi": {
       "team": {
@@ -8121,7 +8121,7 @@
         "pointsFor": 129,
         "pointsAgainst": 119
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "gb": {
       "team": {
@@ -8406,7 +8406,7 @@
         "pointsFor": 122,
         "pointsAgainst": 109
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "la": {
       "team": {
@@ -8691,7 +8691,7 @@
         "pointsFor": 129,
         "pointsAgainst": 67
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "sea": {
       "team": {
@@ -8976,7 +8976,7 @@
         "pointsFor": 89,
         "pointsAgainst": 70
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "dal": {
       "team": {
@@ -9261,7 +9261,7 @@
         "pointsFor": 148,
         "pointsAgainst": 146
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "was": {
       "team": {
@@ -9546,7 +9546,7 @@
         "pointsFor": 108,
         "pointsAgainst": 101
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "tb": {
       "team": {
@@ -9831,7 +9831,7 @@
         "pointsFor": 126,
         "pointsAgainst": 82
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "no": {
       "team": {
@@ -10116,7 +10116,7 @@
         "pointsFor": 97,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "atl": {
       "team": {
@@ -10401,7 +10401,7 @@
         "pointsFor": 82,
         "pointsAgainst": 136
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "ari": {
       "team": {
@@ -10686,7 +10686,7 @@
         "pointsFor": 76,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     },
     "phi": {
       "team": {
@@ -10971,7 +10971,7 @@
         "pointsFor": 73,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-11-16T20:39:09.761Z"
+      "generatedAt": "2026-11-17T19:18:44.658Z"
     }
   }
 }
