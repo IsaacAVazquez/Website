@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-18T07:42:02.430Z",
+  "generatedAt": "2026-11-18T17:20:54.633Z",
   "updatedAt": "2026-11-18",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -240,17 +240,17 @@
         "conferenceSeed": 11,
         "position": 11,
         "wins": 4,
-        "losses": 9,
-        "winPercent": 0.30769232,
-        "gamesBack": 7,
-        "gamesPlayed": 13,
-        "pointsFor": 99.07692,
-        "pointsAgainst": 109.84615,
-        "pointDifferential": -140,
-        "streak": "L2",
+        "losses": 10,
+        "winPercent": 0.2857143,
+        "gamesBack": 7.5,
+        "gamesPlayed": 14,
+        "pointsFor": 100.14286,
+        "pointsAgainst": 110.42857,
+        "pointDifferential": -144,
+        "streak": "L3",
         "homeRecord": "3-4",
-        "awayRecord": "1-5",
-        "lastTen": "2-8"
+        "awayRecord": "1-6",
+        "lastTen": "1-9"
       },
       {
         "id": "wsh",
@@ -351,16 +351,16 @@
         "division": null,
         "conferenceSeed": 1,
         "position": 1,
-        "wins": 12,
+        "wins": 13,
         "losses": 2,
-        "winPercent": 0.85714287,
+        "winPercent": 0.8666667,
         "gamesBack": 0,
-        "gamesPlayed": 14,
-        "pointsFor": 122.78571,
-        "pointsAgainst": 114.85714,
-        "pointDifferential": 111,
-        "streak": "W8",
-        "homeRecord": "5-1",
+        "gamesPlayed": 15,
+        "pointsFor": 122.46667,
+        "pointsAgainst": 114.8,
+        "pointDifferential": 115,
+        "streak": "W9",
+        "homeRecord": "6-1",
         "awayRecord": "7-1",
         "lastTen": "9-1"
       },
@@ -376,7 +376,7 @@
         "wins": 12,
         "losses": 3,
         "winPercent": 0.8,
-        "gamesBack": 0.5,
+        "gamesBack": 1,
         "gamesPlayed": 15,
         "pointsFor": 117.066666,
         "pointsAgainst": 105.86667,
@@ -398,7 +398,7 @@
         "wins": 11,
         "losses": 4,
         "winPercent": 0.73333335,
-        "gamesBack": 1.5,
+        "gamesBack": 2,
         "gamesPlayed": 15,
         "pointsFor": 116.666664,
         "pointsAgainst": 106.066666,
@@ -420,7 +420,7 @@
         "wins": 11,
         "losses": 4,
         "winPercent": 0.73333335,
-        "gamesBack": 1.5,
+        "gamesBack": 2,
         "gamesPlayed": 15,
         "pointsFor": 117.8,
         "pointsAgainst": 109.53333,
@@ -442,7 +442,7 @@
         "wins": 10,
         "losses": 4,
         "winPercent": 0.71428573,
-        "gamesBack": 2,
+        "gamesBack": 2.5,
         "gamesPlayed": 14,
         "pointsFor": 121.71429,
         "pointsAgainst": 112.28571,
@@ -464,7 +464,7 @@
         "wins": 9,
         "losses": 5,
         "winPercent": 0.64285713,
-        "gamesBack": 3,
+        "gamesBack": 3.5,
         "gamesPlayed": 14,
         "pointsFor": 117,
         "pointsAgainst": 111,
@@ -486,7 +486,7 @@
         "wins": 9,
         "losses": 5,
         "winPercent": 0.64285713,
-        "gamesBack": 3,
+        "gamesBack": 3.5,
         "gamesPlayed": 14,
         "pointsFor": 112.14286,
         "pointsAgainst": 107.07143,
@@ -508,7 +508,7 @@
         "wins": 7,
         "losses": 5,
         "winPercent": 0.5833333,
-        "gamesBack": 4,
+        "gamesBack": 4.5,
         "gamesPlayed": 12,
         "pointsFor": 113.833336,
         "pointsAgainst": 113.166664,
@@ -530,7 +530,7 @@
         "wins": 8,
         "losses": 6,
         "winPercent": 0.5714286,
-        "gamesBack": 4,
+        "gamesBack": 4.5,
         "gamesPlayed": 14,
         "pointsFor": 115.07143,
         "pointsAgainst": 112.57143,
@@ -552,7 +552,7 @@
         "wins": 7,
         "losses": 7,
         "winPercent": 0.5,
-        "gamesBack": 5,
+        "gamesBack": 5.5,
         "gamesPlayed": 14,
         "pointsFor": 112.07143,
         "pointsAgainst": 114.57143,
@@ -574,7 +574,7 @@
         "wins": 6,
         "losses": 7,
         "winPercent": 0.46153846,
-        "gamesBack": 5.5,
+        "gamesBack": 6,
         "gamesPlayed": 13,
         "pointsFor": 113,
         "pointsAgainst": 116.38461,
@@ -596,7 +596,7 @@
         "wins": 5,
         "losses": 10,
         "winPercent": 0.33333334,
-        "gamesBack": 7.5,
+        "gamesBack": 8,
         "gamesPlayed": 15,
         "pointsFor": 115.8,
         "pointsAgainst": 122.86667,
@@ -616,39 +616,17 @@
         "conferenceSeed": 13,
         "position": 13,
         "wins": 4,
-        "losses": 8,
-        "winPercent": 0.33333334,
-        "gamesBack": 7,
-        "gamesPlayed": 12,
-        "pointsFor": 112.333336,
-        "pointsAgainst": 116.5,
-        "pointDifferential": -50,
-        "streak": "W2",
-        "homeRecord": "4-3",
+        "losses": 9,
+        "winPercent": 0.30769232,
+        "gamesBack": 8,
+        "gamesPlayed": 13,
+        "pointsFor": 111.92308,
+        "pointsAgainst": 117.69231,
+        "pointDifferential": -75,
+        "streak": "L1",
+        "homeRecord": "4-4",
         "awayRecord": "0-5",
         "lastTen": "3-7"
-      },
-      {
-        "id": "sac",
-        "abbreviation": "SAC",
-        "name": "Sacramento Kings",
-        "shortName": "Kings",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 14,
-        "position": 14,
-        "wins": 1,
-        "losses": 12,
-        "winPercent": 0.07692308,
-        "gamesBack": 10.5,
-        "gamesPlayed": 13,
-        "pointsFor": 107.76923,
-        "pointsAgainst": 121.23077,
-        "pointDifferential": -175,
-        "streak": "L6",
-        "homeRecord": "0-8",
-        "awayRecord": "1-4",
-        "lastTen": "1-9"
       },
       {
         "id": "utah",
@@ -657,20 +635,42 @@
         "shortName": "Jazz",
         "conference": "west",
         "division": null,
+        "conferenceSeed": 14,
+        "position": 14,
+        "wins": 2,
+        "losses": 13,
+        "winPercent": 0.13333334,
+        "gamesBack": 11,
+        "gamesPlayed": 15,
+        "pointsFor": 108.73333,
+        "pointsAgainst": 117.26667,
+        "pointDifferential": -128,
+        "streak": "W1",
+        "homeRecord": "1-7",
+        "awayRecord": "1-6",
+        "lastTen": "1-9"
+      },
+      {
+        "id": "sac",
+        "abbreviation": "SAC",
+        "name": "Sacramento Kings",
+        "shortName": "Kings",
+        "conference": "west",
+        "division": null,
         "conferenceSeed": 15,
         "position": 15,
         "wins": 1,
-        "losses": 13,
-        "winPercent": 0.071428575,
+        "losses": 12,
+        "winPercent": 0.07692308,
         "gamesBack": 11,
-        "gamesPlayed": 14,
-        "pointsFor": 107.07143,
-        "pointsAgainst": 118,
-        "pointDifferential": -153,
-        "streak": "L12",
-        "homeRecord": "1-7",
-        "awayRecord": "0-6",
-        "lastTen": "0-10"
+        "gamesPlayed": 13,
+        "pointsFor": 107.76923,
+        "pointsAgainst": 121.23077,
+        "pointDifferential": -175,
+        "streak": "L6",
+        "homeRecord": "0-8",
+        "awayRecord": "1-4",
+        "lastTen": "1-9"
       }
     ]
   },
@@ -680,9 +680,9 @@
       "name": "Luka Doncic",
       "teamId": "lal",
       "teamAbbreviation": "LAL",
-      "total": 468,
-      "appearances": 12,
-      "perGame": 39
+      "total": 504,
+      "appearances": 13,
+      "perGame": 38.76923
     },
     {
       "rank": 2,
@@ -698,9 +698,9 @@
       "name": "Victor Wembanyama",
       "teamId": "sa",
       "teamAbbreviation": "SA",
-      "total": 401,
-      "appearances": 14,
-      "perGame": 28.642857
+      "total": 426,
+      "appearances": 15,
+      "perGame": 28.4
     },
     {
       "rank": 4,
@@ -725,9 +725,9 @@
       "name": "Jalen Brunson",
       "teamId": "ny",
       "teamAbbreviation": "NY",
-      "total": 347,
-      "appearances": 13,
-      "perGame": 26.692308
+      "total": 378,
+      "appearances": 14,
+      "perGame": 27
     },
     {
       "rank": 7,
@@ -761,9 +761,9 @@
       "name": "Cade Cunningham",
       "teamId": "det",
       "teamAbbreviation": "DET",
-      "total": 308,
-      "appearances": 12,
-      "perGame": 25.666666
+      "total": 335,
+      "appearances": 13,
+      "perGame": 25.76923
     }
   ],
   "rebounders": [
@@ -772,9 +772,9 @@
       "name": "Karl-Anthony Towns",
       "teamId": "ny",
       "teamAbbreviation": "NY",
-      "total": 181,
-      "appearances": 13,
-      "perGame": 13.923077
+      "total": 197,
+      "appearances": 14,
+      "perGame": 14.071428
     },
     {
       "rank": 2,
@@ -796,21 +796,21 @@
     },
     {
       "rank": 4,
-      "name": "Rudy Gobert",
-      "teamId": "min",
-      "teamAbbreviation": "MIN",
-      "total": 152,
-      "appearances": 13,
-      "perGame": 11.692307
-    },
-    {
-      "rank": 5,
       "name": "Victor Wembanyama",
       "teamId": "sa",
       "teamAbbreviation": "SA",
-      "total": 162,
+      "total": 180,
+      "appearances": 15,
+      "perGame": 12
+    },
+    {
+      "rank": 5,
+      "name": "Rudy Gobert",
+      "teamId": "min",
+      "teamAbbreviation": "MIN",
+      "total": 156,
       "appearances": 14,
-      "perGame": 11.571428
+      "perGame": 11.142858
     },
     {
       "rank": 6,
@@ -832,6 +832,15 @@
     },
     {
       "rank": 8,
+      "name": "Donovan Clingan",
+      "teamId": "por",
+      "teamAbbreviation": "POR",
+      "total": 148,
+      "appearances": 14,
+      "perGame": 10.571428
+    },
+    {
+      "rank": 9,
       "name": "Isaiah Hartenstein",
       "teamId": "okc",
       "teamAbbreviation": "OKC",
@@ -840,22 +849,13 @@
       "perGame": 10.571428
     },
     {
-      "rank": 9,
-      "name": "Donovan Clingan",
-      "teamId": "por",
-      "teamAbbreviation": "POR",
-      "total": 136,
-      "appearances": 13,
-      "perGame": 10.461538
-    },
-    {
       "rank": 10,
-      "name": "Anthony Davis",
-      "teamId": "wsh",
-      "teamAbbreviation": "WSH",
-      "total": 127,
-      "appearances": 13,
-      "perGame": 9.769231
+      "name": "Moussa Diabate",
+      "teamId": "cha",
+      "teamAbbreviation": "CHA",
+      "total": 123,
+      "appearances": 12,
+      "perGame": 10.25
     }
   ],
   "assistLeaders": [
@@ -909,18 +909,18 @@
       "name": "Cade Cunningham",
       "teamId": "det",
       "teamAbbreviation": "DET",
-      "total": 95,
-      "appearances": 12,
-      "perGame": 7.9166665
+      "total": 101,
+      "appearances": 13,
+      "perGame": 7.769231
     },
     {
       "rank": 7,
       "name": "Luka Doncic",
       "teamId": "lal",
       "teamAbbreviation": "LAL",
-      "total": 93,
-      "appearances": 12,
-      "perGame": 7.75
+      "total": 100,
+      "appearances": 13,
+      "perGame": 7.6923075
     },
     {
       "rank": 8,
@@ -2067,7 +2067,7 @@
         "pointsFor": 617,
         "pointsAgainst": 603
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "mil": {
       "team": {
@@ -2359,7 +2359,7 @@
         "pointsFor": 499,
         "pointsAgainst": 577
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "chi": {
       "team": {
@@ -2651,7 +2651,7 @@
         "pointsFor": 597,
         "pointsAgainst": 600
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "cle": {
       "team": {
@@ -2943,7 +2943,7 @@
         "pointsFor": 601,
         "pointsAgainst": 596
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 574,
         "pointsAgainst": 500
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "lac": {
       "team": {
@@ -3527,7 +3527,7 @@
         "pointsFor": 582,
         "pointsAgainst": 605
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "mem": {
       "team": {
@@ -3819,7 +3819,7 @@
         "pointsFor": 643,
         "pointsAgainst": 566
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "atl": {
       "team": {
@@ -4111,7 +4111,7 @@
         "pointsFor": 607,
         "pointsAgainst": 608
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "mia": {
       "team": {
@@ -4403,7 +4403,7 @@
         "pointsFor": 627,
         "pointsAgainst": 565
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "cha": {
       "team": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 519,
         "pointsAgainst": 563
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "utah": {
       "team": {
@@ -4987,7 +4987,7 @@
         "pointsFor": 569,
         "pointsAgainst": 580
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "sac": {
       "team": {
@@ -5279,7 +5279,7 @@
         "pointsFor": 527,
         "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "ny": {
       "team": {
@@ -5571,7 +5571,7 @@
         "pointsFor": 551,
         "pointsAgainst": 516
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 617,
         "pointsAgainst": 579
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "orl": {
       "team": {
@@ -6155,7 +6155,7 @@
         "pointsFor": 571,
         "pointsAgainst": 538
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "dal": {
       "team": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 560,
         "pointsAgainst": 606
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 592,
         "pointsAgainst": 629
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "den": {
       "team": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 558,
         "pointsAgainst": 555
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "ind": {
       "team": {
@@ -7323,7 +7323,7 @@
         "pointsFor": 568,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "no": {
       "team": {
@@ -7615,7 +7615,7 @@
         "pointsFor": 532,
         "pointsAgainst": 635
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "det": {
       "team": {
@@ -7907,7 +7907,7 @@
         "pointsFor": 604,
         "pointsAgainst": 602
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 517,
         "pointsAgainst": 562
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "hou": {
       "team": {
@@ -8491,7 +8491,7 @@
         "pointsFor": 607,
         "pointsAgainst": 573
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "sa": {
       "team": {
@@ -8783,7 +8783,7 @@
         "pointsFor": 572,
         "pointsAgainst": 507
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 570,
         "pointsAgainst": 564
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "okc": {
       "team": {
@@ -9367,7 +9367,7 @@
         "pointsFor": 562,
         "pointsAgainst": 532
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 566,
         "pointsAgainst": 514
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "por": {
       "team": {
@@ -9951,7 +9951,7 @@
         "pointsFor": 564,
         "pointsAgainst": 530
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "gs": {
       "team": {
@@ -10243,7 +10243,7 @@
         "pointsFor": 551,
         "pointsAgainst": 559
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     },
     "wsh": {
       "team": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 591,
         "pointsAgainst": 663
       },
-      "generatedAt": "2026-11-18T07:42:02.430Z"
+      "generatedAt": "2026-11-18T17:20:54.633Z"
     }
   }
 }
