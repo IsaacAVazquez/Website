@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T02:58:23.655Z",
+  "generatedAt": "2026-11-18T18:14:19.719Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -99,7 +99,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg",
       "crewCount": 0,
       "payloadCount": 3,
       "capsuleCount": 0,
@@ -118,7 +118,7 @@
         "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
         "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
         "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg"
         ]
       }
     },
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-18T02:58:19.169Z"
+    "generatedAt": "2026-11-18T18:14:07.108Z"
   },
   "upcomingLaunches": [
     {
@@ -1132,7 +1132,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg",
       "crewCount": 0,
       "payloadCount": 3,
       "capsuleCount": 0,
@@ -1151,7 +1151,7 @@
         "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
         "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
         "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg"
         ]
       }
     },
@@ -2305,7 +2305,7 @@
       "launchpadName": "Orbital Launch Pad 2",
       "launchpadLocation": "SpaceX Starbase, TX, USA",
       "patchImage": "/data/spacex/images/c044d36407569003.png",
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg",
       "crewCount": 0,
       "payloadCount": 3,
       "capsuleCount": 1,
@@ -2324,7 +2324,7 @@
         "patchSmall": "/data/spacex/images/c044d36407569003.png",
         "patchLarge": "/data/spacex/images/c044d36407569003.png",
         "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2349,7 +2349,7 @@
         "massKg": 5250000,
         "image": null,
         "flickrImages": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg",
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg",
           "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_during_image_20250824175325.jpg"
         ]
       },
@@ -2924,6 +2924,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-18T02:58:23.411Z"
+    "generatedAt": "2026-11-18T18:14:19.273Z"
   }
 }

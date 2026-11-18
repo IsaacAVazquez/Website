@@ -1,14 +1,19 @@
 {
   "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
     "launchId": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-    "launchName": "Starship | Flight 15",
-    "window": "upcoming",
+    "launchName": "Starship | Starlink Group 31-2 (Starship Flight 15)",
+    "window": "previous",
     "images": {
       "launch": [
         {
           "label": "Starship | Flight 15",
           "localPath": "/data/spacex/images/4bf502ff63e8fce9.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+        },
+        {
+          "label": "Starship | Starlink Group 31-2 (Starship Flight 15)",
+          "localPath": "/data/spacex/images/56003ef67adca6f6.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261118092530.jpeg"
         }
       ],
       "patch": [
