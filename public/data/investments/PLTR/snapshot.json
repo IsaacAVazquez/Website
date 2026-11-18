@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4267,
-      "ttmPe": 120.26,
-      "marketCap": 413362471740,
-      "psRatio": 56.72,
-      "pbRatio": 36.82,
-      "pegRatio": 0.88
+      "ttmPe": 109.74,
+      "marketCap": 377176993680,
+      "psRatio": 51.75,
+      "pbRatio": 33.59,
+      "pegRatio": 0.8
     },
     "profitability": {
       "roe": 10.74,
@@ -5301,25 +5301,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.599999999999998,
-      "costOfEquity": 17.61,
+      "wacc": 17.91,
+      "costOfEquity": 17.919999999999998,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6102,
-      "marketCap": 413362471740
+      "beta": 1.65,
+      "marketCap": 377176993680
     },
     "beta": {
-      "beta5y": 1.6102
+      "beta5y": 1.65
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 166.975,
-        "high": 177.29,
-        "low": 164.5,
-        "close": 174.01,
-        "volume": 62596800
-      },
       {
         "date": "2025-11-17",
         "open": 170.53,
@@ -7326,16 +7318,24 @@
         "high": 166.09,
         "low": 158.68,
         "close": 160.39,
-        "volume": 17615600
+        "volume": 17766800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 160.15,
+        "high": 162.59,
+        "low": 153.91,
+        "close": 156.56,
+        "volume": 17404600
       }
     ],
     "news": [
       {
-        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
-        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
-        "publisher": "MT Newswires",
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7347,11 +7347,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
+        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+        "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
         "type": "STORY"
       },
       {
@@ -7479,43 +7479,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 120.26,
-        "industryAvg": 31.02
+        "value": 109.74,
+        "industryAvg": 29.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 56.72,
-        "industryAvg": 7.28
+        "value": 51.75,
+        "industryAvg": 6.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.82,
-        "industryAvg": 7.92
+        "value": 33.59,
+        "industryAvg": 7.57
       },
       {
         "metric": "ROE",
         "value": 10.74,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 25.740000000000002
       },
       {
         "metric": "ROA",
         "value": 8.99,
-        "industryAvg": 10.36
+        "industryAvg": 10.12
       },
       {
         "metric": "Gross Margin",
         "value": 83.43,
-        "industryAvg": 51.129999999999995
+        "industryAvg": 51.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.199999999999996,
-        "industryAvg": 36.78
+        "industryAvg": 36.69
       },
       {
         "metric": "Net Margin",
         "value": 48.76,
-        "industryAvg": 20.52
+        "industryAvg": 20.26
       }
     ]
   }

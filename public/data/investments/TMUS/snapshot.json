@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.3707,
-      "ttmPe": 16.49,
-      "marketCap": 181778431659,
-      "psRatio": 1.94,
-      "pbRatio": 3.23,
-      "pegRatio": 0.49
+      "ttmPe": 16.19,
+      "marketCap": 178451725870,
+      "psRatio": 1.9,
+      "pbRatio": 3.17,
+      "pegRatio": 0.48
     },
     "profitability": {
       "roe": 6.140000000000001,
@@ -5899,25 +5899,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.16,
-      "costOfEquity": 8.08,
+      "wacc": 5.029999999999999,
+      "costOfEquity": 7.920000000000001,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 24,
-      "beta": 0.3837,
-      "marketCap": 181778431659
+      "beta": 0.3627,
+      "marketCap": 178451725870
     },
     "beta": {
-      "beta5y": 0.3837
+      "beta5y": 0.3627
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 217.46,
-        "high": 218.18,
-        "low": 214.48,
-        "close": 216.08,
-        "volume": 4880800
-      },
       {
         "date": "2025-11-17",
         "open": 215.91,
@@ -7925,6 +7917,14 @@
         "low": 169.66,
         "close": 170.01,
         "volume": 4181400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 170.37,
+        "high": 174,
+        "low": 167.69,
+        "close": 167.9,
+        "volume": 4227700
       }
     ],
     "news": [
@@ -8076,43 +8076,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.49,
-        "industryAvg": 12.64
+        "value": 16.19,
+        "industryAvg": 12.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.94,
+        "value": 1.9,
         "industryAvg": 1.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.23,
-        "industryAvg": 1.57
+        "value": 3.17,
+        "industryAvg": 1.56
       },
       {
         "metric": "ROE",
         "value": 6.140000000000001,
-        "industryAvg": 8.12
+        "industryAvg": 8.14
       },
       {
         "metric": "ROA",
         "value": 1.6199999999999999,
-        "industryAvg": 1.97
+        "industryAvg": 1.9800000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 64.17,
-        "industryAvg": 63.27
+        "industryAvg": 63.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.26,
-        "industryAvg": 33.379999999999995
+        "industryAvg": 33.43
       },
       {
         "metric": "Net Margin",
         "value": 14.649999999999999,
-        "industryAvg": 5.59
+        "industryAvg": 5.609999999999999
       }
     ]
   }

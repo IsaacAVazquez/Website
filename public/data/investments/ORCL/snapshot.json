@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 19.93,
-      "marketCap": 384380640000,
-      "psRatio": 5.36,
-      "pbRatio": 5.76,
-      "pegRatio": 0.36
+      "ttmPe": 18.03,
+      "marketCap": 347760000000,
+      "psRatio": 4.85,
+      "pbRatio": 5.21,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,25 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.55,
-      "costOfEquity": 18.73,
+      "wacc": 13.28,
+      "costOfEquity": 18.88,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7541,
-      "marketCap": 384380640000
+      "beta": 1.7734,
+      "marketCap": 347760000000
     },
     "beta": {
-      "beta5y": 1.7541
+      "beta5y": 1.7734
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 210.83,
-        "high": 227.05,
-        "low": 210.77,
-        "close": 222.85,
-        "volume": 36053800
-      },
       {
         "date": "2025-11-17",
         "open": 218.21,
@@ -8207,7 +8199,15 @@
         "high": 123.14,
         "low": 118.25,
         "close": 119.09,
-        "volume": 20071100
+        "volume": 20146200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 119.02,
+        "high": 120.9,
+        "low": 113.04,
+        "close": 115,
+        "volume": 25603200
       }
     ],
     "news": [
@@ -8260,14 +8260,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
-        "title": "Olo jumps after Bloomberg says company exploring possible sale",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
         "title": "Why Oracle Stock Was on Fire Today",
         "publisher": "Motley Fool",
@@ -8276,11 +8268,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
+        "title": "Olo jumps after Bloomberg says company exploring possible sale",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
         "type": "STORY"
       },
       {
@@ -8289,6 +8281,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       }
     ],
@@ -8367,43 +8367,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.93,
-        "industryAvg": 31.02
+        "value": 18.03,
+        "industryAvg": 29.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.36,
-        "industryAvg": 7.28
+        "value": 4.85,
+        "industryAvg": 6.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.76,
-        "industryAvg": 7.92
+        "value": 5.21,
+        "industryAvg": 7.57
       },
       {
         "metric": "ROE",
         "value": 8.559999999999999,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 25.740000000000002
       },
       {
         "metric": "ROA",
         "value": 1.66,
-        "industryAvg": 10.36
+        "industryAvg": 10.12
       },
       {
         "metric": "Gross Margin",
         "value": 60.029999999999994,
-        "industryAvg": 51.129999999999995
+        "industryAvg": 51.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 36.78
+        "industryAvg": 36.69
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 20.52
+        "industryAvg": 20.26
       }
     ]
   }

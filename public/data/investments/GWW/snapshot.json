@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 45.7228,
-      "ttmPe": 32.57,
-      "marketCap": 69828660170,
-      "psRatio": 3.61,
-      "pbRatio": 16.09,
-      "pegRatio": 0.32
+      "ttmPe": 32.08,
+      "marketCap": 68781206824,
+      "psRatio": 3.55,
+      "pbRatio": 15.84,
+      "pegRatio": 0.31
     },
     "profitability": {
       "roe": 13.86,
@@ -5319,25 +5319,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.87,
-      "costOfEquity": 12.370000000000001,
+      "wacc": 11.68,
+      "costOfEquity": 12.18,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 24,
-      "beta": 0.935,
-      "marketCap": 69828660170
+      "beta": 0.9111,
+      "marketCap": 68781206824
     },
     "beta": {
-      "beta5y": 0.935
+      "beta5y": 0.9111
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 934.35,
-        "high": 939.87,
-        "low": 921.54,
-        "close": 926.21,
-        "volume": 239900
-      },
       {
         "date": "2025-11-17",
         "open": 922.13,
@@ -7345,6 +7337,14 @@
         "low": 1490.28,
         "close": 1495.78,
         "volume": 245200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 1488.35,
+        "high": 1499.97,
+        "low": 1462.75,
+        "close": 1466.96,
+        "volume": 268700
       }
     ],
     "news": [
@@ -7365,19 +7365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
-        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
         "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
+        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
         "type": "STORY"
       },
       {
@@ -7497,43 +7497,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.57,
-        "industryAvg": 27.76
+        "value": 32.08,
+        "industryAvg": 27.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.61,
-        "industryAvg": 1.78
+        "value": 3.55,
+        "industryAvg": 1.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.09,
-        "industryAvg": 5.49
+        "value": 15.84,
+        "industryAvg": 4.92
       },
       {
         "metric": "ROE",
         "value": 13.86,
-        "industryAvg": 16.939999999999998
+        "industryAvg": 12.82
       },
       {
         "metric": "ROA",
         "value": 5.949999999999999,
-        "industryAvg": 7.290000000000001
+        "industryAvg": 5.67
       },
       {
         "metric": "Gross Margin",
         "value": 38.81,
-        "industryAvg": 29.270000000000003
+        "industryAvg": 29.12
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.41,
-        "industryAvg": 10.780000000000001
+        "industryAvg": 10.47
       },
       {
         "metric": "Net Margin",
         "value": 11.33,
-        "industryAvg": 5.4399999999999995
+        "industryAvg": 4.8
       }
     ]
   }

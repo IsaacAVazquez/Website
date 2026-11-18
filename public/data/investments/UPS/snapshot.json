@@ -1,10 +1,10 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 5.1909,
-      "ttmPe": 21.26,
-      "marketCap": 93922342000,
+      "ttmPe": 21.25,
+      "marketCap": 93862779000,
       "psRatio": 1.03,
       "pbRatio": 6.26,
       "pegRatio": 3.46
@@ -5612,25 +5612,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.54,
-      "costOfEquity": 12.389999999999999,
+      "wacc": 9.42,
+      "costOfEquity": 12.24,
       "costOfDebt": 0.95,
       "taxRate": 26,
-      "beta": 0.9385,
-      "marketCap": 93922342000
+      "beta": 0.9195,
+      "marketCap": 93862779000
     },
     "beta": {
-      "beta5y": 0.9385
+      "beta5y": 0.9195
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 95.71,
-        "high": 96.71,
-        "low": 95.16,
-        "close": 95.98,
-        "volume": 6583000
-      },
       {
         "date": "2025-11-17",
         "open": 94.22,
@@ -7638,6 +7630,14 @@
         "low": 110.28,
         "close": 111.82,
         "volume": 5691100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 111.24,
+        "high": 112.15,
+        "low": 109.84,
+        "close": 110.31,
+        "volume": 7753100
       }
     ],
     "news": [
@@ -7674,19 +7674,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "17c8d947-2259-3485-b41a-e6455664458e",
-        "title": "Air Freight and Logistics Stocks Q1 Teardown: FedEx (NYSE:FDX) Vs The Rest",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/air-freight-logistics-stocks-q1-033330345.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
         "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "17c8d947-2259-3485-b41a-e6455664458e",
+        "title": "Air Freight and Logistics Stocks Q1 Teardown: FedEx (NYSE:FDX) Vs The Rest",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/air-freight-logistics-stocks-q1-033330345.html",
         "type": "STORY"
       },
       {
@@ -7714,11 +7714,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "958f31f1-005a-3f1c-8476-e0abfa3f81f3",
-        "title": "Here's Why UPS Should Cut Its Dividend",
-        "publisher": "Motley Fool",
+        "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
+        "title": "Freight industry layoffs surge across California, Texas",
+        "publisher": "FreightWaves",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/958f31f1-005a-3f1c-8476-e0abfa3f81f3/here%27s-why-ups-should-cut-its.html",
+        "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
         "type": "STORY"
       }
     ],
@@ -7786,13 +7786,13 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.26,
-        "industryAvg": 20.12
+        "value": 21.25,
+        "industryAvg": 20.11
       },
       {
         "metric": "P/S Ratio",
         "value": 1.03,
-        "industryAvg": 0.98
+        "industryAvg": 0.97
       },
       {
         "metric": "P/B Ratio",
@@ -7802,27 +7802,27 @@
       {
         "metric": "ROE",
         "value": 7.739999999999999,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 17.49
       },
       {
         "metric": "ROA",
         "value": 1.6199999999999999,
-        "industryAvg": 2.88
+        "industryAvg": 3.08
       },
       {
         "metric": "Gross Margin",
         "value": 16.98,
-        "industryAvg": 18.95
+        "industryAvg": 18.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.36,
-        "industryAvg": 11.32
+        "industryAvg": 11.899999999999999
       },
       {
         "metric": "Net Margin",
         "value": 5.09,
-        "industryAvg": 5.1499999999999995
+        "industryAvg": 5.6899999999999995
       }
     ]
   }

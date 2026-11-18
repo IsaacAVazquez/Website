@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.2185,
-      "ttmPe": 25.56,
-      "marketCap": 81666400000,
-      "psRatio": 4.91,
-      "pbRatio": 26,
-      "pegRatio": 3.88
+      "ttmPe": 25.11,
+      "marketCap": 80219616000,
+      "psRatio": 4.82,
+      "pbRatio": 25.54,
+      "pegRatio": 3.81
     },
     "profitability": {
       "roe": 28.33,
@@ -6330,25 +6330,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.129999999999999,
-      "costOfEquity": 12.33,
+      "wacc": 11.020000000000001,
+      "costOfEquity": 12.23,
       "costOfDebt": 0.89,
       "taxRate": 24,
-      "beta": 0.9302,
-      "marketCap": 81666400000
+      "beta": 0.9178,
+      "marketCap": 80219616000
     },
     "beta": {
-      "beta5y": 0.9302
+      "beta5y": 0.9178
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 244.99,
-        "high": 245.32,
-        "low": 242.56,
-        "close": 243.97,
-        "volume": 978500
-      },
       {
         "date": "2025-11-17",
         "open": 243.95,
@@ -8356,6 +8348,14 @@
         "low": 284.29,
         "close": 284.64,
         "volume": 909300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 282.79,
+        "high": 287.3,
+        "low": 280.42,
+        "close": 281.67,
+        "volume": 1089900
       }
     ],
     "news": [
@@ -8400,19 +8400,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "807b67ac-aa01-344a-8dc8-66df6e282df5",
-        "title": "Illinois Tool Works First Quarter 2025 Earnings: In Line With Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/illinois-tool-works-first-quarter-104349017.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d4dcfc3a-dd7b-30fd-bd95-f92a9a333c07",
         "title": "ITW Board of Directors Declares Quarterly Dividend",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "807b67ac-aa01-344a-8dc8-66df6e282df5",
+        "title": "Illinois Tool Works First Quarter 2025 Earnings: In Line With Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/illinois-tool-works-first-quarter-104349017.html",
         "type": "STORY"
       },
       {
@@ -8432,11 +8432,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
-        "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
-        "publisher": "The Fly",
+        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
+        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
+        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
         "type": "STORY"
       }
     ],
@@ -8508,43 +8508,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.56,
-        "industryAvg": 26.78
+        "value": 25.11,
+        "industryAvg": 25.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.91,
-        "industryAvg": 3.22
+        "value": 4.82,
+        "industryAvg": 3.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 26,
-        "industryAvg": 5.74
+        "value": 25.54,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 28.33,
-        "industryAvg": 19.650000000000002
+        "industryAvg": 19.85
       },
       {
         "metric": "ROA",
         "value": 5.18,
-        "industryAvg": 6.72
+        "industryAvg": 6.78
       },
       {
         "metric": "Gross Margin",
         "value": 45.09,
-        "industryAvg": 29.470000000000002
+        "industryAvg": 29.37
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.019999999999996,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 16.71
       },
       {
         "metric": "Net Margin",
         "value": 20.18,
-        "industryAvg": 10.59
+        "industryAvg": 10.71
       }
     ]
   }

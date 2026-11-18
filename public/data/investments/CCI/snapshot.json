@@ -1,10 +1,10 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.9334,
-      "ttmPe": 23.09,
-      "marketCap": 38693580000,
-      "psRatio": 9.47,
-      "pbRatio": -11.3,
+      "ttmPe": 21.4,
+      "marketCap": 35852160000,
+      "psRatio": 8.78,
+      "pbRatio": -10.47,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5862,25 +5862,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.89,
-      "costOfEquity": 12.13,
+      "wacc": 7.71,
+      "costOfEquity": 12.17,
       "costOfDebt": 0.75,
       "taxRate": 2,
-      "beta": 0.9037,
-      "marketCap": 38693580000
+      "beta": 0.9099,
+      "marketCap": 35852160000
     },
     "beta": {
-      "beta5y": 0.9037
+      "beta5y": 0.9099
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 91.43,
-        "high": 92.3,
-        "low": 90.37,
-        "close": 91.68,
-        "volume": 3279200
-      },
       {
         "date": "2025-11-17",
         "open": 91.7,
@@ -7888,6 +7880,14 @@
         "low": 89.18,
         "close": 89.36,
         "volume": 2509000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 88.25,
+        "high": 89.43,
+        "low": 83.86,
+        "close": 84.16,
+        "volume": 4662900
       }
     ],
     "news": [
@@ -7916,14 +7916,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
-        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d9d2c464-1153-3359-9b60-77757fef2c3f",
         "title": "Crown Castle's Q1 AFFO Surpasses Estimates, Revenues Fall Y/Y",
         "publisher": "Zacks",
@@ -7932,11 +7924,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
+        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "0722e51b-eef8-3670-97af-b1556e1fabbd",
         "title": "BMO Capital Adjusts Price Target on Crown Castle to $112 From $108, Maintains Market Perform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/bmo-capital-adjusts-price-target-141331038.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
+        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
         "type": "STORY"
       },
       {
@@ -7953,14 +7961,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
-        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
         "type": "STORY"
       },
       {
@@ -8035,28 +8035,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.09,
-        "industryAvg": 36.77
+        "value": 21.4,
+        "industryAvg": 35.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.47,
-        "industryAvg": 6.82
+        "value": 8.78,
+        "industryAvg": 6.59
       },
       {
         "metric": "P/B Ratio",
-        "value": -11.3,
-        "industryAvg": 4.37
+        "value": -10.47,
+        "industryAvg": 4.26
       },
       {
         "metric": "ROE",
         "value": -8.459999999999999,
-        "industryAvg": 10.56
+        "industryAvg": 10.69
       },
       {
         "metric": "ROA",
         "value": 1.34,
-        "industryAvg": 3.19
+        "industryAvg": 3.2300000000000004
       },
       {
         "metric": "Gross Margin",
@@ -8066,12 +8066,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 64.22,
-        "industryAvg": 51.65
+        "industryAvg": 51.53
       },
       {
         "metric": "Net Margin",
         "value": 28.439999999999998,
-        "industryAvg": 17.32
+        "industryAvg": 17.57
       }
     ]
   }

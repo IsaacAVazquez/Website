@@ -1,10 +1,10 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.7093,
-      "ttmPe": 27.37,
-      "marketCap": 94902558336,
-      "psRatio": 3.76,
-      "pbRatio": 23,
+      "ttmPe": 26.96,
+      "marketCap": 93466050048,
+      "psRatio": 3.7,
+      "pbRatio": 22.65,
       "pegRatio": 0.39
     },
     "profitability": {
@@ -6486,25 +6486,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.09,
-      "costOfEquity": 12.65,
+      "wacc": 10.95,
+      "costOfEquity": 12.509999999999998,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 16,
-      "beta": 0.972,
-      "marketCap": 94902558336
+      "beta": 0.9543,
+      "marketCap": 93466050048
     },
     "beta": {
-      "beta5y": 0.972
+      "beta5y": 0.9543
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 168.91,
-        "high": 169.34,
-        "low": 166.99,
-        "close": 167.58,
-        "volume": 2748800
-      },
       {
         "date": "2025-11-17",
         "open": 166.91,
@@ -8512,6 +8504,14 @@
         "low": 181.45,
         "close": 181.68,
         "volume": 4240300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 179.93,
+        "high": 183.34,
+        "low": 179.88,
+        "close": 180.88,
+        "volume": 3362800
       }
     ],
     "news": [
@@ -8524,14 +8524,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
-        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d0d4523-46ca-314f-bd26-a36814c66eee",
         "title": "Rogers, Enviri, 3M, Gates Industrial Corporation, and Helios Stocks Trade Up, What You Need To Know",
         "publisher": "StockStory",
@@ -8540,11 +8532,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
-        "title": "3M Annual Meeting Results",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
+        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
+        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
         "type": "STORY"
       },
       {
@@ -8556,6 +8548,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
+        "title": "3M Annual Meeting Results",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "50aa0de7-e0f0-3207-86a0-844ab2cccf53",
         "title": "Here's Why You Should Retain 3M Stock in Your Portfolio Now",
         "publisher": "Zacks",
@@ -8564,19 +8564,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
-        "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
         "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
+        "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
         "type": "STORY"
       },
       {
@@ -8658,23 +8658,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.37,
-        "industryAvg": 20
+        "value": 26.96,
+        "industryAvg": 19.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.76,
-        "industryAvg": 1.59
+        "value": 3.7,
+        "industryAvg": 1.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 23,
-        "industryAvg": 2.57
+        "value": 22.65,
+        "industryAvg": 2.5
       },
       {
         "metric": "ROE",
         "value": 38.79,
-        "industryAvg": -9.67
+        "industryAvg": -9.68
       },
       {
         "metric": "ROA",
@@ -8689,7 +8689,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 33.76,
-        "industryAvg": 23.119999999999997
+        "industryAvg": 23.200000000000003
       },
       {
         "metric": "Net Margin",

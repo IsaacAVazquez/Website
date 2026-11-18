@@ -1,10 +1,10 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.9274,
-      "ttmPe": 38.69,
-      "marketCap": 45944240000,
-      "psRatio": 4.52,
-      "pbRatio": 7.11,
-      "pegRatio": 0.19
+      "ttmPe": 37.1,
+      "marketCap": 44054800000,
+      "psRatio": 4.34,
+      "pbRatio": 6.82,
+      "pegRatio": 0.18
     },
     "profitability": {
       "roe": 9.62,
@@ -5792,25 +5792,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.959999999999999,
-      "costOfEquity": 12.91,
+      "wacc": 12,
+      "costOfEquity": 12.989999999999998,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.0054,
-      "marketCap": 45944240000
+      "beta": 1.0153,
+      "marketCap": 44054800000
     },
     "beta": {
-      "beta5y": 1.0054
+      "beta5y": 1.0153
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 225.83,
-        "high": 235,
-        "low": 225.83,
-        "close": 230.82,
-        "volume": 3100200
-      },
       {
         "date": "2025-11-17",
         "open": 230.16,
@@ -7818,6 +7810,14 @@
         "low": 193.82,
         "close": 194.06,
         "volume": 2255600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 189.67,
+        "high": 190.06,
+        "low": 181.78,
+        "close": 182.8,
+        "volume": 2988400
       }
     ],
     "news": [
@@ -7894,12 +7894,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "a8a7c6bc-d151-3b29-bb14-3b60f20774ca",
-        "title": "Workday Q1 Earnings Beat Estimates on Solid Revenue Growth",
-        "publisher": "Zacks",
+        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
+        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/workday-q1-earnings-beat-estimates-154200149.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7968,28 +7968,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.69,
-        "industryAvg": 28.15
+        "value": 37.1,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.52,
-        "industryAvg": 4.85
+        "value": 4.34,
+        "industryAvg": 4.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.11,
-        "industryAvg": 5.18
+        "value": 6.82,
+        "industryAvg": 4.94
       },
       {
         "metric": "ROE",
         "value": 9.62,
-        "industryAvg": -0.72
+        "industryAvg": -0.7000000000000001
       },
       {
         "metric": "ROA",
         "value": 3.9600000000000004,
-        "industryAvg": -0.4
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
@@ -7999,12 +7999,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 16.84,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.32
       },
       {
         "metric": "Net Margin",
         "value": 23.86,
-        "industryAvg": -0.98
+        "industryAvg": -0.96
       }
     ]
   }

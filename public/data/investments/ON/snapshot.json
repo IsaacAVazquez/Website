@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 41.36,
-      "marketCap": 27660709010,
-      "psRatio": 4.34,
-      "pbRatio": 3.66,
-      "pegRatio": 1.57
+      "ttmPe": 39.54,
+      "marketCap": 26442329905,
+      "psRatio": 4.15,
+      "pbRatio": 3.5,
+      "pegRatio": 1.5
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,25 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.68,
-      "costOfEquity": 21.67,
+      "wacc": 18.57,
+      "costOfEquity": 21.68,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.14,
-      "marketCap": 27660709010
+      "beta": 2.1333,
+      "marketCap": 26442329905
     },
     "beta": {
-      "beta5y": 2.14
+      "beta5y": 2.1333
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 47.07,
-        "high": 48.4,
-        "low": 46.51,
-        "close": 46.92,
-        "volume": 5565300
-      },
       {
         "date": "2025-11-17",
         "open": 46.53,
@@ -8109,7 +8101,15 @@
         "high": 69.29,
         "low": 67.49,
         "close": 67.69,
-        "volume": 8138100
+        "volume": 8150600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 68.92,
+        "high": 69.3,
+        "low": 66.12,
+        "close": 67.93,
+        "volume": 7673500
       }
     ],
     "news": [
@@ -8138,19 +8138,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
-        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
         "title": "ON Semiconductor negativity priced in says Morgan Stanley",
         "publisher": "Investing.com",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
+        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
         "type": "STORY"
       },
       {
@@ -8250,23 +8250,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.36,
-        "industryAvg": 20.8
+        "value": 39.54,
+        "industryAvg": 18.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.34,
-        "industryAvg": 10.18
+        "value": 4.15,
+        "industryAvg": 9.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.66,
-        "industryAvg": 9.1
+        "value": 3.5,
+        "industryAvg": 8.29
       },
       {
         "metric": "ROE",
         "value": 4.25,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8276,17 +8276,17 @@
       {
         "metric": "Gross Margin",
         "value": 41.4,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.830000000000002,
-        "industryAvg": 81.53
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": 18.23,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

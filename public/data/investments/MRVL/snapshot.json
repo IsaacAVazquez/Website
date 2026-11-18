@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 51.62,
-      "marketCap": 137447168000,
-      "psRatio": 14.54,
-      "pbRatio": 7.42,
-      "pegRatio": 1.04
+      "ttmPe": 48.98,
+      "marketCap": 130415232000,
+      "psRatio": 13.8,
+      "pbRatio": 7.04,
+      "pegRatio": 0.99
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.15,
-      "costOfEquity": 22.95,
+      "wacc": 22.48,
+      "costOfEquity": 23.34,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.3057,
-      "marketCap": 137447168000
+      "beta": 2.347,
+      "marketCap": 130415232000
     },
     "beta": {
-      "beta5y": 2.3057
+      "beta5y": 2.347
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 84.47,
-        "high": 89,
-        "low": 83.33,
-        "close": 86.45,
-        "volume": 12414100
-      },
       {
         "date": "2025-11-17",
         "open": 85.43,
@@ -7980,7 +7972,15 @@
         "high": 149.16,
         "low": 144.04,
         "close": 145.36,
-        "volume": 21368300
+        "volume": 23235500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 150.2,
+        "high": 150.95,
+        "low": 140.9,
+        "close": 148.74,
+        "volume": 26764800
       }
     ],
     "news": [
@@ -8041,14 +8041,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
-        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
         "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
         "publisher": "StockStory",
@@ -8057,11 +8049,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
-        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
-        "publisher": "MT Newswires",
+        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
+        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
+        "publisher": "The Fly",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
+        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
+        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
         "type": "STORY"
       }
     ],
@@ -8130,23 +8130,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 51.62,
-        "industryAvg": 20.8
+        "value": 48.98,
+        "industryAvg": 18.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.54,
-        "industryAvg": 10.18
+        "value": 13.8,
+        "industryAvg": 9.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.42,
-        "industryAvg": 9.1
+        "value": 7.04,
+        "industryAvg": 8.29
       },
       {
         "metric": "ROE",
         "value": 1.68,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8156,17 +8156,17 @@
       {
         "metric": "Gross Margin",
         "value": 53.14,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.03,
-        "industryAvg": 81.53
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": 11.24,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

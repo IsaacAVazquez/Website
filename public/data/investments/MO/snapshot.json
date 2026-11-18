@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.3386,
-      "ttmPe": 23.34,
-      "marketCap": 129651726944,
-      "psRatio": 6.28,
-      "pbRatio": -58.27,
+      "ttmPe": 23.2,
+      "marketCap": 128886329172,
+      "psRatio": 6.25,
+      "pbRatio": -57.93,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6205,25 +6205,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.55,
+      "wacc": 7.539999999999999,
       "costOfEquity": 8.790000000000001,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.4755,
-      "marketCap": 129651726944
+      "beta": 0.4751,
+      "marketCap": 128886329172
     },
     "beta": {
-      "beta5y": 0.4755
+      "beta5y": 0.4751
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 58,
-        "high": 58.3,
-        "low": 57.37,
-        "close": 58.19,
-        "volume": 7788000
-      },
       {
         "date": "2025-11-17",
         "open": 58.24,
@@ -8231,6 +8223,14 @@
         "low": 78.45,
         "close": 78.9,
         "volume": 7134400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 78.14,
+        "high": 79.01,
+        "low": 77.4,
+        "close": 77.46,
+        "volume": 5454600
       }
     ],
     "news": [
@@ -8380,23 +8380,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.34,
-        "industryAvg": 23.11
+        "value": 23.2,
+        "industryAvg": 22.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.28,
-        "industryAvg": 6.26
+        "value": 6.25,
+        "industryAvg": 6.2
       },
       {
         "metric": "P/B Ratio",
-        "value": -58.27,
-        "industryAvg": 2.01
+        "value": -57.93,
+        "industryAvg": 1.98
       },
       {
         "metric": "ROE",
         "value": -102.67999999999999,
-        "industryAvg": -252.01
+        "industryAvg": -251.77
       },
       {
         "metric": "ROA",
@@ -8416,7 +8416,7 @@
       {
         "metric": "Net Margin",
         "value": 46.17,
-        "industryAvg": 26.69
+        "industryAvg": 26.68
       }
     ]
   }

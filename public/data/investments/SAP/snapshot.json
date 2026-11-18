@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1792,
-      "ttmPe": 28.62,
-      "marketCap": 264252335640,
-      "psRatio": 5.92,
-      "pbRatio": 5.08,
-      "pegRatio": 2.54
+      "ttmPe": 27.2,
+      "marketCap": 251212454940,
+      "psRatio": 5.63,
+      "pbRatio": 4.83,
+      "pegRatio": 2.42
     },
     "profitability": {
       "roe": 4.96,
@@ -6276,25 +6276,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.97,
-      "costOfEquity": 13.459999999999999,
+      "wacc": 13,
+      "costOfEquity": 13.52,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.0764,
-      "marketCap": 264252335640
+      "beta": 1.0837,
+      "marketCap": 251212454940
     },
     "beta": {
-      "beta5y": 1.0764
+      "beta5y": 1.0837
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 243.63,
-        "high": 247.26,
-        "low": 243.08,
-        "close": 245.03,
-        "volume": 2523000
-      },
       {
         "date": "2025-11-17",
         "open": 242.65,
@@ -8302,6 +8294,14 @@
         "low": 233.21,
         "close": 233.83,
         "volume": 1815300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 226.83,
+        "high": 227.96,
+        "low": 220.96,
+        "close": 222.51,
+        "volume": 2202800
       }
     ],
     "news": [
@@ -8354,6 +8354,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
+        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
@@ -8367,14 +8375,6 @@
         "publisher": "Investing.com",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
-        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
         "type": "STORY"
       },
       {
@@ -8461,28 +8461,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.62,
-        "industryAvg": 28.15
+        "value": 27.2,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.92,
-        "industryAvg": 4.85
+        "value": 5.63,
+        "industryAvg": 4.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.08,
-        "industryAvg": 5.18
+        "value": 4.83,
+        "industryAvg": 4.94
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -0.72
+        "industryAvg": -0.7000000000000001
       },
       {
         "metric": "ROA",
         "value": 2.96,
-        "industryAvg": -0.4
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
@@ -8492,12 +8492,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.32
       },
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -0.98
+        "industryAvg": -0.96
       }
     ]
   }

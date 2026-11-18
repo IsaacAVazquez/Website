@@ -1,14 +1,11 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
-    },
-    "retainedSections": [
-      "info"
-    ]
+      "price": "2026-11-17"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -36,18 +33,18 @@
       "industry": "Semiconductor Equipment & Materials",
       "sector": "Technology",
       "longBusinessSummary": "Applied Materials, Inc. provides materials engineering solutions, equipment, services, and software to the semiconductor and related industries in the United States, China, Korea, Taiwan, Japan, Southeast Asia, Europe, and internationally. The company operates through Semiconductor Systems and Applied Global Services (AGS) segments. The Semiconductor Systems segment includes semiconductor capital equipment to enable materials engineering steps, including etch, rapid thermal processing, deposition, chemical mechanical planarization, metrology and inspection, wafer packaging, and ion implantation. The AGS segment offers integrated solutions to optimize equipment and fab performance and productivity comprising spares, upgrades, services, and 200 millimeter and other equipment and factory automation software for semiconductor and other products. It serves manufacturers of semiconductor wafers and chips, and other electronic devices. Applied Materials, Inc. was incorporated in 1967 and is headquartered in Santa Clara, California.",
-      "fullTimeEmployees": 38900,
+      "fullTimeEmployees": 41500,
       "website": "https://www.appliedmaterials.com",
       "shortName": "Applied Materials, Inc.",
       "longName": "Applied Materials, Inc."
     },
     "fundamentals": {
-      "ttmEps": 11.5973,
-      "ttmPe": 31.95,
-      "marketCap": 294027836700,
-      "psRatio": 9.53,
-      "pbRatio": 11.47,
-      "pegRatio": 0.74
+      "ttmEps": 12.6201,
+      "ttmPe": 27.67,
+      "marketCap": 277148020002,
+      "psRatio": 8.99,
+      "pbRatio": 10.82,
+      "pegRatio": 0.64
     },
     "profitability": {
       "roe": 10.25,
@@ -84,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 43.02
+        "yoyGrowth": 43.03
       }
     ],
     "income_statement": {
@@ -6404,25 +6401,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.44,
-      "costOfEquity": 17.83,
+      "wacc": 17.580000000000002,
+      "costOfEquity": 17.990000000000002,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.6425,
-      "marketCap": 294027836700
+      "beta": 1.6585,
+      "marketCap": 277148020002
     },
     "beta": {
-      "beta5y": 1.6425
+      "beta5y": 1.6585
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 203.75,
-        "high": 226.16,
-        "low": 203.4,
-        "close": 226.01,
-        "volume": 15254400
-      },
       {
         "date": "2025-11-17",
         "open": 224.2,
@@ -8430,6 +8419,14 @@
         "low": 346.01,
         "close": 350.25,
         "volume": 7105000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 354.41,
+        "high": 355.7,
+        "low": 338,
+        "close": 349.23,
+        "volume": 6813100
       }
     ],
     "news": [
@@ -8474,6 +8471,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
+        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "de8eda00-fb93-3a66-9ed6-a9623991b765",
         "title": "Applied Materials, Inc. (AMAT) is Attracting Investor Attention: Here is What You Should Know",
         "publisher": "Zacks",
@@ -8487,14 +8492,6 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
-        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
         "type": "STORY"
       },
       {
@@ -8583,43 +8580,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.95,
-        "industryAvg": 36.72
+        "value": 27.67,
+        "industryAvg": 32.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.53,
-        "industryAvg": 10.84
+        "value": 8.99,
+        "industryAvg": 9.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.47,
-        "industryAvg": 14.97
+        "value": 10.82,
+        "industryAvg": 13.59
       },
       {
         "metric": "ROE",
         "value": 10.25,
-        "industryAvg": 42.49
+        "industryAvg": 43.14
       },
       {
         "metric": "ROA",
         "value": 6.0600000000000005,
-        "industryAvg": 20.78
+        "industryAvg": 21.17
       },
       {
         "metric": "Gross Margin",
         "value": 50.31,
-        "industryAvg": 49.95
+        "industryAvg": 50.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.39,
-        "industryAvg": 37.43
+        "industryAvg": 37.93
       },
       {
         "metric": "Net Margin",
         "value": 27.839999999999996,
-        "industryAvg": 28.4
+        "industryAvg": 28.68
       }
     ]
   }

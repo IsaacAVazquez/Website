@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7248,
-      "ttmPe": 20.87,
-      "marketCap": 231213150000,
-      "psRatio": 3.31,
-      "pbRatio": 6.51,
-      "pegRatio": 0.84
+      "ttmPe": 19.71,
+      "marketCap": 218380050000,
+      "psRatio": 3.13,
+      "pbRatio": 6.15,
+      "pegRatio": 0.79
     },
     "profitability": {
       "roe": 6.260000000000001,
@@ -6771,25 +6771,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.64,
-      "costOfEquity": 10.96,
+      "wacc": 8.690000000000001,
+      "costOfEquity": 11.16,
       "costOfDebt": 0.73,
       "taxRate": 12,
-      "beta": 0.7538,
-      "marketCap": 231213150000
+      "beta": 0.7798,
+      "marketCap": 218380050000
     },
     "beta": {
-      "beta5y": 0.7538
+      "beta5y": 0.7798
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 300,
-        "high": 307.72,
-        "low": 297.59,
-        "close": 305.69,
-        "volume": 3592500
-      },
       {
         "date": "2025-11-17",
         "open": 305.59,
@@ -8797,6 +8789,14 @@
         "low": 241.34,
         "close": 242.51,
         "volume": 5148700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 239.53,
+        "high": 241,
+        "low": 230.64,
+        "close": 231.09,
+        "volume": 4907300
       }
     ],
     "news": [
@@ -8849,19 +8849,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
-        "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
         "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
+        "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
         "type": "STORY"
       },
       {
@@ -8945,23 +8945,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.87,
-        "industryAvg": 16.28
+        "value": 19.71,
+        "industryAvg": 15.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.31,
-        "industryAvg": 1.56
+        "value": 3.13,
+        "industryAvg": 1.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.51,
-        "industryAvg": 3.6
+        "value": 6.15,
+        "industryAvg": 3.44
       },
       {
         "metric": "ROE",
         "value": 6.260000000000001,
-        "industryAvg": 17.560000000000002
+        "industryAvg": 17.549999999999997
       },
       {
         "metric": "ROA",
@@ -8971,17 +8971,17 @@
       {
         "metric": "Gross Margin",
         "value": 56.79,
-        "industryAvg": 31.680000000000003
+        "industryAvg": 31.669999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.53,
-        "industryAvg": 16.14
+        "industryAvg": 16.13
       },
       {
         "metric": "Net Margin",
         "value": 12.8,
-        "industryAvg": 7.95
+        "industryAvg": 7.9399999999999995
       }
     ]
   }

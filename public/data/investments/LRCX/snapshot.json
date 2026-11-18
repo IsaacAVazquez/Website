@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 33.63,
-      "marketCap": 282206838400,
-      "psRatio": 10.8,
-      "pbRatio": 20.29,
-      "pegRatio": 0.44
+      "ttmPe": 31.36,
+      "marketCap": 263182360050,
+      "psRatio": 10.07,
+      "pbRatio": 18.92,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,25 +5781,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.19,
-      "costOfEquity": 20.45,
+      "wacc": 20.36,
+      "costOfEquity": 20.64,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 1.9822,
-      "marketCap": 282206838400
+      "beta": 1.9994,
+      "marketCap": 263182360050
     },
     "beta": {
-      "beta5y": 1.9822
+      "beta5y": 1.9994
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 147.51,
-        "high": 152.95,
-        "low": 145.37,
-        "close": 148.26,
-        "volume": 15076100
-      },
       {
         "date": "2025-11-17",
         "open": 147.31,
@@ -7806,7 +7798,15 @@
         "high": 216.83,
         "low": 209.89,
         "close": 210.83,
-        "volume": 12282400
+        "volume": 12304100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 214.81,
+        "high": 215.46,
+        "low": 201.91,
+        "close": 210.69,
+        "volume": 11186500
       }
     ],
     "news": [
@@ -7843,19 +7843,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "80a8b8d3-1495-3996-94b8-9b578be74ba9",
-        "title": "3 Nasdaq-Listed Tech Stocks Flying-High in 2025 Signaling More Upside",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/3-nasdaq-listed-tech-stocks-112100288.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
         "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "80a8b8d3-1495-3996-94b8-9b578be74ba9",
+        "title": "3 Nasdaq-Listed Tech Stocks Flying-High in 2025 Signaling More Upside",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/3-nasdaq-listed-tech-stocks-112100288.html",
         "type": "STORY"
       },
       {
@@ -7958,43 +7958,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.63,
-        "industryAvg": 36.72
+        "value": 31.36,
+        "industryAvg": 32.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.8,
-        "industryAvg": 10.84
+        "value": 10.07,
+        "industryAvg": 9.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.29,
-        "industryAvg": 14.97
+        "value": 18.92,
+        "industryAvg": 13.59
       },
       {
         "metric": "ROE",
         "value": 20.87,
-        "industryAvg": 42.49
+        "industryAvg": 43.14
       },
       {
         "metric": "ROA",
         "value": 11.04,
-        "industryAvg": 20.78
+        "industryAvg": 21.17
       },
       {
         "metric": "Gross Margin",
         "value": 52.300000000000004,
-        "industryAvg": 49.95
+        "industryAvg": 50.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.230000000000004,
-        "industryAvg": 37.43
+        "industryAvg": 37.93
       },
       {
         "metric": "Net Margin",
         "value": 33.5,
-        "industryAvg": 28.4
+        "industryAvg": 28.68
       }
     ]
   }

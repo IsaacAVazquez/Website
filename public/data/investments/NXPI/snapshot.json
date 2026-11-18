@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.7184,
-      "ttmPe": 20.84,
-      "marketCap": 66816464680,
-      "psRatio": 4.84,
-      "pbRatio": 5.53,
-      "pegRatio": 0.52
+      "ttmPe": 19.85,
+      "marketCap": 63645650520,
+      "psRatio": 4.61,
+      "pbRatio": 5.27,
+      "pegRatio": 0.49
     },
     "profitability": {
       "roe": 7.53,
@@ -6139,25 +6139,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.74,
-      "costOfEquity": 19.36,
+      "wacc": 16.6,
+      "costOfEquity": 19.33,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.8403,
-      "marketCap": 66816464680
+      "beta": 1.8309,
+      "marketCap": 63645650520
     },
     "beta": {
-      "beta5y": 1.8403
+      "beta5y": 1.8309
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 198.83,
-        "high": 199.81,
-        "low": 196.18,
-        "close": 197.1,
-        "volume": 2111000
-      },
       {
         "date": "2025-11-17",
         "open": 195.18,
@@ -8165,6 +8157,14 @@
         "low": 253.51,
         "close": 254.19,
         "volume": 4715000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 261.2,
+        "high": 261.2,
+        "low": 247.74,
+        "close": 252.51,
+        "volume": 4188700
       }
     ],
     "news": [
@@ -8177,14 +8177,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
-        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
         "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
         "publisher": "Investopedia",
@@ -8193,11 +8185,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f316b84-40ec-31d4-989f-9b346880bf80",
-        "title": "NXP Unveils Third-Generation Imaging Radar Processors for Level 2+ to 4 Autonomous Driving",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nxp-unveils-third-generation-imaging-070000540.html",
+        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
+        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
         "type": "STORY"
       },
       {
@@ -8206,6 +8198,14 @@
         "publisher": "Benzinga",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/nxp-unveils-next-gen-radar-150939114.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3f316b84-40ec-31d4-989f-9b346880bf80",
+        "title": "NXP Unveils Third-Generation Imaging Radar Processors for Level 2+ to 4 Autonomous Driving",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nxp-unveils-third-generation-imaging-070000540.html",
         "type": "STORY"
       },
       {
@@ -8225,19 +8225,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac3b3228-ed47-3830-b732-094c326d70cf",
-        "title": "NXPI Q1 Earnings Call: Early Cycle Recovery Signals Amid Tariff Uncertainty and Leadership Transition",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6ef3f3b0-301b-3d63-8d2e-52dffba1a0b4",
         "title": "Estimating The Intrinsic Value Of NXP Semiconductors N.V. (NASDAQ:NXPI)",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac3b3228-ed47-3830-b732-094c326d70cf",
+        "title": "NXPI Q1 Earnings Call: Early Cycle Recovery Signals Amid Tariff Uncertainty and Leadership Transition",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
         "type": "STORY"
       },
       {
@@ -8313,23 +8313,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.84,
-        "industryAvg": 20.8
+        "value": 19.85,
+        "industryAvg": 18.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.84,
-        "industryAvg": 10.18
+        "value": 4.61,
+        "industryAvg": 9.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.53,
-        "industryAvg": 9.1
+        "value": 5.27,
+        "industryAvg": 8.29
       },
       {
         "metric": "ROE",
         "value": 7.53,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8339,17 +8339,17 @@
       {
         "metric": "Gross Margin",
         "value": 57.82000000000001,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.8,
-        "industryAvg": 81.53
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": 23.35,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

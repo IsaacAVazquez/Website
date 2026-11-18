@@ -1,10 +1,10 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.1685,
-      "ttmPe": 23.07,
-      "marketCap": 170926299500,
-      "psRatio": 2.52,
-      "pbRatio": 2.59,
+      "ttmPe": 22.61,
+      "marketCap": 167562554500,
+      "psRatio": 2.47,
+      "pbRatio": 2.54,
       "pegRatio": 0.16
     },
     "profitability": {
@@ -5791,25 +5791,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.88,
-      "costOfEquity": 6.59,
+      "wacc": 6.01,
+      "costOfEquity": 6.75,
       "costOfDebt": 1.04,
       "taxRate": 33,
-      "beta": 0.1863,
-      "marketCap": 170926299500
+      "beta": 0.2122,
+      "marketCap": 167562554500
     },
     "beta": {
-      "beta5y": 0.1863
+      "beta5y": 0.2122
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 90.24,
-        "high": 91.82,
-        "low": 88.67,
-        "close": 91.37,
-        "volume": 7628400
-      },
       {
         "date": "2025-11-17",
         "open": 90.53,
@@ -7817,6 +7809,14 @@
         "low": 138.83,
         "close": 140.52,
         "volume": 9387600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 141.13,
+        "high": 143.55,
+        "low": 139.22,
+        "close": 139.48,
+        "volume": 7825600
       }
     ],
     "news": [
@@ -7893,11 +7893,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "164bdc7b-1cbb-3adb-b047-5a86a1dcef5c",
-        "title": "Why Frontline Stock Popped, but Exxon and ConocoPhillips Dropped",
-        "publisher": "Motley Fool",
+        "uuid": "a734f233-b3a7-39f9-a01b-aefeb5a637c3",
+        "title": "OPEC Shifts To Oil Price-War Stance Ahead Of Trump Saudi Visit; These Stocks Rally",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/m/164bdc7b-1cbb-3adb-b047-5a86a1dcef5c/why-frontline-stock-popped%2C.html",
+        "link": "https://finance.yahoo.com/m/a734f233-b3a7-39f9-a01b-aefeb5a637c3/opec-shifts-to-oil-price-war.html",
         "type": "STORY"
       }
     ],
@@ -7966,23 +7966,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.07,
-        "industryAvg": 11.9
+        "value": 22.61,
+        "industryAvg": 11.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.52,
-        "industryAvg": 2.43
+        "value": 2.47,
+        "industryAvg": 2.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.59,
-        "industryAvg": 1.7
+        "value": 2.54,
+        "industryAvg": 1.64
       },
       {
         "metric": "ROE",
         "value": 6.069999999999999,
-        "industryAvg": 14.330000000000002
+        "industryAvg": 14.31
       },
       {
         "metric": "ROA",
@@ -7992,17 +7992,17 @@
       {
         "metric": "Gross Margin",
         "value": 33.79,
-        "industryAvg": 42.92
+        "industryAvg": 42.93
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.48,
-        "industryAvg": 51.13999999999999
+        "industryAvg": 51.1
       },
       {
         "metric": "Net Margin",
         "value": 20.52,
-        "industryAvg": 17.62
+        "industryAvg": 17.61
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 24.39,
-      "marketCap": 204537900000,
-      "psRatio": 2.07,
-      "pbRatio": 1.86,
+      "ttmPe": 24.12,
+      "marketCap": 202306200000,
+      "psRatio": 2.05,
+      "pbRatio": 1.84,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,25 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.28,
-      "costOfEquity": 16.09,
+      "wacc": 13.05,
+      "costOfEquity": 15.840000000000002,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4143,
-      "marketCap": 204537900000
+      "beta": 1.3824,
+      "marketCap": 202306200000
     },
     "beta": {
-      "beta5y": 1.4143
+      "beta5y": 1.3824
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 107.52,
-        "high": 108.73,
-        "low": 105.3,
-        "close": 105.8,
-        "volume": 16691400
-      },
       {
         "date": "2025-11-17",
         "open": 105.75,
@@ -8096,7 +8088,15 @@
         "high": 119.6,
         "low": 117.78,
         "close": 118.7,
-        "volume": 12692800
+        "volume": 12715400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 118.26,
+        "high": 122.72,
+        "low": 116.13,
+        "close": 116.94,
+        "volume": 20323300
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
-        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
         "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
         "publisher": "StockStory",
@@ -8133,11 +8125,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
-        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
+        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
         "type": "STORY"
       },
       {
@@ -8146,6 +8138,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
+        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
         "type": "STORY"
       },
       {
@@ -8242,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.39,
-        "industryAvg": 20.89
+        "value": 24.12,
+        "industryAvg": 20.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.07,
-        "industryAvg": 2.58
+        "value": 2.05,
+        "industryAvg": 2.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.86,
-        "industryAvg": 3.02
+        "value": 1.84,
+        "industryAvg": 2.95
       },
       {
         "metric": "ROE",

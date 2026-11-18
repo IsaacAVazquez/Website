@@ -1,10 +1,10 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0864,
-      "ttmPe": 18.1,
-      "marketCap": 55998080000,
-      "psRatio": 1.22,
-      "pbRatio": 3.68,
+      "ttmPe": 17.18,
+      "marketCap": 53165550000,
+      "psRatio": 1.16,
+      "pbRatio": 3.49,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -5597,17 +5597,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.0321
+      "beta5y": 1.0359
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 64.94,
-        "high": 65.06,
-        "low": 63.75,
-        "close": 64.17,
-        "volume": 17760100
-      },
       {
         "date": "2025-11-17",
         "open": 63.07,
@@ -7614,7 +7606,15 @@
         "high": 38.71,
         "low": 37.79,
         "close": 38.26,
-        "volume": 18852300
+        "volume": 18873000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 40.2,
+        "high": 40.68,
+        "low": 35.36,
+        "close": 35.85,
+        "volume": 66369800
       }
     ],
     "news": [
@@ -7643,19 +7643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
-        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
         "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
+        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
         "type": "STORY"
       },
       {
@@ -7762,43 +7762,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.1,
-        "industryAvg": 16.13
+        "value": 17.18,
+        "industryAvg": 15.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.22,
-        "industryAvg": 1.38
+        "value": 1.16,
+        "industryAvg": 1.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.68,
-        "industryAvg": 3.43
+        "value": 3.49,
+        "industryAvg": 3.31
       },
       {
         "metric": "ROE",
         "value": 4.73,
-        "industryAvg": 21.59
+        "industryAvg": 21.89
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": 9.08
+        "industryAvg": 9.22
       },
       {
         "metric": "Gross Margin",
         "value": 42.79,
-        "industryAvg": 47.65
+        "industryAvg": 47.74
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.719999999999999,
-        "industryAvg": 12.790000000000001
+        "industryAvg": 12.93
       },
       {
         "metric": "Net Margin",
         "value": 6.35,
-        "industryAvg": 8.1
+        "industryAvg": 8.219999999999999
       }
     ]
   }

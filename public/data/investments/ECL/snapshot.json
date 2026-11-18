@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 42.05,
-      "marketCap": 86697226122,
-      "psRatio": 4.99,
-      "pbRatio": 8.32,
+      "ttmPe": 41.14,
+      "marketCap": 84824631074,
+      "psRatio": 4.88,
+      "pbRatio": 8.14,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,25 +6315,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.17,
-      "costOfEquity": 11.68,
+      "wacc": 10.100000000000001,
+      "costOfEquity": 11.63,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8462,
-      "marketCap": 86697226122
+      "beta": 0.8399,
+      "marketCap": 84824631074
     },
     "beta": {
-      "beta5y": 0.8462
+      "beta5y": 0.8399
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 260.75,
-        "high": 261.81,
-        "low": 258.01,
-        "close": 258.58,
-        "volume": 883200
-      },
       {
         "date": "2025-11-17",
         "open": 258,
@@ -8340,7 +8332,15 @@
         "high": 311.76,
         "low": 306.69,
         "close": 308.41,
-        "volume": 1221100
+        "volume": 1252800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 305.02,
+        "high": 313.24,
+        "low": 302.46,
+        "close": 302.59,
+        "volume": 2333500
       }
     ],
     "news": [
@@ -8393,19 +8393,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
-        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
         "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
+        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
         "type": "STORY"
       },
       {
@@ -8491,43 +8491,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.05,
-        "industryAvg": 28.47
+        "value": 41.14,
+        "industryAvg": 27.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.99,
-        "industryAvg": 2.52
+        "value": 4.88,
+        "industryAvg": 2.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.32,
-        "industryAvg": 3.45
+        "value": 8.14,
+        "industryAvg": 3.37
       },
       {
         "metric": "ROE",
         "value": 5.38,
-        "industryAvg": 9.030000000000001
+        "industryAvg": 9.33
       },
       {
         "metric": "ROA",
         "value": 1.81,
-        "industryAvg": 3.66
+        "industryAvg": 3.7800000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 44.080000000000005,
-        "industryAvg": 29.98
+        "industryAvg": 29.970000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.810000000000002,
-        "industryAvg": 16.88
+        "industryAvg": 17.04
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 5.96
+        "industryAvg": 6.15
       }
     ]
   }

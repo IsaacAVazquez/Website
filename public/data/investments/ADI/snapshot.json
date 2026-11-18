@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 47.23,
-      "marketCap": 192842532035,
-      "psRatio": 13.89,
-      "pbRatio": 5.75,
-      "pegRatio": 0.29
+      "ttmPe": 45.53,
+      "marketCap": 185913245385,
+      "psRatio": 13.39,
+      "pbRatio": 5.54,
+      "pegRatio": 0.28
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.21,
-      "costOfEquity": 14.84,
+      "wacc": 14.27,
+      "costOfEquity": 14.93,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2546,
-      "marketCap": 192842532035
+      "beta": 1.2657,
+      "marketCap": 185913245385
     },
     "beta": {
-      "beta5y": 1.2546
+      "beta5y": 1.2657
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 234.19,
-        "high": 237.05,
-        "low": 230.43,
-        "close": 234.89,
-        "volume": 3319600
-      },
       {
         "date": "2025-11-17",
         "open": 233.03,
@@ -8127,7 +8119,15 @@
         "high": 389.35,
         "low": 380.89,
         "close": 383.17,
-        "volume": 3959800
+        "volume": 4427800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 395.45,
+        "high": 395.45,
+        "low": 377.91,
+        "close": 383.67,
+        "volume": 4366700
       }
     ],
     "news": [
@@ -8196,19 +8196,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
-        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
         "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
+        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
         "type": "STORY"
       }
     ],
@@ -8281,23 +8281,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.23,
-        "industryAvg": 20.8
+        "value": 45.53,
+        "industryAvg": 18.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.89,
-        "industryAvg": 10.18
+        "value": 13.39,
+        "industryAvg": 9.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.75,
-        "industryAvg": 9.1
+        "value": 5.54,
+        "industryAvg": 8.29
       },
       {
         "metric": "ROE",
         "value": 3.9800000000000004,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8307,17 +8307,17 @@
       {
         "metric": "Gross Margin",
         "value": 67.32000000000001,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.93,
-        "industryAvg": 81.53
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": 33.32,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     },
     "retainedSections": [
       "profitability",
@@ -44,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.3017,
-      "ttmPe": 33.99,
-      "marketCap": 192852596000,
-      "psRatio": 7.44,
-      "pbRatio": 11.26,
-      "pegRatio": 0.54
+      "ttmPe": 33.18,
+      "marketCap": 188242672000,
+      "psRatio": 7.27,
+      "pbRatio": 10.99,
+      "pegRatio": 0.53
     },
     "profitability": {
       "roe": 6.81,
@@ -5481,24 +5481,16 @@
     },
     "wacc": {
       "wacc": 13.700000000000001,
-      "costOfEquity": 14.89,
+      "costOfEquity": 14.92,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 27,
-      "beta": 1.262,
-      "marketCap": 192852596000
+      "beta": 1.2637,
+      "marketCap": 188242672000
     },
     "beta": {
-      "beta5y": 1.262
+      "beta5y": 1.2637
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 65.17,
-        "high": 68.35,
-        "low": 65.075,
-        "close": 66.87,
-        "volume": 19595200
-      },
       {
         "date": "2025-11-17",
         "open": 66.295,
@@ -7506,23 +7498,31 @@
         "low": 74.64,
         "close": 75.43,
         "volume": 10834100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 75.97,
+        "high": 76.53,
+        "low": 74.63,
+        "close": 76.36,
+        "volume": 10408300
       }
     ],
     "news": [
-      {
-        "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
-        "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
-        "type": "STORY"
-      },
       {
         "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
         "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
         "publisher": "StockStory",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
+        "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
         "type": "STORY"
       },
       {
@@ -7542,19 +7542,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
         "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/comm-stock-surges-378-2-180800505.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7566,19 +7566,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
-        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
         "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
         "publisher": "MarketWatch",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
+        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
         "type": "STORY"
       },
       {
@@ -7657,43 +7657,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.99,
-        "industryAvg": 34
+        "value": 33.18,
+        "industryAvg": 32.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.44,
+        "value": 7.27,
         "industryAvg": 2.77
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.26,
-        "industryAvg": 5.2
+        "value": 10.99,
+        "industryAvg": 5.01
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 16.439999999999998
+        "industryAvg": 16.45
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 5.87
+        "industryAvg": 5.89
       },
       {
         "metric": "Gross Margin",
         "value": 39.26,
-        "industryAvg": 15.950000000000001
+        "industryAvg": 15.97
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.129999999999995,
-        "industryAvg": 9.3
+        "industryAvg": 9.33
       },
       {
         "metric": "Net Margin",
         "value": 19.89,
-        "industryAvg": 5.74
+        "industryAvg": 5.75
       }
     ]
   }

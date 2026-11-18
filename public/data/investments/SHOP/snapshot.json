@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6391,
-      "ttmPe": 89.55,
-      "marketCap": 188815282062,
-      "psRatio": 13.33,
-      "pbRatio": 14.81,
-      "pegRatio": 1.15
+      "ttmPe": 86.57,
+      "marketCap": 182537733510,
+      "psRatio": 12.88,
+      "pbRatio": 14.32,
+      "pegRatio": 1.11
     },
     "profitability": {
       "roe": 3.63,
@@ -6031,25 +6031,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.490000000000002,
-      "costOfEquity": 25.650000000000002,
+      "wacc": 25.47,
+      "costOfEquity": 25.64,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6454,
-      "marketCap": 188815282062
+      "beta": 2.6436,
+      "marketCap": 182537733510
     },
     "beta": {
-      "beta5y": 2.6454
+      "beta5y": 2.6436
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 142.33,
-        "high": 149.72,
-        "low": 141,
-        "close": 146.04,
-        "volume": 8384300
-      },
       {
         "date": "2025-11-17",
         "open": 143.65,
@@ -8057,6 +8049,14 @@
         "low": 141.56,
         "close": 147.81,
         "volume": 6672200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 147.06,
+        "high": 149.8,
+        "low": 141.06,
+        "close": 141.9,
+        "volume": 4803400
       }
     ],
     "news": [
@@ -8077,19 +8077,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
-        "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "127420de-f523-347a-ac88-313c41c0756c",
         "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
+        "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
         "type": "STORY"
       },
       {
@@ -8201,28 +8201,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 89.55,
-        "industryAvg": 28.15
+        "value": 86.57,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.33,
-        "industryAvg": 4.85
+        "value": 12.88,
+        "industryAvg": 4.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.81,
-        "industryAvg": 5.18
+        "value": 14.32,
+        "industryAvg": 4.94
       },
       {
         "metric": "ROE",
         "value": 3.63,
-        "industryAvg": -0.72
+        "industryAvg": -0.7000000000000001
       },
       {
         "metric": "ROA",
         "value": 3.17,
-        "industryAvg": -0.4
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
@@ -8232,12 +8232,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.57,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.32
       },
       {
         "metric": "Net Margin",
         "value": 12.35,
-        "industryAvg": -0.98
+        "industryAvg": -0.96
       }
     ]
   }

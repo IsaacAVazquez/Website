@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7791,
-      "ttmPe": 34.93,
-      "marketCap": 93107976000,
-      "psRatio": 4.91,
-      "pbRatio": 4.49,
-      "pegRatio": 1.94
+      "ttmPe": 33.3,
+      "marketCap": 88773870000,
+      "psRatio": 4.68,
+      "pbRatio": 4.28,
+      "pegRatio": 1.85
     },
     "profitability": {
       "roe": 3.65,
@@ -4801,7 +4801,7 @@
         },
         {
           "Breakdown": "Depreciation",
-          "TTM": "331000000.0",
+          "TTM": "349000000.0",
           "2026-09-30": "*",
           "2026-06-30": "96000000.0",
           "2026-03-31": "87000000.0",
@@ -4823,7 +4823,7 @@
         },
         {
           "Breakdown": "Amortization",
-          "TTM": "1234000000.0",
+          "TTM": "1130000000.0",
           "2026-09-30": "*",
           "2026-06-30": "281000000.0",
           "2026-03-31": "282000000.0",
@@ -4845,7 +4845,7 @@
         },
         {
           "Breakdown": "Amortization of Intangibles",
-          "TTM": "1234000000.0",
+          "TTM": "1130000000.0",
           "2026-09-30": "*",
           "2026-06-30": "281000000.0",
           "2026-03-31": "282000000.0",
@@ -6487,25 +6487,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.690000000000001,
-      "costOfEquity": 14.360000000000001,
+      "wacc": 12.629999999999999,
+      "costOfEquity": 14.37,
       "costOfDebt": 0.8,
       "taxRate": 25,
-      "beta": 1.192,
-      "marketCap": 93107976000
+      "beta": 1.1928,
+      "marketCap": 88773870000
     },
     "beta": {
-      "beta5y": 1.192
+      "beta5y": 1.1928
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 126.76,
-        "high": 129.37,
-        "low": 125.79,
-        "close": 127.58,
-        "volume": 1955500
-      },
       {
         "date": "2025-11-17",
         "open": 127.22,
@@ -8513,6 +8505,14 @@
         "low": 160.17,
         "close": 160.65,
         "volume": 2513900
+      },
+      {
+        "date": "2026-11-17",
+        "open": 160.76,
+        "high": 162.78,
+        "low": 157.92,
+        "close": 159.15,
+        "volume": 3207100
       }
     ],
     "news": [
@@ -8549,14 +8549,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "651066b8-616a-357d-aeaa-f617312eff1b",
-        "title": "RBC Raises Price Target on Emerson Electric to $145 From $124, Keeps Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-emerson-111804220.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
         "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
         "publisher": "MT Newswires",
@@ -8573,6 +8565,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "651066b8-616a-357d-aeaa-f617312eff1b",
+        "title": "RBC Raises Price Target on Emerson Electric to $145 From $124, Keeps Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-emerson-111804220.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "818f6acd-b246-3fe0-80c9-8362811fc57f",
         "title": "Emerson Electric Co. (NYSE:EMR) is a favorite amongst institutional investors who own 83%",
         "publisher": "Simply Wall St.",
@@ -8581,19 +8581,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "f6a1359b-cb8a-30d0-a8d1-682ec7309443",
+        "title": "Emerson's 'Project Beyond' to Modernize and Seamlessly Integrate the Industrial Automation Technology Stack",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/emersons-project-beyond-modernize-seamlessly-130000736.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "56b05011-a182-3513-8c8f-bee1946466a1",
         "title": "3 Large-Cap Stocks in Hot Water",
         "publisher": "StockStory",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/3-large-cap-stocks-hot-043310857.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
-        "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
         "type": "STORY"
       }
     ],
@@ -8663,43 +8663,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.93,
-        "industryAvg": 26.78
+        "value": 33.3,
+        "industryAvg": 25.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.91,
-        "industryAvg": 3.22
+        "value": 4.68,
+        "industryAvg": 3.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.49,
-        "industryAvg": 5.74
+        "value": 4.28,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 3.65,
-        "industryAvg": 19.650000000000002
+        "industryAvg": 19.85
       },
       {
         "metric": "ROA",
         "value": 1.79,
-        "industryAvg": 6.72
+        "industryAvg": 6.78
       },
       {
         "metric": "Gross Margin",
         "value": 52.68000000000001,
-        "industryAvg": 29.470000000000002
+        "industryAvg": 29.37
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.48,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 16.71
       },
       {
         "metric": "Net Margin",
         "value": 14.42,
-        "industryAvg": 10.59
+        "industryAvg": 10.71
       }
     ]
   }

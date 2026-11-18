@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.5547,
-      "ttmPe": 34.81,
-      "marketCap": 62142179888,
-      "psRatio": 12.35,
-      "pbRatio": 4.28,
+      "ttmPe": 34.56,
+      "marketCap": 61691887776,
+      "psRatio": 12.26,
+      "pbRatio": 4.25,
       "pegRatio": 0.6
     },
     "profitability": {
@@ -5198,25 +5198,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.91,
-      "costOfEquity": 11.75,
+      "wacc": 9.8,
+      "costOfEquity": 11.64,
       "costOfDebt": 0.84,
       "taxRate": 40,
-      "beta": 0.8547,
-      "marketCap": 62142179888
+      "beta": 0.8416,
+      "marketCap": 61691887776
     },
     "beta": {
-      "beta5y": 0.8547
+      "beta5y": 0.8416
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 275.79,
-        "high": 278,
-        "low": 272.93,
-        "close": 274.26,
-        "volume": 577700
-      },
       {
         "date": "2025-11-17",
         "open": 274.95,
@@ -7224,6 +7216,14 @@
         "low": 332.46,
         "close": 333.71,
         "volume": 961200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 330.53,
+        "high": 335.06,
+        "low": 330.17,
+        "close": 330.18,
+        "volume": 801100
       }
     ],
     "news": [
@@ -7244,19 +7244,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
-        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1e77d3ab-1347-3e08-9310-e686294a8488",
         "title": "Public Storage: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-q1-earnings-snapshot-201519091.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
+        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
         "type": "STORY"
       },
       {
@@ -7366,17 +7366,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.81,
-        "industryAvg": 29.38
+        "value": 34.56,
+        "industryAvg": 29.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.35,
-        "industryAvg": 8.84
+        "value": 12.26,
+        "industryAvg": 8.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.28,
+        "value": 4.25,
         "industryAvg": 2.28
       },
       {

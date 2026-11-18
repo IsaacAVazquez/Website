@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 629.58,
-      "marketCap": 262967900000,
-      "psRatio": 22.91,
-      "pbRatio": 9.57,
+      "ttmPe": 603.49,
+      "marketCap": 252071350000,
+      "psRatio": 21.96,
+      "pbRatio": 9.17,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,25 +5904,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.540000000000001,
-      "costOfEquity": 12.659999999999998,
+      "wacc": 12.839999999999998,
+      "costOfEquity": 12.97,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9736,
-      "marketCap": 262967900000
+      "beta": 1.0127,
+      "marketCap": 252071350000
     },
     "beta": {
-      "beta5y": 0.9736
+      "beta5y": 1.0127
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 201.99,
-        "high": 206.93,
-        "low": 198.4,
-        "close": 205.25,
-        "volume": 5371700
-      },
       {
         "date": "2025-11-17",
         "open": 205,
@@ -7929,7 +7921,15 @@
         "high": 319.94,
         "low": 311.36,
         "close": 316.09,
-        "volume": 5186800
+        "volume": 5198800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 316.05,
+        "high": 316.05,
+        "low": 301.28,
+        "close": 309.29,
+        "volume": 7440500
       }
     ],
     "news": [
@@ -7958,20 +7958,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
-        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
         "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
+        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",
@@ -7998,19 +7998,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
-        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
         "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
+        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
         "type": "STORY"
       }
     ],
@@ -8075,43 +8075,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 629.58,
-        "industryAvg": 31.02
+        "value": 603.49,
+        "industryAvg": 29.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.91,
-        "industryAvg": 7.28
+        "value": 21.96,
+        "industryAvg": 6.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.57,
-        "industryAvg": 7.92
+        "value": 9.17,
+        "industryAvg": 7.57
       },
       {
         "metric": "ROE",
         "value": -1.02,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 25.740000000000002
       },
       {
         "metric": "ROA",
         "value": -0.6,
-        "industryAvg": 10.36
+        "industryAvg": 10.12
       },
       {
         "metric": "Gross Margin",
         "value": 67.57,
-        "industryAvg": 51.129999999999995
+        "industryAvg": 51.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 2.11,
-        "industryAvg": 36.78
+        "industryAvg": 36.69
       },
       {
         "metric": "Net Margin",
         "value": -8.27,
-        "industryAvg": 20.52
+        "industryAvg": 20.26
       }
     ]
   }

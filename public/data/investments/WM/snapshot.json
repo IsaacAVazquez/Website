@@ -1,14 +1,11 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-17"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.624,
-      "ttmPe": 32.02,
-      "marketCap": 97086892158,
-      "psRatio": 3.72,
-      "pbRatio": 9.84,
+      "ttmPe": 31.83,
+      "marketCap": 96522132882,
+      "psRatio": 3.7,
+      "pbRatio": 9.78,
       "pegRatio": 0.85
     },
     "profitability": {
@@ -5684,25 +5681,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.63,
-      "costOfEquity": 8.04,
+      "wacc": 6.550000000000001,
+      "costOfEquity": 7.9399999999999995,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 0.3786,
-      "marketCap": 97086892158
+      "beta": 0.3657,
+      "marketCap": 96522132882
     },
     "beta": {
-      "beta5y": 0.3786
+      "beta5y": 0.3657
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 206.11,
-        "high": 210.92,
-        "low": 204.91,
-        "close": 209.17,
-        "volume": 3446100
-      },
       {
         "date": "2025-11-17",
         "open": 209.07,
@@ -7710,6 +7699,14 @@
         "low": 243.51,
         "close": 244.33,
         "volume": 2232400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 242.96,
+        "high": 245.6,
+        "low": 241.73,
+        "close": 242.69,
+        "volume": 1836100
       }
     ],
     "news": [
@@ -7754,14 +7751,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2ff0690d-bca8-31dc-b369-1aa6c786077c",
-        "title": "WM Announces Cash Dividend",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
         "title": "Why Waste Management Stock Is Sinking Today",
         "publisher": "Motley Fool",
@@ -7775,6 +7764,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2ff0690d-bca8-31dc-b369-1aa6c786077c",
+        "title": "WM Announces Cash Dividend",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
         "type": "STORY"
       },
       {
@@ -7860,28 +7857,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.52,
-        "industryAvg": 32.71
+        "value": 31.83,
+        "industryAvg": 33.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.67,
-        "industryAvg": 3.78
+        "value": 3.7,
+        "industryAvg": 3.77
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.69,
+        "value": 9.78,
         "industryAvg": 5.91
       },
       {
         "metric": "ROE",
         "value": 8.290000000000001,
-        "industryAvg": 13.919999999999998
+        "industryAvg": 13.530000000000001
       },
       {
         "metric": "ROA",
         "value": 1.76,
-        "industryAvg": 4.34
+        "industryAvg": 4.21
       },
       {
         "metric": "Gross Margin",
@@ -7896,7 +7893,7 @@
       {
         "metric": "Net Margin",
         "value": 11.98,
-        "industryAvg": 8.260000000000002
+        "industryAvg": 8.01
       }
     ]
   }

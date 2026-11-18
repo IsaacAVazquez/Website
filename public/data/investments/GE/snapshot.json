@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6566,
-      "ttmPe": 38.22,
-      "marketCap": 341894809303.14,
-      "psRatio": 6.5,
-      "pbRatio": 19.51,
-      "pegRatio": 4.49
+      "ttmPe": 37.71,
+      "marketCap": 337286059833.6,
+      "psRatio": 6.42,
+      "pbRatio": 19.25,
+      "pegRatio": 4.43
     },
     "profitability": {
       "roe": 13.01,
@@ -7105,25 +7105,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.28,
-      "costOfEquity": 16.09,
+      "wacc": 15.06,
+      "costOfEquity": 15.86,
       "costOfDebt": 1.2,
       "taxRate": 14.000000000000002,
-      "beta": 1.415,
-      "marketCap": 341894809303.14
+      "beta": 1.3847,
+      "marketCap": 337286059833.6
     },
     "beta": {
-      "beta5y": 1.415
+      "beta5y": 1.3847
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 300.97,
-        "high": 306.8,
-        "low": 296.25,
-        "close": 304.82,
-        "volume": 2803300
-      },
       {
         "date": "2025-11-17",
         "open": 306.82,
@@ -9131,6 +9123,14 @@
         "low": 323.89,
         "close": 325.18,
         "volume": 3556800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 324.2,
+        "high": 330.52,
+        "low": 323.28,
+        "close": 326.4,
+        "volume": 3745700
       }
     ],
     "news": [
@@ -9207,15 +9207,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f65ee8ef-b157-3570-9098-5413b7773f9f",
-        "title": "3 Market-Beating Stocks to Target This Week",
-        "publisher": "StockStory",
+        "uuid": "cb785922-1f2c-30be-9fee-e7382907a66d",
+        "title": "Why GE Vernova’s stock is power surging after just one year of existence",
+        "publisher": "Fortune",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-target-043626728.html",
+        "link": "https://finance.yahoo.com/news/why-ge-vernova-stock-power-100000031.html",
         "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Brandon Smith",
+        "title": "VP, Chief Corporate, Securities & Finance Counsel"
+      },
       {
         "name": "Mr. Christian E. Meisner",
         "title": "Chief Human Resources Officer",
@@ -9272,52 +9276,48 @@
         "title": "VP, Chief Accounting Officer, Controller & Treasurer",
         "age": 54,
         "yearBorn": 1971
-      },
-      {
-        "name": "Ms. Blaire Shoor",
-        "title": "Head of Investor Relations"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.22,
-        "industryAvg": 33
+        "value": 37.71,
+        "industryAvg": 32.01
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.5,
-        "industryAvg": 5.66
+        "value": 6.42,
+        "industryAvg": 5.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.51,
-        "industryAvg": 7.41
+        "value": 19.25,
+        "industryAvg": 7.31
       },
       {
         "metric": "ROE",
         "value": 13.01,
-        "industryAvg": 12.520000000000001
+        "industryAvg": 12.24
       },
       {
         "metric": "ROA",
         "value": 1.7999999999999998,
-        "industryAvg": 3.85
+        "industryAvg": 3.7699999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 28.349999999999998,
-        "industryAvg": 20.79
+        "industryAvg": 20.810000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.880000000000003,
-        "industryAvg": 15.22
+        "industryAvg": 15.03
       },
       {
         "metric": "Net Margin",
         "value": 16.21,
-        "industryAvg": 6.569999999999999
+        "industryAvg": 6.41
       }
     ]
   }

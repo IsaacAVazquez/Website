@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
     "sections": {
-      "price": "2026-11-16"
+      "price": "2026-11-17"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 27,
-      "marketCap": 88953922080,
-      "psRatio": 8.08,
-      "pbRatio": 25.3,
+      "ttmPe": 25.81,
+      "marketCap": 85027026960,
+      "psRatio": 7.72,
+      "pbRatio": 24.18,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,25 +6462,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.91,
-      "costOfEquity": 11.58,
+      "wacc": 7.79,
+      "costOfEquity": 11.57,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8332,
-      "marketCap": 88953922080
+      "beta": 0.8324,
+      "marketCap": 85027026960
     },
     "beta": {
-      "beta5y": 0.8332
+      "beta5y": 0.8324
     },
     "price": [
-      {
-        "date": "2025-11-14",
-        "open": 182.85,
-        "high": 184.4,
-        "low": 179.61,
-        "close": 183.59,
-        "volume": 3807200
-      },
       {
         "date": "2025-11-17",
         "open": 183.69,
@@ -8488,6 +8480,14 @@
         "low": 190.13,
         "close": 190.74,
         "volume": 1583300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 189.48,
+        "high": 190.74,
+        "low": 182.92,
+        "close": 183.18,
+        "volume": 2300500
       }
     ],
     "news": [
@@ -8524,19 +8524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
         "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -8564,11 +8564,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c1cf2d5-2670-3073-8a6b-d5f6c022aeea",
-        "title": "NYSE Content Advisory: Pre-Market update + Dick's Sporting Goods to acquire Foot Locker",
-        "publisher": "PR Newswire",
+        "uuid": "fde3659a-77b8-363f-be17-a13c3aa95ee9",
+        "title": "American Tower Corporation (AMT) Underpinned by Strong Demand Driven by Secular Growth in Mobile Data",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500511.html",
+        "link": "https://finance.yahoo.com/news/american-tower-corporation-amt-underpinned-125628591.html",
         "type": "STORY"
       }
     ],
@@ -8633,28 +8633,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27,
-        "industryAvg": 36.77
+        "value": 25.81,
+        "industryAvg": 35.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.08,
-        "industryAvg": 6.82
+        "value": 7.72,
+        "industryAvg": 6.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.3,
-        "industryAvg": 4.37
+        "value": 24.18,
+        "industryAvg": 4.26
       },
       {
         "metric": "ROE",
         "value": 21.17,
-        "industryAvg": 10.56
+        "industryAvg": 10.69
       },
       {
         "metric": "ROA",
         "value": 1.21,
-        "industryAvg": 3.19
+        "industryAvg": 3.2300000000000004
       },
       {
         "metric": "Gross Margin",
@@ -8664,12 +8664,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 64.03999999999999,
-        "industryAvg": 51.65
+        "industryAvg": 51.53
       },
       {
         "metric": "Net Margin",
         "value": 27.49,
-        "industryAvg": 17.32
+        "industryAvg": 17.57
       }
     ]
   }
