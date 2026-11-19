@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 45.2973,
-      "ttmPe": 21.03,
+      "ttmPe": 20.87,
       "pegRatio": 0.59,
-      "marketCap": 98478160000,
-      "psRatio": 5.83,
-      "pbRatio": 2.94
+      "marketCap": 97767802000,
+      "psRatio": 5.79,
+      "pbRatio": 2.92
     },
     "profitability": {
       "roe": 5.9799999999999995,
@@ -5895,25 +5895,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.6899999999999995,
-      "costOfEquity": 5.84,
+      "wacc": 5.65,
+      "costOfEquity": 5.800000000000001,
       "costOfDebt": 0.38999999999999996,
       "taxRate": 15,
-      "beta": 0.093,
-      "marketCap": 98478160000
+      "beta": 0.0932,
+      "marketCap": 97767802000
     },
     "beta": {
-      "beta5y": 0.093
+      "beta5y": 0.0932
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 693.34,
-        "high": 711.88,
-        "low": 692.29,
-        "close": 704.31,
-        "volume": 1132900
-      },
       {
         "date": "2025-11-18",
         "open": 702.51,
@@ -7921,23 +7913,31 @@
         "low": 946.94,
         "close": 957.76,
         "volume": 933100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 957.25,
+        "high": 972,
+        "low": 943.26,
+        "close": 945.53,
+        "volume": 705100
       }
     ],
     "news": [
-      {
-        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
-        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
         "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
+        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
         "type": "STORY"
       },
       {
@@ -7973,19 +7973,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
-        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
         "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
+        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
         "type": "STORY"
       },
       {
@@ -8068,43 +8068,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.03,
+        "value": 20.87,
         "industryAvg": 22.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.83,
-        "industryAvg": 10.54
+        "value": 5.79,
+        "industryAvg": 10.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.94,
-        "industryAvg": 4.51
+        "value": 2.92,
+        "industryAvg": 4.41
       },
       {
         "metric": "ROE",
         "value": 5.9799999999999995,
-        "industryAvg": -16.72
+        "industryAvg": -16.96
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": -10.14
+        "industryAvg": -10.290000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 88.79,
-        "industryAvg": 82.28999999999999
+        "industryAvg": 82.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.22,
-        "industryAvg": -27.47
+        "industryAvg": -27.93
       },
       {
         "metric": "Net Margin",
         "value": 38.09,
-        "industryAvg": -29.87
+        "industryAvg": -30.599999999999998
       }
     ]
   }

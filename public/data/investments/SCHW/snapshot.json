@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 15.86,
-      "marketCap": 160680523216,
-      "psRatio": 5.94,
-      "pbRatio": 3.12,
+      "ttmPe": 15.79,
+      "marketCap": 159954713152,
+      "psRatio": 5.91,
+      "pbRatio": 3.11,
       "pegRatio": 0.55
     },
     "profitability": {
@@ -6240,25 +6240,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.09,
-      "costOfEquity": 10.92,
+      "wacc": 8.94,
+      "costOfEquity": 10.73,
       "costOfDebt": 2.45,
       "taxRate": 23,
-      "beta": 0.7477,
-      "marketCap": 160680523216
+      "beta": 0.7258,
+      "marketCap": 159954713152
     },
     "beta": {
-      "beta5y": 0.7477
+      "beta5y": 0.7258
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 94.56,
-        "high": 94.58,
-        "low": 91.59,
-        "close": 91.91,
-        "volume": 9141200
-      },
       {
         "date": "2025-11-18",
         "open": 91.6,
@@ -8266,23 +8258,31 @@
         "low": 90.13,
         "close": 91.84,
         "volume": 13348500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 92.4,
+        "high": 92.84,
+        "low": 91.67,
+        "close": 92.56,
+        "volume": 11220000
       }
     ],
     "news": [
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
       {
         "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
         "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
-        "title": "Tariffs, Trump, and Turmoil",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
         "type": "STORY"
       },
       {
@@ -8294,11 +8294,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
+        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
+        "title": "Tariffs, Trump, and Turmoil",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
         "type": "STORY"
       },
       {
@@ -8334,19 +8334,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55850a15-58e4-37d9-8fbb-42d6dfddc03b",
-        "title": "TD Bank Quarterly Earnings Buoyed by Sale of Schwab Stake",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/55850a15-58e4-37d9-8fbb-42d6dfddc03b/td-bank-quarterly-earnings.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
         "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
+        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
         "type": "STORY"
       }
     ],
@@ -8411,23 +8411,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.86,
-        "industryAvg": 14.86
+        "value": 15.79,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.94,
-        "industryAvg": 2.05
+        "value": 5.91,
+        "industryAvg": 1.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.12,
-        "industryAvg": 2.4
+        "value": 3.11,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",
         "value": 5.53,
-        "industryAvg": 15.840000000000002
+        "industryAvg": 15.879999999999999
       },
       {
         "metric": "ROA",
@@ -8436,16 +8436,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.07
+        "industryAvg": 15.09
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 6.36
       },
       {
         "metric": "Net Margin",
         "value": 39.2,
-        "industryAvg": 20.22
+        "industryAvg": 20.28
       }
     ]
   }

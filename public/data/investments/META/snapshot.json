@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 21.36,
-      "marketCap": 1601255112733,
-      "psRatio": 6.63,
-      "pbRatio": 5.88,
+      "ttmPe": 21.02,
+      "marketCap": 1575616012494,
+      "psRatio": 6.52,
+      "pbRatio": 5.78,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5806,25 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.83,
-      "costOfEquity": 14.78,
+      "wacc": 13.8,
+      "costOfEquity": 14.760000000000002,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
-      "beta": 1.2465,
-      "marketCap": 1601255112733
+      "beta": 1.2426,
+      "marketCap": 1575616012494
     },
     "beta": {
-      "beta5y": 1.2465
+      "beta5y": 1.2426
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 609.04,
-        "high": 611.69,
-        "low": 595.4,
-        "close": 602.01,
-        "volume": 16501300
-      },
       {
         "date": "2025-11-18",
         "open": 591.6,
@@ -7831,7 +7823,15 @@
         "high": 627.48,
         "low": 613.51,
         "close": 618.87,
-        "volume": 12914100
+        "volume": 12971800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 620.11,
+        "high": 620.81,
+        "low": 610.3,
+        "close": 616.38,
+        "volume": 10358800
       }
     ],
     "news": [
@@ -7852,19 +7852,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7985,43 +7985,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.36,
-        "industryAvg": 15.8
+        "value": 21.02,
+        "industryAvg": 15.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.63,
-        "industryAvg": 6.76
+        "value": 6.52,
+        "industryAvg": 6.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.88,
-        "industryAvg": 4.92
+        "value": 5.78,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 38.879999999999995
+        "industryAvg": 38.97
       },
       {
         "metric": "ROA",
         "value": 2.12,
-        "industryAvg": 25.759999999999998
+        "industryAvg": 25.81
       },
       {
         "metric": "Gross Margin",
         "value": 79.31,
-        "industryAvg": 62.41
+        "industryAvg": 62.38
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.71,
-        "industryAvg": 61.419999999999995
+        "industryAvg": 61.58
       },
       {
         "metric": "Net Margin",
         "value": 15.260000000000002,
-        "industryAvg": 44.93
+        "industryAvg": 45.050000000000004
       }
     ]
   }

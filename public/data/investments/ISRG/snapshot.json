@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2651,
-      "ttmPe": 52.96,
+      "ttmPe": 50.93,
       "pegRatio": 1.77,
-      "marketCap": 151724150000,
-      "psRatio": 13.1,
-      "pbRatio": 9.49
+      "marketCap": 145901270000,
+      "psRatio": 12.6,
+      "pbRatio": 9.13
     },
     "profitability": {
       "roe": 3.06,
@@ -5242,17 +5242,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4084
+      "beta5y": 1.4108
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 546.57,
-        "high": 554.35,
-        "low": 544.11,
-        "close": 546.71,
-        "volume": 1470200
-      },
       {
         "date": "2025-11-18",
         "open": 546.06,
@@ -7260,6 +7252,14 @@
         "low": 428.71,
         "close": 430.53,
         "volume": 2527200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 430.2,
+        "high": 437.33,
+        "low": 420.84,
+        "close": 420.95,
+        "volume": 2214000
       }
     ],
     "news": [
@@ -7336,11 +7336,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
-        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
-        "publisher": "Zacks",
+        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
+        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
         "type": "STORY"
       }
     ],
@@ -7407,18 +7407,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.96,
-        "industryAvg": 41.14
+        "value": 50.93,
+        "industryAvg": 40.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.1,
-        "industryAvg": 3.3
+        "value": 12.6,
+        "industryAvg": 3.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.49,
-        "industryAvg": 3.35
+        "value": 9.13,
+        "industryAvg": 3.32
       },
       {
         "metric": "ROE",
@@ -7433,7 +7433,7 @@
       {
         "metric": "Gross Margin",
         "value": 68.37,
-        "industryAvg": 46.39
+        "industryAvg": 46.379999999999995
       },
       {
         "metric": "EBITDA Margin",

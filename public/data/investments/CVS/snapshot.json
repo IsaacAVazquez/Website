@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6027,
-      "ttmPe": 10.3,
-      "pegRatio": 0.07,
-      "marketCap": 113395200000,
-      "psRatio": 0.27,
-      "pbRatio": 1.41
+      "ttmPe": 9.46,
+      "pegRatio": 0.06,
+      "marketCap": 104128000000,
+      "psRatio": 0.25,
+      "pbRatio": 1.29
     },
     "profitability": {
       "roe": 2.71,
@@ -5798,25 +5798,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.02,
-      "costOfEquity": 9.520000000000001,
+      "wacc": 5.94,
+      "costOfEquity": 9.700000000000001,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 24,
-      "beta": 0.5675,
-      "marketCap": 113395200000
+      "beta": 0.5938,
+      "marketCap": 104128000000
     },
     "beta": {
-      "beta5y": 0.5675
+      "beta5y": 0.5938
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 77.91,
-        "high": 79.87,
-        "low": 77.74,
-        "close": 78.41,
-        "volume": 8668200
-      },
       {
         "date": "2025-11-18",
         "open": 78.35,
@@ -7824,17 +7816,17 @@
         "low": 84.67,
         "close": 85.81,
         "volume": 13617000
+      },
+      {
+        "date": "2026-11-18",
+        "open": 85.32,
+        "high": 85.74,
+        "low": 81.09,
+        "close": 81.35,
+        "volume": 17586700
       }
     ],
     "news": [
-      {
-        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
-        "title": "3 things we've learned from healthcare earnings",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
-        "type": "VIDEO"
-      },
       {
         "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
         "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
@@ -7842,6 +7834,14 @@
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
+        "title": "3 things we've learned from healthcare earnings",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
@@ -7868,19 +7868,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
-        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
         "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
+        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
         "type": "STORY"
       },
       {
@@ -7900,11 +7900,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "05c0ea41-f713-3abc-bac5-4735abe28c53",
-        "title": "TMDX Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "uuid": "cf7dda7f-04f4-38a3-8e64-6923ae47ece8",
+        "title": "AMN Stock Gains Following Q1 Earnings & Revenue Beat, Margins Down",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/tmdx-stock-gains-post-q1-160300345.html",
+        "link": "https://finance.yahoo.com/news/amn-stock-gains-following-q1-160100419.html",
         "type": "STORY"
       }
     ],
@@ -7978,18 +7978,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.3,
-        "industryAvg": 18.46
+        "value": 9.46,
+        "industryAvg": 16.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.27,
-        "industryAvg": 0.44
+        "value": 0.25,
+        "industryAvg": 0.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.41,
-        "industryAvg": 2.48
+        "value": 1.29,
+        "industryAvg": 2.18
       },
       {
         "metric": "ROE",

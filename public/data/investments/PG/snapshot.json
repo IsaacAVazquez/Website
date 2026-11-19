@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 26.07,
-      "pegRatio": 31.41,
-      "marketCap": 402063876000,
-      "psRatio": 4.57,
-      "pbRatio": 7.3
+      "ttmPe": 25.66,
+      "pegRatio": 30.92,
+      "marketCap": 395719902000,
+      "psRatio": 4.5,
+      "pbRatio": 7.18
     },
     "profitability": {
       "roe": 8.53,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.109999999999999,
-      "costOfEquity": 7.76,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 7.7,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3405,
-      "marketCap": 402063876000
+      "beta": 0.3368,
+      "marketCap": 395719902000
     },
     "beta": {
-      "beta5y": 0.3405
+      "beta5y": 0.3368
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 147.75,
-        "high": 147.98,
-        "low": 145.01,
-        "close": 145.82,
-        "volume": 9902300
-      },
       {
         "date": "2025-11-18",
         "open": 146.33,
@@ -7981,6 +7973,14 @@
         "low": 171.24,
         "close": 171.72,
         "volume": 8984200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 170.11,
+        "high": 171.65,
+        "low": 169.42,
+        "close": 170.29,
+        "volume": 9199200
       }
     ],
     "news": [
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
-        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
-        "publisher": "Zacks",
+        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
+        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
+        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.07,
-        "industryAvg": 26.36
+        "value": 25.66,
+        "industryAvg": 25.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.57,
-        "industryAvg": 3.39
+        "value": 4.5,
+        "industryAvg": 3.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.3,
-        "industryAvg": 7.2
+        "value": 7.18,
+        "industryAvg": 7.03
       },
       {
         "metric": "ROE",

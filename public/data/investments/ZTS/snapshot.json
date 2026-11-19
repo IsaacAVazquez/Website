@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 18.96,
+      "ttmPe": 19.22,
       "pegRatio": 7.61,
-      "marketCap": 34950456060,
-      "psRatio": 3.68,
-      "pbRatio": 10.58
+      "marketCap": 35439157780,
+      "psRatio": 3.73,
+      "pbRatio": 10.73
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,25 +6195,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.14,
-      "costOfEquity": 10.15,
+      "wacc": 8.04,
+      "costOfEquity": 9.99,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6491,
-      "marketCap": 34950456060
+      "beta": 0.6313,
+      "marketCap": 35439157780
     },
     "beta": {
-      "beta5y": 0.6491
+      "beta5y": 0.6313
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 120.71,
-        "high": 121.09,
-        "low": 118.35,
-        "close": 118.8,
-        "volume": 4714700
-      },
       {
         "date": "2025-11-18",
         "open": 118.43,
@@ -8221,6 +8213,14 @@
         "low": 83.05,
         "close": 83.48,
         "volume": 3396000
+      },
+      {
+        "date": "2026-11-18",
+        "open": 82.15,
+        "high": 86.58,
+        "low": 82.15,
+        "close": 85.57,
+        "volume": 4663600
       }
     ],
     "news": [
@@ -8249,19 +8249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
-        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
         "title": "Zoetis Declares Third Quarter 2025 Dividend",
         "publisher": "Business Wire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
+        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
         "type": "STORY"
       },
       {
@@ -8373,23 +8373,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.96,
-        "industryAvg": 37.51
+        "value": 19.22,
+        "industryAvg": 37.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.68,
-        "industryAvg": 2.42
+        "value": 3.73,
+        "industryAvg": 2.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.58,
-        "industryAvg": 2.49
+        "value": 10.73,
+        "industryAvg": 2.47
       },
       {
         "metric": "ROE",
         "value": 18.32,
-        "industryAvg": 1.39
+        "industryAvg": 1.4000000000000001
       },
       {
         "metric": "ROA",
@@ -8404,12 +8404,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 38.6,
-        "industryAvg": 16.91
+        "industryAvg": 16.93
       },
       {
         "metric": "Net Margin",
         "value": 24.72,
-        "industryAvg": 2.11
+        "industryAvg": 2.12
       }
     ]
   }

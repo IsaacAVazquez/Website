@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 19.1482,
-      "ttmPe": 27.05,
-      "marketCap": 3847111730000,
-      "psRatio": 11.1,
-      "pbRatio": 8.18,
-      "pegRatio": 0.84
+      "ttmPe": 26.55,
+      "marketCap": 3775069830000,
+      "psRatio": 10.9,
+      "pbRatio": 8.02,
+      "pegRatio": 0.82
     },
     "profitability": {
       "roe": 8.02,
@@ -3295,7 +3295,7 @@
         {
           "Breakdown": "Ordinary Shares Number",
           "2026-09-30": "7427000000.0",
-          "2026-06-30": "7427000000.0",
+          "2026-06-30": "7428434704.0",
           "2026-03-31": "7429000000.0",
           "2025-12-31": "7428838066.0",
           "2025-09-30": "7433087554.0",
@@ -4097,7 +4097,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "7427000000.0",
+          "2026-06-30": "7428434704.0",
           "2025-06-30": "7434158655.0",
           "2024-06-30": "7434138859.0",
           "2023-06-30": "7432000000.0",
@@ -6120,21 +6120,13 @@
       "costOfEquity": 13.139999999999999,
       "costOfDebt": 1.52,
       "taxRate": 20,
-      "beta": 1.0343,
-      "marketCap": 3847111730000
+      "beta": 1.0347,
+      "marketCap": 3775069830000
     },
     "beta": {
-      "beta5y": 1.0343
+      "beta5y": 1.0347
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 508.45,
-        "high": 512.12,
-        "low": 504.91,
-        "close": 507.49,
-        "volume": 19092800
-      },
       {
         "date": "2025-11-18",
         "open": 495.37,
@@ -8141,7 +8133,15 @@
         "high": 515.64,
         "low": 496.51,
         "close": 506.24,
-        "volume": 27914600
+        "volume": 27992800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 505.5,
+        "high": 510.44,
+        "low": 501.08,
+        "close": 508.29,
+        "volume": 21964800
       }
     ],
     "news": [
@@ -8178,19 +8178,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
         "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       },
       {
@@ -8290,28 +8290,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.05,
-        "industryAvg": 30.41
+        "value": 26.55,
+        "industryAvg": 30.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.1,
-        "industryAvg": 7.1
+        "value": 10.9,
+        "industryAvg": 7.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.18,
-        "industryAvg": 7.76
+        "value": 8.02,
+        "industryAvg": 7.68
       },
       {
         "metric": "ROE",
         "value": 8.02,
-        "industryAvg": 26.11
+        "industryAvg": 25.740000000000002
       },
       {
         "metric": "ROA",
         "value": 4.760000000000001,
-        "industryAvg": 10.18
+        "industryAvg": 10.11
       },
       {
         "metric": "Gross Margin",
@@ -8321,12 +8321,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 63.470000000000006,
-        "industryAvg": 36.7
+        "industryAvg": 36.69
       },
       {
         "metric": "Net Margin",
         "value": 39.69,
-        "industryAvg": 20.3
+        "industryAvg": 20.26
       }
     ]
   }

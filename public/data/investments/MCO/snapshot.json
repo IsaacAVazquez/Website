@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 30.97,
-      "marketCap": 87625927620,
-      "psRatio": 10.72,
-      "pbRatio": 26.81,
-      "pegRatio": 1.74
+      "ttmPe": 29.33,
+      "marketCap": 82985995089,
+      "psRatio": 10.15,
+      "pbRatio": 25.39,
+      "pegRatio": 1.65
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,25 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.94,
-      "costOfEquity": 15.079999999999998,
+      "wacc": 13.88,
+      "costOfEquity": 15.07,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2868,
-      "marketCap": 87625927620
+      "beta": 1.2818,
+      "marketCap": 82985995089
     },
     "beta": {
-      "beta5y": 1.2868
+      "beta5y": 1.2818
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 479.48,
-        "high": 481.04,
-        "low": 470.92,
-        "close": 472.12,
-        "volume": 774600
-      },
       {
         "date": "2025-11-18",
         "open": 468.93,
@@ -8658,6 +8650,14 @@
         "low": 480.56,
         "close": 484.41,
         "volume": 1101300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 480.84,
+        "high": 485.3,
+        "low": 474.88,
+        "close": 481.29,
+        "volume": 785400
       }
     ],
     "news": [
@@ -8670,19 +8670,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
-        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
         "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-17",
         "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
+        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
         "type": "STORY"
       },
       {
@@ -8718,19 +8718,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
         "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
+        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
         "type": "STORY"
       },
       {
@@ -8803,18 +8803,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.97,
-        "industryAvg": 26.85
+        "value": 29.33,
+        "industryAvg": 25.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.72,
-        "industryAvg": 8.29
+        "value": 10.15,
+        "industryAvg": 7.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.81,
-        "industryAvg": 4.64
+        "value": 25.39,
+        "industryAvg": 4.43
       },
       {
         "metric": "ROE",

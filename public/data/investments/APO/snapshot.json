@@ -1,10 +1,10 @@
 {
   "symbol": "APO",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -45,9 +45,9 @@
       "ttmEps": -1.8467,
       "ttmPe": 45.01,
       "pegRatio": 0.4,
-      "marketCap": 70868430626,
-      "psRatio": 2.3,
-      "pbRatio": 4.44
+      "marketCap": 69261811762,
+      "psRatio": 2.25,
+      "pbRatio": 4.34
     },
     "profitability": {
       "roe": -7.62,
@@ -5822,25 +5822,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.76,
-      "costOfEquity": 16.57,
+      "wacc": 13.700000000000001,
+      "costOfEquity": 16.56,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 24,
-      "beta": 1.4779,
-      "marketCap": 70868430626
+      "beta": 1.4725,
+      "marketCap": 69261811762
     },
     "beta": {
-      "beta5y": 1.4779
+      "beta5y": 1.4725
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 130,
-        "high": 130.24,
-        "low": 123.61,
-        "close": 124.34,
-        "volume": 4110200
-      },
       {
         "date": "2025-11-18",
         "open": 123.03,
@@ -7848,6 +7840,14 @@
         "low": 117.43,
         "close": 117.89,
         "volume": 2557200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 117.41,
+        "high": 117.87,
+        "low": 115.12,
+        "close": 117.26,
+        "volume": 2880900
       }
     ],
     "news": [
@@ -7908,19 +7908,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
-        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
         "title": "Private Credit Has a Problem: Too Much Money",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
+        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
         "type": "STORY"
       },
       {
@@ -7998,22 +7998,22 @@
       {
         "metric": "P/E (TTM)",
         "value": 45.01,
-        "industryAvg": 19.14
+        "industryAvg": 18.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.3,
-        "industryAvg": 3.39
+        "value": 2.25,
+        "industryAvg": 3.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.44,
-        "industryAvg": 2.79
+        "value": 4.34,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",
         "value": -7.62,
-        "industryAvg": 8.58
+        "industryAvg": 8.6
       },
       {
         "metric": "ROA",
@@ -8023,17 +8023,17 @@
       {
         "metric": "Gross Margin",
         "value": 90.19,
-        "industryAvg": 35.06
+        "industryAvg": 32.74
       },
       {
         "metric": "EBITDA Margin",
         "value": -16.689999999999998,
-        "industryAvg": 41.93
+        "industryAvg": 41.97
       },
       {
         "metric": "Net Margin",
         "value": -29.709999999999997,
-        "industryAvg": 7.53
+        "industryAvg": 7.55
       }
     ]
   }

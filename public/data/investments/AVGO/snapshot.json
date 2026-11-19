@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.8333,
-      "ttmPe": 42.56,
-      "marketCap": 1591651600000,
-      "psRatio": 17.86,
-      "pbRatio": 15.97,
-      "pegRatio": 0.2
+      "ttmPe": 45.2,
+      "marketCap": 1690234700000,
+      "psRatio": 18.97,
+      "pbRatio": 16.95,
+      "pegRatio": 0.21
     },
     "profitability": {
       "roe": 13.969999999999999,
@@ -6215,25 +6215,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.989999999999998,
-      "costOfEquity": 16.55,
+      "wacc": 15.8,
+      "costOfEquity": 16.32,
       "costOfDebt": 1.31,
       "taxRate": 14.000000000000002,
-      "beta": 1.4744,
-      "marketCap": 1591651600000
+      "beta": 1.4421,
+      "marketCap": 1690234700000
     },
     "beta": {
-      "beta5y": 1.4744
+      "beta5y": 1.4421
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 339.82,
-        "high": 352.2,
-        "low": 337.52,
-        "close": 342.65,
-        "volume": 14799600
-      },
       {
         "date": "2025-11-18",
         "open": 343.2,
@@ -8240,7 +8232,15 @@
         "high": 344,
         "low": 330.13,
         "close": 341.6,
-        "volume": 26047800
+        "volume": 26184000
+      },
+      {
+        "date": "2026-11-18",
+        "open": 348.71,
+        "high": 357.34,
+        "low": 340.74,
+        "close": 354.05,
+        "volume": 25967400
       }
     ],
     "news": [
@@ -8285,19 +8285,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -8384,43 +8384,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.56,
-        "industryAvg": 19.71
+        "value": 45.2,
+        "industryAvg": 18.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.86,
-        "industryAvg": 9.65
+        "value": 18.97,
+        "industryAvg": 9.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.97,
-        "industryAvg": 8.62
+        "value": 16.95,
+        "industryAvg": 8.23
       },
       {
         "metric": "ROE",
         "value": 13.969999999999999,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 7.13,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 69.13,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 61.73,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",
         "value": 44.230000000000004,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

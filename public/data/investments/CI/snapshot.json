@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.198,
-      "ttmPe": 17.45,
+      "ttmPe": 16.59,
       "pegRatio": 1.13,
-      "marketCap": 79152192000,
-      "psRatio": 0.28,
-      "pbRatio": 1.82
+      "marketCap": 75252069000,
+      "psRatio": 0.26,
+      "pbRatio": 1.73
     },
     "profitability": {
       "roe": 3.35,
@@ -6090,24 +6090,16 @@
     },
     "wacc": {
       "wacc": 5.25,
-      "costOfEquity": 6.97,
+      "costOfEquity": 7.06,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 19,
-      "beta": 0.2387,
-      "marketCap": 79152192000
+      "beta": 0.2548,
+      "marketCap": 75252069000
     },
     "beta": {
-      "beta5y": 0.2387
+      "beta5y": 0.2548
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 269.95,
-        "high": 274.61,
-        "low": 268.35,
-        "close": 271.33,
-        "volume": 2003300
-      },
       {
         "date": "2025-11-18",
         "open": 270.2,
@@ -8115,6 +8107,14 @@
         "low": 292.69,
         "close": 294.06,
         "volume": 1534300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 292.5,
+        "high": 294.06,
+        "low": 283.02,
+        "close": 285.37,
+        "volume": 2493800
       }
     ],
     "news": [
@@ -8151,14 +8151,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
-        "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cigna-announced-agreement-copay-caps-021100886.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
         "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
         "publisher": "TipRanks",
@@ -8167,11 +8159,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
-        "title": "Top Research Reports for Costco, Chubb & Cigna",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
+        "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
+        "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cigna-announced-agreement-copay-caps-021100886.html",
         "type": "STORY"
       },
       {
@@ -8180,6 +8172,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
+        "title": "Top Research Reports for Costco, Chubb & Cigna",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
         "type": "STORY"
       },
       {
@@ -8261,18 +8261,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.45,
-        "industryAvg": 18.46
+        "value": 16.59,
+        "industryAvg": 16.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.28,
-        "industryAvg": 0.44
+        "value": 0.26,
+        "industryAvg": 0.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.82,
-        "industryAvg": 2.48
+        "value": 1.73,
+        "industryAvg": 2.18
       },
       {
         "metric": "ROE",

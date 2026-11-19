@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "industry"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 40.597,
-      "ttmPe": 34.65,
-      "marketCap": 542201766183,
-      "psRatio": 12.13,
-      "pbRatio": 21.69,
+      "ttmPe": 34.37,
+      "marketCap": 537761754279,
+      "psRatio": 12.03,
+      "pbRatio": 21.52,
       "pegRatio": 0.26
     },
     "profitability": {
@@ -6148,25 +6148,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.84,
-      "costOfEquity": 19,
+      "wacc": 18.89,
+      "costOfEquity": 19.05,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7915,
-      "marketCap": 542201766183
+      "beta": 1.7929,
+      "marketCap": 537761754279
     },
     "beta": {
-      "beta5y": 1.7915
+      "beta5y": 1.7929
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 1004.72,
-        "high": 1025,
-        "low": 1004.27,
-        "close": 1020,
-        "volume": 1691500
-      },
       {
         "date": "2025-11-18",
         "open": 1011.08,
@@ -8173,7 +8165,15 @@
         "high": 1408.1801,
         "low": 1351.78,
         "close": 1383.11,
-        "volume": 2426500
+        "volume": 2438100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 1397.6801,
+        "high": 1411.5,
+        "low": 1368,
+        "close": 1395.27,
+        "volume": 1350300
       }
     ],
     "news": [
@@ -8250,11 +8250,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
-        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
+        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
+        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
         "type": "STORY"
       }
     ],

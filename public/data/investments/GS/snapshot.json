@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 69.5502,
-      "ttmPe": 13.18,
-      "marketCap": 270935136000,
-      "psRatio": 3.89,
-      "pbRatio": 2.17,
-      "pegRatio": 0.34
+      "ttmPe": 12.55,
+      "marketCap": 258112008000,
+      "psRatio": 3.7,
+      "pbRatio": 2.07,
+      "pegRatio": 0.32
     },
     "profitability": {
       "roe": 4.12,
@@ -6535,25 +6535,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.32,
+      "wacc": 7.180000000000001,
       "costOfEquity": 14.95,
       "costOfDebt": 3.9600000000000004,
       "taxRate": 24,
-      "beta": 1.2694,
-      "marketCap": 270935136000
+      "beta": 1.2666,
+      "marketCap": 258112008000
     },
     "beta": {
-      "beta5y": 1.2694
+      "beta5y": 1.2666
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 790,
-        "high": 796.73,
-        "low": 770.5,
-        "close": 775.56,
-        "volume": 1850600
-      },
       {
         "date": "2025-11-18",
         "open": 772.06,
@@ -8561,6 +8553,14 @@
         "low": 864.46,
         "close": 877.52,
         "volume": 1807100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 880,
+        "high": 880,
+        "low": 866.24,
+        "close": 873.18,
+        "volume": 1846000
       }
     ],
     "news": [
@@ -8637,11 +8637,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8aa45d72-cd98-3a93-9044-f2eac11837af",
-        "title": "Earnings show ‘uncertainty’ is only sure thing for investors",
+        "uuid": "82bb8bb2-b015-3d63-ad38-fef7f33a4c72",
+        "title": "Tariff Ruling Threatens a $2 Trillion Fiscal Hole in Trump Plan",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/earnings-show-uncertainty-only-sure-114412102.html",
+        "link": "https://finance.yahoo.com/news/tariff-ruling-threatens-2-trillion-113000185.html",
         "type": "STORY"
       }
     ],
@@ -8704,23 +8704,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.18,
-        "industryAvg": 14.86
+        "value": 12.55,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.89,
-        "industryAvg": 2.05
+        "value": 3.7,
+        "industryAvg": 1.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.17,
-        "industryAvg": 2.4
+        "value": 2.07,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",
         "value": 4.12,
-        "industryAvg": 15.840000000000002
+        "industryAvg": 15.879999999999999
       },
       {
         "metric": "ROA",
@@ -8729,16 +8729,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.07
+        "industryAvg": 15.09
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 6.36
       },
       {
         "metric": "Net Margin",
         "value": 27.33,
-        "industryAvg": 20.22
+        "industryAvg": 20.28
       }
     ]
   }

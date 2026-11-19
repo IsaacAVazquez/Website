@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7333,
-      "ttmPe": 17.53,
+      "ttmPe": 17.67,
       "pegRatio": 0.45,
-      "marketCap": 37509119600,
-      "psRatio": 1.73,
-      "pbRatio": 3.23
+      "marketCap": 37825614100,
+      "psRatio": 1.75,
+      "pbRatio": 3.26
     },
     "profitability": {
       "roe": 5.45,
@@ -6441,25 +6441,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.41,
-      "costOfEquity": 10.48,
+      "wacc": 8.200000000000001,
+      "costOfEquity": 10.190000000000001,
       "costOfDebt": 1.17,
       "taxRate": 17,
-      "beta": 0.6913,
-      "marketCap": 37509119600
+      "beta": 0.6565,
+      "marketCap": 37825614100
     },
     "beta": {
-      "beta5y": 0.6913
+      "beta5y": 0.6565
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 72.57,
-        "high": 73,
-        "low": 70.29,
-        "close": 70.63,
-        "volume": 4806100
-      },
       {
         "date": "2025-11-18",
         "open": 70.48,
@@ -8467,6 +8459,14 @@
         "low": 81.79,
         "close": 81.84,
         "volume": 2920200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 81.31,
+        "high": 83.99,
+        "low": 81.13,
+        "close": 83.66,
+        "volume": 3651200
       }
     ],
     "news": [
@@ -8487,6 +8487,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
+        "title": "Etsy's tariff concerns, GE HealthCare earnings, Seagate Q3 results",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/etsys-tariff-concerns-ge-healthcare-195743035.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
         "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
         "publisher": "Yahoo Finance Video",
@@ -8503,12 +8511,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
-        "title": "Etsy's tariff concerns, GE HealthCare earnings, Seagate Q3 results",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/etsys-tariff-concerns-ge-healthcare-195743035.html",
-        "type": "VIDEO"
+        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
+        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
+        "type": "STORY"
       },
       {
         "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
@@ -8516,14 +8524,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
-        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
         "type": "STORY"
       },
       {
@@ -8577,18 +8577,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.53,
-        "industryAvg": 26.33
+        "value": 17.67,
+        "industryAvg": 26.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.73,
+        "value": 1.75,
         "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.23,
-        "industryAvg": 3.18
+        "value": 3.26,
+        "industryAvg": 3.17
       },
       {
         "metric": "ROE",
@@ -8608,12 +8608,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.81,
-        "industryAvg": 20.47
+        "industryAvg": 20.48
       },
       {
         "metric": "Net Margin",
         "value": 11.16,
-        "industryAvg": 9.15
+        "industryAvg": 9.16
       }
     ]
   }

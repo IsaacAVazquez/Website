@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 26.07,
-      "marketCap": 114239657457,
-      "psRatio": 16.38,
-      "pbRatio": 4.3,
-      "pegRatio": 1.61
+      "ttmPe": 25.44,
+      "marketCap": 111466030525,
+      "psRatio": 15.99,
+      "pbRatio": 4.2,
+      "pegRatio": 1.57
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.45,
-      "costOfEquity": 6.61,
+      "wacc": 6.34,
+      "costOfEquity": 6.510000000000001,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1895,
-      "marketCap": 114239657457
+      "beta": 0.185,
+      "marketCap": 111466030525
     },
     "beta": {
-      "beta5y": 0.1895
+      "beta5y": 0.185
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 285.48,
-        "high": 286.33,
-        "low": 278.1,
-        "close": 279.13,
-        "volume": 2199500
-      },
       {
         "date": "2025-11-18",
         "open": 278.55,
@@ -7637,6 +7629,14 @@
         "low": 310.85,
         "close": 311.56,
         "volume": 1731500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 311.23,
+        "high": 311.97,
+        "low": 305.12,
+        "close": 310.25,
+        "volume": 2400400
       }
     ],
     "news": [
@@ -7657,14 +7657,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
-        "title": "XRP futures bag $19M on launch day",
-        "publisher": "TheStreet",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
         "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
         "publisher": "CoinDesk",
@@ -7673,19 +7665,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
-        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
+        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
+        "title": "XRP futures bag $19M on launch day",
+        "publisher": "TheStreet",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
         "type": "STORY"
       },
       {
@@ -7697,11 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
-        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
+        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7710,6 +7702,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
+        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
         "type": "STORY"
       },
       {
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.07,
-        "industryAvg": 26.85
+        "value": 25.44,
+        "industryAvg": 25.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.38,
-        "industryAvg": 8.29
+        "value": 15.99,
+        "industryAvg": 7.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.3,
-        "industryAvg": 4.64
+        "value": 4.2,
+        "industryAvg": 4.43
       },
       {
         "metric": "ROE",

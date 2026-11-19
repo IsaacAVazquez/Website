@@ -1,10 +1,10 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5458,
-      "ttmPe": 34.59,
+      "ttmPe": 34.51,
       "pegRatio": 3.82,
-      "marketCap": 136341919054,
-      "psRatio": 10.53,
-      "pbRatio": 6.52
+      "marketCap": 136002198770,
+      "psRatio": 10.5,
+      "pbRatio": 6.5
     },
     "profitability": {
       "roe": 3.18,
@@ -5665,21 +5665,13 @@
       "costOfEquity": 7.3,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 17,
-      "beta": 0.2808,
-      "marketCap": 136341919054
+      "beta": 0.2857,
+      "marketCap": 136002198770
     },
     "beta": {
-      "beta5y": 0.2808
+      "beta5y": 0.2857
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 436.99,
-        "high": 439.99,
-        "low": 432.24,
-        "close": 434.02,
-        "volume": 1304500
-      },
       {
         "date": "2025-11-18",
         "open": 434,
@@ -7687,6 +7679,14 @@
         "low": 529,
         "close": 534.2,
         "volume": 1512500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 532.27,
+        "high": 542.76,
+        "low": 531.38,
+        "close": 536.45,
+        "volume": 1291700
       }
     ],
     "news": [
@@ -7715,19 +7715,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bb8a4622-9ea5-346d-9b42-b1d653307b4a",
         "title": "Stocks to Watch Recap: Palantir, Ford, Mattel, DoorDash",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {
@@ -7755,19 +7755,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
-        "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
         "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
+        "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
         "type": "STORY"
       }
     ],
@@ -7839,43 +7839,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.59,
+        "value": 34.51,
         "industryAvg": 22.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.53,
-        "industryAvg": 10.54
+        "value": 10.5,
+        "industryAvg": 10.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.52,
-        "industryAvg": 4.51
+        "value": 6.5,
+        "industryAvg": 4.41
       },
       {
         "metric": "ROE",
         "value": 3.18,
-        "industryAvg": -16.72
+        "industryAvg": -16.96
       },
       {
         "metric": "ROA",
         "value": 2.17,
-        "industryAvg": -10.14
+        "industryAvg": -10.290000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 84.71,
-        "industryAvg": 82.28999999999999
+        "industryAvg": 82.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.83,
-        "industryAvg": -27.47
+        "industryAvg": -27.93
       },
       {
         "metric": "Net Margin",
         "value": 19,
-        "industryAvg": -29.87
+        "industryAvg": -30.599999999999998
       }
     ]
   }

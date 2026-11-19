@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5375,
-      "ttmPe": 24.04,
-      "marketCap": 1936888715300,
-      "psRatio": 12.48,
-      "pbRatio": 8.82,
-      "pegRatio": 0.42
+      "ttmPe": 23.34,
+      "marketCap": 1880719201880,
+      "psRatio": 12.12,
+      "pbRatio": 8.56,
+      "pegRatio": 0.4
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -7175,25 +7175,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.009999999999998,
-      "costOfEquity": 16.28,
+      "wacc": 16.09,
+      "costOfEquity": 16.37,
       "costOfDebt": 0.3,
       "taxRate": 16,
-      "beta": 1.4395,
-      "marketCap": 1936888715300
+      "beta": 1.4491,
+      "marketCap": 1880719201880
     },
     "beta": {
-      "beta5y": 1.4395
+      "beta5y": 1.4491
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 281.44,
-        "high": 286.53,
-        "low": 279.8,
-        "close": 282.01,
-        "volume": 10227100
-      },
       {
         "date": "2025-11-18",
         "open": 277.55,
@@ -9200,7 +9192,15 @@
         "high": 373.1,
         "low": 353.5,
         "close": 359.69,
-        "volume": 25012000
+        "volume": 25241300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 368.05,
+        "high": 368.85,
+        "low": 356.77,
+        "close": 362.62,
+        "volume": 12014100
       }
     ],
     "news": [
@@ -9261,19 +9261,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
-        "title": "5 Brilliant Stocks to Buy in June",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
         "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
         "publisher": "TipRanks",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
         "type": "STORY"
       },
       {
@@ -9332,43 +9332,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.04,
-        "industryAvg": 19.71
+        "value": 23.34,
+        "industryAvg": 18.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.48,
-        "industryAvg": 9.65
+        "value": 12.12,
+        "industryAvg": 9.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.82,
-        "industryAvg": 8.62
+        "value": 8.56,
+        "industryAvg": 8.23
       },
       {
         "metric": "ROE",
         "value": 11.360000000000001,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 7.86,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 66.41,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.92,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",
         "value": 51.07000000000001,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

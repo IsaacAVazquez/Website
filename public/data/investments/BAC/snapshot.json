@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 12.17,
-      "marketCap": 353195914206,
-      "psRatio": 2.99,
-      "pbRatio": 1.19,
+      "ttmPe": 11.66,
+      "marketCap": 338589027123,
+      "psRatio": 2.87,
+      "pbRatio": 1.14,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5757,25 +5757,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.77,
-      "costOfEquity": 14.34,
+      "wacc": 8.64,
+      "costOfEquity": 14.31,
       "costOfDebt": 4.68,
       "taxRate": 23,
-      "beta": 1.1907,
-      "marketCap": 353195914206
+      "beta": 1.1847,
+      "marketCap": 338589027123
     },
     "beta": {
-      "beta5y": 1.1907
+      "beta5y": 1.1847
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 52.58,
-        "high": 52.58,
-        "low": 51.39,
-        "close": 51.48,
-        "volume": 35546800
-      },
       {
         "date": "2025-11-18",
         "open": 51.28,
@@ -7782,7 +7774,15 @@
         "high": 50.16,
         "low": 49.08,
         "close": 49.44,
-        "volume": 34909100
+        "volume": 34937900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 49.2,
+        "high": 49.49,
+        "low": 48.74,
+        "close": 48.91,
+        "volume": 40020100
       }
     ],
     "news": [
@@ -7827,19 +7827,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
-        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
         "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
         "publisher": "Financial Times",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
+        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
         "type": "STORY"
       },
       {
@@ -7935,33 +7935,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.17,
-        "industryAvg": 13.17
+        "value": 11.66,
+        "industryAvg": 12.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.99,
-        "industryAvg": 3.64
+        "value": 2.87,
+        "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.19,
-        "industryAvg": 1.66
+        "value": 1.14,
+        "industryAvg": 1.52
       },
       {
         "metric": "ROE",
         "value": 2.7,
-        "industryAvg": 12.6
+        "industryAvg": 12.559999999999999
       },
       {
         "metric": "ROA",
         "value": 0.24,
-        "industryAvg": 0.9400000000000001
+        "industryAvg": 0.9299999999999999
       },
       {
         "metric": "Net Margin",
         "value": 21.83,
-        "industryAvg": 27.73
+        "industryAvg": 27.67
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6407,
-      "ttmPe": 21.73,
-      "pegRatio": 2.11,
-      "marketCap": 194356492000,
-      "psRatio": 7,
-      "pbRatio": -566.64
+      "ttmPe": 21.68,
+      "pegRatio": 2.1,
+      "marketCap": 193903628000,
+      "psRatio": 6.98,
+      "pbRatio": -565.32
     },
     "profitability": {
       "roe": -364.25,
@@ -5712,25 +5712,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.61,
-      "costOfEquity": 8.3,
+      "wacc": 6.529999999999999,
+      "costOfEquity": 8.200000000000001,
       "costOfDebt": 0.75,
       "taxRate": 22,
-      "beta": 0.4107,
-      "marketCap": 194356492000
+      "beta": 0.4019,
+      "marketCap": 193903628000
     },
     "beta": {
-      "beta5y": 0.4107
+      "beta5y": 0.4019
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 307.17,
-        "high": 307.7,
-        "low": 304.1,
-        "close": 304.9,
-        "volume": 2435700
-      },
       {
         "date": "2025-11-18",
         "open": 305.68,
@@ -7738,6 +7730,14 @@
         "low": 271,
         "close": 275.82,
         "volume": 4435600
+      },
+      {
+        "date": "2026-11-18",
+        "open": 272.29,
+        "high": 276.05,
+        "low": 271.87,
+        "close": 274.03,
+        "volume": 4931100
       }
     ],
     "news": [
@@ -7790,19 +7790,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
-        "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
         "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
         "publisher": "TipRanks",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
+        "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
         "type": "STORY"
       },
       {
@@ -7892,33 +7892,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.73,
-        "industryAvg": 23.17
+        "value": 21.68,
+        "industryAvg": 23.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 7,
-        "industryAvg": 3.01
+        "value": 6.98,
+        "industryAvg": 3
       },
       {
         "metric": "P/B Ratio",
-        "value": -566.64,
-        "industryAvg": 5.7
+        "value": -565.32,
+        "industryAvg": 5.71
       },
       {
         "metric": "ROE",
         "value": -364.25,
-        "industryAvg": 221.34999999999997
+        "industryAvg": 220.81
       },
       {
         "metric": "ROA",
         "value": 4.12,
-        "industryAvg": 8.95
+        "industryAvg": 8.94
       },
       {
         "metric": "Gross Margin",
         "value": 58.89,
-        "industryAvg": 31.64
+        "industryAvg": 31.630000000000003
       },
       {
         "metric": "EBITDA Margin",

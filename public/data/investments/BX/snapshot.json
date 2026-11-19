@@ -1,10 +1,10 @@
 {
   "symbol": "BX",
-  "lastUpdated": "2026-11-17T18:08:51.349858+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-17T18:08:51.349858+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-17"
+      "price": "2026-11-18"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4872,
-      "ttmPe": 26.08,
-      "marketCap": 145490854153,
-      "psRatio": 10.55,
-      "pbRatio": 16.46,
-      "pegRatio": 7.03
+      "ttmPe": 25.79,
+      "marketCap": 143874427263,
+      "psRatio": 10.44,
+      "pbRatio": 16.28,
+      "pegRatio": 6.95
     },
     "profitability": {
       "roe": 7.42,
@@ -2554,25 +2554,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.47,
-      "costOfEquity": 16.900000000000002,
+      "wacc": 15.43,
+      "costOfEquity": 16.88,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 17,
-      "beta": 1.5203,
-      "marketCap": 145490854153
+      "beta": 1.514,
+      "marketCap": 143874427263
     },
     "beta": {
-      "beta5y": 1.5203
+      "beta5y": 1.514
     },
     "price": [
-      {
-        "date": "2025-11-17",
-        "open": 140.71,
-        "high": 141.2,
-        "low": 137.03,
-        "close": 138.42,
-        "volume": 3510400
-      },
       {
         "date": "2025-11-18",
         "open": 137.17,
@@ -4580,6 +4572,14 @@
         "low": 114.88,
         "close": 116.48,
         "volume": 3234900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 115.59,
+        "high": 116.83,
+        "low": 114.83,
+        "close": 115.71,
+        "volume": 3834100
       }
     ],
     "news": [
@@ -4608,19 +4608,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -4648,19 +4648,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
         "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
         "publisher": "CorpGov.com",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       }
     ],
@@ -4726,23 +4726,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.08,
-        "industryAvg": 19.14
+        "value": 25.79,
+        "industryAvg": 18.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.55,
-        "industryAvg": 3.39
+        "value": 10.44,
+        "industryAvg": 3.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.46,
-        "industryAvg": 2.79
+        "value": 16.28,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",
         "value": 7.42,
-        "industryAvg": 8.58
+        "industryAvg": 8.6
       },
       {
         "metric": "ROA",
@@ -4751,16 +4751,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 35.06
+        "industryAvg": 32.74
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 41.93
+        "industryAvg": 41.97
       },
       {
         "metric": "Net Margin",
         "value": 23.18,
-        "industryAvg": 7.53
+        "industryAvg": 7.55
       }
     ]
   }
