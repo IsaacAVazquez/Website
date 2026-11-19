@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-18T23:25:30.113Z",
+  "generatedAt": "2026-11-19T23:37:43.311Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-18T23:25:30.994Z",
+        "accessedAt": "2026-11-19T23:37:43.797Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3979,7 +3979,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 442,
@@ -4960,7 +4960,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-18T23:25:31.716Z",
+        "accessedAt": "2026-11-19T23:37:44.213Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -9179,7 +9179,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 424,
@@ -10322,7 +10322,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-18T23:25:32.823Z",
+        "accessedAt": "2026-11-19T23:37:44.667Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14604,7 +14604,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 431,
@@ -15684,7 +15684,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-18T23:25:33.685Z",
+        "accessedAt": "2026-11-19T23:37:45.234Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20310,7 +20310,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 469,
@@ -20823,7 +20823,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 526,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-18T23:25:34.353Z",
+        "accessedAt": "2026-11-19T23:37:46.387Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25294,7 +25294,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 427,
@@ -26374,7 +26374,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 547,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-18T23:25:34.776Z",
+        "accessedAt": "2026-11-19T23:37:47.049Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30683,7 +30683,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 430,
@@ -31754,7 +31754,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 549,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-18T23:25:35.703Z",
+        "accessedAt": "2026-11-19T23:37:47.733Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -36299,7 +36299,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 458,
@@ -37028,7 +37028,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 539,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-18T23:25:36.144Z",
+        "accessedAt": "2026-11-19T23:37:48.604Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41688,7 +41688,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 461,
@@ -42381,7 +42381,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 538,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-18T23:25:37.184Z",
+        "accessedAt": "2026-11-19T23:37:49.005Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46753,7 +46753,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 428,
@@ -47815,7 +47815,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 546,
