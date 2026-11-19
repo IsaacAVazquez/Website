@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-18T14:36:44.128Z",
+  "generatedAt": "2026-11-19T14:43:17.701Z",
   "sourceAsOf": "2026-11-16",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 35.9,
-    "disapprove": 60.9,
-    "net": -25
+    "approve": 36.1,
+    "disapprove": 61.3,
+    "net": -25.2
   },
   "approvalTrend": [
     {
       "date": "2025-11-15",
-      "approve": 42,
-      "disapprove": 54.8
+      "approve": 41.7,
+      "disapprove": 55
     },
     {
       "date": "2025-12-15",
@@ -60,8 +60,8 @@
     },
     {
       "date": "2026-11-15",
-      "approve": 35.9,
-      "disapprove": 60.9
+      "approve": 36.1,
+      "disapprove": 61.3
     }
   ],
   "approvalPolls": [
@@ -120,6 +120,33 @@
       "unsure": 2
     },
     {
+      "id": "appdonverd846e0e2",
+      "pollster": "Verasight",
+      "sponsor": "Strength In Numbers",
+      "startDate": "2026-11-11",
+      "endDate": "2026-11-13",
+      "sampleSize": 1403,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 32,
+      "disapprove": 66,
+      "unsure": 2
+    },
+    {
+      "id": "appdonthe9e7d6157",
+      "pollster": "The Rainey Center",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-12",
+      "sampleSize": 1001,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 60,
+      "unsure": 1
+    },
+    {
       "id": "appdonyou2d56a2c2",
       "pollster": "YouGov",
       "sponsor": "The Economist",
@@ -172,6 +199,20 @@
       "methodology": "unknown",
       "approve": 37,
       "disapprove": 63,
+      "unsure": 0
+    },
+    {
+      "id": "appdonyoube43ac46",
+      "pollster": "YouGov Blue",
+      "sponsor": "Democracy Corps",
+      "startDate": "2026-10-29",
+      "endDate": "2026-11-06",
+      "sampleSize": 1339,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 61,
       "unsure": 0
     },
     {
@@ -432,47 +473,6 @@
       "approve": 47,
       "disapprove": 53,
       "unsure": 0
-    },
-    {
-      "id": "appdonameea0e73fc",
-      "pollster": "American Research Group",
-      "startDate": "2026-06-16",
-      "endDate": "2026-06-20",
-      "sampleSize": 1006,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 30,
-      "disapprove": 67,
-      "unsure": 3
-    },
-    {
-      "id": "appdonyoub00f2735",
-      "pollster": "YouGov",
-      "sponsor": "CBS News",
-      "startDate": "2026-06-17",
-      "endDate": "2026-06-19",
-      "sampleSize": 2519,
-      "sampleType": "A",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 62,
-      "unsure": 0
-    },
-    {
-      "id": "appdonrmg0715e331",
-      "pollster": "RMG Research",
-      "sponsor": "Napolitan Institute",
-      "startDate": "2026-06-10",
-      "endDate": "2026-06-18",
-      "sampleSize": 3000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 43,
-      "disapprove": 55,
-      "unsure": 2
     }
   ],
   "genericBallotAvg": {
