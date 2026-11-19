@@ -1,7 +1,7 @@
 {
   "season": "2026/27",
   "matchday": 13,
-  "generatedAt": "2026-11-19T02:02:32.035Z",
+  "generatedAt": "2026-11-19T13:39:58.295Z",
   "updatedAt": "2026-11-19",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -1425,7 +1425,7 @@
         "goalsFor": 7,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "fcb": {
       "team": {
@@ -1720,7 +1720,7 @@
         "goalsFor": 17,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "cel": {
       "team": {
@@ -2016,7 +2016,7 @@
         "goalsFor": 2,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "elc": {
       "team": {
@@ -2312,7 +2312,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "esp": {
       "team": {
@@ -2608,7 +2608,7 @@
         "goalsFor": 3,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "get": {
       "team": {
@@ -2904,7 +2904,7 @@
         "goalsFor": 4,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "lev": {
       "team": {
@@ -3200,7 +3200,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "mal": {
       "team": {
@@ -3496,7 +3496,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "osa": {
       "team": {
@@ -3792,7 +3792,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "ray": {
       "team": {
@@ -4088,7 +4088,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "bet": {
       "team": {
@@ -4384,7 +4384,7 @@
         "goalsFor": 11,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "rma": {
       "team": {
@@ -4679,7 +4679,7 @@
         "goalsFor": 13,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "rso": {
       "team": {
@@ -4974,7 +4974,7 @@
         "goalsFor": 12,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "sev": {
       "team": {
@@ -5270,7 +5270,7 @@
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "val": {
       "team": {
@@ -5566,7 +5566,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "vil": {
       "team": {
@@ -5862,7 +5862,7 @@
         "goalsFor": 4,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "ala": {
       "team": {
@@ -6158,7 +6158,7 @@
         "goalsFor": 4,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "ath": {
       "team": {
@@ -6454,7 +6454,7 @@
         "goalsFor": 8,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "dep": {
       "team": {
@@ -6750,7 +6750,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     },
     "san": {
       "team": {
@@ -7046,7 +7046,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-19T02:02:32.035Z"
+      "generatedAt": "2026-11-19T13:39:58.295Z"
     }
   }
 }
