@@ -1,8 +1,8 @@
 {
   "season": "2026",
   "week": 10,
-  "updatedAt": "2026-11-19",
-  "generatedAt": "2026-11-19T19:07:53.508Z",
+  "updatedAt": "2026-11-20",
+  "generatedAt": "2026-11-20T18:45:38.869Z",
   "sourceLabel": "NFLverse",
   "sourceUrls": {
     "standings": "https://github.com/nflverse/nfldata/raw/master/data/standings.csv",
@@ -164,6 +164,25 @@
       "playoffResult": null
     },
     {
+      "id": "hou",
+      "abbr": "HOU",
+      "name": "Houston Texans",
+      "shortName": "Texans",
+      "conference": "AFC",
+      "division": "AFC South",
+      "divisionRank": 2,
+      "conferenceRank": 9,
+      "wins": 4,
+      "losses": 6,
+      "ties": 0,
+      "winPct": 0.4,
+      "pointsFor": 259,
+      "pointsAgainst": 222,
+      "pointDifferential": 37,
+      "seed": null,
+      "playoffResult": null
+    },
+    {
       "id": "lv",
       "abbr": "LV",
       "name": "Las Vegas Raiders",
@@ -171,7 +190,7 @@
       "conference": "AFC",
       "division": "AFC West",
       "divisionRank": 3,
-      "conferenceRank": 9,
+      "conferenceRank": 10,
       "wins": 4,
       "losses": 6,
       "ties": 0,
@@ -190,7 +209,7 @@
       "conference": "AFC",
       "division": "AFC North",
       "divisionRank": 4,
-      "conferenceRank": 10,
+      "conferenceRank": 11,
       "wins": 4,
       "losses": 6,
       "ties": 0,
@@ -198,25 +217,6 @@
       "pointsFor": 209,
       "pointsAgainst": 259,
       "pointDifferential": -50,
-      "seed": null,
-      "playoffResult": null
-    },
-    {
-      "id": "hou",
-      "abbr": "HOU",
-      "name": "Houston Texans",
-      "shortName": "Texans",
-      "conference": "AFC",
-      "division": "AFC South",
-      "divisionRank": 2,
-      "conferenceRank": 11,
-      "wins": 3,
-      "losses": 6,
-      "ties": 0,
-      "winPct": 0.333333,
-      "pointsFor": 233,
-      "pointsAgainst": 219,
-      "pointDifferential": 14,
       "seed": null,
       "playoffResult": null
     },
@@ -230,12 +230,12 @@
       "divisionRank": 3,
       "conferenceRank": 12,
       "wins": 3,
-      "losses": 7,
+      "losses": 8,
       "ties": 0,
-      "winPct": 0.3,
-      "pointsFor": 208,
-      "pointsAgainst": 271,
-      "pointDifferential": -63,
+      "winPct": 0.272727,
+      "pointsFor": 211,
+      "pointsAgainst": 297,
+      "pointDifferential": -86,
       "seed": null,
       "playoffResult": null
     },
@@ -654,6 +654,16 @@
       },
       {
         "rank": 4,
+        "name": "C.J. Stroud",
+        "teamId": "hou",
+        "teamCode": "HOU",
+        "position": "QB",
+        "total": 2656,
+        "games": 10,
+        "perGame": 265.6
+      },
+      {
+        "rank": 5,
         "name": "Matthew Stafford",
         "teamId": "la",
         "teamCode": "LA",
@@ -663,7 +673,7 @@
         "perGame": 262.3
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Kirk Cousins",
         "teamId": "min",
         "teamCode": "MIN",
@@ -671,16 +681,6 @@
         "total": 2547,
         "games": 10,
         "perGame": 254.7
-      },
-      {
-        "rank": 6,
-        "name": "C.J. Stroud",
-        "teamId": "hou",
-        "teamCode": "HOU",
-        "position": "QB",
-        "total": 2462,
-        "games": 9,
-        "perGame": 273.55555555555554
       },
       {
         "rank": 7,
@@ -780,9 +780,9 @@
         "teamId": "ind",
         "teamCode": "IND",
         "position": "RB",
-        "total": 739,
-        "games": 10,
-        "perGame": 73.9
+        "total": 760,
+        "games": 11,
+        "perGame": 69.0909090909091
       },
       {
         "rank": 7,
@@ -934,9 +934,9 @@
         "teamId": "hou",
         "teamCode": "HOU",
         "position": "DE",
-        "total": 10.5,
-        "games": 9,
-        "perGame": 1.1666666666666667
+        "total": 11.5,
+        "games": 10,
+        "perGame": 1.15
       },
       {
         "rank": 2,
@@ -1031,6 +1031,31 @@
     ]
   },
   "recentFixtures": [
+    {
+      "id": "2026_11_IND_HOU",
+      "utcDate": "2026-11-20T01:15:00Z",
+      "status": "FINISHED",
+      "week": 11,
+      "matchday": 11,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "hou",
+        "abbr": "HOU",
+        "shortName": "Texans",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+      },
+      "awayTeam": {
+        "id": "ind",
+        "abbr": "IND",
+        "shortName": "Colts",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 26,
+        "away": 3
+      }
+    },
     {
       "id": "2026_10_LAC_BAL",
       "utcDate": "2026-11-17T01:15:00Z",
@@ -1205,59 +1230,9 @@
         "home": 27,
         "away": 24
       }
-    },
-    {
-      "id": "2026_10_MIN_GB",
-      "utcDate": "2026-11-15T18:00:00Z",
-      "status": "FINISHED",
-      "week": 10,
-      "matchday": 10,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "gb",
-        "abbr": "GB",
-        "shortName": "Packers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
-      },
-      "awayTeam": {
-        "id": "min",
-        "abbr": "MIN",
-        "shortName": "Vikings",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 10,
-        "away": 30
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "2026_11_IND_HOU",
-      "utcDate": "2026-11-20T01:15:00Z",
-      "status": "SCHEDULED",
-      "week": 11,
-      "matchday": 11,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "hou",
-        "abbr": "HOU",
-        "shortName": "Texans",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-      },
-      "awayTeam": {
-        "id": "ind",
-        "abbr": "IND",
-        "shortName": "Colts",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "2026_11_MIA_BUF",
       "utcDate": "2026-11-22T18:00:00Z",
@@ -1426,6 +1401,31 @@
         "abbr": "JAX",
         "shortName": "Jaguars",
         "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "2026_11_NYJ_LAC",
+      "utcDate": "2026-11-22T21:05:00Z",
+      "status": "SCHEDULED",
+      "week": 11,
+      "matchday": 11,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "lac",
+        "abbr": "LAC",
+        "shortName": "Chargers",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+      },
+      "awayTeam": {
+        "id": "nyj",
+        "abbr": "NYJ",
+        "shortName": "Jets",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png"
       },
       "score": {
         "winner": null,
@@ -2136,7 +2136,7 @@
         "pointsFor": 160,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "kc": {
       "team": {
@@ -2421,7 +2421,7 @@
         "pointsFor": 119,
         "pointsAgainst": 79
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "jax": {
       "team": {
@@ -2706,7 +2706,7 @@
         "pointsFor": 165,
         "pointsAgainst": 91
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "cin": {
       "team": {
@@ -2991,7 +2991,7 @@
         "pointsFor": 181,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "den": {
       "team": {
@@ -3276,7 +3276,7 @@
         "pointsFor": 124,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "pit": {
       "team": {
@@ -3561,7 +3561,7 @@
         "pointsFor": 121,
         "pointsAgainst": 95
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "cle": {
       "team": {
@@ -3846,7 +3846,7 @@
         "pointsFor": 95,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "ne": {
       "team": {
@@ -4131,7 +4131,292 @@
         "pointsFor": 111,
         "pointsAgainst": 148
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
+    },
+    "hou": {
+      "team": {
+        "id": "hou",
+        "abbr": "HOU",
+        "name": "Houston Texans",
+        "shortName": "Texans",
+        "location": "Houston",
+        "nickname": "Texans",
+        "conference": "AFC",
+        "division": "AFC South",
+        "primaryColor": "#03202F",
+        "secondaryColor": "#A71930",
+        "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
+        "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/HOU.png"
+      },
+      "recentFixtures": [
+        {
+          "id": "2026_11_IND_HOU",
+          "utcDate": "2026-11-20T01:15:00Z",
+          "status": "FINISHED",
+          "week": 11,
+          "matchday": 11,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "abbr": "IND",
+            "shortName": "Colts",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 26,
+            "away": 3
+          }
+        },
+        {
+          "id": "2026_10_HOU_CLE",
+          "utcDate": "2026-11-15T18:00:00Z",
+          "status": "FINISHED",
+          "week": 10,
+          "matchday": 10,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "cle",
+            "abbr": "CLE",
+            "shortName": "Browns",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 27,
+            "away": 24
+          }
+        },
+        {
+          "id": "2026_09_HOU_LAC",
+          "utcDate": "2026-11-08T21:05:00Z",
+          "status": "FINISHED",
+          "week": 9,
+          "matchday": 9,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "lac",
+            "abbr": "LAC",
+            "shortName": "Chargers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 22,
+            "away": 44
+          }
+        },
+        {
+          "id": "2026_07_NYG_HOU",
+          "utcDate": "2026-10-25T17:00:00Z",
+          "status": "FINISHED",
+          "week": 7,
+          "matchday": 7,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "nyg",
+            "abbr": "NYG",
+            "shortName": "Giants",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 21,
+            "away": 27
+          }
+        },
+        {
+          "id": "2026_06_HOU_JAX",
+          "utcDate": "2026-10-18T13:30:00Z",
+          "status": "FINISHED",
+          "week": 6,
+          "matchday": 6,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "jax",
+            "abbr": "JAX",
+            "shortName": "Jaguars",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 31,
+            "away": 34
+          }
+        }
+      ],
+      "upcomingFixtures": [
+        {
+          "id": "2026_12_BAL_HOU",
+          "utcDate": "2026-11-29T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 12,
+          "matchday": 12,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "bal",
+            "abbr": "BAL",
+            "shortName": "Ravens",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_13_HOU_PIT",
+          "utcDate": "2026-12-07T01:20:00Z",
+          "status": "SCHEDULED",
+          "week": 13,
+          "matchday": 13,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "pit",
+            "abbr": "PIT",
+            "shortName": "Steelers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_14_HOU_WAS",
+          "utcDate": "2026-12-13T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 14,
+          "matchday": 14,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "was",
+            "abbr": "WAS",
+            "shortName": "Commanders",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_15_JAX_HOU",
+          "utcDate": "2026-12-20T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 15,
+          "matchday": 15,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "jax",
+            "abbr": "JAX",
+            "shortName": "Jaguars",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        },
+        {
+          "id": "2026_16_HOU_PHI",
+          "utcDate": "2026-12-25T01:15:00Z",
+          "status": "SCHEDULED",
+          "week": 16,
+          "matchday": 16,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "phi",
+            "abbr": "PHI",
+            "shortName": "Eagles",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
+        }
+      ],
+      "form": {
+        "sequence": [
+          "W",
+          "L",
+          "W",
+          "L",
+          "W"
+        ],
+        "wins": 3,
+        "ties": 0,
+        "losses": 2,
+        "pointsFor": 149,
+        "pointsAgainst": 110
+      },
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "lv": {
       "team": {
@@ -4416,7 +4701,7 @@
         "pointsFor": 119,
         "pointsAgainst": 160
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "bal": {
       "team": {
@@ -4701,292 +4986,7 @@
         "pointsFor": 63,
         "pointsAgainst": 140
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
-    },
-    "hou": {
-      "team": {
-        "id": "hou",
-        "abbr": "HOU",
-        "name": "Houston Texans",
-        "shortName": "Texans",
-        "location": "Houston",
-        "nickname": "Texans",
-        "conference": "AFC",
-        "division": "AFC South",
-        "primaryColor": "#03202F",
-        "secondaryColor": "#A71930",
-        "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
-        "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/HOU.png"
-      },
-      "recentFixtures": [
-        {
-          "id": "2026_10_HOU_CLE",
-          "utcDate": "2026-11-15T18:00:00Z",
-          "status": "FINISHED",
-          "week": 10,
-          "matchday": 10,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "cle",
-            "abbr": "CLE",
-            "shortName": "Browns",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 27,
-            "away": 24
-          }
-        },
-        {
-          "id": "2026_09_HOU_LAC",
-          "utcDate": "2026-11-08T21:05:00Z",
-          "status": "FINISHED",
-          "week": 9,
-          "matchday": 9,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "lac",
-            "abbr": "LAC",
-            "shortName": "Chargers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 22,
-            "away": 44
-          }
-        },
-        {
-          "id": "2026_07_NYG_HOU",
-          "utcDate": "2026-10-25T17:00:00Z",
-          "status": "FINISHED",
-          "week": 7,
-          "matchday": 7,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "nyg",
-            "abbr": "NYG",
-            "shortName": "Giants",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 21,
-            "away": 27
-          }
-        },
-        {
-          "id": "2026_06_HOU_JAX",
-          "utcDate": "2026-10-18T13:30:00Z",
-          "status": "FINISHED",
-          "week": 6,
-          "matchday": 6,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "jax",
-            "abbr": "JAX",
-            "shortName": "Jaguars",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 31,
-            "away": 34
-          }
-        },
-        {
-          "id": "2026_05_HOU_TEN",
-          "utcDate": "2026-10-11T17:00:00Z",
-          "status": "FINISHED",
-          "week": 5,
-          "matchday": 5,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "ten",
-            "abbr": "TEN",
-            "shortName": "Titans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 26
-          }
-        }
-      ],
-      "upcomingFixtures": [
-        {
-          "id": "2026_11_IND_HOU",
-          "utcDate": "2026-11-20T01:15:00Z",
-          "status": "SCHEDULED",
-          "week": 11,
-          "matchday": 11,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "ind",
-            "abbr": "IND",
-            "shortName": "Colts",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_12_BAL_HOU",
-          "utcDate": "2026-11-29T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 12,
-          "matchday": 12,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "bal",
-            "abbr": "BAL",
-            "shortName": "Ravens",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_13_HOU_PIT",
-          "utcDate": "2026-12-07T01:20:00Z",
-          "status": "SCHEDULED",
-          "week": 13,
-          "matchday": 13,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "pit",
-            "abbr": "PIT",
-            "shortName": "Steelers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_14_HOU_WAS",
-          "utcDate": "2026-12-13T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 14,
-          "matchday": 14,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "was",
-            "abbr": "WAS",
-            "shortName": "Commanders",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png"
-          },
-          "awayTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
-          "id": "2026_15_JAX_HOU",
-          "utcDate": "2026-12-20T18:00:00Z",
-          "status": "SCHEDULED",
-          "week": 15,
-          "matchday": 15,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "jax",
-            "abbr": "JAX",
-            "shortName": "Jaguars",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        }
-      ],
-      "form": {
-        "sequence": [
-          "L",
-          "W",
-          "L",
-          "W",
-          "W"
-        ],
-        "wins": 3,
-        "ties": 0,
-        "losses": 2,
-        "pointsFor": 149,
-        "pointsAgainst": 110
-      },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "ind": {
       "team": {
@@ -5004,6 +5004,31 @@
         "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/IND.png"
       },
       "recentFixtures": [
+        {
+          "id": "2026_11_IND_HOU",
+          "utcDate": "2026-11-20T01:15:00Z",
+          "status": "FINISHED",
+          "week": 11,
+          "matchday": 11,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "hou",
+            "abbr": "HOU",
+            "shortName": "Texans",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "abbr": "IND",
+            "shortName": "Colts",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 26,
+            "away": 3
+          }
+        },
         {
           "id": "2026_10_MIA_IND",
           "utcDate": "2026-11-15T18:00:00Z",
@@ -5103,59 +5128,9 @@
             "home": 16,
             "away": 10
           }
-        },
-        {
-          "id": "2026_06_TEN_IND",
-          "utcDate": "2026-10-18T17:00:00Z",
-          "status": "FINISHED",
-          "week": 6,
-          "matchday": 6,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "ind",
-            "abbr": "IND",
-            "shortName": "Colts",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
-          },
-          "awayTeam": {
-            "id": "ten",
-            "abbr": "TEN",
-            "shortName": "Titans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 20,
-            "away": 26
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "2026_11_IND_HOU",
-          "utcDate": "2026-11-20T01:15:00Z",
-          "status": "SCHEDULED",
-          "week": 11,
-          "matchday": 11,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "hou",
-            "abbr": "HOU",
-            "shortName": "Texans",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "ind",
-            "abbr": "IND",
-            "shortName": "Colts",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "2026_12_NYG_IND",
           "utcDate": "2026-11-29T18:00:00Z",
@@ -5255,12 +5230,37 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "2026_17_IND_CLE",
+          "utcDate": "2027-01-03T18:00:00Z",
+          "status": "SCHEDULED",
+          "week": 17,
+          "matchday": 17,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "cle",
+            "abbr": "CLE",
+            "shortName": "Browns",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "abbr": "IND",
+            "shortName": "Colts",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
-          "W",
           "L",
+          "W",
           "L",
           "L",
           "L"
@@ -5268,10 +5268,10 @@
         "wins": 1,
         "ties": 0,
         "losses": 4,
-        "pointsFor": 84,
+        "pointsFor": 67,
         "pointsAgainst": 133
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "nyj": {
       "team": {
@@ -5556,7 +5556,7 @@
         "pointsFor": 101,
         "pointsAgainst": 158
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "ten": {
       "team": {
@@ -5841,7 +5841,7 @@
         "pointsFor": 112,
         "pointsAgainst": 156
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "mia": {
       "team": {
@@ -6126,7 +6126,7 @@
         "pointsFor": 102,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "lac": {
       "team": {
@@ -6411,7 +6411,7 @@
         "pointsFor": 77,
         "pointsAgainst": 133
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "sf": {
       "team": {
@@ -6696,7 +6696,7 @@
         "pointsFor": 159,
         "pointsAgainst": 132
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "det": {
       "team": {
@@ -6981,7 +6981,7 @@
         "pointsFor": 138,
         "pointsAgainst": 72
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "nyg": {
       "team": {
@@ -7266,7 +7266,7 @@
         "pointsFor": 121,
         "pointsAgainst": 117
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "car": {
       "team": {
@@ -7551,7 +7551,7 @@
         "pointsFor": 98,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "min": {
       "team": {
@@ -7836,7 +7836,7 @@
         "pointsFor": 90,
         "pointsAgainst": 75
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "chi": {
       "team": {
@@ -8121,7 +8121,7 @@
         "pointsFor": 129,
         "pointsAgainst": 119
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "gb": {
       "team": {
@@ -8406,7 +8406,7 @@
         "pointsFor": 122,
         "pointsAgainst": 109
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "la": {
       "team": {
@@ -8691,7 +8691,7 @@
         "pointsFor": 129,
         "pointsAgainst": 67
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "sea": {
       "team": {
@@ -8976,7 +8976,7 @@
         "pointsFor": 89,
         "pointsAgainst": 70
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "dal": {
       "team": {
@@ -9261,7 +9261,7 @@
         "pointsFor": 148,
         "pointsAgainst": 146
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "was": {
       "team": {
@@ -9546,7 +9546,7 @@
         "pointsFor": 108,
         "pointsAgainst": 101
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "tb": {
       "team": {
@@ -9831,7 +9831,7 @@
         "pointsFor": 126,
         "pointsAgainst": 82
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "no": {
       "team": {
@@ -10116,7 +10116,7 @@
         "pointsFor": 97,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "atl": {
       "team": {
@@ -10401,7 +10401,7 @@
         "pointsFor": 82,
         "pointsAgainst": 136
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "ari": {
       "team": {
@@ -10686,7 +10686,7 @@
         "pointsFor": 76,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     },
     "phi": {
       "team": {
@@ -10971,7 +10971,7 @@
         "pointsFor": 73,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-11-19T19:07:53.508Z"
+      "generatedAt": "2026-11-20T18:45:38.869Z"
     }
   }
 }
