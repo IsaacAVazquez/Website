@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-19T14:43:17.701Z",
+  "generatedAt": "2026-11-20T14:25:05.965Z",
   "sourceAsOf": "2026-11-16",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 36.1,
-    "disapprove": 61.3,
-    "net": -25.2
+    "approve": 36.2,
+    "disapprove": 60.7,
+    "net": -24.5
   },
   "approvalTrend": [
     {
       "date": "2025-11-15",
-      "approve": 41.7,
-      "disapprove": 55
+      "approve": 41.9,
+      "disapprove": 54.8
     },
     {
       "date": "2025-12-15",
@@ -60,8 +60,8 @@
     },
     {
       "date": "2026-11-15",
-      "approve": 36.1,
-      "disapprove": 61.3
+      "approve": 36.2,
+      "disapprove": 60.7
     }
   ],
   "approvalPolls": [
@@ -105,6 +105,19 @@
       "approve": 36,
       "disapprove": 63,
       "unsure": 1
+    },
+    {
+      "id": "appdoneme80339688",
+      "pollster": "Emerson College",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-16",
+      "sampleSize": 1000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 37.3,
+      "disapprove": 54.1,
+      "unsure": 8.6
     },
     {
       "id": "appdonmor5d540bf2",
@@ -459,20 +472,6 @@
       "approve": 38,
       "disapprove": 55,
       "unsure": 7
-    },
-    {
-      "id": "appdonj.l5a345c41",
-      "pollster": "J.L. Partners",
-      "sponsor": "Daily Mail",
-      "startDate": "2026-06-19",
-      "endDate": "2026-06-21",
-      "sampleSize": 1042,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 47,
-      "disapprove": 53,
-      "unsure": 0
     }
   ],
   "genericBallotAvg": {
