@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T18:24:47.553Z",
+  "generatedAt": "2026-11-20T02:25:53.310Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-20T04:32:55Z",
-      "dateUnix": 1795149175,
-      "dateLocal": "2026-11-20T04:32:55Z",
+      "dateUtc": "2026-11-20T06:43:59Z",
+      "dateUnix": 1795157039,
+      "dateLocal": "2026-11-20T06:43:59Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-20T04:32:55Z",
-      "dateUnix": 1795149175,
-      "dateLocal": "2026-11-20T04:32:55Z",
+      "dateUtc": "2026-11-20T06:43:59Z",
+      "dateUnix": 1795157039,
+      "dateLocal": "2026-11-20T06:43:59Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-19T18:24:43.095Z"
+    "generatedAt": "2026-11-20T02:25:48.161Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-20T04:32:55Z",
-      "dateUnix": 1795149175,
-      "dateLocal": "2026-11-20T04:32:55Z",
+      "dateUtc": "2026-11-20T06:43:59Z",
+      "dateUnix": 1795157039,
+      "dateLocal": "2026-11-20T06:43:59Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-20T04:32:55Z",
-      "dateUnix": 1795149175,
-      "dateLocal": "2026-11-20T04:32:55Z",
+      "dateUtc": "2026-11-20T06:43:59Z",
+      "dateUnix": 1795157039,
+      "dateLocal": "2026-11-20T06:43:59Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2924,6 +2924,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-19T18:24:47.224Z"
+    "generatedAt": "2026-11-20T02:25:53.026Z"
   }
 }
