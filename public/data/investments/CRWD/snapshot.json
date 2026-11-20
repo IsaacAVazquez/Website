@@ -1,8 +1,8 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.0357,
-      "ttmPe": 6150.7,
-      "marketCap": 224815885100,
-      "psRatio": 41.66,
-      "pbRatio": 44.07,
-      "pegRatio": 57.34
+      "ttmPe": 6639.5,
+      "marketCap": 242681980350,
+      "psRatio": 44.97,
+      "pbRatio": 47.57,
+      "pegRatio": 61.9
     },
     "profitability": {
       "roe": 0.11,
@@ -5980,15 +5980,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.149999999999999,
-      "costOfEquity": 14.2,
+      "wacc": 13.98,
+      "costOfEquity": 14.030000000000001,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.1716,
-      "marketCap": 224815885100
+      "beta": 1.1485,
+      "marketCap": 242681980350
     },
     "beta": {
-      "beta5y": 1.1716
+      "beta5y": 1.1485
     },
     "price": [
       {
@@ -8005,7 +8005,7 @@
         "high": 240.18,
         "low": 218.509,
         "close": 237.03,
-        "volume": 11941300
+        "volume": 12055800
       }
     ],
     "news": [
@@ -8066,19 +8066,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
-        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef528610-24d6-3366-b150-fe969e479439",
         "title": "3 Top Cybersecurity Stocks to Buy in May",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
         "type": "STORY"
       },
       {
@@ -8148,43 +8148,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 6150.7,
-        "industryAvg": 29.73
+        "value": 6639.5,
+        "industryAvg": 25.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 41.66,
-        "industryAvg": 6.93
+        "value": 44.97,
+        "industryAvg": 9.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 44.07,
-        "industryAvg": 7.57
+        "value": 47.57,
+        "industryAvg": 7.22
       },
       {
         "metric": "ROE",
         "value": 0.11,
-        "industryAvg": 25.740000000000002
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": 0.05,
-        "industryAvg": 10.12
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 74.57000000000001,
-        "industryAvg": 51.04
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 7.16,
-        "industryAvg": 36.69
+        "industryAvg": 37.11
       },
       {
         "metric": "Net Margin",
         "value": 0.36,
-        "industryAvg": 20.26
+        "industryAvg": 20.51
       }
     ]
   }

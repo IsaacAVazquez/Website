@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.35,
-      "marketCap": 69488817160,
-      "psRatio": 2.26,
-      "pbRatio": 3.1,
+      "ttmPe": 9.31,
+      "marketCap": 69133375640,
+      "psRatio": 2.25,
+      "pbRatio": 3.08,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -6703,25 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.26,
-      "costOfEquity": 11.28,
+      "wacc": 9.16,
+      "costOfEquity": 11.17,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.7948,
-      "marketCap": 69488817160
+      "beta": 0.7831,
+      "marketCap": 69133375640
     },
     "beta": {
-      "beta5y": 0.7948
+      "beta5y": 0.7831
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 201.1851,
-        "high": 203.2931,
-        "low": 199.8637,
-        "close": 200.7866,
-        "volume": 5790129
-      },
       {
         "date": "2025-11-19",
         "open": 199.979,
@@ -8729,23 +8721,31 @@
         "low": 217.27,
         "close": 222.7,
         "volume": 3833200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 223.41,
+        "high": 223.5,
+        "low": 215.88,
+        "close": 217.84,
+        "volume": 2354000
       }
     ],
     "news": [
-      {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
       {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8757,14 +8757,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
-        "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-meta-platforms-203100625.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
         "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
         "publisher": "Zacks",
@@ -8773,19 +8765,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
+        "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-meta-platforms-203100625.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "7b2aab77-8e32-39c7-b91d-6b2f07956332",
         "title": "Honeywell Divests PPE Business, Set to Acquire Catalyst Technologies Unit",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/honeywell-divests-ppe-business-set-143200166.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
-        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
-        "publisher": "Investopedia",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
         "type": "STORY"
       },
       {
@@ -8805,11 +8797,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
-        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
-        "publisher": "MT Newswires",
+        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
+        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
+        "publisher": "Investopedia",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
+        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
+        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
         "type": "STORY"
       }
     ],
@@ -8874,43 +8874,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.35,
-        "industryAvg": 19.49
+        "value": 9.31,
+        "industryAvg": 20.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.26,
-        "industryAvg": 1.54
+        "value": 2.25,
+        "industryAvg": 1.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.1,
-        "industryAvg": 2.5
+        "value": 3.08,
+        "industryAvg": 3.03
       },
       {
         "metric": "ROE",
         "value": 3.2399999999999998,
-        "industryAvg": -9.68
+        "industryAvg": -7.79
       },
       {
         "metric": "ROA",
         "value": 1.02,
-        "industryAvg": -3.0700000000000003
+        "industryAvg": -2.58
       },
       {
         "metric": "Gross Margin",
         "value": 40.410000000000004,
-        "industryAvg": 27.800000000000004
+        "industryAvg": 26.43
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.189999999999998,
-        "industryAvg": 23.200000000000003
+        "industryAvg": 21.65
       },
       {
         "metric": "Net Margin",
         "value": 13.3,
-        "industryAvg": -6.3100000000000005
+        "industryAvg": -4.9799999999999995
       }
     ]
   }

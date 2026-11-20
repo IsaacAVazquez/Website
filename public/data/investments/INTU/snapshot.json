@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 19.44,
-      "marketCap": 86094903360,
-      "psRatio": 4.01,
-      "pbRatio": 4.53,
+      "ttmPe": 18.79,
+      "marketCap": 83204407680,
+      "psRatio": 3.88,
+      "pbRatio": 4.38,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,25 +6595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.15,
-      "costOfEquity": 12.19,
+      "wacc": 11.18,
+      "costOfEquity": 12.26,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9128,
-      "marketCap": 86094903360
+      "beta": 0.9216,
+      "marketCap": 83204407680
     },
     "beta": {
-      "beta5y": 0.9128
+      "beta5y": 0.9216
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 655.8,
-        "high": 662,
-        "low": 644.15,
-        "close": 649.73,
-        "volume": 2437200
-      },
       {
         "date": "2025-11-19",
         "open": 648.58,
@@ -8621,6 +8613,14 @@
         "low": 311.29,
         "close": 313.24,
         "volume": 2412600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 311.51,
+        "high": 318.08,
+        "low": 302.59,
+        "close": 310.02,
+        "volume": 4401800
       }
     ],
     "news": [
@@ -8657,6 +8657,22 @@
         "type": "STORY"
       },
       {
+        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
+        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
         "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
         "publisher": "Yahoo Finance Video",
@@ -8670,22 +8686,6 @@
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
-        "title": "Morning Movers: Apple slips following President Trump tariff threat",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
-        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
         "type": "STORY"
       },
       {
@@ -8771,43 +8771,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.44,
-        "industryAvg": 26.91
+        "value": 18.79,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.01,
-        "industryAvg": 4.62
+        "value": 3.88,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.53,
-        "industryAvg": 4.94
+        "value": 4.38,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 1.83,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 0.95,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 78.11,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.02,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 8.34,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

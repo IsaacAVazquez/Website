@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 45.7228,
-      "ttmPe": 32.08,
-      "marketCap": 68781206824,
-      "psRatio": 3.55,
-      "pbRatio": 15.84,
-      "pegRatio": 0.31
+      "ttmPe": 31.14,
+      "marketCap": 66761319172,
+      "psRatio": 3.45,
+      "pbRatio": 15.38,
+      "pegRatio": 0.3
     },
     "profitability": {
       "roe": 13.86,
@@ -5319,25 +5319,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.68,
-      "costOfEquity": 12.18,
+      "wacc": 11.58,
+      "costOfEquity": 12.09,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 24,
-      "beta": 0.9111,
-      "marketCap": 68781206824
+      "beta": 0.9001,
+      "marketCap": 66761319172
     },
     "beta": {
-      "beta5y": 0.9111
+      "beta5y": 0.9001
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 921.95,
-        "high": 928,
-        "low": 912.74,
-        "close": 918.18,
-        "volume": 271600
-      },
       {
         "date": "2025-11-19",
         "open": 917.95,
@@ -7345,6 +7337,14 @@
         "low": 1445.21,
         "close": 1448.12,
         "volume": 335500
+      },
+      {
+        "date": "2026-11-19",
+        "open": 1446.28,
+        "high": 1451.99,
+        "low": 1412.88,
+        "close": 1423.88,
+        "volume": 376400
       }
     ],
     "news": [
@@ -7365,19 +7365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
-        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
         "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
+        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
         "type": "STORY"
       },
       {
@@ -7389,19 +7389,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
-        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
         "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
+        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
         "type": "STORY"
       },
       {
@@ -7497,18 +7497,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.08,
-        "industryAvg": 27.18
+        "value": 31.14,
+        "industryAvg": 27.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.55,
-        "industryAvg": 1.72
+        "value": 3.45,
+        "industryAvg": 1.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.84,
-        "industryAvg": 4.92
+        "value": 15.38,
+        "industryAvg": 6.75
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Home Improvement Retail",
       "sector": "Consumer Cyclical",
       "longBusinessSummary": "Lowe's Companies, Inc., together with its subsidiaries, operates as a home improvement retailer in the United States and Canada. It provides a line of products for construction, maintenance, repair, remodeling, and decorating. The company also offers home improvement products, such as appliances, seasonal and outdoor living, lumber, lawn and garden, kitchens and bath, hardware, building materials, millwork, paint, rough plumbing, tools, electrical, flooring, and décor. In addition, it provides installation services through independent contractors in various product categories; and extended protection plans and repair services. Further, the company provides design, distribution, and installation services for interior surface finishes to home builders and property managers. It sells its national brand-name merchandise and private brand products to professional customers, individual homeowners, and renters. The company serves its products through Lowes.com website, mobile applications, retail home improvement stores and outlet stores, and its branches. Lowe's Companies, Inc. was founded in 1921 and is based in Mooresville, North Carolina.",
-      "fullTimeEmployees": 300000,
+      "fullTimeEmployees": 167000,
       "website": "https://corporate.lowes.com",
       "shortName": "Lowe's Companies, Inc.",
       "longName": "Lowe's Companies, Inc."
     },
     "fundamentals": {
-      "ttmEps": 11.8254,
-      "ttmPe": 18.64,
-      "marketCap": 123678060000,
-      "psRatio": 1.37,
-      "pbRatio": -16.63,
-      "pegRatio": 466
+      "ttmEps": 11.9268,
+      "ttmPe": 18.37,
+      "marketCap": 122937540000,
+      "psRatio": 1.36,
+      "pbRatio": -16.53,
+      "pegRatio": 5.22
     },
     "profitability": {
       "roe": -28.63,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 0.04
+        "yoyGrowth": 3.52
       }
     ],
     "income_statement": {
@@ -5816,25 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.469999999999999,
-      "costOfEquity": 11.110000000000001,
+      "wacc": 8.33,
+      "costOfEquity": 10.94,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.7736,
-      "marketCap": 123678060000
+      "beta": 0.7531,
+      "marketCap": 122937540000
     },
     "beta": {
-      "beta5y": 0.7736
+      "beta5y": 0.7531
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 219.05,
-        "high": 223.72,
-        "low": 218.8,
-        "close": 219.57,
-        "volume": 6260400
-      },
       {
         "date": "2025-11-19",
         "open": 230.01,
@@ -7842,6 +7834,14 @@
         "low": 211,
         "close": 222.78,
         "volume": 5326400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 220.42,
+        "high": 221.46,
+        "low": 217.63,
+        "close": 219.14,
+        "volume": 3287400
       }
     ],
     "news": [
@@ -7886,14 +7886,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
-        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
         "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
         "publisher": "CNW Group",
@@ -7902,12 +7894,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
-        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
-        "type": "STORY"
+        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
+        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
@@ -7916,6 +7908,14 @@
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
+        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
+        "type": "STORY"
       },
       {
         "uuid": "aff55959-70ca-319c-bee0-b6838ba8d029",
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.64,
-        "industryAvg": 22.12
+        "value": 18.37,
+        "industryAvg": 22
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.37,
-        "industryAvg": 1.75
+        "value": 1.36,
+        "industryAvg": 1.76
       },
       {
         "metric": "P/B Ratio",
-        "value": -16.63,
-        "industryAvg": 17.31
+        "value": -16.53,
+        "industryAvg": 19.46
       },
       {
         "metric": "ROE",

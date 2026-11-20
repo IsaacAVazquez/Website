@@ -1,8 +1,8 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7236,
-      "ttmPe": 50.06,
-      "marketCap": 235112904000,
-      "psRatio": 19.77,
-      "pbRatio": 14.3,
-      "pegRatio": 0.61
+      "ttmPe": 52.08,
+      "marketCap": 244597128000,
+      "psRatio": 20.57,
+      "pbRatio": 14.87,
+      "pegRatio": 0.63
     },
     "profitability": {
       "roe": 9.99,
@@ -5487,7 +5487,7 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.568
+      "beta5y": 1.5475
     },
     "price": [
       {
@@ -7504,7 +7504,7 @@
         "high": 195.23,
         "low": 182.425,
         "close": 193.94,
-        "volume": 7244500
+        "volume": 7260800
       }
     ],
     "news": [
@@ -7648,23 +7648,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 50.06,
-        "industryAvg": 15.06
+        "value": 52.08,
+        "industryAvg": 7.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.77,
-        "industryAvg": 2.32
+        "value": 20.57,
+        "industryAvg": 1.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.3,
-        "industryAvg": 5.7
+        "value": 14.87,
+        "industryAvg": 3.46
       },
       {
         "metric": "ROE",
         "value": 9.99,
-        "industryAvg": 55.059999999999995
+        "industryAvg": 55.03
       },
       {
         "metric": "ROA",
@@ -7684,7 +7684,7 @@
       {
         "metric": "Net Margin",
         "value": 42.66,
-        "industryAvg": 13.88
+        "industryAvg": 13.87
       }
     ]
   }

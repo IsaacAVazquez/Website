@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.9198,
-      "ttmPe": 11.72,
-      "marketCap": 190379850000,
-      "psRatio": 1.37,
-      "pbRatio": 1.8,
-      "pegRatio": 1.72
+      "ttmPe": 11.67,
+      "marketCap": 189592300000,
+      "psRatio": 1.36,
+      "pbRatio": 1.79,
+      "pegRatio": 1.71
     },
     "profitability": {
       "roe": 4.95,
@@ -4447,25 +4447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.94,
-      "costOfEquity": 7.06,
+      "wacc": 3.8899999999999997,
+      "costOfEquity": 6.959999999999999,
       "costOfDebt": 1.03,
       "taxRate": 22,
-      "beta": 0.2526,
-      "marketCap": 190379850000
+      "beta": 0.2455,
+      "marketCap": 189592300000
     },
     "beta": {
-      "beta5y": 0.2526
+      "beta5y": 0.2455
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 41.03,
-        "high": 41.5,
-        "low": 40.99,
-        "close": 41.48,
-        "volume": 24067500
-      },
       {
         "date": "2025-11-19",
         "open": 41.5,
@@ -6472,7 +6464,15 @@
         "high": 46.24,
         "low": 45.16,
         "close": 46.13,
-        "volume": 17325800
+        "volume": 17357000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 45.93,
+        "high": 45.99,
+        "low": 45.08,
+        "close": 45.74,
+        "volume": 18118500
       }
     ],
     "news": [
@@ -6525,6 +6525,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
         "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
         "publisher": "GuruFocus.com",
@@ -6538,14 +6546,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-communications-212400011.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
         "type": "STORY"
       },
       {
@@ -6618,23 +6618,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.72,
-        "industryAvg": 12.69
+        "value": 11.67,
+        "industryAvg": 12.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.37,
-        "industryAvg": 1.12
+        "value": 1.36,
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.8,
-        "industryAvg": 1.56
+        "value": 1.79,
+        "industryAvg": 1.48
       },
       {
         "metric": "ROE",
         "value": 4.95,
-        "industryAvg": 8.14
+        "industryAvg": 8.16
       },
       {
         "metric": "ROA",
@@ -6649,12 +6649,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 40.400000000000006,
-        "industryAvg": 33.43
+        "industryAvg": 33.44
       },
       {
         "metric": "Net Margin",
         "value": 15.15,
-        "industryAvg": 5.609999999999999
+        "industryAvg": 5.62
       }
     ]
   }

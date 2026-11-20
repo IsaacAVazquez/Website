@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0536,
-      "ttmPe": 23.84,
-      "marketCap": 72250200000,
-      "psRatio": 1.96,
-      "pbRatio": 2.77,
+      "ttmPe": 23.32,
+      "marketCap": 70700400000,
+      "psRatio": 1.92,
+      "pbRatio": 2.71,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -6210,25 +6210,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.89,
-      "costOfEquity": 11.5,
+      "wacc": 9.94,
+      "costOfEquity": 11.59,
       "costOfDebt": 1.04,
       "taxRate": 23,
-      "beta": 0.8236,
-      "marketCap": 72250200000
+      "beta": 0.8371,
+      "marketCap": 70700400000
     },
     "beta": {
-      "beta5y": 0.8236
+      "beta5y": 0.8371
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 35.43,
-        "high": 36.23,
-        "low": 35.28,
-        "close": 36.04,
-        "volume": 15306200
-      },
       {
         "date": "2025-11-19",
         "open": 35.38,
@@ -8236,6 +8228,14 @@
         "low": 48.12,
         "close": 48.41,
         "volume": 9264700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 49.15,
+        "high": 49.25,
+        "low": 47.71,
+        "close": 47.9,
+        "volume": 9829500
       }
     ],
     "news": [
@@ -8256,19 +8256,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
-        "title": "Why Schlumberger Stock Slumped on Friday",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-26",
-        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d7aa2e46-6844-32d4-9e99-1b31a3887eed",
         "title": "Schlumberger Ltd (SLB) Q1 2025 Earnings Call Highlights: Navigating Challenges with Digital ...",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-04-26",
         "link": "https://finance.yahoo.com/news/schlumberger-ltd-slb-q1-2025-070452790.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
+        "title": "Why Schlumberger Stock Slumped on Friday",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-26",
+        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
         "type": "STORY"
       },
       {
@@ -8296,14 +8296,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "be800160-5d84-3d8c-b742-3828d7bd8bd7",
-        "title": "Is Schlumberger Limited (SLB) the Best Falling Stock to Buy According to Analysts?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-best-falling-220831710.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
         "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
         "publisher": "Insider Monkey",
@@ -8317,6 +8309,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "be800160-5d84-3d8c-b742-3828d7bd8bd7",
+        "title": "Is Schlumberger Limited (SLB) the Best Falling Stock to Buy According to Analysts?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-best-falling-220831710.html",
         "type": "STORY"
       }
     ],
@@ -8386,43 +8386,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.84,
-        "industryAvg": 18.67
+        "value": 23.32,
+        "industryAvg": 17.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.96,
-        "industryAvg": 1.61
+        "value": 1.92,
+        "industryAvg": 1.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.77,
-        "industryAvg": 2.33
+        "value": 2.71,
+        "industryAvg": 2.38
       },
       {
         "metric": "ROE",
         "value": 2.82,
-        "industryAvg": 11.59
+        "industryAvg": 11.63
       },
       {
         "metric": "ROA",
         "value": 1.32,
-        "industryAvg": 5.28
+        "industryAvg": 5.27
       },
       {
         "metric": "Gross Margin",
         "value": 16.57,
-        "industryAvg": 22.06
+        "industryAvg": 22.09
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.580000000000002,
-        "industryAvg": 19.28
+        "industryAvg": 19.31
       },
       {
         "metric": "Net Margin",
         "value": 7.779999999999999,
-        "industryAvg": 8.18
+        "industryAvg": 8.21
       }
     ]
   }

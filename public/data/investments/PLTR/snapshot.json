@@ -1,8 +1,8 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.4267,
-      "ttmPe": 109.74,
-      "marketCap": 377176993680,
-      "psRatio": 51.75,
-      "pbRatio": 33.59,
+      "ttmPe": 109.81,
+      "marketCap": 377442000510,
+      "psRatio": 51.79,
+      "pbRatio": 33.62,
       "pegRatio": 0.8
     },
     "profitability": {
@@ -5301,15 +5301,15 @@
       ]
     },
     "wacc": {
-      "wacc": 17.91,
-      "costOfEquity": 17.919999999999998,
+      "wacc": 17.94,
+      "costOfEquity": 17.95,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.65,
-      "marketCap": 377176993680
+      "beta": 1.6514,
+      "marketCap": 377442000510
     },
     "beta": {
-      "beta5y": 1.65
+      "beta5y": 1.6514
     },
     "price": [
       {
@@ -7326,16 +7326,16 @@
         "high": 158.44,
         "low": 153.5,
         "close": 156.67,
-        "volume": 14790500
+        "volume": 14922400
       }
     ],
     "news": [
       {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
+        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+        "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
         "type": "STORY"
       },
       {
@@ -7347,11 +7347,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
-        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
-        "publisher": "MT Newswires",
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7479,43 +7479,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 109.74,
-        "industryAvg": 29.73
+        "value": 109.81,
+        "industryAvg": 25.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 51.75,
-        "industryAvg": 6.93
+        "value": 51.79,
+        "industryAvg": 9.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 33.59,
-        "industryAvg": 7.57
+        "value": 33.62,
+        "industryAvg": 7.22
       },
       {
         "metric": "ROE",
         "value": 10.74,
-        "industryAvg": 25.740000000000002
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": 8.99,
-        "industryAvg": 10.12
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 83.43,
-        "industryAvg": 51.04
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.199999999999996,
-        "industryAvg": 36.69
+        "industryAvg": 37.11
       },
       {
         "metric": "Net Margin",
         "value": 48.76,
-        "industryAvg": 20.26
+        "industryAvg": 20.51
       }
     ]
   }

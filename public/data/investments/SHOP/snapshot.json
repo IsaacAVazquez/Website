@@ -1,8 +1,8 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6391,
-      "ttmPe": 86.57,
-      "marketCap": 182537733510,
-      "psRatio": 12.88,
-      "pbRatio": 14.32,
-      "pegRatio": 1.11
+      "ttmPe": 85.06,
+      "marketCap": 179347503918,
+      "psRatio": 12.66,
+      "pbRatio": 14.07,
+      "pegRatio": 1.09
     },
     "profitability": {
       "roe": 3.63,
@@ -6031,15 +6031,15 @@
       ]
     },
     "wacc": {
-      "wacc": 25.47,
-      "costOfEquity": 25.64,
+      "wacc": 25.540000000000003,
+      "costOfEquity": 25.71,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6436,
-      "marketCap": 182537733510
+      "beta": 2.6466,
+      "marketCap": 179347503918
     },
     "beta": {
-      "beta5y": 2.6436
+      "beta5y": 2.6466
     },
     "price": [
       {
@@ -8077,19 +8077,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
-        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
         "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
         "type": "STORY"
       },
       {
@@ -8201,43 +8201,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 86.57,
-        "industryAvg": 26.91
+        "value": 85.06,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.88,
-        "industryAvg": 4.62
+        "value": 12.66,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.32,
-        "industryAvg": 4.94
+        "value": 14.07,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 3.63,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 3.17,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 47.589999999999996,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 18.57,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 12.35,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

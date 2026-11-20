@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 13.14,
-      "marketCap": 92100050000,
-      "psRatio": 3.55,
-      "pbRatio": 7.83,
-      "pegRatio": 1.24
+      "ttmPe": 12.37,
+      "marketCap": 86676880000,
+      "psRatio": 3.34,
+      "pbRatio": 7.37,
+      "pegRatio": 1.17
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -6060,25 +6060,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.77,
-      "costOfEquity": 15.8,
+      "wacc": 14.81,
+      "costOfEquity": 15.909999999999998,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.377,
-      "marketCap": 92100050000
+      "beta": 1.3883,
+      "marketCap": 86676880000
     },
     "beta": {
-      "beta5y": 1.377
+      "beta5y": 1.3883
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 323.78,
-        "high": 326.64,
-        "low": 320.8,
-        "close": 324.47,
-        "volume": 3286400
-      },
       {
         "date": "2025-11-19",
         "open": 323.18,
@@ -8086,6 +8078,14 @@
         "low": 225.06,
         "close": 226.2,
         "volume": 4037300
+      },
+      {
+        "date": "2026-11-19",
+        "open": 225.9,
+        "high": 229.65,
+        "low": 219.8,
+        "close": 221.68,
+        "volume": 3563900
       }
     ],
     "news": [
@@ -8138,14 +8138,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
-        "title": "2 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
         "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
         "publisher": "Motley Fool",
@@ -8159,6 +8151,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
+        "title": "2 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -8232,43 +8232,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.14,
-        "industryAvg": 26.91
+        "value": 12.37,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.55,
-        "industryAvg": 4.62
+        "value": 3.34,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.83,
-        "industryAvg": 4.94
+        "value": 7.37,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 15.690000000000001,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 6.1,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 88.71,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.019999999999996,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 27.029999999999998,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

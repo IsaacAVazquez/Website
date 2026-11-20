@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.0061,
-      "ttmPe": 33.69,
-      "marketCap": 130967235000,
-      "psRatio": 4.09,
-      "pbRatio": 6.24,
-      "pegRatio": 4.9
+      "ttmPe": 33.04,
+      "marketCap": 128426445000,
+      "psRatio": 4.02,
+      "pbRatio": 6.12,
+      "pegRatio": 4.81
     },
     "profitability": {
       "roe": 5.2299999999999995,
@@ -5430,25 +5430,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.18,
-      "costOfEquity": 14.000000000000002,
+      "wacc": 12.2,
+      "costOfEquity": 14.06,
       "costOfDebt": 0.95,
       "taxRate": 21,
-      "beta": 1.1451,
-      "marketCap": 130967235000
+      "beta": 1.1519,
+      "marketCap": 128426445000
     },
     "beta": {
-      "beta5y": 1.1451
+      "beta5y": 1.1519
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 340.33,
-        "high": 343,
-        "low": 335.1,
-        "close": 338.29,
-        "volume": 3158100
-      },
       {
         "date": "2025-11-19",
         "open": 339.97,
@@ -7456,6 +7448,14 @@
         "low": 332.42,
         "close": 338.34,
         "volume": 2565200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 344.24,
+        "high": 347.2,
+        "low": 329.96,
+        "close": 330.57,
+        "volume": 3302300
       }
     ],
     "news": [
@@ -7476,19 +7476,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
-        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
         "title": "Eaton: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/eaton-q1-earnings-snapshot-103722378.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
+        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
         "type": "STORY"
       },
       {
@@ -7601,23 +7601,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.69,
-        "industryAvg": 25.92
+        "value": 33.04,
+        "industryAvg": 27.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.09,
-        "industryAvg": 3.14
+        "value": 4.02,
+        "industryAvg": 3.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.24,
-        "industryAvg": 5.66
+        "value": 6.12,
+        "industryAvg": 5.25
       },
       {
         "metric": "ROE",
         "value": 5.2299999999999995,
-        "industryAvg": 19.85
+        "industryAvg": 19.86
       },
       {
         "metric": "ROA",
@@ -7627,12 +7627,12 @@
       {
         "metric": "Gross Margin",
         "value": 34.699999999999996,
-        "industryAvg": 29.37
+        "industryAvg": 29.360000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 22.71,
-        "industryAvg": 16.71
+        "industryAvg": 16.7
       },
       {
         "metric": "Net Margin",

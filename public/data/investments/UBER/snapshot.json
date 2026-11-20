@@ -1,8 +1,8 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 1.6864,
-      "ttmPe": 40.8,
-      "marketCap": 140323200850,
+      "ttmPe": 40.77,
+      "marketCap": 140221236600,
       "psRatio": 2.48,
       "pbRatio": 5.07,
       "pegRatio": 0.18
@@ -6507,15 +6507,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.33,
-      "costOfEquity": 14.940000000000001,
+      "wacc": 13.309999999999999,
+      "costOfEquity": 14.92,
       "costOfDebt": 0.86,
       "taxRate": 28.999999999999996,
-      "beta": 1.2663,
-      "marketCap": 140323200850
+      "beta": 1.2631,
+      "marketCap": 140221236600
     },
     "beta": {
-      "beta5y": 1.2663
+      "beta5y": 1.2631
     },
     "price": [
       {
@@ -8532,7 +8532,7 @@
         "high": 70.115,
         "low": 68.02,
         "close": 68.76,
-        "volume": 12235800
+        "volume": 12254200
       }
     ],
     "news": [
@@ -8683,43 +8683,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.8,
-        "industryAvg": 26.91
+        "value": 40.77,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
         "value": 2.48,
-        "industryAvg": 4.62
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
         "value": 5.07,
-        "industryAvg": 4.94
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 1.8599999999999999,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 0.75,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 43.46,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 8.3,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 3.47,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

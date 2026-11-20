@@ -1,8 +1,8 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 603.49,
-      "marketCap": 252071350000,
-      "psRatio": 21.96,
-      "pbRatio": 9.17,
+      "ttmPe": 663.26,
+      "marketCap": 277034800000,
+      "psRatio": 24.13,
+      "pbRatio": 10.08,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,15 +5904,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.839999999999998,
-      "costOfEquity": 12.97,
+      "wacc": 12.65,
+      "costOfEquity": 12.76,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 1.0127,
-      "marketCap": 252071350000
+      "beta": 0.9856,
+      "marketCap": 277034800000
     },
     "beta": {
-      "beta5y": 1.0127
+      "beta5y": 0.9856
     },
     "price": [
       {
@@ -7929,7 +7929,7 @@
         "high": 342.36,
         "low": 311.63,
         "close": 339.92,
-        "volume": 16971000
+        "volume": 17234500
       }
     ],
     "news": [
@@ -7998,19 +7998,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
-        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
         "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
+        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
         "type": "STORY"
       }
     ],
@@ -8075,43 +8075,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 603.49,
-        "industryAvg": 29.73
+        "value": 663.26,
+        "industryAvg": 25.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 21.96,
-        "industryAvg": 6.93
+        "value": 24.13,
+        "industryAvg": 9.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.17,
-        "industryAvg": 7.57
+        "value": 10.08,
+        "industryAvg": 7.22
       },
       {
         "metric": "ROE",
         "value": -1.02,
-        "industryAvg": 25.740000000000002
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": -0.6,
-        "industryAvg": 10.12
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 67.57,
-        "industryAvg": 51.04
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 2.11,
-        "industryAvg": 36.69
+        "industryAvg": 37.11
       },
       {
         "metric": "Net Margin",
         "value": -8.27,
-        "industryAvg": 20.26
+        "industryAvg": 20.51
       }
     ]
   }

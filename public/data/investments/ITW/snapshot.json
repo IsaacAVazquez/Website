@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.2185,
-      "ttmPe": 25.11,
-      "marketCap": 80219616000,
-      "psRatio": 4.82,
-      "pbRatio": 25.54,
-      "pegRatio": 3.81
+      "ttmPe": 24.68,
+      "marketCap": 78858272000,
+      "psRatio": 4.74,
+      "pbRatio": 25.11,
+      "pegRatio": 3.75
     },
     "profitability": {
       "roe": 28.33,
@@ -6330,25 +6330,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.020000000000001,
-      "costOfEquity": 12.23,
+      "wacc": 10.94,
+      "costOfEquity": 12.16,
       "costOfDebt": 0.89,
       "taxRate": 24,
-      "beta": 0.9178,
-      "marketCap": 80219616000
+      "beta": 0.9087,
+      "marketCap": 78858272000
     },
     "beta": {
-      "beta5y": 0.9178
+      "beta5y": 0.9087
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 240.94,
-        "high": 243.49,
-        "low": 238.82,
-        "close": 241.93,
-        "volume": 1365700
-      },
       {
         "date": "2025-11-19",
         "open": 241.73,
@@ -8356,6 +8348,14 @@
         "low": 279,
         "close": 282.29,
         "volume": 965000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 281.37,
+        "high": 282.73,
+        "low": 275.07,
+        "close": 276.89,
+        "volume": 1059300
       }
     ],
     "news": [
@@ -8424,11 +8424,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
-        "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
-        "publisher": "Zacks",
+        "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
+        "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
+        "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
         "type": "STORY"
       },
       {
@@ -8508,23 +8508,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.11,
-        "industryAvg": 25.92
+        "value": 24.68,
+        "industryAvg": 27.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.82,
-        "industryAvg": 3.14
+        "value": 4.74,
+        "industryAvg": 3.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.54,
-        "industryAvg": 5.66
+        "value": 25.11,
+        "industryAvg": 5.25
       },
       {
         "metric": "ROE",
         "value": 28.33,
-        "industryAvg": 19.85
+        "industryAvg": 19.86
       },
       {
         "metric": "ROA",
@@ -8534,12 +8534,12 @@
       {
         "metric": "Gross Margin",
         "value": 45.09,
-        "industryAvg": 29.37
+        "industryAvg": 29.360000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.019999999999996,
-        "industryAvg": 16.71
+        "industryAvg": 16.7
       },
       {
         "metric": "Net Margin",

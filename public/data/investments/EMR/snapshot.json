@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7791,
-      "ttmPe": 33.3,
-      "marketCap": 88773870000,
-      "psRatio": 4.68,
-      "pbRatio": 4.28,
-      "pegRatio": 1.85
+      "ttmPe": 32.98,
+      "marketCap": 87909280000,
+      "psRatio": 4.63,
+      "pbRatio": 4.24,
+      "pegRatio": 1.83
     },
     "profitability": {
       "roe": 3.65,
@@ -6487,25 +6487,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.629999999999999,
-      "costOfEquity": 14.37,
+      "wacc": 12.559999999999999,
+      "costOfEquity": 14.31,
       "costOfDebt": 0.8,
       "taxRate": 25,
-      "beta": 1.1928,
-      "marketCap": 88773870000
+      "beta": 1.1845,
+      "marketCap": 87909280000
     },
     "beta": {
-      "beta5y": 1.1928
+      "beta5y": 1.1845
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 126.16,
-        "high": 127.84,
-        "low": 125.83,
-        "close": 126.75,
-        "volume": 2235800
-      },
       {
         "date": "2025-11-19",
         "open": 126.66,
@@ -8513,6 +8505,14 @@
         "low": 157.8,
         "close": 162,
         "volume": 2902900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 163.5,
+        "high": 164,
+        "low": 157.25,
+        "close": 157.6,
+        "volume": 2480700
       }
     ],
     "news": [
@@ -8557,19 +8557,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
-        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "651066b8-616a-357d-aeaa-f617312eff1b",
         "title": "RBC Raises Price Target on Emerson Electric to $145 From $124, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/rbc-raises-price-target-emerson-111804220.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
+        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
         "type": "STORY"
       },
       {
@@ -8589,11 +8589,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "56b05011-a182-3513-8c8f-bee1946466a1",
-        "title": "3 Large-Cap Stocks in Hot Water",
+        "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
+        "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/3-large-cap-stocks-hot-043310857.html",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
         "type": "STORY"
       }
     ],
@@ -8663,23 +8663,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.3,
-        "industryAvg": 25.92
+        "value": 32.98,
+        "industryAvg": 27.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.68,
-        "industryAvg": 3.14
+        "value": 4.63,
+        "industryAvg": 3.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.28,
-        "industryAvg": 5.66
+        "value": 4.24,
+        "industryAvg": 5.25
       },
       {
         "metric": "ROE",
         "value": 3.65,
-        "industryAvg": 19.85
+        "industryAvg": 19.86
       },
       {
         "metric": "ROA",
@@ -8689,12 +8689,12 @@
       {
         "metric": "Gross Margin",
         "value": 52.68000000000001,
-        "industryAvg": 29.37
+        "industryAvg": 29.360000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.48,
-        "industryAvg": 16.71
+        "industryAvg": 16.7
       },
       {
         "metric": "Net Margin",

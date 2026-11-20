@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 33.37,
-      "marketCap": 64740660840,
-      "psRatio": 6.13,
-      "pbRatio": -6.47,
-      "pegRatio": 1.01
+      "ttmPe": 32.59,
+      "marketCap": 63237031430,
+      "psRatio": 5.99,
+      "pbRatio": -6.32,
+      "pegRatio": 0.98
     },
     "profitability": {
       "roe": -5.94,
@@ -6471,25 +6471,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.39,
-      "costOfEquity": 12.27,
+      "wacc": 8.290000000000001,
+      "costOfEquity": 12.21,
       "costOfDebt": 1.54,
       "taxRate": 25,
-      "beta": 0.9234,
-      "marketCap": 64740660840
+      "beta": 0.9152,
+      "marketCap": 63237031430
     },
     "beta": {
-      "beta5y": 0.9234
+      "beta5y": 0.9152
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 1345.0601,
-        "high": 1365.6899,
-        "low": 1338.21,
-        "close": 1351.0601,
-        "volume": 388200
-      },
       {
         "date": "2025-11-19",
         "open": 1343.26,
@@ -8497,6 +8489,14 @@
         "low": 1170.65,
         "close": 1177.4399,
         "volume": 322700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 1178.48,
+        "high": 1181.52,
+        "low": 1155.91,
+        "close": 1158.65,
+        "volume": 337500
       }
     ],
     "news": [
@@ -8509,19 +8509,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
-        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eb4ff7d6-48e9-3d51-9a5c-b34eb59b0dd2",
         "title": "TransDigm Group and Servotronics, Inc. Announce Acquisition Agreement",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/transdigm-group-servotronics-inc-announce-123000757.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
+        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
         "type": "STORY"
       },
       {
@@ -8640,23 +8640,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.37,
-        "industryAvg": 32.01
+        "value": 32.59,
+        "industryAvg": 30.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.13,
-        "industryAvg": 5.57
+        "value": 5.99,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.47,
-        "industryAvg": 7.31
+        "value": -6.32,
+        "industryAvg": 5.65
       },
       {
         "metric": "ROE",
         "value": -5.94,
-        "industryAvg": 12.24
+        "industryAvg": 12.25
       },
       {
         "metric": "ROA",

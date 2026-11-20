@@ -1,11 +1,14 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
-    }
+      "price": "2026-11-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.7294,
-      "ttmPe": 17.19,
-      "marketCap": 687567520000,
-      "psRatio": 1.77,
-      "pbRatio": 2.59,
+      "ttmPe": 16.34,
+      "marketCap": 653520160000,
+      "psRatio": 1.68,
+      "pbRatio": 2.46,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5374,25 +5377,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.29,
-      "costOfEquity": 6.58,
+      "wacc": 6.529999999999999,
+      "costOfEquity": 6.8500000000000005,
       "costOfDebt": 0.53,
       "taxRate": 25,
-      "beta": 0.1902,
-      "marketCap": 687567520000
+      "beta": 0.2316,
+      "marketCap": 653520160000
     },
     "beta": {
-      "beta5y": 0.1902
+      "beta5y": 0.2316
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 117.26,
-        "high": 119.48,
-        "low": 116.48,
-        "close": 119.03,
-        "volume": 15808500
-      },
       {
         "date": "2025-11-19",
         "open": 116.85,
@@ -7399,7 +7394,15 @@
         "high": 166.96,
         "low": 160.55,
         "close": 160.58,
-        "volume": 18109100
+        "volume": 18122000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 161.33,
+        "high": 162.07,
+        "low": 158.6,
+        "close": 158.93,
+        "volume": 12263500
       }
     ],
     "news": [
@@ -7436,19 +7439,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7460,19 +7463,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
-        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
         "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
+        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
         "type": "STORY"
       },
       {

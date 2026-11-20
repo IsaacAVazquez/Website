@@ -1,8 +1,8 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.9451,
-      "ttmPe": 54.3,
-      "marketCap": 42340339452,
-      "psRatio": 1.86,
-      "pbRatio": 4.21,
+      "ttmPe": 55.08,
+      "marketCap": 42950858766,
+      "psRatio": 1.88,
+      "pbRatio": 4.27,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -6229,14 +6229,14 @@
     },
     "wacc": {
       "wacc": 12.07,
-      "costOfEquity": 15.290000000000001,
+      "costOfEquity": 15.25,
       "costOfDebt": 0.98,
       "taxRate": 40,
-      "beta": 1.3115,
-      "marketCap": 42340339452
+      "beta": 1.3051,
+      "marketCap": 42950858766
     },
     "beta": {
-      "beta5y": 1.3115
+      "beta5y": 1.3051
     },
     "price": [
       {
@@ -8306,14 +8306,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2e03d6dc-17dd-3dc4-b5c4-68367a0607c4",
-        "title": "CARR Q1 Earnings Call: Management Prioritizes Product Innovation, Cost Controls, and Tariff Mitigation",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/carr-q1-earnings-call-management-220747338.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2158636e-973f-35ce-bece-3ab607a5fb46",
         "title": "Carrier Global (NYSE:CARR) Invests Additional US$1 Billion in U.S. Expansion and Innovation",
         "publisher": "Simply Wall St.",
@@ -8322,11 +8314,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ce4bb8f1-5b90-36fe-99e1-fe15757eab25",
-        "title": "Mizuho Adjusts Price Target on Carrier Global to $88 From $80, Keeps Outperform Rating",
+        "uuid": "2e03d6dc-17dd-3dc4-b5c4-68367a0607c4",
+        "title": "CARR Q1 Earnings Call: Management Prioritizes Product Innovation, Cost Controls, and Tariff Mitigation",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/carr-q1-earnings-call-management-220747338.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e5f2ad23-e548-354a-8b1a-ba2a8fe46513",
+        "title": "RBC Raises Price Target on Carrier Global to $86 From $82, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-carrier-103753974.html",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-carrier-110913885.html",
         "type": "STORY"
       },
       {
@@ -8339,6 +8339,13 @@
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Ajay Agrawal",
+        "title": "Senior VP of Global Services & Chief Business Development Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 1192833
+      },
       {
         "name": "Mr. David L. Gitlin",
         "title": "Chairman & CEO",
@@ -8385,13 +8392,6 @@
         "totalPay": 1444862
       },
       {
-        "name": "Mr. Timothy N. White",
-        "title": "Senior VP of Engineering & Technology",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 1398977
-      },
-      {
         "name": "Ms. Beril Yildiz",
         "title": "VP, Controller & Chief Accounting Officer",
         "age": 46,
@@ -8407,43 +8407,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 54.3,
-        "industryAvg": 26.57
+        "value": 55.08,
+        "industryAvg": 25.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.86,
-        "industryAvg": 2.07
+        "value": 1.88,
+        "industryAvg": 2.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.21,
-        "industryAvg": 3.65
+        "value": 4.27,
+        "industryAvg": 3.67
       },
       {
         "metric": "ROE",
         "value": -22.35,
-        "industryAvg": 10.89
+        "industryAvg": 11.04
       },
       {
         "metric": "ROA",
         "value": -7.31,
-        "industryAvg": 4.2700000000000005
+        "industryAvg": 4.33
       },
       {
         "metric": "Gross Margin",
         "value": 26.87,
-        "industryAvg": 33.01
+        "industryAvg": 33.019999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": -30.7,
-        "industryAvg": 13.44
+        "industryAvg": 13.450000000000001
       },
       {
         "metric": "Net Margin",
         "value": -41.4,
-        "industryAvg": 5.0200000000000005
+        "industryAvg": 5.1
       }
     ]
   }

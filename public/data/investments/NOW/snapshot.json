@@ -1,8 +1,8 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.3877,
-      "ttmPe": 66.95,
-      "marketCap": 96422489207.1,
-      "psRatio": 6.25,
-      "pbRatio": 7.36,
+      "ttmPe": 65.28,
+      "marketCap": 94024900939.41,
+      "psRatio": 6.09,
+      "pbRatio": 7.18,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5623,15 +5623,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.93,
-      "costOfEquity": 12.91,
+      "wacc": 11.97,
+      "costOfEquity": 12.98,
       "costOfDebt": 0.96,
       "taxRate": 25,
-      "beta": 1.005,
-      "marketCap": 96422489207.1
+      "beta": 1.0136,
+      "marketCap": 94024900939.41
     },
     "beta": {
-      "beta5y": 1.005
+      "beta5y": 1.0136
     },
     "price": [
       {
@@ -7648,7 +7648,7 @@
         "high": 93.6,
         "low": 89.17,
         "close": 90.59,
-        "volume": 19873400
+        "volume": 19923500
       }
     ],
     "news": [
@@ -7669,19 +7669,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7701,19 +7701,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
         "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
         "publisher": "TipRanks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
         "type": "STORY"
       },
       {
@@ -7796,43 +7796,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 66.95,
-        "industryAvg": 26.91
+        "value": 65.28,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.25,
-        "industryAvg": 4.62
+        "value": 6.09,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.36,
-        "industryAvg": 4.94
+        "value": 7.18,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 2.16,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 0.8699999999999999,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 70.50999999999999,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.48,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 6.75,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

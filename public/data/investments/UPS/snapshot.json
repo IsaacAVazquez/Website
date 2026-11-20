@@ -1,10 +1,10 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-18"
+      "price": "2026-11-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.1909,
-      "ttmPe": 21.25,
-      "marketCap": 93862779000,
-      "psRatio": 1.03,
-      "pbRatio": 6.26,
+      "ttmPe": 21.02,
+      "marketCap": 92841699000,
+      "psRatio": 1.02,
+      "pbRatio": 6.19,
       "pegRatio": 3.46
     },
     "profitability": {
@@ -5612,25 +5612,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.42,
-      "costOfEquity": 12.24,
+      "wacc": 9.31,
+      "costOfEquity": 12.120000000000001,
       "costOfDebt": 0.95,
       "taxRate": 26,
-      "beta": 0.9195,
-      "marketCap": 93862779000
+      "beta": 0.9038,
+      "marketCap": 92841699000
     },
     "beta": {
-      "beta5y": 0.9195
+      "beta5y": 0.9038
     },
     "price": [
-      {
-        "date": "2025-11-18",
-        "open": 93.6,
-        "high": 93.68,
-        "low": 92.07,
-        "close": 92.83,
-        "volume": 6347800
-      },
       {
         "date": "2025-11-19",
         "open": 93.23,
@@ -7638,6 +7630,14 @@
         "low": 108.8,
         "close": 111.03,
         "volume": 5488900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 110.9,
+        "high": 110.9,
+        "low": 108.25,
+        "close": 109.11,
+        "volume": 6626400
       }
     ],
     "news": [
@@ -7674,19 +7674,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
-        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "17c8d947-2259-3485-b41a-e6455664458e",
         "title": "Air Freight and Logistics Stocks Q1 Teardown: FedEx (NYSE:FDX) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/air-freight-logistics-stocks-q1-033330345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
+        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
         "type": "STORY"
       },
       {
@@ -7786,23 +7786,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.25,
-        "industryAvg": 20.11
+        "value": 21.02,
+        "industryAvg": 21.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.03,
-        "industryAvg": 0.97
+        "value": 1.02,
+        "industryAvg": 0.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.26,
-        "industryAvg": 3.48
+        "value": 6.19,
+        "industryAvg": 3.92
       },
       {
         "metric": "ROE",
         "value": 7.739999999999999,
-        "industryAvg": 17.49
+        "industryAvg": 17.45
       },
       {
         "metric": "ROA",
@@ -7812,12 +7812,12 @@
       {
         "metric": "Gross Margin",
         "value": 16.98,
-        "industryAvg": 18.9
+        "industryAvg": 18.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.36,
-        "industryAvg": 11.899999999999999
+        "industryAvg": 11.91
       },
       {
         "metric": "Net Margin",

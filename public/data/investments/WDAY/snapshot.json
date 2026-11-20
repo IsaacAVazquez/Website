@@ -1,8 +1,8 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
       "price": "2026-11-18"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.9274,
-      "ttmPe": 37.1,
-      "marketCap": 44054800000,
-      "psRatio": 4.34,
-      "pbRatio": 6.82,
+      "ttmPe": 36.01,
+      "marketCap": 42765450000,
+      "psRatio": 4.21,
+      "pbRatio": 6.62,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -5792,15 +5792,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12,
-      "costOfEquity": 12.989999999999998,
+      "wacc": 12.04,
+      "costOfEquity": 13.059999999999999,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.0153,
-      "marketCap": 44054800000
+      "beta": 1.0246,
+      "marketCap": 42765450000
     },
     "beta": {
-      "beta5y": 1.0153
+      "beta5y": 1.0246
     },
     "price": [
       {
@@ -7894,12 +7894,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
-        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "a8a7c6bc-d151-3b29-bb14-3b60f20774ca",
+        "title": "Workday Q1 Earnings Beat Estimates on Solid Revenue Growth",
+        "publisher": "Zacks",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/workday-q1-earnings-beat-estimates-154200149.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7968,43 +7968,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.1,
-        "industryAvg": 26.91
+        "value": 36.01,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.34,
-        "industryAvg": 4.62
+        "value": 4.21,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.82,
-        "industryAvg": 4.94
+        "value": 6.62,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 9.62,
-        "industryAvg": -0.7000000000000001
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 3.9600000000000004,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 75.39,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 16.84,
-        "industryAvg": 17.32
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 23.86,
-        "industryAvg": -0.96
+        "industryAvg": -0.9900000000000001
       }
     ]
   }
