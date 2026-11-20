@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-19T23:37:43.311Z",
+  "generatedAt": "2026-11-20T23:09:14.041Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-19T23:37:43.797Z",
+        "accessedAt": "2026-11-20T23:09:14.683Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2026,7 +2026,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 225,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-19T23:37:44.213Z",
+        "accessedAt": "2026-11-20T23:09:15.095Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -7478,7 +7478,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 235,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-19T23:37:44.667Z",
+        "accessedAt": "2026-11-20T23:09:15.688Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -12714,7 +12714,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 221,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-19T23:37:45.234Z",
+        "accessedAt": "2026-11-20T23:09:16.583Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18168,7 +18168,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 231,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-19T23:37:46.387Z",
+        "accessedAt": "2026-11-20T23:09:17.310Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23611,7 +23611,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 240,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-19T23:37:47.049Z",
+        "accessedAt": "2026-11-20T23:09:17.885Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -28523,7 +28523,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 190,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-19T23:37:47.733Z",
+        "accessedAt": "2026-11-20T23:09:18.706Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34328,7 +34328,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 239,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-19T23:37:48.604Z",
+        "accessedAt": "2026-11-20T23:09:19.341Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -39582,7 +39582,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 227,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-19T23:37:49.005Z",
+        "accessedAt": "2026-11-20T23:09:19.940Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -44863,7 +44863,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 218,

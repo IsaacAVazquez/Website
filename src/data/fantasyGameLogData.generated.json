@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T23:37:42.026Z",
+  "generatedAt": "2026-11-20T23:09:12.530Z",
   "data": {
     "PPR": {
       "entries": [
@@ -107,9 +107,9 @@
           "name": "C.J. Stroud",
           "team": "HOU",
           "position": "QB",
-          "games": 9,
+          "games": 10,
           "low": 11.7,
-          "median": 20.4,
+          "median": 20.5,
           "average": 20.5,
           "high": 35.4
         },
@@ -384,23 +384,13 @@
           "high": 36.8
         },
         {
-          "name": "Jonathan Taylor",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 6.7,
-          "median": 15.7,
-          "average": 16.6,
-          "high": 29.2
-        },
-        {
           "name": "Nico Collins",
           "team": "HOU",
           "position": "WR",
-          "games": 7,
+          "games": 8,
           "low": 2.6,
-          "median": 15.5,
-          "average": 16.6,
+          "median": 15.2,
+          "average": 16.4,
           "high": 30.8
         },
         {
@@ -482,6 +472,16 @@
           "median": 18.9,
           "average": 15.8,
           "high": 25
+        },
+        {
+          "name": "Jonathan Taylor",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 6.7,
+          "median": 12.3,
+          "average": 15.7,
+          "high": 29.2
         },
         {
           "name": "Omar Cooper Jr.",
@@ -1004,16 +1004,6 @@
           "high": 16.3
         },
         {
-          "name": "Tyler Warren",
-          "team": "IND",
-          "position": "TE",
-          "games": 8,
-          "low": 2.4,
-          "median": 9.7,
-          "average": 10.8,
-          "high": 21.4
-        },
-        {
           "name": "T.J. Hockenson",
           "team": "MIN",
           "position": "TE",
@@ -1144,6 +1134,16 @@
           "high": 18.3
         },
         {
+          "name": "David Montgomery",
+          "team": "HOU",
+          "position": "RB",
+          "games": 6,
+          "low": 1.1,
+          "median": 5.6,
+          "average": 10.2,
+          "high": 28.9
+        },
+        {
           "name": "J.J. McCarthy",
           "team": "NYG",
           "position": "QB",
@@ -1162,6 +1162,16 @@
           "median": 10.7,
           "average": 10.1,
           "high": 21.5
+        },
+        {
+          "name": "Tyler Warren",
+          "team": "IND",
+          "position": "TE",
+          "games": 9,
+          "low": 2.4,
+          "median": 9.1,
+          "average": 10,
+          "high": 21.4
         },
         {
           "name": "KC Concepcion",
@@ -1354,6 +1364,16 @@
           "high": 25.7
         },
         {
+          "name": "Tank Dell",
+          "team": "HOU",
+          "position": "WR",
+          "games": 4,
+          "low": 5.1,
+          "median": 5.6,
+          "average": 9.2,
+          "high": 20.5
+        },
+        {
           "name": "Jakobi Meyers",
           "team": "JAX",
           "position": "WR",
@@ -1364,16 +1384,6 @@
           "high": 19.4
         },
         {
-          "name": "David Montgomery",
-          "team": "HOU",
-          "position": "RB",
-          "games": 5,
-          "low": 1.1,
-          "median": 4.4,
-          "average": 9.1,
-          "high": 28.9
-        },
-        {
           "name": "Jaylen Waddle",
           "team": "DEN",
           "position": "WR",
@@ -1382,16 +1392,6 @@
           "median": 6.4,
           "average": 9.1,
           "high": 21.8
-        },
-        {
-          "name": "Xavier Hutchinson",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 3,
-          "median": 8.5,
-          "average": 9.1,
-          "high": 15.8
         },
         {
           "name": "Jordan Watkins",
@@ -1484,16 +1484,6 @@
           "high": 21.9
         },
         {
-          "name": "Dalton Schultz",
-          "team": "HOU",
-          "position": "TE",
-          "games": 9,
-          "low": 2.9,
-          "median": 7.3,
-          "average": 8.8,
-          "high": 26
-        },
-        {
           "name": "Brian Robinson",
           "team": "ATL",
           "position": "RB",
@@ -1502,16 +1492,6 @@
           "median": 5.9,
           "average": 8.8,
           "high": 25.7
-        },
-        {
-          "name": "Daniel Jones",
-          "team": "IND",
-          "position": "QB",
-          "games": 10,
-          "low": 3.6,
-          "median": 8.5,
-          "average": 8.7,
-          "high": 13.8
         },
         {
           "name": "Woody Marks",
@@ -1554,6 +1534,16 @@
           "high": 12.2
         },
         {
+          "name": "Xavier Hutchinson",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 3,
+          "median": 8.1,
+          "average": 8.5,
+          "high": 15.8
+        },
+        {
           "name": "Germie Bernard",
           "team": "PIT",
           "position": "WR",
@@ -1584,6 +1574,16 @@
           "high": 15.1
         },
         {
+          "name": "Daniel Jones",
+          "team": "IND",
+          "position": "QB",
+          "games": 11,
+          "low": 3.6,
+          "median": 7.9,
+          "average": 8.3,
+          "high": 13.8
+        },
+        {
           "name": "Rico Dowdle",
           "team": "PIT",
           "position": "RB",
@@ -1592,6 +1592,16 @@
           "median": 7.2,
           "average": 8.3,
           "high": 14.6
+        },
+        {
+          "name": "Dalton Schultz",
+          "team": "HOU",
+          "position": "TE",
+          "games": 10,
+          "low": 2.1,
+          "median": 6.8,
+          "average": 8.2,
+          "high": 26
         },
         {
           "name": "Keon Coleman",
@@ -1702,6 +1712,16 @@
           "median": 5.3,
           "average": 7.5,
           "high": 16.2
+        },
+        {
+          "name": "Kayshon Boutte",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 0,
+          "median": 5.3,
+          "average": 7.5,
+          "high": 28.5
         },
         {
           "name": "Mason Taylor",
@@ -1822,16 +1842,6 @@
           "median": 5.4,
           "average": 7,
           "high": 18.2
-        },
-        {
-          "name": "Kayshon Boutte",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 0,
-          "median": 4.1,
-          "average": 7,
-          "high": 28.5
         },
         {
           "name": "Malachi Fields",
@@ -2004,16 +2014,6 @@
           "high": 12.8
         },
         {
-          "name": "Foster Moreau",
-          "team": "HOU",
-          "position": "TE",
-          "games": 6,
-          "low": 1.1,
-          "median": 4.5,
-          "average": 6,
-          "high": 14.7
-        },
-        {
           "name": "A.J. Brown",
           "team": "NE",
           "position": "WR",
@@ -2184,6 +2184,16 @@
           "high": 11.7
         },
         {
+          "name": "Foster Moreau",
+          "team": "HOU",
+          "position": "TE",
+          "games": 7,
+          "low": 1.1,
+          "median": 3.5,
+          "average": 5.4,
+          "high": 14.7
+        },
+        {
           "name": "Jerry Jeudy",
           "team": "CLE",
           "position": "WR",
@@ -2292,16 +2302,6 @@
           "median": 5.2,
           "average": 5,
           "high": 9.2
-        },
-        {
-          "name": "Laquon Treadwell",
-          "team": "IND",
-          "position": "WR",
-          "games": 10,
-          "low": 0,
-          "median": 4,
-          "average": 4.9,
-          "high": 11.4
         },
         {
           "name": "Brian Thomas Jr.",
@@ -2424,16 +2424,6 @@
           "high": 18.5
         },
         {
-          "name": "Seth McGowan",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 0,
-          "median": 2.9,
-          "average": 4.6,
-          "high": 13.7
-        },
-        {
           "name": "John Metchie III",
           "team": "CAR",
           "position": "WR",
@@ -2494,6 +2484,16 @@
           "high": 12.9
         },
         {
+          "name": "Laquon Treadwell",
+          "team": "IND",
+          "position": "WR",
+          "games": 11,
+          "low": 0,
+          "median": 3.9,
+          "average": 4.4,
+          "high": 11.4
+        },
+        {
           "name": "Evan Engram",
           "team": "DEN",
           "position": "TE",
@@ -2512,6 +2512,16 @@
           "median": 3.8,
           "average": 4.4,
           "high": 9.8
+        },
+        {
+          "name": "Seth McGowan",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 0,
+          "median": 2.9,
+          "average": 4.4,
+          "high": 13.7
         },
         {
           "name": "Tank Bigsby",
@@ -2572,6 +2582,16 @@
           "median": 3.2,
           "average": 4.1,
           "high": 11.4
+        },
+        {
+          "name": "Ashton Dulin",
+          "team": "IND",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 4,
+          "average": 4,
+          "high": 12.8
         },
         {
           "name": "Charlie Kolar",
@@ -2652,16 +2672,6 @@
           "median": 4,
           "average": 3.8,
           "high": 7.4
-        },
-        {
-          "name": "Ashton Dulin",
-          "team": "IND",
-          "position": "WR",
-          "games": 6,
-          "low": 0,
-          "median": 2.1,
-          "average": 3.8,
-          "high": 12.8
         },
         {
           "name": "Darnell Mooney",
@@ -3014,6 +3024,16 @@
           "high": 8.8
         },
         {
+          "name": "Emari Demercado",
+          "team": "HOU",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 2.5,
+          "average": 2.5,
+          "high": 4.9
+        },
+        {
           "name": "Bryce Lance",
           "team": "NO",
           "position": "WR",
@@ -3194,16 +3214,6 @@
           "high": 3.1
         },
         {
-          "name": "Emari Demercado",
-          "team": "HOU",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 1.6,
-          "average": 1.9,
-          "high": 3.4
-        },
-        {
           "name": "Hayden Rucci",
           "team": "LAC",
           "position": "TE",
@@ -3254,12 +3264,12 @@
           "high": 8.4
         },
         {
-          "name": "Deion Burks",
+          "name": "Anthony Gould",
           "team": "IND",
           "position": "WR",
           "games": 8,
           "low": 0,
-          "median": 1.3,
+          "median": 0,
           "average": 1.8,
           "high": 6.8
         },
@@ -3322,6 +3332,16 @@
           "median": 2,
           "average": 1.6,
           "high": 2.8
+        },
+        {
+          "name": "Deion Burks",
+          "team": "IND",
+          "position": "WR",
+          "games": 9,
+          "low": 0,
+          "median": 1.2,
+          "average": 1.6,
+          "high": 6.8
         },
         {
           "name": "Tylan Wallace",
@@ -3604,16 +3624,6 @@
           "high": 2.8
         },
         {
-          "name": "Anthony Gould",
-          "team": "IND",
-          "position": "WR",
-          "games": 7,
-          "low": 0,
-          "median": 0,
-          "average": 1.1,
-          "high": 4.8
-        },
-        {
           "name": "Hunter Long",
           "team": "ARI",
           "position": "TE",
@@ -3674,16 +3684,6 @@
           "high": 3.6
         },
         {
-          "name": "Andrew Ogletree",
-          "team": "IND",
-          "position": "TE",
-          "games": 7,
-          "low": 0,
-          "median": 0,
-          "average": 0.9,
-          "high": 3.2
-        },
-        {
           "name": "Jordan James",
           "team": "SF",
           "position": "RB",
@@ -3712,6 +3712,16 @@
           "median": 0,
           "average": 0.8,
           "high": 5
+        },
+        {
+          "name": "Andrew Ogletree",
+          "team": "IND",
+          "position": "TE",
+          "games": 8,
+          "low": 0,
+          "median": 0,
+          "average": 0.8,
+          "high": 3.2
         },
         {
           "name": "Simi Fehoko",
@@ -3967,7 +3977,7 @@
           "name": "Nikko Remigio",
           "team": "HOU",
           "position": "WR",
-          "games": 9,
+          "games": 10,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -4097,7 +4107,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 10
+      "throughWeek": 11
     },
     "HALF_PPR": {
       "entries": [
@@ -4175,9 +4185,9 @@
           "name": "C.J. Stroud",
           "team": "HOU",
           "position": "QB",
-          "games": 9,
+          "games": 10,
           "low": 11.7,
-          "median": 20.4,
+          "median": 20.5,
           "average": 20.5,
           "high": 35.4
         },
@@ -4492,16 +4502,6 @@
           "high": 34.8
         },
         {
-          "name": "Jonathan Taylor",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 4.7,
-          "median": 14.7,
-          "average": 15.2,
-          "high": 27.2
-        },
-        {
           "name": "Jaylen Warren",
           "team": "PIT",
           "position": "RB",
@@ -4582,6 +4582,16 @@
           "high": 26.9
         },
         {
+          "name": "Jonathan Taylor",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 4.7,
+          "median": 11.3,
+          "average": 14.2,
+          "high": 27.2
+        },
+        {
           "name": "Kyle Monangai",
           "team": "CHI",
           "position": "RB",
@@ -4605,10 +4615,10 @@
           "name": "Nico Collins",
           "team": "HOU",
           "position": "WR",
-          "games": 7,
+          "games": 8,
           "low": 1.6,
-          "median": 13.5,
-          "average": 13.9,
+          "median": 13.4,
+          "average": 13.8,
           "high": 27.3
         },
         {
@@ -5102,6 +5112,16 @@
           "high": 24.2
         },
         {
+          "name": "David Montgomery",
+          "team": "HOU",
+          "position": "RB",
+          "games": 6,
+          "low": 1.1,
+          "median": 5,
+          "average": 9.3,
+          "high": 27.4
+        },
+        {
           "name": "RJ Harvey",
           "team": "DEN",
           "position": "RB",
@@ -5170,16 +5190,6 @@
           "median": 9,
           "average": 8.9,
           "high": 18
-        },
-        {
-          "name": "Daniel Jones",
-          "team": "IND",
-          "position": "QB",
-          "games": 10,
-          "low": 3.6,
-          "median": 8.5,
-          "average": 8.7,
-          "high": 13.8
         },
         {
           "name": "Pat Freiermuth",
@@ -5292,16 +5302,6 @@
           "high": 14.8
         },
         {
-          "name": "David Montgomery",
-          "team": "HOU",
-          "position": "RB",
-          "games": 5,
-          "low": 1.1,
-          "median": 4.3,
-          "average": 8.4,
-          "high": 27.4
-        },
-        {
           "name": "Brian Robinson",
           "team": "ATL",
           "position": "RB",
@@ -5322,6 +5322,16 @@
           "high": 16.1
         },
         {
+          "name": "Daniel Jones",
+          "team": "IND",
+          "position": "QB",
+          "games": 11,
+          "low": 3.6,
+          "median": 7.9,
+          "average": 8.3,
+          "high": 13.8
+        },
+        {
           "name": "Devaughn Vele",
           "team": "NO",
           "position": "WR",
@@ -5330,16 +5340,6 @@
           "median": 5.7,
           "average": 8.3,
           "high": 16.4
-        },
-        {
-          "name": "Tyler Warren",
-          "team": "IND",
-          "position": "TE",
-          "games": 8,
-          "low": 1.4,
-          "median": 7.7,
-          "average": 8.3,
-          "high": 17.9
         },
         {
           "name": "DeMario Douglas",
@@ -5472,6 +5472,16 @@
           "high": 10.5
         },
         {
+          "name": "Tank Dell",
+          "team": "HOU",
+          "position": "WR",
+          "games": 4,
+          "low": 3.6,
+          "median": 4.6,
+          "average": 7.8,
+          "high": 18.5
+        },
+        {
           "name": "Keenan Allen",
           "team": "SF",
           "position": "WR",
@@ -5490,6 +5500,16 @@
           "median": 6,
           "average": 7.7,
           "high": 16.7
+        },
+        {
+          "name": "Tyler Warren",
+          "team": "IND",
+          "position": "TE",
+          "games": 9,
+          "low": 1.4,
+          "median": 6.6,
+          "average": 7.7,
+          "high": 17.9
         },
         {
           "name": "Darren Waller",
@@ -5520,16 +5540,6 @@
           "median": 7,
           "average": 7.6,
           "high": 11.3
-        },
-        {
-          "name": "Xavier Hutchinson",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 2,
-          "median": 7,
-          "average": 7.6,
-          "high": 13.8
         },
         {
           "name": "Roman Wilson",
@@ -5642,6 +5652,16 @@
           "high": 11.6
         },
         {
+          "name": "Xavier Hutchinson",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 2,
+          "median": 6.5,
+          "average": 7,
+          "high": 13.8
+        },
+        {
           "name": "Wan'Dale Robinson",
           "team": "TEN",
           "position": "WR",
@@ -5660,16 +5680,6 @@
           "median": 10.7,
           "average": 6.9,
           "high": 13.9
-        },
-        {
-          "name": "Dalton Schultz",
-          "team": "HOU",
-          "position": "TE",
-          "games": 9,
-          "low": 1.9,
-          "median": 5.3,
-          "average": 6.8,
-          "high": 20
         },
         {
           "name": "Keon Coleman",
@@ -5742,6 +5752,16 @@
           "high": 11.9
         },
         {
+          "name": "Kayshon Boutte",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 0,
+          "median": 4.1,
+          "average": 6.4,
+          "high": 26.5
+        },
+        {
           "name": "Jordan Addison",
           "team": "MIN",
           "position": "WR",
@@ -5760,6 +5780,16 @@
           "median": 8.3,
           "average": 6.4,
           "high": 11.2
+        },
+        {
+          "name": "Dalton Schultz",
+          "team": "HOU",
+          "position": "TE",
+          "games": 10,
+          "low": 1.6,
+          "median": 5.3,
+          "average": 6.3,
+          "high": 20
         },
         {
           "name": "Kyle Pitts",
@@ -5900,16 +5930,6 @@
           "median": 4,
           "average": 5.9,
           "high": 18.6
-        },
-        {
-          "name": "Kayshon Boutte",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 0,
-          "median": 3.1,
-          "average": 5.9,
-          "high": 26.5
         },
         {
           "name": "Chris Rodriguez Jr.",
@@ -6092,16 +6112,6 @@
           "high": 13.6
         },
         {
-          "name": "Foster Moreau",
-          "team": "HOU",
-          "position": "TE",
-          "games": 6,
-          "low": 0.6,
-          "median": 3.5,
-          "average": 5.1,
-          "high": 13.7
-        },
-        {
           "name": "Rashod Bateman",
           "team": "BAL",
           "position": "WR",
@@ -6222,6 +6232,16 @@
           "high": 15.4
         },
         {
+          "name": "Foster Moreau",
+          "team": "HOU",
+          "position": "TE",
+          "games": 7,
+          "low": 0.6,
+          "median": 2.5,
+          "average": 4.6,
+          "high": 13.7
+        },
+        {
           "name": "A.J. Brown",
           "team": "NE",
           "position": "WR",
@@ -6300,16 +6320,6 @@
           "median": 2.5,
           "average": 4.4,
           "high": 11.5
-        },
-        {
-          "name": "Seth McGowan",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 0,
-          "median": 2.8,
-          "average": 4.4,
-          "high": 13.7
         },
         {
           "name": "Nate Adkins",
@@ -6442,6 +6452,16 @@
           "high": 17.3
         },
         {
+          "name": "Seth McGowan",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 0,
+          "median": 2.7,
+          "average": 4.1,
+          "high": 13.7
+        },
+        {
           "name": "Nate Boerkircher",
           "team": "JAX",
           "position": "TE",
@@ -6490,16 +6510,6 @@
           "median": 1.8,
           "average": 4,
           "high": 11.2
-        },
-        {
-          "name": "Laquon Treadwell",
-          "team": "IND",
-          "position": "WR",
-          "games": 10,
-          "low": 0,
-          "median": 3,
-          "average": 3.9,
-          "high": 9.9
         },
         {
           "name": "Tank Bigsby",
@@ -6592,6 +6602,16 @@
           "high": 12.4
         },
         {
+          "name": "Laquon Treadwell",
+          "team": "IND",
+          "position": "WR",
+          "games": 11,
+          "low": 0,
+          "median": 2.9,
+          "average": 3.6,
+          "high": 9.9
+        },
+        {
           "name": "Colby Parkinson",
           "team": "LA",
           "position": "TE",
@@ -6618,6 +6638,16 @@
           "games": 9,
           "low": 0,
           "median": 2.2,
+          "average": 3.5,
+          "high": 12.3
+        },
+        {
+          "name": "Ashton Dulin",
+          "team": "IND",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 3.5,
           "average": 3.5,
           "high": 12.3
         },
@@ -6660,16 +6690,6 @@
           "median": 3.6,
           "average": 3.5,
           "high": 10.5
-        },
-        {
-          "name": "Ashton Dulin",
-          "team": "IND",
-          "position": "WR",
-          "games": 6,
-          "low": 0,
-          "median": 1.9,
-          "average": 3.4,
-          "high": 12.3
         },
         {
           "name": "George Holani",
@@ -7112,6 +7132,16 @@
           "high": 7.6
         },
         {
+          "name": "Emari Demercado",
+          "team": "HOU",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 2,
+          "average": 2.1,
+          "high": 3.9
+        },
+        {
           "name": "Tai Felton",
           "team": "MIN",
           "position": "WR",
@@ -7282,16 +7312,6 @@
           "high": 1.7
         },
         {
-          "name": "Emari Demercado",
-          "team": "HOU",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 1.4,
-          "average": 1.6,
-          "high": 2.9
-        },
-        {
           "name": "Dylan Laube",
           "team": "LV",
           "position": "RB",
@@ -7332,6 +7352,16 @@
           "high": 6.9
         },
         {
+          "name": "Anthony Gould",
+          "team": "IND",
+          "position": "WR",
+          "games": 8,
+          "low": 0,
+          "median": 0,
+          "average": 1.5,
+          "high": 5.8
+        },
+        {
           "name": "Jauan Jennings",
           "team": "MIN",
           "position": "WR",
@@ -7360,16 +7390,6 @@
           "median": 0,
           "average": 1.4,
           "high": 6.6
-        },
-        {
-          "name": "Deion Burks",
-          "team": "IND",
-          "position": "WR",
-          "games": 8,
-          "low": 0,
-          "median": 0.9,
-          "average": 1.4,
-          "high": 5.8
         },
         {
           "name": "Sam Roush",
@@ -7470,6 +7490,16 @@
           "median": 0.4,
           "average": 1.2,
           "high": 4.6
+        },
+        {
+          "name": "Deion Burks",
+          "team": "IND",
+          "position": "WR",
+          "games": 9,
+          "low": 0,
+          "median": 0.7,
+          "average": 1.2,
+          "high": 5.8
         },
         {
           "name": "Trevor Etienne",
@@ -7722,16 +7752,6 @@
           "high": 2
         },
         {
-          "name": "Anthony Gould",
-          "team": "IND",
-          "position": "WR",
-          "games": 7,
-          "low": 0,
-          "median": 0,
-          "average": 0.8,
-          "high": 3.8
-        },
-        {
           "name": "Jordan James",
           "team": "SF",
           "position": "RB",
@@ -7825,10 +7845,10 @@
           "name": "Andrew Ogletree",
           "team": "IND",
           "position": "TE",
-          "games": 7,
+          "games": 8,
           "low": 0,
           "median": 0,
-          "average": 0.6,
+          "average": 0.5,
           "high": 2.2
         },
         {
@@ -8065,7 +8085,7 @@
           "name": "Nikko Remigio",
           "team": "HOU",
           "position": "WR",
-          "games": 9,
+          "games": 10,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -8195,7 +8215,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 10
+      "throughWeek": 11
     },
     "STANDARD": {
       "entries": [
@@ -8253,9 +8273,9 @@
           "name": "C.J. Stroud",
           "team": "HOU",
           "position": "QB",
-          "games": 9,
+          "games": 10,
           "low": 11.7,
-          "median": 20.4,
+          "median": 20.5,
           "average": 20.5,
           "high": 35.4
         },
@@ -8570,16 +8590,6 @@
           "high": 26.3
         },
         {
-          "name": "Jonathan Taylor",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 2.7,
-          "median": 13.7,
-          "average": 13.8,
-          "high": 25.2
-        },
-        {
           "name": "Geno Smith",
           "team": "NYJ",
           "position": "QB",
@@ -8700,6 +8710,16 @@
           "high": 26
         },
         {
+          "name": "Jonathan Taylor",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 2.7,
+          "median": 10.3,
+          "average": 12.8,
+          "high": 25.2
+        },
+        {
           "name": "Kyren Williams",
           "team": "LA",
           "position": "RB",
@@ -8763,10 +8783,10 @@
           "name": "Nico Collins",
           "team": "HOU",
           "position": "WR",
-          "games": 7,
+          "games": 8,
           "low": 0.6,
-          "median": 11.5,
-          "average": 11.3,
+          "median": 11.7,
+          "average": 11.4,
           "high": 23.8
         },
         {
@@ -9110,16 +9130,6 @@
           "high": 15.7
         },
         {
-          "name": "Daniel Jones",
-          "team": "IND",
-          "position": "QB",
-          "games": 10,
-          "low": 3.6,
-          "median": 8.5,
-          "average": 8.7,
-          "high": 13.8
-        },
-        {
           "name": "Baker Mayfield",
           "team": "TB",
           "position": "QB",
@@ -9128,6 +9138,16 @@
           "median": 9.5,
           "average": 8.5,
           "high": 12.2
+        },
+        {
+          "name": "David Montgomery",
+          "team": "HOU",
+          "position": "RB",
+          "games": 6,
+          "low": 1.1,
+          "median": 4.5,
+          "average": 8.5,
+          "high": 25.9
         },
         {
           "name": "Tyquan Thornton",
@@ -9148,6 +9168,16 @@
           "median": 3.5,
           "average": 8.4,
           "high": 29.1
+        },
+        {
+          "name": "Daniel Jones",
+          "team": "IND",
+          "position": "QB",
+          "games": 11,
+          "low": 3.6,
+          "median": 7.9,
+          "average": 8.3,
+          "high": 13.8
         },
         {
           "name": "Rashee Rice",
@@ -9238,16 +9268,6 @@
           "median": 6.7,
           "average": 7.7,
           "high": 16.1
-        },
-        {
-          "name": "David Montgomery",
-          "team": "HOU",
-          "position": "RB",
-          "games": 5,
-          "low": 1.1,
-          "median": 4.3,
-          "average": 7.7,
-          "high": 25.9
         },
         {
           "name": "Michael Wilson",
@@ -9480,6 +9500,16 @@
           "high": 13.1
         },
         {
+          "name": "Tank Dell",
+          "team": "HOU",
+          "position": "WR",
+          "games": 4,
+          "low": 2.1,
+          "median": 3.6,
+          "average": 6.5,
+          "high": 16.5
+        },
+        {
           "name": "T.J. Hockenson",
           "team": "MIN",
           "position": "TE",
@@ -9590,16 +9620,6 @@
           "high": 15.3
         },
         {
-          "name": "Xavier Hutchinson",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 1,
-          "median": 5.5,
-          "average": 6,
-          "high": 11.8
-        },
-        {
           "name": "KC Concepcion",
           "team": "CLE",
           "position": "WR",
@@ -9690,16 +9710,6 @@
           "high": 14.2
         },
         {
-          "name": "Tyler Warren",
-          "team": "IND",
-          "position": "TE",
-          "games": 8,
-          "low": 0.4,
-          "median": 5.1,
-          "average": 5.8,
-          "high": 14.4
-        },
-        {
           "name": "Dontayvion Wicks",
           "team": "PHI",
           "position": "WR",
@@ -9740,6 +9750,16 @@
           "high": 11.3
         },
         {
+          "name": "Xavier Hutchinson",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 1,
+          "median": 5,
+          "average": 5.5,
+          "high": 11.8
+        },
+        {
           "name": "Keon Coleman",
           "team": "BUF",
           "position": "WR",
@@ -9770,6 +9790,16 @@
           "high": 14.7
         },
         {
+          "name": "Kayshon Boutte",
+          "team": "HOU",
+          "position": "WR",
+          "games": 10,
+          "low": 0,
+          "median": 3,
+          "average": 5.4,
+          "high": 24.5
+        },
+        {
           "name": "Brenton Strange",
           "team": "JAX",
           "position": "TE",
@@ -9778,6 +9808,16 @@
           "median": 5.5,
           "average": 5.4,
           "high": 9.5
+        },
+        {
+          "name": "Tyler Warren",
+          "team": "IND",
+          "position": "TE",
+          "games": 9,
+          "low": 0.4,
+          "median": 4.4,
+          "average": 5.4,
+          "high": 14.4
         },
         {
           "name": "Treylon Burks",
@@ -9920,16 +9960,6 @@
           "high": 9.4
         },
         {
-          "name": "Kayshon Boutte",
-          "team": "HOU",
-          "position": "WR",
-          "games": 9,
-          "low": 0,
-          "median": 2.5,
-          "average": 4.9,
-          "high": 24.5
-        },
-        {
           "name": "Darius Cooper",
           "team": "PHI",
           "position": "WR",
@@ -9938,16 +9968,6 @@
           "median": 1.9,
           "average": 4.9,
           "high": 15.3
-        },
-        {
-          "name": "Dalton Schultz",
-          "team": "HOU",
-          "position": "TE",
-          "games": 9,
-          "low": 0.9,
-          "median": 3.5,
-          "average": 4.8,
-          "high": 14
         },
         {
           "name": "Wan'Dale Robinson",
@@ -10028,6 +10048,16 @@
           "median": 3.4,
           "average": 4.5,
           "high": 10.6
+        },
+        {
+          "name": "Dalton Schultz",
+          "team": "HOU",
+          "position": "TE",
+          "games": 10,
+          "low": 0.9,
+          "median": 3.4,
+          "average": 4.5,
+          "high": 14
         },
         {
           "name": "Justice Hill",
@@ -10140,16 +10170,6 @@
           "high": 10.5
         },
         {
-          "name": "Foster Moreau",
-          "team": "HOU",
-          "position": "TE",
-          "games": 6,
-          "low": 0.1,
-          "median": 2.5,
-          "average": 4.2,
-          "high": 12.7
-        },
-        {
           "name": "Cody White",
           "team": "LV",
           "position": "WR",
@@ -10198,16 +10218,6 @@
           "median": 4.2,
           "average": 4.1,
           "high": 12.7
-        },
-        {
-          "name": "Seth McGowan",
-          "team": "IND",
-          "position": "RB",
-          "games": 10,
-          "low": 0,
-          "median": 2.8,
-          "average": 4.1,
-          "high": 13.7
         },
         {
           "name": "Rashod Bateman",
@@ -10300,6 +10310,16 @@
           "high": 8.5
         },
         {
+          "name": "Seth McGowan",
+          "team": "IND",
+          "position": "RB",
+          "games": 11,
+          "low": 0,
+          "median": 2.7,
+          "average": 3.8,
+          "high": 13.7
+        },
+        {
           "name": "Gavin Bartholomew",
           "team": "MIN",
           "position": "TE",
@@ -10308,6 +10328,16 @@
           "median": 2.5,
           "average": 3.8,
           "high": 9.6
+        },
+        {
+          "name": "Foster Moreau",
+          "team": "HOU",
+          "position": "TE",
+          "games": 7,
+          "low": 0.1,
+          "median": 1.5,
+          "average": 3.7,
+          "high": 12.7
         },
         {
           "name": "Drew Sample",
@@ -10650,22 +10680,12 @@
           "high": 7.7
         },
         {
-          "name": "Laquon Treadwell",
-          "team": "IND",
-          "position": "WR",
-          "games": 10,
-          "low": 0,
-          "median": 2,
-          "average": 3,
-          "high": 8.4
-        },
-        {
           "name": "Ashton Dulin",
           "team": "IND",
           "position": "WR",
-          "games": 6,
+          "games": 7,
           "low": 0,
-          "median": 1.6,
+          "median": 2.9,
           "average": 3,
           "high": 11.8
         },
@@ -10758,6 +10778,16 @@
           "median": 1.9,
           "average": 2.8,
           "high": 7.9
+        },
+        {
+          "name": "Laquon Treadwell",
+          "team": "IND",
+          "position": "WR",
+          "games": 11,
+          "low": 0,
+          "median": 2,
+          "average": 2.7,
+          "high": 8.4
         },
         {
           "name": "George Holani",
@@ -11150,6 +11180,16 @@
           "high": 3.4
         },
         {
+          "name": "Emari Demercado",
+          "team": "HOU",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 1.5,
+          "average": 1.7,
+          "high": 2.9
+        },
+        {
           "name": "Marvin Mims Jr.",
           "team": "DEN",
           "position": "WR",
@@ -11268,16 +11308,6 @@
           "median": 1.2,
           "average": 1.5,
           "high": 2.8
-        },
-        {
-          "name": "Emari Demercado",
-          "team": "HOU",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 1.1,
-          "average": 1.4,
-          "high": 2.4
         },
         {
           "name": "Brycen Tremayne",
@@ -11490,6 +11520,16 @@
           "high": 2.9
         },
         {
+          "name": "Anthony Gould",
+          "team": "IND",
+          "position": "WR",
+          "games": 8,
+          "low": 0,
+          "median": 0,
+          "average": 1.1,
+          "high": 4.8
+        },
+        {
           "name": "Charlie Jones",
           "team": "NYG",
           "position": "WR",
@@ -11518,16 +11558,6 @@
           "median": 0,
           "average": 1,
           "high": 6.1
-        },
-        {
-          "name": "Deion Burks",
-          "team": "IND",
-          "position": "WR",
-          "games": 8,
-          "low": 0,
-          "median": 0.4,
-          "average": 1,
-          "high": 4.8
         },
         {
           "name": "Ben Yurosek",
@@ -11578,6 +11608,16 @@
           "median": 0,
           "average": 0.9,
           "high": 7.5
+        },
+        {
+          "name": "Deion Burks",
+          "team": "IND",
+          "position": "WR",
+          "games": 9,
+          "low": 0,
+          "median": 0.2,
+          "average": 0.9,
+          "high": 4.8
         },
         {
           "name": "Sam Roush",
@@ -11780,16 +11820,6 @@
           "high": 1
         },
         {
-          "name": "Anthony Gould",
-          "team": "IND",
-          "position": "WR",
-          "games": 7,
-          "low": 0,
-          "median": 0,
-          "average": 0.6,
-          "high": 2.8
-        },
-        {
           "name": "Tylan Wallace",
           "team": "CLE",
           "position": "WR",
@@ -11923,7 +11953,7 @@
           "name": "Andrew Ogletree",
           "team": "IND",
           "position": "TE",
-          "games": 7,
+          "games": 8,
           "low": 0,
           "median": 0,
           "average": 0.3,
@@ -12153,7 +12183,7 @@
           "name": "Nikko Remigio",
           "team": "HOU",
           "position": "WR",
-          "games": 9,
+          "games": 10,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -12293,7 +12323,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 10
+      "throughWeek": 11
     }
   }
 }
