@@ -1,14 +1,11 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-20"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.7715,
-      "ttmPe": 14.75,
-      "marketCap": 1260089983640,
-      "psRatio": 2.87,
-      "pbRatio": 1.66,
-      "pegRatio": 0.14
+      "ttmPe": 14.33,
+      "marketCap": 1224097230000,
+      "psRatio": 2.79,
+      "pbRatio": 1.61,
+      "pegRatio": 0.13
     },
     "profitability": {
       "roe": 2.93,
@@ -4699,25 +4696,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.559999999999999,
-      "costOfEquity": 9.36,
+      "wacc": 8.19,
+      "costOfEquity": 8.97,
       "costOfDebt": 1.04,
       "taxRate": 18,
-      "beta": 0.5484,
-      "marketCap": 1260089983640
+      "beta": 0.5091,
+      "marketCap": 1224097230000
     },
     "beta": {
-      "beta5y": 0.5484
+      "beta5y": 0.5091
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 503.69,
-        "high": 504.25,
-        "low": 495.55,
-        "close": 501.26,
-        "volume": 4695000
-      },
       {
         "date": "2025-11-20",
         "open": 501.11,
@@ -6724,24 +6713,32 @@
         "high": 573.13,
         "low": 565.6,
         "close": 572.04,
-        "volume": 5606000
+        "volume": 5618700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 573.26,
+        "high": 576.89,
+        "low": 566.52,
+        "close": 570,
+        "volume": 6712900
       }
     ],
     "news": [
-      {
-        "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
-        "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
-        "type": "STORY"
-      },
       {
         "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
         "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
+        "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
         "type": "STORY"
       },
       {
@@ -6761,19 +6758,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
-        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
         "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
+        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
         "type": "STORY"
       },
       {
@@ -6869,18 +6866,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.91,
-        "industryAvg": 16.1
+        "value": 14.33,
+        "industryAvg": 15.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.9,
-        "industryAvg": 2.74
+        "value": 2.79,
+        "industryAvg": 2.63
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.67,
-        "industryAvg": 1.66
+        "value": 1.61,
+        "industryAvg": 1.6
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "Marvell Technology, Inc., together with its subsidiaries, provides data infrastructure semiconductor solutions and spanning the data center core to network edge in the United States, Argentina, China, India, Israel, Japan, Singapore, South Korea, Taiwan, Vietnam, and internationally. The company develops and scales system-on-a-chip architectures, integrating analog, mixed-signal, and digital signal processing functionality. It offers a portfolio of ethernet solutions, including spanning controllers, network adapters, physical transceivers, and switches; single or multiple core processors; and custom application specific integrated circuits, interconnects, fibre channel adapters, and processors. The company also provides interconnect products, including pulse amplitude modulation, coherent and coherent-lite digital signal processors (DSPs), laser drivers, trans-impedance amplifiers, silicon photonics, co-packaged optics, linear pluggable optics chipsets, data center interconnect, active electrical cable DSPs and peripheral component interconnect express retimer solutions; fibre channel products comprising host bus adapters and controllers for server and storage system connectivity; storage controllers for hard disk drives and solid-state-drives; host system interfaces, including serial advanced technology attachment and serial attached SCSI, peripheral component interconnect express, compute express link switches, non-volatile memory express (NVMe), and NVMe over fabrics; and develops ultra accelerator linkTM switches and ethernet for scale-up networking switches. The company serves data centers, communications, and other markets. It offers its products through direct customers and distributors. Marvell Technology, Inc. was incorporated in 1995 and is headquartered in Wilmington, Delaware.",
+      "longBusinessSummary": "Marvell Technology, Inc., together with its subsidiaries, provides data infrastructure semiconductor solutions and spanning the data center core to network edge in the United States, Argentina, China, India, Israel, Japan, Singapore, South Korea, Taiwan, Vietnam, and internationally. The company develops and scales system-on-a-chip architectures, integrating analog, mixed-signal, and digital signal processing functionality. It offers a portfolio of ethernet solutions, including spanning controllers, network adapters, physical transceivers, and switches; single or multiple core processors; and custom application specific integrated circuits, interconnects, fibre channel adapters, and processors. The company also provides interconnect products, including pulse amplitude modulation, coherent and coherent-lite digital signal processors (DSPs), laser drivers, trans-impedance amplifiers, silicon photonics, co-packaged optics, linear pluggable optics chipsets, data center interconnect, active electrical cable DSPs and peripheral component interconnect express retimer solutions; fibre channel products comprising host bus adapters and controllers for server and storage system connectivity; storage controllers for hard disk drives and solid-state-drives; host system interfaces, including serial advanced technology attachment and serial attached SCSI, peripheral component interconnect express, compute express link switches, non-volatile memory express (NVMe), and NVMe over fabrics; and develops ultra accelerator linkTM switches and ethernet for scale-up networking switches. The company serves data centers, communications, and other markets. It offers its products through direct customers and distributors. The company has collaboration with to address AI infrastructure needs at the server and pod levels. Marvell Technology, Inc. was incorporated in 1995 and is headquartered in Wilmington, Delaware.",
       "fullTimeEmployees": 7480,
       "website": "https://www.marvell.com",
       "shortName": "Marvell Technology, Inc.",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 48.98,
-      "marketCap": 130415232000,
-      "psRatio": 13.8,
-      "pbRatio": 7.04,
-      "pegRatio": 0.99
+      "ttmPe": 40.26,
+      "marketCap": 107215104000,
+      "psRatio": 11.35,
+      "pbRatio": 5.79,
+      "pegRatio": 0.81
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.48,
-      "costOfEquity": 23.34,
+      "wacc": 23.14,
+      "costOfEquity": 24.22,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.347,
-      "marketCap": 130415232000
+      "beta": 2.428,
+      "marketCap": 107215104000
     },
     "beta": {
-      "beta5y": 2.347
+      "beta5y": 2.428
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 79.09,
-        "high": 81.89,
-        "low": 78.78,
-        "close": 81.32,
-        "volume": 13688200
-      },
       {
         "date": "2025-11-20",
         "open": 83.4,
@@ -7980,7 +7972,15 @@
         "high": 154.51,
         "low": 138.35,
         "close": 138.47,
-        "volume": 29909100
+        "volume": 30063800
+      },
+      {
+        "date": "2026-11-20",
+        "open": 132.89,
+        "high": 134.18,
+        "low": 120.56,
+        "close": 122.28,
+        "volume": 40302600
       }
     ],
     "news": [
@@ -8025,19 +8025,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
-        "title": "3 Hyped Up  Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
         "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
+        "title": "3 Hyped Up  Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
         "type": "STORY"
       },
       {
@@ -8049,19 +8049,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
+        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
         "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
         "publisher": "The Fly",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
-        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.98,
-        "industryAvg": 18.92
+        "value": 40.26,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.8,
-        "industryAvg": 9.25
+        "value": 11.35,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.04,
-        "industryAvg": 8.29
+        "value": 5.79,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8161,7 +8161,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 28.03,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

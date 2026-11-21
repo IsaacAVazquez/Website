@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 25.81,
-      "marketCap": 85027026960,
-      "psRatio": 7.72,
-      "pbRatio": 24.18,
+      "ttmPe": 25.95,
+      "marketCap": 85505124120,
+      "psRatio": 7.77,
+      "pbRatio": 24.31,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,25 +6462,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.79,
-      "costOfEquity": 11.57,
+      "wacc": 7.5600000000000005,
+      "costOfEquity": 11.19,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8324,
-      "marketCap": 85027026960
+      "beta": 0.7884,
+      "marketCap": 85505124120
     },
     "beta": {
-      "beta5y": 0.8324
+      "beta5y": 0.7884
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 181.54,
-        "high": 182.36,
-        "low": 178.92,
-        "close": 180.5,
-        "volume": 2673200
-      },
       {
         "date": "2025-11-20",
         "open": 180.5,
@@ -8488,6 +8480,14 @@
         "low": 179.96,
         "close": 181.15,
         "volume": 3784200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 183.29,
+        "high": 185.85,
+        "low": 182.86,
+        "close": 184.21,
+        "volume": 2770100
       }
     ],
     "news": [
@@ -8564,11 +8564,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fde3659a-77b8-363f-be17-a13c3aa95ee9",
-        "title": "American Tower Corporation (AMT) Underpinned by Strong Demand Driven by Secular Growth in Mobile Data",
-        "publisher": "Insider Monkey",
+        "uuid": "3c1cf2d5-2670-3073-8a6b-d5f6c022aeea",
+        "title": "NYSE Content Advisory: Pre-Market update + Dick's Sporting Goods to acquire Foot Locker",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/american-tower-corporation-amt-underpinned-125628591.html",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500511.html",
         "type": "STORY"
       }
     ],
@@ -8633,18 +8633,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.81,
-        "industryAvg": 35.58
+        "value": 25.95,
+        "industryAvg": 34.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.72,
-        "industryAvg": 6.59
+        "value": 7.77,
+        "industryAvg": 6.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.18,
-        "industryAvg": 4.26
+        "value": 24.31,
+        "industryAvg": 4.08
       },
       {
         "metric": "ROE",

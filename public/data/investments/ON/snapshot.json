@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 39.54,
-      "marketCap": 26442329905,
-      "psRatio": 4.15,
-      "pbRatio": 3.5,
-      "pegRatio": 1.5
+      "ttmPe": 35.41,
+      "marketCap": 23682487140,
+      "psRatio": 3.72,
+      "pbRatio": 3.13,
+      "pegRatio": 1.34
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,25 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.57,
+      "wacc": 18.27,
       "costOfEquity": 21.68,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.1333,
-      "marketCap": 26442329905
+      "beta": 2.1084,
+      "marketCap": 23682487140
     },
     "beta": {
-      "beta5y": 2.1333
+      "beta5y": 2.1084
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 47.16,
-        "high": 47.73,
-        "low": 45.96,
-        "close": 46.12,
-        "volume": 11871300
-      },
       {
         "date": "2025-11-20",
         "open": 46.49,
@@ -8110,6 +8102,14 @@
         "low": 65.6,
         "close": 65.72,
         "volume": 7381700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 65.31,
+        "high": 65.49,
+        "low": 59.14,
+        "close": 60.84,
+        "volume": 15247300
       }
     ],
     "news": [
@@ -8138,14 +8138,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
-        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
         "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
         "publisher": "Insider Monkey",
@@ -8159,6 +8151,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
+        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
         "type": "STORY"
       },
       {
@@ -8250,18 +8250,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.54,
-        "industryAvg": 18.92
+        "value": 35.41,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.15,
-        "industryAvg": 9.25
+        "value": 3.72,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.5,
-        "industryAvg": 8.29
+        "value": 3.13,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8281,7 +8281,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 31.830000000000002,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

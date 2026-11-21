@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 31.36,
-      "marketCap": 263182360050,
-      "psRatio": 10.07,
-      "pbRatio": 18.92,
-      "pegRatio": 0.41
+      "ttmPe": 27.28,
+      "marketCap": 228930804150,
+      "psRatio": 8.76,
+      "pbRatio": 16.46,
+      "pegRatio": 0.35
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,25 +5781,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.36,
-      "costOfEquity": 20.64,
+      "wacc": 20.74,
+      "costOfEquity": 21.07,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 1.9994,
-      "marketCap": 263182360050
+      "beta": 2.031,
+      "marketCap": 228930804150
     },
     "beta": {
-      "beta5y": 1.9994
+      "beta5y": 2.031
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 146.77,
-        "high": 150.4,
-        "low": 145.51,
-        "close": 148.8,
-        "volume": 9818300
-      },
       {
         "date": "2025-11-20",
         "open": 153.46,
@@ -7806,7 +7798,15 @@
         "high": 221.96,
         "low": 203.45,
         "close": 203.68,
-        "volume": 12950600
+        "volume": 12973100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 199.05,
+        "high": 199.78,
+        "low": 181.77,
+        "close": 183.27,
+        "volume": 23736700
       }
     ],
     "news": [
@@ -7875,19 +7875,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
-        "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
         "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
+        "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
         "type": "STORY"
       }
     ],
@@ -7958,28 +7958,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.36,
-        "industryAvg": 32.81
+        "value": 27.28,
+        "industryAvg": 29.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.07,
-        "industryAvg": 9.69
+        "value": 8.76,
+        "industryAvg": 8.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.92,
-        "industryAvg": 13.59
+        "value": 16.46,
+        "industryAvg": 11.85
       },
       {
         "metric": "ROE",
         "value": 20.87,
-        "industryAvg": 43.14
+        "industryAvg": 43.169999999999995
       },
       {
         "metric": "ROA",
         "value": 11.04,
-        "industryAvg": 21.17
+        "industryAvg": 21.18
       },
       {
         "metric": "Gross Margin",

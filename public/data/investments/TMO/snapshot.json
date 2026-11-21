@@ -1,10 +1,10 @@
 {
   "symbol": "TMO",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.9551,
-      "ttmPe": 36.55,
-      "pegRatio": 4.28,
-      "marketCap": 256138744602,
-      "psRatio": 5.41,
-      "pbRatio": 4.68
+      "ttmPe": 35.32,
+      "pegRatio": 4.14,
+      "marketCap": 247560607242,
+      "psRatio": 5.23,
+      "pbRatio": 4.52
     },
     "profitability": {
       "roe": 3.2,
@@ -5790,25 +5790,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.03,
-      "costOfEquity": 11.52,
+      "wacc": 9.84,
+      "costOfEquity": 11.35,
       "costOfDebt": 1.01,
       "taxRate": 17,
-      "beta": 0.8272,
-      "marketCap": 256138744602
+      "beta": 0.8086,
+      "marketCap": 247560607242
     },
     "beta": {
-      "beta5y": 0.8272
+      "beta5y": 0.8086
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 574.62,
-        "high": 574.62,
-        "low": 567.21,
-        "close": 573.79,
-        "volume": 1247900
-      },
       {
         "date": "2025-11-20",
         "open": 573.35,
@@ -7816,6 +7808,14 @@
         "low": 686.23,
         "close": 688.75,
         "volume": 1980400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 689.72,
+        "high": 692,
+        "low": 667.94,
+        "close": 669.54,
+        "volume": 2360600
       }
     ],
     "news": [
@@ -7876,19 +7876,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "58ff33dd-c95d-3b8e-8100-f5eda7e8caff",
-        "title": "Spotting Winners: Sotera Health Company (NASDAQ:SHC) And Research Tools & Consumables Stocks In Q1",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/spotting-winners-sotera-health-company-033323533.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6474059a-fb5c-368d-9798-b6635a4de69a",
         "title": "Thermo Fisher Scientific Inc. (TMO): Among Billionaire Quants’ Two Sigma’s Stock Picks with Huge Upside Potential",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/thermo-fisher-scientific-inc-tmo-073441075.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "58ff33dd-c95d-3b8e-8100-f5eda7e8caff",
+        "title": "Spotting Winners: Sotera Health Company (NASDAQ:SHC) And Research Tools & Consumables Stocks In Q1",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/spotting-winners-sotera-health-company-033323533.html",
         "type": "STORY"
       },
       {
@@ -7958,28 +7958,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.55,
-        "industryAvg": 38.74
+        "value": 35.32,
+        "industryAvg": 37.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.41,
-        "industryAvg": 5.16
+        "value": 5.23,
+        "industryAvg": 4.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.68,
-        "industryAvg": 4.54
+        "value": 4.52,
+        "industryAvg": 4.37
       },
       {
         "metric": "ROE",
         "value": 3.2,
-        "industryAvg": 9.94
+        "industryAvg": 9.93
       },
       {
         "metric": "ROA",
         "value": 1.51,
-        "industryAvg": 4.91
+        "industryAvg": 4.9
       },
       {
         "metric": "Gross Margin",
@@ -7989,12 +7989,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.439999999999998,
-        "industryAvg": 21.44
+        "industryAvg": 21.42
       },
       {
         "metric": "Net Margin",
         "value": 14.180000000000001,
-        "industryAvg": 10.4
+        "industryAvg": 10.39
       }
     ]
   }

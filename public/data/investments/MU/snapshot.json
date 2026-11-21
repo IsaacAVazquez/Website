@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 9.6,
-      "marketCap": 805747020000,
-      "psRatio": 6.05,
-      "pbRatio": 5.82,
+      "ttmPe": 8.01,
+      "marketCap": 672390810000,
+      "psRatio": 5.05,
+      "pbRatio": 4.86,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,25 +5964,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.799999999999997,
-      "costOfEquity": 23.95,
+      "wacc": 24.52,
+      "costOfEquity": 24.709999999999997,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.4254,
-      "marketCap": 805747020000
+      "beta": 2.4894,
+      "marketCap": 672390810000
     },
     "beta": {
-      "beta5y": 2.4254
+      "beta5y": 2.4894
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 226.91,
-        "high": 234.35,
-        "low": 216.36,
-        "close": 225.92,
-        "volume": 35256600
-      },
       {
         "date": "2025-11-20",
         "open": 230.24,
@@ -7989,7 +7981,15 @@
         "high": 760.01,
         "low": 689.28,
         "close": 690.44,
-        "volume": 35003100
+        "volume": 35401500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 665.46,
+        "high": 669,
+        "low": 585.25,
+        "close": 594.51,
+        "volume": 59094000
       }
     ],
     "news": [
@@ -8026,14 +8026,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
-        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
         "publisher": "Zacks",
@@ -8042,19 +8034,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
-        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
+        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
+        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
         "type": "STORY"
       },
       {
-        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
-        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
-        "publisher": "Motley Fool",
+        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
+        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
+        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
+        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
         "type": "STORY"
       },
       {
@@ -8066,11 +8066,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
-        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
-        "publisher": "MT Newswires",
+        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
+        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
+        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
         "type": "STORY"
       }
     ],
@@ -8140,18 +8140,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.6,
-        "industryAvg": 18.92
+        "value": 8.01,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.05,
-        "industryAvg": 9.25
+        "value": 5.05,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.82,
-        "industryAvg": 8.29
+        "value": 4.86,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8171,7 +8171,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 86.45,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 45.53,
-      "marketCap": 185913245385,
-      "psRatio": 13.39,
-      "pbRatio": 5.54,
-      "pegRatio": 0.28
+      "ttmPe": 41.05,
+      "marketCap": 167620897760,
+      "psRatio": 12.07,
+      "pbRatio": 5,
+      "pegRatio": 0.25
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.27,
-      "costOfEquity": 14.93,
+      "wacc": 14.52,
+      "costOfEquity": 15.260000000000002,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2657,
-      "marketCap": 185913245385
+      "beta": 1.3002,
+      "marketCap": 167620897760
     },
     "beta": {
-      "beta5y": 1.2657
+      "beta5y": 1.3002
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 229.54,
-        "high": 234.4,
-        "low": 229.33,
-        "close": 232.2,
-        "volume": 2790300
-      },
       {
         "date": "2025-11-20",
         "open": 234.29,
@@ -8128,6 +8120,14 @@
         "low": 373.49,
         "close": 377.44,
         "volume": 3243900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 371.32,
+        "high": 374.24,
+        "low": 343.94,
+        "close": 345.92,
+        "volume": 10199800
       }
     ],
     "news": [
@@ -8180,19 +8180,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
-        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
         "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/jpmorgan-reaffirms-300-price-target-082801242.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
+        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
         "type": "STORY"
       },
       {
@@ -8281,18 +8281,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.53,
-        "industryAvg": 18.92
+        "value": 41.05,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.39,
-        "industryAvg": 9.25
+        "value": 12.07,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.54,
-        "industryAvg": 8.29
+        "value": 5,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8312,7 +8312,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 52.93,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

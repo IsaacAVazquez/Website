@@ -1,10 +1,10 @@
 {
   "symbol": "BX",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4872,
-      "ttmPe": 25.79,
-      "marketCap": 143874427263,
-      "psRatio": 10.44,
-      "pbRatio": 16.28,
-      "pegRatio": 6.95
+      "ttmPe": 24.69,
+      "marketCap": 137769307240,
+      "psRatio": 9.99,
+      "pbRatio": 15.59,
+      "pegRatio": 6.65
     },
     "profitability": {
       "roe": 7.42,
@@ -2554,25 +2554,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.43,
-      "costOfEquity": 16.88,
+      "wacc": 15.120000000000001,
+      "costOfEquity": 16.6,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 17,
-      "beta": 1.514,
-      "marketCap": 143874427263
+      "beta": 1.4687,
+      "marketCap": 137769307240
     },
     "beta": {
-      "beta5y": 1.514
+      "beta5y": 1.4687
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 137.25,
-        "high": 138.71,
-        "low": 135.44,
-        "close": 138.65,
-        "volume": 5141700
-      },
       {
         "date": "2025-11-20",
         "open": 141,
@@ -4580,6 +4572,14 @@
         "low": 114.9,
         "close": 115.99,
         "volume": 6771400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 115.7,
+        "high": 116.37,
+        "low": 110.45,
+        "close": 110.8,
+        "volume": 6712800
       }
     ],
     "news": [
@@ -4648,19 +4648,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
-        "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
-        "publisher": "CorpGov.com",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
+        "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
+        "publisher": "CorpGov.com",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
         "type": "STORY"
       }
     ],
@@ -4726,18 +4726,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.79,
-        "industryAvg": 18.71
+        "value": 24.69,
+        "industryAvg": 17.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.44,
-        "industryAvg": 3.32
+        "value": 9.99,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.28,
-        "industryAvg": 2.73
+        "value": 15.59,
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",

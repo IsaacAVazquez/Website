@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.812,
-      "ttmPe": 26.55,
-      "marketCap": 129405562000,
-      "psRatio": 8.13,
-      "pbRatio": 6.57,
-      "pegRatio": 2.63
+      "ttmPe": 26.15,
+      "marketCap": 127431343000,
+      "psRatio": 8.01,
+      "pbRatio": 6.47,
+      "pegRatio": 2.59
     },
     "profitability": {
       "roe": 4.84,
@@ -5935,25 +5935,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.87,
-      "costOfEquity": 13.05,
+      "wacc": 11.64,
+      "costOfEquity": 12.82,
       "costOfDebt": 0.65,
       "taxRate": 25,
-      "beta": 1.0225,
-      "marketCap": 129405562000
+      "beta": 0.9939,
+      "marketCap": 127431343000
     },
     "beta": {
-      "beta5y": 1.0225
+      "beta5y": 0.9939
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 464.2857,
-        "high": 466.4144,
-        "low": 461.6083,
-        "close": 464.333,
-        "volume": 1621015
-      },
       {
         "date": "2025-11-20",
         "open": 467.1712,
@@ -7961,6 +7953,14 @@
         "low": 439.35,
         "close": 442.66,
         "volume": 1128300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 446.55,
+        "high": 453.73,
+        "low": 438.34,
+        "close": 439.57,
+        "volume": 1980300
       }
     ],
     "news": [
@@ -8065,6 +8065,12 @@
         "totalPay": 4905668
       },
       {
+        "name": "Mr. Firdaus Bhathena",
+        "title": "Executive VP and Chief Technology & Transformation Officer",
+        "age": 54,
+        "yearBorn": 1971
+      },
+      {
         "name": "Mr. Girish Ganesan",
         "title": "Executive VP & Chief People Officer",
         "age": 44,
@@ -8094,13 +8100,6 @@
         "yearBorn": 1981
       },
       {
-        "name": "Ms. Martina L. Cheung",
-        "title": "President, CEO & Director",
-        "age": 49,
-        "yearBorn": 1976,
-        "totalPay": 3850628
-      },
-      {
         "name": "Ms. Sally Moore",
         "title": "Executive VP, Chief Client Officer & Co-Head of Market Intelligence Kensho Data & Platforms",
         "age": 49,
@@ -8111,18 +8110,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.55,
-        "industryAvg": 25.74
+        "value": 26.15,
+        "industryAvg": 25.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.13,
-        "industryAvg": 7.82
+        "value": 8.01,
+        "industryAvg": 7.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.57,
-        "industryAvg": 4.43
+        "value": 6.47,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",

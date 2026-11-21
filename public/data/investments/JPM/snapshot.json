@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.8359,
-      "ttmPe": 13.6,
-      "marketCap": 860706516000,
-      "psRatio": 4.33,
-      "pbRatio": 2.31,
-      "pegRatio": 1.4
+      "ttmPe": 13.03,
+      "marketCap": 824643468000,
+      "psRatio": 4.15,
+      "pbRatio": 2.21,
+      "pegRatio": 1.34
     },
     "profitability": {
       "roe": 4,
@@ -6408,25 +6408,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.48,
-      "costOfEquity": 13.03,
+      "wacc": 9.35,
+      "costOfEquity": 12.98,
       "costOfDebt": 4.9,
       "taxRate": 24,
-      "beta": 1.0201,
-      "marketCap": 860706516000
+      "beta": 1.0133,
+      "marketCap": 824643468000
     },
     "beta": {
-      "beta5y": 1.0201
+      "beta5y": 1.0133
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 299.74,
-        "high": 304.45,
-        "low": 299.27,
-        "close": 303.27,
-        "volume": 5546600
-      },
       {
         "date": "2025-11-20",
         "open": 306.34,
@@ -8434,6 +8426,14 @@
         "low": 317.43,
         "close": 320.22,
         "volume": 6968100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 319.89,
+        "high": 320.88,
+        "low": 309.18,
+        "close": 310.53,
+        "volume": 12506100
       }
     ],
     "news": [
@@ -8591,18 +8591,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.6,
-        "industryAvg": 12.06
+        "value": 13.03,
+        "industryAvg": 11.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.33,
-        "industryAvg": 3.31
+        "value": 4.15,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.31,
-        "industryAvg": 1.52
+        "value": 2.21,
+        "industryAvg": 1.45
       },
       {
         "metric": "ROE",

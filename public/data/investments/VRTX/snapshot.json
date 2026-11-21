@@ -1,13 +1,14 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5458,
-      "ttmPe": 34.51,
+      "ttmPe": 33.13,
       "pegRatio": 3.82,
-      "marketCap": 136002198770,
-      "psRatio": 10.5,
-      "pbRatio": 6.5
+      "marketCap": 130569209452,
+      "psRatio": 10.08,
+      "pbRatio": 6.25
     },
     "profitability": {
       "roe": 3.18,
@@ -5661,25 +5662,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.99,
-      "costOfEquity": 7.3,
+      "wacc": 7.16,
+      "costOfEquity": 7.489999999999999,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 17,
-      "beta": 0.2857,
-      "marketCap": 136002198770
+      "beta": 0.323,
+      "marketCap": 130569209452
     },
     "beta": {
-      "beta5y": 0.2857
+      "beta5y": 0.323
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 434.36,
-        "high": 434.93,
-        "low": 418.53,
-        "close": 421.03,
-        "volume": 1545100
-      },
       {
         "date": "2025-11-20",
         "open": 420.84,
@@ -7687,6 +7680,14 @@
         "low": 517.82,
         "close": 520.66,
         "volume": 1176900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 529.94,
+        "high": 531.37,
+        "low": 513.8,
+        "close": 515.02,
+        "volume": 1767700
       }
     ],
     "news": [

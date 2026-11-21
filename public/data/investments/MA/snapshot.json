@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 46.49,
-      "marketCap": 561662010000,
-      "psRatio": 15.48,
-      "pbRatio": 83.17,
+      "ttmPe": 45.21,
+      "marketCap": 546140070000,
+      "psRatio": 15.05,
+      "pbRatio": 80.87,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,25 +5641,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.57,
-      "costOfEquity": 10.979999999999999,
+      "wacc": 10.36,
+      "costOfEquity": 10.780000000000001,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.7581,
-      "marketCap": 561662010000
+      "beta": 0.7375,
+      "marketCap": 546140070000
     },
     "beta": {
-      "beta5y": 0.7581
+      "beta5y": 0.7375
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 528.15,
-        "high": 531,
-        "low": 524.98,
-        "close": 530.36,
-        "volume": 2723100
-      },
       {
         "date": "2025-11-20",
         "open": 533.29,
@@ -7667,6 +7659,14 @@
         "low": 625.08,
         "close": 626.5,
         "volume": 3640700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 629.12,
+        "high": 637.03,
+        "low": 624.11,
+        "close": 625.59,
+        "volume": 3668500
       }
     ],
     "news": [
@@ -7695,19 +7695,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
         "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
         "type": "STORY"
       },
       {
@@ -7735,19 +7735,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
-        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
         "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
+        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
         "type": "STORY"
       }
     ],
@@ -7817,23 +7817,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.49,
-        "industryAvg": 22.75
+        "value": 45.21,
+        "industryAvg": 21.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.48,
-        "industryAvg": 5.36
+        "value": 15.05,
+        "industryAvg": 5.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 83.17,
-        "industryAvg": 5.87
+        "value": 80.87,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 74.86,
-        "industryAvg": 15.2
+        "industryAvg": 15.21
       },
       {
         "metric": "ROA",
@@ -7843,7 +7843,7 @@
       {
         "metric": "Gross Margin",
         "value": 79.32000000000001,
-        "industryAvg": 65.68
+        "industryAvg": 65.67
       },
       {
         "metric": "EBITDA Margin",

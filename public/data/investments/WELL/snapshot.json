@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -45,9 +45,9 @@
     "fundamentals": {
       "ttmEps": -0.5799,
       "ttmPe": 141.68,
-      "marketCap": 179895189504,
-      "psRatio": 15.53,
-      "pbRatio": 3.7,
+      "marketCap": 175927774436,
+      "psRatio": 15.19,
+      "pbRatio": 3.62,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5559,25 +5559,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.98,
-      "costOfEquity": 11.05,
+      "wacc": 9.64,
+      "costOfEquity": 10.69,
       "costOfDebt": 0.91,
       "taxRate": 2,
-      "beta": 0.7663,
-      "marketCap": 179895189504
+      "beta": 0.7264,
+      "marketCap": 175927774436
     },
     "beta": {
-      "beta5y": 0.7663
+      "beta5y": 0.7264
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 197.2,
-        "high": 199.65,
-        "low": 196.26,
-        "close": 196.9,
-        "volume": 2842000
-      },
       {
         "date": "2025-11-20",
         "open": 198.19,
@@ -7585,6 +7577,14 @@
         "low": 243.03,
         "close": 243.19,
         "volume": 3383600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 245.06,
+        "high": 246.75,
+        "low": 239.93,
+        "close": 240.34,
+        "volume": 3293900
       }
     ],
     "news": [
@@ -7637,19 +7637,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
-        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
         "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/heres-key-metrics-tell-us-220008553.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
+        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
         "type": "STORY"
       },
       {
@@ -7732,17 +7732,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 59.7
+        "industryAvg": 58.61
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.53,
-        "industryAvg": 9.3
+        "value": 15.19,
+        "industryAvg": 9.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.7,
-        "industryAvg": 2.78
+        "value": 3.62,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",

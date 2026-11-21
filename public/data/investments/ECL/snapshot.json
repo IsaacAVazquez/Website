@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 41.14,
-      "marketCap": 84824631074,
-      "psRatio": 4.88,
-      "pbRatio": 8.14,
+      "ttmPe": 40.07,
+      "marketCap": 82612838420,
+      "psRatio": 4.76,
+      "pbRatio": 7.93,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,25 +6315,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.100000000000001,
-      "costOfEquity": 11.63,
+      "wacc": 9.85,
+      "costOfEquity": 11.379999999999999,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8399,
-      "marketCap": 84824631074
+      "beta": 0.8132,
+      "marketCap": 82612838420
     },
     "beta": {
-      "beta5y": 0.8399
+      "beta5y": 0.8132
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 256.96,
-        "high": 261.62,
-        "low": 255.91,
-        "close": 261.5,
-        "volume": 1965500
-      },
       {
         "date": "2025-11-20",
         "open": 261.93,
@@ -8341,6 +8333,14 @@
         "low": 296.34,
         "close": 297.32,
         "volume": 1481400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 299.73,
+        "high": 301.78,
+        "low": 293.72,
+        "close": 294.7,
+        "volume": 1831200
       }
     ],
     "news": [
@@ -8377,14 +8377,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
-        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
         "title": "Was Jim Cramer Right About Ecolab (ECL)?",
         "publisher": "Insider Monkey",
@@ -8393,11 +8385,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
-        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
+        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
         "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
         "type": "STORY"
       },
       {
@@ -8409,11 +8401,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
-        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
+        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
+        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
         "type": "STORY"
       },
       {
@@ -8422,6 +8414,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
+        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
         "type": "STORY"
       }
     ],
@@ -8491,43 +8491,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.14,
-        "industryAvg": 27.85
+        "value": 40.07,
+        "industryAvg": 28.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.88,
-        "industryAvg": 2.49
+        "value": 4.76,
+        "industryAvg": 2.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.14,
-        "industryAvg": 3.37
+        "value": 7.93,
+        "industryAvg": 3.12
       },
       {
         "metric": "ROE",
         "value": 5.38,
-        "industryAvg": 9.33
+        "industryAvg": 9.700000000000001
       },
       {
         "metric": "ROA",
         "value": 1.81,
-        "industryAvg": 3.7800000000000002
+        "industryAvg": 3.92
       },
       {
         "metric": "Gross Margin",
         "value": 44.080000000000005,
-        "industryAvg": 29.970000000000002
+        "industryAvg": 30.049999999999997
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.810000000000002,
-        "industryAvg": 17.04
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 6.15
+        "industryAvg": 6.39
       }
     ]
   }

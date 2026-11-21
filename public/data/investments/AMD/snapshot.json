@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5991,
-      "ttmPe": 109.46,
-      "marketCap": 821565120000,
-      "psRatio": 18.08,
-      "pbRatio": 12.01,
-      "pegRatio": 1.18
+      "ttmPe": 92.28,
+      "marketCap": 692604480000,
+      "psRatio": 15.24,
+      "pbRatio": 10.13,
+      "pegRatio": 1
     },
     "profitability": {
       "roe": 3.58,
@@ -6209,25 +6209,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.32,
-      "costOfEquity": 24.58,
+      "wacc": 24.42,
+      "costOfEquity": 24.73,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 40,
-      "beta": 2.5072,
-      "marketCap": 821565120000
+      "beta": 2.4918,
+      "marketCap": 692604480000
     },
     "beta": {
-      "beta5y": 2.5072
+      "beta5y": 2.4918
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 230.26,
-        "high": 235.28,
-        "low": 219.71,
-        "close": 223.55,
-        "volume": 52093400
-      },
       {
         "date": "2025-11-20",
         "open": 232.7,
@@ -8234,7 +8226,15 @@
         "high": 555.01,
         "low": 470.56,
         "close": 489.19,
-        "volume": 71098300
+        "volume": 71660700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 471.73,
+        "high": 474.79,
+        "low": 418.76,
+        "close": 424.39,
+        "volume": 69989800
       }
     ],
     "news": [
@@ -8255,19 +8255,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
-        "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
         "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
+        "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
         "type": "STORY"
       },
       {
@@ -8350,10 +8350,6 @@
         "totalPay": 2165455
       },
       {
-        "name": "Mr. Matthew D. Ramsay",
-        "title": "Vice President of Financial Strategy & Investor Relations"
-      },
-      {
         "name": "Mr. Paul Darren Grasby",
         "title": "Executive VP, Chief Sales Officer & President of EMEA",
         "age": 55,
@@ -8372,27 +8368,23 @@
         "age": 62,
         "yearBorn": 1963,
         "totalPay": 1976642
-      },
-      {
-        "name": "Ms. Ruth Cotter",
-        "title": "Senior VP & Chief Administrative Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 109.46,
-        "industryAvg": 18.92
+        "value": 92.28,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.08,
-        "industryAvg": 9.25
+        "value": 15.24,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.01,
-        "industryAvg": 8.29
+        "value": 10.13,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8412,7 +8404,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 20.21,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

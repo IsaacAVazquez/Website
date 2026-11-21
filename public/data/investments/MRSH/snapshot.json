@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 24.69,
-      "marketCap": 97967965377,
+      "ttmPe": 24.71,
+      "marketCap": 98039277042,
       "psRatio": 3.44,
       "pbRatio": 6.68,
       "pegRatio": 2.14
@@ -3678,25 +3678,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.539999999999999,
-      "costOfEquity": 9.06,
+      "wacc": 7.21,
+      "costOfEquity": 8.649999999999999,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.5093,
-      "marketCap": 97967965377
+      "beta": 0.469,
+      "marketCap": 98039277042
     },
     "beta": {
-      "beta5y": 0.5093
+      "beta5y": 0.469
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 180.54,
-        "high": 180.76,
-        "low": 176.66,
-        "close": 177.13,
-        "volume": 2258600
-      },
       {
         "date": "2025-11-20",
         "open": 177.56,
@@ -5704,6 +5696,14 @@
         "low": 203.41,
         "close": 204.66,
         "volume": 1540000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 209.16,
+        "high": 210.76,
+        "low": 205.89,
+        "close": 206.22,
+        "volume": 2932800
       }
     ],
     "news": [
@@ -5724,14 +5724,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
-        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
         "title": "Davos CEO Brief for Monday, January 19, 2026",
         "publisher": "WSJ",
@@ -5748,19 +5740,19 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
+        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
         "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
-        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
         "type": "STORY"
       },
       {
@@ -5772,11 +5764,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "04061779-be28-3eeb-b473-e9f9e6a93ba0",
-        "title": "Marsh (MRSH) Reports Next Week: Wall Street Expects Earnings Growth",
-        "publisher": "Zacks",
-        "reportDate": "2026-01-22",
-        "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
+        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
+        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
         "type": "STORY"
       },
       {
@@ -5785,6 +5777,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-22",
         "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "04061779-be28-3eeb-b473-e9f9e6a93ba0",
+        "title": "Marsh (MRSH) Reports Next Week: Wall Street Expects Earnings Growth",
+        "publisher": "Zacks",
+        "reportDate": "2026-01-22",
+        "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
         "type": "STORY"
       }
     ],
@@ -5856,18 +5856,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.69,
-        "industryAvg": 24.35
+        "value": 24.71,
+        "industryAvg": 24.25
       },
       {
         "metric": "P/S Ratio",
         "value": 3.44,
-        "industryAvg": 3.41
+        "industryAvg": 3.39
       },
       {
         "metric": "P/B Ratio",
         "value": 6.68,
-        "industryAvg": 4.33
+        "industryAvg": 4.31
       },
       {
         "metric": "ROE",
@@ -5887,7 +5887,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 22.03,
-        "industryAvg": 26.31
+        "industryAvg": 26.32
       },
       {
         "metric": "Net Margin",

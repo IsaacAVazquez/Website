@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.7184,
-      "ttmPe": 19.85,
-      "marketCap": 63645650520,
-      "psRatio": 4.61,
-      "pbRatio": 5.27,
-      "pegRatio": 0.49
+      "ttmPe": 18.49,
+      "marketCap": 59270027800,
+      "psRatio": 4.3,
+      "pbRatio": 4.9,
+      "pegRatio": 0.46
     },
     "profitability": {
       "roe": 7.53,
@@ -6139,25 +6139,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.6,
-      "costOfEquity": 19.33,
+      "wacc": 16.259999999999998,
+      "costOfEquity": 19.13,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.8309,
-      "marketCap": 63645650520
+      "beta": 1.7876,
+      "marketCap": 59270027800
     },
     "beta": {
-      "beta5y": 1.8309
+      "beta5y": 1.7876
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 189.44,
-        "high": 191.37,
-        "low": 188.36,
-        "close": 190.06,
-        "volume": 2969200
-      },
       {
         "date": "2025-11-20",
         "open": 192.17,
@@ -8165,6 +8157,14 @@
         "low": 249.49,
         "close": 251.76,
         "volume": 3478700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 250.22,
+        "high": 253.91,
+        "low": 233.69,
+        "close": 235.15,
+        "volume": 9772800
       }
     ],
     "news": [
@@ -8177,19 +8177,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
-        "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
-        "publisher": "Investopedia",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
         "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
         "publisher": "TipRanks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
+        "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
+        "publisher": "Investopedia",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
         "type": "STORY"
       },
       {
@@ -8209,19 +8209,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
-        "title": "3 Profitable Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
         "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
+        "title": "3 Profitable Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
         "type": "STORY"
       },
       {
@@ -8313,18 +8313,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.85,
-        "industryAvg": 18.92
+        "value": 18.49,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.61,
-        "industryAvg": 9.25
+        "value": 4.3,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.27,
-        "industryAvg": 8.29
+        "value": 4.9,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
@@ -8344,7 +8344,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 37.8,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

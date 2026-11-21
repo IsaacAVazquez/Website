@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 25.44,
-      "marketCap": 111466030525,
-      "psRatio": 15.99,
-      "pbRatio": 4.2,
-      "pegRatio": 1.57
+      "ttmPe": 25.22,
+      "marketCap": 110499572436,
+      "psRatio": 15.85,
+      "pbRatio": 4.16,
+      "pegRatio": 1.55
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.34,
-      "costOfEquity": 6.510000000000001,
+      "wacc": 6.15,
+      "costOfEquity": 6.3100000000000005,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.185,
-      "marketCap": 111466030525
+      "beta": 0.1743,
+      "marketCap": 110499572436
     },
     "beta": {
-      "beta5y": 0.185
+      "beta5y": 0.1743
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 277.92,
-        "high": 279.95,
-        "low": 269.47,
-        "close": 272.49,
-        "volume": 3543200
-      },
       {
         "date": "2025-11-20",
         "open": 272.31,
@@ -7637,6 +7629,14 @@
         "low": 306,
         "close": 306.31,
         "volume": 2452100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 310.48,
+        "high": 313.1,
+        "low": 306.88,
+        "close": 307.56,
+        "volume": 2678000
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
-        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
         "title": "XRP futures bag $19M on launch day",
         "publisher": "TheStreet",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
+        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
         "type": "STORY"
       },
       {
@@ -7697,19 +7697,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
-        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
         "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
+        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
         "type": "STORY"
       },
       {
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.44,
-        "industryAvg": 25.74
+        "value": 25.22,
+        "industryAvg": 25.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.99,
-        "industryAvg": 7.82
+        "value": 15.85,
+        "industryAvg": 7.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.2,
-        "industryAvg": 4.43
+        "value": 4.16,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",

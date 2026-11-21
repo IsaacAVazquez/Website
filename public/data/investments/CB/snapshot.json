@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-11-18T17:49:51.651139+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-18T17:49:51.651139+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-19"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 13.15,
-      "marketCap": 144859555760,
-      "psRatio": 2.32,
-      "pbRatio": 1.98,
-      "pegRatio": 2.9
+      "ttmPe": 13.01,
+      "marketCap": 143313163420,
+      "psRatio": 2.3,
+      "pbRatio": 1.96,
+      "pegRatio": 2.87
     },
     "profitability": {
       "roe": 3.83,
@@ -5728,25 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.529999999999999,
-      "costOfEquity": 7.26,
+      "wacc": 6.29,
+      "costOfEquity": 7.000000000000001,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2784,
-      "marketCap": 144859555760
+      "beta": 0.2622,
+      "marketCap": 143313163420
     },
     "beta": {
-      "beta5y": 0.2784
+      "beta5y": 0.2622
     },
     "price": [
-      {
-        "date": "2025-11-19",
-        "open": 296.14,
-        "high": 296.89,
-        "low": 292.78,
-        "close": 293.96,
-        "volume": 1379000
-      },
       {
         "date": "2025-11-20",
         "open": 294.94,
@@ -7754,17 +7746,17 @@
         "low": 367.14,
         "close": 370.11,
         "volume": 1327200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 374.82,
+        "high": 379.21,
+        "low": 371,
+        "close": 371.63,
+        "volume": 2250300
       }
     ],
     "news": [
-      {
-        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
-        "type": "STORY"
-      },
       {
         "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
         "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
@@ -7774,11 +7766,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
-        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
         "type": "STORY"
       },
       {
@@ -7787,6 +7779,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
+        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
         "type": "STORY"
       },
       {
@@ -7822,19 +7822,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
-        "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
+        "title": "Chubb rejigs investment and asset management leadership",
+        "publisher": "Life Insurance International",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
+        "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
         "type": "STORY"
       },
       {
-        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
-        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
-        "publisher": "Investing.com",
+        "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
+        "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
+        "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
         "type": "STORY"
       }
     ],
@@ -7902,18 +7902,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.15,
-        "industryAvg": 32.64
+        "value": 13.01,
+        "industryAvg": 32.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.32,
-        "industryAvg": 4.02
+        "value": 2.3,
+        "industryAvg": 3.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.98,
-        "industryAvg": 5.4
+        "value": 1.96,
+        "industryAvg": 5.33
       },
       {
         "metric": "ROE",
