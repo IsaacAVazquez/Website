@@ -59,11 +59,11 @@
       },
       {
         "position": 3,
-        "playedGames": 10,
+        "playedGames": 11,
         "won": 7,
-        "draw": 0,
+        "draw": 1,
         "lost": 3,
-        "points": 21,
+        "points": 22,
         "goalsFor": 21,
         "goalsAgainst": 13,
         "goalDifference": 8,
@@ -279,6 +279,26 @@
       },
       {
         "position": 14,
+        "playedGames": 11,
+        "won": 2,
+        "draw": 5,
+        "lost": 4,
+        "points": 11,
+        "goalsFor": 10,
+        "goalsAgainst": 12,
+        "goalDifference": -2,
+        "team": {
+          "id": "63",
+          "name": "Fulham FC",
+          "shortName": "Fulham",
+          "tla": "FUL",
+          "crest": "https://crests.football-data.org/63.png",
+          "venue": null,
+          "accentColor": "#000000"
+        }
+      },
+      {
+        "position": 15,
         "playedGames": 10,
         "won": 3,
         "draw": 2,
@@ -295,26 +315,6 @@
           "crest": "https://crests.football-data.org/349.png",
           "venue": null,
           "accentColor": "#3A64A3"
-        }
-      },
-      {
-        "position": 15,
-        "playedGames": 10,
-        "won": 2,
-        "draw": 4,
-        "lost": 4,
-        "points": 10,
-        "goalsFor": 10,
-        "goalsAgainst": 12,
-        "goalDifference": -2,
-        "team": {
-          "id": "63",
-          "name": "Fulham FC",
-          "shortName": "Fulham",
-          "tla": "FUL",
-          "crest": "https://crests.football-data.org/63.png",
-          "venue": null,
-          "accentColor": "#000000"
         }
       },
       {
@@ -630,32 +630,6 @@
     ],
     "upcomingFixtures": [
       {
-        "id": "560643",
-        "utcDate": "2026-11-21T12:30:00Z",
-        "status": "TIMED",
-        "matchday": 11,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png"
-        },
-        "awayTeam": {
-          "id": "63",
-          "name": "Fulham FC",
-          "shortName": "Fulham",
-          "tla": "FUL",
-          "crest": "https://crests.football-data.org/63.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
         "id": "560642",
         "utcDate": "2026-11-21T15:00:00Z",
         "status": "TIMED",
@@ -830,6 +804,32 @@
           "shortName": "Brighton Hove",
           "tla": "BHA",
           "crest": "https://crests.football-data.org/397.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560645",
+        "utcDate": "2026-11-22T16:30:00Z",
+        "status": "TIMED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png"
+        },
+        "awayTeam": {
+          "id": "66",
+          "name": "Manchester United FC",
+          "shortName": "Man United",
+          "tla": "MUN",
+          "crest": "https://crests.football-data.org/66.png"
         },
         "score": {
           "winner": null,
@@ -1028,7 +1028,7 @@
         "teamName": "Man City",
         "goals": 9,
         "assists": 0,
-        "appearances": 10
+        "appearances": 11
       },
       {
         "rank": 2,
@@ -1091,7 +1091,7 @@
         "teamName": "Man City",
         "goals": 5,
         "assists": 2,
-        "appearances": 10
+        "appearances": 11
       },
       {
         "rank": 9,
@@ -1154,7 +1154,7 @@
         "totalGoals": 30
       }
     ],
-    "generatedAt": "2026-11-21T01:32:20.532Z"
+    "generatedAt": "2026-11-21T12:41:50.044Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1451,7 +1451,7 @@
         "goalsFor": 7,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "58": {
       "team": {
@@ -1747,7 +1747,7 @@
         "goalsFor": 10,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "61": {
       "team": {
@@ -2043,7 +2043,7 @@
         "goalsFor": 9,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "62": {
       "team": {
@@ -2339,7 +2339,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "63": {
       "team": {
@@ -2490,32 +2490,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "560643",
-          "utcDate": "2026-11-21T12:30:00Z",
-          "status": "TIMED",
-          "matchday": 11,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "65",
-            "name": "Manchester City FC",
-            "shortName": "Man City",
-            "tla": "MCI",
-            "crest": "https://crests.football-data.org/65.png"
-          },
-          "awayTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "560657",
           "utcDate": "2026-11-29T14:05:00Z",
           "status": "TIMED",
@@ -2618,6 +2592,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560692",
+          "utcDate": "2026-12-19T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 16,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "63",
+            "name": "Fulham FC",
+            "shortName": "Fulham",
+            "tla": "FUL",
+            "crest": "https://crests.football-data.org/63.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2635,7 +2635,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "64": {
       "team": {
@@ -2931,7 +2931,7 @@
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "65": {
       "team": {
@@ -3082,32 +3082,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "560643",
-          "utcDate": "2026-11-21T12:30:00Z",
-          "status": "TIMED",
-          "matchday": 11,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "65",
-            "name": "Manchester City FC",
-            "shortName": "Man City",
-            "tla": "MCI",
-            "crest": "https://crests.football-data.org/65.png"
-          },
-          "awayTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "560654",
           "utcDate": "2026-11-29T16:30:00Z",
           "status": "TIMED",
@@ -3210,6 +3184,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560696",
+          "utcDate": "2026-12-19T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 16,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "65",
+            "name": "Manchester City FC",
+            "shortName": "Man City",
+            "tla": "MCI",
+            "crest": "https://crests.football-data.org/65.png"
+          },
+          "awayTeam": {
+            "id": "322",
+            "name": "Hull City AFC",
+            "shortName": "Hull City",
+            "tla": "HUL",
+            "crest": "https://crests.football-data.org/322.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -3227,7 +3227,7 @@
         "goalsFor": 8,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "66": {
       "team": {
@@ -3523,7 +3523,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "67": {
       "team": {
@@ -3819,7 +3819,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "71": {
       "team": {
@@ -4115,7 +4115,7 @@
         "goalsFor": 2,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "73": {
       "team": {
@@ -4411,7 +4411,7 @@
         "goalsFor": 8,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "322": {
       "team": {
@@ -4707,7 +4707,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "341": {
       "team": {
@@ -5003,7 +5003,7 @@
         "goalsFor": 3,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "349": {
       "team": {
@@ -5299,7 +5299,7 @@
         "goalsFor": 8,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "351": {
       "team": {
@@ -5595,7 +5595,7 @@
         "goalsFor": 5,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "354": {
       "team": {
@@ -5891,7 +5891,7 @@
         "goalsFor": 4,
         "goalsAgainst": 13
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "397": {
       "team": {
@@ -6187,7 +6187,7 @@
         "goalsFor": 10,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "402": {
       "team": {
@@ -6483,7 +6483,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "1044": {
       "team": {
@@ -6779,7 +6779,7 @@
         "goalsFor": 10,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     },
     "1076": {
       "team": {
@@ -7075,7 +7075,7 @@
         "goalsFor": 9,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-21T01:32:20.532Z"
+      "generatedAt": "2026-11-21T12:41:50.044Z"
     }
   }
 }
