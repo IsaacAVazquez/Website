@@ -1,7 +1,7 @@
 {
   "season": "2026/27",
   "matchday": 13,
-  "generatedAt": "2026-11-21T12:52:08.525Z",
+  "generatedAt": "2026-11-21T21:49:14.884Z",
   "updatedAt": "2026-11-21",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -32,13 +32,13 @@
       "name": "Real Madrid CF",
       "shortName": "Real Madrid",
       "position": 2,
-      "points": 30,
-      "played": 12,
+      "points": 31,
+      "played": 13,
       "won": 10,
-      "drawn": 0,
+      "drawn": 1,
       "lost": 2,
-      "goalsFor": 31,
-      "goalsAgainst": 10,
+      "goalsFor": 32,
+      "goalsAgainst": 11,
       "goalDifference": 21,
       "accentColor": "#00529F"
     },
@@ -64,13 +64,13 @@
       "name": "Real Betis Balompié",
       "shortName": "Real Betis",
       "position": 4,
-      "points": 26,
-      "played": 12,
+      "points": 27,
+      "played": 13,
       "won": 8,
-      "drawn": 2,
+      "drawn": 3,
       "lost": 2,
-      "goalsFor": 20,
-      "goalsAgainst": 15,
+      "goalsFor": 21,
+      "goalsAgainst": 16,
       "goalDifference": 5,
       "accentColor": "#00954C"
     },
@@ -96,13 +96,13 @@
       "name": "Sevilla FC",
       "shortName": "Sevilla FC",
       "position": 6,
-      "points": 18,
-      "played": 12,
+      "points": 19,
+      "played": 13,
       "won": 5,
-      "drawn": 3,
+      "drawn": 4,
       "lost": 4,
-      "goalsFor": 17,
-      "goalsAgainst": 19,
+      "goalsFor": 18,
+      "goalsAgainst": 20,
       "goalDifference": -2,
       "accentColor": "#D2001C"
     },
@@ -123,11 +123,27 @@
       "accentColor": "#EE2523"
     },
     {
+      "id": "ala",
+      "code": "ALA",
+      "name": "Deportivo Alavés",
+      "shortName": "Alavés",
+      "position": 8,
+      "points": 16,
+      "played": 13,
+      "won": 4,
+      "drawn": 4,
+      "lost": 5,
+      "goalsFor": 18,
+      "goalsAgainst": 18,
+      "goalDifference": 0,
+      "accentColor": "#0066B3"
+    },
+    {
       "id": "vil",
       "code": "VIL",
       "name": "Villarreal CF",
       "shortName": "Villarreal",
-      "position": 8,
+      "position": 9,
       "points": 15,
       "played": 12,
       "won": 4,
@@ -137,22 +153,6 @@
       "goalsAgainst": 15,
       "goalDifference": 2,
       "accentColor": "#FDE100"
-    },
-    {
-      "id": "dep",
-      "code": "DEP",
-      "name": "RC Deportivo La Coruña",
-      "shortName": "Deportivo",
-      "position": 9,
-      "points": 15,
-      "played": 12,
-      "won": 3,
-      "drawn": 6,
-      "lost": 3,
-      "goalsFor": 15,
-      "goalsAgainst": 14,
-      "goalDifference": 1,
-      "accentColor": "#0E5FA8"
     },
     {
       "id": "esp",
@@ -171,11 +171,43 @@
       "accentColor": "#0057A8"
     },
     {
+      "id": "dep",
+      "code": "DEP",
+      "name": "RC Deportivo La Coruña",
+      "shortName": "Deportivo",
+      "position": 11,
+      "points": 15,
+      "played": 13,
+      "won": 3,
+      "drawn": 6,
+      "lost": 4,
+      "goalsFor": 16,
+      "goalsAgainst": 17,
+      "goalDifference": -1,
+      "accentColor": "#0E5FA8"
+    },
+    {
+      "id": "cel",
+      "code": "CEL",
+      "name": "RC Celta de Vigo",
+      "shortName": "Celta",
+      "position": 12,
+      "points": 14,
+      "played": 13,
+      "won": 2,
+      "drawn": 8,
+      "lost": 3,
+      "goalsFor": 11,
+      "goalsAgainst": 11,
+      "goalDifference": 0,
+      "accentColor": "#8AC3EE"
+    },
+    {
       "id": "san",
       "code": "SAN",
       "name": "Real Racing Club de Santander",
       "shortName": "Santander",
-      "position": 11,
+      "position": 13,
       "points": 14,
       "played": 12,
       "won": 4,
@@ -187,51 +219,19 @@
       "accentColor": "#00953B"
     },
     {
-      "id": "cel",
-      "code": "CEL",
-      "name": "RC Celta de Vigo",
-      "shortName": "Celta",
-      "position": 12,
-      "points": 13,
-      "played": 12,
-      "won": 2,
-      "drawn": 7,
-      "lost": 3,
-      "goalsFor": 10,
-      "goalsAgainst": 10,
-      "goalDifference": 0,
-      "accentColor": "#8AC3EE"
-    },
-    {
-      "id": "ala",
-      "code": "ALA",
-      "name": "Deportivo Alavés",
-      "shortName": "Alavés",
-      "position": 13,
-      "points": 13,
-      "played": 12,
-      "won": 3,
-      "drawn": 4,
-      "lost": 5,
-      "goalsFor": 15,
-      "goalsAgainst": 17,
-      "goalDifference": -2,
-      "accentColor": "#0066B3"
-    },
-    {
       "id": "ray",
       "code": "RAY",
       "name": "Rayo Vallecano de Madrid",
       "shortName": "Rayo Vallecano",
       "position": 14,
       "points": 12,
-      "played": 11,
+      "played": 12,
       "won": 3,
       "drawn": 3,
-      "lost": 5,
+      "lost": 6,
       "goalsFor": 15,
-      "goalsAgainst": 21,
-      "goalDifference": -6,
+      "goalsAgainst": 22,
+      "goalDifference": -7,
       "accentColor": "#E30613"
     },
     {
@@ -267,11 +267,27 @@
       "accentColor": "#D2001C"
     },
     {
+      "id": "val",
+      "code": "VAL",
+      "name": "Valencia CF",
+      "shortName": "Valencia",
+      "position": 17,
+      "points": 12,
+      "played": 13,
+      "won": 3,
+      "drawn": 3,
+      "lost": 7,
+      "goalsFor": 9,
+      "goalsAgainst": 20,
+      "goalDifference": -11,
+      "accentColor": "#EE3524"
+    },
+    {
       "id": "lev",
       "code": "LEV",
       "name": "Levante UD",
       "shortName": "Levante",
-      "position": 17,
+      "position": 18,
       "points": 11,
       "played": 12,
       "won": 2,
@@ -287,7 +303,7 @@
       "code": "ELC",
       "name": "Elche CF",
       "shortName": "Elche",
-      "position": 18,
+      "position": 19,
       "points": 10,
       "played": 12,
       "won": 2,
@@ -297,22 +313,6 @@
       "goalsAgainst": 20,
       "goalDifference": -6,
       "accentColor": "#00A650"
-    },
-    {
-      "id": "val",
-      "code": "VAL",
-      "name": "Valencia CF",
-      "shortName": "Valencia",
-      "position": 19,
-      "points": 9,
-      "played": 12,
-      "won": 2,
-      "drawn": 3,
-      "lost": 7,
-      "goalsFor": 8,
-      "goalsAgainst": 20,
-      "goalDifference": -12,
-      "accentColor": "#EE3524"
     },
     {
       "id": "mal",
@@ -347,8 +347,8 @@
       "clubId": "rma",
       "clubCode": "RMA",
       "total": 13,
-      "appearances": 12,
-      "perMatch": 1.0833333333333333
+      "appearances": 13,
+      "perMatch": 1
     },
     {
       "rank": 3,
@@ -392,8 +392,8 @@
       "clubId": "ray",
       "clubCode": "RAY",
       "total": 7,
-      "appearances": 12,
-      "perMatch": 0.5833333333333334
+      "appearances": 13,
+      "perMatch": 0.5384615384615384
     },
     {
       "rank": 8,
@@ -415,11 +415,11 @@
     },
     {
       "rank": 10,
-      "name": "Pierre-Emerick Aubameyang",
-      "clubId": "dep",
-      "clubCode": "DEP",
-      "total": 5,
-      "appearances": 10,
+      "name": "Lucas Boyé",
+      "clubId": "ala",
+      "clubCode": "ALA",
+      "total": 6,
+      "appearances": 12,
       "perMatch": 0.5
     }
   ],
@@ -444,6 +444,15 @@
     },
     {
       "rank": 3,
+      "name": "Kylian Mbappé",
+      "clubId": "rma",
+      "clubCode": "RMA",
+      "total": 3,
+      "appearances": 13,
+      "perMatch": 0.23076923076923078
+    },
+    {
+      "rank": 4,
       "name": "Raphinha",
       "clubId": "fcb",
       "clubCode": "FCB",
@@ -452,31 +461,22 @@
       "perMatch": 0.18181818181818182
     },
     {
-      "rank": 4,
-      "name": "Kylian Mbappé",
-      "clubId": "rma",
-      "clubCode": "RMA",
-      "total": 2,
-      "appearances": 12,
-      "perMatch": 0.16666666666666666
-    },
-    {
       "rank": 5,
       "name": "Sergio Camello",
       "clubId": "ray",
       "clubCode": "RAY",
       "total": 2,
-      "appearances": 12,
-      "perMatch": 0.16666666666666666
+      "appearances": 13,
+      "perMatch": 0.15384615384615385
     },
     {
       "rank": 6,
-      "name": "Pierre-Emerick Aubameyang",
-      "clubId": "dep",
-      "clubCode": "DEP",
-      "total": 2,
-      "appearances": 10,
-      "perMatch": 0.2
+      "name": "Lucas Boyé",
+      "clubId": "ala",
+      "clubCode": "ALA",
+      "total": 1,
+      "appearances": 12,
+      "perMatch": 0.08333333333333333
     }
   ],
   "goalsPerMatchday": [
@@ -530,10 +530,88 @@
     },
     {
       "matchday": 13,
-      "totalGoals": 1
+      "totalGoals": 8
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564756",
+      "utcDate": "2026-11-21T17:30:00Z",
+      "status": "FINISHED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "559",
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crest": "https://crests.football-data.org/559.png"
+      },
+      "awayTeam": {
+        "id": "90",
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crest": "https://crests.football-data.org/90.png"
+      },
+      "score": {
+        "winner": "DRAW",
+        "home": 1,
+        "away": 1
+      }
+    },
+    {
+      "id": "564751",
+      "utcDate": "2026-11-21T15:15:00Z",
+      "status": "FINISHED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "87",
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crest": "https://crests.football-data.org/87.png"
+      },
+      "awayTeam": {
+        "id": "95",
+        "name": "Valencia CF",
+        "shortName": "Valencia",
+        "tla": "VAL",
+        "crest": "https://crests.football-data.org/95.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 0,
+        "away": 1
+      }
+    },
+    {
+      "id": "564755",
+      "utcDate": "2026-11-21T13:00:00Z",
+      "status": "FINISHED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "263",
+        "name": "Deportivo Alavés",
+        "shortName": "Alavés",
+        "tla": "ALA",
+        "crest": "https://crests.football-data.org/263.png"
+      },
+      "awayTeam": {
+        "id": "560",
+        "name": "RC Deportivo La Coruña",
+        "shortName": "Deportivo",
+        "tla": "DEP",
+        "crest": "https://crests.football-data.org/560.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 3,
+        "away": 1
+      }
+    },
     {
       "id": "564748",
       "utcDate": "2026-11-20T20:00:00Z",
@@ -663,191 +741,9 @@
         "home": 1,
         "away": 0
       }
-    },
-    {
-      "id": "564738",
-      "utcDate": "2026-11-08T13:00:00Z",
-      "status": "FINISHED",
-      "matchday": 12,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "285",
-        "name": "Elche CF",
-        "shortName": "Elche",
-        "tla": "ELC",
-        "crest": "https://crests.football-data.org/285.png"
-      },
-      "awayTeam": {
-        "id": "90",
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crest": "https://crests.football-data.org/90.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 0,
-        "away": 2
-      }
-    },
-    {
-      "id": "564741",
-      "utcDate": "2026-11-07T20:00:00Z",
-      "status": "FINISHED",
-      "matchday": 12,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "95",
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crest": "https://crests.football-data.org/95.png"
-      },
-      "awayTeam": {
-        "id": "86",
-        "name": "Real Madrid CF",
-        "shortName": "Real Madrid",
-        "tla": "RMA",
-        "crest": "https://crests.football-data.org/86.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 0,
-        "away": 3
-      }
-    },
-    {
-      "id": "564739",
-      "utcDate": "2026-11-07T17:30:00Z",
-      "status": "FINISHED",
-      "matchday": 12,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "79",
-        "name": "CA Osasuna",
-        "shortName": "Osasuna",
-        "tla": "OSA",
-        "crest": "https://crests.football-data.org/79.png"
-      },
-      "awayTeam": {
-        "id": "77",
-        "name": "Athletic Club",
-        "shortName": "Athletic",
-        "tla": "ATH",
-        "crest": "https://crests.football-data.org/77.png"
-      },
-      "score": {
-        "winner": "DRAW",
-        "home": 1,
-        "away": 1
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "564755",
-      "utcDate": "2026-11-21T13:00:00Z",
-      "status": "TIMED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "263",
-        "name": "Deportivo Alavés",
-        "shortName": "Alavés",
-        "tla": "ALA",
-        "crest": "https://crests.football-data.org/263.png"
-      },
-      "awayTeam": {
-        "id": "560",
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crest": "https://crests.football-data.org/560.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
-      "id": "564751",
-      "utcDate": "2026-11-21T15:15:00Z",
-      "status": "TIMED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "87",
-        "name": "Rayo Vallecano de Madrid",
-        "shortName": "Rayo Vallecano",
-        "tla": "RAY",
-        "crest": "https://crests.football-data.org/87.png"
-      },
-      "awayTeam": {
-        "id": "95",
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crest": "https://crests.football-data.org/95.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
-      "id": "564756",
-      "utcDate": "2026-11-21T17:30:00Z",
-      "status": "TIMED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "559",
-        "name": "Sevilla FC",
-        "shortName": "Sevilla FC",
-        "tla": "SEV",
-        "crest": "https://crests.football-data.org/559.png"
-      },
-      "awayTeam": {
-        "id": "90",
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crest": "https://crests.football-data.org/90.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
-      "id": "564754",
-      "utcDate": "2026-11-21T20:00:00Z",
-      "status": "TIMED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "86",
-        "name": "Real Madrid CF",
-        "shortName": "Real Madrid",
-        "tla": "RMA",
-        "crest": "https://crests.football-data.org/86.png"
-      },
-      "awayTeam": {
-        "id": "558",
-        "name": "RC Celta de Vigo",
-        "shortName": "Celta",
-        "tla": "CEL",
-        "crest": "https://crests.football-data.org/558.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "564749",
       "utcDate": "2026-11-22T13:00:00Z",
@@ -945,6 +841,110 @@
         "shortName": "Atleti",
         "tla": "ATL",
         "crest": "https://crests.football-data.org/78.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564757",
+      "utcDate": "2026-11-23T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "88",
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crest": "https://crests.football-data.org/88.png"
+      },
+      "awayTeam": {
+        "id": "285",
+        "name": "Elche CF",
+        "shortName": "Elche",
+        "tla": "ELC",
+        "crest": "https://crests.football-data.org/285.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564765",
+      "utcDate": "2026-11-27T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 14,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "88",
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crest": "https://crests.football-data.org/88.png"
+      },
+      "awayTeam": {
+        "id": "5335",
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crest": "https://crests.football-data.org/5335.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564760",
+      "utcDate": "2026-11-28T13:00:00Z",
+      "status": "TIMED",
+      "matchday": 14,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "90",
+        "name": "Real Betis Balompié",
+        "shortName": "Real Betis",
+        "tla": "BET",
+        "crest": "https://crests.football-data.org/90.png"
+      },
+      "awayTeam": {
+        "id": "87",
+        "name": "Rayo Vallecano de Madrid",
+        "shortName": "Rayo Vallecano",
+        "tla": "RAY",
+        "crest": "https://crests.football-data.org/87.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564767",
+      "utcDate": "2026-11-28T15:15:00Z",
+      "status": "TIMED",
+      "matchday": 14,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "84",
+        "name": "Málaga CF",
+        "shortName": "Málaga",
+        "tla": "MAL",
+        "crest": "https://crests.football-data.org/84.png"
+      },
+      "awayTeam": {
+        "id": "77",
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crest": "https://crests.football-data.org/77.png"
       },
       "score": {
         "winner": null,
@@ -1429,7 +1429,7 @@
         "goalsFor": 7,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "fcb": {
       "team": {
@@ -1724,7 +1724,7 @@
         "goalsFor": 17,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "cel": {
       "team": {
@@ -1873,32 +1873,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "564754",
-          "utcDate": "2026-11-21T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "86",
-            "name": "Real Madrid CF",
-            "shortName": "Real Madrid",
-            "tla": "RMA",
-            "crest": "https://crests.football-data.org/86.png"
-          },
-          "awayTeam": {
-            "id": "558",
-            "name": "RC Celta de Vigo",
-            "shortName": "Celta",
-            "tla": "CEL",
-            "crest": "https://crests.football-data.org/558.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "564758",
           "utcDate": "2026-11-29T17:30:00Z",
           "status": "TIMED",
@@ -2003,6 +1977,33 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564804",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "558",
+            "name": "RC Celta de Vigo",
+            "shortName": "Celta",
+            "tla": "CEL",
+            "crest": "https://crests.football-data.org/558.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2020,7 +2021,7 @@
         "goalsFor": 2,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "elc": {
       "team": {
@@ -2316,7 +2317,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "esp": {
       "team": {
@@ -2613,7 +2614,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "get": {
       "team": {
@@ -2909,7 +2910,7 @@
         "goalsFor": 4,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "lev": {
       "team": {
@@ -3205,7 +3206,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "mal": {
       "team": {
@@ -3501,7 +3502,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "osa": {
       "team": {
@@ -3797,7 +3798,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "ray": {
       "team": {
@@ -3813,6 +3814,32 @@
         "manager": "Beñat San José"
       },
       "recentFixtures": [
+        {
+          "id": "564751",
+          "utcDate": "2026-11-21T15:15:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "87",
+            "name": "Rayo Vallecano de Madrid",
+            "shortName": "Rayo Vallecano",
+            "tla": "RAY",
+            "crest": "https://crests.football-data.org/87.png"
+          },
+          "awayTeam": {
+            "id": "95",
+            "name": "Valencia CF",
+            "shortName": "Valencia",
+            "tla": "VAL",
+            "crest": "https://crests.football-data.org/95.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
         {
           "id": "564743",
           "utcDate": "2026-11-08T15:15:00Z",
@@ -3916,61 +3943,9 @@
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "564693",
-          "utcDate": "2026-09-19T12:00:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "79",
-            "name": "CA Osasuna",
-            "shortName": "Osasuna",
-            "tla": "OSA",
-            "crest": "https://crests.football-data.org/79.png"
-          },
-          "awayTeam": {
-            "id": "87",
-            "name": "Rayo Vallecano de Madrid",
-            "shortName": "Rayo Vallecano",
-            "tla": "RAY",
-            "crest": "https://crests.football-data.org/87.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 1,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564751",
-          "utcDate": "2026-11-21T15:15:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "87",
-            "name": "Rayo Vallecano de Madrid",
-            "shortName": "Rayo Vallecano",
-            "tla": "RAY",
-            "crest": "https://crests.football-data.org/87.png"
-          },
-          "awayTeam": {
-            "id": "95",
-            "name": "Valencia CF",
-            "shortName": "Valencia",
-            "tla": "VAL",
-            "crest": "https://crests.football-data.org/95.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564760",
           "utcDate": "2026-11-28T13:00:00Z",
@@ -4076,24 +4051,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564807",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "87",
+            "name": "Rayo Vallecano de Madrid",
+            "shortName": "Rayo Vallecano",
+            "tla": "RAY",
+            "crest": "https://crests.football-data.org/87.png"
+          },
+          "awayTeam": {
+            "id": "78",
+            "name": "Club Atlético de Madrid",
+            "shortName": "Atleti",
+            "tla": "ATL",
+            "crest": "https://crests.football-data.org/78.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
+          "L",
           "W",
           "L",
-          "D",
           "D"
         ],
         "wins": 1,
-        "draws": 2,
-        "losses": 2,
-        "points": 5,
-        "goalsFor": 5,
+        "draws": 1,
+        "losses": 3,
+        "points": 4,
+        "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "bet": {
       "team": {
@@ -4109,6 +4111,32 @@
         "manager": "Manuel Pellegrini"
       },
       "recentFixtures": [
+        {
+          "id": "564756",
+          "utcDate": "2026-11-21T17:30:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "awayTeam": {
+            "id": "90",
+            "name": "Real Betis Balompié",
+            "shortName": "Real Betis",
+            "tla": "BET",
+            "crest": "https://crests.football-data.org/90.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "home": 1,
+            "away": 1
+          }
+        },
         {
           "id": "564738",
           "utcDate": "2026-11-08T13:00:00Z",
@@ -4212,61 +4240,9 @@
             "home": 2,
             "away": 5
           }
-        },
-        {
-          "id": "564701",
-          "utcDate": "2026-10-11T16:30:00Z",
-          "status": "FINISHED",
-          "matchday": 8,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "90",
-            "name": "Real Betis Balompié",
-            "shortName": "Real Betis",
-            "tla": "BET",
-            "crest": "https://crests.football-data.org/90.png"
-          },
-          "awayTeam": {
-            "id": "79",
-            "name": "CA Osasuna",
-            "shortName": "Osasuna",
-            "tla": "OSA",
-            "crest": "https://crests.football-data.org/79.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564756",
-          "utcDate": "2026-11-21T17:30:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "awayTeam": {
-            "id": "90",
-            "name": "Real Betis Balompié",
-            "shortName": "Real Betis",
-            "tla": "BET",
-            "crest": "https://crests.football-data.org/90.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564760",
           "utcDate": "2026-11-28T13:00:00Z",
@@ -4372,24 +4348,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564803",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "90",
+            "name": "Real Betis Balompié",
+            "shortName": "Real Betis",
+            "tla": "BET",
+            "crest": "https://crests.football-data.org/90.png"
+          },
+          "awayTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "D",
           "W",
           "W",
           "D",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 3,
-        "draws": 1,
+        "wins": 2,
+        "draws": 2,
         "losses": 1,
-        "points": 10,
-        "goalsFor": 11,
-        "goalsAgainst": 8
+        "points": 8,
+        "goalsFor": 7,
+        "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "rma": {
       "team": {
@@ -4538,32 +4541,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "564754",
-          "utcDate": "2026-11-21T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "86",
-            "name": "Real Madrid CF",
-            "shortName": "Real Madrid",
-            "tla": "RMA",
-            "crest": "https://crests.football-data.org/86.png"
-          },
-          "awayTeam": {
-            "id": "558",
-            "name": "RC Celta de Vigo",
-            "shortName": "Celta",
-            "tla": "CEL",
-            "crest": "https://crests.football-data.org/558.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "564762",
           "utcDate": "2026-11-28T20:00:00Z",
           "status": "TIMED",
@@ -4667,6 +4644,33 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564796",
+          "utcDate": "2026-12-20T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "awayTeam": {
+            "id": "86",
+            "name": "Real Madrid CF",
+            "shortName": "Real Madrid",
+            "tla": "RMA",
+            "crest": "https://crests.football-data.org/86.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -4684,7 +4688,7 @@
         "goalsFor": 13,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "rso": {
       "team": {
@@ -4979,7 +4983,7 @@
         "goalsFor": 12,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "sev": {
       "team": {
@@ -4995,6 +4999,32 @@
         "manager": "Luís García"
       },
       "recentFixtures": [
+        {
+          "id": "564756",
+          "utcDate": "2026-11-21T17:30:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "awayTeam": {
+            "id": "90",
+            "name": "Real Betis Balompié",
+            "shortName": "Real Betis",
+            "tla": "BET",
+            "crest": "https://crests.football-data.org/90.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "home": 1,
+            "away": 1
+          }
+        },
         {
           "id": "564740",
           "utcDate": "2026-11-06T20:00:00Z",
@@ -5098,61 +5128,9 @@
             "home": 4,
             "away": 1
           }
-        },
-        {
-          "id": "564704",
-          "utcDate": "2026-10-12T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 8,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "88",
-            "name": "Levante UD",
-            "shortName": "Levante",
-            "tla": "LEV",
-            "crest": "https://crests.football-data.org/88.png"
-          },
-          "awayTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 3,
-            "away": 3
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564756",
-          "utcDate": "2026-11-21T17:30:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "awayTeam": {
-            "id": "90",
-            "name": "Real Betis Balompié",
-            "shortName": "Real Betis",
-            "tla": "BET",
-            "crest": "https://crests.football-data.org/90.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564764",
           "utcDate": "2026-11-29T20:00:00Z",
@@ -5258,24 +5236,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564806",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "94",
+            "name": "Villarreal CF",
+            "shortName": "Villarreal",
+            "tla": "VIL",
+            "crest": "https://crests.football-data.org/94.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "D",
+          "D",
           "L",
           "W",
-          "L",
-          "D"
+          "L"
         ],
         "wins": 1,
         "draws": 2,
         "losses": 2,
         "points": 5,
-        "goalsFor": 7,
-        "goalsAgainst": 10
+        "goalsFor": 5,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "val": {
       "team": {
@@ -5291,6 +5296,32 @@
         "manager": "Carlos Corberán"
       },
       "recentFixtures": [
+        {
+          "id": "564751",
+          "utcDate": "2026-11-21T15:15:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "87",
+            "name": "Rayo Vallecano de Madrid",
+            "shortName": "Rayo Vallecano",
+            "tla": "RAY",
+            "crest": "https://crests.football-data.org/87.png"
+          },
+          "awayTeam": {
+            "id": "95",
+            "name": "Valencia CF",
+            "shortName": "Valencia",
+            "tla": "VAL",
+            "crest": "https://crests.football-data.org/95.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
         {
           "id": "564741",
           "utcDate": "2026-11-07T20:00:00Z",
@@ -5394,61 +5425,9 @@
             "home": 0,
             "away": 0
           }
-        },
-        {
-          "id": "564705",
-          "utcDate": "2026-10-11T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 8,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "5335",
-            "name": "Real Racing Club de Santander",
-            "shortName": "Santander",
-            "tla": "SAN",
-            "crest": "https://crests.football-data.org/5335.png"
-          },
-          "awayTeam": {
-            "id": "95",
-            "name": "Valencia CF",
-            "shortName": "Valencia",
-            "tla": "VAL",
-            "crest": "https://crests.football-data.org/95.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 2,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564751",
-          "utcDate": "2026-11-21T15:15:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "87",
-            "name": "Rayo Vallecano de Madrid",
-            "shortName": "Rayo Vallecano",
-            "tla": "RAY",
-            "crest": "https://crests.football-data.org/87.png"
-          },
-          "awayTeam": {
-            "id": "95",
-            "name": "Valencia CF",
-            "shortName": "Valencia",
-            "tla": "VAL",
-            "crest": "https://crests.football-data.org/95.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564761",
           "utcDate": "2026-11-29T13:00:00Z",
@@ -5554,24 +5533,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564800",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "95",
+            "name": "Valencia CF",
+            "shortName": "Valencia",
+            "tla": "VAL",
+            "crest": "https://crests.football-data.org/95.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "L",
-          "D",
           "D"
         ],
-        "wins": 1,
-        "draws": 2,
+        "wins": 2,
+        "draws": 1,
         "losses": 2,
-        "points": 5,
-        "goalsFor": 4,
-        "goalsAgainst": 7
+        "points": 7,
+        "goalsFor": 3,
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "vil": {
       "team": {
@@ -5867,7 +5873,7 @@
         "goalsFor": 4,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "ala": {
       "team": {
@@ -5883,6 +5889,32 @@
         "manager": "Quique Sanchez Flores"
       },
       "recentFixtures": [
+        {
+          "id": "564755",
+          "utcDate": "2026-11-21T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "564740",
           "utcDate": "2026-11-06T20:00:00Z",
@@ -5986,61 +6018,9 @@
             "home": 2,
             "away": 1
           }
-        },
-        {
-          "id": "564699",
-          "utcDate": "2026-10-10T14:15:00Z",
-          "status": "FINISHED",
-          "matchday": 8,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "263",
-            "name": "Deportivo Alavés",
-            "shortName": "Alavés",
-            "tla": "ALA",
-            "crest": "https://crests.football-data.org/263.png"
-          },
-          "awayTeam": {
-            "id": "78",
-            "name": "Club Atlético de Madrid",
-            "shortName": "Atleti",
-            "tla": "ATL",
-            "crest": "https://crests.football-data.org/78.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564755",
-          "utcDate": "2026-11-21T13:00:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "263",
-            "name": "Deportivo Alavés",
-            "shortName": "Alavés",
-            "tla": "ALA",
-            "crest": "https://crests.football-data.org/263.png"
-          },
-          "awayTeam": {
-            "id": "560",
-            "name": "RC Deportivo La Coruña",
-            "shortName": "Deportivo",
-            "tla": "DEP",
-            "crest": "https://crests.football-data.org/560.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564762",
           "utcDate": "2026-11-28T20:00:00Z",
@@ -6146,24 +6126,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564803",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "90",
+            "name": "Real Betis Balompié",
+            "shortName": "Real Betis",
+            "tla": "BET",
+            "crest": "https://crests.football-data.org/90.png"
+          },
+          "awayTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "L",
           "D",
-          "L",
           "L"
         ],
-        "wins": 0,
+        "wins": 1,
         "draws": 2,
-        "losses": 3,
-        "points": 2,
-        "goalsFor": 4,
-        "goalsAgainst": 11
+        "losses": 2,
+        "points": 5,
+        "goalsFor": 6,
+        "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "ath": {
       "team": {
@@ -6460,7 +6467,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "dep": {
       "team": {
@@ -6476,6 +6483,32 @@
         "manager": "Antonio Hidalgo"
       },
       "recentFixtures": [
+        {
+          "id": "564755",
+          "utcDate": "2026-11-21T13:00:00Z",
+          "status": "FINISHED",
+          "matchday": 13,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "564745",
           "utcDate": "2026-11-07T15:15:00Z",
@@ -6579,61 +6612,9 @@
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "564707",
-          "utcDate": "2026-10-11T14:15:00Z",
-          "status": "FINISHED",
-          "matchday": 8,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "92",
-            "name": "Real Sociedad de Fútbol",
-            "shortName": "Real Sociedad",
-            "tla": "RSO",
-            "crest": "https://crests.football-data.org/92.png"
-          },
-          "awayTeam": {
-            "id": "560",
-            "name": "RC Deportivo La Coruña",
-            "shortName": "Deportivo",
-            "tla": "DEP",
-            "crest": "https://crests.football-data.org/560.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564755",
-          "utcDate": "2026-11-21T13:00:00Z",
-          "status": "TIMED",
-          "matchday": 13,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "263",
-            "name": "Deportivo Alavés",
-            "shortName": "Alavés",
-            "tla": "ALA",
-            "crest": "https://crests.football-data.org/263.png"
-          },
-          "awayTeam": {
-            "id": "560",
-            "name": "RC Deportivo La Coruña",
-            "shortName": "Deportivo",
-            "tla": "DEP",
-            "crest": "https://crests.football-data.org/560.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564766",
           "utcDate": "2026-11-29T15:15:00Z",
@@ -6739,24 +6720,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564804",
+          "utcDate": "2027-01-03T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 18,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "558",
+            "name": "RC Celta de Vigo",
+            "shortName": "Celta",
+            "tla": "CEL",
+            "crest": "https://crests.football-data.org/558.png"
+          },
+          "awayTeam": {
+            "id": "560",
+            "name": "RC Deportivo La Coruña",
+            "shortName": "Deportivo",
+            "tla": "DEP",
+            "crest": "https://crests.football-data.org/560.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "D",
           "W",
           "L",
-          "D",
-          "L"
+          "D"
         ],
         "wins": 1,
         "draws": 2,
         "losses": 2,
         "points": 5,
-        "goalsFor": 5,
+        "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     },
     "san": {
       "team": {
@@ -7052,7 +7060,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-21T12:52:08.525Z"
+      "generatedAt": "2026-11-21T21:49:14.884Z"
     }
   }
 }
