@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-20T14:25:05.965Z",
+  "generatedAt": "2026-11-21T13:44:35.130Z",
   "sourceAsOf": "2026-11-16",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 36.2,
-    "disapprove": 60.7,
-    "net": -24.5
+    "approve": 36.4,
+    "disapprove": 60.5,
+    "net": -24.1
   },
   "approvalTrend": [
     {
@@ -60,8 +60,8 @@
     },
     {
       "date": "2026-11-15",
-      "approve": 36.2,
-      "disapprove": 60.7
+      "approve": 36.4,
+      "disapprove": 60.5
     }
   ],
   "approvalPolls": [
@@ -118,6 +118,20 @@
       "approve": 37.3,
       "disapprove": 54.1,
       "unsure": 8.6
+    },
+    {
+      "id": "appdonrmgbb354cbc",
+      "pollster": "RMG Research",
+      "sponsor": "Napolitan Institute",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-16",
+      "sampleSize": 2000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 58,
+      "unsure": 3
     },
     {
       "id": "appdonmor5d540bf2",
@@ -459,19 +473,6 @@
       "approve": 43.1,
       "disapprove": 54.3,
       "unsure": 2.6
-    },
-    {
-      "id": "appdonquic94c3045",
-      "pollster": "Quinnipiac University",
-      "startDate": "2026-06-18",
-      "endDate": "2026-06-22",
-      "sampleSize": 1165,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 55,
-      "unsure": 7
     }
   ],
   "genericBallotAvg": {
