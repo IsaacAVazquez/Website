@@ -463,7 +463,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
           <div className="dd-section">
             <p className="dd-label">Form</p>
             <div className="dd-form">
-              {formSequence.slice(-5).map((result, i) => (
+              <span className="sr-only">Oldest first, latest last:</span>
+              {formSequence.slice(0, 5).toReversed().map((result, i) => (
                 <TeamResultPill key={i} result={result} />
               ))}
             </div>

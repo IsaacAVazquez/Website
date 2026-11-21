@@ -2,7 +2,6 @@ import type {
   LaLigaClub,
   LaLigaLeader,
   LaLigaSnapshot,
-  LaLigaSummarySnapshot,
   LaLigaTeamSnapshot,
 } from "@/types/la-liga";
 import { getLaLigaClubAccentColor } from "@/data/clubColors";
@@ -10,7 +9,6 @@ import { buildSeasonLabel, type FootballDataScorerEntry } from "@/lib/footballDa
 import {
   buildLeagueTeamSnapshots,
   fetchLeagueSummary,
-  fetchLiveSections,
   getLeagueTeamSnapshot,
   isValidTeamId,
   type FootballLeague,
@@ -107,37 +105,6 @@ export async function getLaLigaSummary(): Promise<LaLigaSummary> {
     upcomingFixtures: feeds.upcomingFixtures,
     teams: feeds.teams,
     generatedAt: new Date().toISOString(),
-  };
-}
-
-/**
- * Request-time refresh used by the summary accessor when a football-data.org
- * token is configured. Only the standings (clubs plus the season label and
- * matchday from the same response) and the recent/upcoming fixture lists are
- * refreshed; every other section keeps the committed snapshot's value. See
- * `fetchLiveSections` for the per-section rules.
- */
-export async function buildLaLigaLiveSummary(
-  baseSummary: LaLigaSummarySnapshot
-): Promise<LaLigaSummarySnapshot> {
-  const live = await fetchLiveSections(LA_LIGA);
-  const generatedAt = new Date().toISOString();
-  return {
-    ...baseSummary,
-    ...(live.standings
-      ? {
-          clubs: live.standings.rows,
-          season: buildSeasonLabel(
-            live.standings.response.season?.startDate,
-            live.standings.response.season?.endDate
-          ),
-          matchday: live.standings.response.season?.currentMatchday ?? baseSummary.matchday,
-        }
-      : {}),
-    ...(live.recentFixtures ? { recentFixtures: live.recentFixtures } : {}),
-    ...(live.upcomingFixtures ? { upcomingFixtures: live.upcomingFixtures } : {}),
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
   };
 }
 

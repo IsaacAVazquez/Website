@@ -5,6 +5,7 @@ import {
   assertBestBallSourceScoring,
   fetchBestBallRankingsBoard,
   getBestBallRefreshFallback,
+  isBestBallRefreshRedundant,
   getExpectedBestBallSeason,
   parseBestBallAdpPayload,
   parseBestBallSchedulePayload,
@@ -127,6 +128,27 @@ describe("best ball public sources", () => {
     } else {
       await expect(fetchBestBallRankingsBoard()).resolves.toMatchObject({ expertCount: 4 });
     }
+  });
+
+  it("leaves the committed snapshot alone in season while the consensus has not moved", () => {
+    const previous = {
+      season: 2026,
+      rankingSource: {
+        provider: "FantasyPros",
+        url: "https://example.com",
+        asOf: "2026-09-09T23:22:32.000Z",
+        matchedCount: 300,
+      },
+    };
+    const same = { season: 2026, updatedAt: "2026-09-09T23:22:32Z" };
+    const inSeason = new Date("2026-10-26T12:00:00.000Z");
+    expect(isBestBallRefreshRedundant(previous, same, inSeason)).toBe(true);
+    expect(
+      isBestBallRefreshRedundant(previous, { ...same, updatedAt: "2026-10-01T00:00:00Z" }, inSeason)
+    ).toBe(false);
+    expect(isBestBallRefreshRedundant(previous, { ...same, season: 2027 }, inSeason)).toBe(false);
+    expect(isBestBallRefreshRedundant(previous, same, new Date("2026-08-20T12:00:00.000Z"))).toBe(false);
+    expect(isBestBallRefreshRedundant(null, same, inSeason)).toBe(false);
   });
 
   it("keeps a committed snapshot on a failed refresh while it is recent or once the season has opened", () => {

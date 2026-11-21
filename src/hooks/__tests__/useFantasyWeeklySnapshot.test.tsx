@@ -8,8 +8,13 @@ import {
   FANTASY_WEEKLY_SNAPSHOT_URL,
   normalizeFantasyWeeklySnapshot,
 } from "@/lib/fantasyWeeklySnapshot";
+import { getCurrentDraftSeason } from "@/lib/fantasyUtils";
 
-const published = JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"));
+// The committed file outlives its season, and the hook only serves the current one.
+const published = {
+  ...JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8")),
+  season: getCurrentDraftSeason(),
+};
 const full = normalizeFantasyWeeklySnapshot(published);
 // What the weekly page seeds: one scoring format's complete boards.
 const seed = { ...full, boards: { ppr: full.boards.ppr } };
@@ -102,6 +107,33 @@ describe("useFantasyWeeklySnapshot", () => {
     await waitFor(() => expect(next.result.current.error).not.toBeNull());
     expect(next.result.current.snapshot?.week).toBe(4);
     expect(next.result.current.snapshot?.boards.standard).toBeUndefined();
+  });
+
+  it("revalidates the HTTP cache on a seeded load and on its retry", async () => {
+    const older = { ...published, week: 3, generatedAt: "2026-09-22T17:00:00Z" };
+    const newer = { ...seed, week: 4, generatedAt: "2026-09-30T17:00:00Z" };
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => older });
+
+    const { result } = renderHook(() => useFantasyWeeklySnapshot(newer));
+    await waitFor(() => expect(result.current.error).not.toBeNull());
+    act(() => result.current.retry());
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(2));
+
+    expect(jest.mocked(global.fetch).mock.calls[0][1]?.cache).toBe("no-cache");
+    expect(jest.mocked(global.fetch).mock.calls[1][1]?.cache).toBe("no-cache");
+    await act(async () => {});
+  });
+
+  it("reads last season's board as not published", async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ ...published, season: getCurrentDraftSeason() - 1 }),
+    });
+
+    const { result } = renderHook(() => useFantasyWeeklySnapshot());
+    await waitFor(() => expect(result.current.notPublished).toBe(true));
+    expect(result.current.snapshot).toBeNull();
   });
 
   it("uses a newer seed on prop changes even while an older request is pending", async () => {

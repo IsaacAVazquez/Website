@@ -46,15 +46,20 @@ const HTML_ENTITY_MAP: Record<string, string> = {
   quot: '"',
 };
 
+// String.fromCodePoint throws past U+10FFFF, which would fail the whole board.
+function decodeCodePoint(value: number, entity: string): string {
+  return Number.isNaN(value) || value > 0x10ffff ? `&${entity};` : String.fromCodePoint(value);
+}
+
 function decodeHtmlEntity(entity: string): string {
   const normalized = entity.toLowerCase();
   if (normalized.startsWith("#x")) {
     const value = Number.parseInt(normalized.slice(2), 16);
-    return Number.isNaN(value) ? `&${entity};` : String.fromCodePoint(value);
+    return decodeCodePoint(value, entity);
   }
   if (normalized.startsWith("#")) {
     const value = Number.parseInt(normalized.slice(1), 10);
-    return Number.isNaN(value) ? `&${entity};` : String.fromCodePoint(value);
+    return decodeCodePoint(value, entity);
   }
   return HTML_ENTITY_MAP[normalized] ?? `&${entity};`;
 }

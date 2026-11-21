@@ -1,5 +1,5 @@
 import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
-import type { FantasySnapshotStaleness } from "@/lib/fantasyUtils";
+import { getCurrentDraftSeason, type FantasySnapshotStaleness } from "@/lib/fantasyUtils";
 import type { Position } from "@/types";
 
 /**
@@ -250,6 +250,18 @@ function normalizeSource(raw: unknown, label: string): FantasyWeeklyBoardSource 
     expertCount: Number(record.expertCount) || 0,
     playerCount: Number(record.playerCount) || 0,
   };
+}
+
+/**
+ * The builder never deletes the file, so after a season its last board stays
+ * committed. Once the draft season rolls over that board reads as not
+ * published, the same as the missing file before the first Week 1.
+ */
+export function isFantasyWeeklySeasonCurrent(
+  snapshot: { season: number },
+  now: Date = new Date()
+): boolean {
+  return snapshot.season >= getCurrentDraftSeason(now);
 }
 
 export function normalizeFantasyWeeklySnapshot(raw: unknown): FantasyWeeklySnapshot {

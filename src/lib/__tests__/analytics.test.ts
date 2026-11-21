@@ -106,8 +106,6 @@ describe("analytics with a measurement id configured", () => {
 
     analytics.trackNavigationClick({ link_text: "Home", link_url: "/", nav_location: "header_brand" });
     analytics.trackCodeCopy({ code_location: "article", code_language: "ts", char_count: 42 });
-    analytics.trackListingFilter({ listing_id: "writing", filter_type: "tag", filter_value: "data" });
-    analytics.trackListingSearch({ listing_id: "writing", search_term: "draft", results_count: 3 });
     analytics.trackScrollDepth({ percent_scrolled: 75, page_path: "/writing" });
     analytics.trackNewsletterSubscribe({ signup_location: "footer" });
     analytics.trackResumeDownload({ page_path: "/resume" });
@@ -117,8 +115,6 @@ describe("analytics with a measurement id configured", () => {
     expect(gtag.mock.calls.map((call) => call[1])).toEqual([
       analytics.GA_EVENT.navigationClick,
       analytics.GA_EVENT.codeCopy,
-      analytics.GA_EVENT.listingFilter,
-      analytics.GA_EVENT.listingSearch,
       analytics.GA_EVENT.scrollDepth,
       analytics.GA_EVENT.newsletterSubscribe,
       analytics.GA_EVENT.resumeDownload,
@@ -126,7 +122,7 @@ describe("analytics with a measurement id configured", () => {
       analytics.GA_EVENT.toolAction,
     ]);
     expect(gtag.mock.calls[1][2]).toEqual({ code_location: "article", code_language: "ts", char_count: 42 });
-    expect(gtag.mock.calls[4][2]).toEqual({ percent_scrolled: 75, page_path: "/writing" });
+    expect(gtag.mock.calls[2][2]).toEqual({ percent_scrolled: 75, page_path: "/writing" });
   });
 
   it("sends each tool action once per page load, and only once gtag can take it", () => {

@@ -33,7 +33,7 @@ jest.mock("@/constants/caseStudies", () => {
         description: "Project A description",
         timeline: "2026",
         link: "/fintech-tools/interchange-iq",
-        overview: { summary: "What project A does.", impact: "" },
+        overview: { summary: "What project A does." },
       },
     ],
   };

@@ -147,9 +147,11 @@ describe("MlbClient", () => {
     const user = userEvent.setup();
     const summary = await getMlbSummarySnapshot();
     const team = summary.standings.find((row) => row.division === "NL West" && row.divisionRank === 2)!;
+    // The builder lists results newest first, so this club lost its latest game.
+    const teamSnapshot = await getMlbTeamSnapshot(team.id);
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: async () => getMlbTeamSnapshot(team.id),
+      json: async () => ({ ...teamSnapshot, form: { ...teamSnapshot.form, sequence: ["L", "W", "W"] } }),
     }) as unknown as typeof fetch;
     // The router is a mock, so a push has to be fed back in as the next
     // search params for the page to see the URL it asked for.
@@ -171,6 +173,9 @@ describe("MlbClient", () => {
 
     const drawer = await screen.findByRole("dialog", { name: `${team.name} detail` });
     expect(within(drawer).getByText("Runs allowed")).toBeInTheDocument();
+    expect(drawer.querySelector(".dd-form")).toHaveTextContent(
+      "Oldest first, latest last:WWinWWinLLoss"
+    );
 
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
@@ -262,6 +267,11 @@ describe("MlbClient", () => {
     expect(screen.getByText("Hitter 5")).toBeInTheDocument();
     expect(screen.getByText("Hitter 6")).toBeInTheDocument();
     expect(screen.queryByText("Hitter 7")).not.toBeInTheDocument();
+    // The link opens a page a person can read, and not the Stats API's JSON.
+    expect(screen.getByRole("link", { name: /Official MLB league leaders/ })).toHaveAttribute(
+      "href",
+      "https://www.mlb.com/stats"
+    );
   });
 
   it("writes the summary as a finish once postseason games are on the slate", async () => {

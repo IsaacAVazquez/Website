@@ -417,6 +417,23 @@ describe("SpaceXMissionControlClient", () => {
     ).toContain("https://images.example.com/falcon9-launch.png");
   });
 
+  it("keeps a deep-linked launch open when its detail loaded and the board's cards do not hold it", async () => {
+    currentSearchParams = new URLSearchParams(`launch=${detail.id}`);
+
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient
+          initialState={{ ...DEFAULT_MISSION_CONTROL_STATE, launch: detail.id }}
+          initialData={createInitialData({ launches: [upcomingLaunch], detail })}
+        />
+      );
+    });
+    await flushPromises();
+
+    expect(mockReplace).not.toHaveBeenCalled();
+    expect(container.querySelector('[data-testid="mission-detail-panel"]')).not.toBeNull();
+  });
+
   it("falls back to mission patch art in the hero when no vehicle photo is available", async () => {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);

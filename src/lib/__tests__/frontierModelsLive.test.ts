@@ -435,6 +435,14 @@ describe("applyLiveModelFacts against catalog entries saved on 2026-09-27", () =
     expect(model("anthropic-claude-haiku-4-5")?.liveCheck?.status).toBe("updated");
   });
 
+  it("leaves the curated reasoning flag and modalities alone", async () => {
+    const model = await check();
+
+    // The saved catalog says Claude Haiku 4.5 reasons; the curated row does not.
+    expect(model("anthropic-claude-haiku-4-5")?.reasoning).toBe(false);
+    expect(model("anthropic-claude-haiku-4-5")?.modalities).toEqual(["text", "vision"]);
+  });
+
   it("leaves a pinned fact at its curated value", async () => {
     // DeepSeek's own page and the catalogs disagree on its prices, so a fact
     // read from the provider can be pinned against the catalog.

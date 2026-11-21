@@ -9,6 +9,7 @@ import fs from "fs";
 import fsPromises from "fs/promises";
 import { loadFantasySnapshot, loadFantasySnapshotSeed } from "@/lib/fantasySnapshotServer";
 import { normalizeFantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
+import { getCurrentDraftSeason } from "@/lib/fantasyUtils";
 import { buildFantasyVorpIndex, sortPlayersByVorpRank } from "@/lib/fantasyVorp";
 import type { Player } from "@/types";
 
@@ -128,6 +129,8 @@ describe("loadFantasyWeeklySeed", () => {
     // The builder publishes without a rest-of-season board when the page fails and
     // nothing was kept, so the fixture carries one rather than trusting the last refresh.
     const fixture = JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"));
+    // The committed file outlives its season, and the seed only serves the current one.
+    fixture.season = getCurrentDraftSeason();
     fixture.boards.half_ppr.restOfSeason = [
       { id: "fp-1", name: "Fixture Player", team: "DET", position: "RB", rank: 1, rankAverage: 1, positionRank: 1, standardDeviation: 0, minRank: 1, maxRank: 1 },
     ];
@@ -147,6 +150,14 @@ describe("loadFantasyWeeklySeed", () => {
     expect(seed?.boards.half_ppr).toEqual(weeklyBoard);
     expect(seed?.week).toBe(published.week);
     expect(seed?.season).toBe(published.season);
+  });
+
+  it("returns null for last season's board, which the builder never deletes", async () => {
+    const fixture = JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"));
+    fixture.season = getCurrentDraftSeason() - 1;
+    jest.spyOn(fsPromises, "readFile").mockResolvedValueOnce(JSON.stringify(fixture));
+
+    await expect(loadFantasyWeeklySeed("ppr")).resolves.toBeNull();
   });
 
   it("returns null before Week 1, when the builder has published no file", async () => {

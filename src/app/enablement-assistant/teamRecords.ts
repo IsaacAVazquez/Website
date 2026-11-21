@@ -74,7 +74,10 @@ export function parseTeamRecords(raw: string): TeamRecord[] {
         maturity: intake.maturity,
         teamSize: intake.teamSize,
         hasQualityEngineer: intake.hasQualityEngineer,
-        layers: [...new Set<TeamIntake["layers"][number]>(intake.layers)],
+        // One canonical order, so a layer turned off and back on compares equal.
+        layers: TEST_LAYER_OPTIONS.map((o) => o.value).filter((layer) =>
+          intake.layers.includes(layer),
+        ),
       };
       const steps = new Set(
         generateOnboardingPlan(cleanIntake).map((step) => step.id),

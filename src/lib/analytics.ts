@@ -103,24 +103,6 @@ export function trackCodeCopy(params: {
   trackEvent(GA_EVENT.codeCopy, params);
 }
 
-/** A filter / sort control on a component listing changed. */
-export function trackListingFilter(params: {
-  listing_id: string;
-  filter_type: string;
-  filter_value: string;
-}): void {
-  trackEvent(GA_EVENT.listingFilter, params);
-}
-
-/** A search query was entered on a component listing. */
-export function trackListingSearch(params: {
-  listing_id: string;
-  search_term: string;
-  results_count?: number;
-}): void {
-  trackEvent(GA_EVENT.listingSearch, params);
-}
-
 /** Scroll-depth milestone (25 / 50 / 75 / 100) on a long page. */
 export function trackScrollDepth(params: {
   percent_scrolled: 25 | 50 | 75 | 100;

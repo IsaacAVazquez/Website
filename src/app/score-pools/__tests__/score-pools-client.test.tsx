@@ -242,6 +242,33 @@ describe("ScorePoolsClient detail drawer", () => {
     expect(screen.getByRole("dialog", { name: "Northgate vs Saltmarsh detail" })).toBeInTheDocument();
   });
 
+  it("opens a deep-linked fixture from a later round with its recommendation", () => {
+    const later = fixture({ id: "md2-a", stage: "Matchday 2", homeTeam: "Northgate", awayTeam: "Saltmarsh", kickoff: isoFromNow(9 * DAY) });
+    seedStore([pool()]);
+    renderClient(liveSnapshot([upcomingA, later]), "md2-a");
+    const dialog = screen.getByRole("dialog", { name: "Northgate vs Saltmarsh detail" });
+    expect(within(dialog).getByRole("region", { name: "Recommendation" })).toBeInTheDocument();
+  });
+
+  it("draws the sheet's meter against the best expected points on offer", () => {
+    // Protecting a one-point lead late picks a safer score than the top one.
+    const tight = fixture({
+      id: "fx-tight",
+      odds: [{ fetchedAt: isoFromNow(-60 * 60 * 1000), bookmaker: "pinnacle", manual: false, moneyline: { home: 2.6, draw: 3.0, away: 3.05 }, totals: { line: 2.5, over: 1.95, under: 1.9 } }],
+    });
+    const p = pool({ standing: { myPoints: 50, nearestAbovePoints: null, nearestBelowPoints: 49, poolSize: 10, gamesRemaining: 2, posture: "auto" } });
+    seedStore([p]);
+    renderClient(liveSnapshot([tight]));
+
+    const rec = analyzePoolFixtures([tight], league({ fixtures: [tight] }), p, new Date().toISOString()).analyzed[0].analysis.recommendation;
+    const top = Math.max(...rec.candidates.map((candidate) => candidate.expectedPoints));
+    expect(rec.recommended.expectedPoints).toBeLessThan(top);
+    const table = screen.getByRole("table", { name: "Recommended picks for the current round" });
+    expect(table.querySelector<HTMLElement>(".c97-meter span")?.style.width).toBe(
+      `${Math.round((rec.recommended.expectedPoints / top) * 100)}%`,
+    );
+  });
+
   it("stores a pick set in the drawer and shows it on the sheet", async () => {
     const user = userEvent.setup();
     seedStore([pool()]);

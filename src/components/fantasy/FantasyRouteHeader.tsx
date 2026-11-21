@@ -112,8 +112,8 @@ export function FreshnessParts({ parts }: { parts: FreshnessPart[] }) {
             <span className={part.tone === "negative" ? "ffb-bad" : part.tone === "warning" ? "ffb-warn" : undefined}>
               {part.shortLabel ? (
                 <>
-                  <span className="md:hidden">{part.shortLabel}</span>
-                  <span className="hidden md:inline">{part.label}</span>
+                  <span className="ffb-only-phone">{part.shortLabel}</span>
+                  <span className="ffb-not-phone">{part.label}</span>
                 </>
               ) : (
                 part.label

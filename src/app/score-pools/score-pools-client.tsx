@@ -90,9 +90,13 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
   const rounds = useMemo(() => (league ? groupRounds(league.fixtures) : []), [league]);
   const defaultRound = useMemo(() => {
+    // A deep-linked fixture opens on its own round, the only round analyzed.
+    const linked = initialFixtureId
+      ? rounds.find((round) => round.fixtures.some((fixture) => fixture.id === initialFixtureId))
+      : undefined;
     const open = rounds.find((round) => round.hasOpenGames);
-    return (open ?? rounds[rounds.length - 1])?.label ?? null;
-  }, [rounds]);
+    return (linked ?? open ?? rounds[rounds.length - 1])?.label ?? null;
+  }, [rounds, initialFixtureId]);
   const activeRoundLabel = selectedRound ?? defaultRound;
   const activeRound = rounds.find((round) => round.label === activeRoundLabel) ?? null;
 
@@ -353,7 +357,8 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                         const rec = item.analysis.recommendation;
                         const pick = myPickFor(item);
                         const locked = now >= item.analysis.locksAt;
-                        const topEp = rec.candidates[0]?.expectedPoints ?? rec.recommended.expectedPoints;
+                        // Candidates rank by utility, so the first one is the pick itself.
+                        const topEp = Math.max(...rec.candidates.map((candidate) => candidate.expectedPoints));
                         return (
                           <tr key={item.fixture.id}>
                             <td>

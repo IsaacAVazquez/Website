@@ -58,7 +58,7 @@ export default async function BestBallPage({ searchParams }: BestBallPageProps) 
           applicationCategory: "SportsApplication",
           operatingSystem: "Web browser",
           featureList: [
-            "Current Underdog ADP board",
+            "Underdog ADP board",
             "PPR best ball consensus reference",
             "Published Underdog average draft position",
             "Best Ball Mania, Puppy, Eliminator, Weekly Winners, Sit and Go, and Superflex guidance",

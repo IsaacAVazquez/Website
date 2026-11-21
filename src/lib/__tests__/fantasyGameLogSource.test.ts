@@ -264,12 +264,19 @@ describe("fetchFantasyGameLogBoard", () => {
   it("fetches the season's weekly release and summarizes regular-season games", async () => {
     const fetchImpl = jest.fn().mockResolvedValue(csvResponse(CSV));
 
+    const timeout = jest.spyOn(AbortSignal, "timeout");
+
     const board = await fetchFantasyGameLogBoard("PPR", 2101, fetchImpl);
 
+    expect(timeout.mock.calls).toEqual([[60_000]]);
     expect(fetchImpl).toHaveBeenCalledWith(
       "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2101.csv",
-      expect.objectContaining({ headers: expect.objectContaining({ Accept: expect.stringContaining("text/csv") }) })
+      expect.objectContaining({
+        headers: expect.objectContaining({ Accept: expect.stringContaining("text/csv") }),
+        signal: timeout.mock.results[0].value,
+      })
     );
+    timeout.mockRestore();
     expect(board).toMatchObject({
       season: 2101,
       seasonType: "REG",

@@ -188,150 +188,98 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
 // query matches a key after normalizing case, punctuation, and spacing, so they
 // never leak into unrelated searches. "resume" is left out on purpose because
 // it already returns the /resume page as the top result.
-const MONET_ANSWER: SearchableContent = {
-  id: 'answer-monet',
-  title: 'Monet on the home page',
-  excerpt:
-    'If you hover over my name in the header, or over my portrait on the home page or the about page, they turn into paintings.',
-  content: '',
-  url: '/',
-  type: 'page',
-  category: 'Site',
-};
-const KONAMI_ANSWER: SearchableContent = {
-  id: 'answer-konami',
-  title: 'Konami code',
-  excerpt:
-    'Press up up down down left right left right B A on any page and something happens. Outside the arcade it ends with a link to the arcade, and inside the arcade it is worth trying too.',
-  content: '',
-  url: '/arcade',
-  type: 'page',
-  category: 'Site',
-};
-const HIRE_ANSWER: SearchableContent = {
-  id: 'answer-hire',
-  title: 'Get in touch',
-  excerpt:
-    'If you want to talk about a product role or a project, the contact page is the quickest way to reach me.',
-  content: '',
-  url: '/contact',
-  type: 'page',
-  category: 'Contact',
-};
-const EASTER_EGG_ANSWER: SearchableContent = {
-  id: 'answer-easter-eggs',
-  title: 'Easter eggs',
-  excerpt:
-    "There are a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find.",
-  content: '',
-  url: '/',
-  type: 'page',
-  category: 'Site',
-};
+function answer(id: string, title: string, excerpt: string, url: string, category = 'Site'): SearchableContent {
+  return { id: `answer-${id}`, title, excerpt, content: '', url, type: 'page', category };
+}
+
+const MONET_ANSWER = answer(
+  'monet',
+  'Monet on the home page',
+  'If you hover over my name in the header, or over my portrait on the home page or the about page, they turn into paintings.',
+  '/',
+);
+const KONAMI_ANSWER = answer(
+  'konami',
+  'Konami code',
+  'Press up up down down left right left right B A on any page and something happens. Outside the arcade it ends with a link to the arcade, and inside the arcade it is worth trying too.',
+  '/arcade',
+);
+const HIRE_ANSWER = answer(
+  'hire',
+  'Get in touch',
+  'If you want to talk about a product role or a project, the contact page is the quickest way to reach me.',
+  '/contact', 'Contact',
+);
+const EASTER_EGG_ANSWER = answer(
+  'easter-eggs',
+  'Easter eggs',
+  "There are a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find.",
+  '/',
+);
 
 // The hints below each point at one easter egg without giving the trigger
 // away in full. docs/EASTER_EGGS.md has the whole list.
-const DARKROOM_ANSWER: SearchableContent = {
-  id: 'answer-darkroom',
-  title: 'Darkroom',
-  excerpt:
-    'The light switch in the header does more than change the theme if you flip it enough times in a row.',
-  content: '',
-  url: '/',
-  type: 'page',
-  category: 'Site',
-};
-const STAMP_ANSWER: SearchableContent = {
-  id: 'answer-stamp',
-  title: 'Rubber stamp',
-  excerpt:
-    'The wordmark in the footer works like a rubber stamp, and the press notices if you stamp it enough times in a row.',
-  content: '',
-  url: '/',
-  type: 'page',
-  category: 'Site',
-};
-const NIGHT_SHIFT_ANSWER: SearchableContent = {
-  id: 'answer-night-shift',
-  title: 'Night shift',
-  excerpt:
-    'The tab title changes when you switch away from the site, and it reads differently after midnight.',
-  content: '',
-  url: '/',
-  type: 'page',
-  category: 'Site',
-};
-const THIRTY_LIVES_ANSWER: SearchableContent = {
-  id: 'answer-thirty-lives',
-  title: '30 lives',
-  excerpt:
-    'The Konami code works in the arcade too, and it does there what it did in Contra.',
-  content: '',
-  url: '/arcade',
-  type: 'page',
-  category: 'Site',
-};
-const TEAPOT_ANSWER: SearchableContent = {
-  id: 'answer-teapot',
-  title: 'Teapot',
-  excerpt:
-    "There's a teapot at /teapot. It can't brew coffee, and it answers with the status code that says so.",
-  content: '',
-  url: '/teapot',
-  type: 'page',
-  category: 'Site',
-};
-const COLOPHON_ANSWER: SearchableContent = {
-  id: 'answer-colophon',
-  title: 'Colophon',
-  excerpt:
-    'The stack, the typefaces, and the inks behind the site are listed in a plain text file at /humans.txt.',
-  content: '',
-  url: '/humans.txt',
-  type: 'page',
-  category: 'Site',
-};
+const DARKROOM_ANSWER = answer(
+  'darkroom',
+  'Darkroom',
+  'The light switch in the header does more than change the theme if you flip it enough times in a row.',
+  '/',
+);
+const STAMP_ANSWER = answer(
+  'stamp',
+  'Rubber stamp',
+  'The wordmark in the footer works like a rubber stamp, and the press notices if you stamp it enough times in a row.',
+  '/',
+);
+const NIGHT_SHIFT_ANSWER = answer(
+  'night-shift',
+  'Night shift',
+  'The tab title changes when you switch away from the site, and it reads differently after midnight.',
+  '/',
+);
+const THIRTY_LIVES_ANSWER = answer(
+  'thirty-lives',
+  '30 lives',
+  'The Konami code works in the arcade too, and it does there what it did in Contra.',
+  '/arcade',
+);
+const TEAPOT_ANSWER = answer(
+  'teapot',
+  'Teapot',
+  "There's a teapot at /teapot. It can't brew coffee, and it answers with the status code that says so.",
+  '/teapot',
+);
+const COLOPHON_ANSWER = answer(
+  'colophon',
+  'Colophon',
+  'The stack, the typefaces, and the inks behind the site are listed in a plain text file at /humans.txt.',
+  '/humans.txt',
+);
 
-const COFFEE_ANSWER: SearchableContent = {
-  id: 'answer-coffee',
-  title: 'Coffee',
-  excerpt:
-    "I can't brew coffee here. The teapot at /teapot will tell you the same thing, with the status code to prove it.",
-  content: '',
-  url: '/teapot',
-  type: 'page',
-  category: 'Site',
-};
-const HELLO_ANSWER: SearchableContent = {
-  id: 'answer-hello',
-  title: 'Hello',
-  excerpt:
-    "Hi, thanks for stopping by. If you want to talk, the contact page is the quickest way to reach me.",
-  content: '',
-  url: '/contact',
-  type: 'page',
-  category: 'Site',
-};
-const MISPRINT_ANSWER: SearchableContent = {
-  id: 'answer-misprint',
-  title: 'The misprint',
-  excerpt:
-    "Any address that doesn't exist gets a sheet that came off the press wrong, and this link is one of them.",
-  content: '',
-  url: '/404',
-  type: 'page',
-  category: 'Site',
-};
-const NOW_ANSWER: SearchableContent = {
-  id: 'answer-now',
-  title: "What I'm doing now",
-  excerpt:
-    "What I'm focused on this month, what I'm building, and where I am, on one page that I refresh when it goes stale.",
-  content: '',
-  url: '/now',
-  type: 'page',
-  category: 'Site',
-};
+const COFFEE_ANSWER = answer(
+  'coffee',
+  'Coffee',
+  "I can't brew coffee here. The teapot at /teapot will tell you the same thing, with the status code to prove it.",
+  '/teapot',
+);
+const HELLO_ANSWER = answer(
+  'hello',
+  'Hello',
+  "Hi, thanks for stopping by. If you want to talk, the contact page is the quickest way to reach me.",
+  '/contact',
+);
+const MISPRINT_ANSWER = answer(
+  'misprint',
+  'The misprint',
+  "Any address that doesn't exist gets a sheet that came off the press wrong, and this link is one of them.",
+  '/404',
+);
+const NOW_ANSWER = answer(
+  'now',
+  "What I'm doing now",
+  "What I'm focused on this month, what I'm building, and where I am, on one page that I refresh when it goes stale.",
+  '/now',
+);
 
 const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   coffee: COFFEE_ANSWER,
@@ -344,16 +292,18 @@ const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   now: NOW_ANSWER,
   'what is isaac doing now': NOW_ANSWER,
   'what are you doing now': NOW_ANSWER,
-  'take me somewhere': {
-    id: 'answer-site-transit', title: 'The Site Transit Authority',
-    excerpt: 'A fictional railway through sports, museums, food, wine, and a very long branch to Mission Control. Pick a station.',
-    content: '', url: '/back-room/transit', type: 'page', category: 'Site',
-  },
-  '1997': {
-    id: 'answer-1997', title: 'Greetings From 1997',
-    excerpt: 'Beveled buttons, a guestbook, and a homepage that is permanently under construction.',
-    content: '', url: '/back-room/1997', type: 'page', category: 'Site',
-  },
+  'take me somewhere': answer(
+    'site-transit',
+    'The Site Transit Authority',
+    'A fictional railway through sports, museums, food, wine, and a very long branch to Mission Control. Pick a station.',
+    '/back-room/transit',
+  ),
+  '1997': answer(
+    '1997',
+    'Greetings From 1997',
+    'Beveled buttons, a guestbook, and a homepage that is permanently under construction.',
+    '/back-room/1997',
+  ),
   monet: MONET_ANSWER,
   konami: KONAMI_ANSWER,
   'konami code': KONAMI_ANSWER,

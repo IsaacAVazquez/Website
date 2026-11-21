@@ -139,6 +139,8 @@ describe("best ball contest catalog", () => {
     expect(normalizeContestId("Sit & Go")).toBe("sit-and-go");
     expect(normalizeContestId("SF")).toBe("superflex");
     expect(normalizeContestId("unknown-format")).toBe("bbm-vii");
+    expect(normalizeContestId("constructor")).toBe("bbm-vii");
+    expect(normalizeContestId("__proto__")).toBe("bbm-vii");
   });
 });
 

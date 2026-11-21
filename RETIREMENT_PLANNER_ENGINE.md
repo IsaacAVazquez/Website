@@ -6,7 +6,7 @@ DOM, no fetch) so it is unit-testable and could run server-side. The UI never
 does math. Its hook, `useRetirementPlan`, calls `projectCore()` and
 `computeLevers()`, and the components render the result.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 Surfaced as the `#retirement` band inside the investments dashboard
 (`InvestmentsDashboard.tsx`), backed by browser-local state. Output is
@@ -147,10 +147,10 @@ planner.
 6. **Levers** (`project` only). Four dials, each reporting its marginal effect on
    the success rate and — where it's a clean single dial — how far to push it to
    reach the threshold: `save-more`, `retire-later`, `spend-less`, `more-stocks`.
-   Lever rows run at the plan's own simulation count
-   (`input.assumptions.simulations`, default **1,000**) so their absolute success
-   figures agree with the gauge; only the threshold-solving binary search uses a
-   cheaper `TO_REACH_SIMS = 250`. The nudges are $5,000 a year more saved (added
+   Lever rows and the threshold-solving binary search both run at the plan's
+   own simulation count (`input.assumptions.simulations`, default **1,000**), so
+   their absolute success figures agree with the gauge and a printed target
+   reaches the threshold on the gauge when the visitor applies it. The nudges are $5,000 a year more saved (added
    to the account that already receives the most), retiring two years later,
    10% less spending, and 15 points moved from cash and then bonds into stocks.
    The threshold search runs only while the plan sits below its threshold, looks

@@ -19,17 +19,20 @@ const contentTypes = [
 
 // `id` is sent verbatim as the `category` query param and the API matches it by
 // case-insensitive EXACT equality. Every id below must match a `category` value
-// emitted by /api/search, or the filter silently returns nothing. Keep this list
-// in sync with the corpus categories rather than inventing display-friendly labels.
-const categories = [
+// emitted by /api/search, or the filter silently returns nothing. Writing carries
+// its frontmatter category and tools carry a toolCategories.ts label, so a topic
+// that has both gets one option for each. The route test walks this list.
+export const categories = [
   { id: 'all', label: 'All categories' },
   { id: 'Agentic AI', label: 'Agentic AI' },
   { id: 'Product Management', label: 'Product Management' },
   { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },
-  { id: 'Sports Data Tools', label: 'Sports Dashboards' },
+  { id: 'Sports', label: 'Sports Dashboards' },
   { id: 'Sports Analytics', label: 'Sports Writing' },
   { id: 'QA Engineering', label: 'QA Engineering' },
-  { id: 'Fintech Product', label: 'Fintech' },
+  { id: 'Fintech', label: 'Fintech Tools' },
+  { id: 'Fintech Product', label: 'Fintech Writing' },
+  { id: 'AI & dev tools', label: 'AI & Dev Tools' },
 ];
 
 /*

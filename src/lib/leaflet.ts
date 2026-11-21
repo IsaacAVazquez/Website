@@ -10,6 +10,10 @@ export type LatLng = [number, number];
 const VERSION = "1.9.4";
 const CSS_URL = `https://unpkg.com/leaflet@${VERSION}/dist/leaflet.css`;
 const JS_URL = `https://unpkg.com/leaflet@${VERSION}/dist/leaflet.js`;
+// SHA-384 of the two 1.9.4 files, hashed from unpkg on 2026-11-16 and matching
+// the same files in the npm tarball. A version bump needs new hashes.
+const CSS_INTEGRITY = "sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H";
+const JS_INTEGRITY = "sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH";
 
 export interface LeafletMap {
   setView(center: LatLng, zoom: number): LeafletMap;
@@ -100,6 +104,7 @@ export function loadLeaflet(): Promise<LeafletStatic> {
       const link = document.createElement("link");
       link.rel = "stylesheet";
       link.href = CSS_URL;
+      link.setAttribute("integrity", CSS_INTEGRITY);
       link.crossOrigin = "";
       link.dataset.leaflet = "true";
       document.head.appendChild(link);
@@ -108,6 +113,7 @@ export function loadLeaflet(): Promise<LeafletStatic> {
     const script = document.createElement("script");
     script.src = JS_URL;
     script.async = true;
+    script.setAttribute("integrity", JS_INTEGRITY);
     script.crossOrigin = "";
     script.onload = () => {
       const L = (window as WindowWithLeaflet).L;

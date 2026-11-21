@@ -388,8 +388,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                       <Link
                         href={`/writing/${relatedPost.slug}`}
-                        className="c97-link"
-                        style={{ textDecoration: "none" }}
+                        className="c97-link-heading"
                       >
                         {relatedPost.title}
                       </Link>

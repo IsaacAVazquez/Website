@@ -163,6 +163,23 @@ describe("article search metadata rules", () => {
     expect(titles.size).toBeGreaterThan(0);
   });
 
+  // blog.ts drops a post that fails either check, which would 404 it quietly.
+  it("gives every post a plain slug and the frontmatter the reader requires", () => {
+    const files = fs.readdirSync(blogDirectory).filter((file) => /\.mdx?$/.test(file));
+
+    for (const file of files) {
+      const { data } = matter(fs.readFileSync(path.join(blogDirectory, file), "utf8"));
+      expect(file).toMatch(/^[a-z0-9][a-z0-9-]*\.mdx?$/);
+      for (const field of ["title", "excerpt", "category", "publishedAt"]) {
+        expect({ file, field, value: data[field] }).toEqual({
+          file,
+          field,
+          value: expect.stringMatching(/\S/),
+        });
+      }
+    }
+  });
+
   it("fits every article title and description within the configured limits", () => {
     const files = fs
       .readdirSync(blogDirectory)

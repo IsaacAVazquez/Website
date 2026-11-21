@@ -6,10 +6,9 @@
 // and — where it's a clean single dial — how far you'd have to push it to hit
 // the "on track" threshold.
 //
-// Lever rows run at the same simulation count as the headline gauge so their
-// absolute "→ X% success" figures agree with it; only the threshold solving
-// ("how far would you have to push") uses a smaller count, since binary search
-// multiplies the cost and those rows report a dial position, not a rate.
+// Lever rows and the threshold solving ("how far would you have to push") both
+// run at the same simulation count as the headline gauge, so a printed target
+// reaches the threshold on the gauge when the visitor applies it.
 // ============================================================
 
 import type {
@@ -22,25 +21,17 @@ import { computePortfolioAssumptions } from "./assumptions";
 import { runMonteCarlo } from "./monteCarlo";
 import { formatCurrency, formatPercent } from "./format";
 
-const TO_REACH_SIMS = 250;
 const SAVE_MORE_STEP = 5000;
 const RETIRE_LATER_STEP = 2;
 
-// Lever rows run at the plan's own simulation count so their absolute
-// "→ X% success" figures agree with the headline gauge (which also uses
-// input.assumptions.simulations) rather than a hardcoded constant that only
-// happens to match the default plan.
-function successRate(
-  input: RetirementPlanInput,
-  referenceYear?: number,
-  simulations = input.assumptions.simulations,
-): number {
+// runMonteCarlo defaults to the plan's own simulation count, the one the
+// headline gauge uses.
+function successRate(input: RetirementPlanInput, referenceYear?: number): number {
   const { expectedReturn, volatility } = computePortfolioAssumptions(input.allocation);
   return runMonteCarlo(input, {
     expectedReturn,
     volatility,
     referenceYear,
-    simulations,
   }).successRate;
 }
 
@@ -145,7 +136,7 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
   let saveTarget: { label: string; value: string } | null = null;
   if (base < threshold) {
     const extra = findMinContinuous(0, 50000, 7, (x) =>
-      successRate(withExtraContribution(input, x), referenceYear, TO_REACH_SIMS) >= threshold,
+      successRate(withExtraContribution(input, x), referenceYear) >= threshold,
     );
     if (extra !== null) {
       const rounded = Math.ceil(extra / 500) * 500;
@@ -158,7 +149,7 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
   if (base < threshold) {
     const maxAge = Math.min(input.retirementAge + 12, input.horizonAge - 1);
     const age = findMinInt(input.retirementAge + 1, maxAge, (a) =>
-      successRate(withRetirementAge(input, a), referenceYear, TO_REACH_SIMS) >= threshold,
+      successRate(withRetirementAge(input, a), referenceYear) >= threshold,
     );
     if (age !== null) retireTarget = { label: reachLabel, value: `retire at ${age}` };
   }
@@ -167,12 +158,13 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
   let spendTarget: { label: string; value: string } | null = null;
   if (base < threshold) {
     const cut = findMinContinuous(0, 0.5, 7, (x) =>
-      successRate(withSpendMultiplier(input, 1 - x), referenceYear, TO_REACH_SIMS) >= threshold,
+      successRate(withSpendMultiplier(input, 1 - x), referenceYear) >= threshold,
     );
     if (cut !== null) {
       spendTarget = {
         label: reachLabel,
-        value: `${formatCurrency(input.desiredAnnualSpend * (1 - cut))}/yr`,
+        // Floored so the printed spend is never above the solved one.
+        value: `${formatCurrency(Math.floor(input.desiredAnnualSpend * (1 - cut)))}/yr`,
       };
     }
   }

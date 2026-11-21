@@ -562,6 +562,7 @@ export function BudgetPlannerClient() {
               <input
                 aria-label="Expense note"
                 type="text"
+                maxLength={140}
                 value={expenseDraft.note}
                 onChange={(event) => setExpenseDraft((current) => ({ ...current, note: event.target.value }))}
                 placeholder="Coffee, rent, groceries"

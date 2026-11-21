@@ -443,7 +443,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <LeagueLeaders
                 hitting={summary.hittingLeaders}
                 pitching={summary.pitchingLeaders}
-                sourceUrl={summary.sourceUrls.leaders}
               />
             )}
           </div>
@@ -495,7 +494,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             <div className="dd-section">
               <p className="dd-label">Last 5</p>
               <div className="dd-form">
-                {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
+                <span className="sr-only">Oldest first, latest last:</span>
+                {(teamSnapshot?.form.sequence ?? []).slice(0, 5).toReversed().map((result, idx) => (
                   <TeamResultPill key={idx} result={result} />
                 ))}
               </div>
@@ -529,11 +529,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 function LeagueLeaders({
   hitting,
   pitching,
-  sourceUrl,
 }: {
   hitting: MlbHittingLeaders;
   pitching: MlbPitchingLeaders;
-  sourceUrl: string;
 }) {
   const groups: Array<{ title: string; statLabel: string; leaders: MlbLeader[] }> = [
     { title: "Home runs", statLabel: "HR", leaders: hitting.homeRuns },
@@ -545,7 +543,7 @@ function LeagueLeaders({
   ];
   const populated = groups.filter((group) => group.leaders.length > 0);
   const source = (
-    <a href={sourceUrl} target="_blank" rel="noreferrer" className="sb-link">
+    <a href="https://www.mlb.com/stats" target="_blank" rel="noreferrer" className="sb-link">
       Official
       <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
       <span aria-hidden="true"> leaders</span>

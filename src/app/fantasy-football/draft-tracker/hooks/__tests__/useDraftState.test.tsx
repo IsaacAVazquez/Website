@@ -542,6 +542,35 @@ describe("useDraftState save revisions", () => {
     }
   );
 
+  it("refuses setup settings after an unseen save, then applies them once the parked room is reset", () => {
+    const { result } = renderHook(() => useDraftState());
+    const external = JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!);
+    external.picks = [persistedPick(1, "external")];
+    // Another tab saved, and this tab never heard the storage event.
+    localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(external));
+    const form = { totalTeams: 8, userTeam: 3, rounds: 13 };
+
+    let saved = true;
+    act(() => {
+      saved = result.current.updateSettings(form);
+    });
+    expect(saved).toBe(false);
+    expect(result.current.draftState.settings.totalTeams).not.toBe(8);
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(result.current.persistenceError).toMatch(/another tab/i);
+
+    // The second Start runs the setup screen's order: reset, settings, start.
+    act(() => {
+      result.current.resetDraft();
+      saved = result.current.updateSettings(form);
+      result.current.startDraft();
+    });
+    expect(saved).toBe(true);
+    expect(result.current.draftState.settings).toMatchObject(form);
+    expect(result.current.draftState.picks).toEqual([]);
+    expect(result.current.draftState.isActive).toBe(true);
+  });
+
   it("saves consecutive memory-only picks when writes recover and the durable revision is unchanged", () => {
     const { result } = renderHook(() => useDraftState());
     const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {

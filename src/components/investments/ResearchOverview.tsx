@@ -267,7 +267,8 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {newsItems.length > 0 ? (
           <TerminalPanel padding="sm">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
-              Latest news
+              {/* The provider's feed can trail the snapshot by months, so the heading carries the newest item's date. */}
+              {newsItems[0].reportDate ? `News through ${formatDate(newsItems[0].reportDate)}` : "News"}
             </p>
             <div className="max-h-[400px] overflow-y-auto" style={{ marginTop: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-0)" }}>
               {newsItems.map((item, i) => (

@@ -64,8 +64,8 @@ single unreachable image never blocks the others. Posts that already have a save
 cover are skipped unless you pass `--force`, which makes the whole thing safe to
 re-run. The run still exits 1 when any planned cover failed, and its last line
 gives the failed count. The GitHub Action described below commits whatever
-covers landed and asks Netlify for a deploy through the `NETLIFY_BUILD_HOOK`
-secret when that commit changed something and the secret is set. When a planned
+covers landed, and they go live at the next scheduled `publish-data.yml` run,
+the same as every other refresh commit. When a planned
 cover failed, it then fails the run, which keeps a cover that never arrives
 visible. Unlike every other `update-*.yml` workflow, `update-article-images.yml`
 opens no GitHub issue when it fails.

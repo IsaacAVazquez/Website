@@ -7,6 +7,7 @@ import {
   optimizeFantasyFormula1Lineups,
   summarizeFantasyFormula1Lineup,
 } from "@/lib/fantasyFormula1";
+import committedSnapshot from "@/data/formula1Snapshot.json";
 import type { Formula1MeetingSummary, Formula1Snapshot } from "@/types/formula1";
 
 const bahrainMeeting: Formula1MeetingSummary = {
@@ -264,6 +265,15 @@ describe("fantasyFormula1", () => {
         valueRating: expect.any(Number),
       })
     );
+  });
+
+  it("prints a reason that matches the risk rating on every committed row", () => {
+    const assets = buildFantasyFormula1Assets(committedSnapshot as unknown as Formula1Snapshot);
+
+    expect(assets.length).toBeGreaterThan(0);
+    for (const asset of assets) {
+      expect(asset.riskReason === "Stable recent production").toBe(asset.risk === "low");
+    }
   });
 
   it("returns complete optimized lineups inside the budget", () => {

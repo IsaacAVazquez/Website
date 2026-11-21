@@ -293,6 +293,8 @@ export async function fetchFantasyProsVorpBoard(
       Accept: "text/html,application/xhtml+xml",
       "User-Agent": FANTASY_PROS_PUBLIC_USER_AGENT,
     },
+    // A hung connection would otherwise hold the refresh step to its own cap.
+    signal: AbortSignal.timeout(20_000),
   });
   if (!response.ok) {
     throw new Error(`FantasyPros VORP request failed (${response.status}).`);

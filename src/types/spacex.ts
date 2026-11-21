@@ -40,7 +40,8 @@ export interface MissionLaunchCard {
   patchImage: string | null;
   vehicleImage: string | null;
   crewCount: number;
-  payloadCount: number;
+  /** Null when Launch Library publishes no count for the mission. */
+  payloadCount: number | null;
   capsuleCount: number;
   coreCount: number;
   hasExactTime: boolean;
@@ -139,6 +140,12 @@ export interface MissionCore {
   landpadLocation: string | null;
 }
 
+export interface MissionTimelineEvent {
+  /** Time relative to liftoff, e.g. "T+2:26". */
+  label: string;
+  event: string;
+}
+
 export interface MissionRocket {
   id: string | null;
   name: string | null;
@@ -186,6 +193,8 @@ export interface MissionLaunchDetail extends MissionLaunchCard {
   payloads: MissionPayload[];
   capsules: MissionCapsule[];
   cores: MissionCore[];
+  /** Launch Library's own event sequence. Absent on card-derived details and older snapshots. */
+  timeline?: MissionTimelineEvent[];
 }
 
 export interface MissionControlSnapshot {

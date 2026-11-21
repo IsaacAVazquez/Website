@@ -147,7 +147,7 @@ export function findOtherSavedRoom(
     try {
       const saved = JSON.parse(storage.getItem(key) ?? "null") as Partial<BestBallDraftState> | null;
       const contestId = saved?.contestId as BestBallContestId | undefined;
-      if (!saved || !contestId || contestId === currentContestId || !(contestId in BEST_BALL_CONTESTS)) continue;
+      if (!saved || !contestId || contestId === currentContestId || !Object.hasOwn(BEST_BALL_CONTESTS, contestId)) continue;
       if (typeof saved.startedAt !== "string" || !Array.isArray(saved.picks)) continue;
       const total = Number(saved.rules?.teams) * Number(saved.rules?.rounds);
       const updatedAt = Date.parse(saved.updatedAt ?? saved.startedAt) || 0;

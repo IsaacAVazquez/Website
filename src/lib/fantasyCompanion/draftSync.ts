@@ -101,6 +101,9 @@ export function findFantasyDraftSyncPlayer(
   const eligible = players.filter((player) => {
     if (excludedPlayerIds.has(player.id)) return false;
     if (position && normalizePosition(player.position) !== position) return false;
+    // A lone name match on another team is a different player, usually one
+    // the snapshot does not carry, so the team is required and not a tiebreak.
+    if (team && normalizeAdpTeam(player.team) !== team) return false;
     const playerName = normalizeAdpPlayerName(player.name);
     return (
       playerName === observedName ||
@@ -112,24 +115,15 @@ export function findFantasyDraftSyncPlayer(
   });
 
   if (eligible.length === 1) return eligible[0];
-  if (team) {
-    const teamMatches = eligible.filter(
-      (player) => normalizeAdpTeam(player.team) === team
+  if (eligible.length === 0 && team && position === "DST") {
+    // A team fields one defense, so team plus position is already unique.
+    const byTeam = players.filter(
+      (player) =>
+        !excludedPlayerIds.has(player.id) &&
+        normalizePosition(player.position) === "DST" &&
+        normalizeAdpTeam(player.team) === team
     );
-    if (teamMatches.length === 1) return teamMatches[0];
-    if (teamMatches.length > 1) {
-      return resolveByDraftPosition(teamMatches, observed.pickNumber);
-    }
-    if (position === "DST") {
-      // A team fields one defense, so team plus position is already unique.
-      const byTeam = players.filter(
-        (player) =>
-          !excludedPlayerIds.has(player.id) &&
-          normalizePosition(player.position) === "DST" &&
-          normalizeAdpTeam(player.team) === team
-      );
-      if (byTeam.length === 1) return byTeam[0];
-    }
+    if (byTeam.length === 1) return byTeam[0];
   }
   return resolveByDraftPosition(eligible, observed.pickNumber);
 }

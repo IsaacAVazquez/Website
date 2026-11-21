@@ -216,15 +216,20 @@ export function simulatePath(
     previousReturn = r;
 
     const endBalance = totalBalance(balances);
+    // The return lands at the end of year t, which is the start of year t + 1,
+    // so an end-of-year balance deflates by one more year than this year's
+    // cash flows. It keeps the chart on the same deflator as the retirement
+    // balance, which is the start-of-year figure for the retirement year.
+    const endInflationFactor = inflationFactor * (1 + infl);
     if (realOut) {
-      realOut[t] = endBalance / inflationFactor;
+      realOut[t] = endBalance / endInflationFactor;
     } else {
       years.push({
         age,
         yearIndex: t,
         phase: age < retirementAge ? "accumulation" : "decumulation",
         nominalBalance: endBalance,
-        realBalance: endBalance / inflationFactor,
+        realBalance: endBalance / endInflationFactor,
         contribution,
         withdrawal,
         spending,
@@ -255,7 +260,7 @@ export function runDeterministic(
   const infl = input.assumptions.inflation;
   const tRetire = input.retirementAge - input.currentAge;
   const retireFactor = Math.pow(1 + infl, Math.max(0, tRetire));
-  const endFactor = Math.pow(1 + infl, totalYears);
+  const endFactor = Math.pow(1 + infl, totalYears + 1);
 
   return {
     path: path.years,

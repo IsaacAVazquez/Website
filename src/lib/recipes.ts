@@ -67,8 +67,8 @@ export interface RecipeMatch {
 }
 
 /**
- * Lowercases, trims, collapses whitespace, and strips a few cosmetic suffixes
- * so "Olive Oil ", "olive  oil", and "olive oil" all collapse to one key.
+ * Lowercases, trims, strips punctuation, and collapses whitespace so
+ * "Olive Oil ", "olive  oil", and "olive oil" all collapse to one key.
  */
 export function normalizeIngredient(raw: string): string {
   return raw
@@ -103,21 +103,31 @@ const DERIVED_HEAD_WORDS = new Set([
   "flour",
 ]);
 
+/** "eggs" to "egg", "tomatoes" to "tomato", "berries" to "berry". Both sides of
+ * a match go through it, so an odd stem ("leave") still compares equal. */
+function singular(word: string): string {
+  if (word.length < 4 || /(ss|us)$/.test(word)) return word;
+  if (word.endsWith("ies")) return `${word.slice(0, -3)}y`;
+  if (/(oes|ses|xes|zes|ches|shes)$/.test(word)) return word.slice(0, -2);
+  return word.endsWith("s") ? word.slice(0, -1) : word;
+}
+
 /**
  * Loose whole-word match so "tomato" matches "cherry tomato" and "chicken"
  * matches "chicken breast", but "rice" does NOT match "rice vinegar". Returns
  * true when every word of the shorter normalized phrase appears as a standalone
  * word (not a substring) in the longer phrase, with one guard: a single bare
  * word never matches a multi-word *derived product* (e.g. a vinegar, oil, or
- * sauce) unless it is that product's head word.
+ * sauce) unless it is that product's head word. Words compare in the singular,
+ * so a pantry entry typed as "eggs" matches "egg".
  */
 export function ingredientsMatch(a: string, b: string): boolean {
   const left = normalizeIngredient(a);
   const right = normalizeIngredient(b);
   if (!left || !right) return false;
   if (left === right) return true;
-  const leftWords = left.split(" ");
-  const rightWords = right.split(" ");
+  const leftWords = left.split(" ").map(singular);
+  const rightWords = right.split(" ").map(singular);
   const [shorter, longer] =
     leftWords.length <= rightWords.length
       ? [leftWords, rightWords]

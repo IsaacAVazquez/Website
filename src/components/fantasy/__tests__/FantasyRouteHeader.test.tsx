@@ -11,6 +11,13 @@ describe("FreshnessParts", () => {
     error.mockRestore();
   });
 
+  // Tailwind's md variant is screen only, so the short form printed on every paper width.
+  it("switches a short label with the kit's phone helpers, which follow the page width on paper", () => {
+    render(<FreshnessParts parts={[{ label: "ADP Fantasy Football Calculator", shortLabel: "ADP" }]} />);
+    expect(screen.getByText("ADP").className).toBe("ffb-only-phone");
+    expect(screen.getByText("ADP Fantasy Football Calculator").className).toBe("ffb-not-phone");
+  });
+
   it("keeps a space between parts once the hidden dots are dropped, as a screen reader reads it", () => {
     const { container } = render(<FreshnessParts parts={[{ label: "2026" }, { label: "PPR" }, { label: "ADP stale", tone: "warning" }]} />);
     const line = container.querySelector("p") as HTMLElement;

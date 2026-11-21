@@ -261,6 +261,8 @@ export async function fetchFantasyAdpBoard(
   const sourceUrl = getFantasyAdpUrl(scoringFormat, season);
   const response = await fetch(sourceUrl, {
     headers: { Accept: "application/json" },
+    // A hung connection would otherwise hold the refresh step to its own cap.
+    signal: AbortSignal.timeout(20_000),
   });
 
   if (!response.ok) {

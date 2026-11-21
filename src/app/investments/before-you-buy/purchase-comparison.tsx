@@ -118,7 +118,7 @@ export function WorstDays({ results }: { results: BeforeYouBuyResult[] }) {
     <p className="byb-note">SPY&apos;s lowest daily returns from {formatDay(first.window!.from)} to {formatDay(first.window!.to)}. Each mix uses fixed weights, with the same dates for both purchases.</p>
     <TableScroll label="The market's five worst days"><table className="byb-table">
       <thead><tr><th scope="col">Day</th><th scope="col">SPY</th><th scope="col">Current</th>{results.map((result) => <th scope="col" key={result.buy.symbol}>Buy {result.buy.symbol}</th>)}</tr></thead>
-      <tbody>{first.worstDays.map((day, i) => <tr key={day.date}><th scope="row">{formatDay(day.date)}</th><td>{formatReturn(day.benchmark)}</td><td>{day.before === null ? "Unavailable" : formatReturn(day.before)}</td>{results.map((result) => <td key={result.buy.symbol}>{formatReturn(result.worstDays[i].after)}</td>)}</tr>)}</tbody>
+      <tbody>{first.worstDays.map((day, i) => <tr key={day.date}><th scope="row">{formatDay(day.date)}</th><td>{formatReturn(day.benchmark)}</td><td>{day.before === null ? "Unavailable" : formatReturn(day.before)}</td>{results.map((result) => <td key={result.buy.symbol}>{result.worstDays[i] ? formatReturn(result.worstDays[i].after) : "Unavailable"}</td>)}</tr>)}</tbody>
     </table></TableScroll>
   </section>;
 }

@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-workflow detail: `CRON_SETUP.md` and the **Automation Surfaces**
   section of `../AGENTS.md`. Each script's header comment says what it does.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled snapshot refresh
@@ -272,9 +272,9 @@ The 17 update workflows are `update-article-images`, `update-bay-area-transit`, 
 Builders that fetch a live source keep the last-good snapshot on failure, most of
 them through `readGeneratedSnapshot` or `buildOrKeepExisting` in
 `scripts/snapshotFallback.ts`, and write atomically, so a flaky upstream never
-wipes a dashboard. Most of them then exit cleanly with nothing to commit, while
-some, such as the earthquake and transit builders, exit nonzero with the
-committed file untouched so the run reports the failed attempt. The
+wipes a dashboard. Some of them then exit cleanly with nothing to commit, while
+others, such as the earthquake, transit, MLB, NBA, and NFL builders, exit nonzero
+with the committed file untouched so the run reports the failed attempt. The
 investments builder is similar, and symbols with no fresh raw sections keep their
 committed snapshot. See `../SNAPSHOT_DRIVEN_DASHBOARDS.md` for the contract.
 The scheduled workflow still fails when the retained artifact exceeds its

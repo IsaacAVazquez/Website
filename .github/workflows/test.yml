@@ -15,7 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
         with:
+          # The writing date review diffs against the base commit, so it needs the
+          # commit graph. `blob:none` fetches commits and trees and leaves file
+          # contents to be fetched on demand, which skips the old binary history.
           fetch-depth: 0
+          filter: blob:none
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -138,13 +142,16 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")
           echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+          # WebKit is built per Ubuntu release, so a cache saved on one runner
+          # image cannot launch on the next. ImageOS reads like "ubuntu24".
+          echo "image=${ImageOS:-unknown}" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         id: playwright-cache
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.value }}-chromium
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.image }}-${{ steps.playwright-version.outputs.value }}-chromium
 
       - name: Install Playwright browsers (chromium only)
         if: steps.playwright-cache.outputs.cache-hit != 'true'
@@ -212,13 +219,16 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")
           echo "value=$VERSION" >> "$GITHUB_OUTPUT"
+          # WebKit is built per Ubuntu release, so a cache saved on one runner
+          # image cannot launch on the next. ImageOS reads like "ubuntu24".
+          echo "image=${ImageOS:-unknown}" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         id: playwright-cache
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.value }}-full
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.image }}-${{ steps.playwright-version.outputs.value }}-full
 
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'

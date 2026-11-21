@@ -3,7 +3,10 @@ import { HeaderSearchPanel } from "../HeaderSearchPanel";
 
 const mockRouterPush = jest.fn();
 jest.mock("next/navigation", () => ({ useRouter: () => ({ push: mockRouterPush }) }));
-jest.mock("@/lib/analytics", () => ({ trackNavigationClick: jest.fn() }));
+const mockTrackNavigationClick = jest.fn();
+jest.mock("@/lib/analytics", () => ({
+  trackNavigationClick: (...args: unknown[]) => mockTrackNavigationClick(...args),
+}));
 
 const originalFetch = global.fetch;
 const mockFetch = jest.fn();
@@ -28,6 +31,7 @@ describe("HeaderSearchPanel request lifecycle", () => {
     jest.useFakeTimers();
     mockFetch.mockReset();
     mockRouterPush.mockReset();
+    mockTrackNavigationClick.mockReset();
     global.fetch = mockFetch;
   });
 
@@ -46,10 +50,10 @@ describe("HeaderSearchPanel request lifecycle", () => {
     changeQuery("newer");
     expect(olderSignal.aborted).toBe(true);
     await act(async () => requests[0](response("Older result")));
-    expect(screen.queryByRole("link", { name: /Older result/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Older result/ })).not.toBeInTheDocument();
     expect(screen.getByText("Searching…")).toBeVisible();
     await act(async () => requests[1](response("Newer result")));
-    expect(screen.getByRole("link", { name: /Newer result/ })).toBeVisible();
+    expect(screen.getByRole("option", { name: /Newer result/ })).toBeVisible();
   });
 
   it("ignores a stale rejection after newer results have loaded", async () => {
@@ -62,7 +66,7 @@ describe("HeaderSearchPanel request lifecycle", () => {
     changeQuery("newer");
     await act(async () => { await Promise.resolve(); });
     await act(async () => rejectOlder(new Error("Old network failure")));
-    expect(screen.getByRole("link", { name: /Newer result/ })).toBeVisible();
+    expect(screen.getByRole("option", { name: /Newer result/ })).toBeVisible();
   });
 
   it("cancels on clear immediately and does not restore stale results", async () => {
@@ -74,7 +78,7 @@ describe("HeaderSearchPanel request lifecycle", () => {
     fireEvent.change(screen.getByRole("combobox"), { target: { value: "" } });
     expect(signal.aborted).toBe(true);
     await act(async () => finish(response("Stale result")));
-    expect(screen.queryByRole("link", { name: /Stale result/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("option", { name: /Stale result/ })).not.toBeInTheDocument();
     expect(screen.getByText(/Press Esc to close/)).toBeVisible();
     expect(screen.queryByText("Searching…")).not.toBeInTheDocument();
   });
@@ -121,9 +125,42 @@ describe("HeaderSearchPanel request lifecycle", () => {
     changeQuery("new tab");
     await act(async () => { await Promise.resolve(); });
 
-    fireEvent.click(screen.getByRole("link", { name: /New tab result/ }), { [modifier]: true });
+    fireEvent.click(screen.getByRole("option", { name: /New tab result/ }), { [modifier]: true });
 
     expect(mockRouterPush).not.toHaveBeenCalled();
     expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it("makes each result one control that stays out of the Tab order", async () => {
+    mockFetch.mockResolvedValue(response("Only result"));
+    render(<HeaderSearchPanel onClose={jest.fn()} />);
+    changeQuery("only");
+    await act(async () => { await Promise.resolve(); });
+
+    const option = screen.getByRole("option", { name: /Only result/ });
+    expect(option.tagName).toBe("A");
+    expect(option).toHaveAttribute("tabindex", "-1");
+    expect(option.querySelector("a, button")).toBeNull();
+    expect(screen.queryByRole("link")).not.toBeInTheDocument();
+
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "ArrowDown" });
+    expect(screen.getByRole("combobox")).toHaveAttribute("aria-activedescendant", option.id);
+    expect(option).toHaveAttribute("aria-selected", "true");
+  });
+
+  it("sends the View all click to analytics without the typed query", async () => {
+    mockFetch.mockResolvedValue(response("Only result"));
+    render(<HeaderSearchPanel onClose={jest.fn()} />);
+    changeQuery("my private query");
+    await act(async () => { await Promise.resolve(); });
+
+    fireEvent.click(screen.getByRole("button", { name: /View all results/ }));
+
+    expect(mockRouterPush).toHaveBeenCalledWith("/search?q=my%20private%20query");
+    expect(mockTrackNavigationClick).toHaveBeenCalledWith({
+      link_text: "View all results",
+      link_url: "/search",
+      nav_location: "header_search_view_all",
+    });
   });
 });

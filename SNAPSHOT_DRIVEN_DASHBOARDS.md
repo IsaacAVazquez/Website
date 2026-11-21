@@ -4,7 +4,7 @@ How the site's data dashboards work. This is the single most-repeated
 architecture in the repo — 15+ public surfaces share it — so it gets one
 reference instead of being re-explained per route.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 The short version is that most dashboards call no external API at request time.
 The exceptions are the earthquake summary route, the bay-area-transit summary
@@ -85,7 +85,9 @@ gutted snapshot.
 contract for builders that also have to reject a build that succeeds but comes
 back unusable. It returns `null` when it kept the committed file and still
 throws when there is nothing usable to keep. The Premier League, La Liga, MLB,
-NBA, and NFL builders use it, and the two football builders
+NBA, and NFL builders use it. The MLB, NBA, and NFL scripts exit non-zero when it
+kept the committed file, so the run reports the failed attempt even while the
+kept snapshot still passes the freshness check. The two football builders
 (`buildPremierLeagueSnapshot.ts`, `updateLaLigaSnapshot.ts`) count a table with
 no rows or no games played, the zeroed table a rolled-over season can return, as
 unusable.

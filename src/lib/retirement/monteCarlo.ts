@@ -81,7 +81,7 @@ export function runMonteCarlo(
     retirementBalances.push(
       path.balanceAtRetirementNominal / Math.pow(1 + infl, tRetire),
     );
-    endingBalances.push(path.endingBalanceNominal / Math.pow(1 + infl, totalYears));
+    endingBalances.push(path.endingBalanceNominal / Math.pow(1 + infl, totalYears + 1));
 
     if (path.depletionAge === null) funded += 1;
     else depletionAges.push(path.depletionAge);

@@ -7,7 +7,7 @@ server, no API, and no snapshot pipeline — state lives in the user's browser.
 This doc captures the shared pattern and the per-tool specifics so the next one
 is easy to add.
 
-**Last updated:** 2026-11-10
+**Last updated:** 2026-11-16
 
 ---
 
@@ -145,6 +145,9 @@ receives changes from other tabs and other hook instances in the same tab.
   the quoted fare (clamped 0 to 100,000 on read), and the "applied" tactic ids,
   under `travel-deals:v1`. The points award inputs are ephemeral component
   state, and the field says so.
+- `FlightQuoteComparison.tsx` saves up to 30 flight options under
+  `travel-flight-quotes-v1` through `useBrowserRecord`, validated by
+  `parseFlightQuotes` in `src/lib/flightQuotes.ts`.
 - The engine is framework-free and unit-tested (`src/lib/__tests__/travelDeals.test.ts`):
   booking-window timing, a fare deal-score against a typical band, cents-per-point
   award valuation, and a budget split. It reasons against curated fare bands and a

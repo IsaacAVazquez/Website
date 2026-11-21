@@ -222,6 +222,16 @@ describe("DecisionLabClient", () => {
     expect(rows.reduce((sum, value) => sum + value, 0)).toBeCloseTo(total, 5);
   });
 
+  it("names the score the verdict gated on beside a ledger total that rounds across a gate", () => {
+    // The rows total 67.95, which scores 68 and ships.
+    visit("impact=65&confidence=60&effort=38&reversibility=98");
+    render(<DecisionLabClient />);
+
+    expect(screen.getByText(/^Score 68 · SHIP/)).toBeVisible();
+    expect(document.querySelector(".dl-contribution-total")).toHaveTextContent("67.95, scored as 68");
+    expect(document.querySelector(".dl-fine")).toHaveTextContent("rounded to one decimal place");
+  });
+
   it("names the preset a custom state started from and drops that preset's hint", () => {
     render(<DecisionLabClient />);
     expect(screen.getByText(/High upside with thin proof/)).toBeVisible();

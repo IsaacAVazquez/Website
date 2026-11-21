@@ -13,6 +13,7 @@ import type {
   MissionLinkSet,
   MissionPayload,
   MissionRocket,
+  MissionTimelineEvent,
 } from "@/types/spacex";
 import { resolveSpaceXImageUrl, resolveSpaceXImageUrls } from "@/lib/spacexImageManifest";
 import { aggregateLaunchCadence } from "@/lib/spacexCadence";
@@ -297,6 +298,12 @@ interface RawLl2SpacecraftStage {
   spacecraft?: RawLl2Spacecraft | null;
 }
 
+interface RawLl2TimelineEvent {
+  type?: { abbrev?: string | null } | null;
+  /** ISO 8601 duration from liftoff, negative before it ("-PT38M", "PT2M26S"). */
+  relative_time?: string | null;
+}
+
 export interface RawLl2Launch {
   id: string;
   url?: string | null;
@@ -319,6 +326,7 @@ export interface RawLl2Launch {
   mission_patches?: RawLl2MissionPatch[] | null;
   infoURLs?: RawLl2ExternalLink[] | null;
   vidURLs?: RawLl2ExternalLink[] | null;
+  timeline?: RawLl2TimelineEvent[] | null;
   launcher_stage?: RawLl2LauncherStage[] | null;
   spacecraft_stage?: RawLl2SpacecraftStage | null;
   orbital_launch_attempt_count?: number | null;
@@ -792,7 +800,9 @@ function deriveCoreCount(launch: RawLl2Launch): number {
   return 0;
 }
 
-function derivePayloadCount(launch: RawLl2Launch): number {
+// Null when neither the crew list nor the description gives a number, so a
+// rideshare described as "dozens of satellites" never prints as one payload.
+function derivePayloadCount(launch: RawLl2Launch): number | null {
   const crewCount = getSpacecraftStage(launch)?.launch_crew?.length ?? 0;
   if (crewCount > 0) {
     return crewCount;
@@ -805,10 +815,10 @@ function derivePayloadCount(launch: RawLl2Launch): number {
     description.match(/(\d+) satellites/i);
 
   if (numericMatch) {
-    return Number.parseInt(numericMatch[1] ?? "0", 10) || 1;
+    return Number.parseInt(numericMatch[1] ?? "", 10) || null;
   }
 
-  return launch.mission ? 1 : 0;
+  return null;
 }
 
 function normalizeLaunchCard(
@@ -950,6 +960,33 @@ function normalizeCores(launch: RawLl2Launch): MissionCore[] {
   }));
 }
 
+const RELATIVE_TIME_PATTERN = /^(-)?P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?$/;
+
+// Launch detail rows carry `timeline` (read from three details on 2026-11-16);
+// list rows do not, so a card-derived detail has none.
+function normalizeTimeline(launch: RawLl2Launch): MissionTimelineEvent[] {
+  return (launch.timeline ?? []).flatMap((entry) => {
+    const event = entry.type?.abbrev?.trim();
+    const match = RELATIVE_TIME_PATTERN.exec(entry.relative_time ?? "");
+    if (!event || !match) {
+      return [];
+    }
+
+    const [, negative, days, hours, minutes, seconds] = match;
+    const totalSeconds =
+      Number(days ?? 0) * 86400 +
+      Number(hours ?? 0) * 3600 +
+      Number(minutes ?? 0) * 60 +
+      Number(seconds ?? 0);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = `${totalSeconds % 60}`.padStart(2, "0");
+    const clock = h > 0 ? `${h}:${`${m}`.padStart(2, "0")}:${s}` : `${m}:${s}`;
+
+    return [{ label: `T${negative || totalSeconds === 0 ? "-" : "+"}${clock}`, event }];
+  });
+}
+
 function normalizeRocket(launch: RawLl2Launch): MissionRocket | null {
   const configuration = launch.rocket?.configuration;
   if (!configuration) {
@@ -1046,6 +1083,7 @@ function normalizeLaunchDetail(
     payloads: normalizePayloads(launch),
     capsules: normalizeCapsules(launch),
     cores: normalizeCores(launch),
+    timeline: normalizeTimeline(launch),
   };
 }
 
@@ -1397,6 +1435,28 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
     }
   }
 
+  // A list row carries no vidURLs, infoURLs, mission_patches, or stage records,
+  // so a card built from one has no webcast and a program homepage for its
+  // article. Where the detail was hydrated, the card takes those from it.
+  const hydratedDetails = new Map(detailEntries);
+  const withDetail = (card: MissionLaunchCard): MissionLaunchCard => {
+    const detail = hydratedDetails.get(card.id);
+    return detail
+      ? {
+          ...card,
+          links: detail.links,
+          patchImage: detail.patchImage,
+          crewCount: detail.crewCount,
+          payloadCount: detail.payloadCount,
+          capsuleCount: detail.capsuleCount,
+          coreCount: detail.coreCount,
+        }
+      : card;
+  };
+  summary.heroLaunch = summary.heroLaunch && withDetail(summary.heroLaunch);
+  summary.nextLaunch = summary.nextLaunch && withDetail(summary.nextLaunch);
+  summary.fallbackLaunch = summary.fallbackLaunch && withDetail(summary.fallbackLaunch);
+
   // Trailing-12-month launch cadence. Best-effort and isolated from the rest
   // of the build: a failed page (rate limit, network) or a window the page
   // bound cannot reach leaves cadence null instead of failing the whole
@@ -1443,8 +1503,8 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
     generatedAt: new Date().toISOString(),
     sourceLabel: "launch-library-2 snapshot",
     summary,
-    upcomingLaunches,
-    pastLaunches,
+    upcomingLaunches: upcomingLaunches.map(withDetail),
+    pastLaunches: pastLaunches.map(withDetail),
     launchDetails: Object.fromEntries(detailEntries),
     cadence,
   };

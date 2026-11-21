@@ -68,6 +68,24 @@ export function getBestBallRefreshFallback(
   return { keep: false, reason: "stale" };
 }
 
+/**
+ * True when a successful in-season fetch carries the consensus the committed
+ * snapshot already holds. The builder then leaves the file alone, so the
+ * frozen board keeps its players and every date on it stops moving.
+ */
+export function isBestBallRefreshRedundant(
+  previous: Pick<BestBallSnapshot, "season" | "rankingSource"> | null,
+  rankings: { season: number; updatedAt: string },
+  now: Date = new Date()
+): boolean {
+  return (
+    previous !== null &&
+    previous.season === rankings.season &&
+    getNflRegularSeasonWeek(previous.season, now) >= 1 &&
+    Date.parse(previous.rankingSource.asOf ?? "") === Date.parse(rankings.updatedAt)
+  );
+}
+
 interface BestBallRankingsBoard {
   players: Player[];
   season: number;

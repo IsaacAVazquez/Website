@@ -1,6 +1,6 @@
 # Score Pools Engine
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 The exact-score prediction engine behind `/score-pools`, and the reference for
 anyone changing it. The engine is the point of the surface: it formalizes the
@@ -77,6 +77,9 @@ reads except the injectable `now`.
    realistic per-game catch-up rate (40% of the exact-score points by default)
    times the games remaining, so a one-point
    lead with two left reads very differently from ten points with ten to go.
+   "My points" (`standing.myPoints`) is the entrant's full current total in the
+   pool, typed in on the settings page, and both the engine's gaps and the
+   tracker's rival gaps read it as entered.
    The posture is `auto` unless a pool pins it to `protect`, `chase`, or
    `neutral`, and `auto` weighs the deficit to the rival above against the
    cushion over the rival below, damping the protect side while anyone sits

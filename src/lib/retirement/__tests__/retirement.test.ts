@@ -5,6 +5,8 @@ import {
   expandAllocation,
   simulatePath,
   runDeterministic,
+  runMonteCarlo,
+  computeLevers,
   socialSecurityClaimFactor,
   rmdDivisor,
   rmdStartAge,
@@ -398,5 +400,90 @@ describe("deterministic projection shape", () => {
     expect(det.path).toHaveLength(plan.horizonAge - plan.currentAge + 1);
     expect(det.path[0].age).toBe(plan.currentAge);
     expect(det.path[det.path.length - 1].age).toBe(plan.horizonAge);
+  });
+});
+
+describe("guardrails withdrawal strategy", () => {
+  // $1M taxable, $40k spend, 3% inflation, no tax and no other income, so the
+  // first decumulation year sets the initial rate at 4% and the bands at 4.8%
+  // and 3.2%.
+  function spendRows(returns: number[]) {
+    const base = createDefaultPlan();
+    const plan = planWith({
+      currentAge: 60,
+      retirementAge: 60,
+      horizonAge: 62,
+      desiredAnnualSpend: 40000,
+      accounts: [
+        { id: "a", type: "taxable", balance: 1_000_000, annualContribution: 0, employerMatch: 0 },
+      ],
+      otherIncome: { ...base.otherIncome, socialSecurityAnnual: 0 },
+      assumptions: {
+        ...base.assumptions,
+        inflation: 0.03,
+        withdrawalStrategy: "guardrails",
+        taxRates: noTaxRates(),
+      },
+    });
+    return simulatePath(plan, returns, REF_YEAR).years.map((y) => y.spending);
+  }
+
+  it("raises spend with inflation inside the bands", () => {
+    // Year 1 starts at 960k: 41,200 / 960k is 4.29%, inside the bands.
+    const spend = spendRows([0, 0, 0]);
+    expect(spend[0]).toBeCloseTo(40000, 2);
+    expect(spend[1]).toBeCloseTo(41200, 2);
+  });
+
+  it("skips the raise after a down year, then cuts 10% above the upper band", () => {
+    // Year 0 ends at 960k * 0.9 = 864k. Year 1 is overspending after a down
+    // year, so spend holds at 40,000 (4.63%, under 4.8%). Year 2 starts at
+    // 824k: the raise to 41,200 is 5%, over 4.8%, so spend drops to 37,080.
+    const spend = spendRows([-0.1, 0, 0]);
+    expect(spend[1]).toBeCloseTo(40000, 2);
+    expect(spend[2]).toBeCloseTo(37080, 2);
+  });
+
+  it("raises spend 10% below the lower band", () => {
+    // Year 0 ends at 960k * 1.5 = 1.44M: 41,200 is 2.86%, under 3.2%.
+    const spend = spendRows([0.5, 0, 0]);
+    expect(spend[1]).toBeCloseTo(45320, 2);
+  });
+});
+
+describe("today's-dollar convention", () => {
+  it("deflates the retirement balance and the chart's same balance alike", () => {
+    // The balance at the start of the retirement year is the balance at the
+    // end of the year before it.
+    const plan = createDefaultPlan();
+    const tRetire = plan.retirementAge - plan.currentAge;
+    const { expectedReturn, volatility } = computePortfolioAssumptions(plan.allocation);
+
+    const det = runDeterministic(plan, expectedReturn, REF_YEAR);
+    expect(det.path[tRetire - 1].realBalance).toBeCloseTo(det.balanceAtRetirement.real, 4);
+
+    const mc = runMonteCarlo(plan, { expectedReturn, volatility, referenceYear: REF_YEAR });
+    expect(mc.bands[tRetire - 1].p50).toBeCloseTo(mc.balanceAtRetirement.p50, 4);
+  });
+});
+
+describe("lever targets", () => {
+  it("prints a spend target that reaches the threshold at the plan's simulation count", () => {
+    const base = createDefaultPlan();
+    const plan = planWith({
+      currentAge: 45,
+      desiredAnnualSpend: 90000,
+      accounts: base.accounts.map((a, i) => ({ ...a, balance: i === 0 ? 300000 : 0 })),
+    });
+    const target = computeLevers(plan, REF_YEAR).find((l) => l.id === "spend-less")?.toReachTarget;
+    expect(target).not.toBeNull();
+    const spend = Number(target!.value.replace(/[^0-9]/g, ""));
+    const { expectedReturn, volatility } = computePortfolioAssumptions(plan.allocation);
+    const applied = runMonteCarlo(
+      { ...plan, desiredAnnualSpend: spend },
+      { expectedReturn, volatility, referenceYear: REF_YEAR },
+    );
+    expect(applied.simulations).toBe(plan.assumptions.simulations);
+    expect(applied.successRate).toBeGreaterThanOrEqual(plan.assumptions.successThreshold);
   });
 });

@@ -21,7 +21,12 @@ async function main() {
     () => buildMlbSnapshot(),
     (built: MlbSnapshot) => built.standings.length > 0
   );
-  if (!snapshot) return;
+  if (!snapshot) {
+    // The kept snapshot can still pass the freshness check, so the exit code
+    // is what reports this run.
+    process.exitCode = 1;
+    return;
+  }
 
   const output = JSON.stringify(snapshot, null, 2) + "\n";
 

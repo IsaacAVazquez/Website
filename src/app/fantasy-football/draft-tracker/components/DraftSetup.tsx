@@ -23,7 +23,8 @@ import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fanta
 
 interface DraftSetupProps {
   settings: DraftSettings;
-  onSaveSettings: (settings: Partial<DraftSettings>) => void;
+  /** Returning false means the save was refused, and Start stops there. */
+  onSaveSettings: (settings: Partial<DraftSettings>) => boolean | void;
   /**
    * Selects the setup screen's rankings snapshot without changing the parked
    * room. The full form is still committed through onSaveSettings at Start.
@@ -244,7 +245,7 @@ export function DraftSetup({
     setStartArmed(false);
     setIsStarting(true);
     try {
-      onSaveSettings(formState);
+      if (onSaveSettings(formState) === false) return;
       onStartDraft();
     } finally {
       // Re-enable after a short tick, since startDraft is synchronous, but the

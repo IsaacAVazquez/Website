@@ -11,6 +11,12 @@ let syncUrlState = (_url: string) => {};
 
 jest.mock("@/lib/logger", () => ({ logger: { error: jest.fn() } }));
 
+const mockTrackEvent = jest.fn();
+jest.mock("@/lib/analytics", () => ({
+  ...jest.requireActual("@/lib/analytics"),
+  trackEvent: (...args: unknown[]) => mockTrackEvent(...args),
+}));
+
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: (url: string, options: { scroll: boolean }) => {
@@ -83,6 +89,7 @@ describe("SearchInterface", () => {
     jest.useFakeTimers();
     mockPush.mockReset();
     mockFetch.mockReset();
+    mockTrackEvent.mockReset();
     syncUrlState = () => {};
     global.fetch = mockFetch as unknown as typeof fetch;
     window.history.replaceState({}, "", "/search");
@@ -329,5 +336,31 @@ describe("SearchInterface", () => {
         scroll: false,
       })
     );
+  });
+
+  it("reports a search and a filter change without the typed query or the picked option", async () => {
+    const user = userEvent.setup({
+      advanceTimers: jest.advanceTimersByTime,
+    });
+
+    render(<SearchHarness />);
+
+    await user.type(screen.getByRole("textbox", { name: /search content/i }), "my private query");
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+    await flushPromises();
+    await user.click(screen.getByRole("button", { name: /show filters/i }));
+    await user.click(screen.getByRole("button", { name: /^writing$/i }));
+
+    expect(mockTrackEvent).toHaveBeenCalledWith("listing_search", {
+      listing_id: "site_search",
+      results_count: 1,
+    });
+    expect(mockTrackEvent).toHaveBeenCalledWith("listing_filter", {
+      listing_id: "site_search",
+      filter_type: "content_type",
+    });
+    expect(JSON.stringify(mockTrackEvent.mock.calls)).not.toMatch(/private|post/);
   });
 });

@@ -11,7 +11,7 @@ import {
   BLOG_CLUSTER_DETAILS,
   BLOG_CLUSTER_ORDER,
 } from "@/lib/blog-config";
-import { generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
+import { absoluteUrl, generateBreadcrumbStructuredData, constructMetadata } from "@/lib/seo";
 import { Catalog97Writing } from "@/components/catalog97/Catalog97Writing";
 
 export const metadata = constructMetadata({
@@ -71,21 +71,32 @@ export default function WritingPage() {
             name: "Isaac Vazquez Writing",
             description:
               "Writing on product management, agentic AI, fintech, systems, quality, and the tools Isaac Vazquez builds.",
-            url: "https://isaacvazquez.com/writing",
+            url: absoluteUrl("/writing"),
             items: posts.map((post) => ({
               name: post.title,
               description: post.excerpt,
-              url: `https://isaacvazquez.com/writing/${post.slug}`,
-              image: post.coverImage.startsWith("http")
-                ? post.coverImage
-                : `https://isaacvazquez.com${post.coverImage}`,
+              url: absoluteUrl(`/writing/${post.slug}`),
+              image: absoluteUrl(post.coverImage),
             })),
           },
         }}
       />
 
       <Catalog97Writing
-        posts={posts}
+        // Only the fields the index reads cross into the client payload.
+        posts={posts.map((post) => ({
+          slug: post.slug,
+          title: post.title,
+          excerpt: post.excerpt,
+          publishedAt: post.publishedAt,
+          category: post.category,
+          tags: post.tags,
+          readingTime: post.readingTime,
+          coverImage: post.coverImage,
+          coverImageAlt: post.coverImageAlt,
+          cluster: post.cluster,
+          archiveBucket: post.archiveBucket,
+        }))}
         clusters={clusters}
         buckets={buckets}
         totalEssays={totalEssays}

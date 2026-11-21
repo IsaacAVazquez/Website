@@ -78,3 +78,5 @@ describe("updateNflSnapshot", () => {
     expect(mockRenameSync).toHaveBeenCalledTimes(1);
   });
 });
+
+export {};

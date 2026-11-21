@@ -260,14 +260,17 @@ describe("fetchFantasyProsVorpBoard", () => {
 
   it("requests the board with the public user agent and parses a full page", async () => {
     const fetchMock = mockFetchResponse(page({ teamSize: 14, rows: descendingRows(300) }));
+    const timeout = jest.spyOn(AbortSignal, "timeout");
 
     const board = await fetchFantasyProsVorpBoard("PPR", 14, 2026);
 
+    expect(timeout.mock.calls).toEqual([[20_000]]);
     expect(fetchMock).toHaveBeenCalledWith(getFantasyProsVorpUrl("PPR", 14), {
       headers: {
         Accept: "text/html,application/xhtml+xml",
         "User-Agent": FANTASY_PROS_PUBLIC_USER_AGENT,
       },
+      signal: timeout.mock.results[0].value,
     });
     expect(board.players).toHaveLength(300);
     expect(board.teamSize).toBe(14);

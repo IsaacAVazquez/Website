@@ -402,6 +402,9 @@ describe("TradeCalculatorClient", () => {
 
     expect(screen.getByRole("status", { name: "Loading the overall board" })).toBeInTheDocument();
     expect(screen.queryByRole("complementary", { name: "Trade evaluation" })).not.toBeInTheDocument();
+    // No source has been read yet, so the header claims no staleness.
+    expect(screen.getByText("Loading sources")).not.toHaveClass("ffb-bad");
+    expect(screen.queryByText(/stale sources/)).not.toBeInTheDocument();
     expect(screen.getByRole("radio", { name: "PPR" })).toBe(radio);
     expect(radio).toHaveFocus();
   });

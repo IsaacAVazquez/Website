@@ -3,7 +3,7 @@
 
 # Project Roadmap
 
-Last updated: 2026-11-02 (the roadmap was written on 2026-03-04, and the notes that start "As of 2026-11-02" were added on that date)
+Last updated: 2026-11-16 (the roadmap was written on 2026-03-04, and the notes that start "As of 2026-11-02" were added on 2026-11-02)
 
 Prioritized list of improvements identified from a codebase audit (`docs/UNDERUTILIZED_FEATURES.md`, removed 2026-10-01 and still in git history). Items are organized by priority tier, where P0 items are high-impact quick wins and P3 items need a decision before work begins.
 
@@ -92,7 +92,7 @@ Wire up half-built features so they actually work.
 - **Fix:** Import `blog.ts` functions, generate RSS from actual `content/blog/` posts. Add `<link rel="alternate" type="application/rss+xml">` to root layout `<head>`.
 - **Files:** `src/app/api/rss/route.ts`, `src/app/layout.tsx`
 - **Effort:** Small
-- As of 2026-11-02 this is done. `src/app/api/rss/route.ts` has built the feed from `getAllBlogPosts` since 2026-04-02, and `src/app/layout.tsx` carries the `rel="alternate"` RSS link.
+- As of 2026-11-02 this is done. `src/app/api/rss/route.ts` has built the feed from `src/lib/blog.ts` since 2026-04-02, through `getBlogFeedEntries` as of 2026-11-16, and `src/app/layout.tsx` carries the `rel="alternate"` RSS link.
 
 ### 14. Make search API index blog posts
 - **Current state:** `getAllSearchableContent()` returns 5 hardcoded entries.
@@ -161,7 +161,7 @@ These require a product decision before any work begins.
 | 10 | Delete deprecated fantasy-pros route | Done — removed route + `handleAPIFetch` handler and "FantasyPros API" tab from admin UI |
 | 11 | Delete `webScraper.ts` | Done — removed file + import and dead methods from `dataManager.ts` |
 | 12 | Remove Cmd+K reference | Done |
-| 13 | Wire RSS to `blog.ts` | Done, the feed reads `getAllBlogPosts` since 2026-04-02 |
+| 13 | Wire RSS to `blog.ts` | Done, the feed reads `blog.ts` since 2026-04-02, through `getBlogFeedEntries` as of 2026-11-16 |
 | 14 | Index blog posts in search API | Done in PR #580, merged 2026-10-09 |
 | 15 | Link FF tier pages from UI | Obsolete, tier pages redirect to the board since 2026-09-24 |
 | 16 | Expand investments research | Not started (151 prefetched tickers on 2026-11-02) |

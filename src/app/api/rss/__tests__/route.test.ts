@@ -2,14 +2,14 @@
  * @jest-environment node
  */
 jest.mock("@/lib/blog", () => ({
-  getAllBlogPosts: jest.fn(),
+  getBlogFeedEntries: jest.fn(),
 }));
 
 import { GET, dynamic } from "../route";
-import { getAllBlogPosts } from "@/lib/blog";
+import { getBlogFeedEntries } from "@/lib/blog";
 
-const mockGetAllBlogPosts = getAllBlogPosts as jest.MockedFunction<
-  typeof getAllBlogPosts
+const mockGetBlogFeedEntries = getBlogFeedEntries as jest.MockedFunction<
+  typeof getBlogFeedEntries
 >;
 
 describe("GET /api/rss", () => {
@@ -18,20 +18,17 @@ describe("GET /api/rss", () => {
     delete process.env.SITE_URL;
   });
 
-  // The feed changes only when a post does, which takes a deploy. Left
-  // dynamic, a request that missed the cache rendered every post to HTML and
-  // measured 4.18 seconds in production.
+  // The feed changes only when a post does, which takes a deploy.
   it("is built once per deploy", () => {
     expect(dynamic).toBe("force-static");
   });
 
   it("builds RSS items from blog frontmatter", async () => {
-    mockGetAllBlogPosts.mockResolvedValue([
+    mockGetBlogFeedEntries.mockReturnValue([
       {
         slug: "alpha-post",
         title: "Alpha & Beta",
         excerpt: "Fallback excerpt",
-        content: "<p>Alpha content</p>",
         publishedAt: "2026-04-02",
         category: "Testing",
         tags: ["rss"],
@@ -61,12 +58,11 @@ describe("GET /api/rss", () => {
   });
 
   it("falls back to the post excerpt when no SEO description exists", async () => {
-    mockGetAllBlogPosts.mockResolvedValue([
+    mockGetBlogFeedEntries.mockReturnValue([
       {
         slug: "excerpt-post",
         title: "Excerpt Post",
         excerpt: "It's all in the excerpt",
-        content: "<p>Excerpt content</p>",
         publishedAt: "2026-04-01",
         category: "Testing",
         tags: [],
@@ -85,13 +81,7 @@ describe("GET /api/rss", () => {
   });
 
   it("filters invalid posts and falls back to the title when no description fields exist", async () => {
-    mockGetAllBlogPosts.mockResolvedValue([
-      {
-        slug: "invalid-title",
-        title: "   ",
-        excerpt: "Ignored",
-        publishedAt: "2026-04-02",
-      },
+    mockGetBlogFeedEntries.mockReturnValue([
       {
         slug: "invalid-date",
         title: "Invalid Date",
@@ -104,7 +94,7 @@ describe("GET /api/rss", () => {
         excerpt: "",
         publishedAt: "2026-04-02",
       },
-    ] as unknown as Awaited<ReturnType<typeof getAllBlogPosts>>);
+    ] as unknown as ReturnType<typeof getBlogFeedEntries>);
 
     const response = await GET();
     const body = await response.text();
@@ -112,30 +102,27 @@ describe("GET /api/rss", () => {
     expect(response.status).toBe(200);
     expect(body).toContain("<title>Title Fallback</title>");
     expect(body).toContain("<description>Title Fallback</description>");
-    expect(body).not.toContain("invalid-title");
     expect(body).not.toContain("invalid-date");
     expect(body.match(/<item>/g)).toHaveLength(1);
   });
 
   it("uses the most recent updatedAt value for lastBuildDate and trims custom SITE_URL values", async () => {
     process.env.SITE_URL = "https://preview.isaacvazquez.com/";
-    mockGetAllBlogPosts.mockResolvedValue([
+    mockGetBlogFeedEntries.mockReturnValue([
       {
         slug: "newer-published",
         title: "Newer Published",
         excerpt: "Latest by publish date",
-        content: "<p>Latest by publish date</p>",
         publishedAt: "2026-04-02T00:00:00.000Z",
       },
       {
         slug: "older-but-updated",
         title: "Older but updated",
         excerpt: "Updated later",
-        content: "<p>Updated later</p>",
         publishedAt: "2026-03-17T00:00:00.000Z",
         updatedAt: "2026-04-03T12:34:56.000Z",
       },
-    ] as unknown as Awaited<ReturnType<typeof getAllBlogPosts>>);
+    ] as unknown as ReturnType<typeof getBlogFeedEntries>);
 
     const response = await GET();
     const body = await response.text();

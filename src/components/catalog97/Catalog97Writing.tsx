@@ -15,8 +15,23 @@ interface SectionSummary {
   count: number;
 }
 
+type WritingIndexPost = Pick<
+  BlogPostPreview,
+  | "slug"
+  | "title"
+  | "excerpt"
+  | "publishedAt"
+  | "category"
+  | "tags"
+  | "readingTime"
+  | "coverImage"
+  | "coverImageAlt"
+  | "cluster"
+  | "archiveBucket"
+>;
+
 export interface Catalog97WritingProps {
-  posts: BlogPostPreview[];
+  posts: WritingIndexPost[];
   clusters: SectionSummary[];
   buckets: SectionSummary[];
   totalEssays: number;
@@ -52,7 +67,7 @@ const FEATURED_SIZES =
  * 3:2 field would crop the type and read as a screenshot of a share preview
  * rather than as photography. Those keep the flat field the design specifies.
  */
-function featuredCover(post: BlogPostPreview): string | undefined {
+function featuredCover(post: WritingIndexPost): string | undefined {
   return post.coverImage?.startsWith("/images/") ? post.coverImage : undefined;
 }
 
@@ -127,7 +142,7 @@ export function Catalog97Writing({
   );
 
   const filtered = useMemo(() => {
-    let matches: BlogPostPreview[];
+    let matches: WritingIndexPost[];
     if (active === ALL) {
       matches = posts;
     } else {
