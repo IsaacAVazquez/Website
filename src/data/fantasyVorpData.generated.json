@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-21T22:13:25.415Z",
+  "generatedAt": "2026-11-22T18:40:06.876Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-21T22:13:26.155Z",
+        "accessedAt": "2026-11-22T18:40:07.521Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2377,7 +2377,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 264,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-21T22:13:27.157Z",
+        "accessedAt": "2026-11-22T18:40:08.467Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -7757,7 +7757,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 266,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-21T22:13:27.810Z",
+        "accessedAt": "2026-11-22T18:40:09.428Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13209,7 +13209,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 276,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-21T22:13:28.534Z",
+        "accessedAt": "2026-11-22T18:40:10.215Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18636,7 +18636,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 283,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-21T22:13:29.032Z",
+        "accessedAt": "2026-11-22T18:40:10.927Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23782,7 +23782,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 259,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-21T22:13:29.729Z",
+        "accessedAt": "2026-11-22T18:40:11.466Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29369,7 +29369,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 284,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-21T22:13:30.436Z",
+        "accessedAt": "2026-11-22T18:40:12.320Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34598,7 +34598,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 269,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-21T22:13:31.329Z",
+        "accessedAt": "2026-11-22T18:40:13.187Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -39996,7 +39996,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 273,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-21T22:13:32.007Z",
+        "accessedAt": "2026-11-22T18:40:14.179Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45169,7 +45169,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 252,
