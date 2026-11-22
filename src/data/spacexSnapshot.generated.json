@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T16:51:53.891Z",
+  "generatedAt": "2026-11-22T01:27:31.160Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:16:00Z",
-      "dateUnix": 1795349760,
-      "dateLocal": "2026-11-22T12:16:00Z",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:16:00Z",
-      "dateUnix": 1795349760,
-      "dateLocal": "2026-11-22T12:16:00Z",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-21T16:51:46.339Z"
+    "generatedAt": "2026-11-22T01:27:10.670Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:16:00Z",
-      "dateUnix": 1795349760,
-      "dateLocal": "2026-11-22T12:16:00Z",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:16:00Z",
-      "dateUnix": 1795349760,
-      "dateLocal": "2026-11-22T12:16:00Z",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2924,6 +2924,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-21T16:51:52.802Z"
+    "generatedAt": "2026-11-22T01:27:30.534Z"
   }
 }
