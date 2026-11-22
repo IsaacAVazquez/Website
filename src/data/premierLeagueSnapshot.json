@@ -39,14 +39,14 @@
       },
       {
         "position": 2,
-        "playedGames": 10,
+        "playedGames": 11,
         "won": 7,
         "draw": 1,
-        "lost": 2,
+        "lost": 3,
         "points": 22,
         "goalsFor": 26,
-        "goalsAgainst": 7,
-        "goalDifference": 19,
+        "goalsAgainst": 9,
+        "goalDifference": 17,
         "team": {
           "id": "397",
           "name": "Brighton & Hove Albion FC",
@@ -224,6 +224,26 @@
         "draw": 5,
         "lost": 3,
         "points": 14,
+        "goalsFor": 13,
+        "goalsAgainst": 11,
+        "goalDifference": 2,
+        "team": {
+          "id": "322",
+          "name": "Hull City AFC",
+          "shortName": "Hull City",
+          "tla": "HUL",
+          "crest": "https://crests.football-data.org/322.png",
+          "venue": null,
+          "accentColor": "#F18A00"
+        }
+      },
+      {
+        "position": 12,
+        "playedGames": 11,
+        "won": 3,
+        "draw": 5,
+        "lost": 3,
+        "points": 14,
         "goalsFor": 14,
         "goalsAgainst": 17,
         "goalDifference": -3,
@@ -238,7 +258,7 @@
         }
       },
       {
-        "position": 12,
+        "position": 13,
         "playedGames": 11,
         "won": 3,
         "draw": 4,
@@ -258,7 +278,7 @@
         }
       },
       {
-        "position": 13,
+        "position": 14,
         "playedGames": 11,
         "won": 4,
         "draw": 0,
@@ -275,26 +295,6 @@
           "crest": "https://crests.football-data.org/1076.png",
           "venue": null,
           "accentColor": "#78D0F2"
-        }
-      },
-      {
-        "position": 14,
-        "playedGames": 10,
-        "won": 2,
-        "draw": 5,
-        "lost": 3,
-        "points": 11,
-        "goalsFor": 11,
-        "goalsAgainst": 11,
-        "goalDifference": 0,
-        "team": {
-          "id": "322",
-          "name": "Hull City AFC",
-          "shortName": "Hull City",
-          "tla": "HUL",
-          "crest": "https://crests.football-data.org/322.png",
-          "venue": null,
-          "accentColor": "#F18A00"
         }
       },
       {
@@ -419,6 +419,32 @@
       }
     ],
     "recentFixtures": [
+      {
+        "id": "560646",
+        "utcDate": "2026-11-22T14:00:00Z",
+        "status": "FINISHED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "322",
+          "name": "Hull City AFC",
+          "shortName": "Hull City",
+          "tla": "HUL",
+          "crest": "https://crests.football-data.org/322.png"
+        },
+        "awayTeam": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 2,
+          "away": 0
+        }
+      },
       {
         "id": "560651",
         "utcDate": "2026-11-21T17:30:00Z",
@@ -599,32 +625,6 @@
           "winner": "DRAW",
           "home": 1,
           "away": 1
-        }
-      },
-      {
-        "id": "560639",
-        "utcDate": "2026-11-08T16:30:00Z",
-        "status": "FINISHED",
-        "matchday": 10,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "66",
-          "name": "Manchester United FC",
-          "shortName": "Man United",
-          "tla": "MUN",
-          "crest": "https://crests.football-data.org/66.png"
-        },
-        "awayTeam": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png"
-        },
-        "score": {
-          "winner": "DRAW",
-          "home": 4,
-          "away": 4
         }
       }
     ],
@@ -1037,7 +1037,7 @@
         "teamName": "Liverpool",
         "goals": 7,
         "assists": 0,
-        "appearances": 9
+        "appearances": 10
       },
       {
         "rank": 3,
@@ -1109,7 +1109,7 @@
         "teamName": "Brighton Hove",
         "goals": 4,
         "assists": 4,
-        "appearances": 10
+        "appearances": 11
       }
     ],
     "goalsPerMatchday": [
@@ -1155,10 +1155,10 @@
       },
       {
         "matchday": 11,
-        "totalGoals": 20
+        "totalGoals": 22
       }
     ],
-    "generatedAt": "2026-11-22T06:53:24.435Z"
+    "generatedAt": "2026-11-22T16:18:19.998Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1455,7 +1455,7 @@
         "goalsFor": 7,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "58": {
       "team": {
@@ -1751,7 +1751,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "61": {
       "team": {
@@ -2047,7 +2047,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "62": {
       "team": {
@@ -2343,7 +2343,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "63": {
       "team": {
@@ -2639,7 +2639,7 @@
         "goalsFor": 5,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "64": {
       "team": {
@@ -2935,7 +2935,7 @@
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "65": {
       "team": {
@@ -3231,7 +3231,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "66": {
       "team": {
@@ -3527,7 +3527,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "67": {
       "team": {
@@ -3823,7 +3823,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "71": {
       "team": {
@@ -4119,7 +4119,7 @@
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "73": {
       "team": {
@@ -4415,7 +4415,7 @@
         "goalsFor": 9,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "322": {
       "team": {
@@ -4433,6 +4433,32 @@
         "manager": "Sergej Jakirović"
       },
       "recentFixtures": [
+        {
+          "id": "560646",
+          "utcDate": "2026-11-22T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 11,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "322",
+            "name": "Hull City AFC",
+            "shortName": "Hull City",
+            "tla": "HUL",
+            "crest": "https://crests.football-data.org/322.png"
+          },
+          "awayTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 0
+          }
+        },
         {
           "id": "560640",
           "utcDate": "2026-11-07T15:00:00Z",
@@ -4536,61 +4562,9 @@
             "home": 1,
             "away": 0
           }
-        },
-        {
-          "id": "560594",
-          "utcDate": "2026-10-11T13:00:00Z",
-          "status": "FINISHED",
-          "matchday": 6,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "322",
-            "name": "Hull City AFC",
-            "shortName": "Hull City",
-            "tla": "HUL",
-            "crest": "https://crests.football-data.org/322.png"
-          },
-          "awayTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 2,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560646",
-          "utcDate": "2026-11-22T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 11,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "322",
-            "name": "Hull City AFC",
-            "shortName": "Hull City",
-            "tla": "HUL",
-            "crest": "https://crests.football-data.org/322.png"
-          },
-          "awayTeam": {
-            "id": "397",
-            "name": "Brighton & Hove Albion FC",
-            "shortName": "Brighton Hove",
-            "tla": "BHA",
-            "crest": "https://crests.football-data.org/397.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560661",
           "utcDate": "2026-11-29T14:05:00Z",
@@ -4694,24 +4668,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560696",
+          "utcDate": "2026-12-19T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 16,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "65",
+            "name": "Manchester City FC",
+            "shortName": "Man City",
+            "tla": "MCI",
+            "crest": "https://crests.football-data.org/65.png"
+          },
+          "awayTeam": {
+            "id": "322",
+            "name": "Hull City AFC",
+            "shortName": "Hull City",
+            "tla": "HUL",
+            "crest": "https://crests.football-data.org/322.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "D",
           "D",
-          "L",
-          "D"
+          "L"
         ],
-        "wins": 0,
-        "draws": 3,
+        "wins": 1,
+        "draws": 2,
         "losses": 2,
-        "points": 3,
+        "points": 5,
         "goalsFor": 5,
-        "goalsAgainst": 7
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "341": {
       "team": {
@@ -5007,7 +5007,7 @@
         "goalsFor": 6,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "349": {
       "team": {
@@ -5303,7 +5303,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "351": {
       "team": {
@@ -5599,7 +5599,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "354": {
       "team": {
@@ -5895,7 +5895,7 @@
         "goalsFor": 3,
         "goalsAgainst": 15
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "397": {
       "team": {
@@ -5913,6 +5913,32 @@
         "manager": "Fabian Hürzeler"
       },
       "recentFixtures": [
+        {
+          "id": "560646",
+          "utcDate": "2026-11-22T14:00:00Z",
+          "status": "FINISHED",
+          "matchday": 11,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "322",
+            "name": "Hull City AFC",
+            "shortName": "Hull City",
+            "tla": "HUL",
+            "crest": "https://crests.football-data.org/322.png"
+          },
+          "awayTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 0
+          }
+        },
         {
           "id": "560638",
           "utcDate": "2026-11-08T14:00:00Z",
@@ -6016,61 +6042,9 @@
             "home": 5,
             "away": 0
           }
-        },
-        {
-          "id": "560592",
-          "utcDate": "2026-10-10T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 6,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "71",
-            "name": "Sunderland AFC",
-            "shortName": "Sunderland",
-            "tla": "SUN",
-            "crest": "https://crests.football-data.org/71.png"
-          },
-          "awayTeam": {
-            "id": "397",
-            "name": "Brighton & Hove Albion FC",
-            "shortName": "Brighton Hove",
-            "tla": "BHA",
-            "crest": "https://crests.football-data.org/397.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560646",
-          "utcDate": "2026-11-22T14:00:00Z",
-          "status": "TIMED",
-          "matchday": 11,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "322",
-            "name": "Hull City AFC",
-            "shortName": "Hull City",
-            "tla": "HUL",
-            "crest": "https://crests.football-data.org/322.png"
-          },
-          "awayTeam": {
-            "id": "397",
-            "name": "Brighton & Hove Albion FC",
-            "shortName": "Brighton Hove",
-            "tla": "BHA",
-            "crest": "https://crests.football-data.org/397.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560659",
           "utcDate": "2026-11-29T14:05:00Z",
@@ -6174,24 +6148,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560693",
+          "utcDate": "2026-12-20T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 16,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "397",
+            "name": "Brighton & Hove Albion FC",
+            "shortName": "Brighton Hove",
+            "tla": "BHA",
+            "crest": "https://crests.football-data.org/397.png"
+          },
+          "awayTeam": {
+            "id": "349",
+            "name": "Ipswich Town FC",
+            "shortName": "Ipswich Town",
+            "tla": "IPS",
+            "crest": "https://crests.football-data.org/349.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W",
           "L",
-          "W",
           "W"
         ],
-        "wins": 4,
+        "wins": 3,
         "draws": 0,
-        "losses": 1,
-        "points": 12,
-        "goalsFor": 10,
-        "goalsAgainst": 2
+        "losses": 2,
+        "points": 9,
+        "goalsFor": 8,
+        "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "402": {
       "team": {
@@ -6487,7 +6487,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "1044": {
       "team": {
@@ -6783,7 +6783,7 @@
         "goalsFor": 11,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     },
     "1076": {
       "team": {
@@ -7079,7 +7079,7 @@
         "goalsFor": 8,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-22T06:53:24.435Z"
+      "generatedAt": "2026-11-22T16:18:19.998Z"
     }
   }
 }
