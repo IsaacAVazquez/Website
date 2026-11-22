@@ -1,97 +1,17 @@
 {
-  "generatedAt": "2026-11-22T01:27:31.160Z",
+  "generatedAt": "2026-11-22T17:15:20.790Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
-      "name": "NROL-136",
-      "flightNumber": 748,
+      "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+      "name": "USSF-266",
+      "flightNumber": 749,
       "upcoming": true,
       "success": null,
-      "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:23:56Z",
-      "dateUnix": 1795350236,
-      "dateLocal": "2026-11-22T12:23:56Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/d82eada65c0c22d6.jpg"
-        ]
-      }
-    },
-    "nextLaunch": {
-      "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
-      "name": "NROL-136",
-      "flightNumber": 748,
-      "upcoming": true,
-      "success": null,
-      "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:23:56Z",
-      "dateUnix": 1795350236,
-      "dateLocal": "2026-11-22T12:23:56Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/d82eada65c0c22d6.jpg"
-        ]
-      }
-    },
-    "fallbackLaunch": {
-      "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-      "name": "USSF-317",
-      "flightNumber": 747,
-      "upcoming": false,
-      "success": true,
-      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-21T04:20:35Z",
-      "dateUnix": 1795234835,
-      "dateLocal": "2026-11-21T04:20:35Z",
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-11-24T15:55:00Z",
+      "dateUnix": 1795535700,
+      "dateLocal": "2026-11-24T15:55:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -122,43 +42,52 @@
         ]
       }
     },
-    "heroMode": "next",
-    "heroMessage": null,
-    "insights": [
-      {
-        "id": "upcoming",
-        "label": "Upcoming queue",
-        "value": "136",
-        "description": "currently published future SpaceX missions from Launch Library 2"
-      },
-      {
-        "id": "past",
-        "label": "Completed archive",
-        "value": "747",
-        "description": "historical SpaceX launches available from the active provider"
-      },
-      {
-        "id": "success-rate",
-        "label": "Historical success",
-        "value": "98%",
-        "description": "successful SpaceX launches across the published completed record"
-      },
-      {
-        "id": "rocket-families",
-        "label": "Active rockets",
-        "value": "2",
-        "description": "rocket families with pending SpaceX missions in the current feed"
+    "nextLaunch": {
+      "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+      "name": "USSF-266",
+      "flightNumber": 749,
+      "upcoming": true,
+      "success": null,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-11-24T15:55:00Z",
+      "dateUnix": 1795535700,
+      "dateLocal": "2026-11-24T15:55:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
       }
-    ],
-    "generatedAt": "2026-11-22T01:27:10.670Z"
-  },
-  "upcomingLaunches": [
-    {
+    },
+    "fallbackLaunch": {
       "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
       "name": "NROL-136",
       "flightNumber": 748,
-      "upcoming": true,
-      "success": null,
+      "upcoming": false,
+      "success": true,
       "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
       "dateUtc": "2026-11-22T12:23:56Z",
       "dateUnix": 1795350236,
@@ -193,6 +122,37 @@
         ]
       }
     },
+    "heroMode": "next",
+    "heroMessage": null,
+    "insights": [
+      {
+        "id": "upcoming",
+        "label": "Upcoming queue",
+        "value": "135",
+        "description": "currently published future SpaceX missions from Launch Library 2"
+      },
+      {
+        "id": "past",
+        "label": "Completed archive",
+        "value": "748",
+        "description": "historical SpaceX launches available from the active provider"
+      },
+      {
+        "id": "success-rate",
+        "label": "Historical success",
+        "value": "98%",
+        "description": "successful SpaceX launches across the published completed record"
+      },
+      {
+        "id": "rocket-families",
+        "label": "Active rockets",
+        "value": "2",
+        "description": "rocket families with pending SpaceX missions in the current feed"
+      }
+    ],
+    "generatedAt": "2026-11-22T17:15:03.802Z"
+  },
+  "upcomingLaunches": [
     {
       "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
       "name": "USSF-266",
@@ -434,6 +394,46 @@
       }
     },
     {
+      "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
+      "name": "NROL-195",
+      "flightNumber": 782,
+      "upcoming": true,
+      "success": null,
+      "details": "Sixteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/d82eada65c0c22d6.jpg"
+        ]
+      }
+    },
+    {
       "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
       "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 782,
@@ -510,46 +510,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "56ca6058-7ccc-4ec0-b1b0-fb49f3bfee49",
-      "name": "NROL-195",
-      "flightNumber": 782,
-      "upcoming": true,
-      "success": null,
-      "details": "Sixteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/d82eada65c0c22d6.jpg"
         ]
       }
     },
@@ -1112,9 +1072,89 @@
           "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
+    },
+    {
+      "id": "dca8749f-1552-485a-8061-f1ad79055b8d",
+      "name": "SDA Tranche 1 Tracking Layer C",
+      "flightNumber": 782,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer C is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
     }
   ],
   "pastLaunches": [
+    {
+      "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
+      "name": "NROL-136",
+      "flightNumber": 748,
+      "upcoming": false,
+      "success": true,
+      "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/d82eada65c0c22d6.jpg"
+        ]
+      }
+    },
     {
       "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
       "name": "USSF-317",
@@ -1132,7 +1172,7 @@
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20261122120902.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -1151,7 +1191,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20261122120902.jpg"
         ]
       }
     },
@@ -2034,35 +2074,37 @@
           "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
-    },
-    {
-      "id": "521f3a1c-f977-4306-9b7f-495858719adf",
-      "name": "Nancy Grace Roman Space Telescope",
-      "flightNumber": 724,
-      "upcoming": false,
-      "success": true,
-      "details": "The Nancy Grace Roman Space Telescope is a NASA infrared space telescope with a 2.4 m (7.9 ft) wide field of view primary mirror and two scientific instruments. The Wide-Field Instrument (WFI) is a 300.8-megapixel multi-band visible and near-infrared camera, providing a sharpness of images comparable to that achieved by the Hubble Space Telescope over a 0.28 square degree field of view, 100 times larger than imaging cameras on the Hubble. The Coronagraphic Instrument (CGI) is a high-contrast, small field of view camera and spectrometer covering visible and near-infrared wavelengths using novel starlight-suppression technology. Roman objectives include a search for extra-solar planets using gravitational microlensing, and probing the expansion history of the Universe and the growth of cosmic structure, with the goal of measuring the effects of dark energy, the consistency of general relativity, and the curvature of spacetime.",
-      "dateUtc": "2026-08-30T11:26:04Z",
-      "dateUnix": 1788089164,
-      "dateLocal": "2026-08-30T11:26:04Z",
+    }
+  ],
+  "launchDetails": {
+    "460d9db7-eaf6-4cd9-b095-cff433534c09": {
+      "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
+      "name": "USSF-266",
+      "flightNumber": 749,
+      "upcoming": true,
+      "success": null,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-11-24T15:55:00Z",
+      "dateUnix": 1795535700,
+      "dateLocal": "2026-11-24T15:55:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/8d69f2920b2ba598.jpg",
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 3,
+      "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Kennedy_Space_Center_Launch_Complex_39#Launch_Pad_39A",
+        "webcast": "https://x.com/i/broadcasts/2JQXBjLyYOQrpX",
+        "article": "https://www.spacex.com/launches/ussf266",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2071,53 +2113,11 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/8d69f2920b2ba598.jpg"
-        ]
-      }
-    }
-  ],
-  "launchDetails": {
-    "951a341f-236b-42fe-a667-4ab2fcf36eac": {
-      "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
-      "name": "NROL-136",
-      "flightNumber": 748,
-      "upcoming": true,
-      "success": null,
-      "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
-      "dateUtc": "2026-11-22T12:23:56Z",
-      "dateUnix": 1795350236,
-      "dateLocal": "2026-11-22T12:23:56Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/4b68ceb67c83d734.png",
-      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/2yboJapzrmYNbe",
-        "article": "https://www.spacex.com/launches/nrol136",
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/4b68ceb67c83d734.png",
-        "patchLarge": "/data/spacex/images/4b68ceb67c83d734.png",
-        "flickrOriginal": [
-          "/data/spacex/images/d82eada65c0c22d6.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 1800,
+      "window": 14400,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2139,7 +2139,7 @@
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
           "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/d82eada65c0c22d6.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "launchpad": {
@@ -2156,119 +2156,8 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7899",
-          "name": "NROL-136",
-          "type": "Government/Top Secret",
-          "customers": [
-            "National Reconnaissance Office"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": [
-        {
-          "id": "199",
-          "serial": "B1097",
-          "flight": 14,
-          "reused": true,
-          "landingAttempt": true,
-          "landingSuccess": null,
-          "landingType": "Return to Launch Site",
-          "landpadName": "Landing Zone 4",
-          "landpadLocation": "Vandenberg SFB, CA, USA"
-        }
-      ]
-    },
-    "c1bd775a-2fff-45bb-9726-765b69817c19": {
-      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
-      "name": "USSF-75",
-      "flightNumber": 782,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified payload for the United States Space Force",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6630",
-          "name": "USSF-75",
+          "id": "7897",
+          "name": "USSF-266",
           "type": "Government/Top Secret",
           "customers": [
             "United States Space Force"
@@ -2279,14 +2168,26 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Geostationary Orbit",
-          "regime": "Direct-GEO",
+          "orbit": "Polar Orbit",
+          "regime": "PO",
           "massKg": null,
           "massLbs": null
         }
       ],
       "capsules": [],
-      "cores": []
+      "cores": [
+        {
+          "id": "124",
+          "serial": "B1081",
+          "flight": 29,
+          "reused": true,
+          "landingAttempt": true,
+          "landingSuccess": null,
+          "landingType": "Autonomous Spaceport Drone Ship",
+          "landpadName": "Of Course I Still Love You",
+          "landpadLocation": null
+        }
+      ]
     },
     "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
@@ -2411,24 +2312,24 @@
         }
       ]
     },
-    "76617033-4dc0-4448-b50c-e5b0d5a18539": {
-      "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
-      "name": "USSF-317",
-      "flightNumber": 747,
+    "951a341f-236b-42fe-a667-4ab2fcf36eac": {
+      "id": "951a341f-236b-42fe-a667-4ab2fcf36eac",
+      "name": "NROL-136",
+      "flightNumber": 748,
       "upcoming": false,
       "success": true,
-      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-21T04:20:35Z",
-      "dateUnix": 1795234835,
-      "dateLocal": "2026-11-21T04:20:35Z",
+      "details": "Fifteenth batch of satellites for a reconnaissance satellite constellation built by SpaceX and Northrop Grumman for the National Reconnaissance Office to provide imaging and other reconnaissance capabilities.",
+      "dateUtc": "2026-11-22T12:23:56Z",
+      "dateUnix": 1795350236,
+      "dateLocal": "2026-11-22T12:23:56Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "patchImage": "/data/spacex/images/4b68ceb67c83d734.png",
+      "vehicleImage": "/data/spacex/images/d82eada65c0c22d6.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2436,22 +2337,22 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/2lgkMvaRVPMdYR",
-        "article": "https://www.spacex.com/launches/ussf317",
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "webcast": "https://x.com/i/broadcasts/2yboJapzrmYNbe",
+        "article": "https://www.spacex.com/launches/nrol136",
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
+        "patchSmall": "/data/spacex/images/4b68ceb67c83d734.png",
+        "patchLarge": "/data/spacex/images/4b68ceb67c83d734.png",
         "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "/data/spacex/images/d82eada65c0c22d6.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 14400,
+      "window": 1800,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2473,7 +2374,7 @@
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
           "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "/data/spacex/images/d82eada65c0c22d6.jpg"
         ]
       },
       "launchpad": {
@@ -2490,11 +2391,11 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7893",
-          "name": "USSF-317",
+          "id": "7899",
+          "name": "NROL-136",
           "type": "Government/Top Secret",
           "customers": [
-            "United States Space Force"
+            "National Reconnaissance Office"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2511,127 +2412,15 @@
       "capsules": [],
       "cores": [
         {
-          "id": "239",
-          "serial": "B1100",
-          "flight": 11,
+          "id": "199",
+          "serial": "B1097",
+          "flight": 14,
           "reused": true,
           "landingAttempt": true,
           "landingSuccess": true,
-          "landingType": "Autonomous Spaceport Drone Ship",
-          "landpadName": "Of Course I Still Love You",
-          "landpadLocation": null
-        }
-      ]
-    },
-    "460d9db7-eaf6-4cd9-b095-cff433534c09": {
-      "id": "460d9db7-eaf6-4cd9-b095-cff433534c09",
-      "name": "USSF-266",
-      "flightNumber": 749,
-      "upcoming": true,
-      "success": null,
-      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-11-24T15:55:00Z",
-      "dateUnix": 1795535700,
-      "dateLocal": "2026-11-24T15:55:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/2JQXBjLyYOQrpX",
-        "article": "https://www.spacex.com/launches/ussf266",
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 14400,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
-        "region": null,
-        "timezone": "America/Los_Angeles",
-        "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7897",
-          "name": "USSF-266",
-          "type": "Government/Top Secret",
-          "customers": [
-            "United States Space Force"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Polar Orbit",
-          "regime": "PO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": [
-        {
-          "id": "124",
-          "serial": "B1081",
-          "flight": 29,
-          "reused": true,
-          "landingAttempt": true,
-          "landingSuccess": null,
-          "landingType": "Autonomous Spaceport Drone Ship",
-          "landpadName": "Of Course I Still Love You",
-          "landpadLocation": null
+          "landingType": "Return to Launch Site",
+          "landpadName": "Landing Zone 4",
+          "landpadLocation": "Vandenberg SFB, CA, USA"
         }
       ]
     },
@@ -2747,24 +2536,24 @@
         }
       ]
     },
-    "6aa7b90b-e5ed-45d8-a52e-04fbf399d178": {
-      "id": "6aa7b90b-e5ed-45d8-a52e-04fbf399d178",
-      "name": "USSF-627",
-      "flightNumber": 745,
-      "upcoming": false,
-      "success": true,
-      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-12T04:36:30Z",
-      "dateUnix": 1794458190,
-      "dateLocal": "2026-11-12T04:36:30Z",
+    "d74afbc7-0de5-491c-be05-4e9c31f736ac": {
+      "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
+      "name": "Cygnus CRS-2 NG-25",
+      "flightNumber": 751,
+      "upcoming": true,
+      "success": null,
+      "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
+      "dateUtc": "2026-11-29T15:50:00Z",
+      "dateUnix": 1795967400,
+      "dateLocal": "2026-11-29T15:50:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2772,8 +2561,115 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/2brkWyolnlBbLM",
-        "article": "https://www.spacex.com/launches/ussf627",
+        "webcast": "https://x.com/i/broadcasts/2gqOaJVRyzQolq",
+        "article": "https://www.spacex.com/launches/ng25",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 0,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "6272",
+          "name": "Cygnus CRS-2 NG-25",
+          "type": "Resupply",
+          "customers": [],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": [
+        {
+          "id": "197",
+          "serial": "B1096",
+          "flight": 9,
+          "reused": true,
+          "landingAttempt": true,
+          "landingSuccess": null,
+          "landingType": "Return to Launch Site",
+          "landpadName": "Landing Zone 40",
+          "landpadLocation": "Cape Canaveral SFS, FL, USA"
+        }
+      ]
+    },
+    "76617033-4dc0-4448-b50c-e5b0d5a18539": {
+      "id": "76617033-4dc0-4448-b50c-e5b0d5a18539",
+      "name": "USSF-317",
+      "flightNumber": 747,
+      "upcoming": false,
+      "success": true,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
+      "dateUtc": "2026-11-21T04:20:35Z",
+      "dateUnix": 1795234835,
+      "dateLocal": "2026-11-21T04:20:35Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20261122120902.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/2lgkMvaRVPMdYR",
+        "article": "https://www.spacex.com/launches/ussf317",
         "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
@@ -2783,7 +2679,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20261122120902.jpg"
         ]
       },
       "staticFireDateUtc": null,
@@ -2809,7 +2705,7 @@
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
           "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/11492e0a09c1640e.jpg"
+          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20261122120902.jpg"
         ]
       },
       "launchpad": {
@@ -2826,8 +2722,8 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7887",
-          "name": "USSF-627",
+          "id": "7893",
+          "name": "USSF-317",
           "type": "Government/Top Secret",
           "customers": [
             "United States Space Force"
@@ -2847,9 +2743,9 @@
       "capsules": [],
       "cores": [
         {
-          "id": "248",
-          "serial": "B1103",
-          "flight": 7,
+          "id": "239",
+          "serial": "B1100",
+          "flight": 11,
           "reused": true,
           "landingAttempt": true,
           "landingSuccess": true,
@@ -2920,10 +2816,10 @@
       {
         "monthKey": "2026-11",
         "label": "Nov 26",
-        "count": 4
+        "count": 5
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-22T01:27:30.534Z"
+    "generatedAt": "2026-11-22T17:15:20.487Z"
   }
 }
