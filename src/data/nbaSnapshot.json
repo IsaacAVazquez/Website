@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-22T16:25:39.770Z",
-  "updatedAt": "2026-11-22",
+  "generatedAt": "2026-11-23T00:57:10.126Z",
+  "updatedAt": "2026-11-23",
   "sourceLabel": "ESPN",
   "sourceUrls": {
     "standings": "https://www.espn.com/nba/standings",
@@ -55,48 +55,26 @@
         "lastTen": "6-4"
       },
       {
-        "id": "det",
-        "abbreviation": "DET",
-        "name": "Detroit Pistons",
-        "shortName": "Pistons",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 3,
-        "position": 3,
-        "wins": 10,
-        "losses": 5,
-        "winPercent": 0.6666667,
-        "gamesBack": 3,
-        "gamesPlayed": 15,
-        "pointsFor": 114.46667,
-        "pointsAgainst": 108.666664,
-        "pointDifferential": 87,
-        "streak": "L1",
-        "homeRecord": "3-3",
-        "awayRecord": "7-2",
-        "lastTen": "6-4"
-      },
-      {
         "id": "atl",
         "abbreviation": "ATL",
         "name": "Atlanta Hawks",
         "shortName": "Hawks",
         "conference": "east",
         "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
-        "wins": 10,
+        "conferenceSeed": 3,
+        "position": 3,
+        "wins": 11,
         "losses": 6,
-        "winPercent": 0.625,
-        "gamesBack": 3.5,
-        "gamesPlayed": 16,
-        "pointsFor": 117.3125,
-        "pointsAgainst": 114.625,
-        "pointDifferential": 43,
-        "streak": "W3",
-        "homeRecord": "4-3",
+        "winPercent": 0.64705884,
+        "gamesBack": 3,
+        "gamesPlayed": 17,
+        "pointsFor": 116.70588,
+        "pointsAgainst": 113.588234,
+        "pointDifferential": 53,
+        "streak": "W4",
+        "homeRecord": "5-3",
         "awayRecord": "6-3",
-        "lastTen": "7-3"
+        "lastTen": "8-2"
       },
       {
         "id": "ny",
@@ -105,8 +83,8 @@
         "shortName": "Knicks",
         "conference": "east",
         "division": null,
-        "conferenceSeed": 5,
-        "position": 5,
+        "conferenceSeed": 4,
+        "position": 4,
         "wins": 10,
         "losses": 6,
         "winPercent": 0.625,
@@ -119,6 +97,28 @@
         "homeRecord": "5-3",
         "awayRecord": "5-3",
         "lastTen": "8-2"
+      },
+      {
+        "id": "det",
+        "abbreviation": "DET",
+        "name": "Detroit Pistons",
+        "shortName": "Pistons",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 5,
+        "position": 5,
+        "wins": 10,
+        "losses": 6,
+        "winPercent": 0.625,
+        "gamesBack": 3.5,
+        "gamesPlayed": 16,
+        "pointsFor": 113.375,
+        "pointsAgainst": 108.5625,
+        "pointDifferential": 77,
+        "streak": "L2",
+        "homeRecord": "3-3",
+        "awayRecord": "7-3",
+        "lastTen": "5-5"
       },
       {
         "id": "mia",
@@ -952,6 +952,32 @@
   ],
   "recentFixtures": [
     {
+      "id": "401910029",
+      "utcDate": "2026-11-22T20:30Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "atl",
+        "name": "Atlanta Hawks",
+        "shortName": "Hawks",
+        "abbreviation": "ATL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png"
+      },
+      "awayTeam": {
+        "id": "det",
+        "name": "Detroit Pistons",
+        "shortName": "Pistons",
+        "abbreviation": "DET",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 107,
+        "away": 97
+      }
+    },
+    {
       "id": "401910028",
       "utcDate": "2026-11-22T03:00Z",
       "status": "FINISHED",
@@ -1184,65 +1210,13 @@
         "home": 101,
         "away": 111
       }
-    },
-    {
-      "id": "401909309",
-      "utcDate": "2026-11-21T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "chi",
-        "name": "Chicago Bulls",
-        "shortName": "Bulls",
-        "abbreviation": "CHI",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
-      },
-      "awayTeam": {
-        "id": "wsh",
-        "name": "Washington Wizards",
-        "shortName": "Wizards",
-        "abbreviation": "WSH",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 94,
-        "away": 98
-      }
     }
   ],
   "upcomingFixtures": [
     {
-      "id": "401910029",
-      "utcDate": "2026-11-22T20:30Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "atl",
-        "name": "Atlanta Hawks",
-        "shortName": "Hawks",
-        "abbreviation": "ATL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png"
-      },
-      "awayTeam": {
-        "id": "det",
-        "name": "Detroit Pistons",
-        "shortName": "Pistons",
-        "abbreviation": "DET",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
       "id": "401910030",
       "utcDate": "2026-11-22T23:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1261,14 +1235,14 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 101,
+        "away": 83
       }
     },
     {
       "id": "401910031",
       "utcDate": "2026-11-23T00:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1287,14 +1261,14 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 52,
+        "away": 42
       }
     },
     {
       "id": "401910032",
       "utcDate": "2026-11-23T00:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1313,14 +1287,14 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 54,
+        "away": 59
       }
     },
     {
       "id": "401910033",
       "utcDate": "2026-11-23T00:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1339,8 +1313,8 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 54,
+        "away": 55
       }
     },
     {
@@ -1466,6 +1440,32 @@
         "shortName": "Thunder",
         "abbreviation": "OKC",
         "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401910039",
+      "utcDate": "2026-11-24T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "tor",
+        "name": "Toronto Raptors",
+        "shortName": "Raptors",
+        "abbreviation": "TOR",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png"
+      },
+      "awayTeam": {
+        "id": "mil",
+        "name": "Milwaukee Bucks",
+        "shortName": "Bucks",
+        "abbreviation": "MIL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png"
       },
       "score": {
         "winner": null,
@@ -2067,7 +2067,7 @@
         "pointsFor": 642,
         "pointsAgainst": 604
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "mil": {
       "team": {
@@ -2359,7 +2359,7 @@
         "pointsFor": 578,
         "pointsAgainst": 613
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "chi": {
       "team": {
@@ -2510,7 +2510,7 @@
         {
           "id": "401910032",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -2651,7 +2651,7 @@
         "pointsFor": 588,
         "pointsAgainst": 554
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "cle": {
       "team": {
@@ -2943,7 +2943,7 @@
         "pointsFor": 623,
         "pointsAgainst": 608
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 531,
         "pointsAgainst": 504
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "lac": {
       "team": {
@@ -3527,7 +3527,7 @@
         "pointsFor": 545,
         "pointsAgainst": 583
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "mem": {
       "team": {
@@ -3819,7 +3819,7 @@
         "pointsFor": 610,
         "pointsAgainst": 553
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "atl": {
       "team": {
@@ -3835,6 +3835,32 @@
         "primaryColor": "c8102e"
       },
       "recentFixtures": [
+        {
+          "id": "401910029",
+          "utcDate": "2026-11-22T20:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "awayTeam": {
+            "id": "det",
+            "name": "Detroit Pistons",
+            "shortName": "Pistons",
+            "abbreviation": "DET",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 107,
+            "away": 97
+          }
+        },
         {
           "id": "401909305",
           "utcDate": "2026-11-21T00:00Z",
@@ -3938,61 +3964,9 @@
             "home": 125,
             "away": 117
           }
-        },
-        {
-          "id": "401909952",
-          "utcDate": "2026-11-10T00:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "awayTeam": {
-            "id": "lal",
-            "name": "Los Angeles Lakers",
-            "shortName": "Lakers",
-            "abbreviation": "LAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 114,
-            "away": 124
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401910029",
-          "utcDate": "2026-11-22T20:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "awayTeam": {
-            "id": "det",
-            "name": "Detroit Pistons",
-            "shortName": "Pistons",
-            "abbreviation": "DET",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909330",
           "utcDate": "2026-11-28T01:00Z",
@@ -4096,6 +4070,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910097",
+          "utcDate": "2026-12-13T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "awayTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -4103,15 +4103,15 @@
           "W",
           "W",
           "W",
-          "L",
+          "W",
           "L"
         ],
-        "wins": 3,
-        "losses": 2,
-        "pointsFor": 572,
-        "pointsAgainst": 564
+        "wins": 4,
+        "losses": 1,
+        "pointsFor": 565,
+        "pointsAgainst": 537
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "mia": {
       "team": {
@@ -4262,7 +4262,7 @@
         {
           "id": "401910030",
           "utcDate": "2026-11-22T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4403,7 +4403,7 @@
         "pointsFor": 650,
         "pointsAgainst": 587
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "cha": {
       "team": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 536,
         "pointsAgainst": 555
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "utah": {
       "team": {
@@ -4846,7 +4846,7 @@
         {
           "id": "401910033",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4987,7 +4987,7 @@
         "pointsFor": 562,
         "pointsAgainst": 550
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "sac": {
       "team": {
@@ -5279,7 +5279,7 @@
         "pointsFor": 518,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "ny": {
       "team": {
@@ -5571,7 +5571,7 @@
         "pointsFor": 526,
         "pointsAgainst": 511
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 575,
         "pointsAgainst": 562
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "orl": {
       "team": {
@@ -6014,7 +6014,7 @@
         {
           "id": "401910031",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -6155,7 +6155,7 @@
         "pointsFor": 574,
         "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "dal": {
       "team": {
@@ -6306,7 +6306,7 @@
         {
           "id": "401910033",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 531,
         "pointsAgainst": 585
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 596,
         "pointsAgainst": 625
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "den": {
       "team": {
@@ -6890,7 +6890,7 @@
         {
           "id": "401910032",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 582,
         "pointsAgainst": 568
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "ind": {
       "team": {
@@ -7323,7 +7323,7 @@
         "pointsFor": 567,
         "pointsAgainst": 583
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "no": {
       "team": {
@@ -7615,7 +7615,7 @@
         "pointsFor": 543,
         "pointsAgainst": 572
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "det": {
       "team": {
@@ -7631,6 +7631,32 @@
         "primaryColor": "1d428a"
       },
       "recentFixtures": [
+        {
+          "id": "401910029",
+          "utcDate": "2026-11-22T20:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "awayTeam": {
+            "id": "det",
+            "name": "Detroit Pistons",
+            "shortName": "Pistons",
+            "abbreviation": "DET",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 107,
+            "away": 97
+          }
+        },
         {
           "id": "401909308",
           "utcDate": "2026-11-21T00:30Z",
@@ -7734,61 +7760,9 @@
             "home": 137,
             "away": 117
           }
-        },
-        {
-          "id": "401909977",
-          "utcDate": "2026-11-13T00:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "wsh",
-            "name": "Washington Wizards",
-            "shortName": "Wizards",
-            "abbreviation": "WSH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png"
-          },
-          "awayTeam": {
-            "id": "det",
-            "name": "Detroit Pistons",
-            "shortName": "Pistons",
-            "abbreviation": "DET",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 140,
-            "away": 144
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401910029",
-          "utcDate": "2026-11-22T20:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "awayTeam": {
-            "id": "det",
-            "name": "Detroit Pistons",
-            "shortName": "Pistons",
-            "abbreviation": "DET",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909314",
           "utcDate": "2026-11-25T00:00Z",
@@ -7892,22 +7866,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910076",
+          "utcDate": "2026-12-03T00:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "det",
+            "name": "Detroit Pistons",
+            "shortName": "Pistons",
+            "abbreviation": "DET",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
+          },
+          "awayTeam": {
+            "id": "mem",
+            "name": "Memphis Grizzlies",
+            "shortName": "Grizzlies",
+            "abbreviation": "MEM",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
-          "W",
-          "W",
           "L",
-          "W"
+          "W",
+          "W",
+          "L"
         ],
-        "wins": 3,
-        "losses": 2,
-        "pointsFor": 590,
-        "pointsAgainst": 584
+        "wins": 2,
+        "losses": 3,
+        "pointsFor": 543,
+        "pointsAgainst": 551
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 526,
         "pointsAgainst": 551
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "hou": {
       "team": {
@@ -8491,7 +8491,7 @@
         "pointsFor": 625,
         "pointsAgainst": 602
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "sa": {
       "team": {
@@ -8783,7 +8783,7 @@
         "pointsFor": 564,
         "pointsAgainst": 495
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 580,
         "pointsAgainst": 540
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "okc": {
       "team": {
@@ -9226,7 +9226,7 @@
         {
           "id": "401910030",
           "utcDate": "2026-11-22T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -9367,7 +9367,7 @@
         "pointsFor": 583,
         "pointsAgainst": 571
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 521,
         "pointsAgainst": 517
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "por": {
       "team": {
@@ -9951,7 +9951,7 @@
         "pointsFor": 543,
         "pointsAgainst": 530
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "gs": {
       "team": {
@@ -10243,7 +10243,7 @@
         "pointsFor": 479,
         "pointsAgainst": 595
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     },
     "wsh": {
       "team": {
@@ -10394,7 +10394,7 @@
         {
           "id": "401910031",
           "utcDate": "2026-11-23T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 580,
         "pointsAgainst": 620
       },
-      "generatedAt": "2026-11-22T16:25:39.770Z"
+      "generatedAt": "2026-11-23T00:57:10.126Z"
     }
   }
 }
