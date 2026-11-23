@@ -1,8 +1,8 @@
 {
   "season": "2026/27",
   "matchday": 13,
-  "generatedAt": "2026-11-22T21:56:49.731Z",
-  "updatedAt": "2026-11-22",
+  "generatedAt": "2026-11-23T07:56:59.094Z",
+  "updatedAt": "2026-11-23",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
     "standings": "https://www.football-data.org/documentation/api",
@@ -53,9 +53,9 @@
       "won": 10,
       "drawn": 1,
       "lost": 2,
-      "goalsFor": 25,
+      "goalsFor": 26,
       "goalsAgainst": 10,
-      "goalDifference": 15,
+      "goalDifference": 16,
       "accentColor": "#CB3524"
     },
     {
@@ -278,8 +278,8 @@
       "drawn": 3,
       "lost": 7,
       "goalsFor": 8,
-      "goalsAgainst": 20,
-      "goalDifference": -12,
+      "goalsAgainst": 21,
+      "goalDifference": -13,
       "accentColor": "#005CA9"
     },
     {
@@ -530,10 +530,36 @@
     },
     {
       "matchday": 13,
-      "totalGoals": 22
+      "totalGoals": 25
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564753",
+      "utcDate": "2026-11-22T20:00:00Z",
+      "status": "FINISHED",
+      "matchday": 13,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "82",
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crest": "https://crests.football-data.org/82.png"
+      },
+      "awayTeam": {
+        "id": "78",
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crest": "https://crests.football-data.org/78.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 0,
+        "away": 3
+      }
+    },
     {
       "id": "564752",
       "utcDate": "2026-11-22T17:30:00Z",
@@ -713,32 +739,6 @@
       "score": {
         "winner": "HOME_TEAM",
         "home": 3,
-        "away": 1
-      }
-    },
-    {
-      "id": "564748",
-      "utcDate": "2026-11-20T20:00:00Z",
-      "status": "FINISHED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "77",
-        "name": "Athletic Club",
-        "shortName": "Athletic",
-        "tla": "ATH",
-        "crest": "https://crests.football-data.org/77.png"
-      },
-      "awayTeam": {
-        "id": "80",
-        "name": "RCD Espanyol de Barcelona",
-        "shortName": "Espanyol",
-        "tla": "ESP",
-        "crest": "https://crests.football-data.org/80.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 0,
         "away": 1
       }
     }
@@ -1430,7 +1430,7 @@
         "goalsFor": 8,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "fcb": {
       "team": {
@@ -1726,7 +1726,7 @@
         "goalsFor": 17,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "cel": {
       "team": {
@@ -2023,7 +2023,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "elc": {
       "team": {
@@ -2319,7 +2319,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "esp": {
       "team": {
@@ -2616,7 +2616,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "get": {
       "team": {
@@ -2913,7 +2913,7 @@
         "goalsFor": 4,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "lev": {
       "team": {
@@ -3209,7 +3209,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "mal": {
       "team": {
@@ -3506,7 +3506,7 @@
         "goalsFor": 5,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "osa": {
       "team": {
@@ -3803,7 +3803,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "ray": {
       "team": {
@@ -4100,7 +4100,7 @@
         "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "bet": {
       "team": {
@@ -4397,7 +4397,7 @@
         "goalsFor": 7,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "rma": {
       "team": {
@@ -4693,7 +4693,7 @@
         "goalsFor": 14,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "rso": {
       "team": {
@@ -4989,7 +4989,7 @@
         "goalsFor": 11,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "sev": {
       "team": {
@@ -5286,7 +5286,7 @@
         "goalsFor": 5,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "val": {
       "team": {
@@ -5583,7 +5583,7 @@
         "goalsFor": 3,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "vil": {
       "team": {
@@ -5880,7 +5880,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "ala": {
       "team": {
@@ -6177,7 +6177,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "ath": {
       "team": {
@@ -6474,7 +6474,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "dep": {
       "team": {
@@ -6771,7 +6771,7 @@
         "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     },
     "san": {
       "team": {
@@ -7068,7 +7068,7 @@
         "goalsFor": 7,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-22T21:56:49.731Z"
+      "generatedAt": "2026-11-23T07:56:59.094Z"
     }
   }
 }
