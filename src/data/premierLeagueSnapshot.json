@@ -420,6 +420,58 @@
     ],
     "recentFixtures": [
       {
+        "id": "560645",
+        "utcDate": "2026-11-22T16:30:00Z",
+        "status": "FINISHED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png"
+        },
+        "awayTeam": {
+          "id": "66",
+          "name": "Manchester United FC",
+          "shortName": "Man United",
+          "tla": "MUN",
+          "crest": "https://crests.football-data.org/66.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 4,
+          "away": 0
+        }
+      },
+      {
+        "id": "560646",
+        "utcDate": "2026-11-22T14:00:00Z",
+        "status": "FINISHED",
+        "matchday": 11,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "322",
+          "name": "Hull City AFC",
+          "shortName": "Hull City",
+          "tla": "HUL",
+          "crest": "https://crests.football-data.org/322.png"
+        },
+        "awayTeam": {
+          "id": "397",
+          "name": "Brighton & Hove Albion FC",
+          "shortName": "Brighton Hove",
+          "tla": "BHA",
+          "crest": "https://crests.football-data.org/397.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 2,
+          "away": 0
+        }
+      },
+      {
         "id": "560651",
         "utcDate": "2026-11-21T17:30:00Z",
         "status": "FINISHED",
@@ -573,58 +625,6 @@
           "winner": "HOME_TEAM",
           "home": 3,
           "away": 2
-        }
-      },
-      {
-        "id": "560643",
-        "utcDate": "2026-11-21T12:30:00Z",
-        "status": "FINISHED",
-        "matchday": 11,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png"
-        },
-        "awayTeam": {
-          "id": "63",
-          "name": "Fulham FC",
-          "shortName": "Fulham",
-          "tla": "FUL",
-          "crest": "https://crests.football-data.org/63.png"
-        },
-        "score": {
-          "winner": "DRAW",
-          "home": 1,
-          "away": 1
-        }
-      },
-      {
-        "id": "560639",
-        "utcDate": "2026-11-08T16:30:00Z",
-        "status": "FINISHED",
-        "matchday": 10,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "66",
-          "name": "Manchester United FC",
-          "shortName": "Man United",
-          "tla": "MUN",
-          "crest": "https://crests.football-data.org/66.png"
-        },
-        "awayTeam": {
-          "id": "58",
-          "name": "Aston Villa FC",
-          "shortName": "Aston Villa",
-          "tla": "AVL",
-          "crest": "https://crests.football-data.org/58.png"
-        },
-        "score": {
-          "winner": "DRAW",
-          "home": 4,
-          "away": 4
         }
       }
     ],
@@ -1155,10 +1155,10 @@
       },
       {
         "matchday": 11,
-        "totalGoals": 20
+        "totalGoals": 26
       }
     ],
-    "generatedAt": "2026-11-23T00:55:33.675Z"
+    "generatedAt": "2026-11-23T14:42:43.195Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1455,7 +1455,7 @@
         "goalsFor": 7,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "58": {
       "team": {
@@ -1751,7 +1751,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "61": {
       "team": {
@@ -2047,7 +2047,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "62": {
       "team": {
@@ -2343,7 +2343,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "63": {
       "team": {
@@ -2639,7 +2639,7 @@
         "goalsFor": 5,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "64": {
       "team": {
@@ -2935,7 +2935,7 @@
         "goalsFor": 11,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "65": {
       "team": {
@@ -3231,7 +3231,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "66": {
       "team": {
@@ -3527,7 +3527,7 @@
         "goalsFor": 5,
         "goalsAgainst": 14
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "67": {
       "team": {
@@ -3823,7 +3823,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "71": {
       "team": {
@@ -4119,7 +4119,7 @@
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "73": {
       "team": {
@@ -4415,7 +4415,7 @@
         "goalsFor": 9,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "322": {
       "team": {
@@ -4711,7 +4711,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "341": {
       "team": {
@@ -5007,7 +5007,7 @@
         "goalsFor": 6,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "349": {
       "team": {
@@ -5303,7 +5303,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "351": {
       "team": {
@@ -5599,7 +5599,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "354": {
       "team": {
@@ -5895,7 +5895,7 @@
         "goalsFor": 3,
         "goalsAgainst": 15
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "397": {
       "team": {
@@ -6191,7 +6191,7 @@
         "goalsFor": 8,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "402": {
       "team": {
@@ -6487,7 +6487,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "1044": {
       "team": {
@@ -6783,7 +6783,7 @@
         "goalsFor": 11,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     },
     "1076": {
       "team": {
@@ -7079,7 +7079,7 @@
         "goalsFor": 8,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-23T00:55:33.675Z"
+      "generatedAt": "2026-11-23T14:42:43.195Z"
     }
   }
 }
