@@ -1,8 +1,8 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 17.34,
-      "marketCap": 334363680000,
-      "psRatio": 4.66,
-      "pbRatio": 5.01,
-      "pegRatio": 0.32
+      "ttmPe": 15.86,
+      "marketCap": 305998560000,
+      "psRatio": 4.26,
+      "pbRatio": 4.58,
+      "pegRatio": 0.29
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,15 +6182,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.200000000000001,
-      "costOfEquity": 18.990000000000002,
+      "wacc": 13.03,
+      "costOfEquity": 19.27,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.782,
-      "marketCap": 334363680000
+      "beta": 1.805,
+      "marketCap": 305998560000
     },
     "beta": {
-      "beta5y": 1.782
+      "beta5y": 1.805
     },
     "price": [
       {
@@ -8367,28 +8367,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.34,
-        "industryAvg": 25.36
+        "value": 15.86,
+        "industryAvg": 28.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.66,
-        "industryAvg": 9.05
+        "value": 4.26,
+        "industryAvg": 6.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.01,
-        "industryAvg": 7.22
+        "value": 4.58,
+        "industryAvg": 7.1
       },
       {
         "metric": "ROE",
         "value": 8.559999999999999,
-        "industryAvg": 25.8
+        "industryAvg": 25.790000000000003
       },
       {
         "metric": "ROA",
         "value": 1.66,
-        "industryAvg": 10.14
+        "industryAvg": 10.13
       },
       {
         "metric": "Gross Margin",
@@ -8398,12 +8398,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 37.11
+        "industryAvg": 37.059999999999995
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 20.51
+        "industryAvg": 20.5
       }
     ]
   }

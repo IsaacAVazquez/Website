@@ -1,8 +1,8 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 19.22,
+      "ttmPe": 17.77,
       "pegRatio": 7.61,
-      "marketCap": 35439157780,
-      "psRatio": 3.73,
-      "pbRatio": 10.73
+      "marketCap": 32763722940,
+      "psRatio": 3.45,
+      "pbRatio": 9.92
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,15 +6195,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.04,
-      "costOfEquity": 9.99,
+      "wacc": 7.8,
+      "costOfEquity": 9.85,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6313,
-      "marketCap": 35439157780
+      "beta": 0.6195,
+      "marketCap": 32763722940
     },
     "beta": {
-      "beta5y": 0.6313
+      "beta5y": 0.6195
     },
     "price": [
       {
@@ -8249,6 +8249,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
+        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
         "title": "Zoetis Declares Third Quarter 2025 Dividend",
         "publisher": "Business Wire",
@@ -8265,22 +8273,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
-        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
-        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
         "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
         "publisher": "Motley Fool",
@@ -8294,6 +8286,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
+        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
         "type": "STORY"
       },
       {
@@ -8373,28 +8373,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.22,
-        "industryAvg": 37.31
+        "value": 17.77,
+        "industryAvg": 32.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.73,
-        "industryAvg": 2.41
+        "value": 3.45,
+        "industryAvg": 2.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.73,
-        "industryAvg": 2.47
+        "value": 9.92,
+        "industryAvg": 2.36
       },
       {
         "metric": "ROE",
         "value": 18.32,
-        "industryAvg": 1.4000000000000001
+        "industryAvg": 1.41
       },
       {
         "metric": "ROA",
         "value": 3.92,
-        "industryAvg": 0.5599999999999999
+        "industryAvg": 0.5700000000000001
       },
       {
         "metric": "Gross Margin",

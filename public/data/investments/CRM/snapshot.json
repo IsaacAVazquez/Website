@@ -1,8 +1,8 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 16.71,
-      "marketCap": 150864130000,
-      "psRatio": 3.43,
-      "pbRatio": 3.93,
+      "ttmPe": 16.46,
+      "marketCap": 148650260000,
+      "psRatio": 3.38,
+      "pbRatio": 3.87,
       "pegRatio": 0.14
     },
     "profitability": {
@@ -5557,15 +5557,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.02,
-      "costOfEquity": 15.110000000000001,
+      "wacc": 12.07,
+      "costOfEquity": 15.21,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2867,
-      "marketCap": 150864130000
+      "beta": 1.2949,
+      "marketCap": 148650260000
     },
     "beta": {
-      "beta5y": 1.2867
+      "beta5y": 1.2949
     },
     "price": [
       {
@@ -7651,19 +7651,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
-        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
         "title": "3 S&P 500 Stocks Facing Headwinds",
         "publisher": "StockStory",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
+        "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
         "type": "STORY"
       }
     ],
@@ -7729,43 +7729,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.71,
-        "industryAvg": 22.13
+        "value": 16.46,
+        "industryAvg": 24.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.43,
-        "industryAvg": 4.29
+        "value": 3.38,
+        "industryAvg": 4.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.93,
-        "industryAvg": 4.03
+        "value": 3.87,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",
         "value": 9.71,
-        "industryAvg": -0.73
+        "industryAvg": -0.69
       },
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": -0.41000000000000003
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 76.64999999999999,
-        "industryAvg": 63.5
+        "industryAvg": 63.519999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.81,
-        "industryAvg": 17.28
+        "industryAvg": 17.36
       },
       {
         "metric": "Net Margin",
         "value": 31.080000000000002,
-        "industryAvg": -0.9900000000000001
+        "industryAvg": -0.9400000000000001
       }
     ]
   }

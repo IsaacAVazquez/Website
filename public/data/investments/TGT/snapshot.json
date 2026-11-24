@@ -1,8 +1,8 @@
 {
   "symbol": "TGT",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -33,17 +33,17 @@
       "industry": "Discount Stores",
       "sector": "Consumer Defensive",
       "longBusinessSummary": "Target Corporation operates as a general merchandise retailer in the United States. It offers apparel for women, men, young adults, kids, toddlers, and babies, as well as jewelry, accessories, and shoes; and beauty products, such as skin and bath care, cosmetics, hair care, oral care, deodorant, and shaving products. The company also provides food and beverage products comprising dry and perishable grocery, including snacks, candy, beverages, deli, bakery, meat, produce, and food service; electronics which includes video games and consoles, toys, sporting goods, entertainment, and luggage; bed and bath, home décor, school/office supplies, storage, small appliances, kitchenware, greeting cards, party supplies, furniture, lighting, home improvement, and seasonal merchandise; and household essentials, such as household cleaning, paper products, over-the-counter healthcare, vitamins and supplements, baby gear, and pet supplies. In addition, it sells merchandise through periodic design and creative partnerships, and shop-in-shop experience; and in-store amenities. The company sells its products through its stores; and digital channels, including Target.com. Target Corporation was incorporated in 1902 and is headquartered in Minneapolis, Minnesota.",
-      "fullTimeEmployees": 415000,
+      "fullTimeEmployees": 400000,
       "website": "https://corporate.target.com",
       "shortName": "Target Corporation",
       "longName": "Target Corporation"
     },
     "fundamentals": {
       "ttmEps": 10.7727,
-      "ttmPe": 15.54,
-      "marketCap": 75814936116,
+      "ttmPe": 15.39,
+      "marketCap": 75076978718,
       "psRatio": 0.7,
-      "pbRatio": 4.25,
+      "pbRatio": 4.21,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -5423,15 +5423,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.42,
-      "costOfEquity": 11.65,
+      "wacc": 9.06,
+      "costOfEquity": 11.219999999999999,
       "costOfDebt": 0.52,
       "taxRate": 24,
-      "beta": 0.8438,
-      "marketCap": 75814936116
+      "beta": 0.7927,
+      "marketCap": 75076978718
     },
     "beta": {
-      "beta5y": 0.8438
+      "beta5y": 0.7927
     },
     "price": [
       {
@@ -7598,43 +7598,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.54,
-        "industryAvg": 41.44
+        "value": 15.39,
+        "industryAvg": 41.15
       },
       {
         "metric": "P/S Ratio",
         "value": 0.7,
-        "industryAvg": 1.36
+        "industryAvg": 1.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.25,
-        "industryAvg": 9.96
+        "value": 4.21,
+        "industryAvg": 9.87
       },
       {
         "metric": "ROE",
         "value": 10.96,
-        "industryAvg": 25.11
+        "industryAvg": 24.87
       },
       {
         "metric": "ROA",
         "value": 3.15,
-        "industryAvg": 8.21
+        "industryAvg": 8.18
       },
       {
         "metric": "Gross Margin",
         "value": 33.67,
-        "industryAvg": 23.02
+        "industryAvg": 23.13
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.590000000000002,
-        "industryAvg": 6.619999999999999
+        "industryAvg": 6.65
       },
       {
         "metric": "Net Margin",
         "value": 7.07,
-        "industryAvg": 3.3300000000000005
+        "industryAvg": 3.34
       }
     ]
   }

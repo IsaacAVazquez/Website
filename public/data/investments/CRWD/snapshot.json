@@ -1,8 +1,8 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.0357,
-      "ttmPe": 6639.5,
-      "marketCap": 242681980350,
-      "psRatio": 44.97,
-      "pbRatio": 47.57,
-      "pegRatio": 61.9
+      "ttmPe": 6426.89,
+      "marketCap": 234910996800,
+      "psRatio": 43.53,
+      "pbRatio": 46.05,
+      "pegRatio": 59.92
     },
     "profitability": {
       "roe": 0.11,
@@ -5980,15 +5980,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.98,
-      "costOfEquity": 14.030000000000001,
+      "wacc": 13.950000000000001,
+      "costOfEquity": 14.000000000000002,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.1485,
-      "marketCap": 242681980350
+      "beta": 1.1425,
+      "marketCap": 234910996800
     },
     "beta": {
-      "beta5y": 1.1485
+      "beta5y": 1.1425
     },
     "price": [
       {
@@ -8066,19 +8066,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
-        "title": "3 Top Cybersecurity Stocks to Buy in May",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
         "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
         "publisher": "StockStory",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
+        "title": "3 Top Cybersecurity Stocks to Buy in May",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
         "type": "STORY"
       },
       {
@@ -8148,28 +8148,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 6639.5,
-        "industryAvg": 25.36
+        "value": 6426.89,
+        "industryAvg": 28.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 44.97,
-        "industryAvg": 9.05
+        "value": 43.53,
+        "industryAvg": 6.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 47.57,
-        "industryAvg": 7.22
+        "value": 46.05,
+        "industryAvg": 7.1
       },
       {
         "metric": "ROE",
         "value": 0.11,
-        "industryAvg": 25.8
+        "industryAvg": 25.790000000000003
       },
       {
         "metric": "ROA",
         "value": 0.05,
-        "industryAvg": 10.14
+        "industryAvg": 10.13
       },
       {
         "metric": "Gross Margin",
@@ -8179,12 +8179,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 7.16,
-        "industryAvg": 37.11
+        "industryAvg": 37.059999999999995
       },
       {
         "metric": "Net Margin",
         "value": 0.36,
-        "industryAvg": 20.51
+        "industryAvg": 20.5
       }
     ]
   }

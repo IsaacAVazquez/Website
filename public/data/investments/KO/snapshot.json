@@ -1,8 +1,8 @@
 {
   "symbol": "KO",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.3915,
-      "ttmPe": 28.92,
-      "pegRatio": 3.42,
-      "marketCap": 421983180000,
-      "psRatio": 8.27,
-      "pbRatio": 11.29
+      "ttmPe": 28.6,
+      "pegRatio": 3.38,
+      "marketCap": 417250980000,
+      "psRatio": 8.17,
+      "pbRatio": 11.16
     },
     "profitability": {
       "roe": 10.91,
@@ -6299,15 +6299,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.5,
-      "costOfEquity": 7.07,
+      "wacc": 6.260000000000001,
+      "costOfEquity": 6.81,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 16,
-      "beta": 0.2568,
-      "marketCap": 421983180000
+      "beta": 0.2378,
+      "marketCap": 417250980000
     },
     "beta": {
-      "beta5y": 0.2568
+      "beta5y": 0.2378
     },
     "price": [
       {
@@ -8385,19 +8385,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
-        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "51f1a256-8110-3900-a4ff-8424a1cdb869",
         "title": "Here Are All the Dividend Kings Beating the S&P 500 in 2025 -- and the 2 That Are the Best Stocks to Buy Now",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/m/51f1a256-8110-3900-a4ff-8424a1cdb869/here-are-all-the-dividend.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
+        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
         "type": "STORY"
       },
       {
@@ -8475,18 +8475,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.92,
-        "industryAvg": 24.32
+        "value": 28.6,
+        "industryAvg": 23.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.27,
-        "industryAvg": 3.32
+        "value": 8.17,
+        "industryAvg": 3.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.29,
-        "industryAvg": 6.48
+        "value": 11.16,
+        "industryAvg": 6.42
       },
       {
         "metric": "ROE",

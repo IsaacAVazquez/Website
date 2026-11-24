@@ -1,8 +1,8 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 8.6027,
-      "ttmPe": 9.46,
+      "ttmPe": 9.4,
       "pegRatio": 0.06,
-      "marketCap": 104128000000,
+      "marketCap": 103475200000,
       "psRatio": 0.25,
       "pbRatio": 1.29
     },
@@ -5798,15 +5798,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.94,
-      "costOfEquity": 9.700000000000001,
+      "wacc": 5.949999999999999,
+      "costOfEquity": 9.74,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 24,
-      "beta": 0.5938,
-      "marketCap": 104128000000
+      "beta": 0.6061,
+      "marketCap": 103475200000
     },
     "beta": {
-      "beta5y": 0.5938
+      "beta5y": 0.6061
     },
     "price": [
       {
@@ -7836,20 +7836,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
-        "title": "3 things we've learned from healthcare earnings",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
         "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
+        "title": "3 things we've learned from healthcare earnings",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "8e2dfa82-1fa8-3fa9-b024-601515ee3e69",
@@ -7900,11 +7900,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf7dda7f-04f4-38a3-8e64-6923ae47ece8",
-        "title": "AMN Stock Gains Following Q1 Earnings & Revenue Beat, Margins Down",
+        "uuid": "05c0ea41-f713-3abc-bac5-4735abe28c53",
+        "title": "TMDX Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/amn-stock-gains-following-q1-160100419.html",
+        "link": "https://finance.yahoo.com/news/tmdx-stock-gains-post-q1-160300345.html",
         "type": "STORY"
       }
     ],
@@ -7978,18 +7978,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.46,
-        "industryAvg": 16.22
+        "value": 9.4,
+        "industryAvg": 15.82
       },
       {
         "metric": "P/S Ratio",
         "value": 0.25,
-        "industryAvg": 0.39
+        "industryAvg": 0.38
       },
       {
         "metric": "P/B Ratio",
         "value": 1.29,
-        "industryAvg": 2.18
+        "industryAvg": 2.13
       },
       {
         "metric": "ROE",

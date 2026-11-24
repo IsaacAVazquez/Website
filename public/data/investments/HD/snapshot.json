@@ -1,8 +1,8 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.3912,
-      "ttmPe": 23.39,
-      "marketCap": 336006640000,
-      "psRatio": 1.99,
-      "pbRatio": 20.22,
-      "pegRatio": 8.38
+      "ttmPe": 23.56,
+      "marketCap": 338361920000,
+      "psRatio": 2,
+      "pbRatio": 20.36,
+      "pegRatio": 8.44
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5466,15 +5466,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.24,
-      "costOfEquity": 12.02,
+      "wacc": 9.91,
+      "costOfEquity": 11.62,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.892,
-      "marketCap": 336006640000
+      "beta": 0.8429,
+      "marketCap": 338361920000
     },
     "beta": {
-      "beta5y": 0.892
+      "beta5y": 0.8429
     },
     "price": [
       {
@@ -7552,11 +7552,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3af9c020-af6f-39f0-bb96-5f4046687d0b",
-        "title": "Stock Market Today: Dow Jones Falls, S&P 500 Ends Win Streak; Coffee Kiosks Stock Sinks",
-        "publisher": "Investor's Business Daily",
+        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
+        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
+        "publisher": "CNW Group",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/m/3af9c020-af6f-39f0-bb96-5f4046687d0b/stock-market-today%3A-dow-jones.html",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
         "type": "STORY"
       },
       {
@@ -7568,12 +7568,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
-        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
-        "publisher": "CNW Group",
+        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
+        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7638,18 +7638,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.39,
-        "industryAvg": 22
+        "value": 23.56,
+        "industryAvg": 22.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.99,
-        "industryAvg": 1.76
+        "value": 2,
+        "industryAvg": 1.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.22,
-        "industryAvg": 19.46
+        "value": 20.36,
+        "industryAvg": 17.31
       },
       {
         "metric": "ROE",

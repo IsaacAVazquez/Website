@@ -1,8 +1,8 @@
 {
   "symbol": "ORLY",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.2605,
-      "ttmPe": 28.4,
-      "marketCap": 74514700575,
-      "psRatio": 3.92,
-      "pbRatio": -35.61,
-      "pegRatio": 2.08
+      "ttmPe": 28.42,
+      "marketCap": 74546884875,
+      "psRatio": 3.93,
+      "pbRatio": -35.62,
+      "pegRatio": 2.09
     },
     "profitability": {
       "roe": -40,
@@ -5208,15 +5208,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.02,
-      "costOfEquity": 9.04,
+      "wacc": 7.739999999999999,
+      "costOfEquity": 8.73,
       "costOfDebt": 0.79,
       "taxRate": 23,
-      "beta": 0.5111,
-      "marketCap": 74514700575
+      "beta": 0.4796,
+      "marketCap": 74546884875
     },
     "beta": {
-      "beta5y": 0.5111
+      "beta5y": 0.4796
     },
     "price": [
       {
@@ -7262,19 +7262,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d080e955-d819-30b8-9130-a6eb89a91e1f",
-        "title": "3 Big Reasons to Love O'Reilly (ORLY)",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3-big-reasons-love-oreilly-040130781.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "888164de-9c38-3a1e-a697-022cd3b8f837",
         "title": "1 Unstoppable Stock That Keeps Crushing the Market: Should You Buy It in May and Hold Forever?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/888164de-9c38-3a1e-a697-022cd3b8f837/1-unstoppable-stock-that.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d080e955-d819-30b8-9130-a6eb89a91e1f",
+        "title": "3 Big Reasons to Love O'Reilly (ORLY)",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3-big-reasons-love-oreilly-040130781.html",
         "type": "STORY"
       },
       {
@@ -7390,43 +7390,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.4,
-        "industryAvg": 17.62
+        "value": 28.42,
+        "industryAvg": 15.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.92,
-        "industryAvg": 0.81
+        "value": 3.93,
+        "industryAvg": 0.76
       },
       {
         "metric": "P/B Ratio",
-        "value": -35.61,
-        "industryAvg": 1.33
+        "value": -35.62,
+        "industryAvg": 1.36
       },
       {
         "metric": "ROE",
         "value": -40,
-        "industryAvg": 7.06
+        "industryAvg": 6.78
       },
       {
         "metric": "ROA",
         "value": 4.49,
-        "industryAvg": 2.55
+        "industryAvg": 2.37
       },
       {
         "metric": "Gross Margin",
         "value": 52.39,
-        "industryAvg": 23.46
+        "industryAvg": 23.16
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.279999999999998,
-        "industryAvg": 9.73
+        "industryAvg": 9.69
       },
       {
         "metric": "Net Margin",
         "value": 15.340000000000002,
-        "industryAvg": 2.48
+        "industryAvg": 2.29
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 25.66,
-      "pegRatio": 30.92,
-      "marketCap": 395719902000,
-      "psRatio": 4.5,
-      "pbRatio": 7.18
+      "ttmPe": 25.52,
+      "pegRatio": 30.75,
+      "marketCap": 393582006000,
+      "psRatio": 4.48,
+      "pbRatio": 7.14
     },
     "profitability": {
       "roe": 8.53,
@@ -5955,15 +5955,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.049999999999999,
-      "costOfEquity": 7.7,
+      "wacc": 6.69,
+      "costOfEquity": 7.31,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3368,
-      "marketCap": 395719902000
+      "beta": 0.3009,
+      "marketCap": 393582006000
     },
     "beta": {
-      "beta5y": 0.3368
+      "beta5y": 0.3009
     },
     "price": [
       {
@@ -7985,19 +7985,19 @@
     ],
     "news": [
       {
-        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
-        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
         "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
+        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
         "type": "STORY"
       },
       {
@@ -8130,43 +8130,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.66,
-        "industryAvg": 25.87
+        "value": 25.52,
+        "industryAvg": 25.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.5,
-        "industryAvg": 3.32
+        "value": 4.48,
+        "industryAvg": 3.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.18,
-        "industryAvg": 7.03
+        "value": 7.14,
+        "industryAvg": 6.89
       },
       {
         "metric": "ROE",
         "value": 8.53,
-        "industryAvg": 25.729999999999997
+        "industryAvg": 25.75
       },
       {
         "metric": "ROA",
         "value": 3.5900000000000003,
-        "industryAvg": 8.690000000000001
+        "industryAvg": 8.7
       },
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 51.970000000000006
+        "industryAvg": 52
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.31,
-        "industryAvg": 20.31
+        "industryAvg": 20.349999999999998
       },
       {
         "metric": "Net Margin",
         "value": 20.01,
-        "industryAvg": 11.67
+        "industryAvg": 11.68
       }
     ]
   }

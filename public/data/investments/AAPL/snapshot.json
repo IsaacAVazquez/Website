@@ -1,8 +1,8 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.9745,
-      "ttmPe": 39.27,
-      "marketCap": 5121894684550,
-      "psRatio": 10.7,
-      "pbRatio": 45.69,
-      "pegRatio": 2.89
+      "ttmPe": 38.17,
+      "marketCap": 4978170643040,
+      "psRatio": 10.4,
+      "pbRatio": 44.41,
+      "pegRatio": 2.81
     },
     "profitability": {
       "roe": 27.97,
@@ -5486,15 +5486,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.08,
-      "costOfEquity": 13.350000000000001,
+      "wacc": 12.75,
+      "costOfEquity": 13.020000000000001,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0617,
-      "marketCap": 5121894684550
+      "beta": 1.0187,
+      "marketCap": 4978170643040
     },
     "beta": {
-      "beta5y": 1.0617
+      "beta5y": 1.0187
     },
     "price": [
       {
@@ -7516,19 +7516,19 @@
     ],
     "news": [
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7659,23 +7659,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.27,
-        "industryAvg": 38.75
+        "value": 38.17,
+        "industryAvg": 37.65
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.7,
-        "industryAvg": 8.18
+        "value": 10.4,
+        "industryAvg": 7.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 45.69,
-        "industryAvg": 23.5
+        "value": 44.41,
+        "industryAvg": 22.9
       },
       {
         "metric": "ROE",
         "value": 27.97,
-        "industryAvg": 61.25000000000001
+        "industryAvg": 61.23
       },
       {
         "metric": "ROA",
@@ -7690,7 +7690,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 34.14,
-        "industryAvg": 31.790000000000003
+        "industryAvg": 31.78
       },
       {
         "metric": "Net Margin",

@@ -1,8 +1,8 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.3716,
-      "ttmPe": 21.64,
-      "marketCap": 2894537140000,
-      "psRatio": 3.9,
-      "pbRatio": 4.72,
+      "ttmPe": 19.95,
+      "marketCap": 2668371020000,
+      "psRatio": 3.59,
+      "pbRatio": 4.35,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5103,15 +5103,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.89,
-      "costOfEquity": 16.24,
+      "wacc": 14.399999999999999,
+      "costOfEquity": 15.82,
       "costOfDebt": 0.62,
       "taxRate": 23,
-      "beta": 1.4319,
-      "marketCap": 2894537140000
+      "beta": 1.3716,
+      "marketCap": 2668371020000
     },
     "beta": {
-      "beta5y": 1.4319
+      "beta5y": 1.3716
     },
     "price": [
       {
@@ -7141,12 +7141,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
-        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
-        "publisher": "Investor's Business Daily",
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
@@ -7157,12 +7157,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -7269,53 +7269,50 @@
         "totalPay": 617281
       },
       {
-        "name": "Ms. Shelley L. Reynolds",
-        "title": "VP, Worldwide Controller & Principal Accounting Officer",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 163200
+        "name": "Ms. Katherine Chen",
+        "title": "Director of Corporate Development"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.64,
-        "industryAvg": 26.68
+        "value": 19.95,
+        "industryAvg": 22.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.9,
-        "industryAvg": 2.23
+        "value": 3.59,
+        "industryAvg": 2.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.72,
-        "industryAvg": 3.39
+        "value": 4.35,
+        "industryAvg": 3.05
       },
       {
         "metric": "ROE",
         "value": 7.090000000000001,
-        "industryAvg": -0.8
+        "industryAvg": -0.74
       },
       {
         "metric": "ROA",
         "value": 3.49,
-        "industryAvg": -0.74
+        "industryAvg": -0.69
       },
       {
         "metric": "Gross Margin",
         "value": 53.169999999999995,
-        "industryAvg": 17.5
+        "industryAvg": 17.53
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.52,
-        "industryAvg": 1.11
+        "industryAvg": 1.46
       },
       {
         "metric": "Net Margin",
         "value": 10.24,
-        "industryAvg": -2.88
+        "industryAvg": -2.67
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1792,
-      "ttmPe": 24.85,
-      "marketCap": 229445450620,
-      "psRatio": 5.14,
-      "pbRatio": 4.41,
-      "pegRatio": 2.21
+      "ttmPe": 24.32,
+      "marketCap": 224590776420,
+      "psRatio": 5.03,
+      "pbRatio": 4.32,
+      "pegRatio": 2.16
     },
     "profitability": {
       "roe": 4.96,
@@ -6276,15 +6276,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.209999999999999,
-      "costOfEquity": 13.79,
+      "wacc": 13.25,
+      "costOfEquity": 13.850000000000001,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.1169,
-      "marketCap": 229445450620
+      "beta": 1.123,
+      "marketCap": 224590776420
     },
     "beta": {
-      "beta5y": 1.1169
+      "beta5y": 1.123
     },
     "price": [
       {
@@ -8354,11 +8354,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
+        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
+        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
+        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
         "type": "STORY"
       },
       {
@@ -8370,19 +8370,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
-        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
-        "publisher": "Business Wire",
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
         "type": "STORY"
       },
       {
-        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
-        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
+        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
+        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
+        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
         "type": "STORY"
       }
     ],
@@ -8461,43 +8461,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.85,
-        "industryAvg": 22.13
+        "value": 24.32,
+        "industryAvg": 24.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.14,
-        "industryAvg": 4.29
+        "value": 5.03,
+        "industryAvg": 4.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.41,
-        "industryAvg": 4.03
+        "value": 4.32,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -0.73
+        "industryAvg": -0.69
       },
       {
         "metric": "ROA",
         "value": 2.96,
-        "industryAvg": -0.41000000000000003
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 73.13,
-        "industryAvg": 63.5
+        "industryAvg": 63.519999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 17.28
+        "industryAvg": 17.36
       },
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -0.9900000000000001
+        "industryAvg": -0.9400000000000001
       }
     ]
   }

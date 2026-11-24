@@ -1,8 +1,8 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.9198,
-      "ttmPe": 11.67,
-      "marketCap": 189592300000,
-      "psRatio": 1.36,
-      "pbRatio": 1.79,
-      "pegRatio": 1.71
+      "ttmPe": 11.86,
+      "marketCap": 192659600000,
+      "psRatio": 1.38,
+      "pbRatio": 1.82,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 4.95,
@@ -4447,15 +4447,15 @@
       ]
     },
     "wacc": {
-      "wacc": 3.8899999999999997,
-      "costOfEquity": 6.959999999999999,
+      "wacc": 3.75,
+      "costOfEquity": 6.64,
       "costOfDebt": 1.03,
       "taxRate": 22,
-      "beta": 0.2455,
-      "marketCap": 189592300000
+      "beta": 0.2169,
+      "marketCap": 192659600000
     },
     "beta": {
-      "beta5y": 0.2455
+      "beta5y": 0.2169
     },
     "price": [
       {
@@ -6533,19 +6533,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
-        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5c1d73cc-606a-3af4-8404-18be018b6c71",
         "title": "Top Research Reports for Verizon Communications, Bristol-Myers Squibb & Canadian Pacific",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-communications-212400011.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
+        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
         "type": "STORY"
       },
       {
@@ -6618,18 +6618,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.67,
-        "industryAvg": 12.19
+        "value": 11.86,
+        "industryAvg": 12.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.36,
-        "industryAvg": 1.1
+        "value": 1.38,
+        "industryAvg": 1.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.79,
-        "industryAvg": 1.48
+        "value": 1.82,
+        "industryAvg": 1.53
       },
       {
         "metric": "ROE",
@@ -6639,22 +6639,22 @@
       {
         "metric": "ROA",
         "value": 1.26,
-        "industryAvg": 1.9800000000000002
+        "industryAvg": 1.9900000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 61.86000000000001,
-        "industryAvg": 63.31
+        "industryAvg": 62.980000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 40.400000000000006,
-        "industryAvg": 33.44
+        "industryAvg": 33.879999999999995
       },
       {
         "metric": "Net Margin",
         "value": 15.15,
-        "industryAvg": 5.62
+        "industryAvg": 5.88
       }
     ]
   }
