@@ -1,10 +1,10 @@
 {
   "symbol": "BX",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4872,
-      "ttmPe": 27.19,
-      "marketCap": 151707880653,
-      "psRatio": 11.01,
-      "pbRatio": 17.17,
-      "pegRatio": 7.33
+      "ttmPe": 24.69,
+      "marketCap": 137769307240,
+      "psRatio": 9.99,
+      "pbRatio": 15.59,
+      "pegRatio": 6.65
     },
     "profitability": {
       "roe": 7.42,
@@ -2554,57 +2554,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.64,
-      "costOfEquity": 17.03,
+      "wacc": 15.120000000000001,
+      "costOfEquity": 16.6,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 17,
-      "beta": 1.5268,
-      "marketCap": 151707880653
+      "beta": 1.4687,
+      "marketCap": 137769307240
     },
     "beta": {
-      "beta5y": 1.5268
+      "beta5y": 1.4687
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 142.95,
-        "high": 143.66,
-        "low": 137.96,
-        "close": 139.53,
-        "volume": 8996400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 138.37,
-        "high": 142.5,
-        "low": 136.89,
-        "close": 141.44,
-        "volume": 4645200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 140.71,
-        "high": 141.2,
-        "low": 137.03,
-        "close": 138.42,
-        "volume": 3510400
-      },
-      {
-        "date": "2025-11-18",
-        "open": 137.17,
-        "high": 138.87,
-        "low": 135.88,
-        "close": 136.53,
-        "volume": 5751100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 137.25,
-        "high": 138.71,
-        "low": 135.44,
-        "close": 138.65,
-        "volume": 5141700
-      },
       {
         "date": "2025-11-20",
         "open": 141,
@@ -4580,6 +4540,46 @@
         "low": 117.75,
         "close": 120.19,
         "volume": 2780800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 119.46,
+        "high": 120.25,
+        "low": 116.06,
+        "close": 117.01,
+        "volume": 4420800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 116.8,
+        "high": 117.98,
+        "low": 114.88,
+        "close": 116.48,
+        "volume": 3234900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 115.59,
+        "high": 116.83,
+        "low": 114.83,
+        "close": 115.71,
+        "volume": 3834100
+      },
+      {
+        "date": "2026-11-19",
+        "open": 116.52,
+        "high": 119.39,
+        "low": 114.9,
+        "close": 115.99,
+        "volume": 6771400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 115.7,
+        "high": 116.37,
+        "low": 110.45,
+        "close": 110.8,
+        "volume": 6712800
       }
     ],
     "news": [
@@ -4608,19 +4608,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -4726,41 +4726,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.19,
-        "industryAvg": 20.28
+        "value": 24.69,
+        "industryAvg": 17.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.01,
-        "industryAvg": 3.51
+        "value": 9.99,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.17,
-        "industryAvg": 2.88
+        "value": 15.59,
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",
         "value": 7.42,
-        "industryAvg": 8.27
+        "industryAvg": 8.6
       },
       {
         "metric": "ROA",
         "value": 1.3299999999999998,
-        "industryAvg": 0.75
+        "industryAvg": 0.7799999999999999
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 33.07
+        "industryAvg": 32.74
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 40.96
+        "industryAvg": 41.97
       },
       {
         "metric": "Net Margin",
         "value": 23.18,
-        "industryAvg": 7.22
+        "industryAvg": 7.55
       }
     ]
   }

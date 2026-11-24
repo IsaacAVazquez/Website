@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 21.26,
-      "marketCap": 1594097637093,
-      "psRatio": 6.6,
-      "pbRatio": 5.85,
+      "ttmPe": 21.02,
+      "marketCap": 1575616012494,
+      "psRatio": 6.52,
+      "pbRatio": 5.78,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5806,57 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.900000000000002,
-      "costOfEquity": 14.860000000000001,
+      "wacc": 13.8,
+      "costOfEquity": 14.760000000000002,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
-      "beta": 1.2557,
-      "marketCap": 1594097637093
+      "beta": 1.2426,
+      "marketCap": 1575616012494
     },
     "beta": {
-      "beta5y": 1.2557
+      "beta5y": 1.2426
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 613.07,
-        "high": 617.65,
-        "low": 603,
-        "close": 609.89,
-        "volume": 20973800
-      },
-      {
-        "date": "2025-11-14",
-        "open": 601.79,
-        "high": 613.68,
-        "low": 595.2,
-        "close": 609.46,
-        "volume": 20724100
-      },
-      {
-        "date": "2025-11-17",
-        "open": 609.04,
-        "high": 611.69,
-        "low": 595.4,
-        "close": 602.01,
-        "volume": 16501300
-      },
-      {
-        "date": "2025-11-18",
-        "open": 591.6,
-        "high": 603.66,
-        "low": 583.78,
-        "close": 597.69,
-        "volume": 25500600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 593.72,
-        "high": 595.33,
-        "low": 581.25,
-        "close": 590.32,
-        "volume": 24744700
-      },
       {
         "date": "2025-11-20",
         "open": 603.5,
@@ -7831,7 +7791,47 @@
         "high": 643.91,
         "low": 624.79,
         "close": 641.69,
-        "volume": 15127500
+        "volume": 15151000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 640,
+        "high": 640.7,
+        "low": 620.14,
+        "close": 626.41,
+        "volume": 11577900
+      },
+      {
+        "date": "2026-11-17",
+        "open": 624.21,
+        "high": 627.48,
+        "low": 613.51,
+        "close": 618.87,
+        "volume": 12971800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 620.11,
+        "high": 620.81,
+        "low": 610.3,
+        "close": 616.38,
+        "volume": 10428700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 624.66,
+        "high": 630.06,
+        "low": 595.78,
+        "close": 596.22,
+        "volume": 15358500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 583.91,
+        "high": 588.69,
+        "low": 558.68,
+        "close": 560.84,
+        "volume": 25589800
       }
     ],
     "news": [
@@ -7852,14 +7852,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
@@ -7868,11 +7860,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7881,6 +7873,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7985,43 +7985,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.26,
-        "industryAvg": 16.44
+        "value": 21.02,
+        "industryAvg": 15.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.6,
-        "industryAvg": 7.03
+        "value": 6.52,
+        "industryAvg": 6.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.85,
-        "industryAvg": 5.13
+        "value": 5.78,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 38.84
+        "industryAvg": 38.97
       },
       {
         "metric": "ROA",
         "value": 2.12,
-        "industryAvg": 25.77
+        "industryAvg": 25.81
       },
       {
         "metric": "Gross Margin",
         "value": 79.31,
-        "industryAvg": 62.4
+        "industryAvg": 62.38
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.71,
-        "industryAvg": 61.370000000000005
+        "industryAvg": 61.58
       },
       {
         "metric": "Net Margin",
         "value": 15.260000000000002,
-        "industryAvg": 44.89
+        "industryAvg": 45.050000000000004
       }
     ]
   }

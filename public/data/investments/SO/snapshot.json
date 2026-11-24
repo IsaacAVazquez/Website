@@ -1,10 +1,10 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.6029,
-      "ttmPe": 35.96,
-      "marketCap": 107662473170,
-      "psRatio": 3.45,
-      "pbRatio": 2.56,
+      "ttmPe": 35.78,
+      "marketCap": 107133306190,
+      "psRatio": 3.43,
+      "pbRatio": 2.55,
       "pegRatio": 0.68
     },
     "profitability": {
@@ -6527,57 +6527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.6899999999999995,
-      "costOfEquity": 7.340000000000001,
+      "wacc": 4.53,
+      "costOfEquity": 7.090000000000001,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 0.2831,
-      "marketCap": 107662473170
+      "beta": 0.2732,
+      "marketCap": 107133306190
     },
     "beta": {
-      "beta5y": 0.2831
+      "beta5y": 0.2732
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 92,
-        "high": 92.38,
-        "low": 91.08,
-        "close": 91.17,
-        "volume": 5696400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 91.3,
-        "high": 91.62,
-        "low": 90.3,
-        "close": 90.69,
-        "volume": 4613600
-      },
-      {
-        "date": "2025-11-17",
-        "open": 90.49,
-        "high": 90.97,
-        "low": 90.14,
-        "close": 90.58,
-        "volume": 5709100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 91.04,
-        "high": 91.41,
-        "low": 90.53,
-        "close": 90.69,
-        "volume": 4992500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 90.78,
-        "high": 90.81,
-        "low": 88.9,
-        "close": 89.05,
-        "volume": 5014600
-      },
       {
         "date": "2025-11-20",
         "open": 89.23,
@@ -8553,6 +8513,46 @@
         "low": 92.18,
         "close": 93.59,
         "volume": 22081900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 93.49,
+        "high": 94.77,
+        "low": 93.15,
+        "close": 94.64,
+        "volume": 13104000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 93.7,
+        "high": 94.27,
+        "low": 93.45,
+        "close": 93.6,
+        "volume": 8982800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 93.13,
+        "high": 94.59,
+        "low": 93.13,
+        "close": 94.41,
+        "volume": 7230100
+      },
+      {
+        "date": "2026-11-19",
+        "open": 93.65,
+        "high": 94.24,
+        "low": 92.43,
+        "close": 93.29,
+        "volume": 5856400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 94.18,
+        "high": 94.49,
+        "low": 93.01,
+        "close": 93.13,
+        "volume": 6873300
       }
     ],
     "news": [
@@ -8589,22 +8589,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
-        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "788a09d6-6bac-3c74-8faa-426127ea0cd2",
-        "title": "SO Reaches a Settlement for Extension of Rate Plan Through 2028",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/reaches-settlement-extension-rate-plan-102000939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "35455fb8-a76a-32a4-a787-e00dbff0c5b1",
         "title": "Southern Company to Offer $1.25 Billion in Convertible Notes",
         "publisher": "MT Newswires",
@@ -8618,6 +8602,22 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "788a09d6-6bac-3c74-8faa-426127ea0cd2",
+        "title": "SO Reaches a Settlement for Extension of Rate Plan Through 2028",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/reaches-settlement-extension-rate-plan-102000939.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
+        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
         "type": "STORY"
       },
       {
@@ -8704,38 +8704,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.96,
-        "industryAvg": 17.21
+        "value": 35.78,
+        "industryAvg": 16.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.45,
-        "industryAvg": 2.39
+        "value": 3.43,
+        "industryAvg": 2.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.56,
-        "industryAvg": 1.87
+        "value": 2.55,
+        "industryAvg": 1.82
       },
       {
         "metric": "ROE",
         "value": 5.01,
-        "industryAvg": 11.99
+        "industryAvg": 11.84
       },
       {
         "metric": "ROA",
         "value": 1.25,
-        "industryAvg": 3.29
+        "industryAvg": 3.2399999999999998
       },
       {
         "metric": "Gross Margin",
         "value": 55.16,
-        "industryAvg": 46.67
+        "industryAvg": 46.07
       },
       {
         "metric": "EBITDA Margin",
         "value": 56.779999999999994,
-        "industryAvg": 43.53
+        "industryAvg": 43.89
       },
       {
         "metric": "Net Margin",

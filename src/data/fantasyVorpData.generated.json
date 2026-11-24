@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-15T21:52:59.269Z",
+  "generatedAt": "2026-11-22T22:30:24.243Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:00.059Z",
+        "accessedAt": "2026-11-22T22:30:25.021Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -1279,7 +1279,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 142,
@@ -1702,7 +1702,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 189,
@@ -2026,7 +2026,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 225,
@@ -2377,7 +2377,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 264,
@@ -3682,7 +3682,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 409,
@@ -3979,7 +3979,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 442,
@@ -4321,7 +4321,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 169,
             "rank": 480,
@@ -4582,7 +4582,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 509,
@@ -4681,7 +4681,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 520,
@@ -4915,7 +4915,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 546,
@@ -5356,7 +5356,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-15T21:53:01.310Z",
+        "accessedAt": "2026-11-22T22:30:25.819Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -6803,7 +6803,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 160,
@@ -7262,7 +7262,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 211,
@@ -7478,7 +7478,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 235,
@@ -7757,7 +7757,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 266,
@@ -8693,7 +8693,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 370,
@@ -9179,7 +9179,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 424,
@@ -9395,7 +9395,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 169,
             "rank": 448,
@@ -9647,7 +9647,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 476,
@@ -9710,7 +9710,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 483,
@@ -10277,7 +10277,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 546,
@@ -10718,7 +10718,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:02.242Z",
+        "accessedAt": "2026-11-22T22:30:26.690Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -12399,7 +12399,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 186,
@@ -12714,7 +12714,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 221,
@@ -12885,7 +12885,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 240,
@@ -13209,7 +13209,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 276,
@@ -13902,7 +13902,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 353,
@@ -14604,7 +14604,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 150,
             "rank": 431,
@@ -14919,7 +14919,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 169,
             "rank": 466,
@@ -15207,7 +15207,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 184,
             "rank": 498,
@@ -15261,7 +15261,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 504,
@@ -15639,7 +15639,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 546,
@@ -16080,7 +16080,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:03.024Z",
+        "accessedAt": "2026-11-22T22:30:27.831Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -17250,7 +17250,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 129,
@@ -17781,7 +17781,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 188,
@@ -18168,7 +18168,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 231,
@@ -18636,7 +18636,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 283,
@@ -19500,7 +19500,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 379,
@@ -20310,7 +20310,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 469,
@@ -20634,7 +20634,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 170,
             "rank": 505,
@@ -20778,7 +20778,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 521,
@@ -20877,7 +20877,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 532,
@@ -20922,7 +20922,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 537,
@@ -21444,7 +21444,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-15T21:53:03.664Z",
+        "accessedAt": "2026-11-22T18:40:10.927Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -22909,7 +22909,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 162,
@@ -23368,7 +23368,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 213,
@@ -23611,7 +23611,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 240,
@@ -23782,7 +23782,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 259,
@@ -24997,7 +24997,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 394,
@@ -25294,7 +25294,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 427,
@@ -25501,7 +25501,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 170,
             "rank": 450,
@@ -25798,7 +25798,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 483,
@@ -25879,7 +25879,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 492,
@@ -26338,7 +26338,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 543,
@@ -26806,7 +26806,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:04.349Z",
+        "accessedAt": "2026-11-22T18:40:11.466Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -28496,7 +28496,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 187,
@@ -28523,7 +28523,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 190,
@@ -28973,7 +28973,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 240,
@@ -29369,7 +29369,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 284,
@@ -29990,7 +29990,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 353,
@@ -30683,7 +30683,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 430,
@@ -30989,7 +30989,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 170,
             "rank": 464,
@@ -31295,7 +31295,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 498,
@@ -31349,7 +31349,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 504,
@@ -31718,7 +31718,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 545,
@@ -32168,7 +32168,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-15T21:53:05.260Z",
+        "accessedAt": "2026-11-22T22:30:53.734Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -33410,7 +33410,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 137,
@@ -33932,7 +33932,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 195,
@@ -34328,7 +34328,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 239,
@@ -34598,7 +34598,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 269,
@@ -35867,7 +35867,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 410,
@@ -36299,7 +36299,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 458,
@@ -36596,7 +36596,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 171,
             "rank": 491,
@@ -36866,7 +36866,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 521,
@@ -36938,7 +36938,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 529,
@@ -36992,7 +36992,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 535,
@@ -37532,7 +37532,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-15T21:53:05.834Z",
+        "accessedAt": "2026-11-22T22:30:54.068Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -38979,7 +38979,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 160,
@@ -39519,7 +39519,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 220,
@@ -39582,7 +39582,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 227,
@@ -39996,7 +39996,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 273,
@@ -41184,7 +41184,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 405,
@@ -41688,7 +41688,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 461,
@@ -42021,7 +42021,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 171,
             "rank": 498,
@@ -42246,7 +42246,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 523,
@@ -42291,7 +42291,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 528,
@@ -42345,7 +42345,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 534,
@@ -42894,7 +42894,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-15T21:53:06.494Z",
+        "accessedAt": "2026-11-22T22:30:54.800Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -44584,7 +44584,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "BAL",
+            "team": "FA",
             "position": "K",
             "positionRank": 6,
             "rank": 187,
@@ -44863,7 +44863,7 @@
           {
             "playerId": "fp-18232",
             "name": "Daniel Jones",
-            "team": "IND",
+            "team": "FA",
             "position": "QB",
             "positionRank": 22,
             "rank": 218,
@@ -45169,7 +45169,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 252,
@@ -45232,7 +45232,7 @@
           {
             "playerId": "fp-17420",
             "name": "Daniel Carlson",
-            "team": "FA",
+            "team": "MIA",
             "position": "K",
             "positionRank": 19,
             "rank": 259,
@@ -46285,7 +46285,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 376,
@@ -46753,7 +46753,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "FA",
+            "team": "WAS",
             "position": "WR",
             "positionRank": 151,
             "rank": 428,
@@ -47041,7 +47041,7 @@
           {
             "playerId": "fp-27621",
             "name": "Coleman Owen",
-            "team": "FA",
+            "team": "GB",
             "position": "WR",
             "positionRank": 171,
             "rank": 460,
@@ -47329,7 +47329,7 @@
           {
             "playerId": "fp-18566",
             "name": "David Sills V",
-            "team": "FA",
+            "team": "TB",
             "position": "WR",
             "positionRank": 185,
             "rank": 492,
@@ -47401,7 +47401,7 @@
           {
             "playerId": "fp-25758",
             "name": "Xavier Gipson",
-            "team": "PHI",
+            "team": "NYG",
             "position": "WR",
             "positionRank": 190,
             "rank": 500,
@@ -47779,7 +47779,7 @@
           {
             "playerId": "fp-24181",
             "name": "John FitzPatrick",
-            "team": "FA",
+            "team": "KC",
             "position": "TE",
             "positionRank": 118,
             "rank": 542,
@@ -48256,7 +48256,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,

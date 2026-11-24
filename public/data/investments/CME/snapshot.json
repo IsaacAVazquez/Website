@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 26.07,
-      "marketCap": 114239657457,
-      "psRatio": 16.38,
-      "pbRatio": 4.3,
-      "pegRatio": 1.61
+      "ttmPe": 25.22,
+      "marketCap": 110499572436,
+      "psRatio": 15.85,
+      "pbRatio": 4.16,
+      "pegRatio": 1.55
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,57 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.45,
-      "costOfEquity": 6.61,
+      "wacc": 6.15,
+      "costOfEquity": 6.3100000000000005,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1895,
-      "marketCap": 114239657457
+      "beta": 0.1743,
+      "marketCap": 110499572436
     },
     "beta": {
-      "beta5y": 0.1895
+      "beta5y": 0.1743
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 281.55,
-        "high": 287.74,
-        "low": 280.65,
-        "close": 283.54,
-        "volume": 2777700
-      },
-      {
-        "date": "2025-11-14",
-        "open": 285,
-        "high": 285.85,
-        "low": 281.44,
-        "close": 285.04,
-        "volume": 3339700
-      },
-      {
-        "date": "2025-11-17",
-        "open": 285.48,
-        "high": 286.33,
-        "low": 278.1,
-        "close": 279.13,
-        "volume": 2199500
-      },
-      {
-        "date": "2025-11-18",
-        "open": 278.55,
-        "high": 282.34,
-        "low": 277.07,
-        "close": 279.28,
-        "volume": 1749700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 277.92,
-        "high": 279.95,
-        "low": 269.47,
-        "close": 272.49,
-        "volume": 3543200
-      },
       {
         "date": "2025-11-20",
         "open": 272.31,
@@ -7637,6 +7597,46 @@
         "low": 316.31,
         "close": 317.97,
         "volume": 1579900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 319.65,
+        "high": 321.39,
+        "low": 315.78,
+        "close": 319.37,
+        "volume": 2198300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 315.51,
+        "high": 318.16,
+        "low": 310.85,
+        "close": 311.56,
+        "volume": 1731500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 311.23,
+        "high": 311.97,
+        "low": 305.12,
+        "close": 310.25,
+        "volume": 2400400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 308.59,
+        "high": 309.76,
+        "low": 306,
+        "close": 306.31,
+        "volume": 2452100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 310.48,
+        "high": 313.1,
+        "low": 306.88,
+        "close": 307.56,
+        "volume": 2678000
       }
     ],
     "news": [
@@ -7673,11 +7673,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
+        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
+        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
         "type": "STORY"
       },
       {
@@ -7689,11 +7689,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
-        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
-        "publisher": "PR Newswire",
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.07,
-        "industryAvg": 26.85
+        "value": 25.22,
+        "industryAvg": 25.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.38,
-        "industryAvg": 8.29
+        "value": 15.85,
+        "industryAvg": 7.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.3,
-        "industryAvg": 4.64
+        "value": 4.16,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",

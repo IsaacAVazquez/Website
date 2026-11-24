@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 45.2973,
-      "ttmPe": 21,
+      "ttmPe": 20.87,
       "pegRatio": 0.59,
-      "marketCap": 98353046000,
-      "psRatio": 5.82,
-      "pbRatio": 2.94
+      "marketCap": 97767802000,
+      "psRatio": 5.79,
+      "pbRatio": 2.92
     },
     "profitability": {
       "roe": 5.9799999999999995,
@@ -5895,57 +5895,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.7,
-      "costOfEquity": 5.8500000000000005,
+      "wacc": 5.65,
+      "costOfEquity": 5.800000000000001,
       "costOfDebt": 0.38999999999999996,
       "taxRate": 15,
-      "beta": 0.0967,
-      "marketCap": 98353046000
+      "beta": 0.0932,
+      "marketCap": 97767802000
     },
     "beta": {
-      "beta5y": 0.0967
+      "beta5y": 0.0932
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 683,
-        "high": 713.58,
-        "low": 679.93,
-        "close": 694.99,
-        "volume": 1505300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 697.19,
-        "high": 699.27,
-        "low": 685.95,
-        "close": 693.5,
-        "volume": 907000
-      },
-      {
-        "date": "2025-11-17",
-        "open": 693.34,
-        "high": 711.88,
-        "low": 692.29,
-        "close": 704.31,
-        "volume": 1132900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 702.51,
-        "high": 727.97,
-        "low": 699.22,
-        "close": 725.34,
-        "volume": 1368700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 727.81,
-        "high": 727.81,
-        "low": 702.63,
-        "close": 702.75,
-        "volume": 1383600
-      },
       {
         "date": "2025-11-20",
         "open": 725,
@@ -7921,23 +7881,63 @@
         "low": 942,
         "close": 955.47,
         "volume": 1165700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 963.32,
+        "high": 972.24,
+        "low": 947.81,
+        "close": 952.4,
+        "volume": 700600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 952.56,
+        "high": 965.48,
+        "low": 946.94,
+        "close": 957.76,
+        "volume": 933100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 957.25,
+        "high": 972,
+        "low": 943.26,
+        "close": 945.53,
+        "volume": 705100
+      },
+      {
+        "date": "2026-11-19",
+        "open": 947.68,
+        "high": 947.68,
+        "low": 920.24,
+        "close": 923.34,
+        "volume": 723200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 935.8,
+        "high": 948.42,
+        "low": 916.66,
+        "close": 920.69,
+        "volume": 877700
       }
     ],
     "news": [
-      {
-        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
-        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
         "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
+        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
         "type": "STORY"
       },
       {
@@ -8068,43 +8068,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21,
-        "industryAvg": 23.15
+        "value": 20.87,
+        "industryAvg": 22.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.82,
-        "industryAvg": 10.78
+        "value": 5.79,
+        "industryAvg": 10.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.94,
-        "industryAvg": 4.59
+        "value": 2.92,
+        "industryAvg": 4.41
       },
       {
         "metric": "ROE",
         "value": 5.9799999999999995,
-        "industryAvg": -16.49
+        "industryAvg": -16.96
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": -10.03
+        "industryAvg": -10.290000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 88.79,
-        "industryAvg": 82.3
+        "industryAvg": 82.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.22,
-        "industryAvg": -26.26
+        "industryAvg": -27.93
       },
       {
         "metric": "Net Margin",
         "value": 38.09,
-        "industryAvg": -29.28
+        "industryAvg": -30.599999999999998
       }
     ]
   }

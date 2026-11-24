@@ -1,10 +1,10 @@
 {
   "symbol": "MDLZ",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.1725,
-      "ttmPe": 20.98,
-      "marketCap": 84546022912,
-      "psRatio": 2.15,
-      "pbRatio": 3.18,
+      "ttmPe": 20.71,
+      "marketCap": 83440929163,
+      "psRatio": 2.12,
+      "pbRatio": 3.14,
       "pegRatio": 0.27
     },
     "profitability": {
@@ -6106,57 +6106,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.34,
-      "costOfEquity": 7.88,
+      "wacc": 6.21,
+      "costOfEquity": 7.739999999999999,
       "costOfDebt": 0.66,
       "taxRate": 25,
-      "beta": 0.3582,
-      "marketCap": 84546022912
+      "beta": 0.3444,
+      "marketCap": 83440929163
     },
     "beta": {
-      "beta5y": 0.3582
+      "beta5y": 0.3444
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 57.02,
-        "high": 57.72,
-        "low": 56.75,
-        "close": 56.97,
-        "volume": 8720100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 57.24,
-        "high": 57.66,
-        "low": 56.52,
-        "close": 56.86,
-        "volume": 6854200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 56.78,
-        "high": 56.87,
-        "low": 55.53,
-        "close": 55.57,
-        "volume": 6549200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 55.83,
-        "high": 55.89,
-        "low": 55.23,
-        "close": 55.78,
-        "volume": 9659700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 55.73,
-        "high": 56.21,
-        "low": 55.03,
-        "close": 56.08,
-        "volume": 10779200
-      },
       {
         "date": "2025-11-20",
         "open": 55.98,
@@ -8132,6 +8092,46 @@
         "low": 66.77,
         "close": 67.54,
         "volume": 6129100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 68.57,
+        "high": 68.92,
+        "low": 67.44,
+        "close": 67.54,
+        "volume": 10494100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 67.07,
+        "high": 67.8,
+        "low": 66.65,
+        "close": 66.75,
+        "volume": 12575500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 65.96,
+        "high": 66.96,
+        "low": 65.76,
+        "close": 66.57,
+        "volume": 9784800
+      },
+      {
+        "date": "2026-11-19",
+        "open": 65.5,
+        "high": 65.91,
+        "low": 64.83,
+        "close": 65.69,
+        "volume": 11679300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 66.53,
+        "high": 67.39,
+        "low": 66.08,
+        "close": 66.28,
+        "volume": 12069400
       }
     ],
     "news": [
@@ -8168,19 +8168,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
-        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "95ccc4a4-a3af-39b6-b1d1-1ef0134e0bf4",
         "title": "Mondelez Q1 Earnings Beat Estimates, Net Revenues Rise 0.2% Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/mondelez-q1-earnings-beat-estimates-162200745.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
+        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
         "type": "STORY"
       },
       {
@@ -8285,18 +8285,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.98,
-        "industryAvg": 27.39
+        "value": 20.71,
+        "industryAvg": 27.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.15,
-        "industryAvg": 2.36
+        "value": 2.12,
+        "industryAvg": 2.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.18,
-        "industryAvg": 3.75
+        "value": 3.14,
+        "industryAvg": 3.7
       },
       {
         "metric": "ROE",

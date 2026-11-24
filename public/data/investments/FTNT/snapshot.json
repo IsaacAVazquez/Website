@@ -1,10 +1,10 @@
 {
   "symbol": "FTNT",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0755,
-      "ttmPe": 41.37,
-      "marketCap": 93328592000,
-      "psRatio": 11.84,
-      "pbRatio": 41.54,
-      "pegRatio": 1.08
+      "ttmPe": 40.5,
+      "marketCap": 91377216000,
+      "psRatio": 11.59,
+      "pbRatio": 40.67,
+      "pegRatio": 1.06
     },
     "profitability": {
       "roe": 33.47,
@@ -5905,57 +5905,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13,
-      "costOfEquity": 13.07,
+      "wacc": 12.989999999999998,
+      "costOfEquity": 13.059999999999999,
       "costOfDebt": 0.6,
       "taxRate": 16,
-      "beta": 1.0259,
-      "marketCap": 93328592000
+      "beta": 1.0234,
+      "marketCap": 91377216000
     },
     "beta": {
-      "beta5y": 1.0259
+      "beta5y": 1.0234
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 81.45,
-        "high": 82.55,
-        "low": 80.95,
-        "close": 81.03,
-        "volume": 4735300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 80.14,
-        "high": 83.26,
-        "low": 79.75,
-        "close": 82.31,
-        "volume": 5149800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 82.1,
-        "high": 82.96,
-        "low": 81.77,
-        "close": 81.94,
-        "volume": 4479000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 81.6,
-        "high": 82.26,
-        "low": 79.14,
-        "close": 80.15,
-        "volume": 6448400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 79.82,
-        "high": 80.37,
-        "low": 79.32,
-        "close": 79.73,
-        "volume": 4190100
-      },
       {
         "date": "2025-11-20",
         "open": 80.5,
@@ -7931,6 +7891,46 @@
         "low": 125.14,
         "close": 127.22,
         "volume": 3261200
+      },
+      {
+        "date": "2026-11-16",
+        "open": 125.52,
+        "high": 127,
+        "low": 122.76,
+        "close": 123.27,
+        "volume": 4442300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 123.16,
+        "high": 125.11,
+        "low": 120.5,
+        "close": 124.5,
+        "volume": 4468800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 126.12,
+        "high": 133.31,
+        "low": 124.96,
+        "close": 131.81,
+        "volume": 4939700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 135.76,
+        "high": 139.03,
+        "low": 130.68,
+        "close": 131.46,
+        "volume": 7054700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 130.54,
+        "high": 132.4,
+        "low": 123.95,
+        "close": 124.56,
+        "volume": 6621300
       }
     ],
     "news": [
@@ -7951,19 +7951,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
-        "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
         "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
+        "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
         "type": "STORY"
       },
       {
@@ -8058,10 +8058,6 @@
         "title": "Executive Vice President of Technology & Product Management"
       },
       {
-        "name": "Mr. Trevor Pagliara",
-        "title": "Executive Vice President of US Sales"
-      },
-      {
         "name": "Ms. Christiane Ohlgart",
         "title": "Chief Accounting Officer, CFO and Principal Financial & Accounting Officer",
         "age": 57,
@@ -8072,43 +8068,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.37,
-        "industryAvg": 30.94
+        "value": 40.5,
+        "industryAvg": 28.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.84,
-        "industryAvg": 7.24
+        "value": 11.59,
+        "industryAvg": 6.73
       },
       {
         "metric": "P/B Ratio",
-        "value": 41.54,
-        "industryAvg": 7.9
+        "value": 40.67,
+        "industryAvg": 7.26
       },
       {
         "metric": "ROE",
         "value": 33.47,
-        "industryAvg": 26.200000000000003
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": 5.57,
-        "industryAvg": 10.23
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 78.95,
-        "industryAvg": 51.04
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.37,
-        "industryAvg": 36.809999999999995
+        "industryAvg": 37.11
       },
       {
         "metric": "Net Margin",
         "value": 30.580000000000002,
-        "industryAvg": 20.39
+        "industryAvg": 20.51
       }
     ]
   }

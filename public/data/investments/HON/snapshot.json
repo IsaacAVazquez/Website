@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.54,
-      "marketCap": 70913756825,
-      "psRatio": 2.31,
-      "pbRatio": 3.16,
+      "ttmPe": 9.31,
+      "marketCap": 69133375640,
+      "psRatio": 2.25,
+      "pbRatio": 3.08,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -6703,57 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.34,
-      "costOfEquity": 11.34,
+      "wacc": 9.16,
+      "costOfEquity": 11.17,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.8036,
-      "marketCap": 70913756825
+      "beta": 0.7831,
+      "marketCap": 69133375640
     },
     "beta": {
-      "beta5y": 0.8036
+      "beta5y": 0.7831
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 211.0855,
-        "high": 212.9418,
-        "low": 209.2606,
-        "close": 209.6172,
-        "volume": 3968658
-      },
-      {
-        "date": "2025-11-14",
-        "open": 208.1384,
-        "high": 209.2921,
-        "low": 205.2124,
-        "close": 208.7467,
-        "volume": 3552169
-      },
-      {
-        "date": "2025-11-17",
-        "open": 207.5406,
-        "high": 209.0718,
-        "low": 204.4782,
-        "close": 205.6424,
-        "volume": 2705556
-      },
-      {
-        "date": "2025-11-18",
-        "open": 201.1851,
-        "high": 203.2931,
-        "low": 199.8637,
-        "close": 200.7866,
-        "volume": 5790129
-      },
-      {
-        "date": "2025-11-19",
-        "open": 199.979,
-        "high": 200.6817,
-        "low": 198.2276,
-        "close": 199.8637,
-        "volume": 3234844
-      },
       {
         "date": "2025-11-20",
         "open": 201.8144,
@@ -8729,6 +8689,46 @@
         "low": 219.59,
         "close": 222.46,
         "volume": 2575800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 221.51,
+        "high": 222.16,
+        "low": 217.53,
+        "close": 217.95,
+        "volume": 2589900
+      },
+      {
+        "date": "2026-11-17",
+        "open": 216.77,
+        "high": 222.71,
+        "low": 215.01,
+        "close": 218.96,
+        "volume": 3589700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 218.27,
+        "high": 224.66,
+        "low": 217.27,
+        "close": 222.7,
+        "volume": 3833200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 223.41,
+        "high": 223.5,
+        "low": 215.88,
+        "close": 217.84,
+        "volume": 2354000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 217.1,
+        "high": 220.82,
+        "low": 211.58,
+        "close": 212.64,
+        "volume": 3341100
       }
     ],
     "news": [
@@ -8781,6 +8781,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
+        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
         "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
         "publisher": "Yahoo Finance Video",
@@ -8794,14 +8802,6 @@
         "publisher": "Investopedia",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
-        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
         "type": "STORY"
       },
       {
@@ -8874,43 +8874,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.54,
-        "industryAvg": 20.03
+        "value": 9.31,
+        "industryAvg": 20.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.31,
-        "industryAvg": 1.59
+        "value": 2.25,
+        "industryAvg": 1.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.16,
-        "industryAvg": 2.6
+        "value": 3.08,
+        "industryAvg": 3.03
       },
       {
         "metric": "ROE",
         "value": 3.2399999999999998,
-        "industryAvg": -9.67
+        "industryAvg": -7.79
       },
       {
         "metric": "ROA",
         "value": 1.02,
-        "industryAvg": -3.0700000000000003
+        "industryAvg": -2.58
       },
       {
         "metric": "Gross Margin",
         "value": 40.410000000000004,
-        "industryAvg": 27.800000000000004
+        "industryAvg": 26.43
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.189999999999998,
-        "industryAvg": 23.119999999999997
+        "industryAvg": 21.65
       },
       {
         "metric": "Net Margin",
         "value": 13.3,
-        "industryAvg": -6.3100000000000005
+        "industryAvg": -4.9799999999999995
       }
     ]
   }

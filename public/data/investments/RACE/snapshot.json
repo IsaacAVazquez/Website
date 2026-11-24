@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.0597,
-      "ttmPe": 37.17,
-      "marketCap": 72118985645,
-      "psRatio": 8.51,
-      "pbRatio": 16.28,
-      "pegRatio": 3.06
+      "ttmPe": 35.49,
+      "marketCap": 68845713755,
+      "psRatio": 8.12,
+      "pbRatio": 15.54,
+      "pegRatio": 2.92
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -6236,57 +6236,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.49,
-      "costOfEquity": 12.04,
+      "wacc": 11.09,
+      "costOfEquity": 11.65,
       "costOfDebt": 0.27999999999999997,
       "taxRate": 23,
-      "beta": 0.893,
-      "marketCap": 72118985645
+      "beta": 0.8465,
+      "marketCap": 68845713755
     },
     "beta": {
-      "beta5y": 0.893
+      "beta5y": 0.8465
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 420,
-        "high": 425.19,
-        "low": 417.37,
-        "close": 417.81,
-        "volume": 636500
-      },
-      {
-        "date": "2025-11-14",
-        "open": 414.92,
-        "high": 419.53,
-        "low": 413.84,
-        "close": 417.16,
-        "volume": 571700
-      },
-      {
-        "date": "2025-11-17",
-        "open": 408.57,
-        "high": 412.23,
-        "low": 404.34,
-        "close": 405.38,
-        "volume": 751300
-      },
-      {
-        "date": "2025-11-18",
-        "open": 399.12,
-        "high": 399.73,
-        "low": 394.4,
-        "close": 397.83,
-        "volume": 585700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 394.75,
-        "high": 394.75,
-        "low": 389.36,
-        "close": 389.83,
-        "volume": 504200
-      },
       {
         "date": "2025-11-20",
         "open": 393.98,
@@ -8262,6 +8222,46 @@
         "low": 406.35,
         "close": 411.13,
         "volume": 400600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 408.87,
+        "high": 409.55,
+        "low": 402.66,
+        "close": 404.77,
+        "volume": 459700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 403.19,
+        "high": 403.77,
+        "low": 398.85,
+        "close": 399.11,
+        "volume": 301700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 402.35,
+        "high": 413.37,
+        "low": 402.35,
+        "close": 410.91,
+        "volume": 458900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 410.1,
+        "high": 411.55,
+        "low": 404.476,
+        "close": 405.44,
+        "volume": 374500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 401.83,
+        "high": 405.96,
+        "low": 391.485,
+        "close": 392.47,
+        "volume": 576900
       }
     ],
     "news": [
@@ -8330,19 +8330,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e4b46a0d-e375-352e-a0ea-f191583bf366",
-        "title": "Are Business Services Stocks Lagging  GORILLA TECH GP (GRRR) This Year?",
+        "uuid": "e1d1e38a-ad1b-36e5-963c-bb0bfe3a7bb8",
+        "title": "Is GRINDR INC (GRND) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/business-services-stocks-lagging-gorilla-134006668.html",
+        "link": "https://finance.yahoo.com/news/grindr-inc-grnd-stock-outpacing-134004098.html",
         "type": "STORY"
       },
       {
-        "uuid": "af5baeca-6bbc-32dc-b0d0-cfcdf1ea283f",
-        "title": "Is DXP Enterprises (DXPE) Outperforming Other Industrial Products Stocks This Year?",
+        "uuid": "38a3dd12-b37f-360d-9752-a56e694e265f",
+        "title": "Zacks.com featured highlights Intuit and Ferrari",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/dxp-enterprises-dxpe-outperforming-other-134003274.html",
+        "link": "https://finance.yahoo.com/news/zacks-com-featured-highlights-intuit-073100968.html",
         "type": "STORY"
       }
     ],
@@ -8409,43 +8409,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.17,
-        "industryAvg": 30.47
+        "value": 35.49,
+        "industryAvg": 27.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.51,
-        "industryAvg": 1.26
+        "value": 8.12,
+        "industryAvg": 1.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.28,
-        "industryAvg": 2.32
+        "value": 15.54,
+        "industryAvg": 2.12
       },
       {
         "metric": "ROE",
         "value": 11.360000000000001,
-        "industryAvg": 4.34
+        "industryAvg": 3.7800000000000002
       },
       {
         "metric": "ROA",
         "value": 4.17,
-        "industryAvg": 1.43
+        "industryAvg": 1.23
       },
       {
         "metric": "Gross Margin",
         "value": 52.410000000000004,
-        "industryAvg": 14.89
+        "industryAvg": 14.829999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.92,
-        "industryAvg": 9.049999999999999
+        "industryAvg": 8.7
       },
       {
         "metric": "Net Margin",
         "value": 22.67,
-        "industryAvg": 2.36
+        "industryAvg": 2.01
       }
     ]
   }

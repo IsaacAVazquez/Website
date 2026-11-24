@@ -1,14 +1,11 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
-    },
-    "retainedSections": [
-      "info"
-    ]
+      "price": "2026-11-20"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -36,18 +33,18 @@
       "industry": "Semiconductor Equipment & Materials",
       "sector": "Technology",
       "longBusinessSummary": "Applied Materials, Inc. provides materials engineering solutions, equipment, services, and software to the semiconductor and related industries in the United States, China, Korea, Taiwan, Japan, Southeast Asia, Europe, and internationally. The company operates through Semiconductor Systems and Applied Global Services (AGS) segments. The Semiconductor Systems segment includes semiconductor capital equipment to enable materials engineering steps, including etch, rapid thermal processing, deposition, chemical mechanical planarization, metrology and inspection, wafer packaging, and ion implantation. The AGS segment offers integrated solutions to optimize equipment and fab performance and productivity comprising spares, upgrades, services, and 200 millimeter and other equipment and factory automation software for semiconductor and other products. It serves manufacturers of semiconductor wafers and chips, and other electronic devices. Applied Materials, Inc. was incorporated in 1967 and is headquartered in Santa Clara, California.",
-      "fullTimeEmployees": 38900,
+      "fullTimeEmployees": 41500,
       "website": "https://www.appliedmaterials.com",
       "shortName": "Applied Materials, Inc.",
       "longName": "Applied Materials, Inc."
     },
     "fundamentals": {
-      "ttmEps": 11.5973,
-      "ttmPe": 31.95,
-      "marketCap": 294027836700,
-      "psRatio": 9.53,
-      "pbRatio": 11.47,
-      "pegRatio": 0.74
+      "ttmEps": 12.6201,
+      "ttmPe": 23.98,
+      "marketCap": 240166381162,
+      "psRatio": 7.79,
+      "pbRatio": 9.37,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 10.25,
@@ -84,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 43.02
+        "yoyGrowth": 43.03
       }
     ],
     "income_statement": {
@@ -6404,57 +6401,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.44,
-      "costOfEquity": 17.83,
+      "wacc": 17.990000000000002,
+      "costOfEquity": 18.48,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.6425,
-      "marketCap": 294027836700
+      "beta": 1.7056,
+      "marketCap": 240166381162
     },
     "beta": {
-      "beta5y": 1.6425
+      "beta5y": 1.7056
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 227.39,
-        "high": 229,
-        "low": 219.63,
-        "close": 223.23,
-        "volume": 13465900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 203.75,
-        "high": 226.16,
-        "low": 203.4,
-        "close": 226.01,
-        "volume": 15254400
-      },
-      {
-        "date": "2025-11-17",
-        "open": 224.2,
-        "high": 231.71,
-        "low": 223.26,
-        "close": 228.71,
-        "volume": 8713600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 226.48,
-        "high": 227.62,
-        "low": 219.42,
-        "close": 225.12,
-        "volume": 12167400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 227.29,
-        "high": 235.91,
-        "low": 226.5,
-        "close": 235.13,
-        "volume": 8870500
-      },
       {
         "date": "2025-11-20",
         "open": 238.79,
@@ -8429,7 +8386,47 @@
         "high": 381.37,
         "low": 352.23,
         "close": 370.5,
-        "volume": 11937400
+        "volume": 11950800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 348.49,
+        "high": 358.55,
+        "low": 346.01,
+        "close": 350.25,
+        "volume": 7105000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 354.41,
+        "high": 355.7,
+        "low": 338,
+        "close": 349.23,
+        "volume": 6845500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 354.54,
+        "high": 356,
+        "low": 342.32,
+        "close": 352.3,
+        "volume": 4773200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 367.31,
+        "high": 367.63,
+        "low": 337.88,
+        "close": 338.93,
+        "volume": 7189600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 329.03,
+        "high": 330.5,
+        "low": 300.62,
+        "close": 302.63,
+        "volume": 14169700
       }
     ],
     "news": [
@@ -8466,11 +8463,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
-        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
-        "publisher": "Zacks",
+        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
+        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
+        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
         "type": "STORY"
       },
       {
@@ -8490,11 +8487,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
-        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
-        "publisher": "GuruFocus.com",
+        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
+        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
+        "publisher": "Zacks",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
         "type": "STORY"
       },
       {
@@ -8583,43 +8580,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.95,
-        "industryAvg": 36.72
+        "value": 23.98,
+        "industryAvg": 29.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.53,
-        "industryAvg": 10.84
+        "value": 7.79,
+        "industryAvg": 8.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.47,
-        "industryAvg": 14.97
+        "value": 9.37,
+        "industryAvg": 11.85
       },
       {
         "metric": "ROE",
         "value": 10.25,
-        "industryAvg": 42.49
+        "industryAvg": 43.169999999999995
       },
       {
         "metric": "ROA",
         "value": 6.0600000000000005,
-        "industryAvg": 20.78
+        "industryAvg": 21.18
       },
       {
         "metric": "Gross Margin",
         "value": 50.31,
-        "industryAvg": 49.95
+        "industryAvg": 50.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.39,
-        "industryAvg": 37.43
+        "industryAvg": 37.93
       },
       {
         "metric": "Net Margin",
         "value": 27.839999999999996,
-        "industryAvg": 28.4
+        "industryAvg": 28.68
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 41.36,
-      "marketCap": 27660709010,
-      "psRatio": 4.34,
-      "pbRatio": 3.66,
-      "pegRatio": 1.57
+      "ttmPe": 35.41,
+      "marketCap": 23682487140,
+      "psRatio": 3.72,
+      "pbRatio": 3.13,
+      "pegRatio": 1.34
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,57 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.68,
-      "costOfEquity": 21.67,
+      "wacc": 18.27,
+      "costOfEquity": 21.68,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.14,
-      "marketCap": 27660709010
+      "beta": 2.1084,
+      "marketCap": 23682487140
     },
     "beta": {
-      "beta5y": 2.14
+      "beta5y": 2.1084
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 48.86,
-        "high": 50.32,
-        "low": 47.44,
-        "close": 48.13,
-        "volume": 8318300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 47.07,
-        "high": 48.4,
-        "low": 46.51,
-        "close": 46.92,
-        "volume": 5565300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 46.53,
-        "high": 47.29,
-        "low": 45.37,
-        "close": 46.02,
-        "volume": 7961000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 45.58,
-        "high": 46.04,
-        "low": 44.85,
-        "close": 45.56,
-        "volume": 7133100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 47.16,
-        "high": 47.73,
-        "low": 45.96,
-        "close": 46.12,
-        "volume": 11871300
-      },
       {
         "date": "2025-11-20",
         "open": 46.49,
@@ -8110,6 +8070,46 @@
         "low": 68.84,
         "close": 71.06,
         "volume": 7371700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 68.83,
+        "high": 69.29,
+        "low": 67.49,
+        "close": 67.69,
+        "volume": 8150600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 68.92,
+        "high": 69.3,
+        "low": 66.12,
+        "close": 67.93,
+        "volume": 7673500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 68.72,
+        "high": 68.9,
+        "low": 66.42,
+        "close": 67.23,
+        "volume": 6827300
+      },
+      {
+        "date": "2026-11-19",
+        "open": 69.23,
+        "high": 70.08,
+        "low": 65.6,
+        "close": 65.72,
+        "volume": 7381700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 65.31,
+        "high": 65.49,
+        "low": 59.14,
+        "close": 60.84,
+        "volume": 15247300
       }
     ],
     "news": [
@@ -8146,19 +8146,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
-        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
         "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
+        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
         "type": "STORY"
       },
       {
@@ -8250,23 +8250,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.36,
-        "industryAvg": 20.8
+        "value": 35.41,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.34,
-        "industryAvg": 10.18
+        "value": 3.72,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.66,
-        "industryAvg": 9.1
+        "value": 3.13,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 4.25,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8276,7 +8276,7 @@
       {
         "metric": "Gross Margin",
         "value": 41.4,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8286,7 +8286,7 @@
       {
         "metric": "Net Margin",
         "value": 18.23,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

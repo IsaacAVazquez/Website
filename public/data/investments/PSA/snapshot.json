@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.5547,
-      "ttmPe": 34.81,
-      "marketCap": 62142179888,
-      "psRatio": 12.35,
-      "pbRatio": 4.28,
+      "ttmPe": 34.06,
+      "marketCap": 60802514144,
+      "psRatio": 12.08,
+      "pbRatio": 4.19,
       "pegRatio": 0.6
     },
     "profitability": {
@@ -5198,57 +5198,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.91,
-      "costOfEquity": 11.75,
+      "wacc": 9.46,
+      "costOfEquity": 11.25,
       "costOfDebt": 0.84,
       "taxRate": 40,
-      "beta": 0.8547,
-      "marketCap": 62142179888
+      "beta": 0.7963,
+      "marketCap": 60802514144
     },
     "beta": {
-      "beta5y": 0.8547
+      "beta5y": 0.7963
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 273.9,
-        "high": 277.24,
-        "low": 273.71,
-        "close": 274.28,
-        "volume": 839700
-      },
-      {
-        "date": "2025-11-14",
-        "open": 275.79,
-        "high": 278,
-        "low": 272.93,
-        "close": 274.26,
-        "volume": 577700
-      },
-      {
-        "date": "2025-11-17",
-        "open": 274.95,
-        "high": 275.35,
-        "low": 269.58,
-        "close": 270.27,
-        "volume": 581800
-      },
-      {
-        "date": "2025-11-18",
-        "open": 269.52,
-        "high": 271.63,
-        "low": 266.91,
-        "close": 271.5,
-        "volume": 873500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 272.03,
-        "high": 273.55,
-        "low": 265.19,
-        "close": 266.16,
-        "volume": 1323500
-      },
       {
         "date": "2025-11-20",
         "open": 266.87,
@@ -7224,6 +7184,46 @@
         "low": 331.99,
         "close": 332.59,
         "volume": 1051800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 333.62,
+        "high": 336.24,
+        "low": 332.46,
+        "close": 333.71,
+        "volume": 961200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 330.53,
+        "high": 335.06,
+        "low": 330.17,
+        "close": 330.18,
+        "volume": 801100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 327.48,
+        "high": 333.59,
+        "low": 325,
+        "close": 330.99,
+        "volume": 990500
+      },
+      {
+        "date": "2026-11-19",
+        "open": 329.25,
+        "high": 332.55,
+        "low": 324.73,
+        "close": 326.65,
+        "volume": 602100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 329.86,
+        "high": 332.69,
+        "low": 325.04,
+        "close": 325.42,
+        "volume": 793100
       }
     ],
     "news": [
@@ -7236,11 +7236,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
-        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
+        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
         "type": "STORY"
       },
       {
@@ -7252,19 +7252,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
+        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "1e77d3ab-1347-3e08-9310-e686294a8488",
         "title": "Public Storage: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-q1-earnings-snapshot-201519091.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
-        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
         "type": "STORY"
       },
       {
@@ -7300,11 +7300,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e38b430-b999-3bf8-9ae2-e6f7f2ef6f80",
-        "title": "Public Storage (NYSE:PSA) Declares Quarterly Dividends of US$3.00 Per Common Share",
-        "publisher": "Simply Wall St.",
+        "uuid": "41ef7ca1-081c-31e9-915f-3a3293a4d2d5",
+        "title": "Truist Securities Adjusts Price Target on Public Storage to $320 From $310, Maintains Buy Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/public-storage-nyse-psa-declares-174308342.html",
+        "link": "https://finance.yahoo.com/news/truist-securities-adjusts-price-target-133220023.html",
         "type": "STORY"
       }
     ],
@@ -7366,18 +7366,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.81,
-        "industryAvg": 29.38
+        "value": 34.06,
+        "industryAvg": 28.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.35,
-        "industryAvg": 8.84
+        "value": 12.08,
+        "industryAvg": 8.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.28,
-        "industryAvg": 2.28
+        "value": 4.19,
+        "industryAvg": 2.23
       },
       {
         "metric": "ROE",

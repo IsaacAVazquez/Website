@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 13.15,
-      "marketCap": 144898119160,
-      "psRatio": 2.32,
-      "pbRatio": 1.98,
-      "pegRatio": 2.9
+      "ttmPe": 13.01,
+      "marketCap": 143313163420,
+      "psRatio": 2.3,
+      "pbRatio": 1.96,
+      "pegRatio": 2.87
     },
     "profitability": {
       "roe": 3.83,
@@ -5728,57 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.619999999999999,
-      "costOfEquity": 7.359999999999999,
+      "wacc": 6.29,
+      "costOfEquity": 7.000000000000001,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2861,
-      "marketCap": 144898119160
+      "beta": 0.2622,
+      "marketCap": 143313163420
     },
     "beta": {
-      "beta5y": 0.2861
+      "beta5y": 0.2622
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 294.97,
-        "high": 298.36,
-        "low": 294.86,
-        "close": 296.22,
-        "volume": 1723100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 297.57,
-        "high": 300,
-        "low": 294,
-        "close": 295.49,
-        "volume": 1393300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 297.04,
-        "high": 298.56,
-        "low": 295,
-        "close": 295.58,
-        "volume": 1406000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 295.77,
-        "high": 299.4,
-        "low": 294.87,
-        "close": 296.57,
-        "volume": 1443800
-      },
-      {
-        "date": "2025-11-19",
-        "open": 296.14,
-        "high": 296.89,
-        "low": 292.78,
-        "close": 293.96,
-        "volume": 1379000
-      },
       {
         "date": "2025-11-20",
         "open": 294.94,
@@ -7754,6 +7714,46 @@
         "low": 373.8,
         "close": 375.74,
         "volume": 1516400
+      },
+      {
+        "date": "2026-11-16",
+        "open": 380.56,
+        "high": 383.18,
+        "low": 379.29,
+        "close": 381.28,
+        "volume": 1532400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 378.75,
+        "high": 380,
+        "low": 373.92,
+        "close": 375.64,
+        "volume": 1915600
+      },
+      {
+        "date": "2026-11-18",
+        "open": 372.31,
+        "high": 374.61,
+        "low": 369.45,
+        "close": 371.02,
+        "volume": 2054400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 367.99,
+        "high": 371.45,
+        "low": 367.14,
+        "close": 370.11,
+        "volume": 1327200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 374.82,
+        "high": 379.21,
+        "low": 371,
+        "close": 371.63,
+        "volume": 2250300
       }
     ],
     "news": [
@@ -7822,19 +7822,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
+        "title": "Chubb rejigs investment and asset management leadership",
+        "publisher": "Life Insurance International",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
         "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
-        "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
         "type": "STORY"
       }
     ],
@@ -7902,23 +7902,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.15,
-        "industryAvg": 33.12
+        "value": 13.01,
+        "industryAvg": 32.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.32,
-        "industryAvg": 4.08
+        "value": 2.3,
+        "industryAvg": 3.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.98,
-        "industryAvg": 5.47
+        "value": 1.96,
+        "industryAvg": 5.33
       },
       {
         "metric": "ROE",
         "value": 3.83,
-        "industryAvg": 20.380000000000003
+        "industryAvg": 20.39
       },
       {
         "metric": "ROA",

@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 24.89,
-      "marketCap": 98780918358,
-      "psRatio": 3.47,
-      "pbRatio": 6.73,
-      "pegRatio": 2.15
+      "ttmPe": 24.71,
+      "marketCap": 98039277042,
+      "psRatio": 3.44,
+      "pbRatio": 6.68,
+      "pegRatio": 2.14
     },
     "profitability": {
       "roe": 5.41,
@@ -3678,57 +3678,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.64,
-      "costOfEquity": 9.17,
+      "wacc": 7.21,
+      "costOfEquity": 8.649999999999999,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.5201,
-      "marketCap": 98780918358
+      "beta": 0.469,
+      "marketCap": 98039277042
     },
     "beta": {
-      "beta5y": 0.5201
+      "beta5y": 0.469
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 182.89,
-        "high": 184.33,
-        "low": 182.54,
-        "close": 183.85,
-        "volume": 2381900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 184.58,
-        "high": 185.33,
-        "low": 181.23,
-        "close": 182.81,
-        "volume": 2857800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 183.42,
-        "high": 183.69,
-        "low": 180.62,
-        "close": 180.87,
-        "volume": 3202200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 181.69,
-        "high": 181.84,
-        "low": 179.47,
-        "close": 180.25,
-        "volume": 2729000
-      },
-      {
-        "date": "2025-11-19",
-        "open": 180.54,
-        "high": 180.76,
-        "low": 176.66,
-        "close": 177.13,
-        "volume": 2258600
-      },
       {
         "date": "2025-11-20",
         "open": 177.56,
@@ -5704,6 +5664,46 @@
         "low": 206.76,
         "close": 207.78,
         "volume": 1824000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 210.98,
+        "high": 212,
+        "low": 209.66,
+        "close": 209.88,
+        "volume": 1985200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 207.25,
+        "high": 209,
+        "low": 205.48,
+        "close": 206.07,
+        "volume": 2018100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 204.26,
+        "high": 206.09,
+        "low": 202.14,
+        "close": 205.43,
+        "volume": 1419500
+      },
+      {
+        "date": "2026-11-19",
+        "open": 203.98,
+        "high": 205.85,
+        "low": 203.41,
+        "close": 204.66,
+        "volume": 1540000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 209.16,
+        "high": 210.76,
+        "low": 205.89,
+        "close": 206.22,
+        "volume": 2932800
       }
     ],
     "news": [
@@ -5724,6 +5724,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
+        "title": "Davos CEO Brief for Monday, January 19, 2026",
+        "publisher": "WSJ",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
         "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
         "publisher": "WSJ",
@@ -5740,12 +5748,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
-        "title": "Davos CEO Brief for Monday, January 19, 2026",
-        "publisher": "WSJ",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
-        "type": "VIDEO"
+        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
+        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
+        "type": "STORY"
       },
       {
         "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
@@ -5761,14 +5769,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
-        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
         "type": "STORY"
       },
       {
@@ -5856,18 +5856,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.89,
-        "industryAvg": 24.47
+        "value": 24.71,
+        "industryAvg": 24.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.47,
-        "industryAvg": 3.41
+        "value": 3.44,
+        "industryAvg": 3.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.73,
-        "industryAvg": 4.34
+        "value": 6.68,
+        "industryAvg": 4.31
       },
       {
         "metric": "ROE",
@@ -5887,7 +5887,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 22.03,
-        "industryAvg": 26.31
+        "industryAvg": 26.32
       },
       {
         "metric": "Net Margin",

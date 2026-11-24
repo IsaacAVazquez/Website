@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 47.78,
-      "marketCap": 577218870000,
-      "psRatio": 15.91,
-      "pbRatio": 85.48,
+      "ttmPe": 45.21,
+      "marketCap": 546140070000,
+      "psRatio": 15.05,
+      "pbRatio": 80.87,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,57 +5641,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.65,
-      "costOfEquity": 11.06,
+      "wacc": 10.36,
+      "costOfEquity": 10.780000000000001,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.765,
-      "marketCap": 577218870000
+      "beta": 0.7375,
+      "marketCap": 546140070000
     },
     "beta": {
-      "beta5y": 0.765
+      "beta5y": 0.7375
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 559.88,
-        "high": 563.6,
-        "low": 554.86,
-        "close": 555.57,
-        "volume": 2031300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 556.04,
-        "high": 557,
-        "low": 544.05,
-        "close": 545.73,
-        "volume": 2567800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 546,
-        "high": 549.32,
-        "low": 536.21,
-        "close": 536.85,
-        "volume": 2557900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 533.56,
-        "high": 536,
-        "low": 524.7,
-        "close": 527.58,
-        "volume": 3594700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 528.15,
-        "high": 531,
-        "low": 524.98,
-        "close": 530.36,
-        "volume": 2723100
-      },
       {
         "date": "2025-11-20",
         "open": 533.29,
@@ -7667,6 +7627,46 @@
         "low": 655,
         "close": 661.19,
         "volume": 1936300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 667,
+        "high": 668.31,
+        "low": 659.48,
+        "close": 661.71,
+        "volume": 2399400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 655.7,
+        "high": 658.88,
+        "low": 644.88,
+        "close": 645.73,
+        "volume": 3176500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 643.1,
+        "high": 647.14,
+        "low": 636.39,
+        "close": 643.37,
+        "volume": 2409600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 637.05,
+        "high": 641.06,
+        "low": 625.08,
+        "close": 626.5,
+        "volume": 3640700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 629.12,
+        "high": 637.03,
+        "low": 624.11,
+        "close": 625.59,
+        "volume": 3668500
       }
     ],
     "news": [
@@ -7695,19 +7695,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
         "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
         "type": "STORY"
       },
       {
@@ -7817,23 +7817,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.78,
-        "industryAvg": 23.41
+        "value": 45.21,
+        "industryAvg": 21.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.91,
-        "industryAvg": 5.52
+        "value": 15.05,
+        "industryAvg": 5.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 85.48,
-        "industryAvg": 6.04
+        "value": 80.87,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 74.86,
-        "industryAvg": 15.190000000000001
+        "industryAvg": 15.21
       },
       {
         "metric": "ROA",
@@ -7843,7 +7843,7 @@
       {
         "metric": "Gross Margin",
         "value": 79.32000000000001,
-        "industryAvg": 65.68
+        "industryAvg": 65.67
       },
       {
         "metric": "EBITDA Margin",
@@ -7853,7 +7853,7 @@
       {
         "metric": "Net Margin",
         "value": 47.19,
-        "industryAvg": 20.29
+        "industryAvg": 20.3
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.812,
-      "ttmPe": 28.17,
-      "marketCap": 137293741000,
-      "psRatio": 8.63,
-      "pbRatio": 6.97,
-      "pegRatio": 2.79
+      "ttmPe": 26.15,
+      "marketCap": 127431343000,
+      "psRatio": 8.01,
+      "pbRatio": 6.47,
+      "pegRatio": 2.59
     },
     "profitability": {
       "roe": 4.84,
@@ -5935,57 +5935,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.899999999999999,
-      "costOfEquity": 13.020000000000001,
+      "wacc": 11.64,
+      "costOfEquity": 12.82,
       "costOfDebt": 0.65,
       "taxRate": 25,
-      "beta": 1.0193,
-      "marketCap": 137293741000
+      "beta": 0.9939,
+      "marketCap": 127431343000
     },
     "beta": {
-      "beta5y": 1.0193
+      "beta5y": 0.9939
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 465.1277,
-        "high": 478.9688,
-        "low": 465.1277,
-        "close": 475.8373,
-        "volume": 2074785
-      },
-      {
-        "date": "2025-11-14",
-        "open": 474.9763,
-        "high": 476.7171,
-        "low": 467.0104,
-        "close": 467.2658,
-        "volume": 2201414
-      },
-      {
-        "date": "2025-11-17",
-        "open": 465.9413,
-        "high": 466.8969,
-        "low": 461.3245,
-        "close": 462.5828,
-        "volume": 1987477
-      },
-      {
-        "date": "2025-11-18",
-        "open": 461.4286,
-        "high": 465.8467,
-        "low": 460.0284,
-        "close": 463.8411,
-        "volume": 1277279
-      },
-      {
-        "date": "2025-11-19",
-        "open": 464.2857,
-        "high": 466.4144,
-        "low": 461.6083,
-        "close": 464.333,
-        "volume": 1621015
-      },
       {
         "date": "2025-11-20",
         "open": 467.1712,
@@ -7961,6 +7921,46 @@
         "low": 469.95,
         "close": 473.59,
         "volume": 1005800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 475,
+        "high": 476.26,
+        "low": 469.2,
+        "close": 471.59,
+        "volume": 1107100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 464.27,
+        "high": 465.91,
+        "low": 451.69,
+        "close": 452.35,
+        "volume": 1000100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 448.98,
+        "high": 452.15,
+        "low": 441.24,
+        "close": 446.38,
+        "volume": 958400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 444.78,
+        "high": 446.19,
+        "low": 439.35,
+        "close": 442.66,
+        "volume": 1128300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 446.55,
+        "high": 453.73,
+        "low": 438.34,
+        "close": 439.57,
+        "volume": 1980300
       }
     ],
     "news": [
@@ -8065,6 +8065,12 @@
         "totalPay": 4905668
       },
       {
+        "name": "Mr. Firdaus Bhathena",
+        "title": "Executive VP and Chief Technology & Transformation Officer",
+        "age": 54,
+        "yearBorn": 1971
+      },
+      {
         "name": "Mr. Girish Ganesan",
         "title": "Executive VP & Chief People Officer",
         "age": 44,
@@ -8094,13 +8100,6 @@
         "yearBorn": 1981
       },
       {
-        "name": "Ms. Martina L. Cheung",
-        "title": "President, CEO & Director",
-        "age": 49,
-        "yearBorn": 1976,
-        "totalPay": 3850628
-      },
-      {
         "name": "Ms. Sally Moore",
         "title": "Executive VP, Chief Client Officer & Co-Head of Market Intelligence Kensho Data & Platforms",
         "age": 49,
@@ -8111,18 +8110,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.17,
-        "industryAvg": 26.85
+        "value": 26.15,
+        "industryAvg": 25.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.63,
-        "industryAvg": 8.29
+        "value": 8.01,
+        "industryAvg": 7.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.97,
-        "industryAvg": 4.64
+        "value": 6.47,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",

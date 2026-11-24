@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.6864,
-      "ttmPe": 40.99,
-      "marketCap": 140955379200,
-      "psRatio": 2.49,
-      "pbRatio": 5.1,
+      "ttmPe": 40.77,
+      "marketCap": 140221236600,
+      "psRatio": 2.48,
+      "pbRatio": 5.07,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -6507,57 +6507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.52,
-      "costOfEquity": 15.15,
+      "wacc": 13.309999999999999,
+      "costOfEquity": 14.92,
       "costOfDebt": 0.86,
       "taxRate": 28.999999999999996,
-      "beta": 1.2931,
-      "marketCap": 140955379200
+      "beta": 1.2631,
+      "marketCap": 140221236600
     },
     "beta": {
-      "beta5y": 1.2931
+      "beta5y": 1.2631
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 93.7,
-        "high": 94.06,
-        "low": 91.35,
-        "close": 91.78,
-        "volume": 16367500
-      },
-      {
-        "date": "2025-11-14",
-        "open": 90.06,
-        "high": 92.62,
-        "low": 89.62,
-        "close": 91.62,
-        "volume": 12475600
-      },
-      {
-        "date": "2025-11-17",
-        "open": 91.31,
-        "high": 92.58,
-        "low": 90.74,
-        "close": 92.11,
-        "volume": 16922500
-      },
-      {
-        "date": "2025-11-18",
-        "open": 92.1,
-        "high": 92.923,
-        "low": 89.33,
-        "close": 90.86,
-        "volume": 17439400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 90.6,
-        "high": 91.08,
-        "low": 88.89,
-        "close": 89.53,
-        "volume": 18256200
-      },
       {
         "date": "2025-11-20",
         "open": 90.2,
@@ -8532,24 +8492,64 @@
         "high": 70.505,
         "low": 69.03,
         "close": 69.69,
-        "volume": 11329600
+        "volume": 11353300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 70,
+        "high": 70.89,
+        "low": 69.45,
+        "close": 69.99,
+        "volume": 14564400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 69.6,
+        "high": 70.09,
+        "low": 67.06,
+        "close": 68.81,
+        "volume": 22224700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 68.16,
+        "high": 70.115,
+        "low": 68.02,
+        "close": 68.76,
+        "volume": 12254200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 69.19,
+        "high": 69.26,
+        "low": 65.33,
+        "close": 65.6,
+        "volume": 28766900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 65.77,
+        "high": 68.365,
+        "low": 63.29,
+        "close": 63.47,
+        "volume": 30060100
       }
     ],
     "news": [
-      {
-        "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
-        "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
-        "type": "STORY"
-      },
       {
         "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
         "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
         "publisher": "Zacks",
         "reportDate": "2025-03-20",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
+        "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
         "type": "STORY"
       },
       {
@@ -8683,43 +8683,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.99,
-        "industryAvg": 28.15
+        "value": 40.77,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.49,
-        "industryAvg": 4.85
+        "value": 2.48,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.1,
-        "industryAvg": 5.18
+        "value": 5.07,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 1.8599999999999999,
-        "industryAvg": -0.72
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 0.75,
-        "industryAvg": -0.4
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 43.46,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 8.3,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 3.47,
-        "industryAvg": -0.98
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

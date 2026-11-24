@@ -1,11 +1,14 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
-    }
+      "price": "2026-11-20"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.7294,
-      "ttmPe": 17.53,
-      "marketCap": 701466080000,
-      "psRatio": 1.81,
-      "pbRatio": 2.64,
-      "pegRatio": 0.16
+      "ttmPe": 16.34,
+      "marketCap": 653520160000,
+      "psRatio": 1.68,
+      "pbRatio": 2.46,
+      "pegRatio": 0.15
     },
     "profitability": {
       "roe": 5.87,
@@ -5374,57 +5377,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.1,
-      "costOfEquity": 6.38,
+      "wacc": 6.529999999999999,
+      "costOfEquity": 6.8500000000000005,
       "costOfDebt": 0.53,
       "taxRate": 25,
-      "beta": 0.1598,
-      "marketCap": 701466080000
+      "beta": 0.2316,
+      "marketCap": 653520160000
     },
     "beta": {
-      "beta5y": 0.1598
+      "beta5y": 0.2316
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 118.63,
-        "high": 119.76,
-        "low": 118.28,
-        "close": 118.79,
-        "volume": 17291900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 118.45,
-        "high": 119.48,
-        "low": 116.66,
-        "close": 119.29,
-        "volume": 17064300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 118.97,
-        "high": 119.5,
-        "low": 117.11,
-        "close": 117.68,
-        "volume": 16034900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 117.26,
-        "high": 119.48,
-        "low": 116.48,
-        "close": 119.03,
-        "volume": 15808500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 116.85,
-        "high": 118.18,
-        "low": 115.93,
-        "close": 117.35,
-        "volume": 15919200
-      },
       {
         "date": "2025-11-20",
         "open": 117.98,
@@ -7400,23 +7363,63 @@
         "low": 169.21,
         "close": 170.59,
         "volume": 11474700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 169.53,
+        "high": 170.25,
+        "low": 166.45,
+        "close": 166.87,
+        "volume": 14286200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 167.46,
+        "high": 169.47,
+        "low": 166.23,
+        "close": 167.21,
+        "volume": 11955200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 165.92,
+        "high": 166.96,
+        "low": 160.55,
+        "close": 160.58,
+        "volume": 18122000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 161.33,
+        "high": 162.07,
+        "low": 158.6,
+        "close": 158.93,
+        "volume": 12263500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 158.83,
+        "high": 161.53,
+        "low": 158.6,
+        "close": 159.99,
+        "volume": 18670900
       }
     ],
     "news": [
-      {
-        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
-        "type": "STORY"
-      },
       {
         "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
         "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
         "type": "STORY"
       },
       {
@@ -7551,18 +7554,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.53,
-        "industryAvg": 9.73
+        "value": 17.19,
+        "industryAvg": 9.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.81,
-        "industryAvg": 0.96
+        "value": 1.77,
+        "industryAvg": 0.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.64,
-        "industryAvg": 1.6
+        "value": 2.59,
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",
@@ -7577,17 +7580,17 @@
       {
         "metric": "Gross Margin",
         "value": 24.21,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 26.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.540000000000003,
-        "industryAvg": 24.759999999999998
+        "industryAvg": 24.779999999999998
       },
       {
         "metric": "Net Margin",
         "value": 13.950000000000001,
-        "industryAvg": 9.83
+        "industryAvg": 9.85
       }
     ]
   }

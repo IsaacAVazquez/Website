@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6978,
-      "ttmPe": 13.58,
-      "marketCap": 184887840000,
-      "psRatio": 4.29,
-      "pbRatio": 6.08,
-      "pegRatio": 0.1
+      "ttmPe": 11.81,
+      "marketCap": 160735680000,
+      "psRatio": 3.73,
+      "pbRatio": 5.29,
+      "pegRatio": 0.08
     },
     "profitability": {
       "roe": 4.31,
@@ -6188,57 +6188,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.25,
-      "costOfEquity": 18.61,
+      "wacc": 16.869999999999997,
+      "costOfEquity": 18.39,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 40,
-      "beta": 1.7429,
-      "marketCap": 184887840000
+      "beta": 1.6938,
+      "marketCap": 160735680000
     },
     "beta": {
-      "beta5y": 1.7429
+      "beta5y": 1.6938
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 176.63,
-        "high": 178.83,
-        "low": 173.03,
-        "close": 174.5,
-        "volume": 9526100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 171.78,
-        "high": 175.69,
-        "low": 171.4,
-        "close": 173.98,
-        "volume": 7949900
-      },
-      {
-        "date": "2025-11-17",
-        "open": 172.8,
-        "high": 174.84,
-        "low": 165.17,
-        "close": 166.75,
-        "volume": 10211100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 164.89,
-        "high": 166.79,
-        "low": 161.39,
-        "close": 165.06,
-        "volume": 11073200
-      },
-      {
-        "date": "2025-11-19",
-        "open": 164.69,
-        "high": 167.51,
-        "low": 164.11,
-        "close": 166.11,
-        "volume": 8176500
-      },
       {
         "date": "2025-11-20",
         "open": 167.13,
@@ -8214,6 +8174,46 @@
         "low": 167.2,
         "close": 172.47,
         "volume": 10420900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 169.24,
+        "high": 172.92,
+        "low": 168.1,
+        "close": 168.52,
+        "volume": 11865600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 169.1,
+        "high": 171,
+        "low": 162.46,
+        "close": 166.67,
+        "volume": 10996600
+      },
+      {
+        "date": "2026-11-18",
+        "open": 167.01,
+        "high": 167.31,
+        "low": 158.57,
+        "close": 159.81,
+        "volume": 9183400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 163.69,
+        "high": 170.77,
+        "low": 160.39,
+        "close": 162.01,
+        "volume": 13435700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 161.32,
+        "high": 162.54,
+        "low": 149.13,
+        "close": 149.94,
+        "volume": 22221700
       }
     ],
     "news": [
@@ -8234,19 +8234,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
-        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
-        "publisher": "Just Auto",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "24997f10-d503-364e-97df-c293ed247214",
         "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
+        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
+        "publisher": "Just Auto",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
         "type": "STORY"
       },
       {
@@ -8365,23 +8365,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.58,
-        "industryAvg": 20.8
+        "value": 11.81,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.29,
-        "industryAvg": 10.18
+        "value": 3.73,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.08,
-        "industryAvg": 9.1
+        "value": 5.29,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 4.31,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8391,7 +8391,7 @@
       {
         "metric": "Gross Margin",
         "value": 50.74999999999999,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8401,7 +8401,7 @@
       {
         "metric": "Net Margin",
         "value": 12.120000000000001,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

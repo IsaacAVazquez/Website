@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1792,
-      "ttmPe": 28.62,
-      "marketCap": 264252335640,
-      "psRatio": 5.92,
-      "pbRatio": 5.08,
-      "pegRatio": 2.54
+      "ttmPe": 24.85,
+      "marketCap": 229445450620,
+      "psRatio": 5.14,
+      "pbRatio": 4.41,
+      "pegRatio": 2.21
     },
     "profitability": {
       "roe": 4.96,
@@ -6276,57 +6276,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.97,
-      "costOfEquity": 13.459999999999999,
+      "wacc": 13.209999999999999,
+      "costOfEquity": 13.79,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.0764,
-      "marketCap": 264252335640
+      "beta": 1.1169,
+      "marketCap": 229445450620
     },
     "beta": {
-      "beta5y": 1.0764
+      "beta5y": 1.1169
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 253.4,
-        "high": 254.63,
-        "low": 251.81,
-        "close": 251.86,
-        "volume": 832200
-      },
-      {
-        "date": "2025-11-14",
-        "open": 243.63,
-        "high": 247.26,
-        "low": 243.08,
-        "close": 245.03,
-        "volume": 2523000
-      },
-      {
-        "date": "2025-11-17",
-        "open": 242.65,
-        "high": 242.81,
-        "low": 237.25,
-        "close": 238.9,
-        "volume": 2410400
-      },
-      {
-        "date": "2025-11-18",
-        "open": 238.55,
-        "high": 240.44,
-        "low": 236.31,
-        "close": 237.99,
-        "volume": 1399600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 239.59,
-        "high": 240.05,
-        "low": 236.64,
-        "close": 237.97,
-        "volume": 1183600
-      },
       {
         "date": "2025-11-20",
         "open": 240.66,
@@ -8302,6 +8262,46 @@
         "low": 234.61,
         "close": 234.9,
         "volume": 2055900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 235.47,
+        "high": 236.26,
+        "low": 233.21,
+        "close": 233.83,
+        "volume": 1815300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 226.83,
+        "high": 227.96,
+        "low": 220.96,
+        "close": 222.51,
+        "volume": 2202800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 217.41,
+        "high": 218.11,
+        "low": 210.2,
+        "close": 210.76,
+        "volume": 3280900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 206.22,
+        "high": 208.02,
+        "low": 203.04,
+        "close": 203.23,
+        "volume": 3126400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 201.21,
+        "high": 203.61,
+        "low": 198.45,
+        "close": 198.93,
+        "volume": 2914600
       }
     ],
     "news": [
@@ -8346,6 +8346,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
+        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
         "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
         "publisher": "Bloomberg",
@@ -8362,14 +8370,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
-        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
         "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
         "publisher": "Business Wire",
@@ -8378,11 +8378,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc7431e9-96a0-3d51-92a5-36d5bd27848d",
-        "title": "SAP SE (SAP) Earns Bullish Call From Wells Fargo, Cited as ‘Defensive Horizontal Story’",
-        "publisher": "Insider Monkey",
+        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
+        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/sap-se-sap-earns-bullish-040315005.html",
+        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
         "type": "STORY"
       }
     ],
@@ -8444,60 +8444,60 @@
         "totalPay": 2392885
       },
       {
-        "name": "Mr. Thomas Saueressig",
-        "title": "Member of Executive Board",
-        "age": 40,
-        "yearBorn": 1985,
-        "totalPay": 2802933
-      },
-      {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
         "totalPay": 2836636
+      },
+      {
+        "name": "Ms. Nina Strabner L.L.M.",
+        "title": "Head of People Transformation Management & Works Council Europe Rep Member of Supervisory Board",
+        "age": 44,
+        "yearBorn": 1981,
+        "totalPay": 320175
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.62,
-        "industryAvg": 28.15
+        "value": 24.85,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.92,
-        "industryAvg": 4.85
+        "value": 5.14,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.08,
-        "industryAvg": 5.18
+        "value": 4.41,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -0.72
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 2.96,
-        "industryAvg": -0.4
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 73.13,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -0.98
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

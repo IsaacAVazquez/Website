@@ -1,10 +1,10 @@
 {
   "symbol": "ABNB",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.1854,
-      "ttmPe": 82.88,
-      "marketCap": 106866700000,
-      "psRatio": 7.67,
-      "pbRatio": 11.48,
+      "ttmPe": 82.46,
+      "marketCap": 106323900000,
+      "psRatio": 7.63,
+      "pbRatio": 11.42,
       "pegRatio": 1.08
     },
     "profitability": {
@@ -5715,57 +5715,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.469999999999999,
-      "costOfEquity": 14.760000000000002,
+      "wacc": 14.14,
+      "costOfEquity": 14.42,
       "costOfDebt": 1.87,
       "taxRate": 13,
-      "beta": 1.2427,
-      "marketCap": 106866700000
+      "beta": 1.1982,
+      "marketCap": 106323900000
     },
     "beta": {
-      "beta5y": 1.2427
+      "beta5y": 1.1982
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 121.505,
-        "high": 123.4,
-        "low": 121,
-        "close": 121.19,
-        "volume": 3716000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 120.92,
-        "high": 122.75,
-        "low": 119.604,
-        "close": 122.02,
-        "volume": 4119700
-      },
-      {
-        "date": "2025-11-17",
-        "open": 120.74,
-        "high": 121.33,
-        "low": 116.701,
-        "close": 117.6,
-        "volume": 5187100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 116.59,
-        "high": 118.54,
-        "low": 115.39,
-        "close": 115.42,
-        "volume": 5547200
-      },
-      {
-        "date": "2025-11-19",
-        "open": 115.5,
-        "high": 115.91,
-        "low": 114.075,
-        "close": 114.44,
-        "volume": 4516100
-      },
       {
         "date": "2025-11-20",
         "open": 114.51,
@@ -7741,6 +7701,46 @@
         "low": 181.72,
         "close": 186.78,
         "volume": 4972500
+      },
+      {
+        "date": "2026-11-16",
+        "open": 184.28,
+        "high": 189,
+        "low": 180.55,
+        "close": 186.19,
+        "volume": 7216300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 185.29,
+        "high": 186.77,
+        "low": 180.45,
+        "close": 180.94,
+        "volume": 3471400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 179.29,
+        "high": 183.33,
+        "low": 179.064,
+        "close": 180.21,
+        "volume": 3228700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 182.8,
+        "high": 182.8,
+        "low": 172.52,
+        "close": 172.79,
+        "volume": 5778600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 173.705,
+        "high": 175.74,
+        "low": 169.12,
+        "close": 170.36,
+        "volume": 5255400
       }
     ],
     "news": [
@@ -7761,19 +7761,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
-        "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
         "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
+        "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
         "type": "STORY"
       },
       {
@@ -7886,43 +7886,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 82.88,
-        "industryAvg": 18.06
+        "value": 82.46,
+        "industryAvg": 14.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.67,
-        "industryAvg": 3.39
+        "value": 7.63,
+        "industryAvg": 2.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.48,
-        "industryAvg": 5.18
+        "value": 11.42,
+        "industryAvg": 3.42
       },
       {
         "metric": "ROE",
         "value": 22.09,
-        "industryAvg": 34.67
+        "industryAvg": 34.58
       },
       {
         "metric": "ROA",
         "value": 7.12,
-        "industryAvg": 8.76
+        "industryAvg": 8.75
       },
       {
         "metric": "Gross Margin",
         "value": 86.63,
-        "industryAvg": 52.59
+        "industryAvg": 52.53
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.550000000000004,
-        "industryAvg": 29.049999999999997
+        "industryAvg": 29.020000000000003
       },
       {
         "metric": "Net Margin",
         "value": 38.82,
-        "industryAvg": 17.23
+        "industryAvg": 17.21
       }
     ]
   }

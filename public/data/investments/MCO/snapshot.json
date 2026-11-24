@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 30.97,
-      "marketCap": 87625927620,
-      "psRatio": 10.72,
-      "pbRatio": 26.81,
-      "pegRatio": 1.74
+      "ttmPe": 28.45,
+      "marketCap": 80492742603,
+      "psRatio": 9.85,
+      "pbRatio": 24.63,
+      "pegRatio": 1.6
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,57 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.94,
-      "costOfEquity": 15.079999999999998,
+      "wacc": 13.59,
+      "costOfEquity": 14.799999999999999,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2868,
-      "marketCap": 87625927620
+      "beta": 1.2431,
+      "marketCap": 80492742603
     },
     "beta": {
-      "beta5y": 1.2868
+      "beta5y": 1.2431
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 490.27,
-        "high": 493.64,
-        "low": 485.31,
-        "close": 490.77,
-        "volume": 827100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 490.09,
-        "high": 490.47,
-        "low": 478.58,
-        "close": 479.48,
-        "volume": 756100
-      },
-      {
-        "date": "2025-11-17",
-        "open": 479.48,
-        "high": 481.04,
-        "low": 470.92,
-        "close": 472.12,
-        "volume": 774600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 468.93,
-        "high": 473.35,
-        "low": 466.4,
-        "close": 470.16,
-        "volume": 680700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 470.54,
-        "high": 474.44,
-        "low": 468.05,
-        "close": 472.86,
-        "volume": 695000
-      },
       {
         "date": "2025-11-20",
         "open": 478.03,
@@ -8658,6 +8618,46 @@
         "low": 505.67,
         "close": 508.2,
         "volume": 545300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 505.63,
+        "high": 510.76,
+        "low": 503.78,
+        "close": 506.28,
+        "volume": 691500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 499.56,
+        "high": 501.88,
+        "low": 480.56,
+        "close": 484.41,
+        "volume": 1101300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 480.84,
+        "high": 485.3,
+        "low": 474.88,
+        "close": 481.29,
+        "volume": 785400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 480.03,
+        "high": 481.34,
+        "low": 471.01,
+        "close": 471.84,
+        "volume": 783600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 475.18,
+        "high": 480.31,
+        "low": 465.43,
+        "close": 466.83,
+        "volume": 871100
       }
     ],
     "news": [
@@ -8694,19 +8694,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
-        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
         "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
+        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
         "type": "STORY"
       },
       {
@@ -8726,19 +8726,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
-        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
         "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
+        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
         "type": "STORY"
       }
     ],
@@ -8803,18 +8803,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.97,
-        "industryAvg": 26.85
+        "value": 28.45,
+        "industryAvg": 25.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.72,
-        "industryAvg": 8.29
+        "value": 9.85,
+        "industryAvg": 7.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.81,
-        "industryAvg": 4.64
+        "value": 24.63,
+        "industryAvg": 4.35
       },
       {
         "metric": "ROE",

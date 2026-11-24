@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-11-16T14:02:31.292Z",
-  "sourceAsOf": "2026-11-02",
+  "generatedAt": "2026-11-23T16:32:03.906Z",
+  "sourceAsOf": "2026-11-16",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 40,
-    "disapprove": 57.8,
-    "net": -17.8
+    "approve": 36.4,
+    "disapprove": 60.5,
+    "net": -24.1
   },
   "approvalTrend": [
     {
       "date": "2025-11-15",
-      "approve": 41.8,
-      "disapprove": 55
+      "approve": 42.3,
+      "disapprove": 54
     },
     {
       "date": "2025-12-15",
@@ -57,9 +57,204 @@
       "date": "2026-10-15",
       "approve": 36.5,
       "disapprove": 62
+    },
+    {
+      "date": "2026-11-15",
+      "approve": 36.4,
+      "disapprove": 60.5
     }
   ],
   "approvalPolls": [
+    {
+      "id": "appdonips45a4215e",
+      "pollster": "Ipsos",
+      "sponsor": "Reuters",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-16",
+      "sampleSize": 1521,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 32,
+      "disapprove": 66,
+      "unsure": 2
+    },
+    {
+      "id": "appdonyou6913201b",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-16",
+      "sampleSize": 1628,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 35,
+      "disapprove": 61,
+      "unsure": 4
+    },
+    {
+      "id": "appdonech181be440",
+      "pollster": "Echelon Insights",
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-16",
+      "sampleSize": 1027,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 36,
+      "disapprove": 63,
+      "unsure": 1
+    },
+    {
+      "id": "appdoneme80339688",
+      "pollster": "Emerson College",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-16",
+      "sampleSize": 1000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 37.3,
+      "disapprove": 54.1,
+      "unsure": 8.6
+    },
+    {
+      "id": "appdonrmgbb354cbc",
+      "pollster": "RMG Research",
+      "sponsor": "Napolitan Institute",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-16",
+      "sampleSize": 2000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 58,
+      "unsure": 3
+    },
+    {
+      "id": "appdonmor5d540bf2",
+      "pollster": "Morning Consult",
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-15",
+      "sampleSize": 2203,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 40,
+      "disapprove": 58,
+      "unsure": 2
+    },
+    {
+      "id": "appdonverd846e0e2",
+      "pollster": "Verasight",
+      "sponsor": "Strength In Numbers",
+      "startDate": "2026-11-11",
+      "endDate": "2026-11-13",
+      "sampleSize": 1403,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 32,
+      "disapprove": 66,
+      "unsure": 2
+    },
+    {
+      "id": "appdonthe9e7d6157",
+      "pollster": "The Rainey Center",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-12",
+      "sampleSize": 1001,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 60,
+      "unsure": 1
+    },
+    {
+      "id": "appdonyou2d56a2c2",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-11",
+      "sampleSize": 1685,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 32,
+      "disapprove": 63,
+      "unsure": 5
+    },
+    {
+      "id": "appdonips03a82cf3",
+      "pollster": "Ipsos",
+      "sponsor": "Reuters",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-09",
+      "sampleSize": 1705,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 32,
+      "disapprove": 65,
+      "unsure": 3
+    },
+    {
+      "id": "appdonmora140cb74",
+      "pollster": "Morning Consult",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-08",
+      "sampleSize": 2200,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 40,
+      "disapprove": 57,
+      "unsure": 3
+    },
+    {
+      "id": "appdonglob56ad910",
+      "pollster": "Global Strategy Group",
+      "sponsor": "Navigator Research",
+      "startDate": "2026-10-28",
+      "endDate": "2026-11-08",
+      "sampleSize": 3000,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 37,
+      "disapprove": 63,
+      "unsure": 0
+    },
+    {
+      "id": "appdonyoube43ac46",
+      "pollster": "YouGov Blue",
+      "sponsor": "Democracy Corps",
+      "startDate": "2026-10-29",
+      "endDate": "2026-11-06",
+      "sampleSize": 1339,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 61,
+      "unsure": 0
+    },
+    {
+      "id": "appdonj.l59671df7",
+      "pollster": "J.L. Partners",
+      "startDate": "2026-11-03",
+      "endDate": "2026-11-03",
+      "sampleSize": 1000,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 39,
+      "disapprove": 52,
+      "unsure": 9
+    },
     {
       "id": "appdonrmgb3a47853",
       "pollster": "RMG Research",
@@ -278,195 +473,6 @@
       "approve": 43.1,
       "disapprove": 54.3,
       "unsure": 2.6
-    },
-    {
-      "id": "appdonquic94c3045",
-      "pollster": "Quinnipiac University",
-      "startDate": "2026-06-18",
-      "endDate": "2026-06-22",
-      "sampleSize": 1165,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 55,
-      "unsure": 7
-    },
-    {
-      "id": "appdonj.l5a345c41",
-      "pollster": "J.L. Partners",
-      "sponsor": "Daily Mail",
-      "startDate": "2026-06-19",
-      "endDate": "2026-06-21",
-      "sampleSize": 1042,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 47,
-      "disapprove": 53,
-      "unsure": 0
-    },
-    {
-      "id": "appdonameea0e73fc",
-      "pollster": "American Research Group",
-      "startDate": "2026-06-16",
-      "endDate": "2026-06-20",
-      "sampleSize": 1006,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 30,
-      "disapprove": 67,
-      "unsure": 3
-    },
-    {
-      "id": "appdonyoub00f2735",
-      "pollster": "YouGov",
-      "sponsor": "CBS News",
-      "startDate": "2026-06-17",
-      "endDate": "2026-06-19",
-      "sampleSize": 2519,
-      "sampleType": "A",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 62,
-      "unsure": 0
-    },
-    {
-      "id": "appdonrmg0715e331",
-      "pollster": "RMG Research",
-      "sponsor": "Napolitan Institute",
-      "startDate": "2026-06-10",
-      "endDate": "2026-06-18",
-      "sampleSize": 3000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 43,
-      "disapprove": 55,
-      "unsure": 2
-    },
-    {
-      "id": "appdonqua1fbaf73b",
-      "pollster": "Quantus Insights",
-      "startDate": "2026-06-16",
-      "endDate": "2026-06-17",
-      "sampleSize": 1000,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 43,
-      "disapprove": 56,
-      "unsure": 1
-    },
-    {
-      "id": "appdonap-6dc2cc83",
-      "pollster": "AP-NORC",
-      "startDate": "2026-06-11",
-      "endDate": "2026-06-17",
-      "sampleSize": 3040,
-      "sampleType": "A",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 37,
-      "disapprove": 62,
-      "unsure": 1
-    },
-    {
-      "id": "appdonthe259afea8",
-      "pollster": "The Bullfinch Group",
-      "sponsor": "The Independent Center",
-      "startDate": "2026-06-12",
-      "endDate": "2026-06-16",
-      "sampleSize": 1000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 42,
-      "disapprove": 56,
-      "unsure": 2
-    },
-    {
-      "id": "appdonipsb35d6ff5",
-      "pollster": "Ipsos",
-      "sponsor": "Reuters",
-      "startDate": "2026-06-12",
-      "endDate": "2026-06-15",
-      "sampleSize": 1195,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 40,
-      "disapprove": 60,
-      "unsure": 0
-    },
-    {
-      "id": "appdonyouf5029f98",
-      "pollster": "YouGov",
-      "sponsor": "The Economist",
-      "startDate": "2026-06-13",
-      "endDate": "2026-06-15",
-      "sampleSize": 1403,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 41,
-      "disapprove": 56,
-      "unsure": 3
-    },
-    {
-      "id": "appdonbea7035f2d9",
-      "pollster": "Beacon Research/Shaw & Co. Research",
-      "sponsor": "Fox News",
-      "startDate": "2026-06-12",
-      "endDate": "2026-06-15",
-      "sampleSize": 1002,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 39,
-      "disapprove": 60,
-      "unsure": 1
-    },
-    {
-      "id": "appdonmar846f107b",
-      "pollster": "Marquette University Law School",
-      "startDate": "2026-06-09",
-      "endDate": "2026-06-15",
-      "sampleSize": 1514,
-      "sampleType": "A",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 38,
-      "disapprove": 62,
-      "unsure": 0
-    },
-    {
-      "id": "appdonmor53d7f039",
-      "pollster": "Morning Consult",
-      "startDate": "2026-06-12",
-      "endDate": "2026-06-15",
-      "sampleSize": 2200,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 43.1,
-      "disapprove": 53.4,
-      "unsure": 3.5
-    },
-    {
-      "id": "appdonech98624dac",
-      "pollster": "Echelon Insights",
-      "startDate": "2026-06-11",
-      "endDate": "2026-06-14",
-      "sampleSize": 1012,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 40,
-      "disapprove": 59,
-      "unsure": 1
     }
   ],
   "genericBallotAvg": {
@@ -8652,15 +8658,15 @@
       "candidates": [
         {
           "name": "Amanda Janoo",
-          "support": 44.8
+          "support": 48.7
         },
         {
           "name": "Phil Scott",
-          "support": 44.8
+          "support": 45
         }
       ],
-      "margin": 0,
-      "pollCount": 4,
+      "margin": 3.7,
+      "pollCount": 3,
       "lastPolled": "2026-10-31",
       "polls": [
         {
@@ -8744,30 +8750,6 @@
             {
               "name": "June Goodband",
               "support": 0
-            }
-          ]
-        },
-        {
-          "id": "gov202unicd35e38f",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-07-15",
-          "endDate": "2026-07-20",
-          "sampleSize": 954,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Phil Scott",
-              "support": 44
-            },
-            {
-              "name": "Amanda Janoo",
-              "support": 33
-            },
-            {
-              "name": "June Goodband",
-              "support": 2
             }
           ]
         }

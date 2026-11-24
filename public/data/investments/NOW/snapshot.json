@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.3877,
-      "ttmPe": 72.54,
-      "marketCap": 104476725119.34,
-      "psRatio": 6.77,
-      "pbRatio": 7.98,
+      "ttmPe": 65.28,
+      "marketCap": 94024900939.41,
+      "psRatio": 6.09,
+      "pbRatio": 7.18,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5623,57 +5623,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.83,
-      "costOfEquity": 12.72,
+      "wacc": 11.97,
+      "costOfEquity": 12.98,
       "costOfDebt": 0.96,
       "taxRate": 25,
-      "beta": 0.9811,
-      "marketCap": 104476725119.34
+      "beta": 1.0136,
+      "marketCap": 94024900939.41
     },
     "beta": {
-      "beta5y": 0.9811
+      "beta5y": 1.0136
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 170.476,
-        "high": 172.6,
-        "low": 168.796,
-        "close": 169.938,
-        "volume": 8147000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 168.398,
-        "high": 173.064,
-        "low": 167.81,
-        "close": 170.086,
-        "volume": 5917500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 169.384,
-        "high": 170.696,
-        "low": 165.642,
-        "close": 167.158,
-        "volume": 5701000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 165.416,
-        "high": 167,
-        "low": 162.322,
-        "close": 163.594,
-        "volume": 7640500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 163.332,
-        "high": 164.228,
-        "low": 161.514,
-        "close": 163.29,
-        "volume": 9577000
-      },
       {
         "date": "2025-11-20",
         "open": 166.1,
@@ -7648,7 +7608,47 @@
         "high": 102.86,
         "low": 99.7,
         "close": 102.25,
-        "volume": 8452600
+        "volume": 8471800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 101.3,
+        "high": 101.94,
+        "low": 98.88,
+        "close": 99.37,
+        "volume": 12700100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 98,
+        "high": 99,
+        "low": 92.03,
+        "close": 92.9,
+        "volume": 23974800
+      },
+      {
+        "date": "2026-11-18",
+        "open": 93,
+        "high": 93.6,
+        "low": 89.17,
+        "close": 90.59,
+        "volume": 19923500
+      },
+      {
+        "date": "2026-11-19",
+        "open": 91,
+        "high": 93.74,
+        "low": 88.13,
+        "close": 88.87,
+        "volume": 21101000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 87.34,
+        "high": 93.16,
+        "low": 87.34,
+        "close": 87.61,
+        "volume": 19612800
       }
     ],
     "news": [
@@ -7717,19 +7717,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
-        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
         "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
+        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
         "type": "STORY"
       }
     ],
@@ -7796,43 +7796,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 72.54,
-        "industryAvg": 28.15
+        "value": 65.28,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.77,
-        "industryAvg": 4.85
+        "value": 6.09,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.98,
-        "industryAvg": 5.18
+        "value": 7.18,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 2.16,
-        "industryAvg": -0.72
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 0.8699999999999999,
-        "industryAvg": -0.4
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 70.50999999999999,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.48,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 6.75,
-        "industryAvg": -0.98
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

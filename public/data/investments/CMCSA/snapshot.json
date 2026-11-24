@@ -1,10 +1,10 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 3.153,
-      "ttmPe": 7.87,
-      "marketCap": 88018657120,
+      "ttmPe": 7.88,
+      "marketCap": 88231605484,
       "psRatio": 0.72,
       "pbRatio": 0.95,
       "pegRatio": 1.1
@@ -5763,57 +5763,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.7299999999999995,
-      "costOfEquity": 10.59,
+      "wacc": 5.510000000000001,
+      "costOfEquity": 10.13,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 24,
-      "beta": 0.7061,
-      "marketCap": 88018657120
+      "beta": 0.6496,
+      "marketCap": 88231605484
     },
     "beta": {
-      "beta5y": 0.7061
+      "beta5y": 0.6496
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 26.0169,
-        "high": 26.5042,
-        "low": 26.0169,
-        "close": 26.2137,
-        "volume": 34101960
-      },
-      {
-        "date": "2025-11-14",
-        "open": 26.2605,
-        "high": 26.4574,
-        "low": 25.5389,
-        "close": 25.7826,
-        "volume": 40374320
-      },
-      {
-        "date": "2025-11-17",
-        "open": 25.7826,
-        "high": 25.8857,
-        "low": 25.4452,
-        "close": 25.5108,
-        "volume": 28365982
-      },
-      {
-        "date": "2025-11-18",
-        "open": 25.642,
-        "high": 25.8201,
-        "low": 25.3702,
-        "close": 25.642,
-        "volume": 31200787
-      },
-      {
-        "date": "2025-11-19",
-        "open": 25.5764,
-        "high": 25.6514,
-        "low": 25.089,
-        "close": 25.1828,
-        "volume": 29309743
-      },
       {
         "date": "2025-11-20",
         "open": 25.2858,
@@ -7789,23 +7749,63 @@
         "low": 24.85,
         "close": 25.16,
         "volume": 18357300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 25.48,
+        "high": 25.81,
+        "low": 25.32,
+        "close": 25.6,
+        "volume": 30397400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 25.44,
+        "high": 25.84,
+        "low": 25.31,
+        "close": 25.31,
+        "volume": 30967500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 25.17,
+        "high": 25.53,
+        "low": 24.99,
+        "close": 25.24,
+        "volume": 19095400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 25.1,
+        "high": 25.1,
+        "low": 24.71,
+        "close": 24.86,
+        "volume": 27698900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 25.14,
+        "high": 25.49,
+        "low": 24.84,
+        "close": 24.9,
+        "volume": 34489400
       }
     ],
     "news": [
-      {
-        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
-        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
-        "type": "STORY"
-      },
       {
         "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
         "title": "Top Analyst Reports for Roche, Comcast & Eaton",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
+        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
         "type": "STORY"
       },
       {
@@ -7940,43 +7940,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.87,
-        "industryAvg": 12.64
+        "value": 7.88,
+        "industryAvg": 12.19
       },
       {
         "metric": "P/S Ratio",
         "value": 0.72,
-        "industryAvg": 1.12
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
         "value": 0.95,
-        "industryAvg": 1.57
+        "industryAvg": 1.48
       },
       {
         "metric": "ROE",
         "value": 3.7800000000000002,
-        "industryAvg": 8.12
+        "industryAvg": 8.16
       },
       {
         "metric": "ROA",
         "value": 1.34,
-        "industryAvg": 1.97
+        "industryAvg": 1.9800000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 74.35000000000001,
-        "industryAvg": 63.27
+        "industryAvg": 63.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.080000000000002,
-        "industryAvg": 33.379999999999995
+        "industryAvg": 33.44
       },
       {
         "metric": "Net Margin",
         "value": 11.77,
-        "industryAvg": 5.59
+        "industryAvg": 5.62
       }
     ]
   }

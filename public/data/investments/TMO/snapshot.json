@@ -1,10 +1,10 @@
 {
   "symbol": "TMO",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.9551,
-      "ttmPe": 37.86,
-      "pegRatio": 4.43,
-      "marketCap": 265371334683,
-      "psRatio": 5.6,
-      "pbRatio": 4.85
+      "ttmPe": 35.32,
+      "pegRatio": 4.14,
+      "marketCap": 247560607242,
+      "psRatio": 5.23,
+      "pbRatio": 4.52
     },
     "profitability": {
       "roe": 3.2,
@@ -5790,57 +5790,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.12,
-      "costOfEquity": 11.57,
+      "wacc": 9.84,
+      "costOfEquity": 11.35,
       "costOfDebt": 1.01,
       "taxRate": 17,
-      "beta": 0.8352,
-      "marketCap": 265371334683
+      "beta": 0.8086,
+      "marketCap": 247560607242
     },
     "beta": {
-      "beta5y": 0.8352
+      "beta5y": 0.8086
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 586.1,
-        "high": 598.52,
-        "low": 578.25,
-        "close": 580.13,
-        "volume": 2745400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 578.19,
-        "high": 584.33,
-        "low": 573,
-        "close": 578.71,
-        "volume": 1318000
-      },
-      {
-        "date": "2025-11-17",
-        "open": 575.65,
-        "high": 579.79,
-        "low": 566.59,
-        "close": 567.16,
-        "volume": 1624400
-      },
-      {
-        "date": "2025-11-18",
-        "open": 562.85,
-        "high": 578.22,
-        "low": 556.46,
-        "close": 576.03,
-        "volume": 1916000
-      },
-      {
-        "date": "2025-11-19",
-        "open": 574.62,
-        "high": 574.62,
-        "low": 567.21,
-        "close": 573.79,
-        "volume": 1247900
-      },
       {
         "date": "2025-11-20",
         "open": 573.35,
@@ -7816,23 +7776,63 @@
         "low": 689.71,
         "close": 700.22,
         "volume": 1837300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 699.08,
+        "high": 701.51,
+        "low": 687.92,
+        "close": 691.33,
+        "volume": 1606500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 690.01,
+        "high": 695.03,
+        "low": 683.62,
+        "close": 686.79,
+        "volume": 1583700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 680.78,
+        "high": 694.12,
+        "low": 680.29,
+        "close": 692.74,
+        "volume": 2075600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 698.23,
+        "high": 703.99,
+        "low": 686.23,
+        "close": 688.75,
+        "volume": 1980400
+      },
+      {
+        "date": "2026-11-20",
+        "open": 689.72,
+        "high": 692,
+        "low": 667.94,
+        "close": 669.54,
+        "volume": 2360600
       }
     ],
     "news": [
-      {
-        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
-        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
-        "type": "STORY"
-      },
       {
         "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
         "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
+        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
         "type": "STORY"
       },
       {
@@ -7958,28 +7958,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.86,
-        "industryAvg": 39.74
+        "value": 35.32,
+        "industryAvg": 37.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.6,
-        "industryAvg": 5.32
+        "value": 5.23,
+        "industryAvg": 4.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.85,
-        "industryAvg": 4.69
+        "value": 4.52,
+        "industryAvg": 4.37
       },
       {
         "metric": "ROE",
         "value": 3.2,
-        "industryAvg": 9.94
+        "industryAvg": 9.93
       },
       {
         "metric": "ROA",
         "value": 1.51,
-        "industryAvg": 4.91
+        "industryAvg": 4.9
       },
       {
         "metric": "Gross Margin",
@@ -7989,12 +7989,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.439999999999998,
-        "industryAvg": 21.44
+        "industryAvg": 21.42
       },
       {
         "metric": "Net Margin",
         "value": 14.180000000000001,
-        "industryAvg": 10.4
+        "industryAvg": 10.39
       }
     ]
   }

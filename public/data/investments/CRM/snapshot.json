@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 19.83,
-      "marketCap": 179060110000,
-      "psRatio": 4.08,
-      "pbRatio": 4.67,
-      "pegRatio": 0.17
+      "ttmPe": 16.71,
+      "marketCap": 150864130000,
+      "psRatio": 3.43,
+      "pbRatio": 3.93,
+      "pegRatio": 0.14
     },
     "profitability": {
       "roe": 9.71,
@@ -5557,57 +5557,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.030000000000001,
-      "costOfEquity": 14.63,
+      "wacc": 12.02,
+      "costOfEquity": 15.110000000000001,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2261,
-      "marketCap": 179060110000
+      "beta": 1.2867,
+      "marketCap": 150864130000
     },
     "beta": {
-      "beta5y": 1.2261
+      "beta5y": 1.2867
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 245.25,
-        "high": 245.9,
-        "low": 239.91,
-        "close": 240.43,
-        "volume": 5542100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 238.31,
-        "high": 245.18,
-        "low": 237.42,
-        "close": 243.66,
-        "volume": 5512900
-      },
-      {
-        "date": "2025-11-17",
-        "open": 242.07,
-        "high": 242.83,
-        "low": 235.59,
-        "close": 237.03,
-        "volume": 5280900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 236.24,
-        "high": 237.79,
-        "low": 230.27,
-        "close": 233.5,
-        "volume": 8045100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 232,
-        "high": 232.28,
-        "low": 225.06,
-        "close": 227.88,
-        "volume": 9710700
-      },
       {
         "date": "2025-11-20",
         "open": 229.25,
@@ -7583,6 +7543,46 @@
         "low": 215.58,
         "close": 217.84,
         "volume": 5047500
+      },
+      {
+        "date": "2026-11-16",
+        "open": 217.92,
+        "high": 219.2,
+        "low": 213.57,
+        "close": 214.83,
+        "volume": 5887800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 209.01,
+        "high": 211,
+        "low": 193.41,
+        "close": 194.52,
+        "volume": 13398300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 193.07,
+        "high": 193.5,
+        "low": 186.45,
+        "close": 190.4,
+        "volume": 10192200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 191.63,
+        "high": 195.39,
+        "low": 182.51,
+        "close": 183.31,
+        "volume": 7969700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 183.31,
+        "high": 189.72,
+        "low": 179.92,
+        "close": 180.62,
+        "volume": 8711600
       }
     ],
     "news": [
@@ -7619,19 +7619,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       },
       {
@@ -7651,23 +7651,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
-        "title": "3 S&P 500 Stocks Facing Headwinds",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3b4d0821-7c9c-3cf8-964d-d99cc9ab3503",
         "title": "Takeda Taps Salesforce (CRM) for AI-Driven Customer Experience Platform",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/takeda-taps-salesforce-crm-ai-173342909.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "dd9e1206-7f9f-30a5-8c2a-d095e81c7ffa",
+        "title": "3 S&P 500 Stocks Facing Headwinds",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/3-p-500-stocks-facing-043804051.html",
+        "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Andy White",
+        "title": "Senior Vice President of Technology"
+      },
       {
         "name": "Mr. Guy Wanger",
         "title": "Chief Accounting Officer",
@@ -7707,13 +7711,6 @@
         "totalPay": 3918008
       },
       {
-        "name": "Mr. Srinivas Tallapragada",
-        "title": "Special Advisor to the Chief Executive Officer",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 3139934
-      },
-      {
         "name": "Ms. Alexa Vignone",
         "title": "President & Chief Revenue Officer"
       },
@@ -7732,43 +7729,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.83,
-        "industryAvg": 28.15
+        "value": 16.71,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.08,
-        "industryAvg": 4.85
+        "value": 3.43,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.67,
-        "industryAvg": 5.18
+        "value": 3.93,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 9.71,
-        "industryAvg": -0.72
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": -0.4
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 76.64999999999999,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.81,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 31.080000000000002,
-        "industryAvg": -0.98
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

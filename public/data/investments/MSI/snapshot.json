@@ -1,10 +1,10 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.3707,
-      "ttmPe": 56.69,
-      "marketCap": 87913600000,
-      "psRatio": 6.98,
-      "pbRatio": 28.65,
+      "ttmPe": 55.7,
+      "marketCap": 86377760000,
+      "psRatio": 6.85,
+      "pbRatio": 28.15,
       "pegRatio": 3.66
     },
     "profitability": {
@@ -6877,57 +6877,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.59,
-      "costOfEquity": 11.77,
+      "wacc": 10.25,
+      "costOfEquity": 11.41,
       "costOfDebt": 1.09,
       "taxRate": 24,
-      "beta": 0.8569,
-      "marketCap": 87913600000
+      "beta": 0.8133,
+      "marketCap": 86377760000
     },
     "beta": {
-      "beta5y": 0.8569
+      "beta5y": 0.8133
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 390.72,
-        "high": 391.55,
-        "low": 382.09,
-        "close": 383.38,
-        "volume": 1341700
-      },
-      {
-        "date": "2025-11-14",
-        "open": 382.5,
-        "high": 384.95,
-        "low": 376.75,
-        "close": 379.98,
-        "volume": 2273800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 379.46,
-        "high": 381.49,
-        "low": 374.53,
-        "close": 377.69,
-        "volume": 1829500
-      },
-      {
-        "date": "2025-11-18",
-        "open": 377.21,
-        "high": 379.42,
-        "low": 371.56,
-        "close": 372.36,
-        "volume": 1599700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 371.16,
-        "high": 373.14,
-        "low": 368.17,
-        "close": 371.51,
-        "volume": 1231600
-      },
       {
         "date": "2025-11-20",
         "open": 375.38,
@@ -8903,6 +8863,46 @@
         "low": 527.76,
         "close": 531.2,
         "volume": 662100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 534,
+        "high": 540.75,
+        "low": 532.31,
+        "close": 534.17,
+        "volume": 1239300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 530.7,
+        "high": 535.57,
+        "low": 520.44,
+        "close": 526.15,
+        "volume": 916400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 523.3,
+        "high": 531.15,
+        "low": 518.47,
+        "close": 524.53,
+        "volume": 897200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 523.7,
+        "high": 526.65,
+        "low": 518.78,
+        "close": 521.92,
+        "volume": 1176600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 529.33,
+        "high": 531.11,
+        "low": 517.29,
+        "close": 520.21,
+        "volume": 1391500
       }
     ],
     "news": [
@@ -8915,11 +8915,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8931,19 +8931,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
         "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/market-chatter-motorola-solutions-reportedly-131403183.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8963,28 +8963,28 @@
         "type": "STORY"
       },
       {
+        "uuid": "6bb9845e-f29b-3d36-ab46-22c4f8fce1b7",
+        "title": "Motorola to acquire wireless-radio maker Silvus for $4.4bn",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/6bb9845e-f29b-3d36-ab46-22c4f8fce1b7/motorola-to-acquire.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e5cfdc65-d24d-3cc6-81aa-bae9f462c029",
+        "title": "Motorola Agrees to Acquire Radio Maker Silvus for $4.4 Billion",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/motorola-agrees-acquire-radio-maker-210344797.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
         "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
-        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
-        "publisher": "Reuters",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
-        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
-        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -9055,43 +9055,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.69,
-        "industryAvg": 23.12
+        "value": 55.7,
+        "industryAvg": 28.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.98,
-        "industryAvg": 3.58
+        "value": 6.85,
+        "industryAvg": 3.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.65,
-        "industryAvg": 4.85
+        "value": 28.15,
+        "industryAvg": 5.05
       },
       {
         "metric": "ROE",
         "value": 17.84,
-        "industryAvg": 22.770000000000003
+        "industryAvg": 23.330000000000002
       },
       {
         "metric": "ROA",
         "value": 2.54,
-        "industryAvg": 9.87
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 52.370000000000005,
-        "industryAvg": 48.18
+        "industryAvg": 48.25
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.96,
-        "industryAvg": 22.12
+        "industryAvg": 22.48
       },
       {
         "metric": "Net Margin",
         "value": 15.17,
-        "industryAvg": 15.939999999999998
+        "industryAvg": 16.25
       }
     ]
   }

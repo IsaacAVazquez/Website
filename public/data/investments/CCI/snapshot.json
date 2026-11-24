@@ -1,10 +1,10 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.9334,
-      "ttmPe": 23.09,
-      "marketCap": 38693580000,
-      "psRatio": 9.47,
-      "pbRatio": -11.3,
+      "ttmPe": 20.95,
+      "marketCap": 35102400000,
+      "psRatio": 8.6,
+      "pbRatio": -10.25,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5862,57 +5862,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.89,
-      "costOfEquity": 12.13,
+      "wacc": 7.539999999999999,
+      "costOfEquity": 11.99,
       "costOfDebt": 0.75,
       "taxRate": 2,
-      "beta": 0.9037,
-      "marketCap": 38693580000
+      "beta": 0.8892,
+      "marketCap": 35102400000
     },
     "beta": {
-      "beta5y": 0.9037
+      "beta5y": 0.8892
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 93.21,
-        "high": 93.24,
-        "low": 90.52,
-        "close": 90.61,
-        "volume": 3430200
-      },
-      {
-        "date": "2025-11-14",
-        "open": 91.43,
-        "high": 92.3,
-        "low": 90.37,
-        "close": 91.68,
-        "volume": 3279200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 91.7,
-        "high": 91.77,
-        "low": 90.2,
-        "close": 90.55,
-        "volume": 2335700
-      },
-      {
-        "date": "2025-11-18",
-        "open": 90.4,
-        "high": 91.8,
-        "low": 90.1,
-        "close": 91.04,
-        "volume": 2443200
-      },
-      {
-        "date": "2025-11-19",
-        "open": 91.23,
-        "high": 91.49,
-        "low": 89.47,
-        "close": 91.05,
-        "volume": 2177300
-      },
       {
         "date": "2025-11-20",
         "open": 90.85,
@@ -7888,23 +7848,63 @@
         "low": 89.37,
         "close": 90.83,
         "volume": 3041800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 91.55,
+        "high": 91.55,
+        "low": 89.18,
+        "close": 89.36,
+        "volume": 2509000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 88.25,
+        "high": 89.43,
+        "low": 83.86,
+        "close": 84.16,
+        "volume": 4662900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 83.49,
+        "high": 84.63,
+        "low": 81.47,
+        "close": 83.94,
+        "volume": 5332200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 82.68,
+        "high": 83.17,
+        "low": 81.12,
+        "close": 81.92,
+        "volume": 3789500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 82.7,
+        "high": 83.98,
+        "low": 82.28,
+        "close": 82.4,
+        "volume": 3041900
       }
     ],
     "news": [
-      {
-        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
-        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
-        "type": "STORY"
-      },
       {
         "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
         "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/keybanc-adjusts-price-target-crown-155131405.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
+        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
         "type": "STORY"
       },
       {
@@ -7940,14 +7940,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "02136891-8322-3d3a-9f1e-ea4e3fbd298f",
-        "title": "Crown Castle Insider Sold Shares Worth $850,960, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212235953.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
         "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
@@ -7961,6 +7953,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "02136891-8322-3d3a-9f1e-ea4e3fbd298f",
+        "title": "Crown Castle Insider Sold Shares Worth $850,960, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212235953.html",
         "type": "STORY"
       },
       {
@@ -8035,28 +8035,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.09,
-        "industryAvg": 36.77
+        "value": 20.95,
+        "industryAvg": 34.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.47,
-        "industryAvg": 6.82
+        "value": 8.6,
+        "industryAvg": 6.31
       },
       {
         "metric": "P/B Ratio",
-        "value": -11.3,
-        "industryAvg": 4.37
+        "value": -10.25,
+        "industryAvg": 4.08
       },
       {
         "metric": "ROE",
         "value": -8.459999999999999,
-        "industryAvg": 10.56
+        "industryAvg": 10.69
       },
       {
         "metric": "ROA",
         "value": 1.34,
-        "industryAvg": 3.19
+        "industryAvg": 3.2300000000000004
       },
       {
         "metric": "Gross Margin",
@@ -8066,12 +8066,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 64.22,
-        "industryAvg": 51.65
+        "industryAvg": 51.53
       },
       {
         "metric": "Net Margin",
         "value": 28.439999999999998,
-        "industryAvg": 17.32
+        "industryAvg": 17.57
       }
     ]
   }

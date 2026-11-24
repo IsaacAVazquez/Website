@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 24.86,
+      "ttmPe": 24.8,
       "pegRatio": 0.6,
-      "marketCap": 129271936431,
-      "psRatio": 3.44,
+      "marketCap": 128926323768,
+      "psRatio": 3.43,
       "pbRatio": 2.57
     },
     "profitability": {
@@ -5946,57 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.86,
-      "costOfEquity": 9.45,
+      "wacc": 7.720000000000001,
+      "costOfEquity": 9.28,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5599,
-      "marketCap": 129271936431
+      "beta": 0.5394,
+      "marketCap": 128926323768
     },
     "beta": {
-      "beta5y": 0.5599
+      "beta5y": 0.5394
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 95,
-        "high": 96.71,
-        "low": 94.64,
-        "close": 96.14,
-        "volume": 5284400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 95.81,
-        "high": 96.57,
-        "low": 95.14,
-        "close": 95.87,
-        "volume": 6324500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 95.82,
-        "high": 97.25,
-        "low": 95.8,
-        "close": 96.28,
-        "volume": 11087600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 99.97,
-        "high": 102.48,
-        "low": 99.41,
-        "close": 100.8,
-        "volume": 21965400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 100.99,
-        "high": 102.59,
-        "low": 99.97,
-        "close": 100.34,
-        "volume": 12429800
-      },
       {
         "date": "2025-11-20",
         "open": 100.37,
@@ -7972,23 +7932,63 @@
         "low": 101.41,
         "close": 102.86,
         "volume": 5257200
+      },
+      {
+        "date": "2026-11-16",
+        "open": 103.82,
+        "high": 104.49,
+        "low": 102.85,
+        "close": 102.88,
+        "volume": 6804700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 102.75,
+        "high": 103.84,
+        "low": 102.12,
+        "close": 102.32,
+        "volume": 5347100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 100.86,
+        "high": 102.46,
+        "low": 99.59,
+        "close": 100.72,
+        "volume": 6871900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 100.5,
+        "high": 101.5,
+        "low": 100,
+        "close": 100.61,
+        "volume": 5831000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 101.42,
+        "high": 102.61,
+        "low": 99.59,
+        "close": 99.94,
+        "volume": 9033700
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.86,
-        "industryAvg": 26.26
+        "value": 24.8,
+        "industryAvg": 26.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.44,
-        "industryAvg": 3.28
+        "value": 3.43,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
         "value": 2.57,
-        "industryAvg": 3.18
+        "industryAvg": 3.17
       },
       {
         "metric": "ROE",
@@ -8153,7 +8153,7 @@
       {
         "metric": "Net Margin",
         "value": 15.07,
-        "industryAvg": 9.15
+        "industryAvg": 9.16
       }
     ]
   }

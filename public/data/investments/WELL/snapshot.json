@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -45,9 +45,9 @@
     "fundamentals": {
       "ttmEps": -0.5799,
       "ttmPe": 141.68,
-      "marketCap": 178943595484,
-      "psRatio": 15.45,
-      "pbRatio": 3.68,
+      "marketCap": 175927774436,
+      "psRatio": 15.19,
+      "pbRatio": 3.62,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5559,57 +5559,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.100000000000001,
-      "costOfEquity": 11.19,
+      "wacc": 9.64,
+      "costOfEquity": 10.69,
       "costOfDebt": 0.91,
       "taxRate": 2,
-      "beta": 0.7828,
-      "marketCap": 178943595484
+      "beta": 0.7264,
+      "marketCap": 175927774436
     },
     "beta": {
-      "beta5y": 0.7828
+      "beta5y": 0.7264
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 192.14,
-        "high": 192.61,
-        "low": 190.11,
-        "close": 191.07,
-        "volume": 3181900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 192.45,
-        "high": 194.83,
-        "low": 191.53,
-        "close": 193.82,
-        "volume": 2794100
-      },
-      {
-        "date": "2025-11-17",
-        "open": 194.64,
-        "high": 197.43,
-        "low": 194.22,
-        "close": 197.27,
-        "volume": 5516700
-      },
-      {
-        "date": "2025-11-18",
-        "open": 197.99,
-        "high": 200.64,
-        "low": 197.37,
-        "close": 198.29,
-        "volume": 3990300
-      },
-      {
-        "date": "2025-11-19",
-        "open": 197.2,
-        "high": 199.65,
-        "low": 196.26,
-        "close": 196.9,
-        "volume": 2842000
-      },
       {
         "date": "2025-11-20",
         "open": 198.19,
@@ -7585,6 +7545,46 @@
         "low": 242.9,
         "close": 244.46,
         "volume": 1918600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 246.64,
+        "high": 247.46,
+        "low": 244.46,
+        "close": 244.65,
+        "volume": 2657100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 242.95,
+        "high": 246,
+        "low": 241.52,
+        "close": 245.76,
+        "volume": 3253100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 244.17,
+        "high": 248.29,
+        "low": 241.98,
+        "close": 247.25,
+        "volume": 4275000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 245.27,
+        "high": 247.25,
+        "low": 243.03,
+        "close": 243.19,
+        "volume": 3383600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 245.06,
+        "high": 246.75,
+        "low": 239.93,
+        "close": 240.34,
+        "volume": 3293900
       }
     ],
     "news": [
@@ -7621,14 +7621,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
-        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
         "title": "Why Camden Property Remains a Solid Hold in the Current Market",
         "publisher": "Zacks",
@@ -7637,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
-        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
+        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
+        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
         "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
         "type": "STORY"
       },
       {
@@ -7653,11 +7645,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
-        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
+        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
+        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
         "type": "STORY"
       },
       {
@@ -7666,6 +7658,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/welltower-nyse-well-increases-dividend-174407979.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
+        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
         "type": "STORY"
       }
     ],
@@ -7732,17 +7732,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 59.8
+        "industryAvg": 58.61
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.45,
-        "industryAvg": 9.32
+        "value": 15.19,
+        "industryAvg": 9.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.68,
-        "industryAvg": 2.79
+        "value": 3.62,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",

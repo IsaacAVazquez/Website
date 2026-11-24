@@ -1,10 +1,10 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.0357,
-      "ttmPe": 6438.94,
-      "marketCap": 235351250150,
-      "psRatio": 43.61,
-      "pbRatio": 46.13,
-      "pegRatio": 60.03
+      "ttmPe": 6639.5,
+      "marketCap": 242681980350,
+      "psRatio": 44.97,
+      "pbRatio": 47.57,
+      "pegRatio": 61.9
     },
     "profitability": {
       "roe": 0.11,
@@ -5980,57 +5980,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.91,
-      "costOfEquity": 13.96,
+      "wacc": 13.98,
+      "costOfEquity": 14.030000000000001,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.1407,
-      "marketCap": 235351250150
+      "beta": 1.1485,
+      "marketCap": 242681980350
     },
     "beta": {
-      "beta5y": 1.1407
+      "beta5y": 1.1485
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 135.2475,
-        "high": 135.9625,
-        "low": 131.535,
-        "close": 132.445,
-        "volume": 9624000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 130.6175,
-        "high": 136.01,
-        "low": 127.2625,
-        "close": 134.3875,
-        "volume": 7769200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 134.25,
-        "high": 135.1675,
-        "low": 131.645,
-        "close": 132.445,
-        "volume": 5581200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 131.205,
-        "high": 132.8325,
-        "low": 128.25,
-        "close": 128.4175,
-        "volume": 10292000
-      },
-      {
-        "date": "2025-11-19",
-        "open": 128.3425,
-        "high": 131.495,
-        "low": 127.3227,
-        "close": 130.1475,
-        "volume": 6087600
-      },
       {
         "date": "2025-11-20",
         "open": 133.14,
@@ -8005,7 +7965,47 @@
         "high": 236.17,
         "low": 219.355,
         "close": 226.61,
-        "volume": 6493900
+        "volume": 6575100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 223.8,
+        "high": 224.52,
+        "low": 218.422,
+        "close": 223.21,
+        "volume": 6353700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 224.21,
+        "high": 226,
+        "low": 213.65,
+        "close": 219.58,
+        "volume": 7885000
+      },
+      {
+        "date": "2026-11-18",
+        "open": 223.8,
+        "high": 240.18,
+        "low": 218.509,
+        "close": 237.03,
+        "volume": 12055800
+      },
+      {
+        "date": "2026-11-19",
+        "open": 246.89,
+        "high": 256.73,
+        "low": 239.7,
+        "close": 243.46,
+        "volume": 11597300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 237.375,
+        "high": 240.92,
+        "low": 227.3,
+        "close": 229.44,
+        "volume": 12798700
       }
     ],
     "news": [
@@ -8066,19 +8066,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
-        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef528610-24d6-3366-b150-fe969e479439",
         "title": "3 Top Cybersecurity Stocks to Buy in May",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
         "type": "STORY"
       },
       {
@@ -8148,43 +8148,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 6438.94,
-        "industryAvg": 31.02
+        "value": 6639.5,
+        "industryAvg": 25.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 43.61,
-        "industryAvg": 7.28
+        "value": 44.97,
+        "industryAvg": 9.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.13,
-        "industryAvg": 7.92
+        "value": 47.57,
+        "industryAvg": 7.22
       },
       {
         "metric": "ROE",
         "value": 0.11,
-        "industryAvg": 26.279999999999998
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": 0.05,
-        "industryAvg": 10.36
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
         "value": 74.57000000000001,
-        "industryAvg": 51.129999999999995
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 7.16,
-        "industryAvg": 36.78
+        "industryAvg": 37.11
       },
       {
         "metric": "Net Margin",
         "value": 0.36,
-        "industryAvg": 20.52
+        "industryAvg": 20.51
       }
     ]
   }

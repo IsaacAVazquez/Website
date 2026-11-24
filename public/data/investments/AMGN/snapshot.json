@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.2445,
-      "ttmPe": 27.15,
-      "pegRatio": 1.41,
-      "marketCap": 253247510000,
-      "psRatio": 6.51,
-      "pbRatio": 17.65
+      "ttmPe": 25.26,
+      "pegRatio": 1.31,
+      "marketCap": 235681240000,
+      "psRatio": 6.06,
+      "pbRatio": 16.42
     },
     "profitability": {
       "roe": 29.68,
@@ -5506,57 +5506,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.02,
-      "costOfEquity": 8.3,
+      "wacc": 7.109999999999999,
+      "costOfEquity": 8.51,
       "costOfDebt": 1.21,
       "taxRate": 18,
-      "beta": 0.4205,
-      "marketCap": 253247510000
+      "beta": 0.451,
+      "marketCap": 235681240000
     },
     "beta": {
-      "beta5y": 0.4205
+      "beta5y": 0.451
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 337.9,
-        "high": 345.84,
-        "low": 335.12,
-        "close": 336,
-        "volume": 3413500
-      },
-      {
-        "date": "2025-11-14",
-        "open": 336.74,
-        "high": 339.8,
-        "low": 330.35,
-        "close": 336.74,
-        "volume": 3310300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 337.64,
-        "high": 344.06,
-        "low": 336.83,
-        "close": 341.71,
-        "volume": 2996600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 343.73,
-        "high": 345.49,
-        "low": 339.3,
-        "close": 343.99,
-        "volume": 2966600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 343.47,
-        "high": 345.29,
-        "low": 340.02,
-        "close": 342.4,
-        "volume": 2129800
-      },
       {
         "date": "2025-11-20",
         "open": 344.52,
@@ -7532,6 +7492,46 @@
         "low": 462.22,
         "close": 465.67,
         "volume": 2122100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 472.75,
+        "high": 474.4,
+        "low": 461.72,
+        "close": 462.32,
+        "volume": 1924400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 455.52,
+        "high": 463.49,
+        "low": 453.03,
+        "close": 457.93,
+        "volume": 2034700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 453.53,
+        "high": 455.09,
+        "low": 441.63,
+        "close": 443.89,
+        "volume": 2583300
+      },
+      {
+        "date": "2026-11-19",
+        "open": 443.5,
+        "high": 444.27,
+        "low": 435.25,
+        "close": 438.82,
+        "volume": 2506500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 443.05,
+        "high": 445.49,
+        "low": 434.51,
+        "close": 435.64,
+        "volume": 4942300
       }
     ],
     "news": [
@@ -7568,19 +7568,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
-        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
         "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
+        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
         "type": "STORY"
       },
       {
@@ -7618,6 +7618,34 @@
     ],
     "officers": [
       {
+        "name": "Casey Capparelli",
+        "title": "Executive Director of Investor Relations"
+      },
+      {
+        "name": "Dr. James E. Bradner M.D.",
+        "title": "EVP of Research & Development, Artificial Intelligence and Data",
+        "age": 53,
+        "yearBorn": 1972,
+        "totalPay": 3840115
+      },
+      {
+        "name": "Mr. Esteban Santos",
+        "title": "Executive Vice President of Operations",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 3006074
+      },
+      {
+        "name": "Mr. Howard Y. Chang M.D., Ph.D.",
+        "title": "Senior VP of Global Research & Chief Scientific Officer"
+      },
+      {
+        "name": "Mr. Matthew C. Busch",
+        "title": "Chief Accounting Officer & VP of Finance",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
         "name": "Mr. Murdo Gordon",
         "title": "Executive Vice President of Global Markets and Policy",
         "age": 58,
@@ -7630,23 +7658,37 @@
         "age": 62,
         "yearBorn": 1963,
         "totalPay": 6693535
+      },
+      {
+        "name": "Mr. Scott Skellenger",
+        "title": "Senior VP & Chief Information Officer"
+      },
+      {
+        "name": "Mr. Sean Bruich",
+        "title": "SVP & Chief Technology Officer"
+      },
+      {
+        "name": "Mr. Thomas J. W. Dittrich",
+        "title": "Executive VP & CFO",
+        "age": 61,
+        "yearBorn": 1964
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.15,
-        "industryAvg": 30.77
+        "value": 25.26,
+        "industryAvg": 29.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.51,
-        "industryAvg": 5.23
+        "value": 6.06,
+        "industryAvg": 4.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.65,
-        "industryAvg": 6.43
+        "value": 16.42,
+        "industryAvg": 6.06
       },
       {
         "metric": "ROE",
@@ -7671,7 +7713,7 @@
       {
         "metric": "Net Margin",
         "value": 37.28,
-        "industryAvg": 15.89
+        "industryAvg": 15.9
       }
     ]
   }

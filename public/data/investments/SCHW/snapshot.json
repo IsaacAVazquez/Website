@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 15.86,
-      "marketCap": 160680523216,
-      "psRatio": 5.94,
-      "pbRatio": 3.12,
-      "pegRatio": 0.55
+      "ttmPe": 15.38,
+      "marketCap": 155807227072,
+      "psRatio": 5.76,
+      "pbRatio": 3.03,
+      "pegRatio": 0.53
     },
     "profitability": {
       "roe": 5.53,
@@ -6240,57 +6240,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.09,
-      "costOfEquity": 10.92,
+      "wacc": 8.61,
+      "costOfEquity": 10.37,
       "costOfDebt": 2.45,
       "taxRate": 23,
-      "beta": 0.7477,
-      "marketCap": 160680523216
+      "beta": 0.6859,
+      "marketCap": 155807227072
     },
     "beta": {
-      "beta5y": 0.7477
+      "beta5y": 0.6859
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 97.87,
-        "high": 98.26,
-        "low": 94.92,
-        "close": 95.36,
-        "volume": 8347600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 94.93,
-        "high": 95.63,
-        "low": 93.34,
-        "close": 94.39,
-        "volume": 9356800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 94.56,
-        "high": 94.58,
-        "low": 91.59,
-        "close": 91.91,
-        "volume": 9141200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 91.6,
-        "high": 93.35,
-        "low": 91.26,
-        "close": 92.28,
-        "volume": 8505800
-      },
-      {
-        "date": "2025-11-19",
-        "open": 92.02,
-        "high": 93.39,
-        "low": 91.6,
-        "close": 92.64,
-        "volume": 6193800
-      },
       {
         "date": "2025-11-20",
         "open": 93.59,
@@ -8266,6 +8226,46 @@
         "low": 89.76,
         "close": 92.98,
         "volume": 10086700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 92.6,
+        "high": 93.91,
+        "low": 92.07,
+        "close": 92.94,
+        "volume": 11077500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 92.18,
+        "high": 92.89,
+        "low": 90.13,
+        "close": 91.84,
+        "volume": 13348500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 92.4,
+        "high": 92.84,
+        "low": 91.67,
+        "close": 92.56,
+        "volume": 11220000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 93.1,
+        "high": 93.75,
+        "low": 91.46,
+        "close": 92.12,
+        "volume": 10423900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 92.67,
+        "high": 92.91,
+        "low": 89.81,
+        "close": 90.16,
+        "volume": 11707000
       }
     ],
     "news": [
@@ -8278,19 +8278,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
-        "title": "Tariffs, Trump, and Turmoil",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
         "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
+        "title": "Tariffs, Trump, and Turmoil",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
         "type": "STORY"
       },
       {
@@ -8334,19 +8334,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55850a15-58e4-37d9-8fbb-42d6dfddc03b",
-        "title": "TD Bank Quarterly Earnings Buoyed by Sale of Schwab Stake",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/55850a15-58e4-37d9-8fbb-42d6dfddc03b/td-bank-quarterly-earnings.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
         "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
+        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
         "type": "STORY"
       }
     ],
@@ -8411,23 +8411,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.86,
-        "industryAvg": 14.86
+        "value": 15.38,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.94,
-        "industryAvg": 2.05
+        "value": 5.76,
+        "industryAvg": 1.81
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.12,
-        "industryAvg": 2.4
+        "value": 3.03,
+        "industryAvg": 2.1
       },
       {
         "metric": "ROE",
         "value": 5.53,
-        "industryAvg": 15.840000000000002
+        "industryAvg": 15.879999999999999
       },
       {
         "metric": "ROA",
@@ -8436,16 +8436,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.07
+        "industryAvg": 15.120000000000001
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 6.370000000000001
       },
       {
         "metric": "Net Margin",
         "value": 39.2,
-        "industryAvg": 20.22
+        "industryAvg": 20.28
       }
     ]
   }

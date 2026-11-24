@@ -1,10 +1,10 @@
 {
   "symbol": "BSX",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.3613,
-      "ttmPe": 18.72,
+      "ttmPe": 18.48,
       "pegRatio": 1.17,
-      "marketCap": 63944391940,
-      "psRatio": 3.03,
-      "pbRatio": 2.49
+      "marketCap": 63134236748,
+      "psRatio": 3,
+      "pbRatio": 2.46
     },
     "profitability": {
       "roe": 2.3,
@@ -6853,57 +6853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.21,
-      "costOfEquity": 9.62,
+      "wacc": 8.07,
+      "costOfEquity": 9.47,
       "costOfDebt": 0.84,
       "taxRate": 21,
-      "beta": 0.5821,
-      "marketCap": 63944391940
+      "beta": 0.564,
+      "marketCap": 63134236748
     },
     "beta": {
-      "beta5y": 0.5821
+      "beta5y": 0.564
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 103.3,
-        "high": 105.65,
-        "low": 102.61,
-        "close": 104.98,
-        "volume": 10338000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 104.4,
-        "high": 104.62,
-        "low": 102.63,
-        "close": 102.69,
-        "volume": 9709100
-      },
-      {
-        "date": "2025-11-17",
-        "open": 102.27,
-        "high": 102.71,
-        "low": 101.26,
-        "close": 101.76,
-        "volume": 6765400
-      },
-      {
-        "date": "2025-11-18",
-        "open": 101.5,
-        "high": 101.9,
-        "low": 99.14,
-        "close": 99.22,
-        "volume": 10109400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 99.34,
-        "high": 99.44,
-        "low": 95.99,
-        "close": 97.01,
-        "volume": 16170100
-      },
       {
         "date": "2025-11-20",
         "open": 97.34,
@@ -8879,6 +8839,46 @@
         "low": 44.08,
         "close": 44.34,
         "volume": 9698300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 44.63,
+        "high": 44.86,
+        "low": 43.51,
+        "close": 43.69,
+        "volume": 16109300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 43.28,
+        "high": 43.83,
+        "low": 43.02,
+        "close": 43.03,
+        "volume": 12907400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 42.5,
+        "high": 44.32,
+        "low": 42.5,
+        "close": 43.64,
+        "volume": 13210700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 43.55,
+        "high": 44.05,
+        "low": 42.75,
+        "close": 42.99,
+        "volume": 15923900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 42.77,
+        "high": 43.23,
+        "low": 41.92,
+        "close": 41.98,
+        "volume": 15224700
       }
     ],
     "news": [
@@ -8899,19 +8899,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a042a14e-e4f0-3fab-bde6-907c05b8f8ff",
         "title": "Intelligent Bio Solutions Stock Drops Despite Key U.S. Patent Win",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/intelligent-bio-solutions-stock-drops-144800234.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {
@@ -9031,18 +9031,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.72,
-        "industryAvg": 26.26
+        "value": 18.48,
+        "industryAvg": 26.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.03,
-        "industryAvg": 3.28
+        "value": 3,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.49,
-        "industryAvg": 3.18
+        "value": 2.46,
+        "industryAvg": 3.17
       },
       {
         "metric": "ROE",
@@ -9067,7 +9067,7 @@
       {
         "metric": "Net Margin",
         "value": 11.33,
-        "industryAvg": 9.15
+        "industryAvg": 9.16
       }
     ]
   }

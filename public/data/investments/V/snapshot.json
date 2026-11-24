@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0196,
-      "ttmPe": 35.42,
-      "marketCap": 815614552224,
-      "psRatio": 17.77,
-      "pbRatio": 22.59,
-      "pegRatio": 2.5
+      "ttmPe": 33.43,
+      "marketCap": 769849258038,
+      "psRatio": 16.77,
+      "pbRatio": 21.32,
+      "pegRatio": 2.36
     },
     "profitability": {
       "roe": 16.3,
@@ -5785,57 +5785,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.9,
-      "costOfEquity": 11.18,
+      "wacc": 10.66,
+      "costOfEquity": 10.95,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 18,
-      "beta": 0.7805,
-      "marketCap": 815614552224
+      "beta": 0.7583,
+      "marketCap": 769849258038
     },
     "beta": {
-      "beta5y": 0.7805
+      "beta5y": 0.7583
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 339.04,
-        "high": 341.46,
-        "low": 335.6,
-        "close": 336.08,
-        "volume": 4961700
-      },
-      {
-        "date": "2025-11-14",
-        "open": 335.89,
-        "high": 336.08,
-        "low": 329.03,
-        "close": 330.02,
-        "volume": 6422300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 331.16,
-        "high": 333.36,
-        "low": 324.93,
-        "close": 325.75,
-        "volume": 6494800
-      },
-      {
-        "date": "2025-11-18",
-        "open": 324.5,
-        "high": 325,
-        "low": 318,
-        "close": 321.18,
-        "volume": 9170400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 321.52,
-        "high": 324.57,
-        "low": 319.87,
-        "close": 324.12,
-        "volume": 7066700
-      },
       {
         "date": "2025-11-20",
         "open": 324.12,
@@ -7811,6 +7771,46 @@
         "low": 422.59,
         "close": 425.76,
         "volume": 4641200
+      },
+      {
+        "date": "2026-11-16",
+        "open": 429.65,
+        "high": 430.99,
+        "low": 425.2,
+        "close": 426.46,
+        "volume": 7395300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 423.27,
+        "high": 425.19,
+        "low": 416.41,
+        "close": 416.77,
+        "volume": 5696200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 415.98,
+        "high": 417.9,
+        "low": 411.83,
+        "close": 415.22,
+        "volume": 7129400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 411.04,
+        "high": 413.51,
+        "low": 400.74,
+        "close": 402.25,
+        "volume": 8276200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 403.56,
+        "high": 408.74,
+        "low": 401.19,
+        "close": 401.87,
+        "volume": 8407600
       }
     ],
     "news": [
@@ -7855,19 +7855,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
-        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
         "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
         "publisher": "TipRanks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
+        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
         "type": "STORY"
       },
       {
@@ -7887,11 +7887,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
-        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
+        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
+        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
         "type": "STORY"
       }
     ],
@@ -7963,23 +7963,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.42,
-        "industryAvg": 23.41
+        "value": 33.43,
+        "industryAvg": 21.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.77,
-        "industryAvg": 5.52
+        "value": 16.77,
+        "industryAvg": 5.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 22.59,
-        "industryAvg": 6.04
+        "value": 21.32,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 16.3,
-        "industryAvg": 15.190000000000001
+        "industryAvg": 15.21
       },
       {
         "metric": "ROA",
@@ -7989,7 +7989,7 @@
       {
         "metric": "Gross Margin",
         "value": 82.17,
-        "industryAvg": 65.68
+        "industryAvg": 65.67
       },
       {
         "metric": "EBITDA Margin",
@@ -7999,7 +7999,7 @@
       {
         "metric": "Net Margin",
         "value": 47.86,
-        "industryAvg": 20.29
+        "industryAvg": 20.3
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 18.63,
+      "ttmPe": 19.22,
       "pegRatio": 7.61,
-      "marketCap": 34358215840,
-      "psRatio": 3.61,
-      "pbRatio": 10.4
+      "marketCap": 35439157780,
+      "psRatio": 3.73,
+      "pbRatio": 10.73
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,57 +6195,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.219999999999999,
-      "costOfEquity": 10.290000000000001,
+      "wacc": 8.04,
+      "costOfEquity": 9.99,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6684,
-      "marketCap": 34358215840
+      "beta": 0.6313,
+      "marketCap": 35439157780
     },
     "beta": {
-      "beta5y": 0.6684
+      "beta5y": 0.6313
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 121.08,
-        "high": 122.52,
-        "low": 120.69,
-        "close": 121.16,
-        "volume": 3826400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 121.06,
-        "high": 121.9,
-        "low": 120.33,
-        "close": 120.82,
-        "volume": 2964800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 120.71,
-        "high": 121.09,
-        "low": 118.35,
-        "close": 118.8,
-        "volume": 4714700
-      },
-      {
-        "date": "2025-11-18",
-        "open": 118.43,
-        "high": 119.13,
-        "low": 117.09,
-        "close": 118.14,
-        "volume": 6740900
-      },
-      {
-        "date": "2025-11-19",
-        "open": 118.69,
-        "high": 118.96,
-        "low": 115.25,
-        "close": 117.08,
-        "volume": 5415500
-      },
       {
         "date": "2025-11-20",
         "open": 117.4,
@@ -8221,6 +8181,46 @@
         "low": 82.27,
         "close": 83.82,
         "volume": 3152000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 84.26,
+        "high": 84.57,
+        "low": 83.18,
+        "close": 84.39,
+        "volume": 4088500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 84.05,
+        "high": 85.56,
+        "low": 83.05,
+        "close": 83.48,
+        "volume": 3396000
+      },
+      {
+        "date": "2026-11-18",
+        "open": 82.15,
+        "high": 86.58,
+        "low": 82.15,
+        "close": 85.57,
+        "volume": 4663600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 84.84,
+        "high": 85.13,
+        "low": 80.71,
+        "close": 80.79,
+        "volume": 4707600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 81.73,
+        "high": 83.08,
+        "low": 78.8,
+        "close": 79.11,
+        "volume": 6096800
       }
     ],
     "news": [
@@ -8249,19 +8249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
-        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
         "title": "Zoetis Declares Third Quarter 2025 Dividend",
         "publisher": "Business Wire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
+        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
         "type": "STORY"
       },
       {
@@ -8273,19 +8273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
         "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
         "publisher": "Business Wire",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8373,23 +8373,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.63,
-        "industryAvg": 37.72
+        "value": 19.22,
+        "industryAvg": 37.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.61,
-        "industryAvg": 2.42
+        "value": 3.73,
+        "industryAvg": 2.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.4,
-        "industryAvg": 2.57
+        "value": 10.73,
+        "industryAvg": 2.47
       },
       {
         "metric": "ROE",
         "value": 18.32,
-        "industryAvg": 1.39
+        "industryAvg": 1.4000000000000001
       },
       {
         "metric": "ROA",
@@ -8399,7 +8399,7 @@
       {
         "metric": "Gross Margin",
         "value": 70.81,
-        "industryAvg": 60.58
+        "industryAvg": 60.550000000000004
       },
       {
         "metric": "EBITDA Margin",
@@ -8409,7 +8409,7 @@
       {
         "metric": "Net Margin",
         "value": 24.72,
-        "industryAvg": 2.11
+        "industryAvg": 2.12
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 47.23,
-      "marketCap": 192842532035,
-      "psRatio": 13.89,
-      "pbRatio": 5.75,
-      "pegRatio": 0.29
+      "ttmPe": 41.05,
+      "marketCap": 167620897760,
+      "psRatio": 12.07,
+      "pbRatio": 5,
+      "pegRatio": 0.25
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,57 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.21,
-      "costOfEquity": 14.84,
+      "wacc": 14.52,
+      "costOfEquity": 15.260000000000002,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2546,
-      "marketCap": 192842532035
+      "beta": 1.3002,
+      "marketCap": 167620897760
     },
     "beta": {
-      "beta5y": 1.2546
+      "beta5y": 1.3002
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 239.64,
-        "high": 241.32,
-        "low": 235.44,
-        "close": 237.53,
-        "volume": 4897200
-      },
-      {
-        "date": "2025-11-14",
-        "open": 234.19,
-        "high": 237.05,
-        "low": 230.43,
-        "close": 234.89,
-        "volume": 3319600
-      },
-      {
-        "date": "2025-11-17",
-        "open": 233.03,
-        "high": 234.22,
-        "low": 227.78,
-        "close": 229.94,
-        "volume": 3885000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 229.85,
-        "high": 232.35,
-        "low": 227.72,
-        "close": 230.13,
-        "volume": 3953400
-      },
-      {
-        "date": "2025-11-19",
-        "open": 229.54,
-        "high": 234.4,
-        "low": 229.33,
-        "close": 232.2,
-        "volume": 2790300
-      },
       {
         "date": "2025-11-20",
         "open": 234.29,
@@ -8128,6 +8088,46 @@
         "low": 388.87,
         "close": 397.97,
         "volume": 3114600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 387.26,
+        "high": 389.35,
+        "low": 380.89,
+        "close": 383.17,
+        "volume": 4427800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 395.45,
+        "high": 395.45,
+        "low": 377.91,
+        "close": 383.67,
+        "volume": 4366700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 388.49,
+        "high": 390.02,
+        "low": 376.43,
+        "close": 381.98,
+        "volume": 3232300
+      },
+      {
+        "date": "2026-11-19",
+        "open": 392,
+        "high": 394.62,
+        "low": 373.49,
+        "close": 377.44,
+        "volume": 3243900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 371.32,
+        "high": 374.24,
+        "low": 343.94,
+        "close": 345.92,
+        "volume": 10199800
       }
     ],
     "news": [
@@ -8180,14 +8180,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
-        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
         "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
         "publisher": "Insider Monkey",
@@ -8196,11 +8188,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
-        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
+        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
+        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
         "type": "STORY"
       },
       {
@@ -8209,6 +8201,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
+        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
         "type": "STORY"
       }
     ],
@@ -8281,23 +8281,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.23,
-        "industryAvg": 20.8
+        "value": 41.05,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.89,
-        "industryAvg": 10.18
+        "value": 12.07,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.75,
-        "industryAvg": 9.1
+        "value": 5,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 3.9800000000000004,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8307,7 +8307,7 @@
       {
         "metric": "Gross Margin",
         "value": 67.32000000000001,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8317,7 +8317,7 @@
       {
         "metric": "Net Margin",
         "value": 33.32,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

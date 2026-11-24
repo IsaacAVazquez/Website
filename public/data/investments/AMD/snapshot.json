@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5991,
-      "ttmPe": 116.12,
-      "marketCap": 871585920000,
-      "psRatio": 19.18,
-      "pbRatio": 12.74,
-      "pegRatio": 1.25
+      "ttmPe": 92.28,
+      "marketCap": 692604480000,
+      "psRatio": 15.24,
+      "pbRatio": 10.13,
+      "pegRatio": 1
     },
     "profitability": {
       "roe": 3.58,
@@ -6209,57 +6209,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.39,
-      "costOfEquity": 24.63,
+      "wacc": 24.42,
+      "costOfEquity": 24.73,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 40,
-      "beta": 2.5231,
-      "marketCap": 871585920000
+      "beta": 2.4918,
+      "marketCap": 692604480000
     },
     "beta": {
-      "beta5y": 2.5231
+      "beta5y": 2.4918
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 251.9,
-        "high": 259.63,
-        "low": 246.06,
-        "close": 247.96,
-        "volume": 63178600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 240.11,
-        "high": 253.44,
-        "low": 235.08,
-        "close": 246.81,
-        "volume": 47655600
-      },
-      {
-        "date": "2025-11-17",
-        "open": 242.75,
-        "high": 248.77,
-        "low": 237.15,
-        "close": 240.52,
-        "volume": 37942200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 236.78,
-        "high": 238,
-        "low": 224.71,
-        "close": 230.29,
-        "volume": 45619900
-      },
-      {
-        "date": "2025-11-19",
-        "open": 230.26,
-        "high": 235.28,
-        "low": 219.71,
-        "close": 223.55,
-        "volume": 52093400
-      },
       {
         "date": "2025-11-20",
         "open": 232.7,
@@ -8234,7 +8194,47 @@
         "high": 571.14,
         "low": 520.01,
         "close": 534.06,
-        "volume": 49163200
+        "volume": 49387600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 503.45,
+        "high": 526.2,
+        "low": 501.3,
+        "close": 504.28,
+        "volume": 37115600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 512.12,
+        "high": 512.12,
+        "low": 480.5,
+        "close": 503.41,
+        "volume": 36294700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 509.89,
+        "high": 532.17,
+        "low": 495.2,
+        "close": 530.14,
+        "volume": 34028600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 542.17,
+        "high": 555.01,
+        "low": 470.56,
+        "close": 489.19,
+        "volume": 71660700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 471.73,
+        "high": 474.79,
+        "low": 418.76,
+        "close": 424.39,
+        "volume": 69989800
       }
     ],
     "news": [
@@ -8303,19 +8303,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
-        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
         "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
+        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
         "type": "VIDEO"
       }
     ],
@@ -8350,10 +8350,6 @@
         "totalPay": 2165455
       },
       {
-        "name": "Mr. Matthew D. Ramsay",
-        "title": "Vice President of Financial Strategy & Investor Relations"
-      },
-      {
         "name": "Mr. Paul Darren Grasby",
         "title": "Executive VP, Chief Sales Officer & President of EMEA",
         "age": 55,
@@ -8372,32 +8368,28 @@
         "age": 62,
         "yearBorn": 1963,
         "totalPay": 1976642
-      },
-      {
-        "name": "Ms. Ruth Cotter",
-        "title": "Senior VP & Chief Administrative Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 116.12,
-        "industryAvg": 20.8
+        "value": 92.28,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.18,
-        "industryAvg": 10.18
+        "value": 15.24,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.74,
-        "industryAvg": 9.1
+        "value": 10.13,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 3.58,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8407,7 +8399,7 @@
       {
         "metric": "Gross Margin",
         "value": 53.900000000000006,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8417,7 +8409,7 @@
       {
         "metric": "Net Margin",
         "value": 18.15,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

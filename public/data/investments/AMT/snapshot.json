@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 27,
-      "marketCap": 88953922080,
-      "psRatio": 8.08,
-      "pbRatio": 25.3,
+      "ttmPe": 25.95,
+      "marketCap": 85505124120,
+      "psRatio": 7.77,
+      "pbRatio": 24.31,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,57 +6462,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.91,
-      "costOfEquity": 11.58,
+      "wacc": 7.5600000000000005,
+      "costOfEquity": 11.19,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8332,
-      "marketCap": 88953922080
+      "beta": 0.7884,
+      "marketCap": 85505124120
     },
     "beta": {
-      "beta5y": 0.8332
+      "beta5y": 0.7884
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 183.02,
-        "high": 184.24,
-        "low": 180.85,
-        "close": 181.13,
-        "volume": 3072000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 182.85,
-        "high": 184.4,
-        "low": 179.61,
-        "close": 183.59,
-        "volume": 3807200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 183.69,
-        "high": 184.7,
-        "low": 179.96,
-        "close": 180.47,
-        "volume": 3253600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 180,
-        "high": 182.36,
-        "low": 178.94,
-        "close": 181.55,
-        "volume": 3436500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 181.54,
-        "high": 182.36,
-        "low": 178.92,
-        "close": 180.5,
-        "volume": 2673200
-      },
       {
         "date": "2025-11-20",
         "open": 180.5,
@@ -8488,6 +8448,46 @@
         "low": 189.27,
         "close": 191.64,
         "volume": 1384300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 193.68,
+        "high": 193.74,
+        "low": 190.13,
+        "close": 190.74,
+        "volume": 1583300
+      },
+      {
+        "date": "2026-11-17",
+        "open": 189.48,
+        "high": 190.74,
+        "low": 182.92,
+        "close": 183.18,
+        "volume": 2300500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 181.32,
+        "high": 186.57,
+        "low": 179.99,
+        "close": 184.82,
+        "volume": 3135000
+      },
+      {
+        "date": "2026-11-19",
+        "open": 182.89,
+        "high": 184.15,
+        "low": 179.96,
+        "close": 181.15,
+        "volume": 3784200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 183.29,
+        "high": 185.85,
+        "low": 182.86,
+        "close": 184.21,
+        "volume": 2770100
       }
     ],
     "news": [
@@ -8524,19 +8524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
         "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -8633,28 +8633,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27,
-        "industryAvg": 36.77
+        "value": 25.95,
+        "industryAvg": 34.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.08,
-        "industryAvg": 6.82
+        "value": 7.77,
+        "industryAvg": 6.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.3,
-        "industryAvg": 4.37
+        "value": 24.31,
+        "industryAvg": 4.08
       },
       {
         "metric": "ROE",
         "value": 21.17,
-        "industryAvg": 10.56
+        "industryAvg": 10.69
       },
       {
         "metric": "ROA",
         "value": 1.21,
-        "industryAvg": 3.19
+        "industryAvg": 3.2300000000000004
       },
       {
         "metric": "Gross Margin",
@@ -8664,12 +8664,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 64.03999999999999,
-        "industryAvg": 51.65
+        "industryAvg": 51.53
       },
       {
         "metric": "Net Margin",
         "value": 27.49,
-        "industryAvg": 17.32
+        "industryAvg": 17.57
       }
     ]
   }

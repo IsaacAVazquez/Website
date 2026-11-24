@@ -1,14 +1,11 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-20"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.1397,
-      "ttmPe": 11.81,
-      "marketCap": 94570600000,
-      "psRatio": 3.13,
-      "pbRatio": 1.42,
-      "pegRatio": 1.12
+      "ttmPe": 10.91,
+      "marketCap": 87325900000,
+      "psRatio": 2.89,
+      "pbRatio": 1.31,
+      "pegRatio": 1.04
     },
     "profitability": {
       "roe": 3.1300000000000003,
@@ -5833,57 +5830,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.93,
-      "costOfEquity": 13.059999999999999,
+      "wacc": 8.63,
+      "costOfEquity": 12.85,
       "costOfDebt": 4.53,
       "taxRate": 21,
-      "beta": 1.0244,
-      "marketCap": 94570600000
+      "beta": 0.9974,
+      "marketCap": 87325900000
     },
     "beta": {
-      "beta5y": 1.0244
+      "beta5y": 0.9974
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 47.73,
-        "high": 48.02,
-        "low": 47.07,
-        "close": 47.31,
-        "volume": 6287900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 47.19,
-        "high": 47.38,
-        "low": 46.67,
-        "close": 47.1,
-        "volume": 6121500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 46.9,
-        "high": 46.99,
-        "low": 45.27,
-        "close": 45.47,
-        "volume": 7832100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 45.27,
-        "high": 46.34,
-        "low": 45.02,
-        "close": 45.92,
-        "volume": 8035200
-      },
-      {
-        "date": "2025-11-19",
-        "open": 45.88,
-        "high": 46.84,
-        "low": 45.8,
-        "close": 46.8,
-        "volume": 8899100
-      },
       {
         "date": "2025-11-20",
         "open": 47.2,
@@ -7859,6 +7816,46 @@
         "low": 60.33,
         "close": 60.99,
         "volume": 4033900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 61.3,
+        "high": 61.3,
+        "low": 60.1,
+        "close": 60.43,
+        "volume": 5641100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 60.13,
+        "high": 60.46,
+        "low": 58.87,
+        "close": 59.18,
+        "volume": 6379300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 58.85,
+        "high": 59.23,
+        "low": 58.23,
+        "close": 58.28,
+        "volume": 5309900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 58.37,
+        "high": 58.62,
+        "low": 56.76,
+        "close": 57.26,
+        "volume": 5766600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 57.55,
+        "high": 58.08,
+        "low": 55.86,
+        "close": 56.05,
+        "volume": 9169300
       }
     ],
     "news": [
@@ -7927,19 +7924,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d31b2fb1-3c25-3cf4-ab04-90ffb7d23d8d",
-        "title": "TD Cowen Initiates U.S. Bancorp at Buy With $60 Price Target",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/td-cowen-initiates-u-bancorp-100544819.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c4ace91-bde0-3d00-ad69-392883db971c",
         "title": "Oppenheimer Adjusts Price Target on U.S. Bancorp to $63 From $59, Maintains Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/oppenheimer-adjusts-price-target-u-104520418.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d31b2fb1-3c25-3cf4-ab04-90ffb7d23d8d",
+        "title": "TD Cowen Initiates U.S. Bancorp at Buy With $60 Price Target",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/td-cowen-initiates-u-bancorp-100544819.html",
         "type": "STORY"
       }
     ],
@@ -8004,23 +8001,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.57,
-        "industryAvg": 11.31
+        "value": 10.91,
+        "industryAvg": 10.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.13,
-        "industryAvg": 2.9
+        "value": 2.89,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.37,
-        "industryAvg": 1.23
+        "value": 1.31,
+        "industryAvg": 1.2
       },
       {
         "metric": "ROE",
-        "value": 3.15,
-        "industryAvg": 10.209999999999999
+        "value": 3.1300000000000003,
+        "industryAvg": 10.41
       },
       {
         "metric": "ROA",
@@ -8029,8 +8026,8 @@
       },
       {
         "metric": "Net Margin",
-        "value": 27.3,
-        "industryAvg": 24.59
+        "value": 26.36,
+        "industryAvg": 24.91
       }
     ]
   }

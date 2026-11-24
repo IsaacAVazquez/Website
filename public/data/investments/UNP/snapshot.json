@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.8245,
-      "ttmPe": 23.72,
-      "marketCap": 180681719400,
-      "psRatio": 6.85,
-      "pbRatio": 8.21,
-      "pegRatio": 1.5
+      "ttmPe": 22.66,
+      "marketCap": 172621722910,
+      "psRatio": 6.55,
+      "pbRatio": 7.84,
+      "pegRatio": 1.44
     },
     "profitability": {
       "roe": 9.73,
@@ -5159,57 +5159,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.02,
-      "costOfEquity": 11.62,
+      "wacc": 9.94,
+      "costOfEquity": 11.600000000000001,
       "costOfDebt": 1,
       "taxRate": 24,
-      "beta": 0.8389,
-      "marketCap": 180681719400
+      "beta": 0.838,
+      "marketCap": 172621722910
     },
     "beta": {
-      "beta5y": 0.8389
+      "beta5y": 0.838
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 222.39,
-        "high": 223.62,
-        "low": 220.95,
-        "close": 221.48,
-        "volume": 2682200
-      },
-      {
-        "date": "2025-11-14",
-        "open": 221.72,
-        "high": 224.23,
-        "low": 220.42,
-        "close": 223.02,
-        "volume": 2886400
-      },
-      {
-        "date": "2025-11-17",
-        "open": 222.85,
-        "high": 223.69,
-        "low": 220.87,
-        "close": 221,
-        "volume": 2921100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 221.71,
-        "high": 221.97,
-        "low": 219.89,
-        "close": 220.82,
-        "volume": 3863100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 221.31,
-        "high": 221.99,
-        "low": 219.97,
-        "close": 221.17,
-        "volume": 3396500
-      },
       {
         "date": "2025-11-20",
         "open": 221.56,
@@ -7185,6 +7145,46 @@
         "low": 301.42,
         "close": 302.44,
         "volume": 2563500
+      },
+      {
+        "date": "2026-11-16",
+        "open": 303.95,
+        "high": 306.66,
+        "low": 303.28,
+        "close": 303.71,
+        "volume": 4211100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 301.18,
+        "high": 303.3,
+        "low": 296.07,
+        "close": 297.03,
+        "volume": 3158700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 297.27,
+        "high": 303.2,
+        "low": 295,
+        "close": 300.9,
+        "volume": 3068600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 300.21,
+        "high": 300.56,
+        "low": 289.67,
+        "close": 290.63,
+        "volume": 4030300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 293.64,
+        "high": 295.67,
+        "low": 286.37,
+        "close": 287.29,
+        "volume": 4278400
       }
     ],
     "news": [
@@ -7221,14 +7221,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dbb50989-5ece-3897-80fa-8dc913bc3bc2",
         "title": "Why Railroad Stocks Are Moving Higher Today",
         "publisher": "Motley Fool",
@@ -7237,11 +7229,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "55e29cc4-a1c7-3570-a4d4-4e9fb736b1a2",
         "title": "Some Class I railroads take fresh look at mergers",
         "publisher": "FreightWaves",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/class-railroads-fresh-look-mergers-150000401.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       },
       {
@@ -7258,14 +7266,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       }
     ],
@@ -7336,23 +7336,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.72,
-        "industryAvg": 26
+        "value": 22.66,
+        "industryAvg": 24.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.85,
-        "industryAvg": 5.89
+        "value": 6.55,
+        "industryAvg": 5.63
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.21,
-        "industryAvg": 4.45
+        "value": 7.84,
+        "industryAvg": 4.29
       },
       {
         "metric": "ROE",
         "value": 9.73,
-        "industryAvg": 11.84
+        "industryAvg": 11.83
       },
       {
         "metric": "ROA",
@@ -7362,17 +7362,17 @@
       {
         "metric": "Gross Margin",
         "value": 45.82,
-        "industryAvg": 36.32
+        "industryAvg": 36.3
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.15,
-        "industryAvg": 43.59
+        "industryAvg": 43.55
       },
       {
         "metric": "Net Margin",
         "value": 28.849999999999998,
-        "industryAvg": 17.19
+        "industryAvg": 17.18
       }
     ]
   }

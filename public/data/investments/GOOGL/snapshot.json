@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.1588,
-      "ttmPe": 15.59,
-      "marketCap": 3672217800000,
-      "psRatio": 7.8,
-      "pbRatio": 5.42,
+      "ttmPe": 14.74,
+      "marketCap": 3472317360000,
+      "psRatio": 7.37,
+      "pbRatio": 5.12,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -6098,57 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.99,
-      "costOfEquity": 14.510000000000002,
+      "wacc": 13.88,
+      "costOfEquity": 14.42,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 18,
-      "beta": 1.2106,
-      "marketCap": 3672217800000
+      "beta": 1.1982,
+      "marketCap": 3472317360000
     },
     "beta": {
-      "beta5y": 1.2106
+      "beta5y": 1.1982
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 282.34,
-        "high": 282.84,
-        "low": 277.24,
-        "close": 278.57,
-        "volume": 29494000
-      },
-      {
-        "date": "2025-11-14",
-        "open": 271.41,
-        "high": 278.56,
-        "low": 270.7,
-        "close": 276.41,
-        "volume": 31647200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 285.78,
-        "high": 293.95,
-        "low": 283.57,
-        "close": 285.02,
-        "volume": 52670200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 287.92,
-        "high": 288.8,
-        "low": 278.2,
-        "close": 284.28,
-        "volume": 49158700
-      },
-      {
-        "date": "2025-11-19",
-        "open": 287.16,
-        "high": 303.81,
-        "low": 286.63,
-        "close": 292.81,
-        "volume": 68198900
-      },
       {
         "date": "2025-11-20",
         "open": 304.54,
@@ -8123,7 +8083,47 @@
         "high": 304.97,
         "low": 293.44,
         "close": 295.77,
-        "volume": 30712800
+        "volume": 30798600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 293.81,
+        "high": 294.14,
+        "low": 282.96,
+        "close": 283.72,
+        "volume": 34747200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 283.4,
+        "high": 284.09,
+        "low": 278.46,
+        "close": 280.2,
+        "volume": 32175900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 282.75,
+        "high": 284.97,
+        "low": 279.69,
+        "close": 282.44,
+        "volume": 27401800
+      },
+      {
+        "date": "2026-11-19",
+        "open": 294.3,
+        "high": 295.43,
+        "low": 272.36,
+        "close": 272.66,
+        "volume": 49718500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 274.5,
+        "high": 283.15,
+        "low": 264.22,
+        "close": 265.29,
+        "volume": 57302800
       }
     ],
     "news": [
@@ -8144,14 +8144,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
         "title": "3 Cheap Tech Stocks to Buy Right Now",
         "publisher": "Motley Fool",
@@ -8168,19 +8160,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
         "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
-        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
         "type": "STORY"
       },
       {
@@ -8192,11 +8184,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
-        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
+        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
+        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
+        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
         "type": "STORY"
       },
       {
@@ -8278,43 +8278,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.59,
-        "industryAvg": 16.44
+        "value": 14.74,
+        "industryAvg": 15.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.8,
-        "industryAvg": 7.03
+        "value": 7.37,
+        "industryAvg": 6.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.42,
-        "industryAvg": 5.13
+        "value": 5.12,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",
         "value": 3.9699999999999998,
-        "industryAvg": 38.84
+        "industryAvg": 38.97
       },
       {
         "metric": "ROA",
         "value": 2.7199999999999998,
-        "industryAvg": 25.77
+        "industryAvg": 25.81
       },
       {
         "metric": "Gross Margin",
         "value": 59.699999999999996,
-        "industryAvg": 62.4
+        "industryAvg": 62.38
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.68,
-        "industryAvg": 61.370000000000005
+        "industryAvg": 61.58
       },
       {
         "metric": "Net Margin",
         "value": 20.51,
-        "industryAvg": 44.89
+        "industryAvg": 45.050000000000004
       }
     ]
   }

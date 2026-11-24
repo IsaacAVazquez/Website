@@ -1,10 +1,10 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 25.3345,
-      "ttmPe": 18.95,
-      "marketCap": 47518020000,
-      "psRatio": 5.63,
-      "pbRatio": 2.48,
-      "pegRatio": 0.58
+      "ttmPe": 18.27,
+      "marketCap": 45833040000,
+      "psRatio": 5.43,
+      "pbRatio": 2.39,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 2.56,
@@ -6085,57 +6085,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.64,
-      "costOfEquity": 10.209999999999999,
+      "wacc": 8.48,
+      "costOfEquity": 10.08,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 15,
-      "beta": 0.656,
-      "marketCap": 47518020000
+      "beta": 0.6441,
+      "marketCap": 45833040000
     },
     "beta": {
-      "beta5y": 0.656
+      "beta5y": 0.6441
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 453.47,
-        "high": 454.66,
-        "low": 446.86,
-        "close": 447.75,
-        "volume": 859400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 446.89,
-        "high": 451.05,
-        "low": 441.38,
-        "close": 449.5,
-        "volume": 874500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 448.66,
-        "high": 449.97,
-        "low": 443.5,
-        "close": 443.88,
-        "volume": 652100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 443.4,
-        "high": 448.64,
-        "low": 442.23,
-        "close": 444.41,
-        "volume": 1071000
-      },
-      {
-        "date": "2025-11-19",
-        "open": 442.07,
-        "high": 445.58,
-        "low": 437.4,
-        "close": 444.78,
-        "volume": 1021100
-      },
       {
         "date": "2025-11-20",
         "open": 448.45,
@@ -8111,6 +8071,46 @@
         "low": 478.34,
         "close": 479.98,
         "volume": 524700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 485.5,
+        "high": 487.47,
+        "low": 482.14,
+        "close": 483.72,
+        "volume": 595700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 479.13,
+        "high": 480.23,
+        "low": 471.62,
+        "close": 471.92,
+        "volume": 755100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 468.89,
+        "high": 474.72,
+        "low": 466.63,
+        "close": 470.87,
+        "volume": 568100
+      },
+      {
+        "date": "2026-11-19",
+        "open": 471.6,
+        "high": 471.6,
+        "low": 462.86,
+        "close": 462.96,
+        "volume": 687200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 466.82,
+        "high": 476.75,
+        "low": 458.83,
+        "close": 459.83,
+        "volume": 1292800
       }
     ],
     "news": [
@@ -8139,19 +8139,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
-        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
+        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
+        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
-        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
+        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
         "type": "STORY"
       },
       {
@@ -8163,11 +8155,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
-        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
-        "publisher": "Simply Wall St.",
+        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
+        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
+        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
         "type": "STORY"
       },
       {
@@ -8176,6 +8168,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/stifel-adjusts-price-target-roper-095800472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
+        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
         "type": "STORY"
       },
       {
@@ -8257,43 +8257,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.95,
-        "industryAvg": 28.25
+        "value": 18.27,
+        "industryAvg": 22.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.63,
-        "industryAvg": 4.86
+        "value": 5.43,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.48,
-        "industryAvg": 5.19
+        "value": 2.39,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",
         "value": 2.56,
-        "industryAvg": -0.72
+        "industryAvg": -0.73
       },
       {
         "metric": "ROA",
         "value": 1.39,
-        "industryAvg": -0.4
+        "industryAvg": -0.41000000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 70.11,
-        "industryAvg": 63.51
+        "industryAvg": 63.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.11,
-        "industryAvg": 17.299999999999997
+        "industryAvg": 17.28
       },
       {
         "metric": "Net Margin",
         "value": 22.32,
-        "industryAvg": -0.98
+        "industryAvg": -0.9900000000000001
       }
     ]
   }

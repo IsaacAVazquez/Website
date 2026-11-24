@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 12.17,
-      "marketCap": 353195914206,
-      "psRatio": 2.99,
-      "pbRatio": 1.19,
+      "ttmPe": 11.22,
+      "marketCap": 325643586912,
+      "psRatio": 2.76,
+      "pbRatio": 1.1,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5757,57 +5757,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.77,
-      "costOfEquity": 14.34,
+      "wacc": 8.450000000000001,
+      "costOfEquity": 14.11,
       "costOfDebt": 4.68,
       "taxRate": 23,
-      "beta": 1.1907,
-      "marketCap": 353195914206
+      "beta": 1.1554,
+      "marketCap": 325643586912
     },
     "beta": {
-      "beta5y": 1.1907
+      "beta5y": 1.1554
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 53.79,
-        "high": 54.21,
-        "low": 52.77,
-        "close": 52.87,
-        "volume": 37716100
-      },
-      {
-        "date": "2025-11-14",
-        "open": 52.86,
-        "high": 52.9,
-        "low": 52.03,
-        "close": 52.61,
-        "volume": 32363100
-      },
-      {
-        "date": "2025-11-17",
-        "open": 52.58,
-        "high": 52.58,
-        "low": 51.39,
-        "close": 51.48,
-        "volume": 35546800
-      },
-      {
-        "date": "2025-11-18",
-        "open": 51.28,
-        "high": 52.18,
-        "low": 51.15,
-        "close": 51.64,
-        "volume": 35189500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 51.67,
-        "high": 52.49,
-        "low": 51.67,
-        "close": 52.02,
-        "volume": 28112300
-      },
       {
         "date": "2025-11-20",
         "open": 52.5,
@@ -7782,24 +7742,64 @@
         "high": 51.05,
         "low": 50.43,
         "close": 51.02,
-        "volume": 19994700
+        "volume": 20008100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 50.85,
+        "high": 50.9,
+        "low": 49.63,
+        "close": 50.08,
+        "volume": 31071500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 49.8,
+        "high": 50.16,
+        "low": 49.08,
+        "close": 49.44,
+        "volume": 34937900
+      },
+      {
+        "date": "2026-11-18",
+        "open": 49.2,
+        "high": 49.49,
+        "low": 48.74,
+        "close": 48.91,
+        "volume": 40036300
+      },
+      {
+        "date": "2026-11-19",
+        "open": 49.31,
+        "high": 49.37,
+        "low": 48.05,
+        "close": 48.57,
+        "volume": 35760900
+      },
+      {
+        "date": "2026-11-20",
+        "open": 48.45,
+        "high": 48.77,
+        "low": 46.88,
+        "close": 47.04,
+        "volume": 49962500
       }
     ],
     "news": [
-      {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
       {
         "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
         "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -7935,33 +7935,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.17,
-        "industryAvg": 13.17
+        "value": 11.22,
+        "industryAvg": 11.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.99,
-        "industryAvg": 3.64
+        "value": 2.76,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.19,
-        "industryAvg": 1.66
+        "value": 1.1,
+        "industryAvg": 1.45
       },
       {
         "metric": "ROE",
         "value": 2.7,
-        "industryAvg": 12.6
+        "industryAvg": 12.559999999999999
       },
       {
         "metric": "ROA",
         "value": 0.24,
-        "industryAvg": 0.9400000000000001
+        "industryAvg": 0.9299999999999999
       },
       {
         "metric": "Net Margin",
         "value": 21.83,
-        "industryAvg": 27.73
+        "industryAvg": 27.67
       }
     ]
   }

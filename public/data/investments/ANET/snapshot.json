@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7236,
-      "ttmPe": 55.49,
-      "marketCap": 260601756000,
-      "psRatio": 21.92,
-      "pbRatio": 15.85,
-      "pegRatio": 0.67
+      "ttmPe": 52.08,
+      "marketCap": 244597128000,
+      "psRatio": 20.57,
+      "pbRatio": 14.87,
+      "pegRatio": 0.63
     },
     "profitability": {
       "roe": 9.99,
@@ -5487,49 +5487,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5991
+      "beta5y": 1.5475
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 134.43,
-        "high": 135.58,
-        "low": 129.17,
-        "close": 130.3,
-        "volume": 10471400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 127.06,
-        "high": 135.37,
-        "low": 125.36,
-        "close": 131.37,
-        "volume": 10672500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 131.35,
-        "high": 133.32,
-        "low": 125.4,
-        "close": 127.26,
-        "volume": 12455900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 125.75,
-        "high": 127.55,
-        "low": 122.08,
-        "close": 123.45,
-        "volume": 12561100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 123.05,
-        "high": 126.57,
-        "low": 122.9,
-        "close": 124.81,
-        "volume": 7703500
-      },
       {
         "date": "2025-11-20",
         "open": 129.89,
@@ -7505,6 +7465,46 @@
         "low": 195.26,
         "close": 197.29,
         "volume": 8608800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 188.94,
+        "high": 191.08,
+        "low": 184.44,
+        "close": 187.02,
+        "volume": 7784500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 189.91,
+        "high": 191.63,
+        "low": 183.12,
+        "close": 186.42,
+        "volume": 6445200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 189.22,
+        "high": 195.23,
+        "low": 182.425,
+        "close": 193.94,
+        "volume": 7260800
+      },
+      {
+        "date": "2026-11-19",
+        "open": 197.67,
+        "high": 200.42,
+        "low": 189.56,
+        "close": 189.59,
+        "volume": 6644800
+      },
+      {
+        "date": "2026-11-20",
+        "open": 185.09,
+        "high": 185.82,
+        "low": 165.41,
+        "close": 167.62,
+        "volume": 13831800
       }
     ],
     "news": [
@@ -7541,19 +7541,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
-        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
         "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
+        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
         "type": "STORY"
       },
       {
@@ -7648,28 +7648,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.49,
-        "industryAvg": 16.74
+        "value": 52.08,
+        "industryAvg": 7.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 21.92,
-        "industryAvg": 2.57
+        "value": 20.57,
+        "industryAvg": 1.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.85,
-        "industryAvg": 6.24
+        "value": 14.87,
+        "industryAvg": 3.46
       },
       {
         "metric": "ROE",
         "value": 9.99,
-        "industryAvg": 54.96
+        "industryAvg": 55.03
       },
       {
         "metric": "ROA",
         "value": 6.370000000000001,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 16.61
       },
       {
         "metric": "Gross Margin",
@@ -7679,12 +7679,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 45.550000000000004,
-        "industryAvg": 18.81
+        "industryAvg": 18.83
       },
       {
         "metric": "Net Margin",
         "value": 42.66,
-        "industryAvg": 13.84
+        "industryAvg": 13.87
       }
     ]
   }

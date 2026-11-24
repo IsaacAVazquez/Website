@@ -1,10 +1,10 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -2.3911,
       "ttmPe": 3518.87,
-      "marketCap": 316794600000,
-      "psRatio": 5.29,
-      "pbRatio": 2.76,
+      "marketCap": 272296800000,
+      "psRatio": 4.55,
+      "pbRatio": 2.37,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6198,57 +6198,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.45,
-      "costOfEquity": 23.599999999999998,
+      "wacc": 20.31,
+      "costOfEquity": 23.94,
       "costOfDebt": 0.65,
       "taxRate": 12,
-      "beta": 2.3896,
-      "marketCap": 316794600000
+      "beta": 2.3919,
+      "marketCap": 272296800000
     },
     "beta": {
-      "beta5y": 2.3896
+      "beta5y": 2.3919
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 37.27,
-        "high": 37.31,
-        "low": 35.45,
-        "close": 35.91,
-        "volume": 95593200
-      },
-      {
-        "date": "2025-11-14",
-        "open": 35.03,
-        "high": 36.1,
-        "low": 34.62,
-        "close": 35.52,
-        "volume": 71716200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 35.45,
-        "high": 35.73,
-        "low": 34.23,
-        "close": 34.71,
-        "volume": 72580100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 34.25,
-        "high": 34.76,
-        "low": 33.57,
-        "close": 34.33,
-        "volume": 61504800
-      },
-      {
-        "date": "2025-11-19",
-        "open": 34.33,
-        "high": 35.75,
-        "low": 34.25,
-        "close": 35.11,
-        "volume": 67115500
-      },
       {
         "date": "2025-11-20",
         "open": 36,
@@ -8223,7 +8183,47 @@
         "high": 61.34,
         "low": 57,
         "close": 59.66,
-        "volume": 102322800
+        "volume": 102574300
+      },
+      {
+        "date": "2026-11-16",
+        "open": 56.71,
+        "high": 57.2,
+        "low": 54.89,
+        "close": 55.47,
+        "volume": 105966900
+      },
+      {
+        "date": "2026-11-17",
+        "open": 55.17,
+        "high": 55.24,
+        "low": 52.42,
+        "close": 55.17,
+        "volume": 104613600
+      },
+      {
+        "date": "2026-11-18",
+        "open": 55.39,
+        "high": 56,
+        "low": 53.44,
+        "close": 54.67,
+        "volume": 81360900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 57.5,
+        "high": 59.44,
+        "low": 54.85,
+        "close": 55.72,
+        "volume": 133949100
+      },
+      {
+        "date": "2026-11-20",
+        "open": 54.31,
+        "high": 56.48,
+        "low": 51.1,
+        "close": 51.28,
+        "volume": 207757700
       }
     ],
     "news": [
@@ -8300,11 +8300,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
-        "title": "Why Arm Holdings Stock Was Moving Higher Today",
+        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
+        "title": "Why Intel Stock Is Sinking Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
+        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
         "type": "STORY"
       }
     ],
@@ -8369,22 +8369,22 @@
       {
         "metric": "P/E (TTM)",
         "value": 3518.87,
-        "industryAvg": 20.8
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.29,
-        "industryAvg": 10.18
+        "value": 4.55,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.76,
-        "industryAvg": 9.1
+        "value": 2.37,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 3.2800000000000002,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8394,7 +8394,7 @@
       {
         "metric": "Gross Margin",
         "value": 42.970000000000006,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8404,7 +8404,7 @@
       {
         "metric": "Net Margin",
         "value": 20.11,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

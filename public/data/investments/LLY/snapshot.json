@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.218,
-      "ttmPe": 61.9,
+      "ttmPe": 58.02,
       "pegRatio": 1.54,
-      "marketCap": 1352777348000,
-      "psRatio": 15.65,
-      "pbRatio": 33.59
+      "marketCap": 1267899932000,
+      "psRatio": 14.66,
+      "pbRatio": 31.48
     },
     "profitability": {
       "roe": 17.4,
@@ -6202,57 +6202,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.779999999999999,
-      "costOfEquity": 8.01,
+      "wacc": 7.9799999999999995,
+      "costOfEquity": 8.24,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.3837,
-      "marketCap": 1352777348000
+      "beta": 0.4178,
+      "marketCap": 1267899932000
     },
     "beta": {
-      "beta5y": 0.3837
+      "beta5y": 0.4178
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 1010.09,
-        "high": 1032.95,
-        "low": 1010.09,
-        "close": 1022.87,
-        "volume": 4153600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 1009,
-        "high": 1033.62,
-        "low": 1007.79,
-        "close": 1025.28,
-        "volume": 3862300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 1003.72,
-        "high": 1032.14,
-        "low": 998.3,
-        "close": 1021.7,
-        "volume": 4720000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 1014.01,
-        "high": 1040.72,
-        "low": 1014.01,
-        "close": 1030.05,
-        "volume": 3430500
-      },
-      {
-        "date": "2025-11-19",
-        "open": 1029.64,
-        "high": 1055.59,
-        "low": 1026.25,
-        "close": 1049.6,
-        "volume": 3571200
-      },
       {
         "date": "2025-11-20",
         "open": 1045.5,
@@ -8228,6 +8188,46 @@
         "low": 1419.77,
         "close": 1443.5,
         "volume": 2081600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 1453.75,
+        "high": 1475.25,
+        "low": 1427.66,
+        "close": 1431.67,
+        "volume": 3207400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 1416,
+        "high": 1432.28,
+        "low": 1401.66,
+        "close": 1415.55,
+        "volume": 2641400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 1407.9301,
+        "high": 1423.11,
+        "low": 1380,
+        "close": 1382.75,
+        "volume": 2879100
+      },
+      {
+        "date": "2026-11-19",
+        "open": 1369.38,
+        "high": 1382,
+        "low": 1341.46,
+        "close": 1351.12,
+        "volume": 3198300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 1362.38,
+        "high": 1372.05,
+        "low": 1341.76,
+        "close": 1347.11,
+        "volume": 3540200
       }
     ],
     "news": [
@@ -8296,19 +8296,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
-        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
         "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
+        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
         "type": "STORY"
       }
     ],
@@ -8379,18 +8379,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 61.9,
-        "industryAvg": 30.77
+        "value": 58.02,
+        "industryAvg": 29.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.65,
-        "industryAvg": 5.23
+        "value": 14.66,
+        "industryAvg": 4.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 33.59,
-        "industryAvg": 6.43
+        "value": 31.48,
+        "industryAvg": 6.06
       },
       {
         "metric": "ROE",
@@ -8415,7 +8415,7 @@
       {
         "metric": "Net Margin",
         "value": 26.44,
-        "industryAvg": 15.89
+        "industryAvg": 15.9
       }
     ]
   }

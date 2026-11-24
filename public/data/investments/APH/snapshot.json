@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -44,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.3017,
-      "ttmPe": 33.99,
-      "marketCap": 192852596000,
-      "psRatio": 7.44,
-      "pbRatio": 11.26,
-      "pegRatio": 0.54
+      "ttmPe": 32.85,
+      "marketCap": 186393772000,
+      "psRatio": 7.2,
+      "pbRatio": 10.89,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 6.81,
@@ -5480,57 +5480,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.700000000000001,
-      "costOfEquity": 14.89,
+      "wacc": 13.65,
+      "costOfEquity": 14.879999999999999,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 27,
-      "beta": 1.262,
-      "marketCap": 192852596000
+      "beta": 1.2568,
+      "marketCap": 186393772000
     },
     "beta": {
-      "beta5y": 1.262
+      "beta5y": 1.2568
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 70.59,
-        "high": 70.675,
-        "low": 67.415,
-        "close": 67.625,
-        "volume": 20195400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 65.17,
-        "high": 68.35,
-        "low": 65.075,
-        "close": 66.87,
-        "volume": 19595200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 66.295,
-        "high": 67.71,
-        "low": 65.625,
-        "close": 66.165,
-        "volume": 12001800
-      },
-      {
-        "date": "2025-11-18",
-        "open": 66.16,
-        "high": 66.595,
-        "low": 64.88,
-        "close": 66.22,
-        "volume": 16200600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 66.1,
-        "high": 68.38,
-        "low": 65.845,
-        "close": 68.33,
-        "volume": 17956400
-      },
       {
         "date": "2025-11-20",
         "open": 70.345,
@@ -7506,6 +7466,46 @@
         "low": 76.05,
         "close": 78.23,
         "volume": 9580900
+      },
+      {
+        "date": "2026-11-16",
+        "open": 75.89,
+        "high": 77,
+        "low": 74.64,
+        "close": 75.43,
+        "volume": 10834100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 75.97,
+        "high": 76.53,
+        "low": 74.63,
+        "close": 76.36,
+        "volume": 10419100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 76.71,
+        "high": 77.37,
+        "low": 75.09,
+        "close": 76.33,
+        "volume": 11980400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 77.99,
+        "high": 79.17,
+        "low": 75.23,
+        "close": 75.61,
+        "volume": 11467200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 73.91,
+        "high": 73.95,
+        "low": 69.34,
+        "close": 69.72,
+        "volume": 19492100
       }
     ],
     "news": [
@@ -7566,19 +7566,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
-        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
         "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
         "publisher": "MarketWatch",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
+        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
         "type": "STORY"
       },
       {
@@ -7657,43 +7657,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.99,
-        "industryAvg": 34
+        "value": 32.85,
+        "industryAvg": 31.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.44,
-        "industryAvg": 2.77
+        "value": 7.2,
+        "industryAvg": 2.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.26,
-        "industryAvg": 5.2
+        "value": 10.89,
+        "industryAvg": 5.39
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 16.439999999999998
+        "industryAvg": 16.470000000000002
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 5.87
+        "industryAvg": 5.88
       },
       {
         "metric": "Gross Margin",
         "value": 39.26,
-        "industryAvg": 15.950000000000001
+        "industryAvg": 15.959999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.129999999999995,
-        "industryAvg": 9.3
+        "industryAvg": 9.34
       },
       {
         "metric": "Net Margin",
         "value": 19.89,
-        "industryAvg": 5.74
+        "industryAvg": 5.75
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "LMT",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.149,
-      "ttmPe": 21.46,
-      "marketCap": 138940700000,
-      "psRatio": 1.76,
-      "pbRatio": 13.81,
-      "pegRatio": 1.47
+      "ttmPe": 20.32,
+      "marketCap": 131525500000,
+      "psRatio": 1.66,
+      "pbRatio": 13.07,
+      "pegRatio": 1.39
     },
     "profitability": {
       "roe": 19.6,
@@ -5003,57 +5003,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.21,
-      "costOfEquity": 5.82,
+      "wacc": 5.489999999999999,
+      "costOfEquity": 6.17,
       "costOfDebt": 1.29,
       "taxRate": 15,
-      "beta": 0.0932,
-      "marketCap": 138940700000
+      "beta": 0.1445,
+      "marketCap": 131525500000
     },
     "beta": {
-      "beta5y": 0.0932
+      "beta5y": 0.1445
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 458.01,
-        "high": 460.91,
-        "low": 455.1,
-        "close": 455.85,
-        "volume": 819600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 455.85,
-        "high": 466.39,
-        "low": 454,
-        "close": 465.77,
-        "volume": 1177300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 467.28,
-        "high": 471.6,
-        "low": 464.72,
-        "close": 470.78,
-        "volume": 1822400
-      },
-      {
-        "date": "2025-11-18",
-        "open": 475.22,
-        "high": 485,
-        "low": 471.2,
-        "close": 474.72,
-        "volume": 1242100
-      },
-      {
-        "date": "2025-11-19",
-        "open": 472,
-        "high": 472.42,
-        "low": 468.3,
-        "close": 469.91,
-        "volume": 861300
-      },
       {
         "date": "2025-11-20",
         "open": 473.88,
@@ -7029,6 +6989,46 @@
         "low": 588.74,
         "close": 596.04,
         "volume": 913700
+      },
+      {
+        "date": "2026-11-16",
+        "open": 599.92,
+        "high": 599.92,
+        "low": 581.22,
+        "close": 585.21,
+        "volume": 1153800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 584.95,
+        "high": 593.69,
+        "low": 583.5,
+        "close": 590.34,
+        "volume": 694200
+      },
+      {
+        "date": "2026-11-18",
+        "open": 584.92,
+        "high": 586,
+        "low": 570.66,
+        "close": 578.19,
+        "volume": 1259200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 580,
+        "high": 580,
+        "low": 568.48,
+        "close": 571.85,
+        "volume": 1019600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 574.43,
+        "high": 577.28,
+        "low": 563.21,
+        "close": 565.5,
+        "volume": 1479700
       }
     ],
     "news": [
@@ -7115,10 +7115,6 @@
     ],
     "officers": [
       {
-        "name": "Dr. Craig Martell",
-        "title": "Chief Technology Officer"
-      },
-      {
         "name": "Mark D. Kvasnak",
         "title": "Vice President of Investor Relations"
       },
@@ -7170,48 +7166,55 @@
         "title": "Senior VP of Enterprise Business & Digital Transformation and Chief information Officer",
         "age": 56,
         "yearBorn": 1969
+      },
+      {
+        "name": "Ms. Stephanie C. Hill",
+        "title": "President of Rotary & Mission Systems",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 3210198
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.46,
-        "industryAvg": 33
+        "value": 20.32,
+        "industryAvg": 30.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.76,
-        "industryAvg": 5.66
+        "value": 1.66,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.81,
-        "industryAvg": 7.41
+        "value": 13.07,
+        "industryAvg": 5.65
       },
       {
         "metric": "ROE",
         "value": 19.6,
-        "industryAvg": 12.520000000000001
+        "industryAvg": 12.25
       },
       {
         "metric": "ROA",
         "value": 2.91,
-        "industryAvg": 3.85
+        "industryAvg": 3.7699999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 11.76,
-        "industryAvg": 20.79
+        "industryAvg": 20.810000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.81,
-        "industryAvg": 15.22
+        "industryAvg": 15.03
       },
       {
         "metric": "Net Margin",
         "value": 8.91,
-        "industryAvg": 6.569999999999999
+        "industryAvg": 6.41
       }
     ]
   }

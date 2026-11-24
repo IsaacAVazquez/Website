@@ -1,10 +1,10 @@
 {
   "symbol": "T",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.8546,
-      "ttmPe": 11.96,
-      "marketCap": 149968734764,
-      "psRatio": 1.16,
-      "pbRatio": 1.4,
+      "ttmPe": 11.78,
+      "marketCap": 147737459630,
+      "psRatio": 1.15,
+      "pbRatio": 1.38,
       "pegRatio": 1.17
     },
     "profitability": {
@@ -6549,57 +6549,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.6799999999999997,
-      "costOfEquity": 7.2700000000000005,
+      "wacc": 3.5900000000000003,
+      "costOfEquity": 7.12,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 0.2788,
-      "marketCap": 149968734764
+      "beta": 0.2651,
+      "marketCap": 147737459630
     },
     "beta": {
-      "beta5y": 0.2788
+      "beta5y": 0.2651
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 25.65,
-        "high": 25.96,
-        "low": 25.56,
-        "close": 25.75,
-        "volume": 49785600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 25.87,
-        "high": 25.93,
-        "low": 25.44,
-        "close": 25.59,
-        "volume": 37390200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 25.63,
-        "high": 25.71,
-        "low": 25.43,
-        "close": 25.47,
-        "volume": 34519900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 25.54,
-        "high": 25.77,
-        "low": 25.34,
-        "close": 25.6,
-        "volume": 41527600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 25.6,
-        "high": 25.67,
-        "low": 25.09,
-        "close": 25.27,
-        "volume": 34296900
-      },
       {
         "date": "2025-11-20",
         "open": 25.25,
@@ -8575,6 +8535,46 @@
         "low": 22.1,
         "close": 22.18,
         "volume": 50499800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 22.47,
+        "high": 22.65,
+        "low": 22.25,
+        "close": 22.36,
+        "volume": 43029100
+      },
+      {
+        "date": "2026-11-17",
+        "open": 22.23,
+        "high": 22.69,
+        "low": 22.19,
+        "close": 22.29,
+        "volume": 42373100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 22.01,
+        "high": 22.19,
+        "low": 21.9,
+        "close": 21.95,
+        "volume": 36837400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 21.89,
+        "high": 21.97,
+        "low": 21.52,
+        "close": 21.85,
+        "volume": 46737800
+      },
+      {
+        "date": "2026-11-20",
+        "open": 22.12,
+        "high": 22.75,
+        "low": 22.08,
+        "close": 22.31,
+        "volume": 54044700
       }
     ],
     "news": [
@@ -8643,19 +8643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
-        "title": "Charter is in talks to combine with rival Cox Communications",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
         "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
         "publisher": "StockStory",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
+        "title": "Charter is in talks to combine with rival Cox Communications",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
         "type": "STORY"
       }
     ],
@@ -8725,43 +8725,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.96,
-        "industryAvg": 12.64
+        "value": 11.78,
+        "industryAvg": 12.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.16,
-        "industryAvg": 1.12
+        "value": 1.15,
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.4,
-        "industryAvg": 1.57
+        "value": 1.38,
+        "industryAvg": 1.48
       },
       {
         "metric": "ROE",
         "value": 0.79,
-        "industryAvg": 8.12
+        "industryAvg": 8.16
       },
       {
         "metric": "ROA",
         "value": 0.2,
-        "industryAvg": 1.97
+        "industryAvg": 1.9800000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 61.51,
-        "industryAvg": 63.27
+        "industryAvg": 63.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.87,
-        "industryAvg": 33.379999999999995
+        "industryAvg": 33.44
       },
       {
         "metric": "Net Margin",
         "value": 2.65,
-        "industryAvg": 5.59
+        "industryAvg": 5.62
       }
     ]
   }

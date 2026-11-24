@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6566,
-      "ttmPe": 38.22,
-      "marketCap": 341894809303.14,
-      "psRatio": 6.5,
-      "pbRatio": 19.51,
-      "pegRatio": 4.49
+      "ttmPe": 36.84,
+      "marketCap": 329515253553.12,
+      "psRatio": 6.27,
+      "pbRatio": 18.81,
+      "pegRatio": 4.32
     },
     "profitability": {
       "roe": 13.01,
@@ -7105,57 +7105,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.28,
-      "costOfEquity": 16.09,
+      "wacc": 14.91,
+      "costOfEquity": 15.72,
       "costOfDebt": 1.2,
       "taxRate": 14.000000000000002,
-      "beta": 1.415,
-      "marketCap": 341894809303.14
+      "beta": 1.3636,
+      "marketCap": 329515253553.12
     },
     "beta": {
-      "beta5y": 1.415
+      "beta5y": 1.3636
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 309.98,
-        "high": 311.38,
-        "low": 302.58,
-        "close": 304.17,
-        "volume": 4153300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 300.97,
-        "high": 306.8,
-        "low": 296.25,
-        "close": 304.82,
-        "volume": 2803300
-      },
-      {
-        "date": "2025-11-17",
-        "open": 306.82,
-        "high": 308.82,
-        "low": 298.55,
-        "close": 300.13,
-        "volume": 3076600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 295.83,
-        "high": 301.08,
-        "low": 293.75,
-        "close": 296.01,
-        "volume": 4053600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 295.86,
-        "high": 301.67,
-        "low": 295.5,
-        "close": 300.82,
-        "volume": 2952600
-      },
       {
         "date": "2025-11-20",
         "open": 305.4,
@@ -9131,6 +9091,46 @@
         "low": 328.1,
         "close": 331.81,
         "volume": 3375000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 331.21,
+        "high": 333.48,
+        "low": 323.89,
+        "close": 325.18,
+        "volume": 3556800
+      },
+      {
+        "date": "2026-11-17",
+        "open": 324.2,
+        "high": 330.52,
+        "low": 323.28,
+        "close": 326.4,
+        "volume": 3745700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 327.47,
+        "high": 331.71,
+        "low": 325.04,
+        "close": 328.1,
+        "volume": 3546700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 329.53,
+        "high": 330,
+        "low": 317.33,
+        "close": 318.88,
+        "volume": 5063600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 318.9,
+        "high": 321.76,
+        "low": 307.38,
+        "close": 309.62,
+        "volume": 5482400
       }
     ],
     "news": [
@@ -9159,19 +9159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
-        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
         "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
+        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -9207,15 +9207,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f65ee8ef-b157-3570-9098-5413b7773f9f",
-        "title": "3 Market-Beating Stocks to Target This Week",
-        "publisher": "StockStory",
+        "uuid": "d134cc19-fe13-3ca1-af10-ebf5dc460470",
+        "title": "Jim Cramer Says GE Vernova (GEV) Has “Four Secular Trends Going for It”",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-target-043626728.html",
+        "link": "https://finance.yahoo.com/news/jim-cramer-says-ge-vernova-181249654.html",
         "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Brandon Smith",
+        "title": "VP, Chief Corporate, Securities & Finance Counsel"
+      },
       {
         "name": "Mr. Christian E. Meisner",
         "title": "Chief Human Resources Officer",
@@ -9272,52 +9276,48 @@
         "title": "VP, Chief Accounting Officer, Controller & Treasurer",
         "age": 54,
         "yearBorn": 1971
-      },
-      {
-        "name": "Ms. Blaire Shoor",
-        "title": "Head of Investor Relations"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.22,
-        "industryAvg": 33
+        "value": 36.84,
+        "industryAvg": 30.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.5,
-        "industryAvg": 5.66
+        "value": 6.27,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.51,
-        "industryAvg": 7.41
+        "value": 18.81,
+        "industryAvg": 5.65
       },
       {
         "metric": "ROE",
         "value": 13.01,
-        "industryAvg": 12.520000000000001
+        "industryAvg": 12.25
       },
       {
         "metric": "ROA",
         "value": 1.7999999999999998,
-        "industryAvg": 3.85
+        "industryAvg": 3.7699999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 28.349999999999998,
-        "industryAvg": 20.79
+        "industryAvg": 20.810000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.880000000000003,
-        "industryAvg": 15.22
+        "industryAvg": 15.03
       },
       {
         "metric": "Net Margin",
         "value": 16.21,
-        "industryAvg": 6.569999999999999
+        "industryAvg": 6.41
       }
     ]
   }

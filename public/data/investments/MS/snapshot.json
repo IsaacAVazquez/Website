@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6077,
-      "ttmPe": 15.12,
-      "marketCap": 299701800000,
-      "psRatio": 4,
-      "pbRatio": 2.56,
-      "pegRatio": 1.83
+      "ttmPe": 13.14,
+      "marketCap": 260433240000,
+      "psRatio": 3.48,
+      "pbRatio": 2.22,
+      "pegRatio": 1.59
     },
     "profitability": {
       "roe": 4.07,
@@ -6098,57 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.46,
-      "costOfEquity": 14.49,
+      "wacc": 7.07,
+      "costOfEquity": 14.549999999999999,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.21,
-      "marketCap": 299701800000
+      "beta": 1.2117,
+      "marketCap": 260433240000
     },
     "beta": {
-      "beta5y": 1.21
+      "beta5y": 1.2117
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 169.31,
-        "high": 170.35,
-        "low": 165.17,
-        "close": 165.61,
-        "volume": 6090900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 164.2,
-        "high": 164.8,
-        "low": 159.94,
-        "close": 163.86,
-        "volume": 6691200
-      },
-      {
-        "date": "2025-11-17",
-        "open": 163.25,
-        "high": 164.09,
-        "low": 158.76,
-        "close": 159.45,
-        "volume": 5727200
-      },
-      {
-        "date": "2025-11-18",
-        "open": 158.64,
-        "high": 161.67,
-        "low": 157.79,
-        "close": 159.83,
-        "volume": 4864900
-      },
-      {
-        "date": "2025-11-19",
-        "open": 160.35,
-        "high": 162.91,
-        "low": 160.05,
-        "close": 162.29,
-        "volume": 6413600
-      },
       {
         "date": "2025-11-20",
         "open": 164.2,
@@ -8124,6 +8084,46 @@
         "low": 188.32,
         "close": 190.65,
         "volume": 4448000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 188,
+        "high": 189.31,
+        "low": 183.45,
+        "close": 185.57,
+        "volume": 5678400
+      },
+      {
+        "date": "2026-11-17",
+        "open": 184.64,
+        "high": 186.49,
+        "low": 181.26,
+        "close": 183.53,
+        "volume": 4348300
+      },
+      {
+        "date": "2026-11-18",
+        "open": 182.68,
+        "high": 183.72,
+        "low": 180.1,
+        "close": 181.17,
+        "volume": 5168400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 183.64,
+        "high": 184.03,
+        "low": 173.99,
+        "close": 174.98,
+        "volume": 8256000
+      },
+      {
+        "date": "2026-11-20",
+        "open": 173.07,
+        "high": 173.4,
+        "low": 164.91,
+        "close": 165.67,
+        "volume": 10399400
       }
     ],
     "news": [
@@ -8184,19 +8184,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
-        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
         "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
+        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
         "type": "STORY"
       },
       {
@@ -8270,23 +8270,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.12,
-        "industryAvg": 14.86
+        "value": 13.14,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 4,
-        "industryAvg": 2.05
+        "value": 3.48,
+        "industryAvg": 1.81
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.56,
-        "industryAvg": 2.4
+        "value": 2.22,
+        "industryAvg": 2.1
       },
       {
         "metric": "ROE",
         "value": 4.07,
-        "industryAvg": 15.840000000000002
+        "industryAvg": 15.879999999999999
       },
       {
         "metric": "ROA",
@@ -8295,16 +8295,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.07
+        "industryAvg": 15.120000000000001
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 6.370000000000001
       },
       {
         "metric": "Net Margin",
         "value": 25.180000000000003,
-        "industryAvg": 20.22
+        "industryAvg": 20.28
       }
     ]
   }

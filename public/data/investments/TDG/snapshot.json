@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 34.24,
-      "marketCap": 66436951296,
-      "psRatio": 6.29,
-      "pbRatio": -6.64,
-      "pegRatio": 1.03
+      "ttmPe": 32.59,
+      "marketCap": 63237031430,
+      "psRatio": 5.99,
+      "pbRatio": -6.32,
+      "pegRatio": 0.98
     },
     "profitability": {
       "roe": -5.94,
@@ -6471,57 +6471,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.53,
-      "costOfEquity": 12.389999999999999,
+      "wacc": 8.290000000000001,
+      "costOfEquity": 12.21,
       "costOfDebt": 1.54,
       "taxRate": 25,
-      "beta": 0.9372,
-      "marketCap": 66436951296
+      "beta": 0.9152,
+      "marketCap": 63237031430
     },
     "beta": {
-      "beta5y": 0.9372
+      "beta5y": 0.9152
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 1322.53,
-        "high": 1358.01,
-        "low": 1312.17,
-        "close": 1325.04,
-        "volume": 575900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 1329.08,
-        "high": 1359.15,
-        "low": 1322.4,
-        "close": 1340.6,
-        "volume": 312900
-      },
-      {
-        "date": "2025-11-17",
-        "open": 1347.29,
-        "high": 1356.37,
-        "low": 1326.1801,
-        "close": 1335.77,
-        "volume": 362100
-      },
-      {
-        "date": "2025-11-18",
-        "open": 1345.0601,
-        "high": 1365.6899,
-        "low": 1338.21,
-        "close": 1351.0601,
-        "volume": 388200
-      },
-      {
-        "date": "2025-11-19",
-        "open": 1343.26,
-        "high": 1358.87,
-        "low": 1324.55,
-        "close": 1341.1899,
-        "volume": 310000
-      },
       {
         "date": "2025-11-20",
         "open": 1352.9,
@@ -8497,6 +8457,46 @@
         "low": 1206.52,
         "close": 1217.28,
         "volume": 523000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 1218.5601,
+        "high": 1224.76,
+        "low": 1191.98,
+        "close": 1203.21,
+        "volume": 431500
+      },
+      {
+        "date": "2026-11-17",
+        "open": 1196.91,
+        "high": 1215.42,
+        "low": 1180.45,
+        "close": 1186.2,
+        "volume": 361400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 1181.02,
+        "high": 1190.85,
+        "low": 1170.65,
+        "close": 1177.4399,
+        "volume": 322700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 1178.48,
+        "high": 1181.52,
+        "low": 1155.91,
+        "close": 1158.65,
+        "volume": 337500
+      },
+      {
+        "date": "2026-11-20",
+        "open": 1162.21,
+        "high": 1178.4,
+        "low": 1116.46,
+        "close": 1121.22,
+        "volume": 470800
       }
     ],
     "news": [
@@ -8533,19 +8533,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
-        "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
         "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
+        "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
         "type": "STORY"
       },
       {
@@ -8557,19 +8557,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed77a5e7-8829-3f7a-b272-30e43dbd5d3d",
-        "title": "Alembic Global Advisory Adjusts TransDigm Group Price Target to $1,537 From $1,463",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/alembic-global-advisory-adjusts-transdigm-113010660.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
         "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
         "publisher": "Zacks",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ed77a5e7-8829-3f7a-b272-30e43dbd5d3d",
+        "title": "Alembic Global Advisory Adjusts TransDigm Group Price Target to $1,537 From $1,463",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/alembic-global-advisory-adjusts-transdigm-113010660.html",
         "type": "STORY"
       },
       {
@@ -8640,43 +8640,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.24,
-        "industryAvg": 33.05
+        "value": 32.59,
+        "industryAvg": 30.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.29,
-        "industryAvg": 5.63
+        "value": 5.99,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.64,
-        "industryAvg": 7.38
+        "value": -6.32,
+        "industryAvg": 5.65
       },
       {
         "metric": "ROE",
         "value": -5.94,
-        "industryAvg": 12.520000000000001
+        "industryAvg": 12.25
       },
       {
         "metric": "ROA",
         "value": 2.15,
-        "industryAvg": 3.85
+        "industryAvg": 3.7699999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 59,
-        "industryAvg": 20.78
+        "industryAvg": 20.810000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 48.06,
-        "industryAvg": 15.17
+        "industryAvg": 15.03
       },
       {
         "metric": "Net Margin",
         "value": 19.68,
-        "industryAvg": 6.5600000000000005
+        "industryAvg": 6.41
       }
     ]
   }

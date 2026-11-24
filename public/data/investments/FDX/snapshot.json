@@ -1,10 +1,10 @@
 {
   "symbol": "FDX",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 11.8824,
-      "ttmPe": 27.28,
-      "marketCap": 75848760000,
-      "psRatio": 0.8,
-      "pbRatio": 2.19,
+      "ttmPe": 26.48,
+      "marketCap": 73625760000,
+      "psRatio": 0.77,
+      "pbRatio": 2.13,
       "pegRatio": 0.51
     },
     "profitability": {
@@ -5728,49 +5728,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.2655
+      "beta5y": 1.2339
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 217.4537,
-        "high": 218.5334,
-        "low": 214.8026,
-        "close": 215.423,
-        "volume": 1623352
-      },
-      {
-        "date": "2025-11-14",
-        "open": 213.9404,
-        "high": 217.3167,
-        "low": 213.0459,
-        "close": 215.6003,
-        "volume": 1956809
-      },
-      {
-        "date": "2025-11-17",
-        "open": 214.3513,
-        "high": 216.5189,
-        "low": 211.9259,
-        "close": 213.3199,
-        "volume": 2196570
-      },
-      {
-        "date": "2025-11-18",
-        "open": 211.4666,
-        "high": 213.4972,
-        "low": 209.3392,
-        "close": 211.9903,
-        "volume": 1923550
-      },
-      {
-        "date": "2025-11-19",
-        "open": 211.9903,
-        "high": 214.0129,
-        "low": 210.1934,
-        "close": 211.5794,
-        "volume": 1284807
-      },
       {
         "date": "2025-11-20",
         "open": 213.9404,
@@ -7746,6 +7706,46 @@
         "low": 319.35,
         "close": 324.14,
         "volume": 1067100
+      },
+      {
+        "date": "2026-11-16",
+        "open": 325,
+        "high": 327.94,
+        "low": 323,
+        "close": 327.65,
+        "volume": 1260000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 326.88,
+        "high": 328.77,
+        "low": 318,
+        "close": 319.94,
+        "volume": 1235100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 317.51,
+        "high": 321.64,
+        "low": 316.01,
+        "close": 318.31,
+        "volume": 767500
+      },
+      {
+        "date": "2026-11-19",
+        "open": 318.43,
+        "high": 321,
+        "low": 311.55,
+        "close": 314.64,
+        "volume": 1453600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 316.43,
+        "high": 318.5,
+        "low": 302.75,
+        "close": 303.99,
+        "volume": 1289200
       }
     ],
     "news": [
@@ -7898,43 +7898,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.28,
-        "industryAvg": 20.39
+        "value": 26.48,
+        "industryAvg": 21.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.8,
-        "industryAvg": 0.99
+        "value": 0.77,
+        "industryAvg": 0.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.19,
-        "industryAvg": 3.53
+        "value": 2.13,
+        "industryAvg": 3.92
       },
       {
         "metric": "ROE",
         "value": 0.88,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 17.45
       },
       {
         "metric": "ROA",
         "value": 0.3,
-        "industryAvg": 2.88
+        "industryAvg": 3.08
       },
       {
         "metric": "Gross Margin",
         "value": 20.79,
-        "industryAvg": 18.95
+        "industryAvg": 18.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 4.67,
-        "industryAvg": 11.32
+        "industryAvg": 11.91
       },
       {
         "metric": "Net Margin",
         "value": 1.27,
-        "industryAvg": 5.1499999999999995
+        "industryAvg": 5.6899999999999995
       }
     ]
   }

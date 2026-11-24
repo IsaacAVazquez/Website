@@ -1,10 +1,10 @@
 {
   "symbol": "BA",
-  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "profitability",
@@ -44,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.0775,
-      "ttmPe": 18.9,
-      "marketCap": 135849810265,
-      "psRatio": 1.47,
-      "pbRatio": 20.75,
-      "pegRatio": 0.2
+      "ttmPe": 17.68,
+      "marketCap": 127107275113,
+      "psRatio": 1.38,
+      "pbRatio": 19.41,
+      "pegRatio": 0.18
     },
     "profitability": {
       "roe": -1.5699999999999998,
@@ -6070,57 +6070,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.799999999999999,
-      "costOfEquity": 15.39,
+      "wacc": 11.59,
+      "costOfEquity": 15.35,
       "costOfDebt": 1.25,
       "taxRate": 6,
-      "beta": 1.3237,
-      "marketCap": 135849810265
+      "beta": 1.3166,
+      "marketCap": 127107275113
     },
     "beta": {
-      "beta5y": 1.3237
+      "beta5y": 1.3166
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 195.63,
-        "high": 196.2,
-        "low": 193.11,
-        "close": 194.58,
-        "volume": 6739300
-      },
-      {
-        "date": "2025-11-14",
-        "open": 192.88,
-        "high": 197.03,
-        "low": 192.15,
-        "close": 194.52,
-        "volume": 6189800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 194.84,
-        "high": 194.84,
-        "low": 190.23,
-        "close": 191.81,
-        "volume": 5877800
-      },
-      {
-        "date": "2025-11-18",
-        "open": 190,
-        "high": 191.16,
-        "low": 187.85,
-        "close": 189.63,
-        "volume": 8195800
-      },
-      {
-        "date": "2025-11-19",
-        "open": 189.21,
-        "high": 189.21,
-        "low": 183.01,
-        "close": 185.7,
-        "volume": 12550400
-      },
       {
         "date": "2025-11-20",
         "open": 187.74,
@@ -8095,7 +8055,47 @@
         "high": 171.75,
         "low": 169.56,
         "close": 171.5,
-        "volume": 5293800
+        "volume": 5308800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 170.22,
+        "high": 170.5,
+        "low": 164.71,
+        "close": 165.22,
+        "volume": 7925600
+      },
+      {
+        "date": "2026-11-17",
+        "open": 165,
+        "high": 168.2,
+        "low": 163.3,
+        "close": 163.91,
+        "volume": 5585100
+      },
+      {
+        "date": "2026-11-18",
+        "open": 163.43,
+        "high": 164.55,
+        "low": 161.75,
+        "close": 162.91,
+        "volume": 6041700
+      },
+      {
+        "date": "2026-11-19",
+        "open": 163.8,
+        "high": 164.22,
+        "low": 158.92,
+        "close": 160.51,
+        "volume": 7410300
+      },
+      {
+        "date": "2026-11-20",
+        "open": 161,
+        "high": 164.8,
+        "low": 155.56,
+        "close": 155.89,
+        "volume": 11135300
       }
     ],
     "news": [
@@ -8140,19 +8140,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
-        "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
+        "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
         "type": "STORY"
       },
       {
@@ -8242,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.9,
-        "industryAvg": 33
+        "value": 17.68,
+        "industryAvg": 30.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.47,
-        "industryAvg": 5.66
+        "value": 1.38,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.75,
-        "industryAvg": 7.41
+        "value": 19.41,
+        "industryAvg": 5.65
       },
       {
         "metric": "ROE",
         "value": -1.5699999999999998,
-        "industryAvg": 12.520000000000001
+        "industryAvg": 12.25
       },
       {
         "metric": "ROA",
         "value": -0.05,
-        "industryAvg": 3.85
+        "industryAvg": 3.7699999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 8.959999999999999,
-        "industryAvg": 20.79
+        "industryAvg": 20.810000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 4.2700000000000005,
-        "industryAvg": 15.22
+        "industryAvg": 15.03
       },
       {
         "metric": "Net Margin",
         "value": -0.84,
-        "industryAvg": 6.569999999999999
+        "industryAvg": 6.41
       }
     ]
   }

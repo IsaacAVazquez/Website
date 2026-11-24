@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.7184,
-      "ttmPe": 20.84,
-      "marketCap": 66816464680,
-      "psRatio": 4.84,
-      "pbRatio": 5.53,
-      "pegRatio": 0.52
+      "ttmPe": 18.49,
+      "marketCap": 59270027800,
+      "psRatio": 4.3,
+      "pbRatio": 4.9,
+      "pegRatio": 0.46
     },
     "profitability": {
       "roe": 7.53,
@@ -6139,57 +6139,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.74,
-      "costOfEquity": 19.36,
+      "wacc": 16.259999999999998,
+      "costOfEquity": 19.13,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.8403,
-      "marketCap": 66816464680
+      "beta": 1.7876,
+      "marketCap": 59270027800
     },
     "beta": {
-      "beta5y": 1.8403
+      "beta5y": 1.7876
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 202.92,
-        "high": 204.74,
-        "low": 199.02,
-        "close": 201.22,
-        "volume": 2528400
-      },
-      {
-        "date": "2025-11-14",
-        "open": 198.83,
-        "high": 199.81,
-        "low": 196.18,
-        "close": 197.1,
-        "volume": 2111000
-      },
-      {
-        "date": "2025-11-17",
-        "open": 195.18,
-        "high": 196.65,
-        "low": 188.49,
-        "close": 190.51,
-        "volume": 2498900
-      },
-      {
-        "date": "2025-11-18",
-        "open": 189.85,
-        "high": 190.85,
-        "low": 187.74,
-        "close": 188.59,
-        "volume": 2776900
-      },
-      {
-        "date": "2025-11-19",
-        "open": 189.44,
-        "high": 191.37,
-        "low": 188.36,
-        "close": 190.06,
-        "volume": 2969200
-      },
       {
         "date": "2025-11-20",
         "open": 192.17,
@@ -8165,6 +8125,46 @@
         "low": 253.31,
         "close": 265.09,
         "volume": 4320600
+      },
+      {
+        "date": "2026-11-16",
+        "open": 261.47,
+        "high": 262.5,
+        "low": 253.51,
+        "close": 254.19,
+        "volume": 4715000
+      },
+      {
+        "date": "2026-11-17",
+        "open": 261.2,
+        "high": 261.2,
+        "low": 247.74,
+        "close": 252.51,
+        "volume": 4188700
+      },
+      {
+        "date": "2026-11-18",
+        "open": 254.46,
+        "high": 256.18,
+        "low": 248.1,
+        "close": 252.47,
+        "volume": 2141400
+      },
+      {
+        "date": "2026-11-19",
+        "open": 256.51,
+        "high": 261.83,
+        "low": 249.49,
+        "close": 251.76,
+        "volume": 3478700
+      },
+      {
+        "date": "2026-11-20",
+        "open": 250.22,
+        "high": 253.91,
+        "low": 233.69,
+        "close": 235.15,
+        "volume": 9772800
       }
     ],
     "news": [
@@ -8193,14 +8193,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f316b84-40ec-31d4-989f-9b346880bf80",
-        "title": "NXP Unveils Third-Generation Imaging Radar Processors for Level 2+ to 4 Autonomous Driving",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nxp-unveils-third-generation-imaging-070000540.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1cccdaf0-90b3-3e43-85e1-78e2bfdf80cd",
         "title": "NXP Unveils Next-Gen Radar Chip To Boost Autonomous Driving Systems",
         "publisher": "Benzinga",
@@ -8209,11 +8201,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
-        "title": "3 Profitable Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
+        "uuid": "3f316b84-40ec-31d4-989f-9b346880bf80",
+        "title": "NXP Unveils Third-Generation Imaging Radar Processors for Level 2+ to 4 Autonomous Driving",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nxp-unveils-third-generation-imaging-070000540.html",
         "type": "STORY"
       },
       {
@@ -8225,11 +8217,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac3b3228-ed47-3830-b732-094c326d70cf",
-        "title": "NXPI Q1 Earnings Call: Early Cycle Recovery Signals Amid Tariff Uncertainty and Leadership Transition",
+        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
+        "title": "3 Profitable Stocks with Mounting Challenges",
         "publisher": "StockStory",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
         "type": "STORY"
       },
       {
@@ -8238,6 +8230,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac3b3228-ed47-3830-b732-094c326d70cf",
+        "title": "NXPI Q1 Earnings Call: Early Cycle Recovery Signals Amid Tariff Uncertainty and Leadership Transition",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
         "type": "STORY"
       },
       {
@@ -8313,23 +8313,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.84,
-        "industryAvg": 20.8
+        "value": 18.49,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.84,
-        "industryAvg": 10.18
+        "value": 4.3,
+        "industryAvg": 7.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.53,
-        "industryAvg": 9.1
+        "value": 4.9,
+        "industryAvg": 7
       },
       {
         "metric": "ROE",
         "value": 7.53,
-        "industryAvg": 59.63
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
@@ -8339,7 +8339,7 @@
       {
         "metric": "Gross Margin",
         "value": 57.82000000000001,
-        "industryAvg": 68.31
+        "industryAvg": 68.32000000000001
       },
       {
         "metric": "EBITDA Margin",
@@ -8349,7 +8349,7 @@
       {
         "metric": "Net Margin",
         "value": 23.35,
-        "industryAvg": 56.779999999999994
+        "industryAvg": 56.769999999999996
       }
     ]
   }

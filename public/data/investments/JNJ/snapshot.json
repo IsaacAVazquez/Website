@@ -1,10 +1,10 @@
 {
   "symbol": "JNJ",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5922,
-      "ttmPe": 42.54,
+      "ttmPe": 41.03,
       "pegRatio": 0.45,
-      "marketCap": 674979958380,
-      "psRatio": 6.79,
-      "pbRatio": 8.28
+      "marketCap": 651053205460,
+      "psRatio": 6.55,
+      "pbRatio": 7.99
     },
     "profitability": {
       "roe": 0.25,
@@ -6077,57 +6077,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.12,
-      "costOfEquity": 6.510000000000001,
+      "wacc": 6.08,
+      "costOfEquity": 6.4799999999999995,
       "costOfDebt": 0.49,
       "taxRate": 40,
-      "beta": 0.194,
-      "marketCap": 674979958380
+      "beta": 0.196,
+      "marketCap": 651053205460
     },
     "beta": {
-      "beta5y": 0.194
+      "beta5y": 0.196
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 194.21,
-        "high": 196,
-        "low": 193.45,
-        "close": 195.25,
-        "volume": 8631600
-      },
-      {
-        "date": "2025-11-14",
-        "open": 195,
-        "high": 197.18,
-        "low": 193.55,
-        "close": 195.93,
-        "volume": 8824800
-      },
-      {
-        "date": "2025-11-17",
-        "open": 196.96,
-        "high": 200.28,
-        "low": 195.9,
-        "close": 199.58,
-        "volume": 13257000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 199.01,
-        "high": 200.3,
-        "low": 198.53,
-        "close": 200,
-        "volume": 12468600
-      },
-      {
-        "date": "2025-11-19",
-        "open": 200,
-        "high": 203.48,
-        "low": 199.38,
-        "close": 202.51,
-        "volume": 14690800
-      },
       {
         "date": "2025-11-20",
         "open": 202,
@@ -8103,6 +8063,46 @@
         "low": 281.68,
         "close": 285.75,
         "volume": 6282000
+      },
+      {
+        "date": "2026-11-16",
+        "open": 288.99,
+        "high": 290.25,
+        "low": 282.33,
+        "close": 282.55,
+        "volume": 8101700
+      },
+      {
+        "date": "2026-11-17",
+        "open": 278.99,
+        "high": 281.72,
+        "low": 277.56,
+        "close": 278.7,
+        "volume": 8973500
+      },
+      {
+        "date": "2026-11-18",
+        "open": 275.55,
+        "high": 278.72,
+        "low": 272.58,
+        "close": 272.7,
+        "volume": 7935200
+      },
+      {
+        "date": "2026-11-19",
+        "open": 269.61,
+        "high": 270.6,
+        "low": 264.68,
+        "close": 267.14,
+        "volume": 9836200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 270.36,
+        "high": 272.5,
+        "low": 269.47,
+        "close": 270.47,
+        "volume": 11919300
       }
     ],
     "news": [
@@ -8163,19 +8163,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "805043bf-ab7d-346e-b3c8-0163ff94cf2f",
-        "title": "Top Stock Reports for Amazon.com, Johnson & Johnson & Cisco Systems",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-amazon-com-210200739.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
         "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "805043bf-ab7d-346e-b3c8-0163ff94cf2f",
+        "title": "Top Stock Reports for Amazon.com, Johnson & Johnson & Cisco Systems",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-amazon-com-210200739.html",
         "type": "STORY"
       },
       {
@@ -8252,18 +8252,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.54,
-        "industryAvg": 30.77
+        "value": 41.03,
+        "industryAvg": 29.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.79,
-        "industryAvg": 5.23
+        "value": 6.55,
+        "industryAvg": 4.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.28,
-        "industryAvg": 6.43
+        "value": 7.99,
+        "industryAvg": 6.06
       },
       {
         "metric": "ROE",
@@ -8288,7 +8288,7 @@
       {
         "metric": "Net Margin",
         "value": 0.83,
-        "industryAvg": 15.89
+        "industryAvg": 15.9
       }
     ]
   }

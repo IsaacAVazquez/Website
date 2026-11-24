@@ -1,10 +1,10 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.9451,
-      "ttmPe": 57.35,
-      "marketCap": 44716414620,
-      "psRatio": 1.96,
-      "pbRatio": 4.45,
+      "ttmPe": 55.08,
+      "marketCap": 42950858766,
+      "psRatio": 1.88,
+      "pbRatio": 4.27,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -6228,57 +6228,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.19,
-      "costOfEquity": 15.27,
+      "wacc": 12.07,
+      "costOfEquity": 15.25,
       "costOfDebt": 0.98,
       "taxRate": 40,
-      "beta": 1.3114,
-      "marketCap": 44716414620
+      "beta": 1.3051,
+      "marketCap": 42950858766
     },
     "beta": {
-      "beta5y": 1.3114
+      "beta5y": 1.3051
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 55.95,
-        "high": 57.11,
-        "low": 55.035,
-        "close": 55.16,
-        "volume": 5356900
-      },
-      {
-        "date": "2025-11-14",
-        "open": 54.57,
-        "high": 54.888,
-        "low": 53.96,
-        "close": 54.1,
-        "volume": 6034900
-      },
-      {
-        "date": "2025-11-17",
-        "open": 54.14,
-        "high": 54.2,
-        "low": 52.95,
-        "close": 53.13,
-        "volume": 5766600
-      },
-      {
-        "date": "2025-11-18",
-        "open": 52.71,
-        "high": 53.25,
-        "low": 51.954,
-        "close": 52.01,
-        "volume": 6507000
-      },
-      {
-        "date": "2025-11-19",
-        "open": 52.42,
-        "high": 52.42,
-        "low": 51.03,
-        "close": 51.25,
-        "volume": 6655600
-      },
       {
         "date": "2025-11-20",
         "open": 51.5,
@@ -8254,6 +8214,46 @@
         "low": 54.02,
         "close": 54.2,
         "volume": 4733800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 53.68,
+        "high": 54.15,
+        "low": 51.52,
+        "close": 51.67,
+        "volume": 6531900
+      },
+      {
+        "date": "2026-11-17",
+        "open": 51.5,
+        "high": 52.135,
+        "low": 50.76,
+        "close": 51.32,
+        "volume": 9240400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 51.01,
+        "high": 53.005,
+        "low": 50.99,
+        "close": 52.06,
+        "volume": 6516900
+      },
+      {
+        "date": "2026-11-19",
+        "open": 52.33,
+        "high": 52.585,
+        "low": 50.85,
+        "close": 51.52,
+        "volume": 6737600
+      },
+      {
+        "date": "2026-11-20",
+        "open": 51.76,
+        "high": 52.74,
+        "low": 49.74,
+        "close": 49.96,
+        "volume": 8609500
       }
     ],
     "news": [
@@ -8306,6 +8306,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "2158636e-973f-35ce-bece-3ab607a5fb46",
+        "title": "Carrier Global (NYSE:CARR) Invests Additional US$1 Billion in U.S. Expansion and Innovation",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/carrier-global-nyse-carr-invests-173856948.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2e03d6dc-17dd-3dc4-b5c4-68367a0607c4",
         "title": "CARR Q1 Earnings Call: Management Prioritizes Product Innovation, Cost Controls, and Tariff Mitigation",
         "publisher": "StockStory",
@@ -8314,11 +8322,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2158636e-973f-35ce-bece-3ab607a5fb46",
-        "title": "Carrier Global (NYSE:CARR) Invests Additional US$1 Billion in U.S. Expansion and Innovation",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/carrier-global-nyse-carr-invests-173856948.html",
+        "uuid": "e5f2ad23-e548-354a-8b1a-ba2a8fe46513",
+        "title": "RBC Raises Price Target on Carrier Global to $86 From $82, Keeps Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-carrier-110913885.html",
         "type": "STORY"
       },
       {
@@ -8328,17 +8336,16 @@
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-carrier-103720777.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "e1161bd2-7ca5-31b9-8518-8d1bbf011da7",
-        "title": "Stephens Adjusts Price Target on Carrier Global to $75 From $70, Maintains Equalweight Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/stephens-adjusts-price-target-carrier-103713052.html",
-        "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Ajay Agrawal",
+        "title": "Senior VP of Global Services & Chief Business Development Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 1192833
+      },
       {
         "name": "Mr. David L. Gitlin",
         "title": "Chairman & CEO",
@@ -8385,13 +8392,6 @@
         "totalPay": 1444862
       },
       {
-        "name": "Mr. Timothy N. White",
-        "title": "Senior VP of Engineering & Technology",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 1398977
-      },
-      {
         "name": "Ms. Beril Yildiz",
         "title": "VP, Controller & Chief Accounting Officer",
         "age": 46,
@@ -8407,43 +8407,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 57.35,
-        "industryAvg": 27.23
+        "value": 55.08,
+        "industryAvg": 25.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.96,
-        "industryAvg": 2.13
+        "value": 1.88,
+        "industryAvg": 2.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.45,
-        "industryAvg": 3.75
+        "value": 4.27,
+        "industryAvg": 3.67
       },
       {
         "metric": "ROE",
         "value": -22.35,
-        "industryAvg": 10.93
+        "industryAvg": 11.04
       },
       {
         "metric": "ROA",
         "value": -7.31,
-        "industryAvg": 4.29
+        "industryAvg": 4.33
       },
       {
         "metric": "Gross Margin",
         "value": 26.87,
-        "industryAvg": 33.01
+        "industryAvg": 33.019999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": -30.7,
-        "industryAvg": 13.44
+        "industryAvg": 13.450000000000001
       },
       {
         "metric": "Net Margin",
         "value": -41.4,
-        "industryAvg": 5.04
+        "industryAvg": 5.1
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
+  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
+    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
     "sections": {
-      "price": "2026-11-13"
+      "price": "2026-11-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.7575,
-      "ttmPe": 18.05,
-      "marketCap": 215122600000,
-      "psRatio": 2.77,
-      "pbRatio": 6.01,
-      "pegRatio": 0.59
+      "ttmPe": 16.99,
+      "marketCap": 202440700000,
+      "psRatio": 2.61,
+      "pbRatio": 5.66,
+      "pegRatio": 0.55
     },
     "profitability": {
       "roe": 10.41,
@@ -5979,57 +5979,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.07,
-      "costOfEquity": 13.43,
+      "wacc": 10.82,
+      "costOfEquity": 13.25,
       "costOfDebt": 3.2,
       "taxRate": 18,
-      "beta": 1.0725,
-      "marketCap": 215122600000
+      "beta": 1.0475,
+      "marketCap": 202440700000
     },
     "beta": {
-      "beta5y": 1.0725
+      "beta5y": 1.0475
     },
     "price": [
-      {
-        "date": "2025-11-13",
-        "open": 371.09,
-        "high": 373.89,
-        "low": 363.34,
-        "close": 364.73,
-        "volume": 2273500
-      },
-      {
-        "date": "2025-11-14",
-        "open": 361.8,
-        "high": 362.2,
-        "low": 355.4,
-        "close": 357.18,
-        "volume": 2943500
-      },
-      {
-        "date": "2025-11-17",
-        "open": 356.22,
-        "high": 358.23,
-        "low": 339.4,
-        "close": 341.25,
-        "volume": 3599000
-      },
-      {
-        "date": "2025-11-18",
-        "open": 336.85,
-        "high": 343.73,
-        "low": 334.1,
-        "close": 340.66,
-        "volume": 4216800
-      },
-      {
-        "date": "2025-11-19",
-        "open": 341.71,
-        "high": 345.32,
-        "low": 340.74,
-        "close": 344.64,
-        "volume": 2005000
-      },
       {
         "date": "2025-11-20",
         "open": 349.97,
@@ -8005,6 +7965,46 @@
         "low": 318.55,
         "close": 320.6,
         "volume": 1714800
+      },
+      {
+        "date": "2026-11-16",
+        "open": 320.21,
+        "high": 321.1,
+        "low": 316.96,
+        "close": 319.05,
+        "volume": 2265200
+      },
+      {
+        "date": "2026-11-17",
+        "open": 317.76,
+        "high": 319.36,
+        "low": 313.17,
+        "close": 315.78,
+        "volume": 2665400
+      },
+      {
+        "date": "2026-11-18",
+        "open": 315.5,
+        "high": 317.5,
+        "low": 312.73,
+        "close": 315.4,
+        "volume": 3167600
+      },
+      {
+        "date": "2026-11-19",
+        "open": 316.12,
+        "high": 316.38,
+        "low": 309.41,
+        "close": 311.11,
+        "volume": 3922200
+      },
+      {
+        "date": "2026-11-20",
+        "open": 311.23,
+        "high": 314.72,
+        "low": 300.9,
+        "close": 301.7,
+        "volume": 3507800
       }
     ],
     "news": [
@@ -8158,23 +8158,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.05,
-        "industryAvg": 23.41
+        "value": 16.99,
+        "industryAvg": 21.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.77,
-        "industryAvg": 5.52
+        "value": 2.61,
+        "industryAvg": 5.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.01,
-        "industryAvg": 6.04
+        "value": 5.66,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",
         "value": 10.41,
-        "industryAvg": 15.190000000000001
+        "industryAvg": 15.21
       },
       {
         "metric": "ROA",
@@ -8183,7 +8183,7 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 65.68
+        "industryAvg": 65.67
       },
       {
         "metric": "EBITDA Margin",
@@ -8192,7 +8192,7 @@
       {
         "metric": "Net Margin",
         "value": 18.19,
-        "industryAvg": 20.29
+        "industryAvg": 20.3
       }
     ]
   }
