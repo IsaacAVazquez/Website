@@ -163,7 +163,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-04
 
 - Fix dated draft practice and verified email configuration ([#564](https://github.com/IsaacAVazquez/Website/pull/564)).
-- Feat/transit street map ([#563](https://github.com/IsaacAVazquez/Website/pull/563)).
+- Transit street map ([#563](https://github.com/IsaacAVazquez/Website/pull/563)).
 - Record verified production setup status ([#565](https://github.com/IsaacAVazquez/Website/pull/565)).
 - Record approved production email configuration ([#566](https://github.com/IsaacAVazquez/Website/pull/566)).
 
@@ -675,7 +675,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ## 2026-05-11
 
-- Enhanced the MBA job application tracking workflow and tightened the league snapshot quality gate so generated snapshot checks do not mistake imports for data bodies.
+- Improved the MBA job application tracking workflow and tightened the league snapshot quality gate so generated snapshot checks do not mistake imports for data bodies.
 
 ---
 
@@ -722,7 +722,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-04-21
 
 - Added public `/now` and `/changelog` surfaces so current focus and shipped changes have first-class routes.
-- Published four April hot-topic deep dives and archived shipped implementation plans for traceability.
+- Published four April hot-topic articles and archived shipped implementation plans for traceability.
 - Backfilled the MBA role tracker into route and API inventories.
 
 ---
@@ -752,8 +752,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ## 2026-04-05
 
-- Rebuilt the SEO archive structure, refreshed homepage content, and improved accessibility metadata across key pages.
-- Enhanced article and case-study Open Graph metadata.
+- Rebuilt the SEO archive structure, refreshed homepage content, and improved accessibility metadata across the main pages.
+- Improved article and case-study Open Graph metadata.
 - Documented the football snapshot workflow across architecture, development, automation, components, and testing docs.
 - Archived legacy one-time summary files under `docs/archive/`.
 
@@ -814,7 +814,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-03-17
 
 - Simplified the global shell back to a single-row navigation with `Projects` as the public portfolio label, removed `Writing` from the promoted nav/home/footer surfaces, softened homepage and section copy, and kept the spacing cleanup that improved readability across the main landing pages.
-- Streamlined closing CTAs across the site by adding compact vs. full footer variants, keeping page-owned contact sections on home and contact, and removing redundant end-of-page prompts from the portfolio index and writing detail pages.
+- Simplified closing CTAs across the site by adding compact vs. full footer variants, keeping page-owned contact sections on home and contact, and removing redundant end-of-page prompts from the portfolio index and writing detail pages.
 - Repackaged `/march-madness-2026` as a search-oriented editorial landing page by splitting the route into a server metadata shell plus client UI, adding canonical metadata, article/FAQ/sports structured data, a route-level Open Graph image, and query-param deep links for primary views and sub-tabs.
 - Added above-the-fold March Madness traffic hooks including a sharper hero thesis, top-upset summaries, methodology cards, and a share layer with copy-link support, while preserving the bracket’s existing picks and analytics model.
 - Published a companion writing piece, `2026 March Madness Bracket Analysis: Best Upset Picks, Final Four, and Time Zone Traps`, and added sitemap coverage plus tests for the article file, route metadata, deep-link states, and the writing-index publication path.
@@ -829,7 +829,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-03-16
 
 - Repositioned `/investments` as a public fintech proof point with recruiter-facing metadata, `SoftwareApplication` structured data, homepage/home/about/contact copy updates, sitemap exposure, and main navigation visibility.
-- Reworked homepage curation so `Selected Work` highlights `Investment Analytics Platform`, `Transforming Client Reporting into Self-Service Analytics`, and `Scaling a Platform to 60M+ Users`, while removing fantasy football from the homepage featured set.
+- Reworked homepage curation so `Selected Work` shows `Investment Analytics Platform`, `Transforming Client Reporting into Self-Service Analytics`, and `Scaling a Platform to 60M+ Users`, while removing fantasy football from the homepage featured set.
 - Replaced the investments research runtime path with static curated symbol snapshots served from `/data/investments/*`, so the research UI now loads one published snapshot per symbol instead of fanning out through server-side section APIs.
 - Slimmed the curated investments dataset from raw per-section dumps to precomputed UI-ready snapshots, capped price history to 1Y, capped news to 10 items, removed transcript artifacts, and reduced the published research dataset from roughly `240 MB` to roughly `2.2 MB`.
 - Updated the research workspace to support curated-symbol search only in production, show a clear curated-universe message for non-curated symbols, and keep portfolio quote lookups as the only live Yahoo dependency.
@@ -871,8 +871,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-02-18
 
 - Added onboarding docs (`GETTING-STARTED.md`, `API.md`, `PERFORMANCE.md`, `TROUBLESHOOTING.md`) and wired every markdown link to valid destinations.
-- Synced the documentation index (`docs/README.md`) with the current set of deep-dive guides.
-- General cleanup across `docs/` to ensure references to deployment, database, and automation content stay accurate.
+- Synced the documentation index (`docs/README.md`) with the current set of guides.
+- General cleanup across `docs/` of references to deployment, database, and automation content.
 
 ---
 

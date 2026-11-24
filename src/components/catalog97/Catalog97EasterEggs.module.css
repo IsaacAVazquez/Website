@@ -65,7 +65,7 @@
   }
 
   .toast {
-    animation: toastIn 220ms ease-out;
+    animation: toastIn 220ms var(--c97-ease);
   }
 
   .imprint {
@@ -114,7 +114,7 @@
   position: fixed;
   left: var(--c97-sp-2);
   bottom: var(--c97-sp-2);
-  z-index: 60;
+  z-index: var(--c97-z-toast);
   width: min(380px, calc(100vw - 2 * var(--c97-sp-2) - 8px));
 }
 
@@ -212,7 +212,7 @@
   --proof-line: linear-gradient(var(--proof-ink), var(--proof-ink)) no-repeat;
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: var(--c97-z-modal);
   pointer-events: none;
   filter: drop-shadow(0 0 1px var(--c97-print-bone)) drop-shadow(0 0 1px var(--c97-print-bone));
 }
@@ -273,7 +273,7 @@
 
 @media screen and (prefers-reduced-motion: no-preference) {
   .proof {
-    animation: proofIn 140ms ease-out;
+    animation: proofIn 140ms var(--c97-ease);
   }
 }
 
@@ -288,14 +288,14 @@
 /*
  * One sheet of vermilion over the viewport, multiplied into the page, so
  * paper prints red and ink stays dark, the way a print looks under a
- * safelight. It sits over the header and under the toast, which has to stay
- * readable, and it never takes the pointer. With reduced motion it comes on
- * and goes off with no fade.
+ * safelight. It sits over the header and one step under the toast level, since
+ * a toast has to stay readable, and it never takes the pointer. With reduced
+ * motion it comes on and goes off with no fade.
  */
 .safelight {
   position: fixed;
   inset: 0;
-  z-index: 55;
+  z-index: calc(var(--c97-z-toast) - 1);
   pointer-events: none;
   background: var(--c97-riso-vermilion);
   mix-blend-mode: multiply;

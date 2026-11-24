@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
@@ -172,7 +172,7 @@ Shared conventions worth internalizing:
 - Project data: `src/constants/caseStudies.ts`. `/portfolio` reads it through
   `getPortfolioProjects` and renders `Catalog97Portfolio`.
 - Writing posts live in `content/blog/`; `src/lib/blog.ts` reads frontmatter and
-  converts MD/MDX to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`,
+  converts each `.mdx` file to HTML via `remark`. Live routes: `/writing`, `/writing/[slug]`,
   `/writing/topics/[topic]`.
   The article HTML renders inside `.c97-article` (`catalog97.css`), which styles the
   whole remark tree; the cover is a `Catalog97Slot` with the credit as its caption.

@@ -1,4 +1,5 @@
 /** @jest-environment node */
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { getDevOptions } = require("../dev.cjs");
 
 describe("development server binding", () => {

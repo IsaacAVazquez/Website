@@ -5,8 +5,6 @@
 // REAL (today's-dollar) figures for display. See projection.ts.
 // ============================================================
 
-export type FilingStatus = "single" | "married";
-
 /** Tax treatment of an account drives how withdrawals are taxed. */
 export type AccountType = "taxable" | "traditional" | "roth" | "hsa";
 
@@ -101,8 +99,6 @@ export interface RetirementPlanInput {
   retirementAge: number;
   /** Planning horizon / life expectancy. Plan to a conservative age. */
   horizonAge: number;
-  filingStatus: FilingStatus;
-  region?: string;
   /** Desired annual spend in retirement, today's dollars. */
   desiredAnnualSpend: number;
   /** Extra annual healthcare spend before Medicare (age < 65), today's dollars. */
@@ -142,7 +138,6 @@ export interface YearProjection {
 export interface DeterministicResult {
   path: YearProjection[];
   balanceAtRetirement: MoneyPair;
-  endingBalance: MoneyPair;
   /** Age at which the portfolio is exhausted, or null if it lasts. */
   depletionAge: number | null;
 }

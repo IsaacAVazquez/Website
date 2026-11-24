@@ -253,7 +253,7 @@
   .pa-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
   }
 
   /* Focus moving up the table scrolls a race button to the top edge, which is

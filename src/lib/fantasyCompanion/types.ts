@@ -40,8 +40,6 @@ export interface CreateRedraftRoomOptions {
   rounds?: number;
   userTeam?: number;
   draftOrder?: FantasyCompanionDraftOrder;
-  /** Compatibility alias for the existing site tracker. */
-  draftType?: FantasyCompanionDraftOrder;
   scoring?: ScoringFormat;
   lineup?: Partial<RedraftLineupSettings>;
 }

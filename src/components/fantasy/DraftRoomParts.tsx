@@ -42,9 +42,7 @@ const TALLY_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
  * keeps mounted from setup through the room to the recap, so each sentence is
  * a change inside a region a screen reader already knows. A region that
  * mounts with its text can be skipped, which is why the bar does not carry
- * the room's sentence. `announcement` is for a caller with no such element:
- * with it the bar prints a visually hidden status sentence, and without it
- * the bar prints none. The section stacks one above every other pinned bar
+ * the room's sentence. The section stacks one above every other pinned bar
  * (`ffb-bug-pin`), so a room's board bar never covers it. `sectionRef` is the element a room measures to pin its
  * board bar and its rail under the bar. `className` goes on the bar, for a
  * room's own rules.
@@ -52,25 +50,18 @@ const TALLY_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 export function DraftScorebug({
   label,
   sectionRef,
-  announcement,
   actions,
   className,
   children,
 }: {
   label: string;
   sectionRef?: Ref<HTMLElement>;
-  announcement?: string;
   actions?: ReactNode;
   className?: string;
   children: ReactNode;
 }) {
   return (
     <section ref={sectionRef} aria-label={label} className="ffb-sticky ffb-bug-pin">
-      {announcement === undefined ? null : (
-        <p role="status" aria-live="polite" className="sr-only">
-          {announcement}
-        </p>
-      )}
       <div className={className ? `ffb-bug ${className}` : "ffb-bug"}>
         {children}
         {actions ? <div className="ffb-bug-actions">{actions}</div> : null}
@@ -138,29 +129,25 @@ export function DraftLastPicks({
   picks,
   userTeam,
   heading = "Last picks",
-  headingLevel = 3,
   onUndoToPick,
 }: {
   picks: RoomPick[];
   userTeam: number;
   heading?: string;
-  /** The heading's level in the room's outline. The look does not change. */
-  headingLevel?: 2 | 3;
   onUndoToPick?: (pickNumber: number) => void;
 }) {
   const listRef = useRef<HTMLOListElement | null>(null);
   const fit = useFirstRowCount(listRef, picks.length);
   const headingId = useId();
-  const Heading = headingLevel === 2 ? "h2" : "h3";
 
   if (picks.length === 0) return null;
 
   return (
     <div className="ffb-picks">
       <div className="ffb-picks-head">
-        <Heading id={headingId} className="ffb-h3">
+        <h3 id={headingId} className="ffb-h3">
           {heading}
-        </Heading>
+        </h3>
         {onUndoToPick ? (
           <p className="ffb-picks-note ffb-noprint">Select one to undo back to it</p>
         ) : null}

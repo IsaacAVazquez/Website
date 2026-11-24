@@ -113,9 +113,11 @@ describe("NewsPulseClient", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Tone and density" })).toBeVisible();
   });
 
-  it("prints one front page with no view tabs", () => {
+  it("prints one front page with no view tabs", async () => {
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
     render(<NewsPulseClient />);
+    // Waiting for a headline lets the fetch settle inside the test.
+    await screen.findByRole("heading", { level: 3, name: sampleArticles[0].title });
     // The Headlines, Coverage map, and Analysis tabs merged into sections in the 2026-10-12 redesign.
     expect(screen.queryAllByRole("tab")).toHaveLength(0);
     expect(screen.queryByRole("link", { name: "Jump to the desk" })).toBeNull();
@@ -216,6 +218,39 @@ describe("NewsPulseClient", () => {
     ).toBeVisible();
   });
 
+  it("says the headlines are the last good ones when no feed answered", async () => {
+    mockFetch.mockResolvedValue(
+      makeOkResponse({
+        ...baseResponse,
+        dataStatus: "stale-fallback",
+        errors: ["BBC: timeout", "NPR: timeout"],
+        message:
+          "I am showing the last good headlines because the most recent refresh could not reach the feeds.",
+      }),
+    );
+
+    render(<NewsPulseClient />);
+
+    await waitFor(() =>
+      expect(screen.getByRole("status")).toHaveTextContent(/I am showing the last good headlines/),
+    );
+    expect(screen.queryByText(/Some feeds did not come through/i)).not.toBeInTheDocument();
+    expect(screen.getByText("BBC: timeout; NPR: timeout")).toBeVisible();
+  });
+
+  it("writes its own sentence when the request itself fails", async () => {
+    mockFetch.mockRejectedValue(new TypeError("Failed to fetch"));
+
+    render(<NewsPulseClient />);
+
+    await waitFor(() =>
+      expect(screen.getByRole("alert")).toHaveTextContent(
+        "The request for the latest headlines did not go through. Try again in a moment.",
+      ),
+    );
+    expect(screen.getByRole("alert")).not.toHaveTextContent("Failed to fetch");
+  });
+
   it("renders the route-level error state when the API reports a total outage", async () => {
     mockFetch.mockResolvedValue({
       ok: false,
@@ -250,7 +285,7 @@ describe("NewsPulseClient", () => {
     }
     expect(within(table).getByRole("rowheader", { name: SOURCE_META.atlantic.name })).toBeInTheDocument();
     expect(
-      screen.getByText(/I read this as a rough lean in how each outlet frames its headlines, and it doesn't measure the sentiment of whole articles\./),
+      screen.getByText(/I read this as a rough lean in how each outlet frames its headlines and feed summaries, and it doesn't measure the sentiment of whole articles\./),
     ).toBeVisible();
   });
 

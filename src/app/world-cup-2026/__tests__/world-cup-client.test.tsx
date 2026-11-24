@@ -94,6 +94,20 @@ describe("WorldCupClient", () => {
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
   });
 
+  it("calls the third-place order provisional only while a group is unfinished", () => {
+    const { unmount } = renderClient();
+    expect(screen.queryByText(/stays provisional/)).toBeNull();
+    unmount();
+
+    // One match short in every group, as the table stands before the last round.
+    const groups = SUMMARY.groups.map((group) => ({
+      ...group,
+      standings: group.standings.map((row) => ({ ...row, played: 2 })),
+    }));
+    renderClient({ summary: { ...SUMMARY, groups } });
+    expect(screen.getByText(/stays provisional until every group has finished/)).toBeInTheDocument();
+  });
+
   it("labels group rows by qualifying zone and signs goal difference", () => {
     renderClient();
     const groupA = screen.getByRole("table", { name: "Group A standings" });

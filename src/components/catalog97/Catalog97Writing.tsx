@@ -11,7 +11,6 @@ import { sep } from "@/lib/date-formatters";
 interface SectionSummary {
   id: string;
   label: string;
-  description: string;
   count: number;
 }
 
@@ -34,14 +33,11 @@ export interface Catalog97WritingProps {
   posts: WritingIndexPost[];
   clusters: SectionSummary[];
   buckets: SectionSummary[];
-  totalEssays: number;
-  totalNotes: number;
 }
 
 const ALL = "all";
-// Two length-based filters sit between the curated clusters and the topical
-// archive buckets. They are derived from reading time rather than frontmatter,
-// using the same five-minute cut the page uses for its totals.
+// The length filter is derived from reading time, with no frontmatter of its
+// own, and its two totals use the same five-minute cut.
 type SortMode = "newest" | "shortest" | "longest";
 /** Notes run five minutes or under, and essays run longer. */
 type LengthFilter = "any" | "notes" | "essays";
@@ -106,8 +102,6 @@ export function Catalog97Writing({
   posts,
   clusters,
   buckets,
-  totalEssays,
-  totalNotes,
 }: Catalog97WritingProps) {
   const searchInputRef = useRef<HTMLInputElement>(null);
   /*
@@ -131,6 +125,12 @@ export function Catalog97Writing({
   const [sort, setSort] = useState<SortMode>("newest");
   const [length, setLength] = useState<LengthFilter>("any");
   const filtersRef = useRef<HTMLDivElement>(null);
+
+  const totalNotes = useMemo(
+    () => posts.filter((post) => readingMinutes(post.readingTime) <= 5).length,
+    [posts],
+  );
+  const totalEssays = posts.length - totalNotes;
 
   const tabs = useMemo(
     () => [
@@ -503,7 +503,9 @@ export function Catalog97Writing({
                       // and its hover.
                       color: selected ? "var(--c97-ink)" : undefined,
                       // Pressed is never colour alone; this is .c97-segmented's underline.
-                      textDecoration: selected ? "underline" : "none",
+                      // The longhand, since React rewrites only the property that
+                      // changed and the shorthand resets thickness and colour.
+                      textDecorationLine: selected ? "underline" : "none",
                       textDecorationThickness: "2px",
                       textUnderlineOffset: "6px",
                       textDecorationColor: "var(--c97-accent)",
@@ -517,7 +519,7 @@ export function Catalog97Writing({
             </div>
             {/* Read out when a search or filter changes the list. */}
             <p className="sr-only" role="status">
-              {filtered.length} of {posts.length} pieces shown
+              {filtered.length} of {posts.length} pieces match
             </p>
           </div>
 
@@ -671,8 +673,9 @@ export function Catalog97Writing({
                 "repeat(auto-fit,minmax(min(100%,180px),1fr))",
               columnGap: "var(--c97-sp-5)",
               // Each topic link is a 50px hit box, so a --c97-sp-2 gap let every
-              // row overlap the next by 15 to 20px. 34px keeps the boxes apart.
-              rowGap: "max(var(--c97-sp-3), 34px)",
+              // row overlap the next by 15 to 20px. sp-5 keeps the boxes apart,
+              // as it does in the filter row above.
+              rowGap: "var(--c97-sp-5)",
               marginTop: "var(--c97-sp-4)",
             }}
           >

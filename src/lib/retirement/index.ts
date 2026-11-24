@@ -84,7 +84,8 @@ export function projectCore(input: RetirementPlanInput, referenceYear?: number):
 
 /** Full projection including the lever sensitivity analysis. */
 export function project(input: RetirementPlanInput, referenceYear?: number): RetirementResult {
-  return { ...projectCore(input, referenceYear), levers: computeLevers(input, referenceYear) };
+  const core = projectCore(input, referenceYear);
+  return { ...core, levers: computeLevers(input, referenceYear, core.monteCarlo.successRate) };
 }
 
 // Re-exports for consumers (hook, UI, tests).

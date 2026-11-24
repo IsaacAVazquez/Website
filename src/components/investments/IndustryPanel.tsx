@@ -60,7 +60,7 @@ export function IndustryPanel({ symbol }: Props) {
   const rows = extractRows(raw);
 
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
         Industry comparison
       </h3>

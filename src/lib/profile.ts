@@ -3,14 +3,11 @@ export const profile = {
   givenName: "Isaac",
   familyName: "Vazquez",
   alternateNames: ["IsaacAVazquez"],
-  shortTitle: "MBA Candidate",
   fullTitle: "UC Berkeley Haas MBA Candidate",
   description:
     "Isaac Vazquez is a second-year Berkeley Haas MBA candidate moving into product, with six years in campaign data and QA and a 2026 growth internship at Juno.",
   disambiguatingDescription:
     "UC Berkeley Haas MBA candidate based in Berkeley, California, moving into product roles after six years across civic technology, QA, analytics, and SaaS.",
-  shortDescription:
-    "UC Berkeley Haas MBA candidate with a background in QA, analytics, and product work across SaaS, civic tech, and fintech-style tools.",
   location: {
     locality: "Berkeley",
     region: "CA",
@@ -23,14 +20,6 @@ export const profile = {
   sameAs: {
     github: "https://github.com/IsaacAVazquez",
     linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
-  },
-  formerEmployer: {
-    name: "Civitech",
-    url: "https://civitech.io",
-    description:
-      "Civic technology company focused on voter engagement and public-interest digital infrastructure.",
-    startDate: "2022-01",
-    endDate: "2025-08",
   },
   credentials: [
     "UC Berkeley Haas MBA Candidate '27",

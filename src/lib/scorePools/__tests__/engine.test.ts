@@ -51,18 +51,16 @@ describe("analyzeFixture end to end", () => {
 describe("recheck list", () => {
   const pool = createDefaultPoolConfig();
 
-  it("flags stale odds", () => {
-    const analysis = analyzeFixture(
-      fixture({
-        markets: {
-          moneyline: { home: 2.6, draw: 3.0, away: 3.05 },
-          fetchedAt: "2026-07-08T09:00:00.000Z",
-        },
-      }),
-      pool,
-      { now: NOW },
-    );
-    expect(analysis.recheck.join(" ")).toMatch(/hours old/);
+  it("flags stale odds in hours, and in days once they are two days old", () => {
+    const staleSince = (fetchedAt: string) =>
+      analyzeFixture(
+        fixture({ markets: { moneyline: { home: 2.6, draw: 3.0, away: 3.05 }, fetchedAt } }),
+        pool,
+        { now: NOW },
+      ).recheck.join(" ");
+
+    expect(staleSince("2026-07-09T22:00:00.000Z")).toMatch(/about 14 hours old/);
+    expect(staleSince("2026-07-08T09:00:00.000Z")).toMatch(/about 2 days old/);
   });
 
   it("flags hand-entered odds and missing totals", () => {
@@ -98,7 +96,10 @@ describe("context flags", () => {
     ];
     const analysis = analyzeFixture(fixture(), pool, { now: NOW, standings });
     expect(analysis.suggestedFlags.map((s) => s.flag)).toContain("deadRubber");
-    expect(analysis.recheck.join(" ")).toMatch(/Standings suggest/);
+    // The reader gets the flag in words, never its key.
+    const recheck = analysis.recheck.join(" ");
+    expect(recheck).toMatch(/That suggests a dead rubber, and the flag is not applied yet\./);
+    expect(recheck).not.toMatch(/deadRubber|drawSuitsBoth/);
   });
 
   it("applying drawSuitsBoth raises the draw mass and lowers the total", () => {

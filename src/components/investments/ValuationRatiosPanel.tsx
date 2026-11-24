@@ -136,7 +136,7 @@ export function ValuationRatiosPanel({
 
   if (!showIndustryComparison) {
     return (
-      <TerminalPanel padding="sm">
+      <TerminalPanel>
         <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
           Valuation snapshot
         </h3>
@@ -190,7 +190,7 @@ export function ValuationRatiosPanel({
   }
 
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-0)" }}>Valuation vs industry</h3>
       <p className="text-xs text-[var(--c97-label)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
         Comparing this stock&apos;s valuation ratios against its industry average.

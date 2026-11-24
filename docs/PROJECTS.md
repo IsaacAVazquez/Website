@@ -3,7 +3,7 @@
 
 # Project Roadmap
 
-Last updated: 2026-11-16 (the roadmap was written on 2026-03-04, and the notes that start "As of 2026-11-02" were added on 2026-11-02)
+Last updated: 2026-11-24 (the roadmap was written on 2026-03-04, and the notes that start "As of 2026-11-02" were added on 2026-11-02)
 
 Prioritized list of improvements identified from a codebase audit (`docs/UNDERUTILIZED_FEATURES.md`, removed 2026-10-01 and still in git history). Items are organized by priority tier, where P0 items are high-impact quick wins and P3 items need a decision before work begins.
 
@@ -42,7 +42,7 @@ These items surface existing content that is currently invisible to visitors.
 
 ---
 
-## P1 — Cleanup (reduce maintenance burden) ✅ Complete
+## P1 — Cleanup (reduce maintenance burden), complete
 
 Dead code removal. No user-facing impact, but reduces confusion and bundle size.
 

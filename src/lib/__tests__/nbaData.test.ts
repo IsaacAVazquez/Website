@@ -12,6 +12,12 @@ import {
 } from "../nbaData";
 import type { NbaFixture, NbaLeader, NbaSnapshot, NbaTeam, NbaTeamSnapshot } from "../../types/nba";
 
+// The builder waits 1.5 s before each team's request, and it takes that wait
+// from node:timers/promises, which a spy on the global setTimeout never reaches.
+jest.mock("node:timers/promises", () => ({
+  setTimeout: () => Promise.resolve(),
+}));
+
 function createEmptyNbaSnapshot(): NbaSnapshot {
   return {
     season: "Current season",
@@ -1268,12 +1274,6 @@ describe("ESPN's real response shapes", () => {
 
     it("builds team panels for the season the summary settled on", async () => {
       freezeClock("2026-10-15T00:20:00Z");
-      jest
-        .spyOn(global, "setTimeout")
-        .mockImplementation(((callback: () => void) => {
-          callback();
-          return 0;
-        }) as unknown as typeof setTimeout);
       const okcOnly = JSON.parse(JSON.stringify(NBA_TEAMS)) as typeof NBA_TEAMS;
       okcOnly.sports[0].leagues[0].teams = okcOnly.sports[0].leagues[0].teams.filter(
         (wrapper) => wrapper.team.abbreviation === "OKC"

@@ -13,15 +13,18 @@ jest.mock("@/components/catalog97/Catalog97ToolShell", () => ({
     children,
     route,
     buildNoteHref,
+    wide,
   }: {
     children: React.ReactNode;
     route: string;
     buildNoteHref?: string;
+    wide?: boolean;
   }) => (
     <div
       data-testid="tool-shell"
       data-route={route}
       data-build-note={buildNoteHref ?? ""}
+      data-wide={String(wide)}
     >
       {children}
     </div>
@@ -83,6 +86,15 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-build-note")).toBe(
       "/writing/building-an-nba-dashboard",
     );
+  });
+
+  it.each([
+    ["/investments", "true"],
+    ["/fantasy-football/weekly", "true"],
+    ["/nba", "false"],
+  ])("tells the shell whether %s prints on the wide column", (pathname, wide) => {
+    renderAt(pathname);
+    expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-wide")).toBe(wide);
   });
 
   it("passes no build note where none is registered", () => {

@@ -106,11 +106,12 @@ export function SavedBets({
           </button>
         ) : null}
       </form>
-      <p role="status">
-        {status === "memory-only"
-          ? "Browser storage is unavailable. These edits only last in this tab."
-          : message}
-      </p>
+      {status === "memory-only" ? (
+        <p role="status">
+          Browser storage is unavailable. These edits only last in this tab.
+        </p>
+      ) : null}
+      <p role="status">{message}</p>
       {bets.length ? (
         <div
           className="dl-compare"

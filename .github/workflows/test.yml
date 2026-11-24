@@ -97,6 +97,9 @@ jobs:
     name: E2E Tests (chromium)
     runs-on: ubuntu-latest
     needs: build
+    # A shard took one to three minutes on the twelve pushes to main before
+    # 2026-11-24. Without a limit a hung browser holds the runner for six hours.
+    timeout-minutes: 15
     # Shard the spec files across N runners. Bump the matrix length to scale;
     # the run step derives the divisor from `strategy.job-total`, so adding a
     # shard number here is the only change needed.
@@ -179,6 +182,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # The job took 39 to 55 minutes on the twelve pushes to main before 2026-11-24.
+    timeout-minutes: 90
 
     # Allow the failure-notification step to open/update a tracking issue.
     permissions:
@@ -238,8 +243,10 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps
 
+      # Desktop Chromium is left out. The three shards above run it on this same
+      # commit and build, and here it ran a second time on one worker.
       - name: Run E2E tests (full matrix)
-        run: npm run test:e2e:full
+        run: npm run test:e2e:full -- --project=firefox --project=webkit --project="Mobile Chrome" --project="Mobile Safari"
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v7
@@ -263,6 +270,44 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'e2e-matrix-failure')
+
+  # The watchdog suite for the investments fetch used to run only inside the
+  # refresh lane, so a pull request that broke it stayed green until the next
+  # scheduled refresh.
+  python-tests:
+    name: Python Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v7
+        with:
+          # The pins in scripts/requirements-investments.txt are compiled for 3.12.
+          python-version: "3.12"
+
+      # The same path and key as update-investments.yml, so this job restores the
+      # venv the refresh lane saved on main.
+      - name: Cache investments venv
+        id: venv-cache
+        uses: actions/cache@v6
+        with:
+          path: .venv
+          key: investments-venv-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('scripts/requirements-investments.txt') }}
+
+      - name: Create venv and install fetch dependency
+        if: steps.venv-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r scripts/requirements-investments.txt
+
+      - name: Test investments fetch watchdogs
+        run: .venv/bin/python3 -m unittest scripts.tests.test_fetch_investments_data
 
   lint:
     name: Lint

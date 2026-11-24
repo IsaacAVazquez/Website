@@ -230,7 +230,7 @@ export const DEAL_TACTICS: DealTactic[] = [
     id: "points-value-first",
     category: "points",
     title: "Redeem on value, not on impulse",
-    body: "Points are worth roughly a cent and a half each in the abstract, so I only spend them when a redemption clears that bar comfortably. That usually means long-haul flights and premium cabins, not a cheap domestic ticket where the cash price already makes the points a wash. The value checker on this page exists to force that comparison before you burn a balance.",
+    body: `Points are worth about ${POINTS_BASELINE_CENTS} cents each in the abstract, which is the baseline the value checker on this page uses, so I only spend them when a redemption clears that bar comfortably. That usually means long-haul flights and premium cabins, not a cheap domestic ticket where the cash price already makes the points a wash. The checker exists to force that comparison before you burn a balance.`,
     impact: "high",
   },
   {

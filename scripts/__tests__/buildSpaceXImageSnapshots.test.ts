@@ -34,8 +34,14 @@ function createImageResponse(body: string, contentType = "image/png"): Response 
   });
 }
 
+// Only the roots this file made are removed. A sweep of the temp directory by
+// prefix deleted the roots of a second run of the same suite.
+const projectRoots: string[] = [];
+
 async function makeProjectRoot(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "spacex-image-snapshot-"));
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "spacex-image-snapshot-"));
+  projectRoots.push(root);
+  return root;
 }
 
 async function readManifest(projectRoot: string): Promise<Record<string, string>> {
@@ -59,11 +65,8 @@ async function readReferenceIndex(projectRoot: string): Promise<SpaceXImageRefer
 describe("buildSpaceXImageSnapshots", () => {
   afterEach(async () => {
     jest.restoreAllMocks();
-    const tempRootEntries = await fs.readdir(os.tmpdir());
     await Promise.all(
-      tempRootEntries
-        .filter((entry) => entry.startsWith("spacex-image-snapshot-"))
-        .map((entry) => fs.rm(path.join(os.tmpdir(), entry), { recursive: true, force: true }))
+      projectRoots.splice(0).map((root) => fs.rm(root, { recursive: true, force: true }))
     );
   });
 

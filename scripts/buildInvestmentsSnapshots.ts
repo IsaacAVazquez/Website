@@ -1,7 +1,9 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { buildInvestmentSnapshot } from "../src/lib/investmentSnapshot";
 import {
+  RETAINABLE_SECTIONS,
   getPriceAsOf,
   mergeInvestmentSnapshots,
   normalizeInvestmentSnapshot,
@@ -13,49 +15,18 @@ import {
 } from "../src/lib/investmentsPriceHealth";
 import type {
   InvestmentIndexEntry,
+  InvestmentSection,
   InvestmentSnapshot,
   InvestmentsIndex,
 } from "../src/types/investment";
 import { readJson, writeFileAtomic } from "./snapshotFallback";
-
-type RawSectionName =
-  | "info"
-  | "fundamentals"
-  | "profitability"
-  | "margins"
-  | "growth"
-  | "income_statement"
-  | "balance_sheet"
-  | "cash_flow"
-  | "wacc"
-  | "industry"
-  | "beta"
-  | "news"
-  | "price"
-  | "officers";
 
 const PROJECT_ROOT = process.cwd();
 // Raw per-section fetch output (script-only, never deployed).
 const RAW_DIR = path.join(PROJECT_ROOT, "data", "investments-raw");
 // Deployed artifacts: index.json + per-symbol snapshot.json.
 const PUBLIC_DIR = path.join(PROJECT_ROOT, "public", "data", "investments");
-const RAW_SECTIONS: RawSectionName[] = [
-  "info",
-  "fundamentals",
-  "profitability",
-  "margins",
-  "growth",
-  "income_statement",
-  "balance_sheet",
-  "cash_flow",
-  "wacc",
-  "industry",
-  "beta",
-  "news",
-  "price",
-  "officers",
-];
-const REQUIRED_RAW_SECTIONS: RawSectionName[] = [
+const REQUIRED_RAW_SECTIONS: InvestmentSection[] = [
   "info",
   "fundamentals",
   "profitability",
@@ -79,7 +50,7 @@ async function buildSymbolSnapshot(
   lastUpdated: string | null
 ): Promise<void> {
   const rawSymbolDir = path.join(RAW_DIR, symbol);
-  const rawSections = await RAW_SECTIONS.reduce<Promise<Record<string, unknown>>>(
+  const rawSections = await RETAINABLE_SECTIONS.reduce<Promise<Record<string, unknown>>>(
     async (promise, section) => {
       const acc = await promise;
       const data = await readJson<unknown>(path.join(rawSymbolDir, `${section}.json`));
@@ -134,11 +105,13 @@ async function buildSymbolSnapshot(
   // operation — and out of public/ so they never ship with a deploy.
 }
 
-async function sanitizeExistingSnapshot(
+export async function sanitizeExistingSnapshot(
   symbol: string,
-  assessedAt: string
+  assessedAt: string,
+  rawDir = RAW_DIR,
+  publicDir = PUBLIC_DIR
 ): Promise<void> {
-  const snapshotPath = path.join(PUBLIC_DIR, symbol, "snapshot.json");
+  const snapshotPath = path.join(publicDir, symbol, "snapshot.json");
   const priorSnapshot = await readJson<InvestmentSnapshot>(snapshotPath);
   if (!priorSnapshot) {
     throw new Error(`Missing retained snapshot for stale symbol ${symbol}`);
@@ -148,7 +121,7 @@ async function sanitizeExistingSnapshot(
   // It advances the price of a symbol whose full refresh did not happen this
   // run, under the same age rule a full refresh has to pass.
   const priced = buildInvestmentSnapshot(symbol, null, {
-    price: await readJson<unknown>(path.join(RAW_DIR, symbol, "bulk_price.json")),
+    price: await readJson<unknown>(path.join(rawDir, symbol, "bulk_price.json")),
   });
   const bulkPriceAsOf = priced.freshness?.sections?.price;
   const hasRecentBulkPrice = isRecentInvestmentPrice(
@@ -327,7 +300,13 @@ async function main() {
   );
 }
 
-main().catch((error) => {
-  console.error("Failed to build investment snapshots:", error);
-  process.exitCode = 1;
-});
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+  main().catch((error) => {
+    console.error("Failed to build investment snapshots:", error);
+    process.exitCode = 1;
+  });
+}

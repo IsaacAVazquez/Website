@@ -61,10 +61,6 @@ function formatTransition(
   return `${before} → ${after}`;
 }
 
-function normalizePackageCount(value: number): number {
-  return Number.isFinite(value) ? Math.max(0, Math.trunc(value)) : 0;
-}
-
 function MetricCell({ label, value }: { label: string; value: string | number }) {
   return (
     <div role="cell" aria-label={`${label}: ${value}`} className="min-w-0">
@@ -86,9 +82,7 @@ export function TradeRosterImpact({
   const canShowValues = valuesAvailable && result !== null;
   const sideA = canShowValues ? summarizePackage(result.sideA, result.basis === "in-season") : null;
   const sideB = canShowValues ? summarizePackage(result.sideB, result.basis === "in-season") : null;
-  const normalizedGiveCount = normalizePackageCount(giveCount);
-  const normalizedGetCount = normalizePackageCount(getCount);
-  const yourRosterDelta = normalizedGiveCount - normalizedGetCount;
+  const yourRosterDelta = giveCount - getCount;
   const rows: RosterRow[] = [
     {
       label: "Your roster",

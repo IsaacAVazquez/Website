@@ -8,6 +8,7 @@ import type {
 import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import { f1ResultsKey, parseF1Results } from "@/lib/fantasyFormula1Records";
 import { prefixedId } from "@/lib/utils";
+import { formatDateTime } from "@/lib/date-formatters";
 import "@/components/project-workflows.css";
 
 export function RaceNotebook({
@@ -193,7 +194,8 @@ export function RaceNotebook({
                   entered prices · Model estimate {estimate.toFixed(1)} points
                 </p>
                 <small>
-                  Model source {row.sourceAt} · Recorded {row.savedAt}
+                  Model source {formatDateTime(row.sourceAt)} · Recorded{" "}
+                  {formatDateTime(row.savedAt)}
                 </small>
                 <form
                   className="project-workflow-actions"
@@ -263,7 +265,7 @@ export function RaceNotebook({
           })}
         </ul>
       )}
-      {message && <p role="status">{message}</p>}
+      <p role="status">{message}</p>
       {(memoryOnly || store.status === "memory-only") && (
         <p role="status">
           Browser storage is unavailable. Changes last only while this tab is

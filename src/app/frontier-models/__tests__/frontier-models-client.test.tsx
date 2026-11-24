@@ -119,6 +119,9 @@ describe("FrontierModelsClient", () => {
     const details = screen.getByRole("group", { name: "Price tier" }).closest("details") as HTMLElement;
     expect(fireEvent.click(details.querySelector("summary") as HTMLElement)).toBe(false);
     expect(details).toHaveAttribute("open");
+    // The summary says why, so it does not read as a control that does nothing.
+    expect(details.querySelector("summary")).toHaveAttribute("aria-disabled", "true");
+    expect(details.querySelector("summary")).toHaveTextContent("Open while a filter is set");
   });
 
   it("lets the extra filters open and close while neither is set", () => {
@@ -165,8 +168,8 @@ describe("FrontierModelsClient", () => {
       />
     );
 
-    expect(screen.getByText(/facts auto-checked 2026-09-27/)).toHaveTextContent(
-      "facts auto-checked 2026-09-27 against models.dev + openrouter · 6 changed by the check, 1 matched, 2 not found in either catalog"
+    expect(screen.getByText(/facts auto-checked September 27, 2026/)).toHaveTextContent(
+      "facts auto-checked September 27, 2026 against models.dev + openrouter · 6 changed by the check, 1 matched, 2 not found in either catalog"
     );
   });
 

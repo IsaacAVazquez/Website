@@ -192,6 +192,19 @@ describe("SettingsClient pool settings", () => {
     });
   });
 
+  it("switches the shootout setting off under 90-minute scoring, which never reads it", async () => {
+    const user = userEvent.setup();
+    renderSettings();
+    const rules = screen.getByRole("region", { name: "Scoring rules" });
+    const shootout = within(rules).getByRole("checkbox", { name: "Shootout winner counts as the winner" });
+
+    expect(shootout).toBeDisabled();
+    expect(shootout).toHaveAccessibleDescription(/only applies under final-result scoring/);
+
+    await user.selectOptions(within(rules).getByLabelText("Scoring basis"), "finalResult");
+    expect(shootout).toBeEnabled();
+  });
+
   it("persists the standing, with empty gaps meaning none", async () => {
     const user = userEvent.setup();
     renderSettings();

@@ -293,6 +293,16 @@
   font-weight: 700;
 }
 
+/* A setting the current scoring basis ignores. */
+.sp-check:has(:disabled) {
+  opacity: 0.5;
+}
+
+.sp-check:has(:disabled),
+.sp-check :disabled {
+  cursor: not-allowed;
+}
+
 /* The tracker's own summary: three figures in one ruled row. */
 .sp-totals {
   display: grid;

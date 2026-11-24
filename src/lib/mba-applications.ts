@@ -23,6 +23,7 @@ import type {
 import { MBA_ROLE_FAMILIES } from "@/constants/mba-role-taxonomy";
 import { isRecord, prefixedId } from "@/lib/utils";
 import { mergeStatusHistory } from "@/lib/mba-application-history";
+import { normalizeMBAJobText } from "@/lib/mba-job-matching";
 
 export const MBA_APPLICATIONS_STORAGE_KEY = "mba_applications_v1";
 const MBA_APPLICATION_EXPORT_SCHEMA = "mba-applications-export";
@@ -298,10 +299,28 @@ function buildMBAApplicationMatchKey(application: MBATrackedApplication): string
   return `id:${application.id}`;
 }
 
+/** The tracked application for a feed job, matched by job id or by apply URL. */
+export function findApplicationForJob(
+  applications: MBATrackedApplication[],
+  job: MBAJob
+): MBATrackedApplication | undefined {
+  const applyUrl = normalizeApplyUrlForKey(job.applyUrl);
+  return applications.find(
+    (application) =>
+      (application.jobId && application.jobId === job.id) ||
+      (!!applyUrl && normalizeApplyUrlForKey(application.jobSnapshot.applyUrl) === applyUrl)
+  );
+}
+
 function buildApplicationJobKeys(application: MBATrackedApplication): string[] {
   const keys = [buildMBAJobKey(application.jobSnapshot)];
   if (application.jobId) keys.push(`job:${application.jobId}`);
   return keys;
+}
+
+/** A candidate's snapshot keeps the source it was captured with, and a plain feed job is a live-feed role. */
+export function getMBAJobSource(job: MBAJob): MBAApplicationJobSnapshot["source"] {
+  return "source" in job && job.source === "manual" ? "manual" : "live-feed";
 }
 
 function buildMBAApplicationJobSnapshot(
@@ -311,7 +330,7 @@ function buildMBAApplicationJobSnapshot(
   return {
     ...job,
     capturedAt: now.toISOString(),
-    source: "live-feed",
+    source: getMBAJobSource(job),
   };
 }
 
@@ -478,24 +497,14 @@ export function parseMBAApplications(raw: string | null): MBATrackedApplication[
   }
 }
 
-export function loadMBAApplications(storage?: Pick<Storage, "getItem">): MBATrackedApplication[] {
-  if (storage) {
-    return parseMBAApplications(storage.getItem(MBA_APPLICATIONS_STORAGE_KEY));
-  }
+export function loadMBAApplications(): MBATrackedApplication[] {
   if (typeof window === "undefined") return [];
   return parseMBAApplications(readBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY).value);
 }
 
-export function saveMBAApplications(
-  applications: MBATrackedApplication[],
-  storage?: Pick<Storage, "setItem">
-): boolean {
+export function saveMBAApplications(applications: MBATrackedApplication[]): boolean {
   try {
     const payload = JSON.stringify(applications);
-    if (storage) {
-      storage.setItem(MBA_APPLICATIONS_STORAGE_KEY, payload);
-      return true;
-    }
     if (typeof window === "undefined") return false;
     return writeBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY, payload) === "persistent";
   } catch {
@@ -576,10 +585,6 @@ export function buildMBAApplicationsExport(
     exportedAt: now.toISOString(),
     applications,
   };
-}
-
-export function parseMBAApplicationsImport(raw: string): MBATrackedApplication[] {
-  return parseMBAApplications(raw);
 }
 
 function csvCell(value: unknown): string {
@@ -770,7 +775,7 @@ export function parseMBAJobSearchTargets(raw: string | null): MBAJobSearchTarget
 }
 
 function padTokens(value: string): string {
-  return ` ${value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()} `;
+  return ` ${normalizeMBAJobText(value)} `;
 }
 
 /** Whole-word phrase match, so "CA" does not match "Canada" and "Remote" does match "Remote - US". */
@@ -786,6 +791,29 @@ function isFreshEnough(postedAt: string, maxAgeDays: number, now: Date): boolean
   return now.getTime() - posted <= maxAgeDays * 86_400_000;
 }
 
+/** Keys of every role that is already a candidate (any triage) or a tracked application. */
+function buildKnownJobKeys(
+  candidates: MBAJobCandidate[],
+  pipeline: MBATrackedApplication[]
+): Set<string> {
+  const known = new Set<string>();
+  for (const candidate of candidates) known.add(buildMBAJobKey(candidate.job));
+  for (const application of pipeline) {
+    for (const key of buildApplicationJobKeys(application)) known.add(key);
+  }
+  return known;
+}
+
+/** Inbox candidates that name a role not yet in candidates.json or the pipeline. */
+export function dropKnownCandidates(
+  incoming: MBAJobCandidate[],
+  candidates: MBAJobCandidate[],
+  pipeline: MBATrackedApplication[]
+): MBAJobCandidate[] {
+  const known = buildKnownJobKeys(candidates, pipeline);
+  return incoming.filter((candidate) => !known.has(buildMBAJobKey(candidate.job)));
+}
+
 /**
  * Pure selection of feed jobs worth adding to candidates.json: full-time, inside the
  * targets, and not already a candidate (any triage) or a tracked application.
@@ -797,11 +825,7 @@ export function selectNewCandidates(
   targets: MBAJobSearchTargets,
   now = new Date()
 ): MBAJobCandidate[] {
-  const known = new Set<string>();
-  for (const candidate of candidates) known.add(buildMBAJobKey(candidate.job));
-  for (const application of pipeline) {
-    for (const key of buildApplicationJobKeys(application)) known.add(key);
-  }
+  const known = buildKnownJobKeys(candidates, pipeline);
   const avoid = new Set(targets.companiesAvoid);
   const timestamp = now.toISOString();
   const fresh: MBAJobCandidate[] = [];

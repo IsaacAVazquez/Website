@@ -4,7 +4,6 @@ import {
   hasReliableAdpSample,
 } from "@/lib/fantasyUtils";
 import {
-  DEFAULT_REDRAFT_LINEUP,
   getRedraftRosterTarget,
   normalizeRedraftLineup,
 } from "@/lib/redraftLineup";
@@ -37,20 +36,7 @@ const POSITION_RUN_MIN_COUNT = 3;
 /** How many top steals make the best-value list. */
 const BEST_VALUE_LIMIT = 5;
 
-/**
- * Starting-lineup targets shared with the draft board's roster-pressure
- * ordering, so "need" and "weakness" never disagree.
- */
-const _ROSTER_STARTER_TARGETS = {
-  QB: DEFAULT_REDRAFT_LINEUP.QB,
-  RB: DEFAULT_REDRAFT_LINEUP.RB,
-  WR: DEFAULT_REDRAFT_LINEUP.WR,
-  TE: DEFAULT_REDRAFT_LINEUP.TE,
-  K: DEFAULT_REDRAFT_LINEUP.K,
-  DST: DEFAULT_REDRAFT_LINEUP.DST,
-} as const;
-
-type RosterTargetPosition = keyof typeof _ROSTER_STARTER_TARGETS;
+type RosterTargetPosition = keyof TeamRoster["positionCounts"];
 
 type RosterNeedLevel = "starter" | "depth";
 
@@ -411,11 +397,7 @@ export function computeDraftAnalytics(
 
   const reaches = judgedPicks
     .filter(({ pick }) => classifyPickValue(pick) === "reach")
-    .sort((left, right) => {
-      const leftDelta = getPickDelta(left.pick) ?? 0;
-      const rightDelta = getPickDelta(right.pick) ?? 0;
-      return leftDelta - rightDelta;
-    })
+    .sort((left, right) => left.delta - right.delta)
     .map(({ pick }) => pick);
 
   const draftedTeams = teams.filter((team) => team.picks.length > 0);

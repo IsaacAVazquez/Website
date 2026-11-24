@@ -62,12 +62,17 @@ export function formatMissionMoment(launch: Pick<MissionLaunchCard, "dateUtc" | 
       return formatStableDateTime(DATE_TIME_FORMATTER, date);
     case "day":
       return DATE_FORMATTER.format(date);
+    // A week is narrower than the month it falls in, and the month is as
+    // close as the label gets without claiming a day.
+    case "week":
     case "month":
     case "quarter":
     case "half":
       return MONTH_FORMATTER.format(date);
     case "year":
       return YEAR_FORMATTER.format(date);
+    case "decade":
+      return `${Math.floor(date.getUTCFullYear() / 10) * 10}s`;
     default:
       return DATE_FORMATTER.format(date);
   }

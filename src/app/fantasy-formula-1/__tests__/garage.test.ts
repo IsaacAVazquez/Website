@@ -12,8 +12,6 @@ function asset(kind: "driver" | "constructor", id: string, name: string, teamCol
     teamColor,
     headshotUrl: null,
     standingPosition: 1,
-    seasonPoints: 0,
-    lastRacePoints: 0,
     price: 10,
     projectedPoints: 20,
     valueRating: 20,

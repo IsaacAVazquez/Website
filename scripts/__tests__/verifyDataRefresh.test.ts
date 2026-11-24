@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 describe("data refresh manifests", () => {
-  it("describes a registered artifact with revision and freshness metadata", async () => {
+  it("describes a registered artifact with freshness metadata", async () => {
     const probe = await buildRefreshManifest("formula-1");
     expect(probe.sourceAsOf).toBeTruthy();
     const sourceTime = Date.parse(probe.sourceAsOf as string);
@@ -15,7 +15,6 @@ describe("data refresh manifests", () => {
     );
 
     expect(manifest.surface).toBe("formula-1");
-    expect(manifest.revision).toMatch(/^[a-f0-9]{64}$/);
     expect(manifest.sourceAsOf).toBeTruthy();
     expect(manifest.outcome).toBe("fresh");
   });
@@ -69,9 +68,9 @@ describe("snapshot quality minimums", () => {
     (artifact) => artifact?.minimums
   );
 
-  it("gates the eleven surfaces whose workflow checks were only counts", () => {
+  it("gates the twelve surfaces whose count checks used to sit in their workflows", () => {
     expect(gated.map((artifact) => artifact!.surface).sort()).toEqual(
-      ["bay-area-transit", "earthquake", "formula-1", "github-trending", "golf", "la-liga", "mlb", "nba", "nfl", "premier-league", "world-cup"]
+      ["bay-area-transit", "earthquake", "formula-1", "github-trending", "golf", "la-liga", "mlb", "nba", "nfl", "premier-league", "spacex", "world-cup"]
     );
   });
 

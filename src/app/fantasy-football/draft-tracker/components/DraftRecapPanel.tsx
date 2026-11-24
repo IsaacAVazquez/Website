@@ -15,7 +15,7 @@ function describeOutcome(outcome: DraftTurnOutcome): string {
   if (record.atRiskPlayerName) {
     const verdict =
       record.atRiskPlayerId === record.chosenPlayerId
-        ? "you took him"
+        ? "your pick"
         : outcome.atRiskGone === null
           ? "unscored"
           : outcome.atRiskGone
@@ -26,7 +26,7 @@ function describeOutcome(outcome: DraftTurnOutcome): string {
   if (record.expectedSurvivorName) {
     const verdict =
       record.expectedSurvivorId === record.chosenPlayerId
-        ? "you took him"
+        ? "your pick"
         : outcome.survivorSurvived === null
           ? "unscored"
           : outcome.survivorSurvived

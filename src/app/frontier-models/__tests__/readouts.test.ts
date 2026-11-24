@@ -22,10 +22,6 @@ function model(overrides: Partial<FrontierModel> & { id: string }): FrontierMode
 }
 
 describe("frontierReadouts", () => {
-  it("counts every model", () => {
-    expect(frontierReadouts([model({ id: "a" }), model({ id: "b" })]).count).toBe(2);
-  });
-
   it("picks the cheapest model by input price", () => {
     const cheap = model({ id: "cheap", name: "Cheap", inputPricePerMTokens: 0.5 });
     const pricey = model({ id: "pricey", name: "Pricey", inputPricePerMTokens: 5 });
@@ -50,7 +46,7 @@ describe("frontierReadouts", () => {
     expect(frontierReadouts([small, big]).largestContext).toBe(big);
   });
 
-  it("returns nulls and zero for an empty snapshot", () => {
-    expect(frontierReadouts([])).toEqual({ count: 0, cheapest: null, largestContext: null });
+  it("returns nulls for an empty snapshot", () => {
+    expect(frontierReadouts([])).toEqual({ cheapest: null, largestContext: null });
   });
 });

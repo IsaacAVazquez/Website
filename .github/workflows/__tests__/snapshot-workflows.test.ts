@@ -3,6 +3,7 @@
  */
 import fs from "fs";
 import path from "path";
+import { getSnapshotStaleness } from "@/lib/fantasyUtils";
 
 const workflowsDir = path.join(process.cwd(), ".github", "workflows");
 const workflowFiles = fs
@@ -75,7 +76,7 @@ describe("snapshot refresh workflow infrastructure", () => {
       expect(checkoutBlock).toBeDefined();
       expect(checkoutBlock).toContain("ref: main");
       // The ruleset on main exempts deploy keys only, so a token push is rejected.
-      expect(checkoutBlock).toContain("ssh-key: \${{ secrets.SNAPSHOT_DEPLOY_KEY }}");
+      expect(checkoutBlock).toContain("ssh-key: ${{ secrets.SNAPSHOT_DEPLOY_KEY }}");
     }
   });
 
@@ -263,6 +264,37 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).not.toContain("season_open");
   });
 
+  it("computes the daily-lane window the way the site's freshness bands do", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const expressions = [
+      ...workflow.matchAll(/const today = new Date\(\); const inDraftSeason = (.+?);/g),
+    ].map((match) => match[1]);
+    // The VORP, best ball, and ADP gates each compute it inline.
+    expect(expressions).toHaveLength(3);
+
+    const threeDaysMs = 3 * 86400000;
+    for (const iso of [
+      "2026-01-01T00:00:00Z",
+      "2026-01-12T23:59:59Z",
+      "2026-01-13T00:00:00Z",
+      "2026-06-30T23:59:59Z",
+      "2026-07-01T00:00:00Z",
+      "2026-12-31T23:59:59Z",
+    ]) {
+      const now = new Date(iso);
+      // Three days old is aging on the daily bands (2 and 4 days) and fresh on
+      // the weekly ones (8 and 14), so the band says which window the site is in.
+      const siteIsDaily =
+        getSnapshotStaleness(new Date(now.getTime() - threeDaysMs), now) === "aging";
+      for (const expression of expressions) {
+        expect(new Function("today", `return ${expression}`)(now)).toBe(siteIsDaily);
+      }
+    }
+  });
+
   it("builds and commits the weekly board ahead of the draft boards", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
@@ -291,7 +323,13 @@ describe("snapshot refresh workflow infrastructure", () => {
     )?.[0];
 
     expect(discardStep).toBeDefined();
-    expect(discardStep).toContain("if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'");
+    // The build step is soft, and both gates read the committed boards, so a
+    // build that dies after rewriting its inputs passes them. The commit and
+    // the discard both have to read the build's own outcome.
+    expect(discardStep).toContain("if: steps.build_redraft.outcome != 'success' || steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'");
+    expect(workflow).toContain(
+      "- name: Commit and push snapshot updates\n        if: steps.build_redraft.outcome == 'success' && steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'"
+    );
     expect(discardStep).toContain("git checkout --");
     expect(discardStep).toContain("public/data/fantasy/ppr.json");
     expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
@@ -385,6 +423,18 @@ describe("snapshot refresh workflow infrastructure", () => {
     // that refreshed nothing.
     expect(workflow).toContain("needs: window");
     expect(workflow).toContain("if: needs.window.outputs.active == 'true'");
+  });
+
+  it("does not close incidents on a run the source locked out", () => {
+    const reusable = fs.readFileSync(reusableWorkflow, "utf8");
+    const closeStep = reusable.match(/- name: Close resolved failure issues[\s\S]*$/)?.[0];
+
+    // Formula 1 keeps its snapshot and writes live_lock=true while OpenF1 is
+    // locked for a session. That run skips verification and commits nothing,
+    // so it has no standing to close an open failure.
+    expect(closeStep).toContain(
+      "if: success() && steps.refresh.outputs.live_lock != 'true'"
+    );
   });
 
   it("routes failure issues through the shared helper", () => {

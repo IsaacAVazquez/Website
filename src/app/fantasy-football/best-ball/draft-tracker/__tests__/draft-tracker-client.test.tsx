@@ -47,8 +47,8 @@ let mockSnapshotOverride: BestBallSnapshot | null = null;
  * The best ball snapshot committed on 2026-09-10 (a8ded41), whose four-expert
  * consensus placed Jahmyr Gibbs at ECR 54 against an expert range of 1 to 2.
  * The committed data was restored to the last consistent board, so the broken
- * build is read from history rather than kept as a fixture; a clone too
- * shallow to reach it skips the test instead of failing it.
+ * build is read from history and not kept as a fixture, and a clone too
+ * shallow to reach it skips the test.
  */
 function loadBrokenBuild(): BestBallSnapshot | null {
   try {
@@ -458,7 +458,7 @@ describe("BestBallDraftTrackerClient", () => {
 
     const trigger = screen.getByRole("button", { name: /My build/ });
     fireEvent.click(trigger);
-    expect(screen.getByRole("dialog", { name: "0 of 18 players" })).toBeVisible();
+    expect(screen.getByRole("dialog", { name: "My build, 0 of 18 players" })).toBeVisible();
 
     fireEvent.keyDown(window, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
@@ -645,6 +645,16 @@ describe("BestBallDraftTrackerClient", () => {
     expect(within(build).getByText("1 / 18")).toBeInTheDocument();
   });
 
+  it("follows the contest in the URL when a link to the bare route changes the prop", async () => {
+    const view = render(<BestBallDraftTrackerClient initialContest="superflex" />);
+    const contests = within(await screen.findByRole("group", { name: "Best ball contest" }));
+    expect(contests.getByRole("button", { name: "Superflex" })).toHaveAttribute("aria-pressed", "true");
+
+    view.rerender(<BestBallDraftTrackerClient />);
+    expect(contests.getByRole("button", { name: "Superflex" })).toHaveAttribute("aria-pressed", "false");
+    expect(contests.getByRole("button", { name: "BBM VII" })).toHaveAttribute("aria-pressed", "true");
+  });
+
   it("names a started room saved in another contest on setup, and opens it", async () => {
     // A Superflex room two picks in, then the bare route, which opens on BBM VII.
     const superflex = await seedRoom("superflex", 1, 2);
@@ -769,8 +779,8 @@ describe("BestBallDraftTrackerClient", () => {
     expect(within(rail).getByRole("img", { name: "Pick 3, slot 3, on the clock" })).toBeVisible();
     expect(within(rail).getByText(/· Slot 2 · Bijan Robinson/)).toBeInTheDocument();
     // The build comes first in the rail, and Draft Outlook after the pick grid.
+    expect(within(rail).getAllByRole("heading")[0]).toHaveAccessibleName("My build, 1 of 18 players");
     const headings = within(rail).getAllByRole("heading").map((heading) => heading.textContent);
-    expect(headings.indexOf("1 of 18 players")).toBe(0);
     expect(headings.indexOf("Roster")).toBeLessThan(headings.indexOf("Pick grid"));
     expect(headings.indexOf("Pick grid")).toBeLessThan(
       headings.findIndex((text) => /Draft Outlook|How this room reads/i.test(text ?? ""))
@@ -820,7 +830,7 @@ describe("BestBallDraftTrackerClient", () => {
     expect(roomStatus()).toHaveTextContent(/^Draft complete\.$/);
     expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
     for (const button of screen.getAllByTestId("best-ball-board-draft")) expect(button).toBeDisabled();
-    expect(screen.getByRole("heading", { name: "18 of 18 players" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "My build, 18 of 18 players" })).toBeVisible();
     // The grid reads in snake order: round two runs from slot 12 back to slot 1.
     const rail = screen.getByRole("complementary", { name: "Roster build" });
     expect(within(rail).getByRole("img", { name: /^Pick 13, slot 12, Filled 13, / })).toBeInTheDocument();

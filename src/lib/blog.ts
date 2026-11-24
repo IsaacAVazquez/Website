@@ -20,10 +20,8 @@ export interface BlogPostPreview {
   updatedAt?: string;
   category: string;
   tags: string[];
-  featured: boolean;
   readingTime: string;
   wordCount: number;
-  author: string;
   coverImage: string;
   coverImageAlt?: string;
   coverImageCredit?: string;
@@ -49,8 +47,6 @@ interface BlogPostMetadata {
   updatedAt?: string;
   category: string;
   tags: string[];
-  featured?: boolean;
-  author?: string;
   coverImage?: string;
   coverImageAlt?: string;
   coverImageCredit?: string;
@@ -62,12 +58,6 @@ interface BlogPostMetadata {
 }
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
-
-function ensureBlogDirectory() {
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
-  }
-}
 
 function calculateWordCount(content: string): number {
   return content.trim().split(/\s+/).filter(Boolean).length;
@@ -102,17 +92,7 @@ function resolveBlogPostPath(slug: string): string | null {
   }
 
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-  const fallbackPath = path.join(postsDirectory, `${slug}.md`);
-
-  if (fs.existsSync(fullPath)) {
-    return fullPath;
-  }
-
-  if (fs.existsSync(fallbackPath)) {
-    return fallbackPath;
-  }
-
-  return null;
+  return fs.existsSync(fullPath) ? fullPath : null;
 }
 
 // Required frontmatter fields for every blog post. A post missing any of these
@@ -208,10 +188,8 @@ function buildBlogPostPreview(
     updatedAt: metadata.updatedAt,
     category: metadata.category,
     tags: metadata.tags || [],
-    featured: metadata.featured || false,
     readingTime: calculateReadingTime(content),
     wordCount: calculateWordCount(content),
-    author: metadata.author || "Isaac Vazquez",
     coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
     coverImageAlt: metadata.coverImageAlt,
     coverImageCredit: metadata.coverImageCredit,
@@ -223,13 +201,11 @@ function buildBlogPostPreview(
 }
 
 export function getBlogPostSlugs(): string[] {
-  ensureBlogDirectory();
-
   try {
     const files = fs.readdirSync(postsDirectory);
     return files
-      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
-      .map((file) => file.replace(/\.(mdx|md)$/, ""));
+      .filter((file) => file.endsWith(".mdx"))
+      .map((file) => file.replace(/\.mdx$/, ""));
   } catch (error) {
     console.warn("Blog directory not found or empty:", error);
     return [];
@@ -252,8 +228,6 @@ export function getBlogPostPreviewBySlug(slug: string): BlogPostPreview | null {
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  ensureBlogDirectory();
-
   try {
     const source = readBlogPostSource(slug);
 
@@ -343,8 +317,22 @@ export function getBlogFeedEntries(): (BlogPostPreview & Pick<BlogPost, "seo">)[
 export function getHomepageProofOfWorkBlogPostPreviews(): BlogPostPreview[] {
   return HOMEPAGE_PROOF_OF_WORK_SLUGS.flatMap((slug) => {
     const preview = getBlogPostPreviewBySlug(slug);
-    return preview ? [preview] : [];
+    // A pinned post waits for its publish date like every other listing.
+    return preview && isBlogPostPublished(preview) ? [preview] : [];
   });
+}
+
+/**
+ * The newest updatedAt-or-publishedAt among posts, which is how sitemap.js
+ * dates the writing index and each topic page.
+ */
+export function newestBlogPostDate(
+  posts: Pick<BlogPostPreview, "publishedAt" | "updatedAt">[]
+): string | undefined {
+  return posts
+    .map((post) => post.updatedAt || post.publishedAt)
+    .sort()
+    .at(-1);
 }
 
 export function getCuratedBlogPostPreviewsByCluster(): Record<

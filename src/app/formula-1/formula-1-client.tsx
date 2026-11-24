@@ -25,7 +25,7 @@ import { formatDeficit } from "./timingTower";
 import { normaliseTeamColor } from "@/lib/formula1TeamColor";
 import styles from "./formula-1.module.css";
 import {
-  DATE_TIME_FORMATTER,
+  formatDateTime,
   formatStableDateTime,
   LONG_DATE_TIME_FORMATTER,
   SHORT_DATE_FORMATTER,
@@ -49,11 +49,6 @@ const BOARD_ID = "f1-board";
 function formatDateLabel(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "TBD" : SHORT_DATE_FORMATTER.format(date);
-}
-
-function formatDateTimeLabel(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "TBD" : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
 function formatLongDateTimeLabel(value: string): string {
@@ -181,13 +176,15 @@ interface CountdownParts {
   minutes: number;
   seconds: number;
   isPast: boolean;
+  /** Past the weekend's end as well, which the frozen snapshot cannot say for itself. */
+  isOver: boolean;
 }
 
 /**
  * Live countdown to a race start, computed after mount so the ticking digits
  * never trip a server/client hydration mismatch. Returns null until mounted.
  */
-function useCountdown(targetIso: string | null): CountdownParts | null {
+function useCountdown(targetIso: string | null, endIso: string | null): CountdownParts | null {
   const [parts, setParts] = useState<CountdownParts | null>(null);
 
   useEffect(() => {
@@ -195,10 +192,13 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
     const target = new Date(targetIso).getTime();
     if (Number.isNaN(target)) return;
 
+    // An unreadable end is NaN, which no clock passes.
+    const end = endIso ? new Date(endIso).getTime() : Number.NaN;
+
     const update = () => {
       const diff = target - Date.now();
       if (diff <= 0) {
-        setParts({ days: 0, hours: 0, minutes: 0, seconds: 0, isPast: true });
+        setParts({ days: 0, hours: 0, minutes: 0, seconds: 0, isPast: true, isOver: Date.now() > end });
         return;
       }
       const totalSeconds = Math.floor(diff / 1000);
@@ -208,22 +208,29 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
         minutes: Math.floor((totalSeconds % 3600) / 60),
         seconds: totalSeconds % 60,
         isPast: false,
+        isOver: false,
       });
     };
 
     update();
     const timer = window.setInterval(update, 1000);
     return () => window.clearInterval(timer);
-  }, [targetIso]);
+  }, [targetIso, endIso]);
 
   return parts;
 }
 
-function RaceCountdown({ targetIso }: { targetIso: string | null }) {
-  const parts = useCountdown(targetIso);
+function RaceCountdown({ targetIso, endIso }: { targetIso: string | null; endIso: string | null }) {
+  const parts = useCountdown(targetIso, endIso);
 
   if (parts?.isPast) {
-    return <p className={styles.countdownPast}>Lights out. The race weekend is underway.</p>;
+    return (
+      <p className={styles.countdownPast}>
+        {parts.isOver
+          ? "The race weekend has finished, and the result shows up with the next refresh."
+          : "Lights out. The race weekend is underway."}
+      </p>
+    );
   }
 
   const cells = [
@@ -269,13 +276,13 @@ function NextRace({ meeting, round, total }: { meeting: Formula1MeetingMeta; rou
       <p className={styles.nextMeta}>
         <span>{describeVenue(meeting)}</span>
         <span>
-          {meeting.raceStartsAt ? formatDateTimeLabel(meeting.raceStartsAt) : formatDateLabel(meeting.startAt)}
+          {meeting.raceStartsAt ? formatDateTime(meeting.raceStartsAt) : formatDateLabel(meeting.startAt)}
         </span>
         {meeting.circuitType ? <span>{meeting.circuitType}</span> : null}
         {meeting.hasSprint ? <span className={styles.sprint}>Sprint weekend</span> : null}
         {gmt ? <span>{gmt} track time</span> : null}
       </p>
-      {isUpcoming ? <RaceCountdown targetIso={meeting.raceStartsAt ?? meeting.startAt} /> : null}
+      {isUpcoming ? <RaceCountdown targetIso={meeting.raceStartsAt ?? meeting.startAt} endIso={meeting.endAt} /> : null}
     </section>
   );
 }
@@ -464,7 +471,7 @@ function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummar
         <div>
           <h4 className={styles.h4}>Weekend schedule</h4>
           <MeetingSchedule meeting={meeting} />
-          <p className={styles.note}>Times print in Pacific time.</p>
+          <p className={styles.note}>Dates and times print in Pacific time.</p>
         </div>
         <div>
           <h4 className={styles.h4}>{meeting.resultPublished ? "Race classification" : "Result status"}</h4>
@@ -873,6 +880,10 @@ export function Formula1Client({ initialState, summary, initialMeeting, raceResu
                 <div id="race-weekend-detail" className={styles.anchor}>
                   {detail}
                 </div>
+                <p className={styles.note}>
+                  Dates print in Pacific time, so a round in Asia or Australia can show the day before its
+                  local date.
+                </p>
                 <CalendarTimeline
                   meetings={summary.meetings}
                   selectedMeetingKey={selectedMeetingKey}

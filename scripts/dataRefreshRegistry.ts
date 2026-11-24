@@ -6,7 +6,6 @@ export interface RefreshArtifactDefinition {
   artifactPath: string;
   sourceAsOfPath: readonly string[];
   sourceAsOfFallbackPath?: readonly string[];
-  revisionPayloadPath?: readonly string[];
   /**
    * The quality gate. Each key is a dotted path, and `a+b` sums several. An
    * array, string, or object counts its length or keys, and a number counts as
@@ -22,7 +21,7 @@ const definition = (
   sourceAsOfPath: readonly string[],
   options: Pick<
     RefreshArtifactDefinition,
-    "revisionPayloadPath" | "sourceAsOfFallbackPath" | "minimums"
+    "sourceAsOfFallbackPath" | "minimums"
   > = {}
 ): RefreshArtifactDefinition => ({
   surface,
@@ -38,19 +37,13 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
     "earthquake",
     "src/data/earthquakeSnapshot.json",
     ["summary", "generatedAt"],
-    {
-      revisionPayloadPath: ["summary"],
-      minimums: { "summary.recent+summary.significant+summary.regions": 1 },
-    }
+    { minimums: { "summary.recent+summary.significant+summary.regions": 1 } }
   ),
   "bay-area-transit": definition(
     "bay-area-transit",
     "src/data/bayAreaTransitSnapshot.json",
     ["summary", "system", "generatedAt"],
-    {
-      revisionPayloadPath: ["summary"],
-      minimums: { "summary.lines": 3, "summary.stations": 10 },
-    }
+    { minimums: { "summary.lines": 3, "summary.stations": 10 } }
   ),
   "formula-1": definition(
     "formula-1",
@@ -80,7 +73,8 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   spacex: definition(
     "spacex",
     "src/data/spacexSnapshot.generated.json",
-    ["generatedAt"]
+    ["generatedAt"],
+    { minimums: { upcomingLaunches: 1, pastLaunches: 10, launchDetails: 5 } }
   ),
   "world-cup": definition(
     "world-cup",
@@ -92,10 +86,7 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
     "premier-league",
     "src/data/premierLeagueSnapshot.json",
     ["summary", "generatedAt"],
-    {
-      revisionPayloadPath: ["summary"],
-      minimums: { "summary.standings": 18 },
-    }
+    { minimums: { "summary.standings": 18 } }
   ),
   "la-liga": definition(
     "la-liga",

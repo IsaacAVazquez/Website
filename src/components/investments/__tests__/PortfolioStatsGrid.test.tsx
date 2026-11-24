@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { PortfolioStatsGrid } from "../PortfolioStatsGrid";
 import type { EnhancedHolding, PortfolioSummary } from "@/types/investment";
 
@@ -32,8 +32,8 @@ const summary: PortfolioSummary = {
 };
 
 function cell(label: string) {
-  const labelEl = screen.getByText(label, { selector: "span[title]" });
-  const parent = labelEl.parentElement as HTMLElement;
+  const labelEl = screen.getByRole("button", { name: `What is ${label}?` });
+  const parent = labelEl.closest("div") as HTMLElement;
   const [, value, sub] = Array.from(parent.children) as HTMLElement[];
   return { labelEl, value: value.textContent, sub: sub.textContent, subEl: sub };
 }
@@ -45,6 +45,14 @@ describe("PortfolioStatsGrid", () => {
     render(<PortfolioStatsGrid summary={summary} holdings={[]} />);
     const region = screen.getByRole("region", { name: "Portfolio stats" });
     expect(within(region).queryAllByRole("link")).toHaveLength(0);
+  });
+
+  it("opens a stat's hint from the keyboard", async () => {
+    render(<PortfolioStatsGrid summary={summary} holdings={[]} />);
+    fireEvent.focus(screen.getByRole("button", { name: "What is Positions?" }));
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Number of distinct tickers in the saved book."
+    );
   });
 
   it("shows dashes for an empty book", () => {

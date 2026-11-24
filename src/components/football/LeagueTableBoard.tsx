@@ -190,7 +190,8 @@ export function LeagueTableBoard<V extends string>({
               <ResultsTape
                 recentFixtures={recentFixtures}
                 upcomingFixtures={upcomingFixtures}
-                label={matchday ? `Matchday ${matchday}` : "Latest"}
+                // The tape runs this matchday's results into the next one's kickoffs.
+                label="Latest"
                 className="lt-strip-tape"
               />
               <GoalsPulseStrip

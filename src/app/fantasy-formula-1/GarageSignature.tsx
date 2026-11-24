@@ -136,7 +136,7 @@ export function GarageSignature({
         <ol className="ff1-slots" aria-label="Drivers">
           {layout.driverSlots.map((slot, index) => (
             <GarageSlotItem
-              key={slot.asset?.id ?? `driver-${index}`}
+              key={slot.asset?.id ?? `empty-driver-${index}`}
               slot={slot}
               locked={slot.asset ? lockedIds.has(slot.asset.id) : false}
               onRemove={onRemove}
@@ -147,7 +147,7 @@ export function GarageSignature({
         <ol className="ff1-slots ff1-slots-constructors" aria-label="Constructors">
           {layout.constructorSlots.map((slot, index) => (
             <GarageSlotItem
-              key={slot.asset?.id ?? `constructor-${index}`}
+              key={slot.asset?.id ?? `empty-constructor-${index}`}
               slot={slot}
               locked={slot.asset ? lockedIds.has(slot.asset.id) : false}
               onRemove={onRemove}

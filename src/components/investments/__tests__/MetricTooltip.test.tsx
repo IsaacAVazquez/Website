@@ -1,12 +1,12 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 
 describe("MetricTooltip", () => {
   it("renders an accessible tooltip on focus and closes it on blur", async () => {
-    render(<MetricTooltip term="Beta 5Y" />);
+    render(<MetricTooltip term="Beta (5Y)" />);
 
-    const trigger = screen.getByRole("button", { name: "What is Beta 5Y?" });
+    const trigger = screen.getByRole("button", { name: "What is Beta (5Y)?" });
     fireEvent.focus(trigger);
 
     expect(await screen.findByRole("tooltip")).toHaveTextContent(
@@ -25,10 +25,10 @@ describe("MetricTooltip", () => {
   });
 
   it.each([
-    ["the ? mark", <MetricTooltip key="chip" term="Beta 5Y" />],
+    ["the ? mark", <MetricTooltip key="chip" term="Beta (5Y)" />],
     [
       "a label trigger",
-      <MetricTooltip key="text" term="Beta 5Y" focusable>
+      <MetricTooltip key="text" term="Beta (5Y)" focusable>
         Beta
       </MetricTooltip>,
     ],
@@ -36,8 +36,8 @@ describe("MetricTooltip", () => {
     const onKeyDown = jest.fn();
     render(<div onKeyDown={onKeyDown}>{tooltip}</div>);
 
-    const trigger = screen.getByRole("button", { name: "What is Beta 5Y?" });
-    trigger.focus();
+    const trigger = screen.getByRole("button", { name: "What is Beta (5Y)?" });
+    act(() => trigger.focus());
     expect(await screen.findByRole("tooltip")).toBeInTheDocument();
 
     fireEvent.keyDown(trigger, { key: "Escape" });
@@ -147,9 +147,9 @@ describe("MetricTooltip token scope", () => {
   });
 
   it("adds no class when nothing above the trigger names a scope, so an Investments tooltip is unchanged", async () => {
-    render(<MetricTooltip term="Beta 5Y" />);
+    render(<MetricTooltip term="Beta (5Y)" />);
 
-    fireEvent.mouseEnter(screen.getByRole("button", { name: "What is Beta 5Y?" }));
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "What is Beta (5Y)?" }));
 
     const bubble = await screen.findByRole("tooltip");
     const portalled = bubble.parentElement as HTMLElement;

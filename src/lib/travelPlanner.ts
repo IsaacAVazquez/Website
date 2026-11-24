@@ -57,7 +57,7 @@ export function isIsoDate(value: unknown): value is string {
 }
 
 function isHourMinute(value: unknown): value is string {
-  return typeof value === "string" && /^\d{2}:\d{2}$/.test(value);
+  return typeof value === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
 }
 
 function clampString(value: unknown, max: number, fallback = ""): string {
@@ -436,10 +436,6 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
         .map((activity) => activity.id),
     }));
 
-  const upcomingActivities = sortedActivities
-    .filter((activity) => !activity.completed && activity.date >= today)
-    .slice(0, 4);
-
   const activitiesCompleted = sortedActivities.filter((activity) => activity.completed).length;
 
   return {
@@ -449,10 +445,7 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
     daysUntilStart,
     activitiesTotal: sortedActivities.length,
     activitiesCompleted,
-    conflictCount: overlaps.pairCount,
-    journalCount: trip.journal.length,
     dayBuckets,
-    upcomingActivities,
     itineraryTruncated: daysTotal > MAX_ITINERARY_DAYS,
   };
 }

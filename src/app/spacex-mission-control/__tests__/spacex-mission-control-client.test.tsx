@@ -1077,6 +1077,31 @@ describe("SpaceXMissionControlClient", () => {
       expect(mockReplace).not.toHaveBeenCalled();
     });
 
+    it("shows the board's error and none of the other board's cards when Back lands on a list that fails", async () => {
+      await renderPastBoard();
+      mockFetch.mockImplementation((input: RequestInfo | URL) =>
+        String(input).includes("/api/spacex/launches?status=upcoming")
+          ? Promise.resolve({ ok: false, status: 503, json: async () => ({ error: "Board down" }) })
+          : new Promise(() => undefined)
+      );
+
+      currentSearchParams = new URLSearchParams("status=upcoming");
+      await act(async () => {
+        root.render(
+          <SpaceXMissionControlClient
+            initialState={pastState}
+            initialData={createInitialData({ launches: [pastLaunch] })}
+          />
+        );
+      });
+      await flushPromises();
+
+      expect(container.querySelector(`[data-testid="mission-card-${pastLaunch.id}"]`)).toBeNull();
+      expect(container.querySelector('[data-testid="mission-board"] [role="alert"]')?.textContent).toContain(
+        "Board down"
+      );
+    });
+
     it("drops a launch the other board's list does not hold once that list arrives", async () => {
       await renderPastBoard();
       mockFetch.mockImplementation((input: RequestInfo | URL) =>

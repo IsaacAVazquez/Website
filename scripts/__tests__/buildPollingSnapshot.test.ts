@@ -1,4 +1,4 @@
-import { buildPollingSnapshot } from "../buildPollingSnapshot";
+import { buildPollingSnapshotData as buildPollingSnapshot } from "../../src/lib/pollingData";
 
 function poll(id: string, type: "approval" | "generic-ballot", day: number) {
   return {

@@ -19,11 +19,9 @@ export const SCORE_POOL_LEAGUES: ScorePoolLeagueSource[] = [
     apiFootball: { leagueId: 39, season: 2026 },
     knockoutRoundPattern: null,
     teamAliases: {
-      "Manchester United": "Manchester United",
       "Brighton and Hove Albion": "Brighton",
       "Tottenham Hotspur": "Tottenham",
       "Newcastle United": "Newcastle",
-      "Nottingham Forest": "Nottingham Forest",
     },
   },
 ];

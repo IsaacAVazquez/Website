@@ -18,7 +18,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { chromium, webkit } from "playwright";
+import { chromium, webkit } from "@playwright/test";
 import sitemapModule from "../src/lib/sitemap.js";
 
 export const SIZES = {

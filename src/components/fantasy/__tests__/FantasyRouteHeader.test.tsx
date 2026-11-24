@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "../FantasyRouteHeader";
+import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts } from "../FantasyRouteHeader";
 
 describe("FreshnessParts", () => {
   it("prints repeated labels without a duplicate key, since a league name is user text", () => {
@@ -33,7 +33,7 @@ describe("FantasyRouteHeader", () => {
       <FantasyRouteHeader
         title={
           <>
-            Fantasy Football <TitleAccent>Rankings</TitleAccent>
+            Fantasy Football <span>Rankings</span>
           </>
         }
         lead="The board pairs the expert consensus with market ADP."
@@ -57,7 +57,7 @@ describe("FantasyRouteHeader", () => {
         title={
           <>
             Fantasy Football{" "}
-            <TitleAccent>{"Waivers"}</TitleAccent>
+            {"Waivers"}
           </>
         }
       />,
@@ -76,7 +76,7 @@ describe("FantasyRouteHeader", () => {
       <FantasyRouteHeader
         title={
           <>
-            Best <TitleAccent>Ball</TitleAccent>
+            Best <span>Ball</span>
           </>
         }
       />,

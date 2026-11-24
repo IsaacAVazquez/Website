@@ -13,36 +13,15 @@
 import { resolve } from "node:path";
 
 import { buildEarthquakeSnapshotData } from "../src/lib/earthquakeData";
-import type { EarthquakeSnapshot } from "../src/types/earthquake";
-import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
-
-function hasContents(
-  snapshot: EarthquakeSnapshot | null
-): snapshot is EarthquakeSnapshot {
-  return Boolean(
-    snapshot &&
-      (snapshot.summary.recent.length > 0 ||
-        snapshot.summary.significant.length > 0)
-  );
-}
+import { writeFileAtomic } from "./snapshotFallback";
 
 async function main() {
   const outPath = resolve(__dirname, "../src/data/earthquakeSnapshot.json");
 
-  let snapshot: EarthquakeSnapshot;
-  try {
-    console.log("🌎 Building earthquake snapshot from USGS feeds…");
-    snapshot = await buildEarthquakeSnapshotData();
-  } catch (error) {
-    const existing = readGeneratedSnapshot<EarthquakeSnapshot>(outPath);
-    if (hasContents(existing)) {
-      console.warn(
-        "🌎 Earthquake snapshot refresh failed; keeping the existing snapshot.",
-        error
-      );
-    }
-    throw error;
-  }
+  // A failed fetch or parse throws before the write below, so the committed
+  // snapshot stays on disk and main's catch exits nonzero.
+  console.log("🌎 Building earthquake snapshot from USGS feeds…");
+  const snapshot = await buildEarthquakeSnapshotData();
 
   const output = JSON.stringify(snapshot, null, 2) + "\n";
   writeFileAtomic(outPath, output);

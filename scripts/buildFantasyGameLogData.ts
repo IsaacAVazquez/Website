@@ -81,7 +81,7 @@ export function candidateSeasons(now: Date = new Date()): number[] {
   return [current, current - 1];
 }
 
-async function fetchFirstUsableSeason(
+export async function fetchFirstUsableSeason(
   scoringFormat: ScoringFormat,
   seasons: number[]
 ): Promise<FantasyGameLogDatasetRecord | null> {

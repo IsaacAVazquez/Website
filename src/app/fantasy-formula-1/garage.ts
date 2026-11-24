@@ -2,6 +2,7 @@ import {
   FANTASY_FORMULA1_CONSTRUCTOR_SLOTS,
   FANTASY_FORMULA1_DRIVER_SLOTS,
 } from "@/lib/fantasyFormula1";
+import { roundTo } from "@/lib/utils";
 import type { FantasyFormula1Asset, FantasyFormula1LineupSummary } from "@/types/fantasyFormula1";
 
 export interface GarageSlot {
@@ -19,7 +20,7 @@ interface GarageBudgetBar {
   isOver: boolean;
 }
 
-export interface GarageLayout {
+interface GarageLayout {
   driverSlots: GarageSlot[];
   constructorSlots: GarageSlot[];
   budget: GarageBudgetBar;
@@ -56,10 +57,9 @@ export function garageSlots(summary: FantasyFormula1LineupSummary, budget: numbe
   const spent = Math.max(0, summary.totalPrice);
   const isOver = spent > safeBudget;
   const track = Math.max(safeBudget, spent);
-  const round = (value: number) => Math.round(value * 1000) / 1000;
-  const spentWidth = track > 0 ? round(Math.min(spent, safeBudget) / track) : 0;
-  const overWidth = isOver ? round((spent - safeBudget) / track) : 0;
-  const budgetLineAt = track > 0 ? round(safeBudget / track) : 1;
+  const spentWidth = track > 0 ? roundTo(Math.min(spent, safeBudget) / track, 3) : 0;
+  const overWidth = isOver ? roundTo((spent - safeBudget) / track, 3) : 0;
+  const budgetLineAt = track > 0 ? roundTo(safeBudget / track, 3) : 1;
 
   return {
     driverSlots,

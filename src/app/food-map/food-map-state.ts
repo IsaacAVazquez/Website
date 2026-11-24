@@ -1,8 +1,8 @@
 import {
+  FOOD_MAP_PLACES,
   isFoodMapCityId,
   isFoodMapCuisineId,
   isFoodMapCuratorId,
-  isFoodMapPlaceId,
   type FoodMapCityId,
   type FoodMapCuisineId,
   type FoodMapCuratorId,
@@ -59,7 +59,11 @@ export function normalizeFoodMapState(input: SearchParamInput): FoodMapState {
   );
 
   const rawPick = readParam(input, "pick");
-  const pick = isFoodMapPlaceId(rawPick) ? rawPick : null;
+  // A pick from another city never shows on the page, so it leaves the URL too.
+  const pick =
+    rawPick && FOOD_MAP_PLACES.some((place) => place.id === rawPick && place.city === city)
+      ? rawPick
+      : null;
 
   return {
     city,

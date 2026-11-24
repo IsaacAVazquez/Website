@@ -11,12 +11,12 @@ jest.mock("@/lib/analytics", () => ({
 const originalFetch = global.fetch;
 const mockFetch = jest.fn();
 
-function response(title: string) {
+function response(...titles: string[]) {
   return {
     ok: true,
     json: async () => ({
-      results: [{ id: title, title, excerpt: title, url: "/writing", type: "post" }],
-      total: 1,
+      results: titles.map((title) => ({ id: title, title, excerpt: title, url: "/writing", type: "post" })),
+      total: titles.length,
     }),
   };
 }
@@ -90,9 +90,39 @@ describe("HeaderSearchPanel request lifecycle", () => {
     changeQuery("failed");
     await act(async () => { await Promise.resolve(); });
     expect(json).not.toHaveBeenCalled();
+    expect(screen.getByRole("status")).toHaveTextContent("Search isn't answering right now, so try again in a moment.");
     const signal = mockFetch.mock.calls[0][1].signal as AbortSignal;
     unmount();
     expect(signal.aborted).toBe(true);
+  });
+
+  it("says so in the status region, which is there before any message, when nothing matches", async () => {
+    mockFetch.mockResolvedValue(response());
+    render(<HeaderSearchPanel onClose={jest.fn()} />);
+    const status = screen.getByRole("status");
+    expect(status).toBeEmptyDOMElement();
+
+    changeQuery("zzz");
+    expect(status).toHaveTextContent("Searching…");
+    await act(async () => { await Promise.resolve(); });
+    expect(status).toHaveTextContent("No results for “zzz”.");
+  });
+
+  it("moves Up from nothing selected to the last result, then on up the list", async () => {
+    mockFetch.mockResolvedValue(response("First", "Second", "Third"));
+    render(<HeaderSearchPanel onClose={jest.fn()} />);
+    changeQuery("three");
+    await act(async () => { await Promise.resolve(); });
+
+    const input = screen.getByRole("combobox");
+    const options = screen.getAllByRole("option");
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(input).toHaveAttribute("aria-activedescendant", options[2].id);
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(input).toHaveAttribute("aria-activedescendant", options[1].id);
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(input).toHaveAttribute("aria-activedescendant", options[2].id);
   });
 
   it("keeps keyboard focus inside search and closes with Escape from the close button", () => {
@@ -124,6 +154,9 @@ describe("HeaderSearchPanel request lifecycle", () => {
     render(<HeaderSearchPanel onClose={onClose} />);
     changeQuery("new tab");
     await act(async () => { await Promise.resolve(); });
+    // jsdom cannot open a tab and logs an error when a modified click reaches
+    // the anchor, so the click's default is cancelled before it gets there.
+    document.addEventListener("click", (event) => event.preventDefault(), { capture: true, once: true });
 
     fireEvent.click(screen.getByRole("option", { name: /New tab result/ }), { [modifier]: true });
 
@@ -150,13 +183,15 @@ describe("HeaderSearchPanel request lifecycle", () => {
 
   it("sends the View all click to analytics without the typed query", async () => {
     mockFetch.mockResolvedValue(response("Only result"));
-    render(<HeaderSearchPanel onClose={jest.fn()} />);
+    const onClose = jest.fn();
+    render(<HeaderSearchPanel onClose={onClose} />);
     changeQuery("my private query");
     await act(async () => { await Promise.resolve(); });
 
     fireEvent.click(screen.getByRole("button", { name: /View all results/ }));
 
     expect(mockRouterPush).toHaveBeenCalledWith("/search?q=my%20private%20query");
+    expect(onClose).toHaveBeenCalledTimes(1);
     expect(mockTrackNavigationClick).toHaveBeenCalledWith({
       link_text: "View all results",
       link_url: "/search",

@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import {
@@ -15,7 +14,6 @@ export interface RefreshManifest {
   sourceAsOf: string | null;
   ageSeconds: number | null;
   maxAgeSeconds: number;
-  revision: string | null;
   outcome: "fresh" | "stale-fallback" | "unavailable";
 }
 
@@ -85,14 +83,6 @@ export async function buildRefreshManifest(
   const ageMs = Number.isFinite(sourceTime)
     ? now.getTime() - sourceTime
     : Number.NaN;
-  const revisionPayload = artifact.revisionPayloadPath
-    ? readPath(payload, artifact.revisionPayloadPath)
-    : payload;
-  const revision = payload
-    ? createHash("sha256")
-        .update(JSON.stringify(revisionPayload))
-        .digest("hex")
-    : null;
   const outcome =
     !sourceAsOf || !Number.isFinite(ageMs)
       ? "unavailable"
@@ -108,7 +98,6 @@ export async function buildRefreshManifest(
     sourceAsOf,
     ageSeconds: Number.isFinite(ageMs) ? Math.floor(Math.max(0, ageMs) / 1000) : null,
     maxAgeSeconds: Math.floor(policy.maxAgeMs / 1000),
-    revision,
     outcome,
   };
 }
@@ -122,19 +111,7 @@ async function main() {
   const artifact = getArtifact(surface);
   const payload = await readArtifact(artifact.artifactPath);
   const manifest = await buildRefreshManifest(surface, new Date(), payload);
-  const manifestDir = process.env.RUNNER_TEMP ?? path.join(process.cwd(), ".tmp");
-  await fs.mkdir(manifestDir, { recursive: true });
-  const manifestPath = path.join(manifestDir, `refresh-manifest-${surface}.json`);
-  await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-
   console.log(JSON.stringify(manifest, null, 2));
-  if (process.env.GITHUB_OUTPUT) {
-    await fs.appendFile(
-      process.env.GITHUB_OUTPUT,
-      `outcome=${manifest.outcome}\nrevision=${manifest.revision ?? ""}\nmanifest=${manifestPath}\n`,
-      "utf8"
-    );
-  }
 
   if (manifest.outcome !== "fresh") {
     throw new Error(

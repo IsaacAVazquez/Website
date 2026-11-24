@@ -176,10 +176,10 @@ describe("DraftBoard rows and tiers", () => {
     expect(deltaCell("Bijan Robinson")).toHaveTextContent("+10.0");
     expect(deltaCell("Bijan Robinson")).toHaveAttribute(
       "title",
-      "Lasted 10.0 picks past his ADP, so this reads as value at pick 20",
+      "Lasted 10.0 picks past ADP, so this reads as value at pick 20",
     );
     expect(deltaCell("Ja'Marr Chase")).toHaveTextContent("−5.0");
-    expect(deltaCell("Ja'Marr Chase")).toHaveAttribute("title", "Mock rooms usually take him 5.0 picks after pick 20");
+    expect(deltaCell("Ja'Marr Chase")).toHaveAttribute("title", "Mock rooms usually take this player 5.0 picks after pick 20");
     expect(deltaCell("Josh Allen")).toHaveTextContent("±0.5");
     expect(deltaCell("Josh Allen")).toHaveAttribute("title", "Priced about right at this pick");
     expect(deltaCell("Travis Kelce")).toHaveTextContent("—");
@@ -188,7 +188,7 @@ describe("DraftBoard rows and tiers", () => {
   it("calls a late slide noise when guidance is unavailable", () => {
     renderBoard({ guidanceAvailable: false });
     const cell = within(rowOf("Bijan Robinson")).getByText("±ADP").parentElement as HTMLElement;
-    expect(cell).toHaveAttribute("title", "Lasted 10.0 picks past his ADP, inside the noise band for this market sample");
+    expect(cell).toHaveAttribute("title", "Lasted 10.0 picks past ADP, inside the noise band for this market sample");
   });
 
   it("hides every ADP surface without ADP", () => {

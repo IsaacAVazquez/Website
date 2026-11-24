@@ -167,6 +167,10 @@ function groupLetterFromName(name: string | null | undefined): string {
  * round's latest kickoff (a 21:00 Pacific start) lands by ~04:00 UTC and the
  * next round's earliest (a morning Eastern start) after ~13:00 UTC, so every
  * scheduled match falls cleanly on one side.
+ *
+ * These are the 2026 dates only. A later tournament needs its own windows
+ * here before the refresh lane is turned back on, or every one of its matches
+ * is filed under the final.
  */
 const KNOCKOUT_WINDOWS: Array<{ id: string; name: string; order: number; from: number }> = [
   { id: "round-of-32", name: "Round of 32", order: 0, from: Date.parse("2026-06-28T10:00:00Z") },
@@ -247,12 +251,12 @@ export function buildFixture(event: EspnEvent): WorldCupFixture | null {
     if (home.winner) winner = "HOME_TEAM";
     else if (away.winner) winner = "AWAY_TEAM";
     else if (homeScore != null && awayScore != null) {
-      winner =
-        homeScore > awayScore
-          ? "HOME_TEAM"
-          : awayScore > homeScore
-            ? "AWAY_TEAM"
-            : "DRAW";
+      // The feed sent no winner flag. A tie level on goals goes to the
+      // shootout when both tallies are there, as the bracket reads it.
+      const margin =
+        homeScore - awayScore ||
+        (homeShootout != null && awayShootout != null ? homeShootout - awayShootout : 0);
+      winner = margin > 0 ? "HOME_TEAM" : margin < 0 ? "AWAY_TEAM" : "DRAW";
     }
   }
 

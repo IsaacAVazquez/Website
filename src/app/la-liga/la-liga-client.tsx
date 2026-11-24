@@ -102,30 +102,39 @@ export function LaLigaClient({
     { id: selectedClubId, snapshot: initialTeamSnapshot },
     "Unable to load club snapshot."
   );
-  const desiredHref = buildHref(
-    { view: routeState.view, club: selectedClubId, detail: routeState.detail },
-    defaultState,
-    aliasMap,
-    searchParams
-  );
+  const hrefFor = (state: LaLigaRouteState) =>
+    buildHref(
+      state,
+      defaultState,
+      aliasMap,
+      searchParams,
+      getDefaultClub(summary.clubs, state.view, defaultState.club)
+    );
+  const desiredHref = hrefFor({ view: routeState.view, club: selectedClubId, detail: routeState.detail });
   const pushHref = useRouteSync(LA_LIGA_ROUTE, desiredHref);
 
   function navigate(nextState: LaLigaRouteState) {
-    pushHref(buildHref(nextState, defaultState, aliasMap, searchParams));
+    pushHref(hrefFor(nextState));
   }
 
   function handleViewChange(view: LaLigaView) {
-    const nextClubs = filterClubs(summary.clubs, view);
-    const nextClub = nextClubs.some((club) => club.id === selectedClubId)
-      ? selectedClubId
-      : nextClubs[0]?.id ?? defaultState.club;
-    navigate({ view, club: nextClub, detail: routeState.detail });
+    // Only a club the link names rides along. The club a view selects on its
+    // own would read as a pick, and open the drawer, on a fresh load.
+    const pickedClubId = canonicalizeClubId(searchParams.get("club"), aliasMap);
+    const keepsClub =
+      pickedClubId === selectedClubId &&
+      filterClubs(summary.clubs, view).some((club) => club.id === pickedClubId);
+    navigate({
+      view,
+      club: keepsClub ? selectedClubId : getDefaultClub(summary.clubs, view, defaultState.club),
+      detail: routeState.detail,
+    });
   }
 
   function handleClubChange(clubId: string) {
     // The drawer is its own state, since `buildHref` strips the `club` param
-    // when it matches the default club on the default view and the URL alone
-    // cannot say whether a club was picked.
+    // when it matches the view's own club and the URL alone cannot say
+    // whether a club was picked.
     const club = canonicalizeClubId(clubId, aliasMap) ?? defaultState.club;
     // The ladder shows every club while the table is filtered, so a club
     // outside the focused view goes back to the full table to be selectable.

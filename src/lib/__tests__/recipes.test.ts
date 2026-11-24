@@ -48,6 +48,10 @@ const recipes: Recipe[] = [
 ];
 
 describe("recipes", () => {
+  it("keeps em dashes out of the recipe copy", () => {
+    expect(JSON.stringify(RECIPES)).not.toContain("—");
+  });
+
   it("normalizes and whole-word matches pantry ingredients", () => {
     expect(normalizeIngredient("  Cherry-Tomatoes!! ")).toBe("cherry tomatoes");
     expect(ingredientsMatch("tomato", "cherry tomato")).toBe(true);

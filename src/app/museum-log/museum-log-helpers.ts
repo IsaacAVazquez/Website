@@ -7,8 +7,12 @@ import type {
   MuseumTypeFilter,
   MuseumRegionFilter,
 } from "@/types/museum";
-import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
-import { mean } from "d3";
+import {
+  DATE_ONLY_TIME_ZONE,
+  DISPLAY_TIME_ZONE,
+  formatLongUtcDate,
+  formatStableDateTime,
+} from "@/lib/date-formatters";
 
 export interface AdmissionStubLines {
   name: string;
@@ -57,12 +61,6 @@ export function getMuseumExhibitStatus(
 // list updatedAt) parse as UTC midnight per spec, so pinning the formatter to
 // the same zone (DATE_ONLY_TIME_ZONE) always prints the calendar day that was
 // stored, on the server and on the client, regardless of either one's zone.
-const FULL_DATE_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-  timeZone: DATE_ONLY_TIME_ZONE,
-});
 const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -82,8 +80,7 @@ const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
 });
 
 export function formatDate(iso: string): string {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : FULL_DATE_FMT.format(d);
+  return Number.isNaN(new Date(iso).getTime()) ? iso : formatLongUtcDate(iso);
 }
 
 export function formatShortDate(iso: string): string {
@@ -233,24 +230,5 @@ export function sortMuseums(
 export function starFractions(rating: number): number[] {
   const clamped = Math.max(0, Math.min(5, rating));
   const halves = Math.round(clamped * 2); // 0–10 half-stars
-  const stars: number[] = [];
-  let remaining = halves;
-  for (let i = 0; i < 5; i++) {
-    if (remaining >= 2) {
-      stars.push(1);
-      remaining -= 2;
-    } else if (remaining === 1) {
-      stars.push(0.5);
-      remaining = 0;
-    } else {
-      stars.push(0);
-    }
-  }
-  return stars;
-}
-
-// ─── Stats ───────────────────────────────────────────────────────────────────
-
-export function averageRating(ratings: number[]): number {
-  return mean(ratings) ?? 0;
+  return Array.from({ length: 5 }, (_, i) => Math.max(0, Math.min(1, halves / 2 - i)));
 }

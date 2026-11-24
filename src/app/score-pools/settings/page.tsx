@@ -1,6 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
 import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
-import { getScorePoolsSnapshotData } from "@/lib/scorePoolsSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { getScorePoolsModifiedDate } from "../score-pools-metadata";
 import { SettingsClient } from "./settings-client";
@@ -53,7 +52,7 @@ export default function ScorePoolsSettingsPage() {
           },
         }}
       />
-      <SettingsClient snapshot={getScorePoolsSnapshotData()} />
+      <SettingsClient snapshot={scorePoolsSnapshot} />
     </>
   );
 }

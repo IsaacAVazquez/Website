@@ -201,7 +201,7 @@ const MONET_ANSWER = answer(
 const KONAMI_ANSWER = answer(
   'konami',
   'Konami code',
-  'Press up up down down left right left right B A on any page and something happens. Outside the arcade it ends with a link to the arcade, and inside the arcade it is worth trying too.',
+  'Press up up down down left right left right B A on any page and something happens. On most pages it ends with a link to the arcade, Mission Control answers it on its own, and inside the arcade it is worth trying too.',
   '/arcade',
 );
 const HIRE_ANSWER = answer(
@@ -335,47 +335,27 @@ function findHiddenAnswer(query: string): SearchableContent | undefined {
 }
 
 function calculateRelevanceScore(content: SearchableContent, query: string): number {
-  const queryLower = query.toLowerCase();
-  const queryWords = queryLower.split(/\s+/).filter(word => word.length > 0);
+  const queryWords = query.toLowerCase().split(/\s+/).filter(word => word.length > 0);
+  // Rejoined from the words, so a stray space around or inside the query does
+  // not cost a title its exact-match bonus.
+  const queryLower = queryWords.join(' ');
 
   let score = 0;
 
-  // Title matches (highest weight)
-  const titleLower = content.title.toLowerCase();
-  queryWords.forEach(word => {
-    if (titleLower.includes(word)) {
-      score += titleLower === queryLower ? 100 : 50; // Exact match bonus
+  // Each field adds its weight once per query word it contains. The title
+  // weighs most, and double when the whole query is the title.
+  const fields: [string | undefined, number][] = [
+    [content.title, content.title.toLowerCase() === queryLower ? 100 : 50],
+    [content.excerpt, 20],
+    [content.category, 15],
+    ...(content.tags ?? []).map((tag): [string, number] => [tag, 10]),
+  ];
+  for (const [field, weight] of fields) {
+    const text = field?.toLowerCase();
+    if (!text) continue;
+    for (const word of queryWords) {
+      if (text.includes(word)) score += weight;
     }
-  });
-
-  // Excerpt matches
-  const excerptLower = content.excerpt.toLowerCase();
-  queryWords.forEach(word => {
-    if (excerptLower.includes(word)) {
-      score += 20;
-    }
-  });
-
-  // Category matches
-  if (content.category) {
-    const categoryLower = content.category.toLowerCase();
-    queryWords.forEach(word => {
-      if (categoryLower.includes(word)) {
-        score += 15;
-      }
-    });
-  }
-
-  // Tag matches
-  if (content.tags) {
-    content.tags.forEach(tag => {
-      const tagLower = tag.toLowerCase();
-      queryWords.forEach(word => {
-        if (tagLower.includes(word)) {
-          score += 10;
-        }
-      });
-    });
   }
 
   // Body matches carry less weight than a title, even in a long article.
@@ -418,10 +398,7 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
 
 // Lower rank sorts first. Projects ahead of writing ahead of utility pages —
 // the stable tiebreak behind the relevance score (see PROJECT boost above).
-const TYPE_RANK: Record<string, number> = { project: 0, post: 1, page: 2 };
-function typeRank(type: string): number {
-  return TYPE_RANK[type] ?? 3;
-}
+const TYPE_RANK: Record<SearchableContent['type'], number> = { project: 0, post: 1, page: 2 };
 
 type ScoredContent = SearchableContent & { relevanceScore?: number };
 
@@ -464,7 +441,7 @@ function searchContent(content: SearchableContent[], query: string, type?: strin
     .filter(item => item.relevanceScore > 0)
     .sort((a, b) =>
       b.relevanceScore - a.relevanceScore ||
-      typeRank(a.type) - typeRank(b.type) ||
+      TYPE_RANK[a.type] - TYPE_RANK[b.type] ||
       a.title.localeCompare(b.title)
     );
 

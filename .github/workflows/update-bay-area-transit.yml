@@ -6,8 +6,9 @@ on:
   # without committing noisy minute-to-minute churn. BART's public API needs no
   # token.
   schedule:
-    # Staggered off :20 so it doesn't race the hourly earthquake and 6h world-cup
-    # refreshes (which also push to main) over the same minute.
+    # Staggered off the minutes the other four- and six-hourly lanes use (:15
+    # Premier League, :20 NBA, :23 score pools, :30 La Liga), which also push
+    # to main.
     - cron: "35 */6 * * *"
   workflow_dispatch:
 

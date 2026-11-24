@@ -375,7 +375,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 <span className="ffb-label">
                   <MetricTooltip
                     term="Movement"
-                    definition="Movement against the published snapshot from 7 and 14 days back. An up arrow means he moved up the board, ranked higher or drafted earlier."
+                    definition="Movement against the published snapshot from 7 and 14 days back. An up arrow means the player moved up the board, ranked higher or drafted earlier."
                     focusable
                   >
                     Movement

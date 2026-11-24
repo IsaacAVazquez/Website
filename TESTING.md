@@ -2,11 +2,11 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
-## Test Stack
+## Test stack
 
 ### Unit and integration
 
@@ -45,7 +45,7 @@ npm run test:all
 
 ---
 
-## Coverage Thresholds
+## Coverage thresholds
 
 `jest.config.js` (`coverageThreshold.global`) is the single source of truth for the
 enforced coverage gates, applied in CI through `npm run test:ci`. They ratchet upward
@@ -56,7 +56,7 @@ toward the numbers.
 
 ---
 
-## Where Tests Live
+## Where tests live
 
 ### Jest
 
@@ -119,7 +119,7 @@ on paper there.
 
 ---
 
-## Playwright Projects
+## Playwright projects
 
 Defined in `playwright.config.ts`:
 
@@ -141,7 +141,7 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ---
 
-## Testing Guidance
+## Testing guidance
 
 - Prefer targeted test runs while iterating
 - Match the style of nearby tests instead of forcing a single pattern
@@ -156,7 +156,7 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ---
 
-## Current Caveats
+## Current caveats
 
 - `@testing-library/react` is present, but the repo also uses direct `createRoot` tests; follow local conventions
 - Playwright config starts the Next dev server locally and `npm run start` in CI. The local server runs with `JOB_SEARCH_PRIVATE_SYNC=0`, so a test never writes the private job search files, and `reuseExistingServer` is on locally, so a server already answering on `E2E_PORT` (then `PORT`, then 3000) gets tested instead, even one started from another checkout, and that server keeps whatever private sync setting it started with. `E2E_BASE_URL` points a run at another address
@@ -165,7 +165,7 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ---
 
-## Source Files
+## Source files
 
 - `jest.config.js`
 - `jest.setup.js`

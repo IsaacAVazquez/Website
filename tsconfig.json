@@ -35,7 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "vite.config.mts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

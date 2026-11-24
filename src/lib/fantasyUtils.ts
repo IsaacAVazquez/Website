@@ -21,7 +21,8 @@ export const FANTASY_VORP_TOOLTIP =
 // the visitor's local clock after, breaking hydration on every surface that
 // renders it on first paint.
 export function formatUpdatedAt(timestamp: string | null | undefined): string {
-  if (!timestamp) {
+  const date = new Date(timestamp ?? "");
+  if (!timestamp || Number.isNaN(date.getTime())) {
     return "Unavailable";
   }
 
@@ -34,7 +35,7 @@ export function formatUpdatedAt(timestamp: string | null | undefined): string {
     timeZone: DISPLAY_TIME_ZONE,
     timeZoneName: "short",
   });
-  return formatStableDateTime(formatter, new Date(timestamp));
+  return formatStableDateTime(formatter, date);
 }
 
 export type FantasySnapshotStaleness = "fresh" | "aging" | "stale";
@@ -120,21 +121,24 @@ export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason
 
 /**
  * True while the refresh cron runs daily rather than weekly, which is July
- * through December: drafts through early September, then the season itself
- * through the Week 17 championships. February through June is the weekly lane.
+ * through December plus January 1 to 12: drafts through early September, then
+ * the season itself through Weeks 17 and 18 in early January. The rest of
+ * January through June is the weekly lane.
  *
  * Keep this aligned with the schedule in .github/workflows/update-fantasy.yml,
  * because a freshness band only means something if it matches the cadence that
  * actually runs. The window used to end September 30, which judged a live
- * in-season board against offseason thresholds for three months.
+ * in-season board against offseason thresholds for three months, and then
+ * December 31, which did the same to the Week 17 and 18 boards.
  */
 function isDailyRefreshWindow(now: Date): boolean {
-  return now.getUTCMonth() >= 6;
+  const month = now.getUTCMonth();
+  return month >= 6 || (month === 0 && now.getUTCDate() <= 12);
 }
 
 /**
  * Buckets a snapshot timestamp into a freshness band that downstream UI can
- * use to surface a warning. July through December follows the daily refresh
+ * use to surface a warning. July through January 12 follows the daily refresh
  * schedule, so a source ages after two days and is stale after four. The rest
  * of the year follows the weekly schedule at eight and fourteen days.
  *

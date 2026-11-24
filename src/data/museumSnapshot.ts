@@ -14,7 +14,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
   sourceLabel: "Curated by Isaac Vazquez",
   curatorName: "Isaac Vazquez",
   curatorBio:
-    "Tracking museum visits the way I track films — exhibits, ratings, and the rooms worth coming back for.",
+    "Tracking museum visits the way I track films, with exhibits, ratings, and the rooms worth coming back for.",
 
   museums: [
     {
@@ -76,12 +76,12 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       type: "art",
       founded: 1929,
       blurb:
-        "The institutional spine of modernism — Cézanne to Cy Twombly, with film, design, and architecture wings.",
+        "The institutional spine of modernism, from Cézanne to Cy Twombly, with film, design, and architecture wings.",
       websiteUrl: "https://www.moma.org",
       highlights: ["Starry Night", "Demoiselles d'Avignon", "Architecture & Design"],
       curatorRating: 4.0,
       curatorBlurb:
-        "Greatest hits gallery is a meat-grinder on weekends. Go on a Friday evening — the Marron Atrium feels almost civilized.",
+        "Greatest hits gallery is a meat-grinder on weekends. Go on a Friday evening, when the Marron Atrium feels almost civilized.",
       popularity: 92,
       visitMinutesAvg: 180,
       admissionUSD: 30,
@@ -230,12 +230,12 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       region: "northeast",
       type: "art",
       founded: 1935,
-      blurb: "Old Masters in a Gilded Age mansion — recently re-opened after a Selldorf renovation.",
+      blurb: "Old Masters in a Gilded Age mansion, re-opened after a Selldorf renovation.",
       websiteUrl: "https://www.frick.org",
       highlights: ["Vermeer trio", "Bellini's St. Francis", "Living Hall"],
       curatorRating: 5.0,
       curatorBlurb:
-        "Best small museum in America. The renovation opened the second floor — it's a different museum now, in the right way.",
+        "Best small museum in America. The renovation opened the second floor, and it's a different museum now, in the right way.",
       popularity: 68,
       visitMinutesAvg: 90,
       admissionUSD: 30,
@@ -319,7 +319,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       type: "art",
       founded: 1900,
       blurb:
-        "The Texas behemoth — three buildings, two sculpture gardens, and the underground Turrell tunnel between them.",
+        "The Texas behemoth, with three buildings, two sculpture gardens, and the underground Turrell tunnel between them.",
       websiteUrl: "https://www.mfah.org",
       highlights: ["The Light Inside (Turrell)", "Latin American collection", "Glassell School"],
       curatorRating: 4.5,
@@ -417,7 +417,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       type: "art",
       founded: 1997,
       blurb:
-        "Richard Meier's travertine acropolis above the 405 — European paintings, drawings, photography, and a garden.",
+        "Richard Meier's travertine acropolis above the 405, with European paintings, drawings, photography, and a garden.",
       websiteUrl: "https://www.getty.edu",
       highlights: ["Irises (Van Gogh)", "Central Garden", "Photography galleries"],
       curatorRating: 4.5,
@@ -585,7 +585,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       type: "art",
       founded: 1937,
       blurb:
-        "The country's national art museum — West Building (Pope) and East Building (Pei), free, on the Mall.",
+        "The country's national art museum, in the West Building (Pope) and East Building (Pei), free, on the Mall.",
       websiteUrl: "https://www.nga.gov",
       highlights: ["Ginevra de' Benci (only Leonardo in the Americas)", "East Building Calder", "Sculpture Garden"],
       curatorRating: 5.0,
@@ -714,7 +714,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       type: "art",
       founded: 1800,
       blurb:
-        "Dutch national museum housing the Golden Age — Vermeer, Rembrandt, and the Cuypers building itself.",
+        "Dutch national museum housing the Golden Age, with Vermeer, Rembrandt, and the Cuypers building itself.",
       websiteUrl: "https://www.rijksmuseum.nl",
       highlights: ["The Night Watch", "Vermeers", "Cuypers Library"],
       curatorRating: 5.0,
@@ -818,7 +818,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       rating: 4.5,
       headline: "Turbine Hall first, always",
       body:
-        "The current Hyundai commission rewards a first loop without context, then a second one with the wall text. Take the elevator straight to the Switch House top floor afterward — best free skyline in central London.",
+        "The current Hyundai commission rewards a first loop without context, then a second one with the wall text. Take the elevator straight to the Switch House top floor afterward for the best free skyline in central London.",
       dateVisited: "2025-11-04",
       tags: ["london", "contemporary"],
       liked: true,
@@ -829,7 +829,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       rating: 5,
       headline: "The Night Watch is more interesting under restoration",
       body:
-        "Operation Night Watch turned the central gallery into a working conservation lab — you can watch the painting being studied through glass. The Vermeer cabinet is its own pilgrimage.",
+        "Operation Night Watch turned the central gallery into a working conservation lab, and you can watch the painting being studied through glass. The Vermeer cabinet is its own pilgrimage.",
       dateVisited: "2025-10-18",
       tags: ["amsterdam", "old masters", "favorite"],
       liked: true,
@@ -840,7 +840,7 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       rating: 5,
       headline: "Free, on the Mall, holds the only Leonardo in the Americas",
       body:
-        "Ginevra de' Benci alone is the trip. The East Building's Calder mobile is a separate kind of pilgrimage. Plan two visits — one each building — not one combined.",
+        "Ginevra de' Benci alone is the trip. The East Building's Calder mobile is a separate kind of pilgrimage. Plan two visits, one for each building, not one combined.",
       dateVisited: "2025-09-21",
       tags: ["dc", "free", "old masters"],
       liked: true,

@@ -17,6 +17,6 @@ it("keeps its marks out of the tab order, since the table below is the keyboard 
 it("still selects a startup from a pointer click on its tile", () => {
   const onSelect = jest.fn();
   const { container } = render(<ValuationTreemap startups={startups} selectedId={null} onSelect={onSelect} />);
-  fireEvent.click(container.querySelector(".c97-startup-treemap-tile")!);
+  fireEvent.click(container.querySelector(".ts-treemap-tile")!);
   expect(onSelect).toHaveBeenCalledWith("a");
 });

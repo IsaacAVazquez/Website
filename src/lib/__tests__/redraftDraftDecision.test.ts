@@ -348,7 +348,7 @@ describe("league-size and market-band corrections", () => {
     });
     if (wait?.kind === "measured") {
       expect(describeRedraftWait(wait)).toBe(
-        "At pick #8, the market midpoint moves to qb-2. Waiting costs about 22 projected season points (4 consensus spots and 19.6 replacement index points) against the best option now. qb-3 is the safer bet to last, with his whole published range clearing that pick."
+        "At pick #8, the market midpoint moves to qb-2. Waiting costs about 22 projected season points (4 consensus spots and 19.6 replacement index points) against the best option now. qb-3 is the safer bet to last, with the whole published range clearing that pick."
       );
     }
 

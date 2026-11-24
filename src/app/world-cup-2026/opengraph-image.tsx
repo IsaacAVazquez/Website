@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Sports Product",
     title: "World Cup Pulse",
     description:
-      "A 2026 FIFA World Cup hub: group standings, the new 32-team knockout bracket, the full match schedule, and host venues across three nations.",
+      "A 2026 FIFA World Cup hub: group standings, the new 32-team knockout bracket, the latest results, and host venues across three nations.",
     accent: "teal",
     footer: "isaacvazquez.com/world-cup-2026",
   });

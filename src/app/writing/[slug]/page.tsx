@@ -5,7 +5,6 @@ import { AuthorBio } from "@/components/ui/AuthorBio";
 import {
   constructMetadata,
   absoluteUrl,
-  fitMetaDescription,
   fitSearchTitle,
   siteConfig,
 } from "@/lib/seo";
@@ -48,14 +47,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Post not found", robots: { index: false, follow: true } };
   }
 
-  const metadataTitle = fitSearchTitle(post.seo?.title || post.title);
-  const metadataDescription = fitMetaDescription(
-    post.seo?.description || post.excerpt || post.title
-  );
-
   return constructMetadata({
-    title: metadataTitle,
-    description: metadataDescription,
+    title: fitSearchTitle(post.seo?.title || post.title),
+    // constructMetadata fits the description itself.
+    description: post.seo?.description || post.excerpt || post.title,
     image: `/writing/${slug}/opengraph-image`,
     ogType: "article",
     datePublished: post.publishedAt,
@@ -127,11 +122,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
             url: `${siteConfig.url}/writing/${slug}`,
-            keywords: Array.isArray(articleKeywords)
-              ? articleKeywords
-              : articleKeywords
-                ? [articleKeywords]
-                : undefined,
+            keywords: articleKeywords,
             wordCount: post.wordCount,
             image: absoluteUrl(post.coverImage),
             inLanguage: "en-US",

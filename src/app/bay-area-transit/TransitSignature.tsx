@@ -10,7 +10,7 @@ import type {
   TransitStation,
   TransitStationBoard,
 } from "@/types/bayAreaTransit";
-import { bundleTrack, linePath, nearestStation, projectStations } from "./station-map";
+import { bundleTrack, lineKey, linePath, nearestStation, projectStations } from "./station-map";
 import { TransitMap } from "./TransitMap";
 
 interface TransitSignatureProps {
@@ -36,8 +36,6 @@ const DOT_R = 5;
 const SELECTED_R = 9;
 const DRAWN_LINE_WEIGHT = 3;
 const NO_ADVISORIES = new Set<string>();
-
-const lineKey = (colorName: string) => colorName.trim().toLowerCase();
 
 /** Miles, since the Bay reads distance in miles. */
 function formatMiles(km: number): string {
@@ -411,8 +409,8 @@ export function TransitSignature({
   advisoryStations = NO_ADVISORIES,
 }: TransitSignatureProps) {
   const points = useMemo(
-    () => projectStations(stations, lines, W, H, PAD),
-    [stations, lines]
+    () => projectStations(stations, W, H, PAD),
+    [stations]
   );
   const byAbbr = useMemo(() => new Map(stations.map((s) => [s.abbr, s])), [stations]);
   const pointByAbbr = useMemo(() => new Map(points.map((p) => [p.abbr, p])), [points]);

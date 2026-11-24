@@ -1,4 +1,4 @@
-import { fetchFinnhubQuote } from "@/lib/finnhub";
+import { errorQuote, fetchFinnhubQuote } from "@/lib/finnhub";
 import type { StockQuote } from "@/types/investment";
 
 const PROVIDER_DEADLINE_ERROR =
@@ -15,20 +15,8 @@ export async function fetchQuotesWithConcurrency(
   let deadlineReached = false;
   const deadlineAt = Date.now() + requestBudgetMs;
 
-  const deadlineQuote = (symbol: string): StockQuote => ({
-    symbol,
-    price: 0,
-    change: 0,
-    changePercent: 0,
-    dayHigh: 0,
-    dayLow: 0,
-    open: 0,
-    previousClose: 0,
-    volume: 0,
-    marketCap: 0,
-    name: symbol,
-    error: PROVIDER_DEADLINE_ERROR,
-  });
+  const deadlineQuote = (symbol: string): StockQuote =>
+    errorQuote(symbol, PROVIDER_DEADLINE_ERROR);
 
   const fetchBeforeDeadline = (symbol: string): Promise<StockQuote> => {
     const remainingMs = deadlineAt - Date.now();

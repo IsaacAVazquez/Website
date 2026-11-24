@@ -253,6 +253,20 @@ describe("BeforeYouBuyClient", () => {
     expect(screen.getByLabelText("AAPL value in dollars")).toBeDisabled();
   });
 
+  it("values a saved holding to the cent and counts one holding in the singular", async () => {
+    mockSaved = [{ symbol: "AAPL", shares: 10, averageCost: 150 }];
+    useUniverse();
+    const universe = mockSnapshot.getMockImplementation()!;
+    // 10 * 348.22 is 3482.2000000000003 in floating point.
+    mockSnapshot.mockImplementation((symbol: string) => symbol === "AAPL"
+      ? Promise.resolve({ sections: { info: { sector: "Technology", shortName: "Apple" }, price: [{ date: dateAt(0), close: 340 }, { date: dateAt(1), close: 348.22 }] } })
+      : universe(symbol));
+    await renderPage();
+    expect(screen.getByText(/View and edit 1 holding ·/)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(/View and edit/));
+    expect(screen.getByLabelText("AAPL value in dollars")).toHaveValue(3482.2);
+  });
+
   it("rejects malformed restored portfolios and accepts an intentional empty draft", async () => {
     localStorage.setItem("before-you-buy-portfolio-v1", JSON.stringify([{ symbol: "<script>", value: 1000 }]));
     useUniverse();

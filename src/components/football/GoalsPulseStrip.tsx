@@ -40,7 +40,10 @@ export function GoalsPulseStrip({
       className={`flex items-center ${className}`.trim()}
       style={{ gap: "var(--c97-sp-1)" }}
       role="img"
-      aria-label={`Goals per matchday, season to date: ${data.length} matchdays, latest ${data[data.length - 1].totalGoals} goals`}
+      // The bars' figures are pointer tooltips, so the label carries the series.
+      aria-label={`Goals per matchday, season to date: ${data
+        .map((entry) => `matchday ${entry.matchday}, ${entry.totalGoals}`)
+        .join("; ")}`}
     >
       <div className="flex h-7 items-end" style={{ gap: "var(--c97-sp-0)" }}>
         {data.map((entry, index) => (

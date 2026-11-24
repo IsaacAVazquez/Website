@@ -1,6 +1,7 @@
 import { BrandGithub, BrandLinkedin, Mail } from "@/components/ui/ServerIcons";
 import Image from "next/image";
 import Link from "next/link";
+import { profile } from "@/lib/profile";
 
 const NAME = "Isaac Vazquez";
 const BIO =
@@ -70,7 +71,7 @@ export function AuthorBio() {
         >
           <li>
             <Link
-              href="https://www.linkedin.com/in/isaac-vazquez/"
+              href={profile.sameAs.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="c97-microlink"
@@ -83,7 +84,7 @@ export function AuthorBio() {
           </li>
           <li>
             <Link
-              href="https://github.com/IsaacAVazquez"
+              href={profile.sameAs.github}
               target="_blank"
               rel="noopener noreferrer"
               className="c97-microlink"
@@ -95,7 +96,7 @@ export function AuthorBio() {
             </Link>
           </li>
           <li>
-            <Link href="mailto:IsaacVazquez@berkeley.edu" className="c97-microlink" style={LINK_STYLE} itemProp="email">
+            <Link href={`mailto:${profile.email}`} className="c97-microlink" style={LINK_STYLE} itemProp="email">
               <Mail size={16} aria-hidden="true" />
               Email
             </Link>

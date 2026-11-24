@@ -502,8 +502,8 @@
   padding-top: var(--c97-sp-2);
 }
 
-.c97-surface-map-row-header,
-.c97-surface-map-list-title {
+.adt-surface-map-row-header,
+.adt-surface-map-list-title {
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--adt-ink);
@@ -684,9 +684,9 @@
 
 /* The category by pricing map, the directory's Map view */
 
-.c97-surface-map {
+.adt-surface-map {
   display: grid;
-  grid-template-columns: minmax(7rem, auto) repeat(var(--c97-surface-map-cols, 4), minmax(8rem, 1fr));
+  grid-template-columns: minmax(7rem, auto) repeat(var(--adt-surface-map-cols, 4), minmax(8rem, 1fr));
   border: 1px solid var(--c97-rule);
   background: var(--c97-rule);
   gap: 1px;
@@ -695,25 +695,25 @@
 /* display: contents drops the row's own box so its header/cell children lay
  * out directly on the table's column tracks, while the row element itself
  * still carries role="row" for assistive tech. */
-.c97-surface-map-row {
+.adt-surface-map-row {
   display: contents;
 }
 
-.c97-surface-map-col-header {
+.adt-surface-map-col-header {
   background: var(--c97-surface);
   padding: var(--c97-sp-2);
   display: flex;
   align-items: center;
 }
 
-.c97-surface-map-row-header {
+.adt-surface-map-row-header {
   background: var(--c97-surface);
   padding: var(--c97-sp-2);
   display: flex;
   align-items: center;
 }
 
-.c97-surface-map-cell {
+.adt-surface-map-cell {
   background: var(--c97-field);
   padding: var(--c97-sp-2);
   display: flex;
@@ -723,7 +723,7 @@
   min-height: 3.25rem;
 }
 
-.c97-surface-map-plate {
+.adt-surface-map-plate {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
@@ -739,31 +739,31 @@
   cursor: pointer;
 }
 
-.c97-surface-map-plate:hover {
+.adt-surface-map-plate:hover {
   background: var(--c97-field);
 }
 
-.c97-surface-map-plate[aria-pressed="true"] {
+.adt-surface-map-plate[aria-pressed="true"] {
   border-color: var(--c97-ink);
   background: var(--c97-ink);
   color: var(--c97-surface);
 }
 
-.c97-surface-map-list {
+.adt-surface-map-list {
   margin: 0;
 }
 
-.c97-surface-map-list-group + .c97-surface-map-list-group {
+.adt-surface-map-list-group + .adt-surface-map-list-group {
   margin-top: var(--c97-sp-4);
   padding-top: var(--c97-sp-4);
   border-top: 1px solid var(--c97-rule);
 }
 
-.c97-surface-map-list-cell {
+.adt-surface-map-list-cell {
   margin: var(--c97-sp-2) 0 0;
 }
 
-.c97-surface-map-list-plates {
+.adt-surface-map-list-plates {
   display: flex;
   flex-wrap: wrap;
   gap: var(--c97-sp-1);

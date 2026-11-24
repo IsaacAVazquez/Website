@@ -1,7 +1,18 @@
 import { isRecord } from "./utils";
-import { escapeCalendarText, foldCalendarLine } from "./travelExtras";
+import {
+  calendarDocument,
+  calendarStamp,
+  escapeCalendarText,
+} from "./travelExtras";
 
 export type PersonalLeague = "nba" | "nfl" | "premier-league" | "la-liga" | "mlb";
+export const PERSONAL_LEAGUE_NAMES: Record<PersonalLeague, string> = {
+  nba: "NBA",
+  nfl: "NFL",
+  mlb: "MLB",
+  "premier-league": "Premier League",
+  "la-liga": "La Liga",
+};
 export function standingRankLabel(league: PersonalLeague) {
   return league === "mlb" ? "Division rank" : league === "premier-league" || league === "la-liga" ? "League rank" : "Conference rank";
 }
@@ -136,46 +147,35 @@ export function standingsChanges(
       : [];
   });
 }
+/** The fixtures a schedule download can carry: a confirmed start in the future. */
+export function calendarFixtures(fixtures: PersonalFixture[], now = new Date()) {
+  return fixtures.filter(
+    (fixture) =>
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(fixture.utcDate) &&
+      Number.isFinite(Date.parse(fixture.utcDate)) &&
+      Date.parse(fixture.utcDate) > now.getTime() &&
+      !/POSTPONED|CANCELLED|CANCELED|TBD/i.test(fixture.status) &&
+      !fixture.startTimeTbd &&
+      !fixture.ifNecessary,
+  );
+}
 export function sportsCalendar(
   league: PersonalLeague,
   name: string,
   fixtures: PersonalFixture[],
   now = new Date(),
 ) {
-  const stamp = now
-    .toISOString()
-    .replace(/[-:]/g, "")
-    .replace(/\.\d{3}Z$/, "Z");
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Isaac Vazquez//Team Schedules//EN",
-    "CALSCALE:GREGORIAN",
-    `X-WR-CALNAME:${escapeCalendarText(`${name} ${league.toUpperCase()}`)}`,
-  ];
-  for (const fixture of fixtures) {
-    if (
-      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(fixture.utcDate) ||
-      !Number.isFinite(Date.parse(fixture.utcDate)) ||
-      Date.parse(fixture.utcDate) <= now.getTime() ||
-      /POSTPONED|CANCELLED|CANCELED|TBD/i.test(fixture.status) || fixture.startTimeTbd || fixture.ifNecessary
-    )
-      continue;
-    const start = new Date(fixture.utcDate)
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .replace(/\.\d{3}Z$/, "Z");
-    lines.push(
+  return calendarDocument(
+    "Team Schedules",
+    calendarFixtures(fixtures, now).flatMap((fixture) => [
       "BEGIN:VEVENT",
       `UID:${league}-${encodeURIComponent(fixture.id)}@isaacvazquez.com`,
-      `DTSTAMP:${stamp}`,
-      `DTSTART:${start}`,
+      `DTSTAMP:${calendarStamp(now)}`,
+      `DTSTART:${calendarStamp(new Date(fixture.utcDate))}`,
       `SUMMARY:${escapeCalendarText(`${fixture.away} at ${fixture.home}`)}`,
       `DESCRIPTION:${escapeCalendarText("Published schedule. Check the league for time changes before the game.")}`,
       "END:VEVENT",
-    );
-  }
-  return (
-    [...lines, "END:VCALENDAR"].map(foldCalendarLine).join("\r\n") + "\r\n"
+    ]),
+    `${name} ${league.toUpperCase()}`,
   );
 }

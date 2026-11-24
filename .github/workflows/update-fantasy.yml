@@ -85,8 +85,10 @@ jobs:
         # Soft like every other lane gate. Left hard, a redraft build failure made
         # the best ball step's implicit success() condition false and skipped it,
         # which is the coupling the comment above says cannot happen. The redraft
-        # commit still requires verify_freshness and verify_quality to pass, and
-        # the terminal report step below turns the run red.
+        # commit still requires this step, verify_freshness, and verify_quality
+        # to pass, since both gates read the committed boards and pass when this
+        # build dies after rewriting its inputs. The terminal report step below
+        # turns the run red.
         continue-on-error: true
         timeout-minutes: 15
         run: npm run update:fantasy:redraft
@@ -192,7 +194,7 @@ jobs:
                   // validated rankings, but the terminal report step turns the
                   // run red so the outage is noticed.
                   const vorpAgeDays = (Date.now() - vorpAsOf) / 86400000;
-                  const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
+                  const today = new Date(); const inDraftSeason = today.getUTCMonth() >= 6 || (today.getUTCMonth() === 0 && today.getUTCDate() <= 12); // the daily-lane window, July through January 12, matching isDailyRefreshWindow
                   const vorpWarnLimit = inDraftSeason ? 2 : 8;
                   const vorpFailLimit = inDraftSeason ? 4 : 14;
                   if (vorpAgeDays > vorpFailLimit) {
@@ -342,7 +344,7 @@ jobs:
             // The builder fail-softs each source to the previous snapshot's asOf.
             // Record the failure here without skipping the other lane's commit,
             // using the same age boundaries the deployed tools enforce.
-            const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
+            const today = new Date(); const inDraftSeason = today.getUTCMonth() >= 6 || (today.getUTCMonth() === 0 && today.getUTCDate() <= 12); // the daily-lane window, July through January 12, matching isDailyRefreshWindow
             const sourceWarnLimit = inDraftSeason ? 2 : 8;
             const sourceFailLimit = inDraftSeason ? 4 : 14;
             const futureSkewToleranceDays = 5 / 1440;
@@ -430,7 +432,7 @@ jobs:
           const formats = ['ppr', 'half_ppr', 'standard'];
 
           const now = Date.now();
-          const inDraftSeason = new Date().getUTCMonth() >= 6; // the daily-lane months, July through December, matching isDailyRefreshWindow
+          const today = new Date(); const inDraftSeason = today.getUTCMonth() >= 6 || (today.getUTCMonth() === 0 && today.getUTCDate() <= 12); // the daily-lane window, July through January 12, matching isDailyRefreshWindow
           const ageWarnLimit = inDraftSeason ? 2 : 8;
           const ageFailLimit = inDraftSeason ? 4 : 14;
           const futureSkewToleranceDays = 5 / 1440;
@@ -490,7 +492,7 @@ jobs:
       # 2026-09-26 that put a new date on six fantasy routes while the committed
       # rankings were two weeks old. Restore rejected files before draft commits.
       - name: Discard redraft artifacts that failed their gates
-        if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
+        if: steps.build_redraft.outcome != 'success' || steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
         run: |
           git checkout -- \
             src/data/fantasyPositionData.generated.json \
@@ -509,7 +511,7 @@ jobs:
           git checkout -- public/data/fantasy/best-ball.json
 
       - name: Commit and push snapshot updates
-        if: steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'
+        if: steps.build_redraft.outcome == 'success' && steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: update fantasy football snapshots [automated] [skip ci]" \

@@ -17,6 +17,7 @@ import {
   type AssetOriginOptions,
 } from "@/lib/investmentsAssetOrigin";
 import { isFiniteNumber } from "@/lib/utils";
+import { logger } from "@/lib/logger";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
 const TIMEOUT_MS = 5_000;
@@ -32,6 +33,7 @@ const NO_PRICE_ERROR = "Live price is unavailable for this symbol right now.";
 
 // Module-level rate limit tracker
 let rateLimitedUntil = 0;
+let missingKeyLogged = false;
 const quoteCache = new Map<string, { quote: StockQuote; expiresAt: number }>();
 const quoteInflight = new Map<string, Promise<StockQuote>>();
 
@@ -146,7 +148,7 @@ export async function getAllowedSymbols(
   throw new FinnhubAllowlistUnavailableError();
 }
 
-function errorQuote(symbol: string, message: string): StockQuote {
+export function errorQuote(symbol: string, message: string): StockQuote {
   return {
     symbol,
     price: 0,
@@ -178,6 +180,11 @@ async function fetchFinnhubQuoteFromProvider(
   timeoutMs = TIMEOUT_MS,
 ): Promise<StockQuote> {
   if (!FINNHUB_API_KEY) {
+    // A missing key reads to a visitor like an outage, so the log names it once.
+    if (!missingKeyLogged) {
+      missingKeyLogged = true;
+      logger.error("FINNHUB_API_KEY is not set, so every live quote is answered as unavailable");
+    }
     return errorQuote(symbol, TEMPORARY_ERROR);
   }
 

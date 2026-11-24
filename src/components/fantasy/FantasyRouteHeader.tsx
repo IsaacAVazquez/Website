@@ -64,14 +64,6 @@ export function FantasyRouteHeader({
   );
 }
 
-/**
- * The last word of a title. It used to set Newsreader italic. The kit's title
- * is one face, so this is now a plain wrapper the routes can keep passing.
- */
-export function TitleAccent({ children }: { children: ReactNode }) {
-  return <>{children}</>;
-}
-
 /** A section heading on the fantasy routes, in the kit's sticker type. */
 export function FantasySectionHeading({
   id,

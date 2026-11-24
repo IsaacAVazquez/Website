@@ -130,6 +130,22 @@ describe("MissionControlHero T-0 liftoff", () => {
     input.remove();
   });
 
+  it("stops calling a launch next once its time is half an hour gone", () => {
+    jest.setSystemTime(NET - 60_000);
+    renderHero(root, NET - 60_000);
+    expect(container.querySelector(".sx-mast-kicker")).toHaveTextContent("Next mission · Flight #1");
+    expect(container.querySelector(".sx-mast-schedule")).not.toHaveTextContent("Awaiting");
+
+    // The snapshot still says this launch is upcoming, and only a rebuild changes that.
+    act(() => {
+      jest.advanceTimersByTime(32 * 60_000);
+    });
+    expect(container.querySelector(".sx-mast-kicker")).toHaveTextContent("Scheduled mission · Flight #1");
+    expect(container.querySelector(".sx-mast-schedule")).toHaveTextContent(
+      "Awaiting refreshed schedule from upstream API",
+    );
+  });
+
   it("does nothing when the page opens after T-0", () => {
     // The server rendered before T-0, but the visitor's clock is already past it.
     jest.setSystemTime(NET + 1000);

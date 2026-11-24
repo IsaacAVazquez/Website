@@ -22,6 +22,7 @@ import {
   newestPollDate,
   describeAverageWindow,
   buildPolyline,
+  monthFractions,
   DEM_COLOR,
   REP_COLOR,
 } from "./polling-aggregator-helpers";
@@ -62,11 +63,12 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
   const maxVal = Math.ceil(Math.max(...allVals) + 2);
   const scaleY = (v: number) =>
     H - PAD - ((v - minVal) / (maxVal - minVal || 1)) * (H - PAD * 2);
-  const scaleX = (i: number) =>
-    PAD + (trend.length === 1 ? 0 : i / (trend.length - 1)) * (W - PAD * 2);
+  // By calendar month, so a month with no polls leaves its gap on the axis.
+  const fractions = monthFractions(trend.map((d) => d.date));
+  const scaleX = (i: number) => PAD + fractions[i] * (W - PAD * 2);
 
-  const approvePoints = buildPolyline(trend.map((d) => d.approve), W, H, PAD, minVal, maxVal);
-  const disapprovePoints = buildPolyline(trend.map((d) => d.disapprove), W, H, PAD, minVal, maxVal);
+  const approvePoints = buildPolyline(trend.map((d) => d.approve), W, H, PAD, minVal, maxVal, fractions);
+  const disapprovePoints = buildPolyline(trend.map((d) => d.disapprove), W, H, PAD, minVal, maxVal, fractions);
 
   const first = trend[0];
   const last = trend[trend.length - 1];
@@ -584,8 +586,8 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           {/* The view that was asked for has no polls, so the board says so over the one it fell back to. */}
           {routeState.view !== view ? (
             <p className="pa-muted">
-              VoteHub has published no {routeState.view === "senate" ? "senate" : "governor"} poll
-              from the last four months, so there is nothing to average here yet.
+              I have no usable {routeState.view === "senate" ? "Senate" : "governor"} poll from the
+              last four months, so there is nothing to average here yet.
             </p>
           ) : null}
 

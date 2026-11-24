@@ -56,3 +56,15 @@ it("keeps scenarios saved by another tab when adding a scenario", () => {
     ),
   ).toEqual(["Other tab", "New"]);
 });
+it("marks the current value in each sensitivity group and keeps the status region mounted", () => {
+  render(
+    <RentScenarios
+      input={{ ...createDefaultInput(), yearsStaying: 1 }}
+      onLoad={jest.fn()}
+    />,
+  );
+  const table = screen.getByRole("region", { name: "Assumption sensitivity" });
+  expect(table).toHaveTextContent("1 year (current)");
+  expect(table.querySelectorAll("tbody tr")).toHaveLength(8);
+  expect(screen.getByRole("status")).toBeEmptyDOMElement();
+});

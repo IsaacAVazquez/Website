@@ -28,7 +28,8 @@ function roundCurrency(value: number) {
   return Number.isFinite(value) ? roundTo(value, 2) : 0;
 }
 
-function sanitizeNonNegativeAmount(value: unknown) {
+/** Any input as a dollar amount: finite, never negative, rounded to cents. */
+export function sanitizeNonNegativeAmount(value: unknown) {
   const numeric = typeof value === "number" ? value : Number(value);
   return Math.max(0, roundCurrency(numeric));
 }
@@ -262,24 +263,12 @@ export function ensureBudgetMonth(months: BudgetMonthMap, monthKey: string) {
   };
 }
 
-export function loadBudgetMonths(storage?: Pick<Storage, "getItem">) {
-  if (storage) {
-    return parseBudgetMonths(storage.getItem(BUDGET_PLANNER_STORAGE_KEY));
-  }
-
+export function loadBudgetMonths() {
   if (typeof window === "undefined") return {};
   return parseBudgetMonths(readBrowserStorageString(BUDGET_PLANNER_STORAGE_KEY).value);
 }
 
-export function saveBudgetMonths(
-  months: BudgetMonthMap,
-  storage?: Pick<Storage, "setItem">
-) {
-  if (storage) {
-    storage.setItem(BUDGET_PLANNER_STORAGE_KEY, JSON.stringify(months));
-    return;
-  }
-
+export function saveBudgetMonths(months: BudgetMonthMap) {
   if (typeof window === "undefined") return;
   writeBrowserStorageJson(BUDGET_PLANNER_STORAGE_KEY, months);
 }
@@ -315,19 +304,12 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
       const spent = roundCurrency(expenseTotals.get(category.id) ?? 0);
       const availableAmount = roundCurrency(category.budgetedAmount + (category.carriedAmount ?? 0));
       const remaining = roundCurrency(availableAmount - spent);
-      const utilization =
-        availableAmount > 0
-          ? spent / availableAmount
-          : spent > 0
-            ? 1
-            : 0;
 
       return {
         ...category,
         availableAmount,
         spent,
         remaining,
-        utilization,
         expenseCount: expenseCounts.get(category.id) ?? 0,
         overBudget: spent > availableAmount,
       };
@@ -355,7 +337,6 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
     remainingToSpend: roundCurrency(availableToBudget - spentTotal),
     categorySummaries,
     expenseEntries,
-    recentExpenses: expenseEntries.slice(0, 5),
   };
 }
 

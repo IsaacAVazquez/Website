@@ -40,7 +40,7 @@ function compareValues(
 
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-2)" }}>{title}</h3>
       <div className="overflow-x-auto" role="region" tabIndex={0} aria-label={`${title} comparison table`}>
         <table className="w-full text-sm" aria-label={`${title} comparison`}>

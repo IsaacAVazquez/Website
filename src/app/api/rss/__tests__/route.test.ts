@@ -32,10 +32,8 @@ describe("GET /api/rss", () => {
         publishedAt: "2026-04-02",
         category: "Testing",
         tags: ["rss"],
-        featured: false,
         readingTime: "1 min read",
         wordCount: 0,
-        author: "Isaac Vazquez",
         coverImage: "",
         seo: {
           description: "Alpha & Beta description",
@@ -66,10 +64,8 @@ describe("GET /api/rss", () => {
         publishedAt: "2026-04-01",
         category: "Testing",
         tags: [],
-        featured: false,
         readingTime: "1 min read",
         wordCount: 0,
-        author: "Isaac Vazquez",
         coverImage: "",
       },
     ]);

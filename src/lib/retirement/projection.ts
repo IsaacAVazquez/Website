@@ -260,17 +260,12 @@ export function runDeterministic(
   const infl = input.assumptions.inflation;
   const tRetire = input.retirementAge - input.currentAge;
   const retireFactor = Math.pow(1 + infl, Math.max(0, tRetire));
-  const endFactor = Math.pow(1 + infl, totalYears + 1);
 
   return {
     path: path.years,
     balanceAtRetirement: {
       nominal: path.balanceAtRetirementNominal,
       real: path.balanceAtRetirementNominal / retireFactor,
-    },
-    endingBalance: {
-      nominal: path.endingBalanceNominal,
-      real: path.endingBalanceNominal / endFactor,
     },
     depletionAge: path.depletionAge,
   };

@@ -705,7 +705,7 @@ export function describeRedraftWait(wait: RedraftWaitReading): string {
     const extras: string[] = [];
     if (wait.saferSurvivor && wait.saferSurvivor.player.id !== wait.survivor.player.id) {
       extras.push(
-        `${wait.saferSurvivor.player.name} is the safer bet to last, with his whole published range clearing that pick.`
+        `${wait.saferSurvivor.player.name} is the safer bet to last, with the whole published range clearing that pick.`
       );
     }
     if (

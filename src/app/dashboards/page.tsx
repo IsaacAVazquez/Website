@@ -14,7 +14,7 @@ export const metadata = constructMetadata({
   description:
     "The instruments I built and keep running, from football ledgers to markets and spaceflight. Most dashboards read a committed snapshot that a scheduled job refreshes, some every few hours and some only weekly or in season. A few trackers are curated by hand, and the lifestyle tools and calculators keep their state in your browser.",
   canonicalUrl: "/dashboards",
-  dateModified: "2026-10-05",
+  dateModified: "2026-10-26",
 });
 
 export default async function DashboardsPage() {

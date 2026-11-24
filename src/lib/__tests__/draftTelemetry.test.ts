@@ -25,24 +25,8 @@ function pick(pickNumber: number, teamNumber: number, taken: Player): DraftPick 
     teamNumber,
     player: taken,
     timestamp: new Date("2026-08-31T00:00:00.000Z"),
-    pickTimeSeconds: 0,
-    isKeeper: false,
   };
 }
-
-const rankOf = (candidate: Player): number | null =>
-  typeof candidate.rankEcr === "number" && Number.isFinite(candidate.rankEcr)
-    ? candidate.rankEcr
-    : null;
-
-const players = [
-  player("rb-1", "RB", 2),
-  player("rb-2", "RB", 5),
-  player("rb-3", "RB", 12),
-  player("wr-1", "WR", 1),
-  player("wr-2", "WR", 3),
-  player("wr-3", "WR", 8),
-];
 
 function record(overrides: Partial<DraftTurnRecord>): DraftTurnRecord {
   return {
@@ -198,9 +182,6 @@ describe("resolveDraftTelemetry", () => {
     const recap = resolveDraftTelemetry({
       records: [record({})],
       picks,
-      players,
-      rankOf,
-      vorpOf: (playerId) => (playerId === "rb-1" ? 50 : playerId === "rb-2" ? 40 : null),
     });
 
     expect(recap.totalTurns).toBe(1);
@@ -226,24 +207,6 @@ describe("resolveDraftTelemetry", () => {
     expect(recap.averageRealizedDropPoints).toBe(10);
   });
 
-  it("keeps realized wait cost fixed when the published board refreshes", () => {
-    // The snapshot refreshed between the draft and the recap: rb-1 fell to 4.
-    const refreshed = players.map((candidate) =>
-      candidate.id === "rb-1" ? { ...candidate, rankEcr: 4 } : candidate
-    );
-    const recap = resolveDraftTelemetry({
-      records: [record({})],
-      picks,
-      players: refreshed,
-      rankOf,
-      vorpOf: () => null,
-    });
-    // The frozen turn board keeps rb-1 at 2 and rb-2 at 5 even though the
-    // current public board moved rb-1 to 4.
-    expect(recap.outcomes[0].realizedDropSpots).toBe(3);
-    expect(recap.outcomes[0].realizedDropPoints).toBe(10);
-  });
-
   it("measures a zero market drop when the user took the baseline player himself", () => {
     const recap = resolveDraftTelemetry({
       records: [record({ chosenPlayerId: "rb-1", chosenPlayerName: "rb-1" })],
@@ -253,9 +216,6 @@ describe("resolveDraftTelemetry", () => {
         pick(3, 2, player("wr-3", "WR", 8)),
         pick(4, 1, player("rb-2", "RB", 5)),
       ],
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     // His own pick is a choice, not market attrition: the market removed no RB
     // before his next turn, so waiting is measured as free rather than as the
@@ -274,9 +234,6 @@ describe("resolveDraftTelemetry", () => {
     const recap = resolveDraftTelemetry({
       records: [record({})],
       picks: survivorTaken,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     expect(recap.outcomes[0].survivorSurvived).toBe(false);
     expect(recap.survivalCorrect).toBe(0);
@@ -293,9 +250,6 @@ describe("resolveDraftTelemetry", () => {
         pick(3, 2, player("wr-3", "WR", 8)),
         pick(4, 1, player("rb-2", "RB", 5)),
       ],
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     // The user took the flagged player, so the market call is unmeasurable.
     expect(tookTheRisk.outcomes[0].atRiskGone).toBeNull();
@@ -310,9 +264,6 @@ describe("resolveDraftTelemetry", () => {
         record({ pick: 4, chosenPlayerId: "wr-3", chosenPlayerName: "wr-3", nextUserPick: null }),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     // Pick 4 in the log is rb-2, so the wr-3 record is a stale branch.
     expect(recap.totalTurns).toBe(1);
@@ -331,9 +282,6 @@ describe("resolveDraftTelemetry", () => {
         }),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     expect(recap.outcomes[0].measured).toBe(false);
     expect(recap.outcomes[0].survivorSurvived).toBeNull();
@@ -355,9 +303,6 @@ describe("resolveDraftTelemetry", () => {
         record({}),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
 
     expect(recap.outcomes.map((outcome) => outcome.record.pick)).toEqual([1, 4]);
@@ -391,9 +336,6 @@ describe("resolveDraftTelemetry", () => {
     const recap = resolveDraftTelemetry({
       records: [record({}), unpriced],
       picks: longer,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
 
     // The unpriced turn realized a drop but predicted none, so it stays out.
@@ -408,9 +350,6 @@ describe("resolveDraftTelemetry", () => {
     const alone = resolveDraftTelemetry({
       records: [unpriced],
       picks: longer,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
     expect(alone.averagePredictedDropSpots).toBeNull();
     expect(alone.averageRealizedDropSpots).toBe(7);
@@ -426,9 +365,6 @@ describe("resolveDraftTelemetry", () => {
         }),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
 
     expect(recap.outcomes[0].realizedBestId).toBeNull();
@@ -447,9 +383,6 @@ describe("resolveDraftTelemetry", () => {
         }),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => 999,
     });
 
     expect(recap.outcomes[0].realizedDropSpots).toBe(3);
@@ -467,9 +400,6 @@ describe("resolveDraftTelemetry", () => {
         }),
       ],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
 
     const outcome = recap.outcomes[0];
@@ -484,100 +414,9 @@ describe("resolveDraftTelemetry", () => {
     const recap = resolveDraftTelemetry({
       records: [record({ nextUserPick: 6 })],
       picks,
-      players,
-      rankOf,
-      vorpOf: () => null,
     });
 
     expect(recap.outcomes[0].measured).toBe(false);
     expect(recap.outcomes[0].realizedDropSpots).toBeNull();
-  });
-
-  describe("legacy records without a frozen position board", () => {
-    it("rebuilds the realized wait cost from the current board and VORP lookup", () => {
-      const vorp: Record<string, number> = { "rb-1": 50, "rb-2": 40, "rb-3": 20 };
-      const recap = resolveDraftTelemetry({
-        records: [record({ waitCandidates: [] })],
-        picks,
-        players,
-        rankOf,
-        vorpOf: (playerId) => vorp[playerId] ?? null,
-      });
-
-      const outcome = recap.outcomes[0];
-      // rb-1 went at pick 2, so rb-2 (rank 5) is the best RB at pick 4.
-      expect(outcome.realizedBestId).toBe("rb-2");
-      expect(outcome.realizedBestName).toBe("rb-2");
-      expect(outcome.realizedDropSpots).toBe(3);
-      expect(outcome.realizedDropPoints).toBe(10);
-      expect(recap.averagePredictedDropSpots).toBe(3);
-      expect(recap.averageRealizedDropPoints).toBe(10);
-    });
-
-    it("treats the user's own pick as a choice rather than market attrition", () => {
-      const recap = resolveDraftTelemetry({
-        records: [record({ chosenPlayerId: "rb-1", chosenPlayerName: "rb-1", waitCandidates: [] })],
-        picks: [
-          pick(1, 1, player("rb-1", "RB", 2)),
-          pick(2, 2, player("wr-2", "WR", 3)),
-          pick(3, 2, player("wr-3", "WR", 8)),
-          pick(4, 1, player("rb-2", "RB", 5)),
-        ],
-        players,
-        rankOf,
-        vorpOf: () => null,
-      });
-
-      expect(recap.outcomes[0].realizedBestId).toBe("rb-1");
-      expect(recap.outcomes[0].realizedDropSpots).toBe(0);
-      expect(recap.outcomes[0].realizedDropPoints).toBeNull();
-    });
-
-    it("skips unranked candidates and leaves the drop null without a ranked baseline", () => {
-      const unranked = players.map((candidate) =>
-        candidate.id === "rb-2" ? { ...candidate, rankEcr: undefined } : candidate
-      );
-      const recap = resolveDraftTelemetry({
-        records: [record({ waitCandidates: [], waitBaselineId: null })],
-        picks,
-        players: unranked,
-        rankOf,
-        vorpOf: () => 10,
-      });
-
-      const outcome = recap.outcomes[0];
-      expect(outcome.realizedBestId).toBe("rb-3");
-      expect(outcome.realizedDropSpots).toBeNull();
-      // With no baseline there is nothing to subtract from.
-      expect(outcome.realizedDropPoints).toBeNull();
-    });
-
-    it("never reports a negative drop when the realized best outranks the baseline", () => {
-      const recap = resolveDraftTelemetry({
-        records: [record({ waitCandidates: [], waitBaselineId: "rb-3" })],
-        picks,
-        players,
-        rankOf,
-        vorpOf: (playerId) => (playerId === "rb-3" ? 20 : 40),
-      });
-
-      expect(recap.outcomes[0].realizedBestId).toBe("rb-2");
-      expect(recap.outcomes[0].realizedDropSpots).toBe(0);
-      expect(recap.outcomes[0].realizedDropPoints).toBe(0);
-    });
-
-    it("finds no realized best when nobody at the position is left", () => {
-      const recap = resolveDraftTelemetry({
-        records: [record({ waitCandidates: [], waitPosition: "TE" })],
-        picks,
-        players,
-        rankOf,
-        vorpOf: () => 5,
-      });
-
-      expect(recap.outcomes[0].realizedBestId).toBeNull();
-      expect(recap.outcomes[0].realizedDropSpots).toBeNull();
-      expect(recap.outcomes[0].realizedDropPoints).toBeNull();
-    });
   });
 });

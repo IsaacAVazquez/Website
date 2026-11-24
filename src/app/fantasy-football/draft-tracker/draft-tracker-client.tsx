@@ -44,6 +44,7 @@ import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
   calculateRedraftDraftDecision,
   describeRedraftWait,
+  getRedraftNextPickForTeam,
   type RedraftPositionDecision,
 } from "@/lib/redraftDraftDecision";
 import {
@@ -99,7 +100,7 @@ interface DecisionRec {
  * the league size, the ordinal spot cost otherwise, and an honest dash when
  * the market cannot price the question.
  */
-function waitCellReading(
+export function waitCellReading(
   decision: RedraftPositionDecision | null
 ): { value: string; sub: string; title?: string } {
   if (!decision) {
@@ -108,6 +109,15 @@ function waitCellReading(
   const wait = decision.wait;
   if (wait.kind === "measured") {
     const survivorName = shortName(wait.survivor.player);
+    // No drop at all means the best option is the one expected to last, so the
+    // cell says that in words. A signed zero would read as a measured cost.
+    if ((wait.survivor.pointsDrop ?? wait.survivor.rankCost) === 0) {
+      return {
+        value: "Likely lasts",
+        sub: `${survivorName} reaches #${wait.nextPick} at the market midpoint`,
+        title: describeRedraftWait(wait),
+      };
+    }
     return {
       value:
         // A drop that rounds to zero must not read as "waiting is free"; the
@@ -304,6 +314,8 @@ export function DraftTrackerClient() {
   // full recommendation cards sit behind this toggle so the board stays high.
   const [showDecisionDetail, setShowDecisionDetail] = useState(false);
   const [exportToast, setExportToast] = useState<string | null>(null);
+  const exportToastTimer = useRef<number | undefined>(undefined);
+  useEffect(() => () => window.clearTimeout(exportToastTimer.current), []);
   const [specialistNote, setSpecialistNote] = useState<string | null>(null);
   const [returnAssumptions, setReturnAssumptions] = useState<ExpectedReturnFormState>({
     entryCost: "",
@@ -412,18 +424,6 @@ export function DraftTrackerClient() {
     !error;
   const clockVisible =
     (draftState.settings.timerSeconds ?? 0) > 0 && !showSetup && hasUsableDraftBoard;
-
-  const nextUserPick = useMemo(() => {
-    if (isDraftComplete) return 0;
-    const { totalTeams, draftType, userTeam: userSlot } = draftState.settings;
-    const start = draftState.currentPick + (isUserPick ? 1 : 0);
-    for (let pickNumber = start; pickNumber <= totalPicks; pickNumber++) {
-      if (calculateDraftOrder(pickNumber, totalTeams, draftType) === userSlot) {
-        return pickNumber;
-      }
-    }
-    return 0;
-  }, [draftState.currentPick, draftState.settings, isDraftComplete, isUserPick, totalPicks]);
 
   const lineupAssignment = useMemo(
     () =>
@@ -696,7 +696,11 @@ export function DraftTrackerClient() {
     ...(showSetup ? [{ label: `${FANTASY_SCORING_LABELS[scoringKey]} scoring` }] : []),
     {
       label: matchingMetadata
-        ? `${matchingMetadata.season} ${getFantasyWeekLabel(matchingMetadata.week)}`
+        ? // The seasonal note names the current week, so in season this names
+          // the season alone. The snapshot's own week is the week it was built.
+          matchingMetadata.week >= 1
+          ? `${matchingMetadata.season} season`
+          : `${matchingMetadata.season} ${getFantasyWeekLabel(matchingMetadata.week)}`
         : "Loading snapshot",
     },
     { label: `Source updated ${formatUpdatedAt(rankingsUpdatedAt)}` },
@@ -805,7 +809,8 @@ export function DraftTrackerClient() {
     const label =
       format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
     setExportToast(`Exported ${label}.`);
-    window.setTimeout(() => setExportToast(null), 3500);
+    window.clearTimeout(exportToastTimer.current);
+    exportToastTimer.current = window.setTimeout(() => setExportToast(null), 3500);
   }
 
   const onClockLabel = (() => {
@@ -815,6 +820,18 @@ export function DraftTrackerClient() {
     return name === `Team ${currentTeamNumber}` ? `Slot ${currentTeamNumber}` : name;
   })();
 
+  // The user's turn after this one when they are on the clock, their next turn
+  // otherwise, and 0 once none is left.
+  const nextUserPick = isDraftComplete
+    ? 0
+    : getRedraftNextPickForTeam({
+        fromPick: draftState.currentPick,
+        team: draftState.settings.userTeam,
+        teams: draftState.settings.totalTeams,
+        rounds: draftState.settings.rounds,
+        draftOrder: draftState.settings.draftType,
+        strictlyAfter: isUserPick,
+      }) ?? 0;
   const picksUntilTurn = nextUserPick - draftState.currentPick;
   const nextTurn = isUserPick
     ? { value: "Now", note: nextUserPick ? `then #${nextUserPick}` : "last turn" }
@@ -894,6 +911,8 @@ export function DraftTrackerClient() {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+      // A held key repeats, and each repeat would undo another pick.
+      if (event.repeat) return;
       if (event.key !== "u" && event.key !== "U") return;
       if (showSetup || detailPlayer) return;
       const target = event.target as HTMLElement | null;
@@ -931,21 +950,8 @@ export function DraftTrackerClient() {
     if (!draftSnapshot || (telemetry.records.length === 0 && !isDraftComplete)) {
       return null;
     }
-    return resolveDraftTelemetry({
-      records: telemetry.records,
-      picks: modelPicks,
-      players: draftBoardPlayers,
-      rankOf: numericDraftRank,
-      vorpOf: (playerId) => vorpValues.get(playerId)?.value ?? null,
-    });
-  }, [
-    draftBoardPlayers,
-    draftSnapshot,
-    isDraftComplete,
-    modelPicks,
-    telemetry.records,
-    vorpValues,
-  ]);
+    return resolveDraftTelemetry({ records: telemetry.records, picks: modelPicks });
+  }, [draftSnapshot, isDraftComplete, modelPicks, telemetry.records]);
 
   // Nothing says the picks are kept when the browser cannot keep them.
   const deviceWords = storageBlocked ? "picks last only in this tab" : "picks stay on this device";
@@ -1069,6 +1075,11 @@ export function DraftTrackerClient() {
               {overallSliceMetadata?.reason ??
                 "The draft assistant needs a published overall board. Switch scoring or wait for the next snapshot update."}
             </p>
+            <div className="ffb-notice-actions">
+              <button type="button" onClick={handleNewRoom} className="ffb-btn">
+                New room
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -1349,7 +1360,7 @@ export function DraftTrackerClient() {
                   <p className="ffb-method ffb-block">
                     No model recap. None of your turns carried a recorded recommendation, which
                     usually means draft guidance was unavailable while you picked, for example
-                    when the ADP source was stale and the decision strip stayed hidden.
+                    when the ranking source was stale and the decision strip stayed hidden.
                   </p>
                 )}
 

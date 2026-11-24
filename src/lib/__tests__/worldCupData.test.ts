@@ -360,6 +360,25 @@ describe("buildFixture", () => {
     expect(fixture?.score.shootoutAway).toBe(2);
   });
 
+  it("takes the winner from the shootout when the feed flags neither side", () => {
+    const fixture = buildFixture(
+      makeEvent({
+        id: "evt-pens-unflagged",
+        date: "2026-06-28T18:00:00Z",
+        homeName: "Spain",
+        homeAbbr: "ESP",
+        awayName: "Portugal",
+        awayAbbr: "POR",
+        homeScore: 1,
+        awayScore: 1,
+        homeShootout: 2,
+        awayShootout: 4,
+      })
+    );
+
+    expect(fixture?.score.winner).toBe("AWAY_TEAM");
+  });
+
   it("omits shootout fields for a regular-time result", () => {
     const fixture = buildFixture(
       makeEvent({

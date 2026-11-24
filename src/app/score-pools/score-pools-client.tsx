@@ -7,6 +7,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
+import { useIsClient } from "@/hooks/useIsClient";
 import { useScorePools } from "@/hooks/useScorePools";
 import { capturePickReview } from "@/lib/scorePools/pickReview";
 import { analyzePoolFixtures, type PoolFixtureAnalysis } from "@/lib/scorePools/poolAnalysis";
@@ -18,14 +19,13 @@ import {
   ConfidenceChip,
   EpMeter,
   LockBadge,
-  PILL_BUTTON,
-  SAMPLE_NOTICE,
   SampleDataNotice,
   ScorePoolsTitleBar,
   formatAge,
   formatKickoff,
   formatPoints,
   formatScoreline,
+  formatSnapshotDate,
   leagueOptionLabel,
 } from "./score-pools-ui";
 import { groupBy } from "@/lib/utils";
@@ -74,6 +74,9 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
   // A stable "now" per visit keeps the analysis, staleness, and lock states
   // consistent across the page; a reload refreshes it.
   const [now] = useState(() => new Date().toISOString());
+  // The server and the browser read different clocks, so the age prints only
+  // once hydration is done and the server HTML carries the build date.
+  const isClient = useIsClient();
   const [selectedRound, setSelectedRound] = useState<string | null>(null);
   const [openFixtureId, setOpenFixtureId] = useState<string | null>(initialFixtureId);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
@@ -203,7 +206,9 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
         <div className="sp-status">
           <p>
-            Data as of {formatAge(snapshot.generatedAt, now)} · picks recompute whenever the
+            Data as of{" "}
+            {isClient ? formatAge(snapshot.generatedAt, now) : formatSnapshotDate(snapshot.generatedAt)}{" "}
+            · picks recompute whenever the
             snapshot, the odds, or your settings change
           </p>
           <SampleDataNotice snapshot={snapshot} />
@@ -245,7 +250,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
               </label>
               <button
                 type="button"
-                className={PILL_BUTTON}
+                className="c97-btn"
                 onClick={() => {
                   if (!newPoolLeague) return;
                   addPool(newPoolLeague, newPoolName.trim() || "My pool");
@@ -305,7 +310,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             </p>
 
             {league?.sample ? (
-              <p className={SAMPLE_NOTICE}>
+              <p className="sp-notice">
                 This league is sample data with fictional teams and hand-set odds, so you can try
                 the whole flow before wiring up a real competition.
                 {snapshot.leagues.some((entry) => !entry.sample && entry.fixtures.length > 0)
@@ -316,7 +321,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {league && league.notes.length > 0 && !league.sample ? (
               <div className="sp-notes">
                 {league.notes.map((note) => (
-                  <p key={note} className={SAMPLE_NOTICE}>{note}</p>
+                  <p key={note} className="sp-notice">{note}</p>
                 ))}
               </div>
             ) : null}
@@ -410,7 +415,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                             <td>
                               <button
                                 type="button"
-                                className={PILL_BUTTON}
+                                className="c97-btn"
                                 onClick={() => openDrawer(item.fixture.id)}
                               >
                                 Detail
@@ -442,7 +447,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                           {formatKickoff(fixture.kickoff, activePool.timezone)} · no odds yet
                         </span>
                       </span>
-                      <button type="button" className={PILL_BUTTON} onClick={() => openDrawer(fixture.id)}>
+                      <button type="button" className="c97-btn" onClick={() => openDrawer(fixture.id)}>
                         Enter odds
                       </button>
                     </li>
@@ -485,10 +490,10 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   </table>
                 </div>
                 <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
-                  <button type="button" className={PILL_BUTTON} onClick={copySubmission}>
+                  <button type="button" className="c97-btn" onClick={copySubmission}>
                     Copy submission
                   </button>
-                  <button type="button" className={PILL_BUTTON} onClick={savePicks}>
+                  <button type="button" className="c97-btn" onClick={savePicks}>
                     Save these as my picks
                   </button>
                   <span className="text-2xs text-[var(--c97-ink-2)]" role="status">
@@ -541,7 +546,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                         )}
                         <button
                           type="button"
-                          className={PILL_BUTTON}
+                          className="c97-btn"
                           onClick={() => openDrawer(fixture.id)}
                         >
                           Detail

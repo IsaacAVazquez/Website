@@ -710,7 +710,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "nordic",
     coords: [55.6869, 12.5719],
     order: "A board of smørrebrød, starting with the pickled herring.",
-    why: "Smørrebrød taken seriously: house-cured fish on dense rye.",
+    why: "Smørrebrød taken seriously, with house-cured fish on dense rye.",
   },
   {
     id: "hart-bageri",

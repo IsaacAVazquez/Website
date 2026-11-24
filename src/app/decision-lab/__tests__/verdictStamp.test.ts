@@ -1,14 +1,6 @@
 import { evaluateDecision, getDecisionPresetMetrics } from "../decision-lab-data";
 import { DEFAULT_DECISION_LAB_STATE } from "../decision-lab-state";
-import { verdictContributions, verdictStamp } from "../verdictStamp";
-
-describe("verdictStamp", () => {
-  it("maps each recommendation to its stamp word", () => {
-    expect(verdictStamp("ship").word).toBe("SHIP");
-    expect(verdictStamp("test").word).toBe("TEST");
-    expect(verdictStamp("hold").word).toBe("HOLD");
-  });
-});
+import { verdictContributions } from "../verdictStamp";
 
 describe("verdictContributions", () => {
   function summedScore(metrics: Parameters<typeof verdictContributions>[0]): number {

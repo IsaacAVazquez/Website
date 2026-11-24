@@ -51,6 +51,11 @@ describe("food-map-state", () => {
     );
   });
 
+  it("drops a pick that belongs to another city", () => {
+    expect(normalizeFoodMapState({ city: "tokyo", pick: "franklin-barbecue" }).pick).toBeNull();
+    expect(normalizeFoodMapState({ city: "austin", pick: "franklin-barbecue" }).pick).toBe("franklin-barbecue");
+  });
+
   it("toggles curator and cuisine selections cleanly and clears the pick", () => {
     const curatorAdded = toggleCurator(DEFAULT_FOOD_MAP_STATE, "bourdain");
     expect(curatorAdded.curators).toEqual(["bourdain"]);

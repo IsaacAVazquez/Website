@@ -72,8 +72,7 @@ export function AllocationChart({ holdings }: Props) {
       .attr("fill", (d) => holdingColor(d.data.symbol, portfolio))
       .style("stroke", "var(--c97-panel)")
       .attr("stroke-width", 2)
-      .style("cursor", "pointer")
-      .style("transition", "opacity 0.15s ease");
+      .style("cursor", "pointer");
 
     // Hover interactions
     arcs
@@ -137,7 +136,7 @@ export function AllocationChart({ holdings }: Props) {
     <div role="group" aria-label="Portfolio allocation chart">
       <h3 className="invest-rail-heading">Allocation</h3>
       <p className="invest-rail-note" style={{ margin: "0 0 var(--c97-sp-2)" }}>
-        Position weights based on current market value.
+        Position weights use the latest quote, or the cost basis when a holding has no quote.
       </p>
       <div className="flex flex-col items-center gap-[var(--c97-sp-2)]">
         <div className="relative aspect-square w-[168px] shrink-0">

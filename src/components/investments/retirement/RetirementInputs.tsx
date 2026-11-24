@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import type { UseRetirementPlanReturn } from "@/hooks/useRetirementPlan";
 import type { AccountType, RetirementResult, WithdrawalStrategy } from "@/lib/retirement";
 import { formatCompactCurrency, formatPercent } from "@/lib/retirement";
+import { STRATEGY_LABEL } from "./RetirementAssumptions";
 import { Collapsible, NumberField, SelectField } from "./RetirementFields";
 
 interface Props {
@@ -21,11 +22,10 @@ const ACCOUNT_TYPES: { value: AccountType; label: string }[] = [
   { value: "hsa", label: "HSA" },
 ];
 
-const STRATEGIES: { value: WithdrawalStrategy; label: string }[] = [
-  { value: "fixed-real", label: "Fixed real (4%-rule style)" },
-  { value: "guardrails", label: "Dynamic guardrails (smart)" },
-  { value: "fixed-percent", label: "Fixed % of balance" },
-];
+const STRATEGIES = (Object.keys(STRATEGY_LABEL) as WithdrawalStrategy[]).map((value) => ({
+  value,
+  label: STRATEGY_LABEL[value],
+}));
 
 export function RetirementInputs({ controller, result, portfolioValue }: Props) {
   const {
@@ -108,7 +108,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
 
       {/* ── Quick start — instant first number ── */}
       <div className="invest-retire-grid-2">
-        <NumberField label="Current age" value={plan.currentAge} min={18} max={90}
+        <NumberField label="Current age" value={plan.currentAge} min={18} max={89}
           onChange={(v) => updatePlan({ currentAge: Math.round(v) })} />
         <NumberField label="Retirement age" value={plan.retirementAge} min={plan.currentAge + 1} max={90}
           onChange={(v) => updatePlan({ retirementAge: Math.round(v) })} />
@@ -242,7 +242,10 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             onChange={(v) => updateAssumptions({ healthcareInflation: v })} />
           <NumberField label="Withdrawal rate (target #)" value={plan.assumptions.withdrawalRateOverride ?? 0.04}
             suffix="%" min={1} max={10} step={0.1} asPercent
-            onChange={(v) => updateAssumptions({ withdrawalRateOverride: v })} hint="Default 4%; edit to your safe rate" />
+            onChange={(v) => updateAssumptions({ withdrawalRateOverride: v })}
+            hint={plan.assumptions.withdrawalStrategy === "fixed-percent"
+              ? "Default 4%. Under Fixed % of balance this is also the share of the balance spent each year"
+              : "Default 4%; edit to your safe rate"} />
           <NumberField label="On-track threshold" value={plan.assumptions.successThreshold} suffix="%" min={50} max={99} step={1} asPercent
             onChange={(v) => updateAssumptions({ successThreshold: v })} hint="85 to 90% is typical" />
           <NumberField label="Tax on traditional withdrawals" value={plan.assumptions.taxRates.traditional} suffix="%" min={0} max={50} step={1} asPercent

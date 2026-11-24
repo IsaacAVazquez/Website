@@ -1,11 +1,12 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import { withRetry } from "@/lib/fetchRetry";
 import { writeFileAtomic } from "./snapshotFallback";
 import {
+  FANTASY_PROS_PUBLIC_SOURCE,
   FANTASY_PUBLIC_POSITIONS,
   assertFantasyProsRefreshCoverage,
   fetchFantasyProsPublicConsensusBoard,
-  type FantasyProsPublicBoard,
   type FantasyPublicPosition,
 } from "@/lib/fantasyProsPublicSource";
 import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
@@ -32,24 +33,10 @@ interface FantasyPositionDataset {
   upstreamUpdatedAt: string | null;
 }
 
-export function recordSourceLabel(
-  selectedSourceLabel: string | null,
-  board: FantasyProsPublicBoard
-): string {
-  if (selectedSourceLabel && selectedSourceLabel !== board.sourceLabel) {
-    throw new Error(
-      `FantasyPros refresh mixed source paths: ${selectedSourceLabel} and ${board.sourceLabel}.`
-    );
-  }
-
-  return selectedSourceLabel ?? board.sourceLabel;
-}
-
 async function main() {
   const generatedAt = new Date().toISOString();
   const expectedSeason = getSnapshotSeason();
   const sharedData = {} as Record<FantasyPositionDataPosition, Player[]>;
-  let selectedSourceLabel: string | null = null;
 
   for (const position of FANTASY_PUBLIC_POSITIONS) {
     if (position === "OVERALL" || !SHARED_POSITIONS.has(position)) {
@@ -59,7 +46,6 @@ async function main() {
     const board = await withRetry(`STANDARD ${position}`, () =>
       fetchFantasyProsPublicConsensusBoard("STANDARD", position, expectedSeason)
     );
-    selectedSourceLabel = recordSourceLabel(selectedSourceLabel, board);
     assertFantasyProsRefreshCoverage(
       board,
       fantasyPositionData.STANDARD.positions[position],
@@ -76,7 +62,6 @@ async function main() {
     const overallBoard = await withRetry(`${scoringFormat} OVERALL`, () =>
       fetchFantasyProsPublicConsensusBoard(scoringFormat, "OVERALL", expectedSeason)
     );
-    selectedSourceLabel = recordSourceLabel(selectedSourceLabel, overallBoard);
     assertFantasyProsRefreshCoverage(
       overallBoard,
       fantasyPositionData[scoringFormat].overall,
@@ -95,7 +80,6 @@ async function main() {
       const board = await withRetry(`${scoringFormat} ${position}`, () =>
         fetchFantasyProsPublicConsensusBoard(scoringFormat, position, expectedSeason)
       );
-      selectedSourceLabel = recordSourceLabel(selectedSourceLabel, board);
       assertFantasyProsRefreshCoverage(
         board,
         fantasyPositionData[scoringFormat].positions[position],
@@ -113,13 +97,9 @@ async function main() {
     };
   }
 
-  if (!selectedSourceLabel) {
-    throw new Error("FantasyPros refresh completed without a source label.");
-  }
-
   writeFileAtomic(
     OUTPUT_PATH,
-    JSON.stringify({ generatedAt, source: selectedSourceLabel, data: dataset }, null, 2) + "\n"
+    JSON.stringify({ generatedAt, source: FANTASY_PROS_PUBLIC_SOURCE, data: dataset }, null, 2) + "\n"
   );
 
   for (const scoringFormat of scoringFormats) {
@@ -139,7 +119,11 @@ async function main() {
   console.log(`Wrote fantasy position data: ${OUTPUT_PATH}`);
 }
 
-if (process.env.NODE_ENV !== "test") {
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
   main().catch((error) => {
     console.error(error);
     process.exit(1);

@@ -182,7 +182,6 @@
   --c97-lh-display: 0.95;
   --c97-lh-tight: 1.2;
   --c97-lh-body: 1.65;
-  --c97-lh-loose: 1.8;
 
   /* Three measures. Headings take tight, standfirsts body, running prose wide. */
   --c97-measure-tight: 22ch;
@@ -1078,17 +1077,6 @@ body {
 }
 
 /*
- * A hairline in ink rather than in the rule token. The home hero and the
- * closing band set a pair of these above and below a statement, where they are
- * part of the composition rather than a separator between two things.
- */
-.c97-hairline {
-  width: min(100%, 396px);
-  height: clamp(2px, 0.28vw, 3px);
-  background: var(--c97-ink-2);
-}
-
-/*
  * An image field. The design specifies warm 35mm photography here; until a
  * real photograph exists, the slot renders as the flat Stone or Vermilion field
  * the design's own layout rules call for, with its caption underneath. That
@@ -1220,6 +1208,7 @@ body {
 a.c97-link-heading {
   display: inline-flex;
   align-items: center;
+  min-width: 44px;
   min-height: 44px;
   max-width: 100%;
 }
@@ -2394,6 +2383,7 @@ select.c97-field {
 .c97-footer-link {
   display: inline-flex;
   align-items: center;
+  min-width: 44px;
   min-height: 44px;
   font-size: var(--c97-fs-small);
   letter-spacing: 0.08em;
@@ -2522,14 +2512,6 @@ select.c97-field {
   height: 80%;
   -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 10%, transparent 70%);
   mask-image: radial-gradient(circle at 100% 100%, #000 10%, transparent 70%);
-}
-
-.c97-halftone-edge {
-  inset-inline: 0;
-  bottom: 0;
-  height: 40%;
-  -webkit-mask-image: linear-gradient(to top, #000, transparent);
-  mask-image: linear-gradient(to top, #000, transparent);
 }
 
 /*
@@ -2952,21 +2934,12 @@ select.c97-field {
  * Motion
  * ------------------------------------------------------------------------ */
 
-@media (prefers-reduced-motion: reduce) {
-  .c97-page *,
-  .c97-page *::before,
-  .c97-page *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
-
 /*
  * Overlay entrances. The drawers, the compare tray, the compare modal, and
  * the research tab panel mount when they open and unmount when they close,
  * so each transitions in from `@starting-style` and there is no exit
- * animation. The reduced-motion block above holds these to 0.01ms.
+ * animation. The reduced-motion block in globals.css holds these, and every
+ * other transition and animation on the page, to 0.01ms.
  */
 .c97-enter-fade,
 .c97-enter-slide-x,

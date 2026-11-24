@@ -31,6 +31,7 @@ it("shows a storage failure notice while keeping the current tab usable", () => 
   fireEvent.change(screen.getByLabelText("Bet name"), { target: { value: "Temporary" } });
   fireEvent.click(screen.getByRole("button", { name: "Save as new bet" }));
   expect(screen.getByText(/These edits only last in this tab/)).toBeVisible();
+  expect(screen.getByText("Saved Temporary.")).toBeVisible();
   expect(screen.getByRole("button", { name: "Load Temporary" })).toBeVisible();
   fail.mockRestore();
 });

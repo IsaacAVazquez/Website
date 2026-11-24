@@ -1,26 +1,16 @@
 import type { TransitLine, TransitStation } from "@/types/bayAreaTransit";
 
-type StationPoint = Pick<TransitStation, "abbr" | "latitude" | "longitude" | "lines">;
-type LineSwatch = Pick<TransitLine, "colorName" | "hexColor">;
+type StationPoint = Pick<TransitStation, "abbr" | "latitude" | "longitude">;
 
 /** One station on the map. `x` and `y` are pixel coordinates in the frame. */
 export interface ProjectedStation {
   abbr: string;
   x: number;
   y: number;
-  /** Hex colours of the lines serving this station, in line order. */
-  rings: string[];
 }
 
-function ringsFor(station: StationPoint, lines: LineSwatch[]): string[] {
-  return lines
-    .filter((line) =>
-      station.lines.some(
-        (name) => name.trim().toLowerCase() === line.colorName.trim().toLowerCase()
-      )
-    )
-    .map((line) => line.hexColor);
-}
+/** The key a line goes by on the map, from BART's colour name. */
+export const lineKey = (colorName: string) => colorName.trim().toLowerCase();
 
 /**
  * The points a line runs through, in BART's order, with repeated neighbours
@@ -68,7 +58,6 @@ export function nearestStation<T extends Pick<TransitStation, "latitude" | "long
  */
 export function projectStations(
   stations: StationPoint[],
-  lines: LineSwatch[],
   width: number,
   height: number,
   pad = 16
@@ -77,7 +66,7 @@ export function projectStations(
 
   if (stations.length === 1) {
     const [only] = stations;
-    return [{ abbr: only.abbr, x: width / 2, y: height / 2, rings: ringsFor(only, lines) }];
+    return [{ abbr: only.abbr, x: width / 2, y: height / 2 }];
   }
 
   const meanLat = stations.reduce((sum, s) => sum + s.latitude, 0) / stations.length;
@@ -87,7 +76,6 @@ export function projectStations(
     abbr: station.abbr,
     px: station.longitude * lonScale,
     py: -station.latitude,
-    rings: ringsFor(station, lines),
   }));
 
   const xs = points.map((p) => p.px);
@@ -105,7 +93,7 @@ export function projectStations(
   // Every station shares the same coordinates: fall back to centring, the
   // same as the single-station case above.
   if (spanX === 0 && spanY === 0) {
-    return points.map((p) => ({ abbr: p.abbr, x: width / 2, y: height / 2, rings: p.rings }));
+    return points.map((p) => ({ abbr: p.abbr, x: width / 2, y: height / 2 }));
   }
 
   // One scale for both axes, so the frame is never stretched on one side.
@@ -120,7 +108,6 @@ export function projectStations(
     abbr: p.abbr,
     x: offsetX + (p.px - minX) * scale,
     y: offsetY + (p.py - minY) * scale,
-    rings: p.rings,
   }));
 }
 

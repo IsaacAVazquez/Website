@@ -359,15 +359,15 @@ export function DraftBoard({
         text: `+${magnitude}`,
         isValue,
         title: isValue
-          ? `Lasted ${magnitude} picks past his ADP, so this reads as value at pick ${currentPick}`
-          : `Lasted ${magnitude} picks past his ADP, inside the noise band for this market sample`,
+          ? `Lasted ${magnitude} picks past ADP, so this reads as value at pick ${currentPick}`
+          : `Lasted ${magnitude} picks past ADP, inside the noise band for this market sample`,
       };
     }
     if (delta <= -2) {
       return {
         text: `−${magnitude}`,
         isValue: false,
-        title: `Mock rooms usually take him ${magnitude} picks after pick ${currentPick}`,
+        title: `Mock rooms usually take this player ${magnitude} picks after pick ${currentPick}`,
       };
     }
     return {

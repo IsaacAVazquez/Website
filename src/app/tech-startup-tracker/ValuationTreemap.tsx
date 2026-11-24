@@ -64,7 +64,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
       viewBox={`0 0 ${W} ${H}`}
       role="img"
       aria-labelledby="startup-treemap-title"
-      className="c97-startup-treemap"
+      className="ts-treemap"
     >
       <title id="startup-treemap-title">
         {`Disclosed valuations by sector. The largest is ${largest.name}, at ${formatUsdCompact(largest.valuation)}.`}
@@ -83,7 +83,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
               <g
                 key={tile.id}
                 data-selected={isSelected}
-                className="c97-startup-treemap-tile"
+                className="ts-treemap-tile"
                 onClick={() => onSelect(tile.id)}
               >
                 <title>{`${tile.name}, ${formatUsdCompact(tile.valuation)}`}</title>
@@ -99,7 +99,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                   style={{ fill: CHART_TOKENS[sectorIndex % CHART_TOKENS.length] }}
                 />
                 {showLabel ? (
-                  <g className="c97-startup-treemap-tile-label">
+                  <g className="ts-treemap-tile-label">
                     {/* A tile's fill is a data colour with no guaranteed
                         contrast against any one text colour, so the label
                         sits on its own opaque backdrop in the hero's own
@@ -116,10 +116,10 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                       fillOpacity={0.88}
                       style={{ fill: "var(--c97-surface)" }}
                     />
-                    <text x={tile.x0 + 10} y={tile.y0 + 22} className="c97-startup-treemap-tile-name">
+                    <text x={tile.x0 + 10} y={tile.y0 + 22} className="ts-treemap-tile-name">
                       {fitLabel(tile.name, backdropWidth - 12, NAME_CHAR_WIDTH)}
                     </text>
-                    <text x={tile.x0 + 10} y={tile.y0 + 40} className="c97-startup-treemap-tile-value">
+                    <text x={tile.x0 + 10} y={tile.y0 + 40} className="ts-treemap-tile-value">
                       {formatUsdCompact(tile.valuation)}
                     </text>
                   </g>
@@ -134,7 +134,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                 const sectorWidth = sector.x1 - sector.x0;
                 const label = fitLabel(sectorLabels?.[sector.sector] ?? sector.sector, sectorWidth - 8, SECTOR_CHAR_WIDTH);
                 return (
-                  <g className="c97-startup-treemap-sector-label-group">
+                  <g className="ts-treemap-sector-label-group">
                     <rect
                       x={sector.x0}
                       y={sector.y0}
@@ -143,7 +143,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                       fillOpacity={0.85}
                       style={{ fill: "var(--c97-surface)" }}
                     />
-                    <text x={sector.x0 + 4} y={sector.y0 + 13} className="c97-startup-treemap-sector-label">
+                    <text x={sector.x0 + 4} y={sector.y0 + 13} className="ts-treemap-sector-label">
                       {label}
                     </text>
                   </g>

@@ -271,7 +271,7 @@ describe("PollingAggregatorClient", () => {
     );
     expect(screen.getByRole("button", { name: "Governors" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("table", { name: "Governor race averages" })).toBeVisible();
-    expect(screen.getByText(/VoteHub has published no senate poll from the last four months/)).toBeVisible();
+    expect(screen.getByText(/I have no usable Senate poll from the last four months/)).toBeVisible();
   });
 
   it("says so when the view it was asked for has no polls", () => {
@@ -280,7 +280,7 @@ describe("PollingAggregatorClient", () => {
       <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
     );
     expect(
-      screen.getByText(/VoteHub has published no governor poll from the last four months/)
+      screen.getByText(/I have no usable governor poll from the last four months/)
     ).toBeVisible();
     expect(screen.getByRole("button", { name: "Senate" })).toHaveAttribute("aria-pressed", "true");
     unmount();
@@ -288,7 +288,7 @@ describe("PollingAggregatorClient", () => {
     // A legacy Overview link asked for no race view, so it has nothing to explain.
     currentSearchParams = new URLSearchParams("view=overview");
     render(<PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />);
-    expect(screen.queryByText(/VoteHub has published no/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/I have no usable/)).not.toBeInTheDocument();
   });
 
   it("names the year at both ends of the trend and prints each tick as a month", () => {
@@ -312,6 +312,30 @@ describe("PollingAggregatorClient", () => {
       "Oct",
     ]);
     expect(screen.getByRole("rowheader", { name: "Oct 2026" })).toBeInTheDocument();
+  });
+
+  it("spaces the trend by calendar month, so a skipped month keeps its gap", () => {
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={{
+          ...datedSnapshot,
+          approvalTrend: [
+            { date: "2026-06-15", approve: 44, disapprove: 52 },
+            { date: "2026-07-15", approve: 43, disapprove: 53 },
+            { date: "2026-09-15", approve: 40, disapprove: 56 },
+          ],
+        }}
+      />
+    );
+
+    const chart = screen.getByRole("img", { name: /Presidential approval trend/ });
+    const [june, july, september] = Array.from(chart.querySelectorAll("[data-tick-parity]"), (tick) =>
+      Number(tick.getAttribute("x"))
+    );
+    expect(september - july).toBeCloseTo(2 * (july - june));
+    // The lines turn at the same x as the ticks under them.
+    expect(chart.querySelector("polyline")?.getAttribute("points")).toContain(`${july.toFixed(1)},`);
   });
 
   it("keeps the top gridline label inside the chart's box at the phone type size", () => {

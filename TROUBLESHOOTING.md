@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
@@ -23,7 +23,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `npm run dev` boots but pages crash
 
-- A missing environment variable turns off the feature that reads it at request time. Without its key, `/api/investments/quotes` answers with an error quote (`FINNHUB_API_KEY`), the transit routes use BART's demo key (`BART_API_KEY`), newsletter signup answers that it is unavailable (`RESEND_CONTACTS_API_KEY` or `RESEND_API_KEY`), and the job search tracker marks Adzuna leads as off (`ADZUNA_APP_ID` and `ADZUNA_APP_KEY`). `docs/ENVIRONMENT_CONFIGURATION.md` lists the rest. A placeholder left in `.env.local` from `.env.example` counts as set, so the code uses it as a real value. The MBA email route was deleted on 2026-10-20, so nothing reads `RESEND_FROM_EMAIL` from `.env.example` anymore
+- A missing environment variable turns off the feature that reads it at request time. Without its key, `/api/investments/quotes` answers with an error quote (`FINNHUB_API_KEY`), the transit routes use BART's demo key (`BART_API_KEY`), newsletter signup answers that it is unavailable (`RESEND_CONTACTS_API_KEY` or `RESEND_API_KEY`), and the job search tracker marks Adzuna leads as off (`ADZUNA_APP_ID` and `ADZUNA_APP_KEY`). `docs/ENVIRONMENT_CONFIGURATION.md` lists the rest. A placeholder left in `.env.local` from `.env.example` counts as set, so the code uses it as a real value. The MBA email route was deleted on 2026-10-20, so nothing reads `RESEND_FROM_EMAIL`, and `.env.example` no longer lists it
 - Confirm recent docs or content edits did not introduce malformed frontmatter or markdown
 
 ---

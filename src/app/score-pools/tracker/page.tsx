@@ -1,6 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
 import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
-import { getScorePoolsSnapshotData } from "@/lib/scorePoolsSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { getScorePoolsModifiedDate } from "../score-pools-metadata";
 import { TrackerClient } from "./tracker-client";
@@ -50,7 +49,7 @@ export default function ScorePoolsTrackerPage() {
           },
         }}
       />
-      <TrackerClient snapshot={getScorePoolsSnapshotData()} />
+      <TrackerClient snapshot={scorePoolsSnapshot} />
     </>
   );
 }

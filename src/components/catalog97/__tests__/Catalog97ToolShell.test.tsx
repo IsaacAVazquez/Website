@@ -32,6 +32,29 @@ describe("Catalog97ToolShell", () => {
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(document.querySelector(".c97-page[data-c97]")).not.toBeNull();
     expect(screen.getByRole("main").querySelector('[data-c97-surface="paper"] h1')).not.toBeNull();
+    expect(document.querySelector(".c97-page")).not.toHaveAttribute("data-c97-wide");
+  });
+
+  it("marks the page root on a wide route, which is what widens every shell", () => {
+    render(
+      <Catalog97ToolShell route="/investments" wide>
+        <h1>Investments</h1>
+      </Catalog97ToolShell>,
+    );
+
+    expect(document.querySelector(".c97-page")).toHaveAttribute("data-c97-wide");
+  });
+
+  // Catalog97EasterEggs finds the wordmark it stamps through these classes, and
+  // its own tests build the footer by hand, so a rename here has to fail here.
+  it("keeps the footer wordmark where the stamp looks for it", () => {
+    render(
+      <Catalog97ToolShell route="/nba">
+        <h1>NBA Pulse</h1>
+      </Catalog97ToolShell>,
+    );
+
+    expect(document.querySelector(".c97-footer .c97-footer-colophon .c97-wordmark")).not.toBeNull();
   });
 
   it("renders no build note by default", () => {

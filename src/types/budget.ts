@@ -42,7 +42,6 @@ export interface BudgetCategorySummary extends BudgetCategory {
   availableAmount: number;
   spent: number;
   remaining: number;
-  utilization: number;
   expenseCount: number;
   overBudget: boolean;
 }
@@ -55,5 +54,4 @@ export interface BudgetSummary {
   remainingToSpend: number;
   categorySummaries: BudgetCategorySummary[];
   expenseEntries: BudgetExpenseLine[];
-  recentExpenses: BudgetExpenseLine[];
 }

@@ -95,8 +95,10 @@ export function observeNews(
     const previous = records.get(key);
     if (previous && Date.parse(previous.lastSeen) >= now) continue;
     const revisions = [...(previous?.revisions ?? [])];
-    if (revisions.at(-1)?.title !== article.title.trim())
-      revisions.push({ title: article.title.trim().slice(0, 600), observedAt });
+    // Compare the stored form, since a title is kept at 600 characters.
+    const title = article.title.trim().slice(0, 600);
+    if (revisions.at(-1)?.title !== title)
+      revisions.push({ title, observedAt });
     records.set(key, {
       source: article.source,
       link: article.link,

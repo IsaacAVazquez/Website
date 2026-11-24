@@ -1,7 +1,7 @@
 /**
  * Curated recipe corpus for the recipe finder.
  *
- * This is a hand-tuned snapshot — not a third-party API mirror — chosen so the
+ * This is a hand-tuned snapshot, not a third-party API mirror, chosen so the
  * tool works fully offline and the ingredient vocabulary stays consistent.
  * Add new recipes alphabetically within their category block. Keep ingredient
  * `name` fields lowercase and singular so the matcher in `src/lib/recipes.ts`
@@ -61,7 +61,7 @@ export const RECIPES: Recipe[] = [
     ],
     instructions: [
       "Whisk dry ingredients in one bowl and wet in another.",
-      "Combine gently — lumps are fine. Rest the batter for 5 minutes.",
+      "Combine gently, since lumps are fine. Rest the batter for 5 minutes.",
       "Cook 1/4-cup portions on a buttered skillet until bubbles form, then flip.",
       "Hold finished pancakes in a 200°F oven while you cook the rest.",
     ],
@@ -517,7 +517,7 @@ export const RECIPES: Recipe[] = [
       { name: "salt", display: "Salt to taste", staple: true },
     ],
     instructions: [
-      "Blend tahini and lemon juice for 1 minute — this is the secret to fluffy hummus.",
+      "Blend tahini and lemon juice for 1 minute, which is the secret to fluffy hummus.",
       "Add garlic, cumin, salt, and chickpeas; blend, streaming in ice water until silky.",
       "Spread on a plate, swirl, and finish with olive oil.",
     ],
@@ -602,7 +602,7 @@ export const RECIPES: Recipe[] = [
     instructions: [
       "Heat oven to 350°F and butter a loaf pan.",
       "Mix bananas, sugar, butter, egg, and vanilla.",
-      "Fold in flour, baking soda, cinnamon, and salt — don't overmix.",
+      "Fold in flour, baking soda, cinnamon, and salt without overmixing.",
       "Pour into the pan and bake 55–65 minutes until a toothpick comes out clean.",
     ],
   },

@@ -29,12 +29,6 @@ export interface WineTypeBreakdown {
 }
 
 export interface WineSummary {
-  totalWines: number;
   averageRating: number;
-  totalSpend: number;
-  topRated: WineEntry[];
-  recent: WineEntry[];
   typeBreakdown: WineTypeBreakdown[];
-  topRegion: string | null;
-  topVarietal: string | null;
 }

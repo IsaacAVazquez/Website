@@ -22,8 +22,14 @@ jest.mock("../../src/lib/formula1Data", () => ({
 
 const mockBuildFormula1SnapshotData = jest.mocked(buildFormula1SnapshotData);
 
+// Only the roots this file made are removed. A sweep of the temp directory by
+// prefix deleted the roots of a second run of the same suite.
+const projectRoots: string[] = [];
+
 async function makeProjectRoot(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "formula1-data-snapshot-"));
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "formula1-data-snapshot-"));
+  projectRoots.push(root);
+  return root;
 }
 
 async function readSnapshot(projectRoot: string): Promise<Formula1Snapshot> {
@@ -136,11 +142,8 @@ describe("buildFormula1Snapshot", () => {
   afterEach(async () => {
     mockBuildFormula1SnapshotData.mockReset();
 
-    const tempRootEntries = await fs.readdir(os.tmpdir());
     await Promise.all(
-      tempRootEntries
-        .filter((entry) => entry.startsWith("formula1-data-snapshot-"))
-        .map((entry) => fs.rm(path.join(os.tmpdir(), entry), { recursive: true, force: true }))
+      projectRoots.splice(0).map((root) => fs.rm(root, { recursive: true, force: true }))
     );
   });
 

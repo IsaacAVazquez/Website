@@ -6,7 +6,7 @@ DOM, no fetch) so it is unit-testable and could run server-side. The UI never
 does math. Its hook, `useRetirementPlan`, calls `projectCore()` and
 `computeLevers()`, and the components render the result.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 Surfaced as the `#retirement` band inside the investments dashboard
 (`InvestmentsDashboard.tsx`), backed by browser-local state. Output is
@@ -49,9 +49,9 @@ server render and the browser agree on it.
 | `expectedReturn`, `volatility` | Annualized nominal return + std dev **derived from the allocation** (not hardcoded) |
 | `targetNestEgg` | Real-dollar nest egg needed at retirement: `netSpend / safeWithdrawalRate` |
 | `safeWithdrawalRate` | SWR used for the target number (override or default) |
-| `deterministic` | Single expected-return path: year-by-year `path`, balance at retirement, ending balance, `depletionAge` (the first shortfall year under `fixed-percent`) |
+| `deterministic` | Single expected-return path: year-by-year `path`, balance at retirement, `depletionAge` (the first shortfall year under `fixed-percent`) |
 | `monteCarlo` | `simulations` (the trial count), `successRate` (fraction funded through the horizon), per-year `bands` (p10–p90), balance triples, `medianDepletionAge` |
-| `levers` | The four what-if dials (see below) — only on `project()` |
+| `levers` | The what-if dials, four of them unless the plan has no later retirement age to try (see below), and only on `project()` |
 | `verdict` | `on-track` / `good` / `fair` / `at-risk`, tied to the user's own success threshold |
 | `assumptions` | Meta for disclosure: CMA source + as-of + `cmaVerified`, expected return/vol, inflation, threshold, RMD start age |
 
@@ -144,7 +144,7 @@ planner.
    desired spend minus Social Security (adjusted for claim age) and any pension,
    floored at zero, and part-time income does not count toward it.
 
-6. **Levers** (`project` only). Four dials, each reporting its marginal effect on
+6. **Levers** (`project` only). Up to four dials, each reporting its marginal effect on
    the success rate and — where it's a clean single dial — how far to push it to
    reach the threshold: `save-more`, `retire-later`, `spend-less`, `more-stocks`.
    Lever rows and the threshold-solving binary search both run at the plan's
@@ -155,7 +155,9 @@ planner.
    10% less spending, and 15 points moved from cash and then bonds into stocks.
    The threshold search runs only while the plan sits below its threshold, looks
    up to $50,000 a year more, 12 years later, or half the spending, and has no
-   counterpart for `more-stocks`.
+   counterpart for `more-stocks`. The `retire-later` row is left out when the
+   current age has reached the retirement age or when no later age fits under
+   the horizon age, so those plans get three rows.
 
 ---
 
@@ -177,7 +179,11 @@ planner.
   confidence-band chart), `RetirementLevers`, `RetirementAssumptions` (the
   read-only record of every assumption with the CMA source and date, while the
   values are edited in the form's Assumptions section), and
-  `RetirementDisclaimer`.
+  `RetirementDisclaimer`. `RetirementScenarios`, which `RetirementPlanner`
+  mounts under the planner, saves named copies of the plan under the
+  localStorage key `retirement-scenarios-v1` (`src/lib/retirement/scenarios.ts`,
+  up to 20 plans) and compares up to four of them in `RetirementScenarioTable`,
+  each run through `projectCore`.
 - **Headline vs. levers:** the verdict + chart use `projectCore` synchronously;
   the levers panel runs `computeLevers` off the critical path and fills in after
   paint. The hook recomputes 200 ms after the last edit, and `RetirementPlanner`

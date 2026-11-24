@@ -4,7 +4,7 @@
 
 Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time role in product management, product marketing, or program management that starts after he graduates in May 2027, and he is interested in consumer tech broadly. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
 
-Last reviewed: 2026-10-01
+Last reviewed: 2026-11-24
 
 Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their canonical routes. The on-site `/search` page is a lightweight navigation layer over a limited, mostly hand-maintained index. Most dashboards read a committed snapshot that a scheduled job refreshes, so each one shows where its numbers came from and when.
 
@@ -58,7 +58,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [Automation Enablement Assistant](https://isaacvazquez.com/enablement-assistant): Recommends a standard test stack, builds an onboarding plan, answers setup questions, and tracks documentation gaps.
 - [Tech Startup Tracker](https://isaacvazquez.com/tech-startup-tracker): Curated private-company tracker by sector and funding stage, with valuation, latest round, total raised, and momentum context.
 - [News Pulse](https://isaacvazquez.com/news-pulse): RSS-backed media analytics for coverage patterns, topic frequency, and lightweight sentiment across major outlets.
-- [MBA Internship Notifications](https://isaacvazquez.com/mba-internship-notifications): Recruiting tracker for MBA internships and business roles across public company job boards.
+- [Full-Time Job Search Tracker](https://isaacvazquez.com/mba-internship-notifications): Dashboard polling public tech company job boards for full-time business roles across product, PMM, strategy, operations, growth, finance, chief of staff, and MBA leadership programs, with an application pipeline and fit scoring.
 - [Score Pools](https://isaacvazquez.com/score-pools): Exact-score prediction engine for soccer fixtures, using odds de-vig and a market-calibrated Dixon-Coles scoreline model with an expected-points optimizer.
 - [Score Pools Tracker](https://isaacvazquez.com/score-pools/tracker): Live match tracker and score-pool entry management with points progression and leaderboard context.
 
@@ -103,17 +103,17 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 ## Representative articles
 
 - [Agentic AI in Plain English: What It Is and Why Product Managers Should Care](https://isaacvazquez.com/writing/agentic-ai-explained-for-product-managers)
-- [How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)](https://isaacvazquez.com/writing/evaluate-agentic-ai-product-pm-framework)
+- [How I'd Evaluate an Agentic AI Product (Interview-Ready Framework)](https://isaacvazquez.com/writing/evaluate-agentic-ai-product-pm-framework)
 - [What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills](https://isaacvazquez.com/writing/what-an-ai-agent-actually-costs-in-production)
 - [Context Engineering Is What Prompt Engineering Wanted to Be](https://isaacvazquez.com/writing/context-engineering-replacing-prompt-engineering)
-- [Unlocking Daily Deploys by Treating QA as a Reusable System](https://isaacvazquez.com/writing/qa-automation-daily-deploys)
+- [Moving to Biweekly Releases by Treating QA as a Reusable System](https://isaacvazquez.com/writing/qa-automation-daily-deploys)
 - [Preventing Outages by Tying Performance Monitoring to User Workflows](https://isaacvazquez.com/writing/proactive-performance-intelligence)
-- [Scaling a Civic Engagement Platform from 5M to 60M+ Users Without Slowing Releases](https://isaacvazquez.com/writing/scaling-civic-engagement-platform)
+- [Keeping a Civic Engagement Platform Reliable While It Reached 60M+ Voters](https://isaacvazquez.com/writing/scaling-civic-engagement-platform)
 - [Owning a Peer-to-Peer Texting Platform When Campaign Calendars Don't Move](https://isaacvazquez.com/writing/textout-platform)
 - [Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics](https://isaacvazquez.com/writing/interchange-iq-payment-fee-analyzer)
 - [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](https://isaacvazquez.com/writing/building-an-investment-research-platform)
 - [Treating Pricing as Product Work, Not a Finance-Only Exercise](https://isaacvazquez.com/writing/pricing-strategy-initiative)
-- [Building the Pulse Dashboards as One Product System, Not Nine Pages](https://isaacvazquez.com/writing/building-the-pulse-dashboard-family)
+- [Building the Pulse Dashboards as One Product System, Not a Pile of Pages](https://isaacvazquez.com/writing/building-the-pulse-dashboard-family)
 - [Building News Pulse to Compare How Major Outlets Cover the Same Story](https://isaacvazquez.com/writing/building-news-pulse-dashboard)
 - [Building a GitHub Trending Dashboard That Is Not Just a Leaderboard](https://isaacvazquez.com/writing/building-a-github-trending-dashboard)
 - [Building a BART Dashboard That Answers One Question: Is a Train Coming](https://isaacvazquez.com/writing/building-a-bart-transit-dashboard)
@@ -133,4 +133,4 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 
 ## Optional
 
-- [Full Content Corpus](https://isaacvazquez.com/llms-full.txt): Comprehensive plain-text corpus bundling complete biography, operating philosophy, live product directory, and 16 complete long-form essays.
+- [Full Content Corpus](https://isaacvazquez.com/llms-full.txt): Full plain-text corpus bundling complete biography, operating philosophy, live product directory, and 16 complete long-form essays.

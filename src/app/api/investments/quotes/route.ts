@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { StockQuote } from "@/types/investment";
 import {
+  errorQuote,
   FinnhubAllowlistUnavailableError,
   getAllowedSymbols,
   isValidSymbol,
@@ -80,20 +81,7 @@ export async function GET(request: NextRequest) {
     const validSymbols = symbolArray.filter((symbol) => allowlist.has(symbol));
     const invalidQuotes: StockQuote[] = symbolArray
       .filter((symbol) => !allowlist.has(symbol))
-      .map((symbol) => ({
-        symbol,
-        price: 0,
-        change: 0,
-        changePercent: 0,
-        dayHigh: 0,
-        dayLow: 0,
-        open: 0,
-        previousClose: 0,
-        volume: 0,
-        marketCap: 0,
-        name: symbol,
-        error: INVALID_SYMBOL_ERROR,
-      }));
+      .map((symbol) => errorQuote(symbol, INVALID_SYMBOL_ERROR));
 
     if (validSymbols.length === 0) {
       return NextResponse.json(

@@ -63,7 +63,9 @@ export default async function FantasyFormula1Page({
           offers: freeApplicationOffer,
         }}
       />
-      <FantasyFormula1Client initialState={initialState} summary={summary} />
+      {/* The optimizer reads the standings and the next and last meetings, and never
+          the season's meeting list, so the list stays out of the page's props. */}
+      <FantasyFormula1Client initialState={initialState} summary={{ ...summary, meetings: [] }} />
     </>
   );
 }

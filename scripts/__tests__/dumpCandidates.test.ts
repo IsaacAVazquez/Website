@@ -52,6 +52,7 @@ describe("candidate sourcing during dashboard edits", () => {
     let done: () => void;
     const completed = new Promise<void>((resolve) => { done = resolve; });
     jest.spyOn(console, "log").mockImplementation(() => done());
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require("../jobSearch/dumpCandidates");
 
     const newer = { ...candidate, triage: "dismissed" as const, updatedAt: "2099-10-14T01:00:00Z" };

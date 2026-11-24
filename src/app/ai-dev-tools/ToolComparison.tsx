@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ProjectWorkspace, StorageNotice } from "@/components/ProjectWorkspace";
 import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 import { prefixedId } from "@/lib/utils";
 import { aiDevTools } from "./ai-dev-tools-data";
 import {
@@ -93,7 +94,7 @@ export function ToolComparison() {
         ))}
       </div>
       <p className="pw-note">
-        Pricing checked {TOOL_PRICING_CHECKED_AT}. Published plans and usage
+        Pricing checked {formatLongUtcDate(TOOL_PRICING_CHECKED_AT)}. Published plans and usage
         charges differ. Confirm your chosen plan with its provider. “Unknown”
         means the catalog does not confirm that requirement.
       </p>

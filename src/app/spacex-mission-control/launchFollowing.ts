@@ -4,7 +4,11 @@ import {
   isSourceTime,
   readRecordArray,
 } from "@/lib/personalFollowing";
-import { escapeCalendarText, foldCalendarLine } from "@/lib/travelExtras";
+import {
+  calendarDocument,
+  calendarStamp,
+  escapeCalendarText,
+} from "@/lib/travelExtras";
 
 export const FOLLOWED_LAUNCHES_KEY = "spacex-followed-launches-v1";
 export const LAUNCH_READINGS_KEY = "spacex-launch-readings-v1";
@@ -16,6 +20,8 @@ export interface LaunchReading {
   upcoming: boolean;
   success: boolean | null;
 }
+const isPrecise = (launch: MissionLaunchCard) =>
+  launch.hasExactTime && !launch.tbd && !launch.net && !launch.isStaleSchedule;
 export function launchReading(
   launch: MissionLaunchCard,
   sourceAt: string,
@@ -24,11 +30,7 @@ export function launchReading(
     id: launch.id,
     sourceAt,
     dateUtc: launch.dateUtc,
-    precise:
-      launch.hasExactTime &&
-      !launch.tbd &&
-      !launch.net &&
-      !launch.isStaleSchedule,
+    precise: isPrecise(launch),
     upcoming: launch.upcoming,
     success: launch.success,
   };
@@ -71,42 +73,27 @@ export function scheduleChange(
 export function calendarLaunches(launches: MissionLaunchCard[], now: Date) {
   return launches.filter(
     (launch) =>
-      launch.hasExactTime &&
-      !launch.tbd &&
-      !launch.net &&
-      !launch.isStaleSchedule &&
+      isPrecise(launch) &&
       launch.upcoming &&
       isSourceTime(launch.dateUtc) &&
       Date.parse(launch.dateUtc) > now.getTime(),
   );
 }
-const icsTime = (date: Date) =>
-  date
-    .toISOString()
-    .replace(/[-:]/g, "")
-    .replace(/\.\d{3}Z$/, "Z");
 export function launchCalendar(
   launches: MissionLaunchCard[],
   now = new Date(),
 ) {
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Isaac Vazquez//Launch Tracker//EN",
-    "CALSCALE:GREGORIAN",
-  ];
-  for (const launch of calendarLaunches(launches, now))
-    lines.push(
+  return calendarDocument(
+    "Launch Tracker",
+    calendarLaunches(launches, now).flatMap((launch) => [
       "BEGIN:VEVENT",
       `UID:launch-${encodeURIComponent(launch.id)}@isaacvazquez.com`,
-      `DTSTAMP:${icsTime(now)}`,
-      `DTSTART:${icsTime(new Date(launch.dateUtc))}`,
+      `DTSTAMP:${calendarStamp(now)}`,
+      `DTSTART:${calendarStamp(new Date(launch.dateUtc))}`,
       `SUMMARY:${escapeCalendarText(launch.name)}`,
       `LOCATION:${escapeCalendarText(launch.launchpadName ?? "")}`,
       "DESCRIPTION:Published launch schedule. Check the provider for changes before launch.",
       "END:VEVENT",
-    );
-  return (
-    [...lines, "END:VCALENDAR"].map(foldCalendarLine).join("\r\n") + "\r\n"
+    ]),
   );
 }

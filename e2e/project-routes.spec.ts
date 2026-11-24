@@ -92,8 +92,9 @@ test.describe("designed routes", () => {
 });
 
 // Every project route, a topic, and a post line up with the header at a phone,
-// a laptop, and a big monitor. Chromium only, since the edges don't differ by
-// engine and the full matrix runs every spec in five browsers.
+// a laptop, and a big monitor. Desktop Chromium only, since the edges don't
+// differ by engine and the full matrix runs every spec in four more projects.
+// The gate reads the project name because Mobile Chrome is Chromium too.
 const LAYOUT_ROUTES = [
   ...PROJECT_ROUTES,
   "/writing/topics/sports-fantasy",
@@ -101,7 +102,7 @@ const LAYOUT_ROUTES = [
 ];
 
 test.describe("project route layout", () => {
-  test.skip(({ browserName }) => browserName !== "chromium", "layout is checked in Chromium");
+  test.skip(() => test.info().project.name !== "chromium", "layout is checked in desktop Chromium");
 
   for (const route of LAYOUT_ROUTES) {
     test(`${route} lines up with the header at 390, 1440, and 1920`, async ({ page }) => {

@@ -18,7 +18,7 @@ const getServerSnapshot = () => false;
 /**
  * Whether the viewer asked for reduced motion. `false` on the server and
  * during hydration, so the server HTML and the first client render match.
- * CSS transitions are already held to 0.01ms by the guard in `catalog97.css`;
+ * CSS transitions are already held to 0.01ms by the guard in `globals.css`;
  * this is for motion that JavaScript drives (smooth scroll, D3 transitions).
  */
 export function useReducedMotion(): boolean {

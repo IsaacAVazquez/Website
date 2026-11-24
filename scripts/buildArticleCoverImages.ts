@@ -96,19 +96,6 @@ interface SelectedImage {
   creditUrl: string;
 }
 
-class CoverImageFetchError extends Error {
-  status?: number;
-  constructor(message: string, status?: number) {
-    super(message);
-    this.name = "CoverImageFetchError";
-    this.status = status;
-  }
-}
-
-function projectPath(projectRoot: string, segments: readonly string[]): string {
-  return path.join(projectRoot, ...segments);
-}
-
 async function fileExists(filePath: string): Promise<boolean> {
   try {
     await fs.access(filePath);
@@ -124,10 +111,11 @@ async function existingCoverPath(
   slug: string
 ): Promise<string | null> {
   for (const extension of Object.values(ALLOWED_MIME)) {
-    const candidate = projectPath(projectRoot, [
+    const candidate = path.join(
+      projectRoot,
       ...COVERS_DIR_SEGMENTS,
-      `${slug}${extension}`,
-    ]);
+      `${slug}${extension}`
+    );
     if (await fileExists(candidate)) {
       return candidate;
     }
@@ -189,10 +177,7 @@ async function fetchJson(
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
   if (!response.ok) {
-    throw new CoverImageFetchError(
-      `Commons API responded ${response.status}`,
-      response.status
-    );
+    throw new Error(`Commons API responded ${response.status}`);
   }
   return response.json();
 }
@@ -256,10 +241,7 @@ async function downloadImage(
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   });
   if (!response.ok) {
-    throw new CoverImageFetchError(
-      `Image download responded ${response.status}`,
-      response.status
-    );
+    throw new Error(`Image download responded ${response.status}`);
   }
   return Buffer.from(await response.arrayBuffer());
 }
@@ -322,16 +304,8 @@ async function resolveArticlePath(
   projectRoot: string,
   slug: string
 ): Promise<string | null> {
-  for (const extension of [".mdx", ".md"]) {
-    const candidate = projectPath(projectRoot, [
-      ...BLOG_DIR_SEGMENTS,
-      `${slug}${extension}`,
-    ]);
-    if (await fileExists(candidate)) {
-      return candidate;
-    }
-  }
-  return null;
+  const candidate = path.join(projectRoot, ...BLOG_DIR_SEGMENTS, `${slug}.mdx`);
+  return (await fileExists(candidate)) ? candidate : null;
 }
 
 async function processWikimediaEntry(
@@ -346,7 +320,7 @@ async function processWikimediaEntry(
 
   const articlePath = await resolveArticlePath(projectRoot, entry.slug);
   if (!articlePath) {
-    throw new CoverImageFetchError(`No article file for slug "${entry.slug}"`);
+    throw new Error(`No article file for slug "${entry.slug}"`);
   }
 
   const alreadyDownloaded = await existingCoverPath(projectRoot, entry.slug);
@@ -362,13 +336,13 @@ async function processWikimediaEntry(
 
   const selection = await selectCommonsImage(fetchImpl, entry.query);
   if (!selection) {
-    throw new CoverImageFetchError(
+    throw new Error(
       `No freely licensed image found for "${entry.query}"`
     );
   }
 
   const buffer = await downloadImage(fetchImpl, selection.downloadUrl);
-  const coversDir = projectPath(projectRoot, [...COVERS_DIR_SEGMENTS]);
+  const coversDir = path.join(projectRoot, ...COVERS_DIR_SEGMENTS);
   await fs.mkdir(coversDir, { recursive: true });
 
   // Store under a single canonical extension per slug; clear stale variants so
@@ -406,7 +380,7 @@ async function reportCoverage(
   projectRoot: string,
   logger: Logger
 ): Promise<void> {
-  const blogDir = projectPath(projectRoot, [...BLOG_DIR_SEGMENTS]);
+  const blogDir = path.join(projectRoot, ...BLOG_DIR_SEGMENTS);
   let files: string[];
   try {
     files = await fs.readdir(blogDir);
@@ -415,8 +389,8 @@ async function reportCoverage(
   }
   const slugs = new Set(
     files
-      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
-      .map((file) => file.replace(/\.(mdx|md)$/, ""))
+      .filter((file) => file.endsWith(".mdx"))
+      .map((file) => file.replace(/\.mdx$/, ""))
   );
   const planned = new Set(ARTICLE_COVER_IMAGES.map((entry) => entry.slug));
 

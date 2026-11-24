@@ -1,7 +1,7 @@
 "use client";
 
 import { select, extent, scaleLog, axisBottom, axisLeft } from "d3";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import {
   blendedPricePerMTokens,
   formatPriceUsd,
@@ -36,6 +36,9 @@ export function FrontierCostContextChart({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  // The page passes a new function on every render, so the drawing effect
+  // reads it through an effect event and does not redraw for it.
+  const selectModel = useEffectEvent(onSelectModel);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -219,14 +222,14 @@ export function FrontierCostContextChart({
       // presentational inside the role="img" plot, as the treemap's do.
       .style("cursor", "pointer")
       .on("click", (_, d) => {
-        onSelectModel(d.model.id === selectedModelId ? null : d.model.id);
+        selectModel(d.model.id === selectedModelId ? null : d.model.id);
       })
       .append("title")
       .text(
         (d) =>
           `${d.model.providerLabel} ${d.model.name}\nContext: ${formatTokenCount(d.model.contextWindow)}\nBlended price: ${formatPriceUsd(d.y)} / 1M`
       );
-  }, [containerWidth, plotted, selectedModelId, onSelectModel]);
+  }, [containerWidth, plotted, selectedModelId]);
 
   const providersInChart = useMemo(() => {
     const seen = new Map<FrontierProvider, string>();

@@ -6,10 +6,8 @@ import {
   buildGolfSnapshotData,
   extractCutScore,
   deriveCutState,
-  fillTodayToPar,
   todayToPar,
 } from "../golfData";
-import type { GolfLeaderboardEntry, GolfSummary } from "@/types/golf";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -110,7 +108,7 @@ function fiveCompetitors() {
       name: "Scottie Scheffler",
       position: "1",
       country: "USA",
-      score: 270,
+      score: 132,
       rounds: [66, 66],
       thru: 12,
       movement: 1,
@@ -124,7 +122,7 @@ function fiveCompetitors() {
       name: "Rory McIlroy",
       position: "T2",
       country: "Northern Ireland",
-      score: 272,
+      score: 134,
       rounds: [68, 66],
       thru: 18,
       completed: true,
@@ -134,7 +132,7 @@ function fiveCompetitors() {
       name: "Jon Rahm",
       position: "T2",
       country: "Spain",
-      score: 272,
+      score: 134,
       rounds: [67, 67],
     }),
     makeCompetitor({
@@ -142,7 +140,7 @@ function fiveCompetitors() {
       name: "Xander Schauffele",
       position: "4",
       country: "USA",
-      score: 290, // over par
+      score: 146, // over par
       rounds: [73, 73],
     }),
     makeCompetitor({
@@ -186,14 +184,11 @@ describe("buildGolfSnapshotData", () => {
     expect(summary.heroStats.leaderName).toBe("Scottie Scheffler");
     expect(summary.heroStats.fieldSize).toBe(5);
 
-    // To-par is derived from cumulative strokes minus par*rounds (270 - 72*2 = 126? no).
-    // 270 strokes over 2 rounds at par 72 => 270 - 144 = +126 is wrong shape; ESPN
-    // cumulative is strokes, so Scheffler 270 - 144 = 126 would be absurd. The fixture
-    // uses realistic 2-round strokes, so assert the derivation runs and is a number.
-    expect(typeof summary.leaderboard[0].totalToPar).toBe("number");
+    // To-par is the stroke total less par for the rounds played, 132 - 72 * 2.
+    expect(summary.leaderboard.map((entry) => entry.totalToPar)).toEqual([-12, -10, -10, 2, 0]);
 
-    // playersUnderPar counts entries below par.
-    expect(summary.heroStats.playersUnderPar).toBeGreaterThanOrEqual(0);
+    // Three of the five are under par, and the player yet to start is not.
+    expect(summary.heroStats.playersUnderPar).toBe(3);
 
     // Per-player snapshots are keyed by slug and carry round-by-round detail.
     const scheffler = playerSnapshots["scottie-scheffler"];
@@ -737,46 +732,6 @@ describe("todayToPar", () => {
     expect(
       todayToPar(row({ roundScores: [63, 34], thru: "10", totalToPar: null }), 71, 2)
     ).toBeNull();
-  });
-});
-
-describe("fillTodayToPar", () => {
-  const entry = (overrides: Partial<GolfLeaderboardEntry>): GolfLeaderboardEntry => ({
-    playerId: "player",
-    playerName: "Player",
-    country: "USA",
-    position: "1",
-    totalToPar: 0,
-    today: 0,
-    thru: "F",
-    status: "Finish",
-    roundScores: [],
-    movement: 0,
-    ...overrides,
-  });
-  const board = (leaderboard: GolfLeaderboardEntry[]): GolfSummary =>
-    ({ tournament: { coursePar: 71 }, leaderboard }) as never;
-
-  it("fills a board that carries zero for every player from its line scores", () => {
-    // The shape of the boards committed before the builder worked Today out.
-    const filled = fillTodayToPar(
-      board([
-        entry({ playerId: "a", totalToPar: -16, roundScores: [68, 67, 65, 68] }),
-        entry({ playerId: "b", totalToPar: -12, roundScores: [68, 69, 71, 64] }),
-        entry({ playerId: "c", totalToPar: -5, status: "Missed Cut", roundScores: [69, 68] }),
-      ])
-    );
-
-    expect(filled.leaderboard.map((row) => row.today)).toEqual([-3, -7, null]);
-  });
-
-  it("leaves a board the builder already scored as it is", () => {
-    const scored = board([
-      entry({ playerId: "a", today: -3, roundScores: [68] }),
-      entry({ playerId: "b", today: null, thru: "—", roundScores: [] }),
-    ]);
-
-    expect(fillTodayToPar(scored)).toBe(scored);
   });
 });
 

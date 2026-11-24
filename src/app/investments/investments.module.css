@@ -459,10 +459,14 @@
   font-family: var(--c97-font-mono);
   font-size: var(--invest-fs-micro); letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--c97-ink-2);
-  cursor: help;
   width: fit-content;
-  text-decoration: underline dotted color-mix(in srgb, var(--c97-ink-2) 55%, transparent);
-  text-underline-offset: 3px;
+}
+/* The label's hint opens from MetricTooltip's text trigger, a button, which
+   would drop the label's case and take the page's 44px minimum width. */
+.statLabel [data-metric-trigger="text"],
+.terminalScope :global(.research-key-metric-label) [data-metric-trigger="text"] {
+  min-width: 0;
+  text-transform: inherit;
 }
 .statValue {
   margin-top: var(--c97-sp-0);
@@ -603,11 +607,6 @@
   min-height: 44px;
 }
 
-.terminalScope :global(.research-topbar-search) {
-  flex: 0 1 360px;
-  min-width: 220px;
-}
-
 /* In-page section header (Research / etc) */
 .terminalScope :global(.invest-section-header) {
   display: flex;
@@ -693,14 +692,6 @@
   color: var(--c97-ink-2);
   background: var(--c97-panel);
 }
-.terminalScope :global(.research-asset-bio) {
-  margin: 0;
-  font-size: var(--invest-fs-body);
-  line-height: 1.55;
-  color: var(--c97-ink-2);
-  max-width: 60ch;
-}
-.terminalScope :global(.research-asset-bio--muted) { font-style: italic; }
 
 .terminalScope :global(.research-key-metrics) {
   margin-top: var(--c97-sp-2);
@@ -728,7 +719,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c97-ink-2);
-  cursor: help;
   width: fit-content;
 }
 .terminalScope :global(.research-key-metric-value) {
@@ -835,27 +825,6 @@
   font-size: var(--invest-fs-micro); letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--c97-ink-2);
   font-variant-numeric: tabular-nums;
-}
-
-/* Section panels inside the research view */
-.terminalScope :global(.research-panel) {
-  border-bottom: 1px solid var(--c97-rule);
-  background: var(--c97-surface);
-  padding: var(--c97-sp-2) var(--c97-sp-2);
-}
-.terminalScope :global(.research-panel-head) {
-  display: flex; align-items: end; justify-content: space-between;
-  flex-wrap: wrap; gap: var(--c97-sp-1);
-  margin-bottom: var(--c97-sp-0);
-}
-.terminalScope :global(.research-panel-head h2) {
-  margin: 0;
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-body); font-weight: 400; letter-spacing: 0.02em; line-height: 1.2;
-  color: var(--c97-ink);
-}
-.terminalScope :global(.research-panel-head .meta) {
-  font-size: var(--invest-fs-label); color: var(--c97-ink-2); margin-top: 2px;
 }
 
 /* ---- Right rail ----------------------------------------------------------- */
@@ -1664,7 +1633,6 @@
   .terminalScope :global(.invest-retire-lever-skeleton) {
     animation: none;
   }
-  .terminalScope :global(.animate-pulse),
   .terminalScope :global(.animate-spin) {
     animation: none !important;
   }

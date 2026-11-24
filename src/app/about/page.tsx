@@ -1,10 +1,10 @@
 import { AIStructuredData } from "@/components/AIStructuredData";
-import { generateAIOptimizedMetadata } from "@/lib/seo";
+import { constructMetadata } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
 import { Catalog97About } from "@/components/catalog97/Catalog97About";
 import { ABOUT_FAQ } from "@/constants/aboutFaq";
 
-export const metadata = generateAIOptimizedMetadata({
+export const metadata = constructMetadata({
   title: "About Isaac Vazquez | Berkeley Haas MBA Candidate",
   description:
     "I'm a second-year Berkeley Haas MBA moving into product, after six years in campaign data and QA and a summer on Juno's MBA growth team.",

@@ -128,6 +128,16 @@ describe("RetirementProjectionChart", () => {
     expect(svg().getAttribute("viewBox")).toBe("0 0 760 340");
   });
 
+  it("keeps an all-zero projection on the baseline", () => {
+    const flat = bandsFor(30, 95).map((b) => ({ age: b.age, p10: 0, p25: 0, p50: 0, p75: 0, p90: 0 }));
+    render(<RetirementProjectionChart result={resultFor({ bands: flat })} />);
+    // The plot is 288 tall and y grows downward, so zero belongs at 288.
+    const median = svg().querySelectorAll("path")[2].getAttribute("d")!;
+    expect(median).toMatch(/^M0,288/);
+    expect(median).not.toMatch(/,144/);
+    expect(balanceLabels()).toEqual(["$0"]);
+  });
+
   it("draws nothing for an empty projection", () => {
     render(<RetirementProjectionChart result={resultFor({ bands: [] })} />);
     expect(svg().childElementCount).toBe(0);

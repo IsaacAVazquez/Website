@@ -107,8 +107,6 @@ export interface FantasyProsPublicBoard {
   sourcePosition: string;
   sourceUrl: string;
   sourceLabel: string;
-  accessedAt: string | null;
-  lastUpdatedLabel: string;
   upstreamUpdatedAt: string;
   season: number;
   week: number;
@@ -201,16 +199,6 @@ function asOptionalFiniteNumber(value: number | string | null | undefined): numb
   return Number.isFinite(parsed) ? parsed : undefined;
 }
 
-function asOptionalValidatedFiniteNumber(
-  value: number | string | null | undefined,
-  fieldName: string
-): number | undefined {
-  if (value === null || value === undefined || value === "") {
-    return undefined;
-  }
-  return asFiniteNumber(value, fieldName);
-}
-
 function mapFantasyProsPosition(position: string): Position {
   const normalized = position.trim().toUpperCase();
 
@@ -286,16 +274,6 @@ function extractConsensusPayload(html: string): FantasyProsPublicConsensusPayloa
 function buildUpstreamUpdatedAt(payload: FantasyProsPublicConsensusPayload): string {
   const unixSeconds = asFiniteNumber(payload.last_updated_ts, "last_updated_ts");
   return new Date(unixSeconds * 1000).toISOString();
-}
-
-function normalizeAccessedAt(value: string | undefined): string | null {
-  if (!value) {
-    return null;
-  }
-
-  const normalized = value.includes("T") ? value : value.replace(" ", "T");
-  const date = new Date(normalized);
-  return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
 function normalizeSourcePosition(position: string): string {
@@ -406,19 +384,13 @@ function validateConsensusPayload(
     const rankDeviation = asFiniteNumber(player.rank_std, `player[${index}].rank_std`);
     if (
       consensusRank <= 0 ||
-      (averageRank !== undefined && averageRank <= 0) ||
-      (minimumRank !== undefined && minimumRank <= 0) ||
-      (maximumRank !== undefined && maximumRank <= 0) ||
-      (minimumRank !== undefined &&
-        maximumRank !== undefined &&
-        maximumRank < minimumRank) ||
-      (averageRank !== undefined &&
-        minimumRank !== undefined &&
-        averageRank < minimumRank) ||
-      (averageRank !== undefined &&
-        maximumRank !== undefined &&
-        averageRank > maximumRank) ||
-      (rankDeviation !== undefined && rankDeviation < 0)
+      averageRank <= 0 ||
+      minimumRank <= 0 ||
+      maximumRank <= 0 ||
+      maximumRank < minimumRank ||
+      averageRank < minimumRank ||
+      averageRank > maximumRank ||
+      rankDeviation < 0
     ) {
       throw new Error(
         `FantasyPros public source player[${index}] has an invalid expert rank distribution.`
@@ -477,13 +449,11 @@ function toPublishedFantasyPlayer(
 ): Player {
   const mappedPosition = mapFantasyProsPosition(rawPlayer.player_position_id);
   const consensusRank = asFiniteNumber(rawPlayer.rank_ecr, "rank_ecr");
-  const averageRank = asOptionalValidatedFiniteNumber(rawPlayer.rank_ave, "rank_ave");
-  const standardDeviation = asOptionalValidatedFiniteNumber(
-    rawPlayer.rank_std,
-    "rank_std"
-  );
-  const minRank = asOptionalValidatedFiniteNumber(rawPlayer.rank_min, "rank_min");
-  const maxRank = asOptionalValidatedFiniteNumber(rawPlayer.rank_max, "rank_max");
+  // validateConsensusPayload has already required all four on every row.
+  const averageRank = asFiniteNumber(rawPlayer.rank_ave, "rank_ave");
+  const standardDeviation = asFiniteNumber(rawPlayer.rank_std, "rank_std");
+  const minRank = asFiniteNumber(rawPlayer.rank_min, "rank_min");
+  const maxRank = asFiniteNumber(rawPlayer.rank_max, "rank_max");
   const positionRank = parsePositionRank(rawPlayer.pos_rank);
   const tier = asOptionalFiniteNumber(rawPlayer.tier);
 
@@ -494,12 +464,12 @@ function toPublishedFantasyPlayer(
     position: mappedPosition,
     averageRank: consensusRank,
     rankEcr: consensusRank,
-    ...(averageRank !== undefined ? { rankAverage: averageRank } : {}),
-    ...(standardDeviation !== undefined ? { standardDeviation } : {}),
+    rankAverage: averageRank,
+    standardDeviation,
     tier,
     positionRank,
-    ...(minRank !== undefined ? { minRank } : {}),
-    ...(maxRank !== undefined ? { maxRank } : {}),
+    minRank,
+    maxRank,
     byeWeek: asOptionalFiniteNumber(rawPlayer.player_bye_week),
     ownership: asOptionalFiniteNumber(rawPlayer.player_owned_avg),
     ...(typeof rawPlayer.player_opponent === "string" && rawPlayer.player_opponent.trim()
@@ -543,8 +513,6 @@ function buildFantasyProsConsensusBoard(
     sourcePosition: payload.position_id,
     sourceUrl: options.sourceUrl,
     sourceLabel,
-    accessedAt: normalizeAccessedAt(payload.accessed),
-    lastUpdatedLabel: payload.last_updated,
     upstreamUpdatedAt,
     season: Number.parseInt(String(payload.year), 10),
     week: Number.parseInt(String(payload.week), 10),

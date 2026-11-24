@@ -8,6 +8,7 @@ import {
   decodeFrontierWorkload,
   type FrontierWorkloadInput,
 } from "@/lib/frontierWorkload";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 import type { FrontierModel } from "@/types/frontierModels";
 import { FrontierWorkloadResults } from "./FrontierWorkloadResults";
 import { FrontierSavedComparisons } from "./FrontierSavedComparisons";
@@ -187,8 +188,8 @@ export function FrontierWorkload({
       ) : null}
       <p className="frm-workload-note">
         Prices come from the dataset on this page, built{" "}
-        {snapshotGeneratedAt.slice(0, 10)}, with curated facts as of{" "}
-        {factsAsOf.slice(0, 10)}.{" "}
+        {formatLongUtcDate(snapshotGeneratedAt)}, with curated facts as of{" "}
+        {formatLongUtcDate(factsAsOf)}.{" "}
         {reviewIsOverdue
           ? "Its review is overdue or pending, so check provider pricing before purchasing. "
           : ""}

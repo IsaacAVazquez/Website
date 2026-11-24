@@ -135,6 +135,22 @@ describe("github-trending-state", () => {
     });
   });
 
+  it("drops a repository the chosen segment does not list", () => {
+    const rust = { ...repo, id: 7, fullName: "acme/rust", primaryLanguage: "Rust" };
+    const twoLanguages: GitHubTrendingSnapshot = {
+      ...snapshot,
+      repositories: [repo, rust],
+      languages: [...snapshot.languages, segment({ key: "rust", label: "Rust", repoIds: [7] })],
+    };
+    const state = { kind: "language" as const, sort: "momentum" as const, selectedRepoId: 7 };
+
+    expect(
+      resolveGitHubTrendingState({ ...state, segment: "typescript" }, twoLanguages).selectedRepoId
+    ).toBeNull();
+    expect(resolveGitHubTrendingState({ ...state, segment: "rust" }, twoLanguages).selectedRepoId).toBe(7);
+    expect(resolveGitHubTrendingState({ ...state, segment: "all" }, twoLanguages).selectedRepoId).toBe(7);
+  });
+
   it("builds hrefs while preserving unrelated params and clearing defaults", () => {
     expect(
       buildGitHubTrendingHref(

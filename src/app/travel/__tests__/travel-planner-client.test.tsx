@@ -6,8 +6,12 @@ import { TRAVEL_PLANNER_STORAGE_KEY, formatDayHeading } from "@/lib/travelPlanne
 import type { Trip } from "@/types/travel";
 import { TravelPlannerClient } from "../travel-planner-client";
 
+// Every day key counts from one fixed local noon, and each test holds the clock
+// there, so a run that crosses midnight cannot move "today" under the fixtures.
+const BASE = new Date(2026, 9, 10, 12);
+
 function dayKey(offset: number): string {
-  const date = new Date();
+  const date = new Date(BASE);
   date.setDate(date.getDate() + offset);
   return toLocalDateKey(date);
 }
@@ -77,11 +81,13 @@ function change(element: HTMLElement, value: string) {
 
 describe("TravelPlannerClient", () => {
   beforeEach(() => {
+    jest.useFakeTimers({ now: BASE });
     window.localStorage.clear();
     resetBrowserStorageMemory();
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     jest.restoreAllMocks();
   });
 
@@ -237,6 +243,21 @@ describe("TravelPlannerClient", () => {
     expect(within(form).queryByRole("alert")).toBeNull();
   });
 
+  it("holds a stop whose date was cleared, through the date field's own required check", () => {
+    seed([LISBON]);
+    render(<TravelPlannerClient />);
+    const form = stopForm();
+    const date = within(form).getByLabelText("Date");
+
+    change(within(form).getByRole("textbox", { name: "Title" }), "Fado show");
+    change(date, "");
+    expect(date).toBeRequired();
+    expect(date).toBeInvalid();
+    fireEvent.click(within(form).getByRole("button", { name: "Add stop" }));
+    expect(stored()[0].activities).toHaveLength(3);
+    expect(within(form).getByRole("textbox", { name: "Title" })).toHaveValue("Fado show");
+  });
+
   it("adds a stop and clears the form", () => {
     seed([LISBON]);
     render(<TravelPlannerClient />);
@@ -340,6 +361,28 @@ describe("TravelPlannerClient", () => {
     fireEvent.click(within(journal()).getByRole("button", { name: "Delete journal entry Arrival day" }));
     fireEvent.click(within(journal()).getByRole("button", { name: /Delete journal entry Untitled entry/ }));
     expect(within(journal()).getByText(/Journal is empty/)).toBeInTheDocument();
+  });
+
+  it("lists entries from the same day with the latest written first", () => {
+    seed([
+      makeTrip({
+        id: "trip-day",
+        name: "One day",
+        journal: ["First", "Second", "Third"].map((title, index) => ({
+          // Ids that would sort the other way, since the order comes from when an entry was written.
+          id: `jrn-${3 - index}`,
+          date: TODAY,
+          title,
+          body: "",
+          mood: "good" as const,
+        })),
+      }),
+    ]);
+    render(<TravelPlannerClient />);
+    const titles = within(journal())
+      .getAllByRole("listitem")
+      .map((card) => card.querySelector(".tp-postcard-title")?.textContent);
+    expect(titles).toEqual(["Third", "Second", "First"]);
   });
 
   it("cancels a journal edit back to a blank entry", () => {

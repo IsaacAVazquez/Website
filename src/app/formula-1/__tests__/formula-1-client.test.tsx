@@ -302,6 +302,31 @@ describe("Formula1Client", () => {
     );
   });
 
+  describe("once the race start has passed", () => {
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    // The next race in the fixture starts at 17:00 UTC on April 19 and its
+    // weekend ends at 19:00, while the snapshot still calls it upcoming.
+    it.each([
+      ["2026-04-19T18:00:00Z", /race weekend is underway/],
+      ["2026-04-20T03:00:00Z", /race weekend has finished/],
+    ])("at %s the masthead reads %s", (now, copy) => {
+      jest.useFakeTimers({ now: new Date(now) });
+
+      render(
+        <Formula1Client
+          initialState={DEFAULT_FORMULA1_STATE}
+          summary={seededSummary}
+          initialMeeting={defaultMeetingDetail}
+        />
+      );
+
+      expect(screen.getByText(copy)).toBeInTheDocument();
+    });
+  });
+
   it("keeps the selected meeting when switching views", async () => {
     const user = userEvent.setup();
     currentSearchParams = new URLSearchParams("meeting=1281");

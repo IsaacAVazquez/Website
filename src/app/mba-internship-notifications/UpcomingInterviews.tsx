@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getUpcomingInterviews } from "@/lib/mba-application-insights";
+import { formatDateKey, getUpcomingInterviews } from "@/lib/mba-application-insights";
 import type { MBATrackedApplication } from "@/types/mba-jobs";
 
 export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
@@ -24,7 +24,7 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
             <li key={`${application.id}-${roundIndex}`}>
               <p className="mba-attention-what">{application.jobSnapshot.companyName} · {round.label}</p>
               <p className="mba-job-meta">
-                <time dateTime={round.date!}>{round.date}</time>
+                <time dateTime={round.date!}>{formatDateKey(round.date)}</time>
                 {daysFromToday === 0 ? " · Today" : ""} · {application.jobSnapshot.title}
               </p>
               {round.notes && <p className="mba-snippet">{round.notes}</p>}

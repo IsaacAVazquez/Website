@@ -5,6 +5,7 @@ import {
   TOOL_CATEGORY_DEFS,
   type ProjectLike,
 } from "@/constants/toolCategories";
+import { caseStudiesData } from "@/constants/caseStudies";
 
 describe("classifyToolSlug", () => {
   it("buckets known slugs into their declared category", () => {
@@ -25,6 +26,14 @@ describe("classifyToolSlug", () => {
 
   it("falls back to lifestyle for an uncategorized slug", () => {
     expect(classifyToolSlug("some-brand-new-project")).toBe("lifestyle");
+  });
+
+  // The fallback files a forgotten project under Lifestyle without a word, so
+  // every case study has to be named in a set, and every name has to be one.
+  it("names every case study in exactly one category, and nothing else", () => {
+    const bucketed = TOOL_CATEGORY_DEFS.flatMap((def) => [...def.slugs]);
+
+    expect([...bucketed].sort()).toEqual(Object.keys(caseStudiesData).sort());
   });
 });
 

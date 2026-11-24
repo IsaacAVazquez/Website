@@ -1,5 +1,9 @@
 import type { Formula1MeetingMeta, Formula1Snapshot } from "@/types/formula1";
-import { escapeCalendarText, foldCalendarLine } from "@/lib/travelExtras";
+import {
+  calendarDocument,
+  calendarStamp,
+  escapeCalendarText,
+} from "@/lib/travelExtras";
 
 export const constructorFollowId = (name: string) =>
   `constructor-${name
@@ -74,17 +78,8 @@ export function formula1SessionCalendar(
   meeting: Pick<Formula1MeetingMeta, "key" | "name" | "sessions">,
   now: Date,
 ) {
-  const stamp = (value: string) =>
-    new Date(value)
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .replace(/\.\d{3}Z$/, "Z");
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Isaac Vazquez//Race Sessions//EN",
-    "CALSCALE:GREGORIAN",
-  ];
+  const stamp = (value: string) => calendarStamp(new Date(value));
+  const lines: string[] = [];
   for (const session of meeting.sessions) {
     if (
       !Number.isFinite(Date.parse(session.startAt)) ||
@@ -104,7 +99,5 @@ export function formula1SessionCalendar(
       "END:VEVENT",
     );
   }
-  return (
-    [...lines, "END:VCALENDAR"].map(foldCalendarLine).join("\r\n") + "\r\n"
-  );
+  return calendarDocument("Race Sessions", lines);
 }

@@ -564,7 +564,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "recipe-finder",
     title: "Recipe Finder",
     description:
-      "Pantry-aware recipe aggregator that ranks recipes by how much of each one your on-hand ingredients cover, so weeknight cooking decisions take seconds.",
+      "Pantry-aware recipe finder that ranks recipes by how much of each one your on-hand ingredients cover, so weeknight cooking decisions take seconds.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Search UX", "Local persistence"],
@@ -573,7 +573,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built an ingredient-driven recipe aggregator that ranks recipes by how much of each one your on-hand ingredients cover.",
+        "I built an ingredient-driven recipe finder that ranks recipes by how much of each one your on-hand ingredients cover.",
     },
   },
 

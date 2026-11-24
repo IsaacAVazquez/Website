@@ -19,11 +19,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Environment variables - set these in Netlify dashboard:
-# Fantasy snapshot refreshes run in GitHub Actions from public rankings pages.
-# The deployed Netlify runtime does not need FANTASYPROS_API_KEY.
-# CRON_SECRET = "your-cron-secret-here"
-
 # CSS files — explicit MIME type prevents text/plain serving on Netlify
 [[headers]]
   for = "/_next/static/css/*.css"

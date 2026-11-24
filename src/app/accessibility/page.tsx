@@ -3,6 +3,9 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import Link from "next/link";
 
+// One date for the metadata and the WebPage schema, so the two cannot drift.
+const UPDATED = "2026-10-26";
+
 const accessibilityDescription =
   "How I approach digital accessibility on this site, including WCAG 2.1 AA conformance, keyboard navigation, screen reader support, and reduced motion.";
 
@@ -10,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Accessibility Statement | Isaac Vazquez",
   description: accessibilityDescription,
   canonicalUrl: "/accessibility",
-  dateModified: "2026-10-02",
+  dateModified: UPDATED,
 });
 
 const accessibilityFeatures = [
@@ -85,7 +88,7 @@ export default function AccessibilityPage() {
           title: "Accessibility Statement",
           description: accessibilityDescription,
           url: "https://isaacvazquez.com/accessibility",
-          dateModified: "2026-10-02",
+          dateModified: UPDATED,
         }}
       />
       <StructuredData

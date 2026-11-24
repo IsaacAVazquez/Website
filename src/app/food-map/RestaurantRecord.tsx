@@ -1,10 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import {
-  useLocalStorageString,
-  useLocalStoragePersistenceStatus,
-} from "@/hooks/useLocalStorageString";
+import { useState } from "react";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import {
   TRAVEL_PLANNER_STORAGE_KEY,
   parseTrips,
@@ -25,9 +22,10 @@ export function FoodPersonal({
   record: FoodRecord;
   onChange: (patch: Partial<FoodRecord>) => void;
 }) {
-  const raw = useLocalStorageString(TRAVEL_PLANNER_STORAGE_KEY, "[]");
-  const trips = useMemo(() => parseTrips(raw), [raw]);
-  const status = useLocalStoragePersistenceStatus(TRAVEL_PLANNER_STORAGE_KEY);
+  const { value: trips, status } = useBrowserRecord(
+    TRAVEL_PLANNER_STORAGE_KEY,
+    parseTrips,
+  );
   const [tripId, setTripId] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
@@ -157,7 +155,7 @@ export function FoodPersonal({
           opening hours before visiting.
         </p>
       )}
-      {message && <p role="status">{message}</p>}
+      <p role="status">{message}</p>
       {status === "memory-only" && (
         <p role="status">
           Trip changes last only while this tab is open because browser storage

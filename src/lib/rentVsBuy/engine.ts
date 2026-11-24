@@ -145,14 +145,12 @@ export function calculateRentVsBuy(input: RentVsBuyInput, startYear = TAX_YEAR):
     }
 
     if (month % 12 === 0) {
-      const equity = homeValue - loanBalance;
       yearly.push({
         year: month / 12,
         buyerNetWorth: buyerNetWorthNow(),
         renterNetWorth: renterPortfolio,
         homeValue,
         loanBalance,
-        homeEquity: equity,
         cumulativeBuyingCost: cumulativeBuyingCost + upfrontCash,
         cumulativeRentingCost,
         taxYear,

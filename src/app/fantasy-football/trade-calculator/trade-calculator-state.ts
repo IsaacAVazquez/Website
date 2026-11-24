@@ -4,12 +4,14 @@ import {
   normalizeFantasyRouteScoring,
   type FantasyRouteScoring,
 } from "@/lib/fantasy";
+import { FANTASY_TRADE_ROSTER_SIZES, FANTASY_TRADE_TEAM_COUNTS } from "@/lib/fantasyTrade";
 import { repairFantasyTradePlayerIds } from "@/lib/fantasyTradePersistence";
 import { enumValue } from "@/lib/utils";
 import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const TRADE_CALCULATOR_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
-export const TRADE_CALCULATOR_ROSTER_SIZES = [13, 14, 15, 16, 17, 18] as const;
+// The engine owns the supported sizes, so the route cannot accept one it rejects.
+export const TRADE_CALCULATOR_TEAM_COUNTS = FANTASY_TRADE_TEAM_COUNTS;
+export const TRADE_CALCULATOR_ROSTER_SIZES = FANTASY_TRADE_ROSTER_SIZES;
 export const TRADE_CALCULATOR_LINEUP_PRESETS = [
   "traditional",
   "three-wr",

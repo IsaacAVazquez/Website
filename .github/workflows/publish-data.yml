@@ -132,11 +132,8 @@ jobs:
           # every client on the same runners. The secret is an override and does
           # not need to be set.
           revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.netlify.app/api/data-revisions}"
-          # The third argument is the build hook, and it is deliberately empty
-          # because the deploy above is already published and there is nothing
-          # left to trigger.
           node scripts/ci/ensure-production-data-ledger.mjs \
-            "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
+            "$EXPECTED_REVISION" "$revision_url" "$EXPECTED_COMMIT"
 
       - name: Verify the deploy published its static assets
         # Runs whenever the deploy went out, even if the ledger check failed.

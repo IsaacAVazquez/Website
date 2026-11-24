@@ -58,8 +58,9 @@ export const FANTASY_TRADE_CLEAR_EDGE_THRESHOLD = 0.15;
 export const FANTASY_TRADE_IN_SEASON_WARNING =
   "The season is under way, so this prices what these players would cost in a draft this week rather than what they are worth in an in-season trade.";
 
-const SUPPORTED_TEAM_COUNTS = new Set([8, 10, 12, 14, 16]);
-const SUPPORTED_ROSTER_SIZES = new Set([13, 14, 15, 16, 17, 18]);
+/** The league sizes the model supports. The route's selects and the engine's validation both read these. */
+export const FANTASY_TRADE_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
+export const FANTASY_TRADE_ROSTER_SIZES = [13, 14, 15, 16, 17, 18] as const;
 
 export type FantasyTradeCoverage = "supported" | "limited" | "insufficient";
 type FantasyTradeVerdict =
@@ -72,8 +73,8 @@ type FantasyTradeVerdict =
 
 export interface FantasyTradeLeagueSettings {
   scoring: FantasyRouteScoring;
-  teams: 8 | 10 | 12 | 14 | 16;
-  rosterSize: 13 | 14 | 15 | 16 | 17 | 18;
+  teams: (typeof FANTASY_TRADE_TEAM_COUNTS)[number];
+  rosterSize: (typeof FANTASY_TRADE_ROSTER_SIZES)[number];
   lineup: RedraftLineupSettings;
 }
 
@@ -288,6 +289,23 @@ export function getScoringThroughWeek(board: readonly Player[], season: number, 
 }
 
 /**
+ * The week this season's scoring logs stopped at, when the newest of them is
+ * past the window hasCurrentScoring allows, or 0 otherwise. It tells a log
+ * that stopped updating apart from a season with no four-game logs yet.
+ */
+export function getStoppedScoringWeek(board: readonly Player[], season: number, seasonWeek: number): number {
+  const lastWeek = Math.max(
+    0,
+    ...board.map((player) =>
+      player.gameLog?.season === season && Number.isInteger(player.gameLog.throughWeek)
+        ? player.gameLog.throughWeek!
+        : 0
+    )
+  );
+  return lastWeek > 0 && seasonWeek - lastWeek > PRODUCTION_MAX_WEEKS_BEHIND ? lastWeek : 0;
+}
+
+/**
  * Ranks every player with this season's scoring by points per game above his
  * position's replacement level, which is the points per game of the last
  * starter at that position across the league, FLEX slots included. The FLEX
@@ -374,8 +392,11 @@ function productionMarketLeg(
         1,
         Math.max(PRODUCTION_MIN_RELIABILITY, (byId.get(player.id)?.games ?? 0) / PRODUCTION_FULL_WEIGHT_GAMES)
       ),
-    missingWarning: () =>
-      `This player has no ${season} scoring log of at least four games, so the experts price him alone.`,
+    // The game-log source scores QB, RB, WR, and TE only, so a kicker or a defense never has a log.
+    missingWarning: (player) =>
+      player.position === "K" || player.position === "DST"
+        ? "The scoring log does not cover kickers or team defenses, so the experts price this player alone."
+        : `This player has no ${season} scoring log of at least four games, so the experts price this player alone.`,
     production: (player) => {
       const entry = byId.get(player.id);
       return entry ? { pointsPerGame: entry.pointsPerGame, games: entry.games } : null;
@@ -439,10 +460,10 @@ function replacementCutoffSummary(
   };
 }
 
-function unavailablePlayer(id: string, warning: string): InternalPlayerEvaluation {
+function unavailablePlayer(id: string, name: string, warning: string): InternalPlayerEvaluation {
   return {
     id,
-    name: id,
+    name,
     team: "",
     position: null,
     expertRank: null,
@@ -484,6 +505,7 @@ function evaluatePlayer({
   if (!isTradePosition(player.position)) {
     return unavailablePlayer(
       player.id,
+      player.name,
       `${player.name} does not have a supported redraft roster position.`
     );
   }
@@ -504,7 +526,7 @@ function evaluatePlayer({
       team: player.team,
       position,
       expertRank: getExpertRank(player),
-      marketRank: marketLeg.rank(player) ?? (isFinitePositive(player.adp) ? player.adp : null),
+      marketRank: marketLeg.rank(player),
       expertValue: null,
       marketValue: null,
       blendedValue: null,
@@ -526,6 +548,7 @@ function evaluatePlayer({
   if (rank === null) {
     return unavailablePlayer(
       player.id,
+      player.name,
       `${player.name} is not on the scoring format's overall expert board.`
     );
   }
@@ -534,6 +557,7 @@ function evaluatePlayer({
   if (!expert) {
     return unavailablePlayer(
       player.id,
+      player.name,
       `${player.name} has no complete league-specific expert replacement cutoff.`
     );
   }
@@ -574,25 +598,21 @@ function evaluatePlayer({
     marketReliability
   );
 
+  // calculateSourceValue is null only when the cutoffs are, whatever the rank,
+  // and `expert` and `market` already read these same cutoffs.
   const expertLow = calculateSourceValue(
     rank + (expertUncertainty ?? 0),
     expertCutoffs[position]
-  )?.value ?? rawExpertValue;
+  )!.value;
   const expertHigh = calculateSourceValue(
     Math.max(1, rank - (expertUncertainty ?? 0)),
     expertCutoffs[position]
-  )?.value ?? rawExpertValue;
+  )!.value;
   const marketLow = market && marketRank !== null && marketUncertainty !== null
-    ? calculateSourceValue(
-        marketRank + marketUncertainty,
-        marketCutoffs[position]
-      )?.value ?? rawMarketValue
+    ? calculateSourceValue(marketRank + marketUncertainty, marketCutoffs[position])!.value
     : rawMarketValue;
   const marketHigh = market && marketRank !== null && marketUncertainty !== null
-    ? calculateSourceValue(
-        Math.max(1, marketRank - marketUncertainty),
-        marketCutoffs[position]
-      )?.value ?? rawMarketValue
+    ? calculateSourceValue(Math.max(1, marketRank - marketUncertainty), marketCutoffs[position])!.value
     : rawMarketValue;
   const rawRange = {
     low: blendValues(expertLow, marketLow, marketReliability),
@@ -614,7 +634,7 @@ function evaluatePlayer({
     team: player.team,
     position,
     expertRank: rank,
-    marketRank: marketRank ?? (isFinitePositive(player.adp) ? player.adp : null),
+    marketRank,
     expertValue: roundValue(rawExpertValue),
     marketValue: rawMarketValue === null ? null : roundValue(rawMarketValue),
     blendedValue: roundValue(rawBlendedValue),
@@ -636,13 +656,20 @@ function evaluateSide(
   playerIds: readonly string[],
   playersById: ReadonlyMap<string, Player>,
   context: Omit<Parameters<typeof evaluatePlayer>[0], "player">,
-  boardName: string
+  boardName: string,
+  draftBoard: readonly Player[]
 ): FantasyTradeSideEvaluation {
   const players = playerIds.map((id) => {
     const player = playersById.get(id);
-    return player
-      ? evaluatePlayer({ player, ...context })
-      : unavailablePlayer(id, `Player ${id} is not on the ${boardName}.`);
+    if (player) return evaluatePlayer({ player, ...context });
+    // A saved deal can name a player the rest-of-season board has dropped. The
+    // draft board still knows the name, and the id never stands in for one.
+    const draftName = draftBoard.find((entry) => entry.id === id)?.name;
+    return unavailablePlayer(
+      id,
+      draftName ?? "Unavailable player",
+      `${draftName ?? "A selected player"} is not on the ${boardName}.`
+    );
   });
   const rawValue = players.reduce(
     (sum, player) => sum + (player.rawBlendedValue ?? 0),
@@ -677,10 +704,10 @@ function validateLeague(
   board: readonly Player[]
 ): string[] {
   const errors: string[] = [];
-  if (!SUPPORTED_TEAM_COUNTS.has(league.teams)) {
+  if (!FANTASY_TRADE_TEAM_COUNTS.includes(league.teams)) {
     errors.push("The trade model supports 8, 10, 12, 14, or 16 teams.");
   }
-  if (!SUPPORTED_ROSTER_SIZES.has(league.rosterSize)) {
+  if (!FANTASY_TRADE_ROSTER_SIZES.includes(league.rosterSize)) {
     errors.push("The trade model supports roster sizes from 13 through 18.");
   }
   if (snapshot.scoringFormat !== routeScoringToScoringFormat(league.scoring)) {
@@ -803,18 +830,24 @@ export function evaluateFantasyTrade(
   if (inSeason) {
     marketLeg = productionMarketLeg(board, input.league, input.snapshot.season, seasonWeek);
     const throughWeek = getScoringThroughWeek(board, input.snapshot.season, seasonWeek);
+    const stoppedWeek = throughWeek > 0 ? 0 : getStoppedScoringWeek(board, input.snapshot.season, seasonWeek);
     const usable = board.some((player) => marketLeg.rank(player) !== null);
     market = {
       provider: throughWeek > 0
         ? `${input.snapshot.season} scoring through Week ${throughWeek}`
-        : `${input.snapshot.season} scoring`,
+        : stoppedWeek > 0
+          ? `${input.snapshot.season} scoring stopped at Week ${stoppedWeek}`
+          : `${input.snapshot.season} scoring`,
       asOf: null,
       freshness: throughWeek > 0 ? "fresh" : "stale",
       usable,
     };
     if (!usable) {
+      // A log that stopped updating is a fault, and "yet" would describe it as a season that has not started.
       warnings.push(
-        `No player has a current ${input.snapshot.season} scoring log yet, so the experts price every player alone.`
+        stoppedWeek > 0
+          ? `The ${input.snapshot.season} scoring log stopped at Week ${stoppedWeek}, so the experts price every player alone.`
+          : `No player has a current ${input.snapshot.season} scoring log yet, so the experts price every player alone.`
       );
     }
   } else {
@@ -871,8 +904,8 @@ export function evaluateFantasyTrade(
     marketLeg,
   };
   const boardName = inSeason ? "rest-of-season board" : "scoring format's overall board";
-  const sideA = evaluateSide(input.sideA.playerIds, playersById, context, boardName);
-  const sideB = evaluateSide(input.sideB.playerIds, playersById, context, boardName);
+  const sideA = evaluateSide(input.sideA.playerIds, playersById, context, boardName, input.snapshot.overall);
+  const sideB = evaluateSide(input.sideB.playerIds, playersById, context, boardName, input.snapshot.overall);
   // Before the season a missing ADP reading withholds the verdict, since the
   // draft market is half of what the tool claims to price. In season the
   // scoring leg is a second opinion, and its absence only limits coverage.

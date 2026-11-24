@@ -1,4 +1,5 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
+import { isValidSymbol } from "@/lib/investmentSymbol";
 import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 /** The workspace the page prints first. The other two follow it. */
@@ -24,7 +25,6 @@ export const DEFAULT_INVESTMENTS_STATE: InvestmentsSearchState = {
   section: "overview",
 };
 
-const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
 const TASKS = ["portfolio", "research", "retirement"] as const;
 const SECTIONS = [
   "overview",
@@ -38,7 +38,7 @@ const SECTIONS = [
 
 function normalizeSymbol(rawSymbol: string | null): string {
   const upper = rawSymbol?.trim().toUpperCase() ?? "";
-  return VALID_SYMBOL_PATTERN.test(upper) ? upper : DEFAULT_INVESTMENTS_STATE.symbol;
+  return isValidSymbol(upper) ? upper : DEFAULT_INVESTMENTS_STATE.symbol;
 }
 
 export function normalizeInvestmentsState(input: SearchParamInput): InvestmentsSearchState {

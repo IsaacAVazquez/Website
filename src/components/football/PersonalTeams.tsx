@@ -8,16 +8,14 @@ import {
   observeSportsSnapshot,
   standingsChanges,
   sportsCalendar,
+  calendarFixtures,
+  PERSONAL_LEAGUE_NAMES,
   type PersonalStanding,
   type PersonalFixture,
   type SportsObservation,
   type PersonalLeague,
   standingRankLabel,
 } from "@/lib/sportsPersonal";
-import {
-  readBrowserStorageString,
-  writeBrowserStorageJson,
-} from "@/lib/browserStorage";
 import { downloadFile } from "@/lib/downloadFile";
 import { formatDateTime } from "@/lib/date-formatters";
 import "@/components/project-workflows.css";
@@ -34,7 +32,8 @@ function FavoriteSchedule({
   const [fixtures, setFixtures] = useState<PersonalFixture[]>([]);
   const [status, setStatus] = useState("Loading published schedule…");
   const [retry, setRetry] = useState(0);
-  const hasDownload = sportsCalendar(league, team.name, fixtures).includes("BEGIN:VEVENT");
+  const soccer = league === "premier-league" || league === "la-liga";
+  const hasDownload = calendarFixtures(fixtures).length > 0;
   useEffect(() => {
     const controller = new AbortController();
     fetch(`/api/${league}/teams/${encodeURIComponent(team.id)}`, {
@@ -92,7 +91,7 @@ function FavoriteSchedule({
         </button>
         <span>
           {team.wins}-{team.losses}
-          {team.ties ? `-${team.ties}` : ""} {league === "premier-league" || league === "la-liga" ? "(wins-losses-draws)" : ""} · {standingRankLabel(league)}{" "}
+          {soccer || team.ties ? `-${team.ties}` : ""} {soccer ? "(wins-losses-draws)" : ""} · {standingRankLabel(league)}{" "}
           {team.rank || "unavailable"}
         </span>
       </div>
@@ -152,7 +151,8 @@ export function PersonalTeams({
     parseFavoriteTeams,
   );
   const historyKey = `${league}-observed-standings-v1`;
-  const history = useBrowserRecord(historyKey, parseSportsHistory);
+  const { value: observed, update: observe, status: historyStatus } =
+    useBrowserRecord(historyKey, parseSportsHistory);
   const [chosen, setChosen] = useState("");
   const [message, setMessage] = useState("");
   const serialized = JSON.stringify(teams);
@@ -161,15 +161,10 @@ export function PersonalTeams({
     [season, sourceAt, serialized],
   );
   useEffect(() => {
-    const latest = parseSportsHistory(
-      readBrowserStorageString(historyKey).value ?? "",
-    );
     const clean = parseSportsHistory(JSON.stringify([current]))[0];
-    if (!clean) return;
-    const next = observeSportsSnapshot(latest, clean);
-    if (next !== latest) writeBrowserStorageJson(historyKey, next);
-  }, [historyKey, current]);
-  const prior = history.value.find(
+    if (clean) observe((latest) => observeSportsSnapshot(latest, clean));
+  }, [observe, current]);
+  const prior = observed.find(
     (item) =>
       item.season === season &&
       Date.parse(item.sourceAt) < Date.parse(sourceAt),
@@ -179,10 +174,10 @@ export function PersonalTeams({
   return (
     <section
       className="project-workflow"
-      aria-label={`${league.toUpperCase()} personal teams`}
+      aria-label={`${PERSONAL_LEAGUE_NAMES[league]} personal teams`}
     >
       <details open={savedTeams.length > 0 ? true : undefined}>
-        <summary className="c97-btn-ghost">
+        <summary className="project-workflow-summary">
           My teams and standings changes
         </summary>
         <div className="project-workflow-actions">
@@ -257,7 +252,8 @@ export function PersonalTeams({
         {prior ? (
           <>
             <p>
-              Comparing {prior.sourceAt} with {sourceAt}. These are snapshots
+              Comparing {formatDateTime(prior.sourceAt)} with{" "}
+              {formatDateTime(sourceAt)}. These are snapshots
               seen in this browser. Rank changes use {standingRankLabel(league).toLowerCase()} and may
               include source corrections.
             </p>
@@ -309,9 +305,9 @@ export function PersonalTeams({
             changes show up after the next refresh.
           </p>
         )}
-        {message && <p role="status">{message}</p>}
+        <p role="status">{message}</p>
         {(favorites.status === "memory-only" ||
-          history.status === "memory-only") && (
+          historyStatus === "memory-only") && (
           <p role="status">
             Browser storage is unavailable. Favorites and observations last only
             while this tab is open.

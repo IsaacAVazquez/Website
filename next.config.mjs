@@ -279,7 +279,7 @@ const nextConfig = {
 
   outputFileTracingRoot: __dirname,
   // Prevent native modules from being bundled into server functions.
-  serverExternalPackages: ['better-sqlite3', 'sharp'],
+  serverExternalPackages: ['sharp'],
   // Exclude sharp and its platform-specific binaries from the NFT bundle.
   // sharp is an optional dep of Next.js for image optimization, but Netlify's
   // image CDN handles /_next/image so sharp is never needed at runtime.
@@ -293,47 +293,22 @@ const nextConfig = {
     ],
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-      },
-    ],
+    // No remotePatterns: the optimizer only handles sources this site serves.
+    // Remote images load unoptimized (SpaceX mission photos) or through plain
+    // <img> elements (crests and logos).
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
-    // dangerouslyAllowSVG is required because some content (e.g. team crests,
-    // logos in snapshot data) is delivered as inline SVG. The image-scoped CSP
-    // below (script-src 'none'; sandbox) prevents script execution from those
-    // SVGs, mitigating the main risk. Removing this flag would break sports
-    // and finance dashboards that depend on remote SVG assets.
-    dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Site-wide security headers. Applied to all routes.
   //
-  // CSP is staged via Content-Security-Policy-Report-Only (below). Report-Only
-  // enforces nothing. The browser still loads every resource and only reports
-  // what a future enforcing policy *would* block. This is the standard, safe
-  // way to inventory inline scripts, third-party tags, and analytics endpoints
-  // before flipping to an enforcing `Content-Security-Policy` header.
-  //
-  // The directives reflect this site's actual runtime surface:
-  //   - fonts are self-hosted by next/font (no runtime fonts.gstatic.com)
-  //   - all external data APIs run at build time, so browser connect is 'self'
-  //   - next-themes + Next bootstrap + JSON-LD need inline <script>
-  //   - Framer Motion + style attributes need inline styles
-  //   - Food Map and Bay Area Transit load pinned Leaflet assets from unpkg.com
-  //   - team crests/logos load from many remote CDNs via <img> (img-src https:)
-  //
-  // Once reports confirm no legitimate surface is flagged (and inline scripts
-  // are moved to nonces/hashes to drop 'unsafe-inline'), graduate this to an
-  // enforcing `Content-Security-Policy` header.
+  // The enforcing Content-Security-Policy is set per request in src/proxy.ts.
+  // The Report-Only policy below enforces nothing and has no report endpoint.
+  // It is narrower than the proxy's policy (no analytics or Cloudflare hosts),
+  // so a browser logs violations for it that nothing collects.
+  // src/__tests__/proxy.test.ts reads its frame-ancestors directive.
   async headers() {
     const contentSecurityPolicy = [
       "default-src 'self'",
@@ -409,7 +384,7 @@ const nextConfig = {
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
     if (!dev) {
       // Next's bundled webpack crashes on warm builds when a cached context
       // has timestamps but no hash. Content-only snapshots avoid that mixed
@@ -422,14 +397,6 @@ const nextConfig = {
           hash: true,
         };
       }
-    }
-
-    // Exclude server-only packages from client bundle
-    if (!isServer) {
-      config.externals = config.externals || [];
-      config.externals.push({
-        'better-sqlite3': 'commonjs better-sqlite3',
-      });
     }
 
     if (!dev && process.env.ANALYZE === 'true') {

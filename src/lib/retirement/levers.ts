@@ -114,9 +114,17 @@ function withMoreStocks(input: RetirementPlanInput, points: number): RetirementP
   return { ...input, allocation };
 }
 
-export function computeLevers(input: RetirementPlanInput, referenceYear?: number): LeverEffect[] {
+/**
+ * `baseSuccessRate` is the headline run's success rate for this same plan and
+ * reference year. A caller that already has it passes it to skip one full run.
+ */
+export function computeLevers(
+  input: RetirementPlanInput,
+  referenceYear?: number,
+  baseSuccessRate?: number,
+): LeverEffect[] {
   const threshold = input.assumptions.successThreshold;
-  const base = successRate(input, referenceYear);
+  const base = baseSuccessRate ?? successRate(input, referenceYear);
 
   const build = (
     id: LeverId,
@@ -145,8 +153,12 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
   }
 
   // ── Retire later ─────────────────────────────────────────────────────────
+  // No row when the step would name the current retirement age (it is already
+  // the last year before the horizon) or the plan is already in retirement.
+  const laterAge = Math.min(input.retirementAge + RETIRE_LATER_STEP, input.horizonAge - 1);
+  const canRetireLater = input.currentAge < input.retirementAge && laterAge > input.retirementAge;
   let retireTarget: { label: string; value: string } | null = null;
-  if (base < threshold) {
+  if (canRetireLater && base < threshold) {
     const maxAge = Math.min(input.retirementAge + 12, input.horizonAge - 1);
     const age = findMinInt(input.retirementAge + 1, maxAge, (a) =>
       successRate(withRetirementAge(input, a), referenceYear) >= threshold,
@@ -169,7 +181,7 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
     }
   }
 
-  return [
+  const levers = [
     build(
       "save-more",
       "Save more",
@@ -177,14 +189,6 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
       `+${formatCurrency(SAVE_MORE_STEP)}/yr`,
       withExtraContribution(input, SAVE_MORE_STEP),
       saveTarget,
-    ),
-    build(
-      "retire-later",
-      "Retire later",
-      "Push the retirement age back, which means more saving and fewer years to fund.",
-      `retire at ${Math.min(input.retirementAge + RETIRE_LATER_STEP, input.horizonAge - 1)}`,
-      withRetirementAge(input, input.retirementAge + RETIRE_LATER_STEP),
-      retireTarget,
     ),
     build(
       "spend-less",
@@ -203,4 +207,19 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
       null,
     ),
   ];
+  if (canRetireLater) {
+    levers.splice(
+      1,
+      0,
+      build(
+        "retire-later",
+        "Retire later",
+        "Push the retirement age back, which means more saving and fewer years to fund.",
+        `retire at ${laterAge}`,
+        withRetirementAge(input, laterAge),
+        retireTarget,
+      ),
+    );
+  }
+  return levers;
 }

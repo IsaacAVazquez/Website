@@ -326,31 +326,6 @@ export function todayToPar(
   );
 }
 
-/**
- * A board written before the builder worked Today out carries 0 for every
- * player. This fills such a board from its line scores, so a committed one
- * reads right until the next refresh rewrites it. A board with any other
- * value is the builder's own and is returned as it is.
- */
-export function fillTodayToPar(summary: GolfSummary): GolfSummary {
-  const coursePar = summary.tournament?.coursePar;
-  if (!coursePar || summary.leaderboard.some((row) => row.today !== 0)) {
-    return summary;
-  }
-  // The round the field is on is the longest card in it.
-  const currentRound = Math.max(
-    0,
-    ...summary.leaderboard.map((row) => row.roundScores.length)
-  );
-  return {
-    ...summary,
-    leaderboard: summary.leaderboard.map((row) => ({
-      ...row,
-      today: todayToPar(row, coursePar, currentRound),
-    })),
-  };
-}
-
 /** `||` rather than `??`, because ESPN can send an empty string. */
 function eventStart(event: EspnEvent): string {
   return event.startDate || event.date || "";

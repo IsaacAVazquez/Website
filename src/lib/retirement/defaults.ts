@@ -35,8 +35,6 @@ export function createDefaultPlan(): RetirementPlanInput {
     currentAge: 35,
     retirementAge: 65,
     horizonAge: 95,
-    filingStatus: "single",
-    region: "",
     desiredAnnualSpend: 60000,
     preMedicareHealthcare: 0,
     accounts: [

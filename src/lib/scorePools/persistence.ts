@@ -204,10 +204,11 @@ function decodePool(value: unknown): StoredPool | undefined {
       if (!isRecord(raw)) continue;
       const score = decodeScoreline(raw.score);
       if (!score) continue;
+      const review = decodePickReview(raw.review);
       submissions[fixtureId] = {
         score,
         submittedAt: stringValue(raw.submittedAt, ""),
-        ...(decodePickReview(raw.review) ? { review: decodePickReview(raw.review) } : {}),
+        ...(review ? { review } : {}),
       };
     }
   }

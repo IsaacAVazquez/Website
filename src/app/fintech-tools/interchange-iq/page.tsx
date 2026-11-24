@@ -1,14 +1,18 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
+import { PROCESSOR_RATES_AS_OF } from "@/lib/interchangeIq";
 import { InterchangeIQClient } from "./interchange-iq-client";
+
+// The later of the day the processor rates were last read and the last redesign.
+const dateModified = laterDate(PROCESSOR_RATES_AS_OF, "2026-10-12");
 
 export const metadata = constructMetadata({
   title: "Interchange IQ",
   description:
-    "I built a fee analyzer that models real interchange economics across Stripe, Square, PayPal, Adyen, and others so you can compare flat-rate and interchange+ pricing before committing.",
+    "I built a fee analyzer that sets blended interchange averages against the published rates of Stripe, Square, Shopify, and PayPal, with assumed interchange+ contracts behind a toggle.",
   canonicalUrl: "/fintech-tools/interchange-iq",
   image: "/fintech-tools/interchange-iq/opengraph-image",
-  dateModified: "2026-10-12",
+  dateModified,
 });
 
 export default function InterchangeIQPage() {
@@ -38,7 +42,7 @@ export default function InterchangeIQPage() {
           url: "https://isaacvazquez.com/fintech-tools/interchange-iq",
           image:
             "https://isaacvazquez.com/fintech-tools/interchange-iq/opengraph-image",
-          dateModified: "2026-10-12",
+          dateModified,
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

@@ -298,11 +298,11 @@
 
 /* The valuation treemap */
 
-.c97-startup-treemap {
+.ts-treemap {
   color: var(--c97-ink);
 }
 
-.c97-startup-treemap-sector-label {
+.ts-treemap-sector-label {
   font-family: var(--c97-font-body);
   font-size: var(--c97-fs-label);
   font-weight: 400;
@@ -311,30 +311,30 @@
   fill: var(--c97-ink-2);
 }
 
-.c97-startup-treemap-tile-name {
+.ts-treemap-tile-name {
   font-family: var(--c97-font-display);
   font-size: 15px;
   fill: var(--c97-ink);
 }
 
-.c97-startup-treemap-tile-value {
+.ts-treemap-tile-value {
   font-family: var(--c97-font-mono);
   font-variant-numeric: tabular-nums;
   font-size: 13px;
   fill: var(--c97-ink-2);
 }
 
-.c97-startup-treemap-tile {
+.ts-treemap-tile {
   cursor: pointer;
 }
 
 /* The tile's own rect only; the label backdrop inside the group keeps no stroke. */
-.c97-startup-treemap-tile > rect {
+.ts-treemap-tile > rect {
   stroke: var(--c97-surface);
   stroke-width: 1.5;
 }
 
-.c97-startup-treemap-tile[data-selected="true"] > rect {
+.ts-treemap-tile[data-selected="true"] > rect {
   stroke: var(--c97-ink);
   stroke-width: 2.5;
 }
@@ -344,8 +344,8 @@
  * size. The tiles still read as a proportional picture; names and figures
  * move to each tile's <title> and the table below. */
 @media print, screen and (max-width: 639px) {
-  .c97-startup-treemap-tile-label,
-  .c97-startup-treemap-sector-label-group {
+  .ts-treemap-tile-label,
+  .ts-treemap-sector-label-group {
     display: none;
   }
 }

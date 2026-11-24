@@ -73,8 +73,6 @@ export interface RentVsBuyYear {
   homeValue: number;
   /** Remaining mortgage balance at year end. */
   loanBalance: number;
-  /** Home equity before selling costs (value − balance). */
-  homeEquity: number;
   /** Cumulative cash spent buying, net of the tax benefit, through this year. */
   cumulativeBuyingCost: number;
   /** Cumulative cash spent renting through this year. */

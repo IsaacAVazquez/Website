@@ -13,6 +13,7 @@ import React, {
 import { createPortal } from "react-dom";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useIsClient } from "@/hooks/useIsClient";
+import { isValidSymbol } from "@/lib/investmentSymbol";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, InvestmentsIndex } from "@/types/investment";
 
@@ -21,8 +22,6 @@ interface Props {
   onChange: (symbol: string) => void;
   label?: string;
 }
-
-const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
 
 function normalizeQuery(value: string): string {
   return value
@@ -194,7 +193,7 @@ export function StockSearch({ value, onChange, label = "Search stock symbol" }: 
       return;
     }
 
-    if (!candidate || !VALID_SYMBOL_PATTERN.test(candidate) || !exactCandidateEntry) {
+    if (!candidate || !isValidSymbol(candidate) || !exactCandidateEntry) {
       setInput(queryOverride ?? input);
       setShowDropdown(false);
       return;

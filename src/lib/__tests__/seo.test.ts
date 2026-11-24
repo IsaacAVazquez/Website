@@ -1,10 +1,8 @@
 import {
   absoluteUrl,
-  calculateReadingTime,
   constructMetadata,
   fitMetaDescription,
   fitSearchTitle,
-  generateAIOptimizedMetadata,
   laterDate,
   safeJsonLd,
   siteConfig,
@@ -112,45 +110,30 @@ describe('constructMetadata', () => {
     });
   });
 
+  // The site alt describes the default card, so a page that brings its own
+  // card is described by its title instead.
+  it("describes a page's own share card by its title, not the site card's alt", () => {
+    const imagesOf = (metadata: ReturnType<typeof constructMetadata>) =>
+      (metadata.openGraph as { images: Array<{ alt: string }> }).images;
+
+    expect(imagesOf(constructMetadata({ title: "Plain Page" }))[0].alt).toBe(
+      siteConfig.ogImageAlt
+    );
+    expect(
+      imagesOf(
+        constructMetadata({
+          title: "An Article",
+          image: "/writing/an-article/opengraph-image",
+        })
+      )[0].alt
+    ).toBe(`An Article | ${siteConfig.name}`);
+  });
+
   it("does not double-brand a title that already names the site", () => {
     const branded = `What I'm Building Now | ${siteConfig.name}`;
     const metadata = constructMetadata({ title: branded });
 
     expect(metadata.title).toEqual({ absolute: branded });
-  });
-});
-
-describe("generateAIOptimizedMetadata", () => {
-  it("returns an uncluttered page title while branding social metadata once", () => {
-    const metadata = generateAIOptimizedMetadata({
-      title: "About",
-      description: "Bay Area product manager",
-    });
-
-    expect(metadata.title).toEqual({
-      absolute: `About | ${siteConfig.name}`,
-    });
-    expect((metadata.openGraph as { title: string }).title).toBe(
-      `About | ${siteConfig.name}`
-    );
-    expect((metadata.twitter as { title: string }).title).toBe(
-      `About | ${siteConfig.name}`
-    );
-  });
-
-  it("does not emit custom AI meta tags or expand the visible description", () => {
-    const metadata = generateAIOptimizedMetadata({
-      title: "About",
-      description: "A plain description that matches the visible page.",
-      summary: "A search-only summary",
-      expertise: ["Product Management", "AI Workflows"],
-      context: "Search-only context",
-    });
-
-    expect(metadata.description).toBe(
-      "A plain description that matches the visible page."
-    );
-    expect(metadata.other).toEqual({});
   });
 });
 
@@ -166,26 +149,6 @@ describe("absoluteUrl", () => {
   it("prefixes relative paths with the site origin and a leading slash", () => {
     expect(absoluteUrl("about")).toBe(`${siteConfig.url}/about`);
     expect(absoluteUrl("/about")).toBe(`${siteConfig.url}/about`);
-  });
-});
-
-describe("calculateReadingTime", () => {
-  it("rounds up to whole minutes at 200 wpm", () => {
-    expect(calculateReadingTime("word ".repeat(200).trim())).toBe(1);
-    expect(calculateReadingTime("word ".repeat(201).trim())).toBe(2);
-    expect(calculateReadingTime("just a few words")).toBe(1);
-  });
-});
-
-describe("generateAIOptimizedMetadata (enhanced description + dates)", () => {
-  it("sets noindex robots when requested", () => {
-    const metadata = generateAIOptimizedMetadata({
-      title: "Hidden",
-      description: "Base",
-      noIndex: true,
-    });
-    const robots = metadata.robots as { index: boolean };
-    expect(robots.index).toBe(false);
   });
 });
 

@@ -15,7 +15,8 @@ export function useRouteSync(route: string, desiredHref: string) {
   useEffect(() => {
     if (currentHref === desiredHref) return;
     startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
+      // The href is built from the query alone, so the link's fragment is put back.
+      router.replace(`${desiredHref}${window.location.hash}`, { scroll: false });
     });
   }, [currentHref, desiredHref, router]);
 

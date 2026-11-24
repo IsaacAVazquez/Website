@@ -696,8 +696,11 @@ function ThirdPlaceRace({
             </tbody>
           </table>
           <p className="wcup-muted">
-            The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round of 32. The
-            order stays provisional until every group has finished.
+            The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round of 32.
+            {/* Each team plays three group matches, so a row short of three is still moving. */}
+            {rows.some((row) => row.played < 3)
+              ? " The order stays provisional until every group has finished."
+              : null}
           </p>
         </>
       )}

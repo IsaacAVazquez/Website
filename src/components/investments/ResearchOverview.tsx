@@ -59,7 +59,7 @@ function NewsCard({ item }: { item: NewsItem }) {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-start text-sm font-medium text-[var(--c97-ink)] hover:text-[var(--c97-accent)] transition line-clamp-2" style={{ gap: "var(--c97-sp-0)" }}
+            className="inline-flex min-h-touch items-start text-sm font-medium text-[var(--c97-ink)] hover:text-[var(--c97-accent)] transition line-clamp-2" style={{ gap: "var(--c97-sp-0)" }}
           >
             <span>{item.title}</span>
             <ExternalLink size={12} className="shrink-0 text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }} />
@@ -133,7 +133,7 @@ function buildSignals({
     signals.push({
       label: "Momentum",
       tone: strongestGrowth.yoyGrowth >= 10 ? "positive" : strongestGrowth.yoyGrowth <= -5 ? "negative" : "neutral",
-      body: `${strongestGrowth.label} at ${formatPercent(strongestGrowth.yoyGrowth, true)} YoY.`,
+      body: `${strongestGrowth.label.replace(/\s+YoY$/i, "")} at ${formatPercent(strongestGrowth.yoyGrowth, true)} YoY.`,
     });
   }
 
@@ -169,63 +169,53 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
   return (
     <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {/* Company bio */}
-      <TerminalPanel
-        padding="none"
-        className="overflow-hidden border-[color-mix(in_srgb,var(--c97-accent)_16%,var(--c97-rule))] "
-      >
-        <div className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
-            About
-          </p>
-          <p className="text-sm leading-[1.7] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {info?.longBusinessSummary ??
-              "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
-          </p>
-          {info?.website ? (
-            <a
-              href={info.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-xs font-medium text-[var(--c97-accent)] hover:underline" style={{ gap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-2)" }}
-            >
-              {info.website.replace(/^https?:\/\//, "")}
-            </a>
-          ) : null}
-        </div>
+      <TerminalPanel className="overflow-hidden border-[color-mix(in_srgb,var(--c97-accent)_16%,var(--c97-rule))] ">
+        <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
+          About
+        </p>
+        <p className="text-sm leading-[1.7] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {info?.longBusinessSummary ??
+            "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
+        </p>
+        {info?.website ? (
+          <a
+            href={info.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-touch items-center text-xs font-medium text-[var(--c97-accent)] hover:underline"
+          >
+            {info.website.replace(/^https?:\/\//, "")}
+          </a>
+        ) : null}
       </TerminalPanel>
 
       {/* Officers */}
       {officers.length > 0 ? (
-        <TerminalPanel
-          padding="none"
-         
-        >
-          <div className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
-            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
-              Leadership
-            </p>
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-              {officers.map((officer, i) => (
-                <div
-                  key={i}
-                  className="border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ padding: "var(--c97-sp-1)" }}
-                >
-                  <p className="text-sm font-semibold leading-tight text-[var(--c97-ink)]">
-                    {officer.name ?? "—"}
+        <TerminalPanel>
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
+            Leadership
+          </p>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
+            {officers.map((officer, i) => (
+              <div
+                key={i}
+                className="border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ padding: "var(--c97-sp-1)" }}
+              >
+                <p className="text-sm font-semibold leading-tight text-[var(--c97-ink)]">
+                  {officer.name ?? "—"}
+                </p>
+                {officer.title ? (
+                  <p className="mt-0.5 text-xs leading-snug text-[var(--c97-ink-2)]">
+                    {officer.title}
                   </p>
-                  {officer.title ? (
-                    <p className="mt-0.5 text-xs leading-snug text-[var(--c97-ink-2)]">
-                      {officer.title}
-                    </p>
-                  ) : null}
-                  {officer.totalPay ? (
-                    <p className="text-2xs font-medium text-[var(--c97-accent)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                      {formatPay(officer.totalPay)}
-                    </p>
-                  ) : null}
-                </div>
-              ))}
-            </div>
+                ) : null}
+                {officer.totalPay ? (
+                  <p className="text-2xs font-medium text-[var(--c97-accent)]" style={{ marginTop: "var(--c97-sp-0)" }}>
+                    {formatPay(officer.totalPay)}
+                  </p>
+                ) : null}
+              </div>
+            ))}
           </div>
         </TerminalPanel>
       ) : null}
@@ -236,10 +226,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         style={{ gap: "var(--c97-sp-2)" }}
       >
         {/* Signals */}
-        <TerminalPanel
-          padding="sm"
-          className="border-[color-mix(in_srgb,var(--c97-positive)_18%,var(--c97-rule))] "
-        >
+        <TerminalPanel className="border-[color-mix(in_srgb,var(--c97-positive)_18%,var(--c97-rule))] ">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             Signals
           </p>
@@ -265,7 +252,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
 
         {/* News */}
         {newsItems.length > 0 ? (
-          <TerminalPanel padding="sm">
+          <TerminalPanel>
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               {/* The provider's feed can trail the snapshot by months, so the heading carries the newest item's date. */}
               {newsItems[0].reportDate ? `News through ${formatDate(newsItems[0].reportDate)}` : "News"}
@@ -277,7 +264,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
             </div>
           </TerminalPanel>
         ) : !showNews ? (
-          <TerminalPanel padding="sm">
+          <TerminalPanel>
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Snapshot mode
             </p>

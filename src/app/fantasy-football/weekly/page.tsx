@@ -7,7 +7,8 @@ import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
 import { FANTASY_WEEKLY_SNAPSHOT_URL } from "@/lib/fantasyWeeklySnapshot";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
-import { WeeklyBoardClient, type WeeklyRouteState } from "./weekly-client";
+import { WeeklyBoardClient } from "./weekly-client";
+import { normalizeWeeklyBoard, type WeeklyRouteState } from "./weekly-state";
 
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Weekly Rankings",
@@ -33,12 +34,9 @@ interface WeeklyBoardPageProps {
 
 export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageProps) {
   const params = await searchParams;
-  // Kept in step with normalizeWeeklyBoard in weekly-client.tsx. The helper
-  // cannot be shared from there because every export of a "use client" module
-  // becomes a client reference, which a server component cannot call.
   const initialState: WeeklyRouteState = {
     scoring: normalizeFantasyRouteScoring(params.scoring),
-    board: params.board === "quarterbacks" ? "quarterbacks" : "flex",
+    board: normalizeWeeklyBoard(params.board),
   };
   // The board's fetch cannot start until the client bundle has downloaded and
   // hydrated, so the critical path ran HTML, then JS, then JSON in series. This

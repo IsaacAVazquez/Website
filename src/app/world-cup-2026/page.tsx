@@ -62,7 +62,7 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
           featureList: [
             "Group-stage standings for all 12 groups",
             "Expanded 32-team knockout bracket",
-            "Full tournament schedule with deep-linkable state",
+            "The latest results, day by day, with deep-linkable state",
             "Host venue context across the United States, Canada, and Mexico",
             "Fast local-first rendering without a live third-party runtime dependency",
           ],

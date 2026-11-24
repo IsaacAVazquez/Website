@@ -147,7 +147,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
   if (data.length < 3) {
     return (
       <p className="text-center text-sm text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-5)" }}>
-        There are not enough shared, verified metrics to draw this comparison.
+        There are not enough shared metrics to draw this comparison.
       </p>
     );
   }

@@ -1313,7 +1313,6 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       <DeferredCompareTray
         resolvePlayer={resolveComparablePlayer}
         playerDataReady={!isLoading && Boolean(snapshot)}
-        pruneUnresolvedIds={false}
         publishedRank={(player) =>
           String(comparablePlayerLookup.get(player.id)?.bestBallRank ?? "")
         }

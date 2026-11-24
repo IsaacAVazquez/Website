@@ -57,7 +57,7 @@ export default async function SpaceXMissionControlPage({
           featureList: [
             "Next-launch hero with precision-aware timing",
             "Upcoming and past launch board",
-            "Deep-linkable mission detail rail",
+            "Deep-linkable mission detail drawer",
             "Relationship-aware rocket, crew, payload, capsule, and pad data",
           ],
         }}

@@ -1,12 +1,12 @@
-# API Routes — AI Context
+# API routes (AI context)
 
 Current API route map.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Live Route Inventory
+## Live route inventory
 
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
@@ -24,7 +24,7 @@ Current API route map.
 | `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form with JSON object shape validation |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
-| `/api/news-pulse` | GET | News Pulse headlines read at request time from the RSS feeds listed in `src/lib/news-pulse-sources.ts`, with a good answer held for five minutes in the server process and a failed feed falling back to its last good headlines |
+| `/api/news-pulse` | GET | News Pulse headlines read at request time from the RSS feeds listed in `src/lib/news-pulse-sources.ts`, with a good answer held for five minutes in the server process and a failed feed falling back to its last good headlines. The payload also carries `history`, up to seven days of when each headline was first and last seen and the titles it has carried, kept in the `news-pulse/history` blob beside the last good feeds in `news-pulse/feeds` |
 | `/api/nfl/teams/[teamId]` | GET | Snapshot-backed NFL team drilldown payload |
 | `/api/premier-league/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/premier-league` |
 | `/api/rss` | GET | RSS feed |
@@ -36,7 +36,7 @@ Current API route map.
 
 ---
 
-## Important Accuracy Notes
+## Important accuracy notes
 
 - there is no generic `/api/investments` catch-all route in the live app
 - `/api/search` is not a full dynamic site index
@@ -52,7 +52,7 @@ Current API route map.
 
 ---
 
-## Investments Detail
+## Investments detail
 
 Current investment routes:
 
@@ -63,7 +63,7 @@ Current investment routes:
 
 ---
 
-## Search Detail
+## Search detail
 
 `/api/search` ranks substring and tag matches over the full text of every published post, the case studies in `src/constants/caseStudies.ts`, and a short hand-written table of pages with no case study.
 
@@ -77,6 +77,6 @@ That means:
 
 ---
 
-## Verify Against Code
+## Verify against code
 
 Use `find src/app/api -name 'route.ts'` when updating this file.

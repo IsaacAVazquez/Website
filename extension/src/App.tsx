@@ -103,7 +103,6 @@ import { readLocalValue, removeLocalValue, writeLocalValue } from "./storage";
 
 const DRAFT_STORAGE_KEY = "fantasy-companion-draft-v1";
 const SETUP_STORAGE_KEY = "fantasy-companion-setup-v2";
-const LEGACY_SETUP_STORAGE_KEY = "fantasy-companion-setup-v1";
 const BOARD_LIMIT = 60;
 const REDRAFT_POSITIONS = ["ALL", "QB", "RB", "WR", "TE", "K", "DST"] as const;
 const BEST_BALL_POSITIONS = ["ALL", "QB", "RB", "WR", "TE"] as const;
@@ -358,7 +357,13 @@ function SetupPanel({
           <button
             type="button"
             className={`platform-option ${setup.platform === "underdog" ? "is-selected" : ""}`}
-            onClick={() => onChange({ ...setup, platform: "underdog", teams: 12, rounds: 18, userTeam: 1 })}
+            onClick={() => onChange({
+              ...setup,
+              platform: "underdog",
+              teams: selectedContest.teams,
+              rounds: selectedContest.rounds,
+              userTeam: 1,
+            })}
           >
             <span className="platform-option__top">
               <Activity size={20} aria-hidden="true" />
@@ -388,7 +393,12 @@ function SetupPanel({
                   type="button"
                   key={contestId}
                   className={`contest-option ${selected ? "is-selected" : ""}`}
-                  onClick={() => onChange({ ...setup, contestId })}
+                  onClick={() => onChange({
+                    ...setup,
+                    contestId,
+                    teams: contest.teams,
+                    rounds: contest.rounds,
+                  })}
                 >
                   <span>
                     <strong>{contest.shortName}</strong>
@@ -1015,12 +1025,12 @@ function SnapshotStatus({
           ? "Bundled copy"
           : "Waiting";
   const rankingAsOf = snapshot?.kind === "redraft"
-    ? snapshot.data.upstreamUpdatedAt ?? snapshot.data.generatedAt
+    ? snapshot.data.upstreamUpdatedAt
     : snapshot?.kind === "best-ball" && room.kind === "best-ball"
       ? getBestBallRankingSource(
           snapshot.data,
           BEST_BALL_CONTESTS[room.contestId]
-        )?.asOf ?? snapshot.data.generatedAt
+        )?.asOf
       : null;
   const marketAsOf = snapshot?.data.adpSource?.asOf ?? null;
 
@@ -1920,21 +1930,16 @@ export function App() {
     let cancelled = false;
     Promise.all([
       readLocalValue<unknown>(SETUP_STORAGE_KEY),
-      readLocalValue<unknown>(LEGACY_SETUP_STORAGE_KEY),
       readLocalValue<string>(DRAFT_STORAGE_KEY),
-    ]).then(([savedSetup, legacySetup, savedDraft]) => {
+    ]).then(([savedSetup, savedDraft]) => {
       if (cancelled) return;
       const parsedDraft = parseFantasyCompanionState(savedDraft);
-      const parsedSetup = parseSetupValues(savedSetup) ?? parseSetupValues(legacySetup);
+      const parsedSetup = parseSetupValues(savedSetup);
       // The saved room does not carry its provider, so recover it from the raw
       // setup even when the rest of that record no longer validates.
       const savedPlatform = (savedSetup as { platform?: unknown } | null)?.platform;
       const redraftPlatform: AutoDraftPlatform =
         savedPlatform === "sleeper" || parsedSetup?.platform === "sleeper" ? "sleeper" : "espn";
-      if (legacySetup !== null) {
-        // The v2 key is written on hydration below, so the v1 copy is only clutter now.
-        void removeLocalValue(LEGACY_SETUP_STORAGE_KEY).catch(() => undefined);
-      }
       if (parsedDraft) {
         setDraftState(parsedDraft);
         setSetup(

@@ -2,7 +2,7 @@
 
 import { Briefcase, Clock, FileText, House, Search } from "lucide-react";
 import Link from "next/link";
-import { escapeHtml, publishedDateFormatter } from "@/lib/utils";
+import { publishedDateFormatter } from "@/lib/utils";
 import type { SearchResult } from "./SearchInterface";
 
 interface SearchResultsProps {
@@ -129,9 +129,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     }
   };
 
-  const highlightQuery = (text: string, q: string): string => {
-    const safe = escapeHtml(text);
-    if (!q) return safe;
+  const highlightQuery = (text: string, q: string): React.ReactNode => {
     // Highlight per word, mirroring the API matcher (which scores each
     // whitespace-separated word independently). A single contiguous-phrase
     // regex left word-matched results (e.g. "fantasy football" against
@@ -139,12 +137,21 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     const words = q
       .split(/\s+/)
       .filter(Boolean)
-      .map((word) => escapeHtml(word).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    if (words.length === 0) return safe;
-    const regex = new RegExp(`(${words.join('|')})`, 'gi');
-    return safe.replace(
-      regex,
-      '<mark style="background-color: var(--c97-field); color: var(--c97-ink); padding: 0 2px;">$1</mark>'
+      .map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (words.length === 0) return text;
+    // Splitting on one capture group leaves the matches at the odd indexes.
+    // The pieces render as text nodes, so nothing here is parsed as HTML.
+    return text.split(new RegExp(`(${words.join('|')})`, 'gi')).map((part, index) =>
+      index % 2 ? (
+        <mark
+          key={index}
+          style={{ backgroundColor: "var(--c97-field)", color: "var(--c97-ink)", padding: "0 2px" }}
+        >
+          {part}
+        </mark>
+      ) : (
+        part
+      )
     );
   };
 
@@ -166,22 +173,14 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
             className="c97-link"
             style={{ display: "inline-block", minHeight: 44, textDecorationColor: "var(--c97-rule)" }}
           >
-            <span
-              dangerouslySetInnerHTML={{
-                __html: highlightQuery(result.title, query),
-              }}
-            />
+            {highlightQuery(result.title, query)}
           </Link>
         </h3>
         <p
           className="c97-prose line-clamp-3"
           style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
         >
-          <span
-            dangerouslySetInnerHTML={{
-              __html: highlightQuery(result.excerpt, query),
-            }}
-          />
+          {highlightQuery(result.excerpt, query)}
         </p>
         {visibleTags.length > 0 && (
           <div

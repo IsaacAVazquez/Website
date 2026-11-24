@@ -429,7 +429,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
   const isEmpty = !isLoading && !error && slicedData.length === 0;
 
   return (
-    <TerminalPanel padding="sm" ariaLabel="Price chart">
+    <TerminalPanel ariaLabel="Price chart">
       <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
         <div>
           <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price history</h3>

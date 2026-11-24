@@ -449,8 +449,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         </section>
 
         <p className="sb-source">
-          Standings, the schedule, and the league leaders come from a curated snapshot of the {summary.sourceLabel}{" "}
-          endpoints that refreshes on a schedule, so tonight&apos;s games show up after the next refresh.
+          Standings, the schedule, and the league leaders come from the {summary.sourceLabel} endpoints, checked in
+          as a snapshot that refreshes on a schedule, so tonight&apos;s games show up after the next refresh.
         </p>
       </div>
 

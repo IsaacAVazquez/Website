@@ -1,6 +1,6 @@
 # Score Pools Engine
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 The exact-score prediction engine behind `/score-pools`, and the reference for
 anyone changing it. The engine is the point of the surface: it formalizes the
@@ -139,8 +139,9 @@ Snapshot-driven, per the site pattern (`SNAPSHOT_DRIVEN_DASHBOARDS.md`):
   Unchanged prices refresh the latest entry's timestamp; changed prices append.
   Line movement stays queryable and `summarizeLineMovement` reads it.
 - Fail-soft everywhere: a dead provider keeps the previous league snapshot, a
-  missing key degrades to manual/CSV with a note, and the builder refuses to
-  write a snapshot with no provider-backed leagues, fixtures, or odds, or with a
+  missing key leaves that league on manual/CSV data with a note, and the builder
+  refuses to write a snapshot with no provider-backed leagues, fixtures, or odds
+  (which is what a run without both keys produces), or with a
   live league generated more than eight hours earlier
   (`scripts/verifyScorePoolsSnapshot.ts`), so the six-hourly
   `.github/workflows/update-score-pools.yml` lane commits nothing degraded and a
@@ -150,10 +151,10 @@ Snapshot-driven, per the site pattern (`SNAPSHOT_DRIVEN_DASHBOARDS.md`):
   philosophy. An odds event attaches to the fixture with the same teams and the
   nearest kickoff within 48 hours, and a manual entry matches by fixture id
   first, then by teams within the same 48 hours.
-- Each page hands its client the committed snapshot from
-  `getScorePoolsSnapshotData` in `src/lib/scorePoolsSnapshot.ts`, the module
-  that also maps a fixture's latest odds entry into the engine's input, so no
-  route calls a provider at request time.
+- Each page hands its client the committed snapshot, `scorePoolsSnapshot` in
+  `src/data/scorePoolsSnapshot.ts`, and `src/lib/scorePoolsSnapshot.ts` maps a
+  fixture's latest odds entry into the engine's input, so no route calls a
+  provider at request time.
 
 The browser side keeps pools, rules, standings, submissions, rival picks,
 per-fixture flags, hand-entered odds, and manual results in localStorage under
@@ -169,7 +170,12 @@ the snapshot's latest odds for that fixture, a fixture with neither is set
 aside as missing odds, and a stored manual result counts only when the snapshot
 has no result for that game. The store backs three pages, the pick sheet at
 `/score-pools`, pool settings at `/score-pools/settings`, and the running score
-tracker at `/score-pools/tracker`.
+tracker at `/score-pools/tracker`. A submission saved from the pick sheet before
+its match locks also stores a `review` (`src/lib/scorePools/pickReview.ts`),
+which holds the scoring rules, the recommendation and its alternatives, the
+odds, and the source time as they stood at that save. `PickReview.tsx` on the
+tracker page scores a reviewed pick with those saved rules, while the tracker's
+own totals still use the pool's present rules.
 
 ## Extending it
 

@@ -52,6 +52,24 @@ describe("GitHub trending snapshot helpers", () => {
     });
   });
 
+  it("reports a loss over the window as a negative figure", () => {
+    const result = calculateWeeklyStars(
+      [
+        { date: "2026-10-19", stars: 81_788 },
+        { date: "2026-10-26", stars: 81_778 },
+      ],
+      81_778,
+      "2026-10-26T14:33:52.964Z",
+      7
+    );
+
+    expect(result).toEqual({
+      weeklyStars: -10,
+      status: "measured",
+      baselineDate: "2026-10-19",
+    });
+  });
+
   it("labels the gain partial from the next reading when the target day was missed", () => {
     const result = calculateWeeklyStars(
       [

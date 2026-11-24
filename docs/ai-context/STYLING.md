@@ -1,8 +1,8 @@
-# Styling — AI Context
+# Styling (AI context)
 
 Fast styling reference for the current app. The full reference is the root `STYLING.md`.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
@@ -36,7 +36,7 @@ Historical theme docs are not current source of truth.
 
 ## Shared classes
 
-A designed page or a utility page is a sequence of `c97-band` sections, each with its own `data-c97-surface`, with content in a `.c97-shell`. A project route may borrow these classes or write its own. The vocabulary is `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`, `.c97-lead`, `.c97-prose`, `.c97-meta`, `.c97-row`, `.c97-columns`, `.c97-mosaic`/`.c97-tile`, `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`, `.c97-segmented`, the links (`.c97-link`, `.c97-link-heading`, `.c97-sectionlink`, `.c97-microlink`), the `.c97-btn` family, `.c97-field`, `.c97-check`, `.c97-range`, the print shop classes (`.c97-poster`, `.c97-poster-sm`, `.c97-sheet`, `.c97-offset`, `.c97-halftone`), and the page furniture (`.c97-article`, `.c97-list`, `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter`). `globals.css` still provides `.tap-target`, `.sr-only`, `.scroll-shadow-x`, and `.scrollbar-thin`.
+A designed page or a utility page is a sequence of `c97-band` sections, each with its own `data-c97-surface`, with content in a `.c97-shell`. A project route may borrow these classes or write its own. The vocabulary is `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`, `.c97-lead`, `.c97-prose`, `.c97-meta`, `.c97-row`, `.c97-columns`, `.c97-mosaic`/`.c97-tile`, `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`, `.c97-segmented`, the links (`.c97-link`, `.c97-link-heading`, `.c97-sectionlink`, `.c97-microlink`), the `.c97-btn` family, `.c97-field`, `.c97-check`, `.c97-range`, the print shop classes (`.c97-poster`, `.c97-poster-sm`, `.c97-sheet`, `.c97-offset`, `.c97-halftone`), and the page furniture (`.c97-article`, `.c97-list`, `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter`). `globals.css` still provides `.tap-target`, `.sr-only`, and `.scroll-shadow-x`.
 
 The type classes and `.c97-panel` are unlayered and set their own margin or padding, so spacing on the same element goes in an inline style.
 

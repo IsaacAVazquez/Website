@@ -85,6 +85,22 @@ describe("proxy security headers", () => {
     expect(nextConfig).not.toContain("geolocation=()");
   });
 
+  // Every other case here runs under NODE_ENV=test, which takes the dev branch.
+  it("ships the production policy without the dev allowances", () => {
+    const policy = buildContentSecurityPolicy(
+      new NextRequest("https://example.com/about"),
+      true,
+    );
+
+    expect(policy).not.toMatch(/unsafe-eval|localhost/);
+    expect(policy).toContain(
+      "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://unpkg.com;",
+    );
+    // The browser fetches from this site and Cloudflare's beacon only.
+    // FantasyPros is read by the build scripts, never from a page.
+    expect(policy).toContain("connect-src 'self' https://cloudflareinsights.com;");
+  });
+
   it("only upgrades subresources for browser-facing HTTPS requests", () => {
     const localRequest = new NextRequest(
       "http://localhost:3000/fantasy-football",

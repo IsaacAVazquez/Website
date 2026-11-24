@@ -5,23 +5,15 @@ import { createPortal } from "react-dom";
 
 const METRIC_DEFINITIONS: Record<string, string> = {
   // Valuation, all label variants
-  "P/E TTM": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
   "P/E (TTM)": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
-  "EPS TTM": "Earnings Per Share (trailing 12 months). Net profit divided by shares outstanding.",
-  "EPS (TTM)": "Earnings Per Share (trailing 12 months). Net profit divided by shares outstanding.",
-  "P/S": "Price-to-Sales. Market cap divided by annual revenue. Useful when a company isn't yet profitable.",
   "P/S Ratio": "Price-to-Sales. Market cap divided by annual revenue. Useful when a company isn't yet profitable.",
-  "P/B": "Price-to-Book. Market cap relative to net assets on the balance sheet. Under 1 may signal undervaluation.",
   "P/B Ratio": "Price-to-Book. Market cap relative to net assets on the balance sheet. Under 1 may signal undervaluation.",
-  "PEG": "Price/Earnings-to-Growth. P/E adjusted for expected growth rate. Under 1 is often considered attractive.",
   "PEG Ratio": "Price/Earnings-to-Growth. P/E adjusted for expected growth rate. Under 1 is often considered attractive.",
 
   // Market & capital
   "Market Cap": "Total market value of all outstanding shares, equal to price multiplied by shares outstanding.",
-  "52W Range": "The stock's highest and lowest closing price over the trailing 52 weeks.",
 
   // Risk
-  "Beta 5Y": "5-year beta measures volatility relative to the broader market. 1.0 = moves with the market. Above 1 = more volatile.",
   "Beta (5Y)": "5-year beta measures volatility relative to the broader market. 1.0 = moves with the market. Above 1 = more volatile.",
 
   // Margins & returns
@@ -30,21 +22,13 @@ const METRIC_DEFINITIONS: Record<string, string> = {
   "Gross Margin": "Revenue minus cost of goods sold, as a percentage of revenue.",
   "Operating Margin": "Operating profit as a percentage of revenue, before interest and taxes.",
   "EBITDA Margin": "Earnings before interest, taxes, depreciation, and amortization, as a percentage of revenue.",
-  "ROIC": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
   "Return on Inv. Capital": "Return on Invested Capital. Measures how efficiently the company converts invested capital into profit. Above 10% is generally strong.",
-  "ROE": "Return on Equity. Net income as a percentage of shareholder equity.",
   "Return on Equity (ROE)": "Net income as a percentage of shareholder equity. Measures how effectively management uses equity to generate profit.",
-  "ROA": "Return on Assets. Net income relative to total assets, a measure of asset efficiency.",
   "Return on Assets (ROA)": "Net income relative to total assets. Measures how efficiently the company uses its assets to generate earnings.",
   "Asset Turnover": "Revenue divided by total assets. Shows how efficiently the company generates revenue from its asset base.",
   "Equity Multiplier": "Total assets divided by shareholder equity. A higher value indicates more financial leverage.",
 
   "WACC": "Weighted Average Cost of Capital. The estimated blended cost of equity and debt, used as a hurdle rate in valuation and capital allocation.",
-
-  // Growth
-  "YoY": "Year-over-Year. The percentage change compared to the same period a year ago.",
-  "QoQ": "Quarter-over-Quarter. The percentage change compared to the immediately preceding quarter.",
-  "TTM": "Trailing Twelve Months. A rolling 12-month window of the most recent available data.",
 };
 
 // Lookup ignores case, so a label can print in sentence case ("Gross margin")
@@ -66,13 +50,6 @@ interface Props {
    */
   children?: React.ReactNode;
   focusable?: boolean;
-  /**
-   * @deprecated Positioning is now automatic and viewport-aware, the bubble
-   * renders in a body-level portal, centers on the trigger, clamps to the
-   * viewport, and flips above/below based on available room. Kept only so
-   * existing call sites still type-check; the value is ignored.
-   */
-  align?: "left" | "right";
 }
 
 const BUBBLE_WIDTH = 208; // px — the resting bubble width (clamped to viewport)

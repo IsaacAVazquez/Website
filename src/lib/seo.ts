@@ -1,25 +1,6 @@
 import { Metadata } from "next";
 import { profile, profileSameAs } from "./profile";
 
-interface AIOptimizedMetadata {
-  title: string;
-  description: string;
-  summary?: string; // Concise TL;DR for AI systems
-  expertise?: string[]; // Areas of expertise for this page
-  context?: string; // Additional context for AI understanding
-  author?: {
-    name: string;
-    title: string;
-    credentials: string[];
-  };
-  datePublished?: string;
-  dateModified?: string;
-  readingTime?: number; // Estimated reading time in minutes
-  canonicalUrl?: string;
-  noIndex?: boolean;
-  image?: string;
-}
-
 /**
  * Resolve the canonical site origin. Production reads from
  * NEXT_PUBLIC_SITE_URL or SITE_URL when set (Netlify/Vercel-friendly); falls
@@ -192,7 +173,9 @@ export function constructMetadata({
         url: absoluteImage,
         width: 1200,
         height: 630,
-        alt: siteConfig.ogImageAlt || socialTitle,
+        // The site alt describes the default card only. A page's own card
+        // prints its title, so the title is what describes it.
+        alt: image === siteConfig.ogImage ? siteConfig.ogImageAlt : socialTitle,
       },
     ],
   };
@@ -301,35 +284,6 @@ export function generateBreadcrumbStructuredData(
 }
 
 /**
- * Generate standard metadata for pages that still use the legacy helper name.
- * Summary and expertise remain accepted for caller compatibility, but visible
- * copy and structured data carry those signals instead of custom meta tags.
- */
-export function generateAIOptimizedMetadata(
-  pageData: AIOptimizedMetadata
-): Metadata {
-  const {
-    title,
-    description,
-    datePublished,
-    dateModified,
-    canonicalUrl,
-    noIndex,
-    image,
-  } = pageData;
-
-  return constructMetadata({
-    title,
-    description,
-    image,
-    noIndex,
-    canonicalUrl,
-    datePublished,
-    dateModified,
-  });
-}
-
-/**
  * The canonical Person entity for JSON-LD. Every schema that describes Isaac
  * must build on this object so a single @id never ships divergent copies —
  * StructuredData's Person branch and ai-seo's enhanced /about schema both
@@ -376,15 +330,6 @@ export function buildPersonEntity(): Record<string, unknown> {
     ],
     knowsAbout: profile.knowsAbout,
   };
-}
-
-/**
- * Calculate estimated reading time from text content
- */
-export function calculateReadingTime(text: string): number {
-  const wordsPerMinute = 200;
-  const words = text.trim().split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
 }
 
 /**

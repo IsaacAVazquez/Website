@@ -376,7 +376,6 @@ describe("useDraftState persisted-state loading", () => {
       leagueName: "My Fantasy League",
       lineup: { QB: 1, RB: 1, WR: 4, TE: 1, FLEX: 3, K: 1, DST: 0 },
     });
-    expect(result.current.draftState.settings.draftDate).toBeInstanceOf(Date);
     expect(result.current.draftState.teams).toHaveLength(8);
   });
 
@@ -465,13 +464,13 @@ describe("useDraftState persisted-state loading", () => {
     expect(result.current.draftState.currentPick).toBe(2);
   });
 
-  it("uses renamed teams in the on-clock label", async () => {
+  it("returns a renamed team's name", async () => {
     const { result } = renderHook(() => useDraftState());
     await waitFor(() => expect(result.current.isLoaded).toBe(true));
 
     act(() => result.current.setTeamName(1, "Fourth and Long"));
 
-    expect(result.current.currentTeamName).toBe("Fourth and Long (you)");
+    expect(result.current.getTeamName(1)).toBe("Fourth and Long");
   });
 
   it("keeps working in memory when localStorage reads are blocked", async () => {

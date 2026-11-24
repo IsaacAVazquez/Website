@@ -3,6 +3,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { ProjectBuildNote } from "@/components/ProjectBuildNote";
 import { PROJECT_BUILD_NOTE_CONTEXT } from "@/components/projectBuildNoteContent";
 import { projectBuildNoteLinks } from "@/components/projectBuildNoteLinks";
+import { caseStudiesData, PROJECT_BUILD_NOTES } from "@/constants/caseStudies";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -60,6 +61,20 @@ describe("ProjectBuildNote", () => {
     for (const route of Object.keys(PROJECT_BUILD_NOTE_CONTEXT)) {
       expect(linkedRoutes).toContain(route);
     }
+  });
+
+  it("links each tool page to the same write-up its case study card does", () => {
+    // The route map is a copy of PROJECT_BUILD_NOTES kept apart for bundle
+    // size, so nothing but this holds the two to each other.
+    const compared = Object.values(caseStudiesData).filter(
+      (study) => study.link?.startsWith("/") && PROJECT_BUILD_NOTES[study.slug],
+    );
+    const mismatched = compared
+      .filter((study) => projectBuildNoteLinks[study.link!] !== `/writing/${PROJECT_BUILD_NOTES[study.slug]}`)
+      .map((study) => study.slug);
+
+    expect(compared.length).toBeGreaterThan(0);
+    expect(mismatched).toEqual([]);
   });
 
   it("has authored context for every linked route but the arcade", () => {

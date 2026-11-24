@@ -326,7 +326,7 @@ export function FlightQuoteComparison() {
           </table>
         </div>
       )}
-      {message && <p role="status">{message}</p>}
+      <p role="status">{message}</p>
       {store.status === "memory-only" && (
         <p role="status">
           Browser storage is unavailable. Quotes last only while this tab is

@@ -8,7 +8,7 @@
 // oklab(), and color-mix() serialisations read correctly. Background images
 // such as grain and halftone screens are ignored. Exits 1 on any failure.
 import { pathToFileURL } from "node:url";
-import { chromium } from "playwright";
+import { chromium } from "@playwright/test";
 
 /** Runs inside the page. Exported so it can be calibrated against a known page. */
 export function measurePage() {

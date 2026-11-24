@@ -117,7 +117,7 @@ const COVERAGE_TONE: Record<FantasyTradeCoverage, string> = {
   insufficient: "ffb-bad",
 };
 
-function formatIndex(value: number | null | undefined): string {
+export function formatIndex(value: number | null | undefined): string {
   return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
 }
 

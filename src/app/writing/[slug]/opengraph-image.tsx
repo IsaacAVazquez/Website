@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { createEditorialOgImage } from "@/lib/og";
 import { getAllBlogPostPreviews, getBlogPostPreviewBySlug } from "@/lib/blog";
 import { getBlogClusterTheme, getBlogPostCollectionLabel } from "@/lib/blog-config";
@@ -25,17 +26,17 @@ export default async function Image({
   const { slug } = await params;
   const post = getBlogPostPreviewBySlug(slug);
 
-  const eyebrow = getBlogPostCollectionLabel(post ?? undefined);
-  const title = post?.title || "Writing";
-  const description =
-    post?.excerpt ||
-    "Writing on PM workflows, AI products, fintech tools, and systems thinking.";
+  // No card for a slug with no article, or every made-up slug would be drawn
+  // on demand and answer 200 while the article page answers 404.
+  if (!post) {
+    notFound();
+  }
 
   return createEditorialOgImage({
-    eyebrow,
-    title,
-    description,
-    accent: getBlogClusterTheme(post?.cluster),
+    eyebrow: getBlogPostCollectionLabel(post),
+    title: post.title,
+    description: post.excerpt,
+    accent: getBlogClusterTheme(post.cluster),
     footer: "isaacvazquez.com/writing",
   });
 }

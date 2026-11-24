@@ -1,6 +1,6 @@
 # The fantasy football kit
 
-Last updated 2026-11-16.
+Last updated 2026-11-24.
 
 This is the reference for `src/components/fantasy/fantasy.css`, the stylesheet all eight fantasy football pages draw with, and for the shared parts built on it. Read it before you write markup for one of those pages.
 
@@ -29,7 +29,6 @@ These shared parts draw with the kit.
 | Part | What it draws |
 | --- | --- |
 | `FantasyRouteHeader` | `header.<SHELL_CLASS>.ffb-head` holding `h1.ffb-title`, `p.ffb-lede`, the freshness line, `div.ffb-head-aside` for `aside`, and `div.ffb-head-row` for `children`. A title that opens with "Fantasy Football" shows only the words after it, and the first two stay in the h1 inside `.ffb-vh`, so the accessible name is the same |
-| `TitleAccent` | A plain fragment. It sets no face of its own |
 | `FantasySectionHeading` | `h2.ffb-h2` |
 | `FreshnessParts` | `p.ffb-fresh` of `span.ffb-fresh-part`, one per part. A part holds its label and, after a no-break space, its hidden dot, and from 768px a part does not break. So a wrapped line breaks only between parts, never inside a date, and never opens on a dot. A part with a tone takes the kit's status ink on its label alone, `ffb-warn` or `ffb-bad`, and the label still says what is wrong in words. A part with a `shortLabel` shows it in place of the label below 768px, through `ffb-only-phone` and `ffb-not-phone`, so a portrait page on paper prints the short label too |
 | `SeasonalScopeNote` | `div[role=note].ffb-notice.ffb-notice-warn` |
@@ -611,7 +610,7 @@ A real `table` for the waiver list and the compare modal.
 </div>
 ```
 
-Heads are label type on a 2px ink rule, rows are ruled at the row height (44px on a phone), and a row header in the body is the row-name weight. `td.ffb-c-rank` is the rank cell, right aligned at 15px and weight 700. `ffb-c-num ffb-is-strong` and `ffb-c-num ffb-is-flat` work in a table cell as they do in a row. `ffb-table-wrap` scrolls a table sideways when it is wider than the screen. `ffb-table-sticky` keeps the head on screen while the page scrolls, and it cannot be used inside `ffb-table-wrap`, since a scroller stops a sticky head.
+Heads are label type on a 2px ink rule, rows are ruled at the row height (44px on a phone), and a row header in the body is the row-name weight. `td.ffb-c-rank` is the rank cell, right aligned at 15px and weight 700. `ffb-c-num ffb-is-strong` and `ffb-c-num ffb-is-flat` work in a table cell as they do in a row. `ffb-table-wrap` scrolls a table sideways when it is wider than the screen.
 
 `ffb-table-compare` is the compare layout: a 7.5rem label column that stays put while the table scrolls sideways, and one column per player. The stronger value on a row takes `<span class="ffb-best">Best</span>` directly after the value, with no text between them, which is what the test reads. The tag is ink, never highlighter.
 
@@ -861,9 +860,9 @@ A draft room is built from `src/components/fantasy/DraftRoomParts.tsx`. A room i
 
 | Part | What it draws | Props |
 | --- | --- | --- |
-| `DraftScorebug` | The pinned `section.ffb-sticky` holding the `ffb-bug` bar. Its children are the cells | `label` is the section's accessible name. The section carries `ffb-bug-pin`, which stacks it one above every other pinned bar, so a room's board bar, pinned or a flex item at the same level and later in the page, never covers Undo, Redo, or New room. `announcement` is optional. With it the bar prints a visually hidden status sentence, and without it the bar prints none, which is what a room wants (see below). `actions` are the `ffb-bug-btn` buttons at the bar's far end. `sectionRef` is the element a room measures to pin its board bar and its rail. `className` goes on the bar |
+| `DraftScorebug` | The pinned `section.ffb-sticky` holding the `ffb-bug` bar. Its children are the cells | `label` is the section's accessible name. The section carries `ffb-bug-pin`, which stacks it one above every other pinned bar, so a room's board bar, pinned or a flex item at the same level and later in the page, never covers Undo, Redo, or New room. The bar prints no status sentence of its own, since a room announces its state in one element it keeps mounted (see below). `actions` are the `ffb-bug-btn` buttons at the bar's far end. `sectionRef` is the element a room measures to pin its board bar and its rail. `className` goes on the bar |
 | `DraftScorebugCell` | One `ffb-bug-seg`, a label over a value | `label` is a node, so a room can pass a long form and a short form. `live` paints the on-the-clock cell in the highlighter and holds its width, so a long team name ends in an ellipsis and the bar keeps one height. Put the full name in `title`. `note` is a small second line under the value (the pick just logged). The value is the children. Any other `div` attribute lands on the cell, so a room can give it a `ref` and `tabIndex` to focus it, a `role`, or a class |
-| `DraftLastPicks` | `ffb-picks`, with the picks as stickers, newest first. It renders nothing while there are no picks | `picks` and `userTeam`. `heading` is "Last picks" unless you pass another. `headingLevel` is 2 or 3 and changes the element, not the look. With `onUndoToPick` each sticker is a button that undoes back to that pick, a note beside the heading says so, and the stickers that fell out of the first row are hidden so none takes focus unseen. Without it the list takes focus itself, named by its heading, so a keyboard can scroll it |
+| `DraftLastPicks` | `ffb-picks`, with the picks as stickers, newest first. It renders nothing while there are no picks | `picks` and `userTeam`. `heading` is "Last picks" unless you pass another, and it is always an `h3`. With `onUndoToPick` each sticker is a button that undoes back to that pick, a note beside the heading says so, and the stickers that fell out of the first row are hidden so none takes focus unseen. Without it the list takes focus itself, named by its heading, so a keyboard can scroll it |
 | `DraftRoster` | The rail's lead block, `section.ffb-rail-lead`, with the roster as `ffb-slots` and the bench | `assignment` is the lineup's `slots` and `bench`. `picked` and `rounds` print as "3 of 15 picked". The bench is left out while the draft has no room for one (a mock shorter than the lineup) and nothing is on it |
 | `DraftPickGrid` | The pick grid, rounds down and slots across, growing to the current round, with the tally and an "All picks" disclosure that lists every pick by round for a touch screen, a keyboard, and paper | `picks`, `totalTeams`, `userTeam`, `rounds`, `currentPick`, `currentRound`, and `isComplete`. `slotForPick` is the room's draft order, the slot that makes a given overall pick, and the grid reads each round's direction from it. `heading` ("Pick grid" unless you pass another) and `headingLevel` (2 or 3) name the grid and place it in the page's outline. `sectionHead` draws the head a section of the page takes, for a grid that is a section and not a rail block. `names` is the grid at the page's width, which never takes the tight type and prints each player's name in its cell from 1200px, so pass it only where the grid has the page's width. `picksOpen` renders "All picks" open, and its round headings sit one level below the grid's own. A made cell with a five-character label is marked `ffb-cell-long`. The mock draft's recap passes all five |
 

@@ -44,19 +44,36 @@ function fold(line: string): string {
   chunks.push(current);
   return chunks.join("\r\n");
 }
-export { escapeText as escapeCalendarText, fold as foldCalendarLine };
-export function tripCalendar(trip: Trip, now = new Date()): string {
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Isaac Vazquez//Travel Planner//EN",
-    "CALSCALE:GREGORIAN",
-    `X-WR-CALNAME:${escapeText(trip.name)}`,
-  ];
-  const stamp = now
+export { escapeText as escapeCalendarText };
+/** A UTC instant in the iCalendar basic form, 20261101T200000Z. */
+export const calendarStamp = (date: Date) =>
+  date
     .toISOString()
     .replace(/[-:]/g, "")
     .replace(/\.\d{3}Z$/, "Z");
+/** Wrap VEVENT lines in the VCALENDAR header and footer, folded, with CRLF line ends. */
+export function calendarDocument(
+  product: string,
+  eventLines: string[],
+  name?: string,
+): string {
+  return (
+    [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      `PRODID:-//Isaac Vazquez//${product}//EN`,
+      "CALSCALE:GREGORIAN",
+      ...(name === undefined ? [] : [`X-WR-CALNAME:${escapeText(name)}`]),
+      ...eventLines,
+      "END:VCALENDAR",
+    ]
+      .map(fold)
+      .join("\r\n") + "\r\n"
+  );
+}
+export function tripCalendar(trip: Trip, now = new Date()): string {
+  const lines: string[] = [];
+  const stamp = calendarStamp(now);
   const validTime = (value: string) => /^([01]\d|2[0-3]):[0-5]\d$/.test(value);
   for (const activity of trip.activities) {
     if (!isLocalDateKey(activity.date)) continue;
@@ -85,5 +102,5 @@ export function tripCalendar(trip: Trip, now = new Date()): string {
       "END:VEVENT",
     );
   }
-  return [...lines, "END:VCALENDAR"].map(fold).join("\r\n") + "\r\n";
+  return calendarDocument("Travel Planner", lines, trip.name);
 }

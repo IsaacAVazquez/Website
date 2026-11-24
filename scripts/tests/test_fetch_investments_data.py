@@ -152,6 +152,27 @@ class FetchInvestmentsDataTests(unittest.TestCase):
             {"symbol", "report_date", "open", "close", "high", "low", "volume"},
         )
 
+    def test_a_table_section_keeps_each_key_and_a_failed_field_as_its_error(self):
+        class FakeTicker:
+            def ttm_eps(self):
+                return [{"eps": 6.1}]
+
+            def ttm_pe(self):
+                raise RuntimeError("provider down")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            pipeline.fetch_fundamentals(FakeTicker(), Path(tmp))
+            written = json.loads((Path(tmp) / "fundamentals.json").read_text())
+
+        self.assertEqual(
+            list(written),
+            ["ttmEps", "ttmPe", "marketCap", "psRatio", "pbRatio", "pegRatio"],
+        )
+        self.assertEqual(written["ttmEps"], [{"eps": 6.1}])
+        self.assertEqual(written["ttmPe"], {"error": "provider down"})
+        # A method the provider no longer has is one field's error too.
+        self.assertIn("error", written["marketCap"])
+
     def test_an_industry_is_fetched_once_per_run(self):
         calls = []
 

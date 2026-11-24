@@ -55,6 +55,16 @@ describe("MuseumLogClient", () => {
     expect(sentence).toBe(`You’ve visited — of the ${museumSnapshot.museums.length}.`);
   });
 
+  it("states no exhibit count in the server render, since the server does not know the visitor's date", () => {
+    const html = renderToString(<MuseumLogClient initialState={DEFAULT_MUSEUM_STATE} snapshot={museumSnapshot} />);
+    expect(html.match(/data-testid="museum-log-exhibits"[^>]*>([^<]*)</)?.[1]).toBe("");
+    expect(html).not.toContain("None lists an exhibit");
+  });
+
+  it("keeps em dashes out of the curated copy", () => {
+    expect(JSON.stringify(museumSnapshot)).not.toContain("—");
+  });
+
   it("opens a museum detail route from the catalog", () => {
     render(
       <MuseumLogClient

@@ -115,13 +115,7 @@ function parseSavedSnapshot(value: unknown, filename: string): SnapshotCacheReco
   if (
     record.version !== CACHE_VERSION ||
     record.filename !== filename ||
-    (record.kind !== "redraft" && record.kind !== "best-ball")
-  ) {
-    return null;
-  }
-  if (
-    (filename === "best-ball.json" && record.kind !== "best-ball") ||
-    (filename !== "best-ball.json" && record.kind !== "redraft")
+    record.kind !== (filename === "best-ball.json" ? "best-ball" : "redraft")
   ) {
     return null;
   }

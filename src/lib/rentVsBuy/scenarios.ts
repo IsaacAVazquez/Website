@@ -48,24 +48,31 @@ export function rentSensitivity(input: RentVsBuyInput) {
       ["homeAppreciationPercent", "Home appreciation", 1],
       ["yearsStaying", "Years staying", 2],
     ] as const
-  ).flatMap(([field, label, step]) =>
-    [-1, 0, 1].map((direction) => {
-      const bounds = RENT_VS_BUY_BOUNDS[field];
-      const value =
-        Math.round(
-          Math.min(
-            bounds.max,
-            Math.max(bounds.min, input[field] + direction * step),
-          ) * 100,
-        ) / 100;
+  ).flatMap(([field, label, step]) => {
+    const bounds = RENT_VS_BUY_BOUNDS[field];
+    const at = (direction: number) =>
+      Math.round(
+        Math.min(
+          bounds.max,
+          Math.max(bounds.min, input[field] + direction * step),
+        ) * 100,
+      ) / 100;
+    return [-1, 0, 1].flatMap((direction) => {
+      const value = at(direction);
+      // At a bound the step clamps back onto the current value, which would
+      // repeat the current row as if it were an alternate assumption.
+      if (direction !== 0 && value === at(0)) return [];
       const result = calculateRentVsBuy({ ...input, [field]: value });
-      return {
-        field,
-        label,
-        value,
-        delta: result.netWorthDeltaAtHorizon,
-        verdict: result.verdict,
-      };
-    }),
-  );
+      return [
+        {
+          field,
+          label,
+          value,
+          current: direction === 0,
+          delta: result.netWorthDeltaAtHorizon,
+          verdict: result.verdict,
+        },
+      ];
+    });
+  });
 }

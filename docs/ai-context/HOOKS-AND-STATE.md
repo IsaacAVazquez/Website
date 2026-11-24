@@ -1,14 +1,14 @@
-# Hooks & State — AI Context
+# Hooks and state (AI context)
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
-## Hook Inventory
+## Hook inventory
 
-| Hook | File | Main Use |
+| Hook | File | Main use |
 |------|------|----------|
 | `useBestBallSnapshot` | `src/hooks/useBestBallSnapshot.ts` | Published best ball snapshot loading from `public/data/fantasy/best-ball.json` |
 | `useBrowserRecord` | `src/hooks/useBrowserRecord.ts` | One browser-local JSON record per key, where each edit applies to the latest validated save, including one another tab wrote. The recipe finder's meal plan, the decision lab's saved bets, the enablement assistant's teams, and the transit commute preferences use it |
@@ -37,7 +37,7 @@ Current hook inventory and state ownership.
 | `useReducedMotion` | `src/hooks/useReducedMotion.ts` | Whether the viewer asked for reduced motion, `false` on the server and during hydration, for motion that JavaScript drives, such as D3 transitions and smooth scrolling |
 | `useRentVsBuy` | `src/hooks/useRentVsBuy.ts` | Browser-local rent vs. buy inputs (`rent_vs_buy_input_v1`) and the month-by-month net-worth comparison from `src/lib/rentVsBuy/` |
 | `useRetirementPlan` | `src/hooks/useRetirementPlan.ts` | Browser-local retirement plan inputs (localStorage key `retirement_plan`) |
-| `useRouteSync` | `src/hooks/useRouteSync.ts` | Keeps a dashboard's URL on the state it renders with a scroll-free `router.replace`, and returns a push for user navigation that skips the address already in the bar |
+| `useRouteSync` | `src/hooks/useRouteSync.ts` | Keeps a dashboard's URL on the state it renders with a scroll-free `router.replace` that puts the address's `#` fragment back, and returns a push for user navigation that skips the address already in the bar |
 | `useScorePools` | `src/hooks/useScorePools.ts` | Browser-local score pools store (`score_pools_store_v1`), meaning the pools, picks, rivals, fixture flags, and manually entered odds and results. The scoring math lives in `src/lib/scorePools/` |
 | `useStockData` | `src/hooks/useStockData.ts` | Per-symbol research section data |
 | `useTablistKeyboard` | `src/hooks/useTablistKeyboard.ts` | Roving keyboard navigation for horizontal tablists (WCAG 2.1) |
@@ -51,7 +51,7 @@ Two shared hooks live outside `src/hooks/`, beside the components that use them.
 
 ---
 
-## Investments State
+## Investments state
 
 ### `useInvestments`
 
@@ -90,7 +90,7 @@ Owns the browser-local retirement plan inputs consumed by `src/components/invest
 
 ---
 
-## Fantasy Football State
+## Fantasy football state
 
 ### `useFantasySnapshot`
 
@@ -118,7 +118,7 @@ The best ball room saves under `fantasy-best-ball-draft-v1-<season>-<contestId>`
 
 ---
 
-## MBA Role Tracker State
+## MBA role tracker state
 
 ### `useMBAJobs`
 
@@ -134,7 +134,7 @@ Owns sourced role candidates review and triage state (`MBAJobCandidate`, whose `
 
 ---
 
-## Personal Surface State
+## Personal surface state
 
 These hooks follow the same browser-local pattern (localStorage, no account) and subscribe to browser storage events to merge edits against the latest validated save, eliminating multi-tab data loss:
 
@@ -153,7 +153,7 @@ The site-wide easter eggs keep three more. `Catalog97EasterEggs` counts footer s
 
 ---
 
-## General UI State
+## General UI state
 
 ### `useDebounce`
 
@@ -169,7 +169,7 @@ Returns an `onKeyDown` handler for roving tablist keyboard navigation (ArrowLeft
 
 ---
 
-## Practical Guidance
+## Practical guidance
 
 - for route ownership, check the page entry before assuming a hook is active
 - for investments, the live state path starts with `InvestmentsClient`

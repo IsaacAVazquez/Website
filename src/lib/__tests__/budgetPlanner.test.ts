@@ -1,4 +1,5 @@
 import {
+  buildBudgetCsv,
   calculateBudgetSummary,
   createBudgetExpense,
   createBudgetMonth,
@@ -58,7 +59,7 @@ describe("budgetPlanner helpers", () => {
       overBudget: false,
       expenseCount: 2,
     });
-    expect(summary.recentExpenses[0]).toMatchObject({
+    expect(summary.expenseEntries[0]).toMatchObject({
       note: "Restock",
       categoryName: "Groceries",
       amount: 74.65,
@@ -122,6 +123,37 @@ describe("expense notes", () => {
     const reloaded = parseBudgetMonths(JSON.stringify(stored));
     expect(expense.note).toHaveLength(140);
     expect(reloaded["2026-04"].expenses[0].note).toBe(expense.note);
+  });
+});
+
+describe("CSV export", () => {
+  it("quotes commas, quotes, and line breaks, and ends on the totals block", () => {
+    const month: BudgetMonth = {
+      monthKey: "2026-04",
+      income: 5000,
+      savingsTarget: 500,
+      categories: [{ id: "food", name: "Food, drink", budgetedAmount: 600, carriedAmount: 40 }],
+      expenses: [
+        { id: "a", categoryId: "food", amount: 12.5, date: "2026-04-02", note: 'Said "hi"\nthen left' },
+        { id: "b", categoryId: "food", amount: 30, date: "2026-04-03", note: "Market" },
+      ],
+    };
+
+    expect(buildBudgetCsv(month, calculateBudgetSummary(month))).toBe(
+      [
+        "\uFEFFdate,category,note,amount",
+        '2026-04-03,"Food, drink",Market,30',
+        '2026-04-02,"Food, drink","Said ""hi""\nthen left",12.5',
+        "",
+        "summary,amount",
+        "Income,5000",
+        "Carried in,40",
+        "Budgeted,640",
+        "Spent,42.5",
+        "Remaining to spend,4497.5",
+        "Savings target,500",
+      ].join("\r\n")
+    );
   });
 });
 

@@ -11,14 +11,9 @@ import {
 import { calculateRentVsBuy } from "@/lib/rentVsBuy/engine";
 import { decodeRentVsBuyInput } from "@/lib/rentVsBuy/persistence";
 import type { RentVsBuyInput } from "@/lib/rentVsBuy/types";
+import { formatCurrency } from "@/lib/retirement/format";
 import "@/components/project-workflows.css";
 
-const money = (value: number) =>
-  value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  });
 export function RentScenarios({
   input,
   onLoad,
@@ -161,17 +156,17 @@ export function RentScenarios({
                 <tr key={item.id}>
                   <th scope="row">{item.name}</th>
                   <td>
-                    {money(item.input.homePrice)} /{" "}
-                    {money(item.input.monthlyRent)} monthly
+                    {formatCurrency(item.input.homePrice)} /{" "}
+                    {formatCurrency(item.input.monthlyRent)} monthly
                   </td>
                   <td>
                     {item.input.mortgageRatePercent}% /{" "}
                     {item.input.homeAppreciationPercent}%
                   </td>
                   <td>{item.input.yearsStaying}</td>
-                  <td>{money(item.result.buyerNetWorthAtHorizon)}</td>
-                  <td>{money(item.result.renterNetWorthAtHorizon)}</td>
-                  <td>{money(item.result.netWorthDeltaAtHorizon)}</td>
+                  <td>{formatCurrency(item.result.buyerNetWorthAtHorizon)}</td>
+                  <td>{formatCurrency(item.result.renterNetWorthAtHorizon)}</td>
+                  <td>{formatCurrency(item.result.netWorthDeltaAtHorizon)}</td>
                 </tr>
               ))}
             </tbody>
@@ -180,8 +175,9 @@ export function RentScenarios({
       )}
       <h2>Which assumptions change the result?</h2>
       <p>
-        These variations change one input at a time in your current calculation.
-        Positive differences favor buying; negative differences favor renting.
+        Each row changes one input in your current calculation, and the rows
+        marked current repeat your own numbers as the reference. Positive
+        differences favor buying; negative differences favor renting.
         They are scenarios, with no assigned probability.
       </p>
       <div
@@ -206,9 +202,14 @@ export function RentScenarios({
                 <th scope="row">{row.label}</th>
                 <td>
                   {row.value}
-                  {row.field === "yearsStaying" ? " years" : "%"}
+                  {row.field !== "yearsStaying"
+                    ? "%"
+                    : row.value === 1
+                      ? " year"
+                      : " years"}
+                  {row.current ? " (current)" : ""}
                 </td>
-                <td>{money(row.delta)}</td>
+                <td>{formatCurrency(row.delta)}</td>
                 <td>
                   {row.verdict === "close"
                     ? "Close"
@@ -221,7 +222,7 @@ export function RentScenarios({
           </tbody>
         </table>
       </div>
-      {message && <p role="status">{message}</p>}
+      <p role="status">{message}</p>
       {store.status === "memory-only" && (
         <p role="status">
           Browser storage is unavailable. These scenarios last only while this

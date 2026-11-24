@@ -1,12 +1,12 @@
-# Configuration — AI Context
+# Configuration (AI context)
 
 Current config-file reference.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Primary Config Files
+## Primary config files
 
 | File | Purpose |
 |------|---------|
@@ -42,10 +42,10 @@ Important current behavior:
 - `headers()` also sends `Netlify-CDN-Cache-Control: public, durable, s-maxage=21600, stale-while-revalidate=86400` and `Netlify-Vary: query` to each path in `cdnCachedPages`, the pages that render per request only because they read `searchParams`. `src/lib/__tests__/edge-cache-policy.test.ts` checks that list
 - `compiler.removeConsole` in production, keeping `console.error` and `console.warn`
 - TypeScript build errors are enforced; `npm run typecheck` also runs explicitly in CI
-- `serverExternalPackages = ['better-sqlite3', 'sharp']`
+- `serverExternalPackages = ['sharp']`
 - tracing excludes `sharp`, its `@img/*` binaries, and `public/data/investments/**` from server bundles
 - in production builds the webpack `snapshot` settings check modules and dependencies by content hash instead of timestamp, because Next's bundled webpack crashes on warm builds when a cached context has timestamps but no hash
-- image remote patterns include Unsplash and Cloudinary; `dangerouslyAllowSVG` is on with an image-scoped CSP (`script-src 'none'; sandbox`) for remote crest/logo SVGs
+- the image config sets no `remotePatterns` and does not turn on `dangerouslyAllowSVG`, so the optimizer handles only images this site serves. Remote images load unoptimized (the SpaceX mission photos) or through plain `<img>` elements (crests and logos), and the image-scoped CSP (`script-src 'none'; sandbox`) stays in place
 - `optimizePackageImports` includes `lucide-react` and `d3`; `experimental.scrollRestoration` is enabled
 
 If you update routes or package behavior, this file is one of the first places to check.
@@ -54,7 +54,7 @@ If you update routes or package behavior, this file is one of the first places t
 
 ## `tailwind.config.ts`
 
-Key facts:
+Facts:
 
 - dark mode is class-based
 - `font-sans` and `font-mono` map to the Instrument Sans and Fragment Mono variables from `layout.tsx`; Catalog 97 components use the `--c97-font-*` tokens instead
@@ -89,7 +89,7 @@ Important facts:
 
 ---
 
-## Testing Config
+## Testing config
 
 ### `jest.config.js`
 
@@ -125,9 +125,9 @@ Writing topic pages come from `BLOG_TOPIC_PAGES` in `src/lib/blog-config.ts`, po
 
 ---
 
-## Build Steps (`package.json`)
+## Build steps (`package.json`)
 
-- `typecheck`: `tsc --noEmit --pretty false` — standalone CI type gate
+- `typecheck` runs `tsc --noEmit --pretty false`, the standalone CI type gate
 - `build`: `next build --webpack`
 - `postbuild`: `npm run generate:sitemap && npm run build:llms && node scripts/patch-nft-sharp.mjs` regenerates the sitemap, writes `public/llms-full.txt` through `scripts/buildLlmsFull.mjs`, then patches the function bundle so the optional `sharp` native module never ships
 - `build` passes `--webpack`, and `dev` runs `scripts/dev.cjs`, which starts `next dev --webpack` bound to `localhost` (Turbopack is not used)

@@ -69,13 +69,6 @@ export function decodeRentVsBuyInput(value: unknown): RentVsBuyInput {
   };
 }
 
-export function saveRentVsBuyInput(
-  input: RentVsBuyInput,
-  storage?: Pick<Storage, "setItem">,
-): void {
-  if (storage) {
-    storage.setItem(RENT_VS_BUY_STORAGE_KEY, JSON.stringify(input));
-    return;
-  }
+export function saveRentVsBuyInput(input: RentVsBuyInput): void {
   writeBrowserStorageJson(RENT_VS_BUY_STORAGE_KEY, input);
 }

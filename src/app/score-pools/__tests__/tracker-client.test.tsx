@@ -139,6 +139,24 @@ describe("TrackerClient", () => {
     expect(within(screen.getByRole("region", { name: "Missing results" })).getByText("Kingsway vs Lakeview")).toBeInTheDocument();
   });
 
+  it("does not ask for a result on a postponed game whose original kickoff has passed", () => {
+    const postponed = fixture({
+      id: "f8",
+      homeTeam: "Oakhurst",
+      awayTeam: "Pinecrest",
+      kickoff: isoFromNow(-5 * HOUR),
+      status: "postponed",
+    });
+    seedStore([pool({ submissions: { ...MY_SUBMISSIONS, f8: sub(1, 0) } })]);
+    render(<TrackerClient snapshot={snapshot([league({ fixtures: [...FIXTURES, postponed] })])} />);
+
+    const missing = screen.getByRole("region", { name: "Missing results" });
+    expect(within(missing).getByText("Kingsway vs Lakeview")).toBeInTheDocument();
+    expect(within(missing).queryByText("Oakhurst vs Pinecrest")).not.toBeInTheDocument();
+    const table = screen.getByRole("table", { name: "My picks scored against results" });
+    expect(within(rowFor(table, "Oakhurst vs Pinecrest")).getByText("postponed")).toBeInTheDocument();
+  });
+
   it("takes extra time and the shootout winner for a knockout", async () => {
     const user = userEvent.setup();
     seedStore([pool({ submissions: MY_SUBMISSIONS })]);

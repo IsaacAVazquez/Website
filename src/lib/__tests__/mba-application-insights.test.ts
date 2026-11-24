@@ -101,10 +101,8 @@ describe("summarizeApplicationPipeline", () => {
       ],
     };
     const rejected = { ...buildApplication({ status: "rejected" }), statusHistory: archived.statusHistory.slice(0, 1) };
-    const summary = summarizeApplicationPipeline([archived, rejected], TODAY);
-    expect(summary).toMatchObject({ total: 1, archived: 1, submitted: 2, responded: 2, interviews: 2, offers: 1 });
-    expect(summary.interviewRate).toBe(1);
-    expect(summary.offerRate).toBe(0.5);
+    const summary = summarizeApplicationPipeline([archived, rejected]);
+    expect(summary).toMatchObject({ archived: 1, submitted: 2, responded: 2, interviews: 2, offers: 1 });
   });
 
   it("drops a stage that was walked back, and a legacy archived record with only an applied date", () => {
@@ -118,11 +116,11 @@ describe("summarizeApplicationPipeline", () => {
       statusHistory: [at("applied", 10), at("offer", 11), at("applied", 12)],
     };
     const legacyArchived = { ...buildApplication({ status: "archived" }), appliedAt: "2026-07-01T12:00:00Z" };
-    const summary = summarizeApplicationPipeline([corrected, legacyArchived], TODAY);
+    const summary = summarizeApplicationPipeline([corrected, legacyArchived]);
     expect(summary).toMatchObject({ submitted: 1, responded: 0, interviews: 0, offers: 0 });
   });
 
-  it("builds funnel counts and stage-conversion rates from active applications", () => {
+  it("builds funnel counts from active applications and stage counts from all of them", () => {
     const applications = [
       buildApplication({ status: "saved" }),
       buildApplication({ status: "saved" }),
@@ -136,9 +134,8 @@ describe("summarizeApplicationPipeline", () => {
       buildApplication({ status: "archived" }),
     ];
 
-    const insights = summarizeApplicationPipeline(applications, TODAY);
+    const insights = summarizeApplicationPipeline(applications);
 
-    expect(insights.total).toBe(9);
     expect(insights.archived).toBe(1);
     expect(insights.funnel).toEqual({
       saved: 2,
@@ -151,39 +148,6 @@ describe("summarizeApplicationPipeline", () => {
     expect(insights.responded).toBe(4);
     expect(insights.interviews).toBe(3);
     expect(insights.offers).toBe(1);
-    expect(insights.responseRate).toBeCloseTo(4 / 7);
-    expect(insights.interviewRate).toBeCloseTo(3 / 7);
-    expect(insights.offerRate).toBeCloseTo(1 / 7);
-  });
-
-  it("returns null rates when nothing has been submitted yet", () => {
-    const insights = summarizeApplicationPipeline(
-      [buildApplication({ status: "saved" }), buildApplication({ status: "saved" })],
-      TODAY
-    );
-
-    expect(insights.submitted).toBe(0);
-    expect(insights.responseRate).toBeNull();
-    expect(insights.interviewRate).toBeNull();
-    expect(insights.offerRate).toBeNull();
-  });
-
-  it("buckets follow-ups and only counts deadlines for un-submitted roles", () => {
-    const applications = [
-      buildApplication({ followUpDate: "2026-07-17" }), // overdue
-      buildApplication({ followUpDate: TODAY }), // due today
-      buildApplication({ followUpDate: "2026-07-24" }), // upcoming (within window)
-      buildApplication({ followUpDate: "2026-09-01" }), // beyond window, ignored
-      buildApplication({ status: "saved", deadline: "2026-07-18" }), // passed
-      buildApplication({ status: "saved", deadline: TODAY }), // due today
-      buildApplication({ status: "saved", deadline: "2026-07-25" }), // upcoming
-      buildApplication({ status: "applied", deadline: "2026-07-18" }), // submitted, ignored
-    ];
-
-    const insights = summarizeApplicationPipeline(applications, TODAY);
-
-    expect(insights.followUps).toEqual({ overdue: 1, dueToday: 1, upcoming: 1 });
-    expect(insights.deadlines).toEqual({ overdue: 1, dueToday: 1, upcoming: 1 });
   });
 });
 

@@ -115,3 +115,17 @@ it("keeps missing favorite teams visible and removable", () => {
   fireEvent.click(screen.getByRole("button", { name: "Remove favorite missing" }));
   expect(localStorage.getItem("premier-league-favorite-teams-v1")).toBe("[]");
 });
+
+it("names a soccer league in words, prints all three record numbers, and formats the compared snapshot times", async () => {
+  global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ upcomingFixtures: [] }) });
+  writeBrowserStorageJson("premier-league-favorite-teams-v1", ["1"]);
+  writeBrowserStorageJson("premier-league-observed-standings-v1", [
+    { season: "2026", sourceAt: "2026-10-20T12:00:00Z", teams: [{ ...team, rank: 4 }] },
+  ]);
+  render(<PersonalTeams league="premier-league" season="2026" sourceAt="2026-10-23T12:00:00Z" teams={[team]} onOpen={jest.fn()} />);
+  await screen.findByText("No upcoming games are listed in this snapshot.");
+  expect(screen.getByRole("region", { name: "Premier League personal teams" })).toBeInTheDocument();
+  expect(screen.getByText(/4-1-0 \(wins-losses-draws\)/)).toBeInTheDocument();
+  expect(screen.getByText(/Comparing Oct 20, .+ with Oct 23, /)).toBeInTheDocument();
+  expect(screen.getByRole("status")).toBeEmptyDOMElement();
+});

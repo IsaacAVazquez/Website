@@ -1,4 +1,5 @@
 import {
+  calendarFixtures,
   observeSportsSnapshot,
   parseSportsHistory,
   sportsCalendar,
@@ -67,4 +68,18 @@ it("exports real UTC starts, omits unconfirmed dates, and escapes calendar text"
   expect(calendar).toContain("A\\, B");
   expect(calendar).toContain("C\\nD");
   expect(calendar.match(/BEGIN:VEVENT/g)).toHaveLength(1);
+});
+it("keeps only confirmed future fixtures for a schedule download", () => {
+  const fixture = { id: "a", utcDate: "2026-11-01T20:00:00Z", home: "A", away: "B", status: "SCHEDULED" };
+  expect(
+    calendarFixtures(
+      [
+        fixture,
+        { ...fixture, id: "past", utcDate: "2026-10-01T20:00:00Z" },
+        { ...fixture, id: "off", status: "Postponed" },
+        { ...fixture, id: "tbd", startTimeTbd: true },
+      ],
+      new Date("2026-10-23T12:00:00Z"),
+    ).map((row) => row.id),
+  ).toEqual(["a"]);
 });

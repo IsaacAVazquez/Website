@@ -9,6 +9,7 @@ import {
   formatCurrency,
   formatPercent,
 } from "@/lib/investmentFormatting";
+import { MetricTooltip } from "./MetricTooltip";
 import styles from "@/app/investments/investments.module.css";
 
 interface Props {
@@ -89,11 +90,10 @@ function StatCell({ label, hint, value, sub, tone = "default", subTone = "defaul
   const subClass = subTone === "pos" ? styles.statPos : subTone === "neg" ? styles.statNeg : "";
   return (
     <div className={styles.statCell}>
-      <span
-        className={styles.statLabel}
-        title={hint}
-      >
-        {label}
+      <span className={styles.statLabel}>
+        <MetricTooltip term={label} definition={hint} focusable>
+          {label}
+        </MetricTooltip>
       </span>
       <span
         className={styles.statValue + " " + valueClass}

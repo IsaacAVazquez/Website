@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-workflow detail: `CRON_SETUP.md` and the **Automation Surfaces**
   section of `../AGENTS.md`. Each script's header comment says what it does.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled snapshot refresh
@@ -45,7 +45,7 @@ timeout, and a response served from the committed artifact carries the
 | Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.json` | `update-score-pools.yml` | every 6h; the run skips the refresh and passes with a notice until both provider keys are set |
 | Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.json` | `update-bay-area-transit.yml` | every 6h, year-round |
 | Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.json` | `update-earthquake.yml` | daily 06:20 UTC |
-| GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.json` | `update-github-trending.yml` | daily 07:45 UTC |
+| GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.json`, which also carries `agentEditions`, the latest Agents ranking observed in each UTC week (52 weeks kept, never backfilled, and a run whose Agents segment failed or was reused adds nothing) | `update-github-trending.yml` | daily 07:45 UTC |
 | SpaceX data | `update:spacex` | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | SpaceX images | `update:spacex-images` | `buildSpaceXImageSnapshots.ts` | launch image assets | `src/data/spacexImageManifest.generated.json`, `public/data/spacex/*` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | Tech startups | `update:tech-startups` | `buildTechStartupSnapshot.ts` | curated seed *(in script)* | `src/data/techStartupSnapshot.json` | `audit-curated-data.yml` *(review only, no refresh)* | manual; weekly review |
@@ -92,8 +92,11 @@ fetch, commits the snapshots anyway, and then fails the run so the backlog opens
 an issue.
 
 News Pulse remains API-backed at request time and has no committed snapshot. Its
-last good per-feed data, and the MBA jobs route's last good result, are persisted
-in Netlify Blobs so cold starts do not erase their fallback.
+last good per-feed data (`news-pulse/feeds`), and the MBA jobs route's last good
+result, are persisted in Netlify Blobs so cold starts do not erase their fallback.
+The same request path keeps a second blob, `news-pulse/history`, which holds
+when each headline was first and last seen and the titles it has carried, and
+which is read only while it is under seven days old.
 
 Frontier models pilots the blob-backed refresh lane. A daily Netlify scheduled
 function fact-checks the curated seed against models.dev and OpenRouter and

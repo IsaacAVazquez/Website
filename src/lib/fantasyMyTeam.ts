@@ -122,10 +122,9 @@ export function compareMyTeamWaiver(team: FantasyMyTeam, board: FantasyWeeklyBoa
   const dropRank = drop ? weekly.get(drop.id)?.rank : undefined;
   const sameBoard = drop && (add.position === "QB") === (drop.position === "QB") &&
     !["K", "DST"].includes(add.position) && !["K", "DST"].includes(drop.position);
-  return { before, after,
+  return {
     startingSlot: after.find(slot => slot.player?.id === add.id)?.slot ?? null,
     rankGain: sameBoard && addRank !== undefined && dropRank !== undefined ? dropRank - addRank : null,
-    missing: team.players.filter(p => !weekly.has(p.id)),
     newGaps: after.filter(slot => !slot.player && before.some(previous => previous.slot === slot.slot && previous.player)),
   };
 }

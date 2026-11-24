@@ -62,10 +62,15 @@ export function BestBallBuildPanel({
   return (
     <div className="ffb-br-build">
       <div>
-        {/* The heading is the count, which is the name the build sheet's dialog takes. */}
+        {/* The count is printed as the heading. Its accessible name, which the build
+            sheet's dialog also takes, carries the label so it says what the count is of. */}
         <div className="ffb-sechead">
-          <span className="ffb-h3">My build</span>{" "}
-          <h2 id={headingId} className="ffb-sechead-note">
+          <span className="ffb-h3" aria-hidden="true">My build</span>{" "}
+          <h2
+            id={headingId}
+            className="ffb-sechead-note"
+            aria-label={`My build, ${userPicks.length} of ${preset.rosterSize} players`}
+          >
             {userPicks.length} of {preset.rosterSize} players
           </h2>
         </div>

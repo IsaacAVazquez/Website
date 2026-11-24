@@ -36,6 +36,14 @@ describe("interchangeIq", () => {
       118,
     );
   });
+  it("names the channel a rate is for in Square's pricing note", () => {
+    const mix = buildCardMix(65, 18);
+    const note = (channel: "online" | "in-person") =>
+      calcProcessorResults(1000, 5, mix, channel, false).find((row) => row.id === "square")?.note;
+    expect(note("online")).toContain("online checkout");
+    expect(note("in-person")).toContain("card present");
+    expect(note("in-person")).not.toContain("online");
+  });
   it("builds a normalized card mix from credit and Amex percentages", () => {
     const mix = buildCardMix(
       DEFAULT_INTERCHANGE_CREDIT_PCT,

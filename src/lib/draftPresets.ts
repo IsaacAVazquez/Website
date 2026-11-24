@@ -21,9 +21,10 @@ export interface DraftPreset {
   settings: DraftPresetSettings;
 }
 
-const PRESET_TEAM_COUNTS = [8, 10, 12, 14, 16];
-const PRESET_ROUND_COUNTS = [13, 14, 15, 16, 17, 18];
-const PRESET_TIMER_SECONDS = [0, 45, 60, 90, 120, 180];
+/** The room sizes, lengths, and clocks a saved room or a preset may carry. */
+export const DRAFT_TEAM_COUNTS: readonly number[] = [8, 10, 12, 14, 16];
+export const DRAFT_ROUND_COUNTS: readonly number[] = [13, 14, 15, 16, 17, 18];
+export const DRAFT_TIMER_SECONDS: readonly number[] = [0, 45, 60, 90, 120, 180];
 const PRESET_SCORING: readonly ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
 
 export function toDraftPresetSettings(settings: DraftSettings): DraftPresetSettings {
@@ -72,8 +73,8 @@ export function decodeDraftPresets(value: unknown): DraftPreset[] {
     const scoringFormat = settings.scoringFormat;
     const draftType = settings.draftType;
     if (
-      !PRESET_TEAM_COUNTS.includes(totalTeams as number) ||
-      !PRESET_ROUND_COUNTS.includes(rounds as number) ||
+      !DRAFT_TEAM_COUNTS.includes(totalTeams as number) ||
+      !DRAFT_ROUND_COUNTS.includes(rounds as number) ||
       !PRESET_SCORING.includes(scoringFormat as ScoringFormat) ||
       (draftType !== "snake" && draftType !== "linear")
     ) {
@@ -93,7 +94,7 @@ export function decodeDraftPresets(value: unknown): DraftPreset[] {
         userTeam: Number.isInteger(userTeam)
           ? Math.min(Math.max(1, userTeam as number), totalTeams as number)
           : 1,
-        timerSeconds: PRESET_TIMER_SECONDS.includes(settings.timerSeconds as number)
+        timerSeconds: DRAFT_TIMER_SECONDS.includes(settings.timerSeconds as number)
           ? (settings.timerSeconds as number)
           : 90,
         leagueName:

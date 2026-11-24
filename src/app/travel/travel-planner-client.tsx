@@ -48,6 +48,7 @@ import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types
 import "./travel.css";
 import { activityBudget, tripCalendar } from "@/lib/travelExtras";
 import { downloadFile } from "@/lib/downloadFile";
+import { formatDollars } from "@/lib/utils";
 
 const CATEGORY_ICON: Record<ActivityCategory, LucideIcon> = {
   transit: Train,
@@ -109,17 +110,8 @@ function emptyJournalDraft(date: string): JournalDraft {
   return { date, title: "", body: "", mood: "good" };
 }
 
-/** US dollars, whole when the value is whole and with both cents otherwise, so 1250.5 reads $1,250.50 and never $1,250.5. */
-function formatBudget(value: number) {
-  if (!value) return "$0";
-  const digits = value % 1 === 0 ? 0 : 2;
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: digits,
-    maximumFractionDigits: digits,
-  });
-}
+/** US dollars through the shared formatter, with a missing or negative-zero value read as $0. */
+const formatBudget = (value: number) => formatDollars(value || 0);
 
 /**
  * A null date in the new-trip draft means "today", which is only known once
@@ -435,6 +427,7 @@ export function TravelPlannerClient() {
           <span className="c97-kicker">Date</span>
           <input
             type="date"
+            required
             value={activityDraft.date}
             min={activeTrip?.startDate}
             max={activeTrip?.endDate}
@@ -848,10 +841,10 @@ export function TravelPlannerClient() {
                     <p className="tp-note">Journal is empty. Capture a moment with the Journal entry form.</p>
                   ) : (
                     <ul className="tp-postcards">
+                      {/* Reversed before the stable sort, so the latest entry of a day comes first. */}
                       {[...activeTrip.journal]
-                        .sort((left, right) =>
-                          left.date !== right.date ? right.date.localeCompare(left.date) : right.id.localeCompare(left.id)
-                        )
+                        .reverse()
+                        .sort((left, right) => right.date.localeCompare(left.date))
                         .map((entry) => (
                           <JournalPostcard
                             key={entry.id}

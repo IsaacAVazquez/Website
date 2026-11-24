@@ -38,7 +38,7 @@ const storedTools = [
   "the fantasy football rankings, draft trackers, mock draft, and trade calculator",
   "the fantasy Formula 1 lineup, prices, and race notebook",
   "Score Pools",
-  "the MBA internship tracker",
+  "the job search tracker",
   "the travel planner and the travel deal lab",
   "the wine cellar, the museum log, the recipe finder, and the food map",
   "the teams, players, races, launches, and companies you follow on the league pages, golf, Formula 1, the polling aggregator, SpaceX Mission Control, and the startup tracker",

@@ -159,7 +159,7 @@ const SEED: TechStartupSeedEntry[] = [
     id: "scale-ai",
     name: "Scale AI",
     description:
-      "Data engine for AI — labeling, evaluation, and model-readiness infrastructure for enterprises and governments.",
+      "Data engine for AI, with labeling, evaluation, and model-readiness infrastructure for enterprises and governments.",
     sector: { key: "sector-ai", label: "AI & ML" },
     stage: { key: "stage-late", label: "Late stage" },
     headquarters: "San Francisco, CA",
@@ -467,7 +467,7 @@ const SEED: TechStartupSeedEntry[] = [
     id: "rippling",
     name: "Rippling",
     description:
-      "Workforce platform unifying HR, IT, and finance — payroll, devices, and spend in one system of record.",
+      "Workforce platform unifying HR, IT, and finance, with payroll, devices, and spend in one system of record.",
     sector: { key: "sector-saas", label: "SaaS & Productivity" },
     stage: { key: "stage-late", label: "Late stage" },
     headquarters: "San Francisco, CA",

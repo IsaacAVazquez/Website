@@ -14,10 +14,6 @@ import type {
   SnapshotOddsEntry,
 } from "@/types/scorePools";
 
-export function getScorePoolsSnapshotData(): ScorePoolsSnapshot {
-  return scorePoolsSnapshot;
-}
-
 export function hasLiveScorePoolsData(
   snapshot: ScorePoolsSnapshot = scorePoolsSnapshot
 ): boolean {

@@ -1,25 +1,25 @@
-# SEO & Metadata — AI Context
+# SEO and metadata (AI context)
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Metadata Pattern
+## Metadata pattern
 
 Most pages use helpers from `src/lib/seo.ts`, especially:
 
 - `constructMetadata(...)`
 - breadcrumb helpers
 
-Dynamic routes use `generateMetadata(...)` where needed. `/about` calls `generateAIOptimizedMetadata(...)`, a compatibility wrapper that passes its fields through to `constructMetadata`.
+Dynamic routes use `generateMetadata(...)` where needed. `/about` calls `constructMetadata(...)` like the other pages. `generateAIOptimizedMetadata(...)`, a compatibility wrapper that passes its fields through to `constructMetadata`, is still exported from `src/lib/seo.ts`, and as of 2026-11-24 only its tests call it.
 
 A route folder with its own `opengraph-image.tsx` passes that card to `constructMetadata` as `image`, and every other page falls back to the root card at `/opengraph-image`.
 
 ---
 
-## Current Notable Metadata Surfaces
+## Current notable metadata surfaces
 
 ### Homepage
 
@@ -63,7 +63,7 @@ A route folder with its own `opengraph-image.tsx` passes that card to `construct
 
 ---
 
-## Structured Data Helpers
+## Structured data helpers
 
 Main components:
 
@@ -112,7 +112,7 @@ Notable routes to verify in generated sitemap output:
 
 ---
 
-## Search And Discoverability Caveat
+## Search and discoverability caveat
 
 Search-related docs should be explicit that:
 
@@ -123,7 +123,7 @@ Do not imply that the search API is the foundation of discoverability across the
 
 ---
 
-## Robots And Canonicals
+## Robots and canonicals
 
 - canonical routes prefer `/portfolio` over `/projects` and `/work`
 - canonical routes prefer `/writing` over `/blog`

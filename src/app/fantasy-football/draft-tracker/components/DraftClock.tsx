@@ -10,7 +10,6 @@ type DraftClockOptions = Parameters<typeof useDraftTimer>[0];
 const DraftClockContext = createContext<DraftClock>({
   secondsLeft: 0,
   isExpired: false,
-  isRunning: false,
 });
 
 /**

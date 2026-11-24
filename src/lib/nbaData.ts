@@ -23,8 +23,6 @@ const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/
 const ESPN_BYATHLETE_URL =
   "https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete?category=offensive&limit=500";
 const REQUEST_TIMEOUT_MS = 15_000;
-const SUMMARY_REVALIDATE_SECONDS = 300;
-const TEAM_REVALIDATE_SECONDS = 300;
 const RECENT_FIXTURE_LIMIT = 10;
 const UPCOMING_FIXTURE_LIMIT = 10;
 const TEAM_FIXTURE_LIMIT = 5;
@@ -318,11 +316,10 @@ function buildTeamFormSummary(teamIdValue: string, fixtures: NbaFixture[]): NbaF
   );
 }
 
-async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Promise<T> {
+async function fetchEspnJsonOnce<T>(url: string): Promise<T> {
   const response = await fetch(url, {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     headers: { Accept: "application/json" },
-    next: { revalidate: revalidateSeconds },
   });
   if (!response.ok) {
     if (response.status === 404) {
@@ -341,10 +338,10 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
  * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
-async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
+async function fetchEspnJson<T>(url: string): Promise<T> {
   return retryLinear(
     3,
-    () => fetchEspnJsonOnce<T>(url, revalidateSeconds),
+    () => fetchEspnJsonOnce<T>(url),
     (error) => !hasClientErrorStatus(error)
   ).catch((error) => {
     throw isTimeoutError(error) ? new HttpStatusError("NBA data provider timed out.", 504) : error;
@@ -609,8 +606,8 @@ async function fetchSeasonTables(seasonEndYear: number): Promise<NbaSeasonTables
   const leadersUrl = `${ESPN_BYATHLETE_URL}&season=${seasonEndYear}&seasontype=2`;
 
   const [standingsResponse, leadersResponse] = await Promise.all([
-    fetchEspnJson<EspnStandingsResponse>(standingsUrl, SUMMARY_REVALIDATE_SECONDS),
-    fetchEspnJson<EspnByAthleteResponse>(leadersUrl, SUMMARY_REVALIDATE_SECONDS),
+    fetchEspnJson<EspnStandingsResponse>(standingsUrl),
+    fetchEspnJson<EspnByAthleteResponse>(leadersUrl),
   ]);
 
   // ESPN's seed carries the league's tiebreakers and the play-in results. It
@@ -711,7 +708,7 @@ export async function getNbaSummary(): Promise<{
   const [season, scoreboardEvents, teamsResponse] = await Promise.all([
     fetchLatestSeasonTables(resolveNbaSeasonEndYear(today)),
     fetchScoreboardWindow(today),
-    fetchEspnJson<EspnTeamsResponse>(teamsUrl, SUMMARY_REVALIDATE_SECONDS),
+    fetchEspnJson<EspnTeamsResponse>(teamsUrl),
   ]);
   const { seasonEndYear, teamsByConference, scorers, rebounders, assistLeaders } = season;
 
@@ -789,8 +786,7 @@ async function fetchScoreboardWindow(today: Date): Promise<EspnEvent[]> {
     const responses = await Promise.all(
       days.slice(start, start + SCOREBOARD_CONCURRENCY).map((day) =>
         fetchEspnJson<EspnScoreboardResponse>(
-          `${ESPN_BASE_URL}/scoreboard?dates=${day}`,
-          SUMMARY_REVALIDATE_SECONDS
+          `${ESPN_BASE_URL}/scoreboard?dates=${day}`
         ).catch((error: Error) => {
           console.warn(`  Skipping scoreboard day ${day}: ${error.message}`);
           return {} as EspnScoreboardResponse;
@@ -818,8 +814,8 @@ export async function getNbaTeamSnapshot(
   const detailUrl = `${ESPN_BASE_URL}/teams/${encodeURIComponent(teamId)}`;
 
   const [scheduleResponse, detailResponse] = await Promise.all([
-    fetchEspnJson<EspnTeamScheduleResponse>(`${scheduleUrl}&seasontype=2`, TEAM_REVALIDATE_SECONDS),
-    fetchEspnJson<EspnTeamDetailResponse>(detailUrl, TEAM_REVALIDATE_SECONDS).catch(() => ({} as EspnTeamDetailResponse)),
+    fetchEspnJson<EspnTeamScheduleResponse>(`${scheduleUrl}&seasontype=2`),
+    fetchEspnJson<EspnTeamDetailResponse>(detailUrl).catch(() => ({} as EspnTeamDetailResponse)),
   ]);
 
   const profileTeam = detailResponse.team ?? scheduleResponse.team ?? null;
@@ -830,8 +826,7 @@ export async function getNbaTeamSnapshot(
   // The playoffs only need asking for once the regular season has no games left.
   if (fixtures.every((fixture) => fixture.status === "FINISHED")) {
     const postseason = await fetchEspnJson<EspnTeamScheduleResponse>(
-      `${scheduleUrl}&seasontype=3`,
-      TEAM_REVALIDATE_SECONDS
+      `${scheduleUrl}&seasontype=3`
     );
     for (const event of postseason.events ?? []) {
       const fixture = normalizeFixture(event);

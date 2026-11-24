@@ -1,14 +1,14 @@
-# Pages — AI Context
+# Pages (AI context)
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Live Route Inventory
+## Live route inventory
 
-| Route | File | Render Pattern |
+| Route | File | Render pattern |
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page -> `Catalog97Home` |
 | `/about` | `src/app/about/page.tsx` | Server page -> `Catalog97About` |
@@ -46,6 +46,7 @@ Fast route reference for the current app.
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
 | `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Server page -> `RentVsBuyClient` |
+| `/fintech-tools/offer-comparison` | `src/app/fintech-tools/offer-comparison/page.tsx` | Server page -> `OfferComparisonClient` |
 | `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` (full-time and internship job search tracker with Feed, Pipeline, and Candidates views) |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Server page for decision-modeling content |
 | `/food-map` | `src/app/food-map/page.tsx` | Server page for food map content |
@@ -81,7 +82,7 @@ There is no `/admin` route; it and NextAuth were removed on 2026-10-02.
 
 ---
 
-## Shared Layout Facts
+## Shared layout facts
 
 - `src/app/layout.tsx` renders fonts, providers, the skip link, and `ConditionalLayout`
 - `src/components/ConditionalLayout.tsx` has two branches
@@ -100,7 +101,7 @@ Footer behavior:
 
 ---
 
-## Route-Specific Notes
+## Route-specific notes
 
 ### `/portfolio`
 
@@ -177,7 +178,7 @@ Footer behavior:
 - `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.json`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces, and `/frontier-models` reads `getFrontierModelsSnapshot`, which serves the Netlify Blobs copy that `netlify/functions/refresh-frontier-models.ts` writes daily, for up to three days, and otherwise the committed `src/data/frontierModelsSnapshot.json`
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/travel-deals`, `/now`, and `/changelog` are live personal or utility surfaces
-- `/fintech-tools/budget-planner`, `/fintech-tools/interchange-iq`, and `/fintech-tools/rent-vs-buy` are live fintech tool routes, and `/fintech-tools` itself redirects to `/dashboards`
+- `/fintech-tools/budget-planner`, `/fintech-tools/interchange-iq`, `/fintech-tools/rent-vs-buy`, and `/fintech-tools/offer-comparison` are live fintech tool routes, and `/fintech-tools` itself redirects to `/dashboards`
 - `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls the Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards of the companies in `src/constants/mba-companies.ts` (companies marked `manual` are skipped and get a career page link instead) for full-time and internship tech PM and business roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev-mode file sync), with the route name kept for its inbound links
 
 ### `/search`
@@ -186,7 +187,7 @@ Footer behavior:
 
 ---
 
-## Redirect Rules
+## Redirect rules
 
 Canonical routes:
 

@@ -37,7 +37,6 @@ describe("LaLigaClient", () => {
 
   it("hydrates from the URL state and keeps focused views shareable", async () => {
     const user = userEvent.setup();
-    const defaultRelegationClub = getDefaultClubForView("relegation");
     // Pin a club that is actually visible in the europe view. A hardcoded id
     // ("bet") broke when a snapshot refresh moved that club out of European
     // contention: an explicit ?club= that the view cannot resolve falls back
@@ -81,17 +80,16 @@ describe("LaLigaClient", () => {
 
     await user.click(screen.getByRole("button", { name: /relegation fight/i }));
 
-    expect(mockPush).toHaveBeenCalledWith(
-      `/la-liga?view=relegation&club=${defaultRelegationClub}`,
-      {
-        scroll: false,
-      }
-    );
+    // The view selects its own first club, and a fresh load opens the drawer
+    // for any club the link names, so the link names none.
+    expect(mockPush).toHaveBeenCalledWith("/la-liga?view=relegation", { scroll: false });
   });
 
   it("opens the club drawer on an explicit selection and closes it on Escape", async () => {
     const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("club=bet");
+    // Any club but the leader, which the default view leaves out of the URL.
+    const clubId = laLigaSnapshot.clubs[8]!.id;
+    currentSearchParams = new URLSearchParams(`club=${clubId}`);
 
     render(
       <LaLigaClient
@@ -110,12 +108,10 @@ describe("LaLigaClient", () => {
           upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
           teams: laLigaSnapshot.teams,
         }}
-        initialTeamSnapshot={laLigaSnapshot.teamSnapshots.bet ?? null}
+        initialTeamSnapshot={laLigaSnapshot.teamSnapshots[clubId] ?? null}
       />
     );
 
-    const expectedClub = laLigaSnapshot.clubs.find((club) => club.id === "bet");
-    expect(expectedClub).toBeDefined();
     expect(screen.getByRole("dialog")).toBeInTheDocument();
 
     await user.keyboard("{Escape}");
@@ -201,6 +197,23 @@ describe("LaLigaClient", () => {
       expect(currentSearchParams.get("view")).toBeNull();
       expect(screen.getByRole("dialog", { name: `${leader.name} detail` })).toBeInTheDocument();
     });
+
+    it.each([/title chase/i, /relegation fight/i])(
+      "the %s filter pushes a link that opens no drawer on a fresh load",
+      async (name) => {
+        const user = userEvent.setup();
+        followPushes();
+        const view = render(ui());
+
+        await user.click(screen.getByRole("button", { name }));
+
+        expect(currentSearchParams.get("view")).not.toBeNull();
+        expect(currentSearchParams.get("club")).toBeNull();
+        view.unmount();
+        render(ui());
+        expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+      }
+    );
   });
 
   it("canonicalizes hidden club selections for a focused view", async () => {
@@ -233,12 +246,7 @@ describe("LaLigaClient", () => {
     );
 
     await waitFor(() =>
-      expect(mockReplace).toHaveBeenCalledWith(
-        `/la-liga?view=relegation&club=${defaultRelegationClub}`,
-        {
-          scroll: false,
-        }
-      )
+      expect(mockReplace).toHaveBeenCalledWith("/la-liga?view=relegation", { scroll: false })
     );
 
     // The Club detail tab that printed the selected club as a heading was cut

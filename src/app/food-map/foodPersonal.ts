@@ -1,5 +1,6 @@
 import { isRecord } from "@/lib/utils";
-import { isIsoDate, createActivity } from "@/lib/travelPlanner";
+import { createActivity } from "@/lib/travelPlanner";
+import { isLocalDateKey } from "@/lib/date-formatters";
 import type { Trip } from "@/types/travel";
 import {
   FOOD_MAP_PLACES,
@@ -57,7 +58,7 @@ export function addFoodToTrip(
 ): Trip {
   const city = getFoodMapCity(place.city).name;
   if (
-    !isIsoDate(date) ||
+    !isLocalDateKey(date) ||
     date < trip.startDate ||
     date > trip.endDate ||
     trip.activities.some(

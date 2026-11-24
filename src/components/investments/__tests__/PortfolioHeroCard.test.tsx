@@ -118,7 +118,11 @@ describe("PortfolioHeroCard chart", () => {
     const { container } = render(<PortfolioHeroCard {...baseProps} />);
     expect(pressed()).toEqual(["ALL"]);
     const tspans = Array.from(chart(container).querySelectorAll("tspan")).map((t) => t.textContent);
-    expect(tspans).toEqual(["A point is saved each day you visit,", "and the line draws once there are two."]);
+    expect(tspans).toEqual([
+      "A point is saved on a day you visit",
+      "with a current quote for every holding,",
+      "and the line draws once there are two.",
+    ]);
     expect(chart(container).querySelector("path")).toBeNull();
   });
 

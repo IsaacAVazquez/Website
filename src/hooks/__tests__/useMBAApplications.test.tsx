@@ -135,9 +135,34 @@ describe("useMBAApplications", () => {
     });
     expect(byUrl?.jobSnapshot.companyName).toBe("Ramp");
     expect(result.current.getApplicationForJob({ ...job, id: "other", applyUrl: "" })).toBeUndefined();
+  });
 
-    // Only feed-backed applications are indexed by job id.
-    expect([...result.current.applicationsByJobId.keys()]).toEqual([job.id]);
+  it("keeps a browser-sourced candidate's manual source when it is tracked", () => {
+    const { result } = renderHook(() => useMBAApplications());
+    const sourced = {
+      ...job,
+      id: "inbox-1",
+      atsType: "manual" as const,
+      applyUrl: "https://example.com/inbox",
+      capturedAt: "2026-10-06T09:00:00.000Z",
+      source: "manual" as const,
+    };
+
+    act(() => {
+      result.current.trackJob(sourced);
+      result.current.trackJob(job);
+    });
+
+    const sourceOf = (id: string) =>
+      result.current.applications.find((application) => application.jobId === id)?.jobSnapshot.source;
+    expect(sourceOf("inbox-1")).toBe("manual");
+    expect(sourceOf(job.id)).toBe("live-feed");
+
+    // Marking it applied refreshes the snapshot and keeps where it came from.
+    act(() => {
+      result.current.trackJob(sourced, "applied");
+    });
+    expect(sourceOf("inbox-1")).toBe("manual");
   });
 
   it("keeps an advanced status when the same job is saved again but refreshes its snapshot", () => {
@@ -310,20 +335,6 @@ describe("useMBAApplications", () => {
     expect(csvLines[1]).toContain("Stripe");
   });
 
-  it("searches active applications by any tracked text and accepts a custom source", () => {
-    const { result } = renderHook(() => useMBAApplications());
-    act(() => {
-      result.current.trackJob(job);
-      result.current.addManualApplication(manualDraft);
-    });
-
-    expect(result.current.searchApplications("   ")).toHaveLength(2);
-    expect(
-      result.current.searchApplications("REFERRAL").map((application) => application.jobSnapshot.companyName)
-    ).toEqual(["Ramp"]);
-    expect(result.current.searchApplications("stripe", [])).toEqual([]);
-  });
-
   it("reports no private sync outside development", () => {
     const { result } = renderHook(() => useMBAApplications());
     expect(result.current.privateSync).toBeNull();
@@ -395,6 +406,30 @@ describe("useMBAApplications private sync in development", () => {
     expect(body.revision).toBe("100");
     expect(body.items.map((item: { id: string }) => item.id).sort()).toEqual(
       [fileRecord.id, result.current.applications.find((a) => a.jobId === job.id)!.id].sort()
+    );
+  });
+
+  it("reports the route's own message when a push is refused", async () => {
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) =>
+      Promise.resolve(
+        init?.method === "PUT"
+          ? jsonResponse(503, { error: "The job search files are busy. Try again in a few seconds." })
+          : jsonResponse(200, { revision: "100", items: [fileRecord] })
+      )
+    ) as unknown as typeof fetch;
+    const { result } = renderHook(() => useMBAApplications());
+    await waitFor(() => expect(result.current.applications).toHaveLength(1));
+
+    act(() => {
+      result.current.trackJob(job);
+    });
+
+    await waitFor(
+      () =>
+        expect(result.current.privateSync?.error).toBe(
+          "Sync write failed (503). The job search files are busy. Try again in a few seconds."
+        ),
+      { timeout: 2_000 }
     );
   });
 
@@ -566,6 +601,57 @@ describe("useMBAJobCandidates in development", () => {
     await waitFor(() =>
       expect(result.current.candidates.map((item) => item.id).sort()).toEqual([kept.id, sourcedSince.id])
     );
+  });
+});
+
+describe("useMBAJobCandidates save failures in development", () => {
+  const originalFetch = global.fetch;
+  let restoreEnv: { restore: () => void };
+
+  beforeEach(() => {
+    restoreEnv = jest.replaceProperty(process.env, "NODE_ENV", "development");
+  });
+
+  afterEach(() => {
+    restoreEnv.restore();
+    global.fetch = originalFetch;
+  });
+
+  it("reports a refused save and clears the message once a save lands", async () => {
+    const item: MBAJobCandidate = {
+      id: "only",
+      job: { ...job, capturedAt: "2026-10-06T09:00:00.000Z", source: "live-feed" },
+      triage: "sourced",
+      fit: null,
+      sourcedAt: "2026-10-06T09:00:00.000Z",
+      updatedAt: "2026-10-06T09:00:00.000Z",
+    };
+    let busy = true;
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method !== "PUT") {
+        return Promise.resolve({ ok: true, status: 200, json: async () => ({ revision: "100", items: [item] }) });
+      }
+      if (busy) {
+        return Promise.resolve({ ok: false, status: 503, json: async () => ({ error: "The files are busy." }) });
+      }
+      const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+      return Promise.resolve({ ok: true, status: 200, json: async () => ({ revision: "200", items: sent.items }) });
+    }) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useMBAJobCandidates());
+    await waitFor(() => expect(result.current.candidates).toHaveLength(1));
+    expect(result.current.error).toBeNull();
+
+    act(() => {
+      result.current.setTriage(item.id, "dismissed");
+    });
+    await waitFor(() => expect(result.current.error).toBe("Sync write failed (503). The files are busy."));
+
+    busy = false;
+    act(() => {
+      result.current.setTriage(item.id, "dismissed");
+    });
+    await waitFor(() => expect(result.current.error).toBeNull());
   });
 });
 

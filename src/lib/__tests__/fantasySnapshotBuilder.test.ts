@@ -161,7 +161,8 @@ describe("fantasySnapshotBuilder", () => {
     expect(snapshot.sliceMetadata.qb.available).toBe(true);
     expect(snapshot.sliceMetadata.qb.rangeKind).toBe("position");
     expect(snapshot.sliceMetadata.qb.updatedAt).toMatch(/^20\d{2}-/);
-    expect(topQuarterback.name).toBe("Josh Allen");
+    // The committed board is refreshed daily, so no player name is pinned here.
+    expect(topQuarterback.name.length).toBeGreaterThan(0);
     expect(topQuarterback.positionRank).toBe(1);
     expect(Number(topQuarterback.minRank)).toBeGreaterThan(0);
     expect(Number(topQuarterback.maxRank)).toBeGreaterThanOrEqual(Number(topQuarterback.minRank));

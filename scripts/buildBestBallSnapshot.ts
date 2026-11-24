@@ -1,5 +1,6 @@
 import { mkdir, readFile } from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
 import {
   fetchBestBallAdpBoard,
   fetchBestBallRankingsBoard,
@@ -89,74 +90,38 @@ async function atomicWriteSnapshot(snapshot: BestBallSnapshot) {
   writeFileAtomic(OUTPUT_PATH, `${JSON.stringify(snapshot)}\n`);
 }
 
-async function main() {
-  const previous = await readPreviousSnapshot();
-  let rankings;
+type BestBallRankingsBoard = Awaited<ReturnType<typeof fetchBestBallRankingsBoard>>;
 
-  // fetchBestBallRankingsBoard rejects a board whose rank_ecr contradicts its
-  // own expert range at the top (the self-consistency gate), so that failure
-  // lands here with the network failures and keeps the committed snapshot.
-  try {
-    rankings = await fetchBestBallRankingsBoard();
-  } catch (error) {
-    if (previous) {
-      const fallback = getBestBallRefreshFallback(previous);
-      if (fallback.keep) {
-        console.warn(
-          fallback.reason === "season-open"
-            ? "Best ball rankings refresh failed. The season has opened and the best ball market is closed, so the committed snapshot stays frozen at its dated consensus."
-            : "Best ball rankings refresh failed. Keeping the recent committed snapshot.",
-          error
-        );
-        return;
-      }
-      throw new Error("Best ball rankings refresh failed and the committed snapshot is stale.", {
-        cause: error,
-      });
-    }
-    throw error;
-  }
-
-  if (isBestBallRefreshRedundant(previous, rankings)) {
-    console.log(
-      "The season has opened and the consensus has not moved since the committed snapshot, so the snapshot stays as it is."
-    );
-    return;
-  }
-
+/**
+ * Builds the snapshot from the fetch results. A null result is a fetch that
+ * failed, and that layer then carries over from the committed snapshot when it
+ * is the same season. The fresh ADP board is also dropped for the prior prices
+ * when it comes back thin. Throws when a layer has neither a usable fresh
+ * source nor a prior one.
+ */
+export function assembleBestBallSnapshot({
+  previous,
+  rankings,
+  superflexResult,
+  freshAdpResult,
+  scheduleResult,
+  byeWeeks,
+  now = new Date(),
+}: {
+  previous: BestBallSnapshot | null;
+  rankings: BestBallRankingsBoard;
+  superflexResult: BestBallRankingsBoard | null;
+  freshAdpResult: Awaited<ReturnType<typeof fetchBestBallAdpBoard>> | null;
+  scheduleResult: Awaited<ReturnType<typeof fetchBestBallScheduleBoard>> | null;
+  byeWeeks: Map<string, number>;
+  now?: Date;
+}): {
+  snapshot: BestBallSnapshot;
+  matchedCount: number;
+  superflexMatchedCount: number;
+  superflexTierMatchedCount: number;
+} {
   const sameSeasonPrevious = previous?.season === rankings.season ? previous : null;
-  const freshRankingIds = new Set(rankings.players.map((player) => player.id));
-  const previousTopRankingPlayers = (sameSeasonPrevious?.players ?? []).slice(
-    0,
-    BEST_BALL_RANKING_TOP_BOARD_SIZE
-  );
-  assertBestBallRankingCoverage({
-    players: rankings.players.length,
-    previousPlayers: sameSeasonPrevious?.players.length ?? 0,
-    previousTopPlayers: previousTopRankingPlayers.length,
-    retainedTopPlayers: previousTopRankingPlayers.filter((player) =>
-      freshRankingIds.has(player.id)
-    ).length,
-  });
-
-  const [superflexResult, freshAdpResult, scheduleResult, byeWeeks] = await Promise.all([
-    fetchBestBallSuperflexRankingsBoard().catch((error) => {
-      console.warn(
-        "Superflex rankings refresh failed. Keeping prior Superflex ranks when available.",
-        error
-      );
-      return null;
-    }),
-    fetchBestBallAdpBoard(rankings.season).catch((error) => {
-      console.warn("Best ball ADP refresh failed. Keeping prior ADP when available.", error);
-      return null;
-    }),
-    fetchBestBallScheduleBoard(rankings.season).catch((error) => {
-      console.warn("Best ball Week 17 schedule refresh failed. Keeping the prior schedule when available.", error);
-      return null;
-    }),
-    readByeWeeks(rankings.season),
-  ]);
 
   // Coverage is judged before the board is assembled. A thin ADP day drops back to
   // prior prices through the same path a failed fetch already takes, so a healthy
@@ -284,7 +249,7 @@ async function main() {
   const snapshot: BestBallSnapshot = {
     schemaVersion: BEST_BALL_SNAPSHOT_SCHEMA_VERSION,
     season: rankings.season,
-    generatedAt: new Date().toISOString(),
+    generatedAt: now.toISOString(),
     players,
     rankingSource: {
       provider: describeFantasyProsProvider(
@@ -319,7 +284,7 @@ async function main() {
       ? {
           provider: "ESPN NFL schedule",
           url: scheduleResult.sourceUrl,
-          asOf: new Date().toISOString(),
+          asOf: now.toISOString(),
           matchedCount: Object.keys(normalizedSchedule).length,
         }
       : sameSeasonPrevious?.scheduleSource ?? null,
@@ -346,13 +311,101 @@ async function main() {
     hasPreviousSource: Boolean(sameSeasonPrevious?.superflexSource),
   });
 
+  return { snapshot, matchedCount, superflexMatchedCount, superflexTierMatchedCount };
+}
+
+async function main() {
+  const previous = await readPreviousSnapshot();
+  let rankings;
+
+  // fetchBestBallRankingsBoard rejects a board whose rank_ecr contradicts its
+  // own expert range at the top (the self-consistency gate), so that failure
+  // lands here with the network failures and keeps the committed snapshot.
+  try {
+    rankings = await fetchBestBallRankingsBoard();
+  } catch (error) {
+    if (previous) {
+      const fallback = getBestBallRefreshFallback(previous);
+      if (fallback.keep) {
+        console.warn(
+          fallback.reason === "season-open"
+            ? "Best ball rankings refresh failed. The season has opened and the best ball market is closed, so the committed snapshot stays frozen at its dated consensus."
+            : "Best ball rankings refresh failed. Keeping the recent committed snapshot.",
+          error
+        );
+        return;
+      }
+      throw new Error("Best ball rankings refresh failed and the committed snapshot is stale.", {
+        cause: error,
+      });
+    }
+    throw error;
+  }
+
+  if (isBestBallRefreshRedundant(previous, rankings)) {
+    console.log(
+      "The season has opened and the consensus has not moved since the committed snapshot, so the snapshot stays as it is."
+    );
+    return;
+  }
+
+  const sameSeasonPrevious = previous?.season === rankings.season ? previous : null;
+  const freshRankingIds = new Set(rankings.players.map((player) => player.id));
+  const previousTopRankingPlayers = (sameSeasonPrevious?.players ?? []).slice(
+    0,
+    BEST_BALL_RANKING_TOP_BOARD_SIZE
+  );
+  assertBestBallRankingCoverage({
+    players: rankings.players.length,
+    previousPlayers: sameSeasonPrevious?.players.length ?? 0,
+    previousTopPlayers: previousTopRankingPlayers.length,
+    retainedTopPlayers: previousTopRankingPlayers.filter((player) =>
+      freshRankingIds.has(player.id)
+    ).length,
+  });
+
+  const [superflexResult, freshAdpResult, scheduleResult, byeWeeks] = await Promise.all([
+    fetchBestBallSuperflexRankingsBoard().catch((error) => {
+      console.warn(
+        "Superflex rankings refresh failed. Keeping prior Superflex ranks when available.",
+        error
+      );
+      return null;
+    }),
+    fetchBestBallAdpBoard(rankings.season).catch((error) => {
+      console.warn("Best ball ADP refresh failed. Keeping prior ADP when available.", error);
+      return null;
+    }),
+    fetchBestBallScheduleBoard(rankings.season).catch((error) => {
+      console.warn("Best ball Week 17 schedule refresh failed. Keeping the prior schedule when available.", error);
+      return null;
+    }),
+    readByeWeeks(rankings.season),
+  ]);
+
+  const { snapshot, matchedCount, superflexMatchedCount, superflexTierMatchedCount } =
+    assembleBestBallSnapshot({
+      previous,
+      rankings,
+      superflexResult,
+      freshAdpResult,
+      scheduleResult,
+      byeWeeks,
+    });
+
   await atomicWriteSnapshot(snapshot);
   console.log(
-    `Wrote best ball snapshot with ${players.length} rankings, ${superflexMatchedCount} Superflex rank matches, ${superflexTierMatchedCount} Superflex tier matches, ${matchedCount} current ADP matches, and ${Object.keys(normalizedSchedule).length} Week 17 team mappings.`
+    `Wrote best ball snapshot with ${snapshot.players.length} rankings, ${superflexMatchedCount} Superflex rank matches, ${superflexTierMatchedCount} Superflex tier matches, ${matchedCount} current ADP matches, and ${Object.keys(snapshot.week17Opponents).length} Week 17 team mappings.`
   );
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

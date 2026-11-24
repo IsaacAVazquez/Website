@@ -50,9 +50,11 @@ export function RetirementProjectionChart({ result }: Props) {
       const svg = select(node);
       svg.selectAll("*").remove();
 
-      const maxY = max(bands, (b) => b.p90) ?? 1;
-      const y = scaleLinear().domain([0, maxY * 1.05]).nice();
-      const yTicks = y.ticks(5);
+      // An all-zero projection would give a [0, 0] domain, which d3 maps to
+      // mid-plot. It gets a unit domain and the one $0 tick, on the baseline.
+      const maxY = max(bands, (b) => b.p90) || 0;
+      const y = scaleLinear().domain([0, maxY * 1.05 || 1]).nice();
+      const yTicks = maxY > 0 ? y.ticks(5) : [0];
 
       const firstAge = bands[0].age;
       const lastAge = bands[bands.length - 1].age;

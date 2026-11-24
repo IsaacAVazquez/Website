@@ -77,11 +77,7 @@ export function ResearchPosition({ position }: Props) {
   ];
 
   return (
-    <TerminalPanel
-      padding="sm"
-      ariaLabel="Your position"
-     
-    >
+    <TerminalPanel ariaLabel="Your position">
       <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
         <div>
           <p className="invest-rail-section-label">Your position</p>

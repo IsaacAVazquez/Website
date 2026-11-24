@@ -12,7 +12,7 @@
     "build:fantasy-companion": "vite build --config extension/vite.config.ts && node scripts/buildFantasyCompanionExtension.mjs",
     "postbuild": "npm run generate:sitemap && npm run build:llms && node scripts/patch-nft-sharp.mjs",
     "start": "next start",
-    "lint": "eslint src",
+    "lint": "eslint src scripts extension netlify e2e --ignore-pattern extension/dist",
     "typecheck": "tsc --noEmit --pretty false",
     "analyze": "ANALYZE=true npm run build",
     "build:analyze": "ANALYZE=true next build --webpack",

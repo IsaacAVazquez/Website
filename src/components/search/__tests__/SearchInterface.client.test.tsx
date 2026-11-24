@@ -35,7 +35,7 @@ describe("SearchInterfaceClient", () => {
     mockToString.mockReset();
   });
 
-  it("prefers live URL params over seeded server props", () => {
+  it("seeds the search from the live URL params", () => {
     mockToString.mockReturnValue(
       "q=fantasy&type=project&category=Fantasy%20Football%20Analytics"
     );
@@ -49,13 +49,7 @@ describe("SearchInterfaceClient", () => {
       return values[key] ?? null;
     });
 
-    render(
-      <SearchInterfaceClient
-        initialQuery="resume"
-        initialType="page"
-        initialCategory="Career Playbooks"
-      />
-    );
+    render(<SearchInterfaceClient />);
 
     expect(screen.getByTestId("search-interface")).toBeVisible();
     expect(mockRenderedSearchInterface).toHaveBeenCalledWith({
@@ -69,13 +63,7 @@ describe("SearchInterfaceClient", () => {
     mockToString.mockReturnValue("");
     mockGet.mockReturnValue(null);
 
-    render(
-      <SearchInterfaceClient
-        initialQuery="resume"
-        initialType="page"
-        initialCategory="Career Playbooks"
-      />
-    );
+    render(<SearchInterfaceClient />);
 
     expect(mockRenderedSearchInterface).toHaveBeenCalledWith({
       initialQuery: "",

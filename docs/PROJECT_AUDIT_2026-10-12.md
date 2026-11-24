@@ -127,3 +127,7 @@ The additional issues in this report remain open. This audit added this report a
 ## Status on October 14, 2026
 
 Nine of the ten verified issues above were fixed in PR #596, which merged on October 14, 2026. The same PR carried the uncommitted fixes this audit preserved, and it reworked the ledger's dates so the day and the time print on lines of their own. The tenth issue, comparing one payment channel at a time in Interchange IQ, needs a product decision, so it is open in `docs/TODO.md`, and that entry also covers the custom contract prices under other observations. The Enablement Assistant still labels its recommendation score as percent confidence. I did not recheck the delayed investment histories, which depend on the investments data refresh.
+
+## Status on October 22, 2026
+
+Both items the October 14 status left open closed on October 22, 2026, and their entries were removed from `docs/TODO.md` the same day. Interchange IQ now compares processors within one payment channel, through the `PaymentChannel` choice in `src/lib/interchangeIq.ts` (commit 0f0fccae3). The Enablement Assistant labels its recommendation score as a fit score out of 100 (commit b0f677b64). I still have not rechecked the delayed investment histories.
