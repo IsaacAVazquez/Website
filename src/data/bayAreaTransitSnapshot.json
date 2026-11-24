@@ -4,15 +4,15 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "11/23/2026 04:17:03 PM PST",
-      "generatedAt": "2026-11-24T00:17:17.614Z",
+      "feedTime": "11/24/2026 01:58:17 AM PST",
+      "generatedAt": "2026-11-24T10:20:57.124Z",
       "seed": false
     },
     "heroStats": {
       "lineCount": 6,
       "stationCount": 50,
       "activeAdvisories": 1,
-      "elevatorOutages": 3,
+      "elevatorOutages": 2,
       "trainsTracked": 593
     },
     "lines": [
@@ -51,7 +51,7 @@
         "routeId": "ROUTE 6",
         "name": "Daly City to Berryessa/North San Jose",
         "colorName": "Green",
-        "hexColor": "#339933",
+        "hexColor": "#FF9933",
         "origin": "DALY",
         "destination": "BERY",
         "stationCount": 22,
@@ -85,7 +85,7 @@
         "routeId": "ROUTE 19",
         "name": "Oakland Int'l Airport OAK to Coliseum",
         "colorName": "Grey",
-        "hexColor": "#B0BEC7",
+        "hexColor": "#FF9933",
         "origin": "OAKL",
         "destination": "OAKL",
         "stationCount": 2,
@@ -99,7 +99,7 @@
         "routeId": "ROUTE 3",
         "name": "Berryessa/North San Jose to Richmond",
         "colorName": "Orange",
-        "hexColor": "#FF9933",
+        "hexColor": "#FF0000",
         "origin": "BERY",
         "destination": "RICH",
         "stationCount": 21,
@@ -826,20 +826,20 @@
         "type": "DELAY",
         "description": "Expect 30-minute delays starting at 9pm each night on Sunday-Thursday for riders traveling between Millbrae, SFO, and Daly City stations due to planned train control modernization construction work.",
         "station": "BART",
-        "posted": "Mon Nov 23 2026 08:40 AM PST"
+        "posted": "Tue Nov 24 2026 12:06 AM PST"
       }
     ],
     "elevator": [
       {
         "id": "elevator-0",
-        "description": "There are 3 elevators out of service at this time: 19TH: Station; 24TH: Station; CAST: Station",
+        "description": "There are 2 elevators out of service at this time: CAST: Station; MLBR: Station - SF/East Bay/SFO Airport",
         "posted": ""
       }
     ],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
