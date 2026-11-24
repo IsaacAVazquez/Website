@@ -8,7 +8,7 @@ export const MARCH_MADNESS_UPDATED_AT = "2026-03-17";
 // The page's last change. The tournament results were added below on
 // 2026-09-28, the page took its own design on 2026-10-12, and Avg and Rk
 // were derived from the eight system columns on 2026-10-26.
-export const MARCH_MADNESS_MODIFIED_AT = "2026-10-26";
+export const MARCH_MADNESS_MODIFIED_AT = "2026-11-23";
 export const MARCH_MADNESS_UPDATED_LABEL = "Picks made March 17, 2026";
 export const MARCH_MADNESS_THESIS =
   "The edge in this bracket comes from time zones and seed errors on top of the chalk.";
@@ -299,7 +299,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
     r2: [
       { t1: "Michigan", t2: "Georgia", w: 1, tags: [] },
       { t1: "Alabama", t2: "Texas Tech", w: 1, tags: ["Toppin still out"] },
-      { t1: "Virginia", t2: "Tennessee", w: 1, tags: ["Virginia KP#9 blended"] },
+      { t1: "Virginia", t2: "Tennessee", w: 1, tags: ["Virginia underseeded +3"] },
       { t1: "Iowa St.", t2: "Kentucky", w: 1, tags: ["Iowa St. Trapezoid"] },
     ],
     s16: [
@@ -452,8 +452,8 @@ export const PICKS: PickEntry[] = [
     round: "R2",
     region: "Midwest",
     pick: "Virginia over Tennessee",
-    reason: "Virginia KP#9 blended · underseeded +3 on S-curve · should be a 2-seed",
-    body: "Virginia's blended multi-system rank is #9 overall, dramatically better than a 3-seed. The S-curve analysis has them underseeded by 3 positions (expected 9th, placed 12th). Their defensive efficiency is elite. Tennessee (22-11 record, KP#16 blended) is the weaker team here despite equivalent seeding. Virginia advances to the Sweet 16 where Iowa St. edges them.",
+    reason: "Virginia #11 blended · underseeded +3 on S-curve · should be a 2-seed",
+    body: "Virginia is 11th in the blended multi-system rankings, and the S-curve analysis has them underseeded by 3 positions (expected 9th, placed 12th). Their defensive efficiency is elite. Tennessee (22-11 record, KP#16 blended) is the weaker team here despite equivalent seeding. Virginia advances to the Sweet 16 where Iowa St. edges them.",
   },
   {
     group: "confirm",

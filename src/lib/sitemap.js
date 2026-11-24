@@ -55,7 +55,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/la-liga": latestIso(snapshotLastmod("src/data/laLigaSnapshot.json"), "2026-10-11"),
   "/nfl": latestIso(snapshotLastmod("src/data/nflSnapshot.json", "updatedAt"), "2026-10-12"),
   "/world-cup-2026": latestIso(snapshotLastmod("src/data/worldCupSnapshot.json"), "2026-10-12"),
-  "/march-madness-2026": "2026-10-12",
+  "/march-madness-2026": "2026-11-23",
   "/fantasy-football": latestIso(readFantasyLastmod(), "2026-10-13"),
   "/fantasy-football/best-ball": latestIso(readBestBallLastmod(), "2026-10-13"),
   "/fantasy-football/best-ball/draft-tracker": latestIso(readBestBallLastmod(), "2026-10-13"),

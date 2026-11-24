@@ -26,5 +26,7 @@ describe("PICKS copy", () => {
     expect(body("Arizona to the Final Four")).toContain("#3 in the blended");
     expect(rank("Illinois")).toBe(9);
     expect(body("Illinois over N. Carolina")).toContain("tied for 9th in the blended");
+    expect(rank("Virginia")).toBe(11);
+    expect(body("Virginia over Tennessee")).toContain("11th in the blended");
   });
 });
