@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-24T16:30:59.282Z",
-  "sourceAsOf": "2026-11-16",
+  "generatedAt": "2026-11-25T16:10:59.451Z",
+  "sourceAsOf": "2026-11-23",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
-    "approve": 36.4,
-    "disapprove": 60.5,
-    "net": -24.1
+    "approve": 36.1,
+    "disapprove": 61.1,
+    "net": -25
   },
   "approvalTrend": [
     {
@@ -60,11 +60,51 @@
     },
     {
       "date": "2026-11-15",
-      "approve": 36.4,
-      "disapprove": 60.5
+      "approve": 36.1,
+      "disapprove": 61.1
     }
   ],
   "approvalPolls": [
+    {
+      "id": "appdonyoue3cb5b62",
+      "pollster": "YouGov",
+      "sponsor": "The Economist",
+      "startDate": "2026-11-20",
+      "endDate": "2026-11-23",
+      "sampleSize": 1360,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 35,
+      "disapprove": 63,
+      "unsure": 2
+    },
+    {
+      "id": "appdonmor6b7cbfe9",
+      "pollster": "Morning Consult",
+      "startDate": "2026-11-20",
+      "endDate": "2026-11-22",
+      "sampleSize": 2201,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 40,
+      "disapprove": 57,
+      "unsure": 3
+    },
+    {
+      "id": "appdoname6dda3669",
+      "pollster": "American Research Group",
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-21",
+      "sampleSize": 1001,
+      "sampleType": "RV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 30,
+      "disapprove": 70,
+      "unsure": 0
+    },
     {
       "id": "appdonips45a4215e",
       "pollster": "Ipsos",
@@ -131,6 +171,20 @@
       "methodology": "unknown",
       "approve": 39,
       "disapprove": 58,
+      "unsure": 3
+    },
+    {
+      "id": "appdonyou2a1bbff1",
+      "pollster": "YouGov",
+      "sponsor": "Winthrop University Center for Public Opinion & Policy Research",
+      "startDate": "2026-11-11",
+      "endDate": "2026-11-16",
+      "sampleSize": 1500,
+      "sampleType": "A",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 34,
+      "disapprove": 63,
       "unsure": 3
     },
     {
@@ -241,6 +295,19 @@
       "approve": 39,
       "disapprove": 61,
       "unsure": 0
+    },
+    {
+      "id": "appdontav35690f1c",
+      "pollster": "Tavern Research",
+      "startDate": "2026-11-03",
+      "endDate": "2026-11-04",
+      "sampleSize": 3252,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "approve": 37,
+      "disapprove": 61,
+      "unsure": 2
     },
     {
       "id": "appdonj.l59671df7",
@@ -405,74 +472,6 @@
       "approve": 46,
       "disapprove": 50,
       "unsure": 4
-    },
-    {
-      "id": "appdonyoub2fe3e15",
-      "pollster": "YouGov",
-      "sponsor": "The Economist",
-      "startDate": "2026-06-19",
-      "endDate": "2026-06-22",
-      "sampleSize": 1517,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 39,
-      "disapprove": 58,
-      "unsure": 3
-    },
-    {
-      "id": "appdonips8b682645",
-      "pollster": "Ipsos",
-      "sponsor": "Reuters",
-      "startDate": "2026-06-18",
-      "endDate": "2026-06-22",
-      "sampleSize": 978,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 34,
-      "disapprove": 64,
-      "unsure": 2
-    },
-    {
-      "id": "appdonech4ae9eee2",
-      "pollster": "Echelon Insights",
-      "startDate": "2026-06-18",
-      "endDate": "2026-06-22",
-      "sampleSize": 1003,
-      "sampleType": "LV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 41,
-      "disapprove": 58,
-      "unsure": 1
-    },
-    {
-      "id": "appdonvera0a8d3f8",
-      "pollster": "Verasight",
-      "sponsor": "Strength in Numbers",
-      "startDate": "2026-06-17",
-      "endDate": "2026-06-22",
-      "sampleSize": 2087,
-      "sampleType": "A",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 37,
-      "disapprove": 60,
-      "unsure": 3
-    },
-    {
-      "id": "appdonmord01ba943",
-      "pollster": "Morning Consult",
-      "startDate": "2026-06-19",
-      "endDate": "2026-06-22",
-      "sampleSize": 2200,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "approve": 43.1,
-      "disapprove": 54.3,
-      "unsure": 2.6
     }
   ],
   "genericBallotAvg": {
