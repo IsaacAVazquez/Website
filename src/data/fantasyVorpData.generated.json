@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-25T01:27:30.177Z",
+  "generatedAt": "2026-11-24T03:22:15.456Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:30.782Z",
+        "accessedAt": "2026-11-24T03:22:16.420Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3286,7 +3286,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 365,
@@ -4555,7 +4555,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 506,
@@ -5356,7 +5356,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-25T01:27:31.540Z",
+        "accessedAt": "2026-11-24T03:22:16.931Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8873,7 +8873,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 390,
@@ -9620,7 +9620,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 473,
@@ -10718,7 +10718,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:32.440Z",
+        "accessedAt": "2026-11-24T03:22:17.772Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14271,7 +14271,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 394,
@@ -15180,7 +15180,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 495,
@@ -16080,7 +16080,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:33.338Z",
+        "accessedAt": "2026-11-24T03:22:18.797Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19761,7 +19761,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 408,
@@ -20841,7 +20841,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 528,
@@ -21444,7 +21444,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-25T01:27:34.003Z",
+        "accessedAt": "2026-11-24T03:22:19.696Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24799,7 +24799,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 372,
@@ -25762,7 +25762,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 479,
@@ -26806,7 +26806,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:34.870Z",
+        "accessedAt": "2026-11-24T03:22:20.350Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30350,7 +30350,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 393,
@@ -31259,7 +31259,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 494,
@@ -32168,7 +32168,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:35.536Z",
+        "accessedAt": "2026-11-24T03:22:21.166Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35588,7 +35588,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 379,
@@ -36821,7 +36821,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 516,
@@ -37532,7 +37532,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-25T01:27:36.293Z",
+        "accessedAt": "2026-11-24T03:22:22.186Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41076,7 +41076,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 393,
@@ -42183,7 +42183,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 516,
@@ -42894,7 +42894,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:36.845Z",
+        "accessedAt": "2026-11-24T03:22:23.092Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46375,7 +46375,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 386,
@@ -47248,7 +47248,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 483,
@@ -48256,7 +48256,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
