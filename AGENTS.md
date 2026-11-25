@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-11-24
+**Last updated:** 2026-11-25
 
 ---
 
@@ -453,7 +453,7 @@ Checked-in operational workflows:
 
 Current behavior:
 
-- `test.yml` runs the writing date review (`npm run check:blog-dates`) and unit tests, the TypeScript check and build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`, and a failure there opens or updates an `e2e-matrix-failure` issue
+- `test.yml` runs the writing date review (`npm run check:blog-dates`) and unit tests, the TypeScript check and build, sharded Chromium Playwright E2E, the Python tests for the investments fetch, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`, on Firefox, WebKit, and the two mobile projects, since the shards already ran desktop Chromium on that commit, and a failure there opens or updates an `e2e-matrix-failure` issue
 - `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request, and its concurrency group sets `queue: max` so a burst of merges waits in line and none is cancelled; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
 - `update-investments.yml` runs on manual dispatch and Tuesday through Saturday at `08:30 UTC`, after the provider's dataset for the prior trading day lands (05:53 UTC on 2026-09-28), then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed. The run fails when fewer than 95% of symbols carry a recent price
 - `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July). They share one concurrency group, since both spend the same football-data.org request budget

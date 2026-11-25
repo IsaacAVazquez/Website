@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-11-24
+**Last updated:** 2026-11-25
 
 ---
 
@@ -476,7 +476,7 @@ Subsystem references:
 - `docs/TODO.md` — open items that need Isaac (secrets, dashboards, decisions) or a scheduled run; add blocked work here and delete an item when it is done
 
 **Legacy / historical** (do not quote as current without checking code): the files
-`docs/README.md` lists under "Historical Or Reference Docs". `SEO.md` is the current SEO
+`docs/README.md` lists under "Historical or reference docs". `SEO.md` is the current SEO
 reference. The older root-level SEO, UX, and performance summaries were all gone by
 2026-08-22, the `docs/archive/*` and `content-redesign/*` trees were deleted on 2026-08-11,
 and the historical snapshots under `content/` on 2026-10-02. Git history keeps all of them.

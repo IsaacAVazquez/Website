@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-11-24
+**Last updated:** 2026-11-25
 
 ---
 
@@ -49,7 +49,7 @@ The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since
 - The curated UI reads from `public/data/investments`
 - Rebuild snapshots with `npm run update:investments`, which needs the Python 3.12 `.venv` described in `DEVELOPMENT.md`
 - Curated snapshot data is served directly from static files under `public/data/investments/{SYMBOL}/snapshot.json`, and the index is the static file `public/data/investments/index.json`. The `/api/investments/index` route was deleted on 2026-08-11 and `/api/investments/data/[symbol]` on 2026-10-02, so mentions of either are historical
-- Each scheduled run of `update-investments.yml` (Tuesday through Saturday at 08:30 UTC) fully fetches only the symbols its time budget reaches, so some symbols carry older sections beside a current price. The run still commits, but it fails and opens an issue labeled `investments-refresh-failure` once any symbol is more than 21 days past its last full fetch
+- Each scheduled run of `update-investments.yml` (Tuesday through Saturday, on a cron of 08:30 UTC, which is the earliest a run can start, and GitHub started the eight scheduled runs from 2026-11-13 to 2026-11-24 between 15:15 and 19:38 UTC) fully fetches only the symbols its time budget reaches, so some symbols carry older sections beside a current price. The run still commits, but it fails and opens an issue labeled `investments-refresh-failure` once any symbol is more than 21 days past its last full fetch
 
 ### Search results look incomplete
 

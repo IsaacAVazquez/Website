@@ -128,9 +128,10 @@ describe("SEO page sitemap freshness", () => {
   // résumé once more, and on 2026-10-01 home, about, and contact named the
   // product roles he is looking for, and on 2026-10-19 about, contact, and
   // the résumé were each set as one object (the proof, the reply card, and
-  // the sheet on the press bed) with new copy on all three.
+  // the sheet on the press bed) with new copy on all three. Home's copy last
+  // changed on 2026-10-21, the date of the last commit to Catalog97Home.tsx.
   it.each([
-    ["/", "2026-10-01T00:00:00.000Z"],
+    ["/", "2026-10-21T00:00:00.000Z"],
     ["/about", "2026-10-19T00:00:00.000Z"],
     ["/contact", "2026-10-19T00:00:00.000Z"],
     ["/resume", "2026-10-19T00:00:00.000Z"],
@@ -155,10 +156,10 @@ describe("SEO page sitemap freshness", () => {
     );
   });
 
-  // The accessibility statement's claims were last reviewed on 2026-10-02,
-  // when its contrast figures were corrected.
+  // The accessibility statement's contrast figures were corrected on
+  // 2026-10-02 and its copy last changed on 2026-10-26.
   it.each([
-    ["/accessibility", "2026-10-02T00:00:00.000Z"],
+    ["/accessibility", "2026-10-26T00:00:00.000Z"],
     ["/arcade", "2026-07-16T00:00:00.000Z"],
   ])("keeps the latest content date for %s", (pathname, lastmod) => {
     const entry = getPublicSitemapEntries().find(
@@ -174,7 +175,7 @@ describe("SEO page sitemap freshness", () => {
     );
 
     expect(entry).toMatchObject({
-      lastmod: "2026-10-05T00:00:00.000Z",
+      lastmod: "2026-10-26T00:00:00.000Z",
       changefreq: "weekly",
       priority: 0.8,
     });

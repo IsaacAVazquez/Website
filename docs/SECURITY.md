@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-11-24
+**Last updated:** 2026-11-25
 
 ---
 
@@ -33,7 +33,6 @@ Active secrets used by the running app and update scripts:
 | `RESEND_CONTACTS_API_KEY` | Contact-management key that `/api/newsletter/subscribe` reads first when it creates a newsletter contact. |
 | `RESEND_API_KEY` | Fallback key for contact creation on the public newsletter signup when `RESEND_CONTACTS_API_KEY` is unset. |
 | `NETLIFY_AUTH_TOKEN` | GitHub Actions secret that `publish-data.yml` uses to build and deploy production and to check the published deploy. |
-| `NETLIFY_BUILD_HOOK` | Optional GitHub Actions secret that `update-article-images.yml` posts to after it commits new covers. |
 | `PRODUCTION_DATA_REVISION_URL` | Optional GitHub Actions secret that replaces the default ledger URL `publish-data.yml` polls after a deploy. Its value is a URL. |
 | `BART_API_KEY` | Optional BART key read by `src/lib/bayAreaTransitData.ts` and the transit refresh. Without it the code uses BART's published demo key. |
 | `SPACEDEVS_API_TOKEN` | Optional Launch Library 2 token for `src/lib/spacexData.ts` and the SpaceX snapshot builders. |

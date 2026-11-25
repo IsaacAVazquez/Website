@@ -52,7 +52,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 
 - [Frontier Model Tracker](https://isaacvazquez.com/frontier-models): Curated model comparison for context windows, pricing, modalities, reasoning support, and product-selection tradeoffs.
 - [AI Dev Tools](https://isaacvazquez.com/ai-dev-tools): Directory of AI coding and agent tools with pricing, model support, source links, and market context.
-- [Agent Build Index](https://isaacvazquez.com/agent-build-index): Weekly ranking of public AI agent repositories by measured GitHub star movement, with source, freshness, and baseline disclosures.
+- [Agent Build Index](https://isaacvazquez.com/agent-build-index): Daily read of public AI agent repositories ranked by seven-day GitHub star movement, with source, freshness, and baseline disclosures.
 - [GitHub Trending Pulse](https://isaacvazquez.com/github-trending-pulse): Daily snapshot of active public GitHub repositories by language and topic, including weekly star movement.
 - [Decision Lab](https://isaacvazquez.com/decision-lab): Product-bet triage tool that scores impact, confidence, effort, and reversibility before recommending ship, test, or hold.
 - [Automation Enablement Assistant](https://isaacvazquez.com/enablement-assistant): Recommends a standard test stack, builds an onboarding plan, answers setup questions, and tracks documentation gaps.
