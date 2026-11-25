@@ -1,8 +1,8 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 24.8,
-      "pegRatio": 0.6,
-      "marketCap": 128926323768,
-      "psRatio": 3.43,
-      "pbRatio": 2.57
+      "ttmPe": 24.6,
+      "pegRatio": 0.59,
+      "marketCap": 127927887186,
+      "psRatio": 3.41,
+      "pbRatio": 2.55
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,15 +5946,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.720000000000001,
-      "costOfEquity": 9.28,
+      "wacc": 7.37,
+      "costOfEquity": 8.870000000000001,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5394,
-      "marketCap": 128926323768
+      "beta": 0.4968,
+      "marketCap": 127927887186
     },
     "beta": {
-      "beta5y": 0.5394
+      "beta5y": 0.4968
     },
     "price": [
       {
@@ -7976,19 +7976,19 @@
     ],
     "news": [
       {
-        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
-        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
         "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
+        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
         "type": "STORY"
       },
       {
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
-        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
         "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
+        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
         "type": "STORY"
       }
     ],
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.8,
-        "industryAvg": 26.1
+        "value": 24.6,
+        "industryAvg": 25
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.43,
-        "industryAvg": 3.27
+        "value": 3.41,
+        "industryAvg": 3.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.57,
-        "industryAvg": 3.17
+        "value": 2.55,
+        "industryAvg": 3.09
       },
       {
         "metric": "ROE",

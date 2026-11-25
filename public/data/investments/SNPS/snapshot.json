@@ -1,8 +1,8 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 76.67,
-      "marketCap": 83158486050,
-      "psRatio": 8.83,
-      "pbRatio": 2.67,
-      "pegRatio": 0.86
+      "ttmPe": 69.99,
+      "marketCap": 75908152850,
+      "psRatio": 8.06,
+      "pbRatio": 2.44,
+      "pegRatio": 0.78
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,15 +6282,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.85,
-      "costOfEquity": 14.399999999999999,
+      "wacc": 12.920000000000002,
+      "costOfEquity": 14.63,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1967,
-      "marketCap": 83158486050
+      "beta": 1.2216,
+      "marketCap": 75908152850
     },
     "beta": {
-      "beta5y": 1.1967
+      "beta5y": 1.2216
     },
     "price": [
       {
@@ -8336,27 +8336,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
         "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
         "type": "STORY"
       },
       {
@@ -8368,11 +8352,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
-        "title": "US Tightens China Chip Curbs by Targeting Design Software",
-        "publisher": "Bloomberg",
+        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8376,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
-        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
-        "publisher": "Investing.com",
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
         "type": "STORY"
       }
     ],
@@ -8453,43 +8453,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 76.67,
-        "industryAvg": 30.1
+        "value": 69.99,
+        "industryAvg": 28.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.83,
-        "industryAvg": 7.02
+        "value": 8.06,
+        "industryAvg": 6.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.67,
-        "industryAvg": 7.68
+        "value": 2.44,
+        "industryAvg": 7.1
       },
       {
         "metric": "ROE",
         "value": 1.77,
-        "industryAvg": 25.740000000000002
+        "industryAvg": 25.790000000000003
       },
       {
         "metric": "ROA",
         "value": 1.15,
-        "industryAvg": 10.11
+        "industryAvg": 10.13
       },
       {
         "metric": "Gross Margin",
         "value": 72.57000000000001,
-        "industryAvg": 51.04
+        "industryAvg": 51.55
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.69
+        "industryAvg": 37.059999999999995
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 20.26
+        "industryAvg": 20.5
       }
     ]
   }

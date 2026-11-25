@@ -1,8 +1,8 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.1909,
-      "ttmPe": 21.02,
-      "marketCap": 92841699000,
-      "psRatio": 1.02,
-      "pbRatio": 6.19,
+      "ttmPe": 20.46,
+      "marketCap": 90382598000,
+      "psRatio": 0.99,
+      "pbRatio": 6.03,
       "pegRatio": 3.46
     },
     "profitability": {
@@ -5612,15 +5612,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.31,
-      "costOfEquity": 12.120000000000001,
+      "wacc": 9.11,
+      "costOfEquity": 11.93,
       "costOfDebt": 0.95,
       "taxRate": 26,
-      "beta": 0.9038,
-      "marketCap": 92841699000
+      "beta": 0.8816,
+      "marketCap": 90382598000
     },
     "beta": {
-      "beta5y": 0.9038
+      "beta5y": 0.8816
     },
     "price": [
       {
@@ -7706,19 +7706,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0fba0a98-39a0-3601-a7ee-58e518cda02b",
-        "title": "Argus Cuts Price Target on United Parcel Service to $120 From $150",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/argus-cuts-price-target-united-183911996.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
         "title": "Freight industry layoffs surge across California, Texas",
         "publisher": "FreightWaves",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0fba0a98-39a0-3601-a7ee-58e518cda02b",
+        "title": "Argus Cuts Price Target on United Parcel Service to $120 From $150",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/argus-cuts-price-target-united-183911996.html",
         "type": "STORY"
       }
     ],
@@ -7786,28 +7786,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.02,
-        "industryAvg": 21.39
+        "value": 20.46,
+        "industryAvg": 15.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.02,
-        "industryAvg": 0.98
+        "value": 0.99,
+        "industryAvg": 0.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.19,
-        "industryAvg": 3.92
+        "value": 6.03,
+        "industryAvg": 2.66
       },
       {
         "metric": "ROE",
         "value": 7.739999999999999,
-        "industryAvg": 17.45
+        "industryAvg": 17.43
       },
       {
         "metric": "ROA",
         "value": 1.6199999999999999,
-        "industryAvg": 3.08
+        "industryAvg": 3.09
       },
       {
         "metric": "Gross Margin",
@@ -7817,7 +7817,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 12.36,
-        "industryAvg": 11.91
+        "industryAvg": 11.92
       },
       {
         "metric": "Net Margin",

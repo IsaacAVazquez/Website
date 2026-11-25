@@ -1,8 +1,8 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.3386,
-      "ttmPe": 22.37,
-      "marketCap": 124260664376,
-      "psRatio": 6.02,
-      "pbRatio": -55.85,
+      "ttmPe": 22.43,
+      "marketCap": 124576806934,
+      "psRatio": 6.04,
+      "pbRatio": -55.99,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6205,15 +6205,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.5600000000000005,
-      "costOfEquity": 8.86,
+      "wacc": 7.46,
+      "costOfEquity": 8.74,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.4878,
-      "marketCap": 124260664376
+      "beta": 0.4802,
+      "marketCap": 124576806934
     },
     "beta": {
-      "beta5y": 0.4878
+      "beta5y": 0.4802
     },
     "price": [
       {
@@ -8267,14 +8267,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "26ea5d2b-0f7b-3ec4-be91-7e85c1402902",
-        "title": "Investors Heavily Search Altria Group, Inc. (MO): Here is What You Need to Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/investors-heavily-search-altria-group-130013726.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf267d57-4c87-39da-b572-2a5b56eb8e55",
         "title": "Why Altria (MO) is a Top Growth Stock for the Long-Term",
         "publisher": "Zacks",
@@ -8283,11 +8275,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
-        "title": "Needham Initiates Altria Group at Hold",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
+        "uuid": "26ea5d2b-0f7b-3ec4-be91-7e85c1402902",
+        "title": "Investors Heavily Search Altria Group, Inc. (MO): Here is What You Need to Know",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/investors-heavily-search-altria-group-130013726.html",
         "type": "STORY"
       },
       {
@@ -8296,6 +8288,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
+        "title": "Needham Initiates Altria Group at Hold",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
         "type": "STORY"
       },
       {
@@ -8380,28 +8380,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.37,
-        "industryAvg": 22.06
+        "value": 22.43,
+        "industryAvg": 21.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.02,
-        "industryAvg": 6.04
+        "value": 6.04,
+        "industryAvg": 5.91
       },
       {
         "metric": "P/B Ratio",
-        "value": -55.85,
-        "industryAvg": 1.9
+        "value": -55.99,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",
         "value": -102.67999999999999,
-        "industryAvg": -251.77
+        "industryAvg": -251.08
       },
       {
         "metric": "ROA",
         "value": 7.3999999999999995,
-        "industryAvg": 16.84
+        "industryAvg": 16.830000000000002
       },
       {
         "metric": "Gross Margin",
@@ -8416,7 +8416,7 @@
       {
         "metric": "Net Margin",
         "value": 46.17,
-        "industryAvg": 26.68
+        "industryAvg": 26.669999999999998
       }
     ]
   }

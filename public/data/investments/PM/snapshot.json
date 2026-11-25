@@ -1,8 +1,8 @@
 {
   "symbol": "PM",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.8496,
-      "ttmPe": 27.22,
-      "marketCap": 290570338647,
-      "psRatio": 6.74,
-      "pbRatio": -36.61,
+      "ttmPe": 26.88,
+      "marketCap": 286923207861,
+      "psRatio": 6.65,
+      "pbRatio": -36.15,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -6010,15 +6010,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.12,
-      "costOfEquity": 8.23,
+      "wacc": 7.21,
+      "costOfEquity": 8.35,
       "costOfDebt": 0.42,
       "taxRate": 22,
-      "beta": 0.4078,
-      "marketCap": 290570338647
+      "beta": 0.4319,
+      "marketCap": 286923207861
     },
     "beta": {
-      "beta5y": 0.4078
+      "beta5y": 0.4319
     },
     "price": [
       {
@@ -8184,28 +8184,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.22,
-        "industryAvg": 22.06
+        "value": 26.88,
+        "industryAvg": 21.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.74,
-        "industryAvg": 6.04
+        "value": 6.65,
+        "industryAvg": 5.91
       },
       {
         "metric": "P/B Ratio",
-        "value": -36.61,
-        "industryAvg": 1.9
+        "value": -36.15,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",
         "value": -40.01,
-        "industryAvg": -251.77
+        "industryAvg": -251.08
       },
       {
         "metric": "ROA",
         "value": 4.9,
-        "industryAvg": 16.84
+        "industryAvg": 16.830000000000002
       },
       {
         "metric": "Gross Margin",
@@ -8220,7 +8220,7 @@
       {
         "metric": "Net Margin",
         "value": 28.89,
-        "industryAvg": 26.68
+        "industryAvg": 26.669999999999998
       }
     ]
   }

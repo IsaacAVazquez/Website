@@ -1,8 +1,8 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.007,
-      "ttmPe": 20.42,
-      "marketCap": 93975337848,
-      "psRatio": 1.66,
-      "pbRatio": 3.44,
-      "pegRatio": 1.31
+      "ttmPe": 20.08,
+      "marketCap": 92395283800,
+      "psRatio": 1.63,
+      "pbRatio": 3.39,
+      "pegRatio": 1.29
     },
     "profitability": {
       "roe": 4.54,
@@ -5311,15 +5311,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.97,
-      "costOfEquity": 7.6,
+      "wacc": 7.02,
+      "costOfEquity": 7.670000000000001,
       "costOfDebt": 0.5,
       "taxRate": 17,
-      "beta": 0.3267,
-      "marketCap": 93975337848
+      "beta": 0.3459,
+      "marketCap": 92395283800
     },
     "beta": {
-      "beta5y": 0.3267
+      "beta5y": 0.3459
     },
     "price": [
       {
@@ -7413,11 +7413,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
-        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
-        "publisher": "Zacks",
+        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
+        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
+        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
         "type": "STORY"
       }
     ],
@@ -7489,23 +7489,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.42,
-        "industryAvg": 30.39
+        "value": 20.08,
+        "industryAvg": 30.65
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.66,
-        "industryAvg": 2.69
+        "value": 1.63,
+        "industryAvg": 5.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.44,
-        "industryAvg": 5.65
+        "value": 3.39,
+        "industryAvg": 6.74
       },
       {
         "metric": "ROE",
         "value": 4.54,
-        "industryAvg": 12.25
+        "industryAvg": 12.24
       },
       {
         "metric": "ROA",

@@ -1,8 +1,8 @@
 {
   "symbol": "ELV",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.4569,
-      "ttmPe": 17.09,
-      "pegRatio": 0.95,
-      "marketCap": 86627095676,
-      "psRatio": 0.43,
-      "pbRatio": 1.94
+      "ttmPe": 16.82,
+      "pegRatio": 0.93,
+      "marketCap": 85252611272,
+      "psRatio": 0.42,
+      "pbRatio": 1.91
     },
     "profitability": {
       "roe": 3.05,
@@ -5210,15 +5210,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.59,
-      "costOfEquity": 9.969999999999999,
+      "wacc": 7.489999999999999,
+      "costOfEquity": 9.879999999999999,
       "costOfDebt": 1.16,
       "taxRate": 25,
-      "beta": 0.6283,
-      "marketCap": 86627095676
+      "beta": 0.6238,
+      "marketCap": 85252611272
     },
     "beta": {
-      "beta5y": 0.6283
+      "beta5y": 0.6238
     },
     "price": [
       {
@@ -7248,20 +7248,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
-        "title": "3 things we've learned from healthcare earnings",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
         "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
+        "title": "3 things we've learned from healthcare earnings",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "695e3470-e670-3ba0-83e2-e8388efd09b2",
@@ -7384,18 +7384,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.09,
-        "industryAvg": 16.22
+        "value": 16.82,
+        "industryAvg": 15.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.43,
-        "industryAvg": 0.39
+        "value": 0.42,
+        "industryAvg": 0.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.94,
-        "industryAvg": 2.18
+        "value": 1.91,
+        "industryAvg": 2.13
       },
       {
         "metric": "ROE",

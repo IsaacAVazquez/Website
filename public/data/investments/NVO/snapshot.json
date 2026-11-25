@@ -1,8 +1,8 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.9699,
-      "ttmPe": 9.93,
+      "ttmPe": 9.53,
       "pegRatio": 0.13,
-      "marketCap": 131927989255,
-      "psRatio": 2.61,
-      "pbRatio": 4
+      "marketCap": 126541124870,
+      "psRatio": 2.5,
+      "pbRatio": 3.83
     },
     "profitability": {
       "roe": 7.630000000000001,
@@ -6359,15 +6359,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.27,
-      "costOfEquity": 10.56,
+      "wacc": 9.15,
+      "costOfEquity": 10.48,
       "costOfDebt": 1.17,
       "taxRate": 22,
-      "beta": 0.7034,
-      "marketCap": 131927989255
+      "beta": 0.6993,
+      "marketCap": 126541124870
     },
     "beta": {
-      "beta5y": 0.7034
+      "beta5y": 0.6993
     },
     "price": [
       {
@@ -8413,14 +8413,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
-        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
         "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
         "publisher": "MT Newswires",
@@ -8429,11 +8421,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
-        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
+        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
+        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
         "type": "STORY"
       },
       {
@@ -8442,6 +8434,14 @@
         "publisher": "Pharmaceutical Technology",
         "reportDate": "2025-03-29",
         "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
+        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
         "type": "STORY"
       },
       {
@@ -8536,18 +8536,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.93,
-        "industryAvg": 29.64
+        "value": 9.53,
+        "industryAvg": 29.01
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.61,
-        "industryAvg": 5.04
+        "value": 2.5,
+        "industryAvg": 4.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 4,
-        "industryAvg": 6.2
+        "value": 3.83,
+        "industryAvg": 6.06
       },
       {
         "metric": "ROE",

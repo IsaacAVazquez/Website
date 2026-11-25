@@ -1,8 +1,8 @@
 {
   "symbol": "HCA",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 30.1817,
-      "ttmPe": 15.78,
-      "pegRatio": 3.51,
-      "marketCap": 103826817955,
+      "ttmPe": 15.76,
+      "pegRatio": 3.5,
+      "marketCap": 103656806581,
       "psRatio": 1.32,
-      "pbRatio": -12.85
+      "pbRatio": -12.83
     },
     "profitability": {
       "roe": -21.46,
@@ -5109,15 +5109,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.229999999999999,
-      "costOfEquity": 13.44,
+      "wacc": 8.94,
+      "costOfEquity": 13,
       "costOfDebt": 1.16,
       "taxRate": 22,
-      "beta": 1.073,
-      "marketCap": 103826817955
+      "beta": 1.0168,
+      "marketCap": 103656806581
     },
     "beta": {
-      "beta5y": 1.073
+      "beta5y": 1.0168
     },
     "price": [
       {
@@ -7284,23 +7284,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.78,
-        "industryAvg": 14.8
+        "value": 15.76,
+        "industryAvg": 14.91
       },
       {
         "metric": "P/S Ratio",
         "value": 1.32,
-        "industryAvg": 0.99
+        "industryAvg": 1.01
       },
       {
         "metric": "P/B Ratio",
-        "value": -12.85,
-        "industryAvg": 1.83
+        "value": -12.83,
+        "industryAvg": 1.86
       },
       {
         "metric": "ROE",
         "value": -21.46,
-        "industryAvg": 18.96
+        "industryAvg": 18.94
       },
       {
         "metric": "ROA",
@@ -7315,12 +7315,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 19.8,
-        "industryAvg": 16.36
+        "industryAvg": 16.35
       },
       {
         "metric": "Net Margin",
         "value": 7.960000000000001,
-        "industryAvg": 5.63
+        "industryAvg": 5.62
       }
     ]
   }
