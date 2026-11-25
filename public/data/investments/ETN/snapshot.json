@@ -1,11 +1,14 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
-    }
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.0061,
-      "ttmPe": 33.04,
-      "marketCap": 128426445000,
-      "psRatio": 4.02,
-      "pbRatio": 6.12,
-      "pegRatio": 4.81
+      "ttmPe": 31.11,
+      "marketCap": 120951705000,
+      "psRatio": 3.78,
+      "pbRatio": 5.77,
+      "pegRatio": 4.53
     },
     "profitability": {
       "roe": 5.2299999999999995,
@@ -5430,15 +5433,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 14.06,
+      "wacc": 12.27,
+      "costOfEquity": 14.26,
       "costOfDebt": 0.95,
       "taxRate": 21,
-      "beta": 1.1519,
-      "marketCap": 128426445000
+      "beta": 1.1748,
+      "marketCap": 120951705000
     },
     "beta": {
-      "beta5y": 1.1519
+      "beta5y": 1.1748
     },
     "price": [
       {
@@ -7492,11 +7495,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
-        "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
-        "publisher": "GuruFocus.com",
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
         "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
         "type": "STORY"
       },
       {
@@ -7508,11 +7511,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
+        "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
+        "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
+        "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
         "type": "STORY"
       },
       {

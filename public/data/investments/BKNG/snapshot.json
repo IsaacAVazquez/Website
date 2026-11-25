@@ -1,8 +1,8 @@
 {
   "symbol": "BKNG",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.2735,
-      "ttmPe": 15.89,
-      "marketCap": 109900720000,
-      "psRatio": 3.91,
-      "pbRatio": -10.56,
-      "pegRatio": 2.31
+      "ttmPe": 15.63,
+      "marketCap": 108102860000,
+      "psRatio": 3.84,
+      "pbRatio": -10.39,
+      "pegRatio": 2.28
     },
     "profitability": {
       "roe": -25.64,
@@ -5747,15 +5747,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.790000000000001,
-      "costOfEquity": 13.77,
+      "wacc": 11.57,
+      "costOfEquity": 13.54,
       "costOfDebt": 1.51,
       "taxRate": 21,
-      "beta": 1.1146,
-      "marketCap": 109900720000
+      "beta": 1.0847,
+      "marketCap": 108102860000
     },
     "beta": {
-      "beta5y": 1.1146
+      "beta5y": 1.0847
     },
     "price": [
       {
@@ -7833,19 +7833,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
-        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
         "title": "KAYAK and Affirm expand exclusive partnership into Canada",
         "publisher": "Business Wire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/kayak-affirm-expand-exclusive-partnership-130000960.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
+        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
         "type": "STORY"
       },
       {
@@ -7918,18 +7918,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.89,
-        "industryAvg": 14.2
+        "value": 15.63,
+        "industryAvg": 15.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.91,
-        "industryAvg": 2.75
+        "value": 3.84,
+        "industryAvg": 3.13
       },
       {
         "metric": "P/B Ratio",
-        "value": -10.56,
-        "industryAvg": 3.42
+        "value": -10.39,
+        "industryAvg": 3.88
       },
       {
         "metric": "ROE",

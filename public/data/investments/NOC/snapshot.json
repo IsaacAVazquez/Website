@@ -1,8 +1,8 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 31.7658,
-      "ttmPe": 17.07,
-      "marketCap": 77042782071,
-      "psRatio": 1.77,
-      "pbRatio": 4.12,
-      "pegRatio": 5.75
+      "ttmPe": 16.82,
+      "marketCap": 75906269271,
+      "psRatio": 1.74,
+      "pbRatio": 4.06,
+      "pegRatio": 5.66
     },
     "profitability": {
       "roe": 6.15,
@@ -5565,15 +5565,15 @@
       ]
     },
     "wacc": {
-      "wacc": 3.61,
-      "costOfEquity": 4.21,
+      "wacc": 3.65,
+      "costOfEquity": 4.2700000000000005,
       "costOfDebt": 0.95,
       "taxRate": 13,
-      "beta": -0.1064,
-      "marketCap": 77042782071
+      "beta": -0.0812,
+      "marketCap": 75906269271
     },
     "beta": {
-      "beta5y": -0.1064
+      "beta5y": -0.0812
     },
     "price": [
       {
@@ -7627,19 +7627,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
-        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
+        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
         "type": "STORY"
       },
       {
@@ -7738,23 +7738,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.07,
-        "industryAvg": 30.39
+        "value": 16.82,
+        "industryAvg": 30.65
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.77,
-        "industryAvg": 2.69
+        "value": 1.74,
+        "industryAvg": 5.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.12,
-        "industryAvg": 5.65
+        "value": 4.06,
+        "industryAvg": 6.74
       },
       {
         "metric": "ROE",
         "value": 6.15,
-        "industryAvg": 12.25
+        "industryAvg": 12.24
       },
       {
         "metric": "ROA",

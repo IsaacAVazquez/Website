@@ -1,8 +1,8 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7248,
-      "ttmPe": 19.09,
-      "marketCap": 211566600000,
-      "psRatio": 3.03,
-      "pbRatio": 5.95,
-      "pegRatio": 0.76
+      "ttmPe": 19.14,
+      "marketCap": 212095800000,
+      "psRatio": 3.04,
+      "pbRatio": 5.97,
+      "pegRatio": 0.77
     },
     "profitability": {
       "roe": 6.260000000000001,
@@ -6771,15 +6771,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.74,
-      "costOfEquity": 11.31,
+      "wacc": 8.75,
+      "costOfEquity": 11.32,
       "costOfDebt": 0.73,
       "taxRate": 12,
-      "beta": 0.801,
-      "marketCap": 211566600000
+      "beta": 0.8051,
+      "marketCap": 212095800000
     },
     "beta": {
-      "beta5y": 0.801
+      "beta5y": 0.8051
     },
     "price": [
       {
@@ -8945,28 +8945,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.09,
-        "industryAvg": 14.73
+        "value": 19.14,
+        "industryAvg": 15.04
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.03,
-        "industryAvg": 1.84
+        "value": 3.04,
+        "industryAvg": 1.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.95,
-        "industryAvg": 3.62
+        "value": 5.97,
+        "industryAvg": 3.31
       },
       {
         "metric": "ROE",
         "value": 6.260000000000001,
-        "industryAvg": 17.51
+        "industryAvg": 17.49
       },
       {
         "metric": "ROA",
         "value": 1.43,
-        "industryAvg": 5.91
+        "industryAvg": 5.89
       },
       {
         "metric": "Gross Margin",
@@ -8976,12 +8976,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.53,
-        "industryAvg": 16.13
+        "industryAvg": 16.12
       },
       {
         "metric": "Net Margin",
         "value": 12.8,
-        "industryAvg": 7.93
+        "industryAvg": 7.920000000000001
       }
     ]
   }

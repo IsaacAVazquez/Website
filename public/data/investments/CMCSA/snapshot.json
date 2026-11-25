@@ -1,8 +1,8 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.153,
-      "ttmPe": 7.88,
-      "marketCap": 88231605484,
+      "ttmPe": 7.9,
+      "marketCap": 88373571060,
       "psRatio": 0.72,
-      "pbRatio": 0.95,
+      "pbRatio": 0.96,
       "pegRatio": 1.1
     },
     "profitability": {
@@ -5763,15 +5763,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.510000000000001,
-      "costOfEquity": 10.13,
+      "wacc": 5.29,
+      "costOfEquity": 9.69,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 24,
-      "beta": 0.6496,
-      "marketCap": 88231605484
+      "beta": 0.5999,
+      "marketCap": 88373571060
     },
     "beta": {
-      "beta5y": 0.6496
+      "beta5y": 0.5999
     },
     "price": [
       {
@@ -7817,14 +7817,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
         "title": "Tariffs on films may end up hurting industry, says Barclays",
         "publisher": "TipRanks",
@@ -7833,11 +7825,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
-        "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -7846,6 +7838,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
+        "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
         "type": "STORY"
       },
       {
@@ -7940,18 +7940,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.88,
-        "industryAvg": 12.19
+        "value": 7.9,
+        "industryAvg": 12.55
       },
       {
         "metric": "P/S Ratio",
         "value": 0.72,
-        "industryAvg": 1.1
+        "industryAvg": 1.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 0.95,
-        "industryAvg": 1.48
+        "value": 0.96,
+        "industryAvg": 1.53
       },
       {
         "metric": "ROE",
@@ -7961,22 +7961,22 @@
       {
         "metric": "ROA",
         "value": 1.34,
-        "industryAvg": 1.9800000000000002
+        "industryAvg": 1.9900000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 74.35000000000001,
-        "industryAvg": 63.31
+        "industryAvg": 62.980000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.080000000000002,
-        "industryAvg": 33.44
+        "industryAvg": 33.879999999999995
       },
       {
         "metric": "Net Margin",
         "value": 11.77,
-        "industryAvg": 5.62
+        "industryAvg": 5.88
       }
     ]
   }

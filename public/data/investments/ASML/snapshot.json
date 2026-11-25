@@ -1,14 +1,11 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.597,
-      "ttmPe": 34.37,
-      "marketCap": 537761754279,
-      "psRatio": 12.03,
-      "pbRatio": 21.52,
-      "pegRatio": 0.26
+      "ttmPe": 31.19,
+      "marketCap": 488023600094,
+      "psRatio": 10.91,
+      "pbRatio": 19.53,
+      "pegRatio": 0.24
     },
     "profitability": {
       "roe": 22.6,
@@ -6148,15 +6145,15 @@
       ]
     },
     "wacc": {
-      "wacc": 18.89,
-      "costOfEquity": 19.05,
+      "wacc": 19.08,
+      "costOfEquity": 19.259999999999998,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7929,
-      "marketCap": 537761754279
+      "beta": 1.8035,
+      "marketCap": 488023600094
     },
     "beta": {
-      "beta5y": 1.7929
+      "beta5y": 1.8035
     },
     "price": [
       {
@@ -8242,19 +8239,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
-        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
         "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
+        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
         "type": "STORY"
       }
     ],
@@ -8318,43 +8315,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.88,
-        "industryAvg": 37.08
+        "value": 31.19,
+        "industryAvg": 29.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.9,
-        "industryAvg": 10.85
+        "value": 10.91,
+        "industryAvg": 8.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 23.09,
-        "industryAvg": 15
+        "value": 19.53,
+        "industryAvg": 11.79
       },
       {
         "metric": "ROE",
         "value": 22.6,
-        "industryAvg": 42.49
+        "industryAvg": 43.18
       },
       {
         "metric": "ROA",
         "value": 9.09,
-        "industryAvg": 20.78
+        "industryAvg": 21.18
       },
       {
         "metric": "Gross Margin",
         "value": 57.45,
-        "industryAvg": 49.95
+        "industryAvg": 50.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 46.61,
-        "industryAvg": 37.43
+        "industryAvg": 37.93
       },
       {
         "metric": "Net Margin",
         "value": 42.53,
-        "industryAvg": 28.4
+        "industryAvg": 28.68
       }
     ]
   }

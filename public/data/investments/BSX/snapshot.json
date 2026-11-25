@@ -1,8 +1,8 @@
 {
   "symbol": "BSX",
-  "lastUpdated": "2026-11-19T17:55:23.107457+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-19T17:55:23.107457+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.3613,
-      "ttmPe": 18.48,
+      "ttmPe": 17.78,
       "pegRatio": 1.17,
-      "marketCap": 63134236748,
-      "psRatio": 3,
-      "pbRatio": 2.46
+      "marketCap": 60732705286,
+      "psRatio": 2.88,
+      "pbRatio": 2.37
     },
     "profitability": {
       "roe": 2.3,
@@ -6853,15 +6853,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.07,
-      "costOfEquity": 9.47,
+      "wacc": 7.85,
+      "costOfEquity": 9.26,
       "costOfDebt": 0.84,
       "taxRate": 21,
-      "beta": 0.564,
-      "marketCap": 63134236748
+      "beta": 0.5464,
+      "marketCap": 60732705286
     },
     "beta": {
-      "beta5y": 0.564
+      "beta5y": 0.5464
     },
     "price": [
       {
@@ -9031,18 +9031,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.48,
-        "industryAvg": 26.1
+        "value": 17.78,
+        "industryAvg": 25
       },
       {
         "metric": "P/S Ratio",
-        "value": 3,
-        "industryAvg": 3.27
+        "value": 2.88,
+        "industryAvg": 3.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.46,
-        "industryAvg": 3.17
+        "value": 2.37,
+        "industryAvg": 3.09
       },
       {
         "metric": "ROE",

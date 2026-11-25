@@ -1,8 +1,8 @@
 {
   "symbol": "SBUX",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.2092,
-      "ttmPe": 47.29,
-      "marketCap": 119106247000,
-      "psRatio": 3.14,
-      "pbRatio": -15.53,
-      "pegRatio": 0.12
+      "ttmPe": 46.68,
+      "marketCap": 117578513000,
+      "psRatio": 3.1,
+      "pbRatio": -15.33,
+      "pegRatio": 0.11
     },
     "profitability": {
       "roe": -8.83,
@@ -6584,15 +6584,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.73,
-      "costOfEquity": 12.67,
+      "wacc": 10.489999999999998,
+      "costOfEquity": 12.41,
       "costOfDebt": 0.54,
       "taxRate": 27,
-      "beta": 0.9745,
-      "marketCap": 119106247000
+      "beta": 0.9418,
+      "marketCap": 117578513000
     },
     "beta": {
-      "beta5y": 0.9745
+      "beta5y": 0.9418
     },
     "price": [
       {
@@ -8670,19 +8670,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
-        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "35f8c5ea-ecf8-396f-9f08-6fb9ef01e1a2",
         "title": "SBUX vs. BROS: Which Coffee Stock Has the Stronger Brew for 2025?",
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/sbux-vs-bros-coffee-stock-124200778.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
+        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
         "type": "STORY"
       },
       {
@@ -8724,23 +8724,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.29,
-        "industryAvg": 23.73
+        "value": 46.68,
+        "industryAvg": 22.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.14,
-        "industryAvg": 3.24
+        "value": 3.1,
+        "industryAvg": 2.87
       },
       {
         "metric": "P/B Ratio",
-        "value": -15.53,
-        "industryAvg": 9.21
+        "value": -15.33,
+        "industryAvg": 5.49
       },
       {
         "metric": "ROE",
         "value": -8.83,
-        "industryAvg": 220.82000000000002
+        "industryAvg": 220.99
       },
       {
         "metric": "ROA",
@@ -8750,7 +8750,7 @@
       {
         "metric": "Gross Margin",
         "value": 23.91,
-        "industryAvg": 31.630000000000003
+        "industryAvg": 31.64
       },
       {
         "metric": "EBITDA Margin",

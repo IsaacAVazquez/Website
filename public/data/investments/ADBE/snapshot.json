@@ -1,8 +1,8 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 12.37,
-      "marketCap": 86676880000,
-      "psRatio": 3.34,
-      "pbRatio": 7.37,
-      "pegRatio": 1.17
+      "ttmPe": 12.15,
+      "marketCap": 85124610000,
+      "psRatio": 3.28,
+      "pbRatio": 7.24,
+      "pegRatio": 1.15
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -6060,15 +6060,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.81,
-      "costOfEquity": 15.909999999999998,
+      "wacc": 14.69,
+      "costOfEquity": 15.8,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.3883,
-      "marketCap": 86676880000
+      "beta": 1.3691,
+      "marketCap": 85124610000
     },
     "beta": {
-      "beta5y": 1.3883
+      "beta5y": 1.3691
     },
     "price": [
       {
@@ -8138,19 +8138,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
         "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
@@ -8232,43 +8232,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.37,
-        "industryAvg": 22.13
+        "value": 12.15,
+        "industryAvg": 24.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.34,
-        "industryAvg": 4.29
+        "value": 3.28,
+        "industryAvg": 4.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.37,
-        "industryAvg": 4.03
+        "value": 7.24,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",
         "value": 15.690000000000001,
-        "industryAvg": -0.73
+        "industryAvg": -0.69
       },
       {
         "metric": "ROA",
         "value": 6.1,
-        "industryAvg": -0.41000000000000003
+        "industryAvg": -0.38999999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 88.71,
-        "industryAvg": 63.5
+        "industryAvg": 63.519999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.019999999999996,
-        "industryAvg": 17.28
+        "industryAvg": 17.36
       },
       {
         "metric": "Net Margin",
         "value": 27.029999999999998,
-        "industryAvg": -0.9900000000000001
+        "industryAvg": -0.9400000000000001
       }
     ]
   }

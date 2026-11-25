@@ -1,8 +1,8 @@
 {
   "symbol": "PYPL",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.2425,
-      "ttmPe": 11.04,
-      "marketCap": 48453930000,
-      "psRatio": 1.41,
-      "pbRatio": 2.49,
+      "ttmPe": 10.16,
+      "marketCap": 44603730000,
+      "psRatio": 1.3,
+      "pbRatio": 2.29,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -5912,15 +5912,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.85,
-      "costOfEquity": 14.93,
+      "wacc": 11.53,
+      "costOfEquity": 14.77,
       "costOfDebt": 1.02,
       "taxRate": 22,
-      "beta": 1.2639,
-      "marketCap": 48453930000
+      "beta": 1.2395,
+      "marketCap": 44603730000
     },
     "beta": {
-      "beta5y": 1.2639
+      "beta5y": 1.2395
     },
     "price": [
       {
@@ -8006,20 +8006,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "b93aa709-6674-3851-be3e-6b780dc87df0",
-        "title": "PayPal's Venmo, Snowflake upgrade, Asana: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/video/paypals-venmo-snowflake-upgrade-asana-151649128.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "911d96d2-6f17-30b2-ae5f-99ba756c5f20",
         "title": "Mizuho updates U.S. top picks: Adds CVS Health, PayPal and Oracle",
         "publisher": "Investing.com",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/mizuho-updates-u-top-picks-123141078.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "b93aa709-6674-3851-be3e-6b780dc87df0",
+        "title": "PayPal's Venmo, Snowflake upgrade, Asana: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/video/paypals-venmo-snowflake-upgrade-asana-151649128.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -8073,30 +8073,23 @@
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 1934206
-      },
-      {
-        "name": "Ms. Suzan Bulyaba Kereere",
-        "title": "President of Global Markets",
-        "age": 59,
-        "yearBorn": 1966,
-        "totalPay": 1766568
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.04,
-        "industryAvg": 25.1
+        "value": 10.16,
+        "industryAvg": 22.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.41,
-        "industryAvg": 6.69
+        "value": 1.3,
+        "industryAvg": 5.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.49,
-        "industryAvg": 7.87
+        "value": 2.29,
+        "industryAvg": 5.71
       },
       {
         "metric": "ROE",

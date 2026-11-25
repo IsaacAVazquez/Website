@@ -1,8 +1,8 @@
 {
   "symbol": "ABNB",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.1854,
-      "ttmPe": 82.46,
-      "marketCap": 106323900000,
-      "psRatio": 7.63,
-      "pbRatio": 11.42,
+      "ttmPe": 77.95,
+      "marketCap": 100512400000,
+      "psRatio": 7.21,
+      "pbRatio": 10.79,
       "pegRatio": 1.08
     },
     "profitability": {
@@ -5715,15 +5715,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.14,
-      "costOfEquity": 14.42,
+      "wacc": 13.66,
+      "costOfEquity": 13.950000000000001,
       "costOfDebt": 1.87,
       "taxRate": 13,
-      "beta": 1.1982,
-      "marketCap": 106323900000
+      "beta": 1.1364,
+      "marketCap": 100512400000
     },
     "beta": {
-      "beta5y": 1.1982
+      "beta5y": 1.1364
     },
     "price": [
       {
@@ -7761,19 +7761,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
-        "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
         "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
+        "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
         "type": "STORY"
       },
       {
@@ -7886,18 +7886,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 82.46,
-        "industryAvg": 14.2
+        "value": 77.95,
+        "industryAvg": 15.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.63,
-        "industryAvg": 2.75
+        "value": 7.21,
+        "industryAvg": 3.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.42,
-        "industryAvg": 3.42
+        "value": 10.79,
+        "industryAvg": 3.88
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.4608,
-      "ttmPe": 16.89,
-      "marketCap": 240055812114,
-      "psRatio": 4.83,
-      "pbRatio": 8.2,
-      "pegRatio": 0.35
+      "ttmPe": 16.39,
+      "marketCap": 232951868307,
+      "psRatio": 4.68,
+      "pbRatio": 7.95,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 12.33,
@@ -5084,15 +5084,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.42,
-      "costOfEquity": 17.39,
+      "wacc": 16.25,
+      "costOfEquity": 17.24,
       "costOfDebt": 1.22,
       "taxRate": 15,
-      "beta": 1.5777,
-      "marketCap": 240055812114
+      "beta": 1.5497,
+      "marketCap": 232951868307
     },
     "beta": {
-      "beta5y": 1.5777
+      "beta5y": 1.5497
     },
     "price": [
       {
@@ -7170,14 +7170,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
-        "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
         "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
         "publisher": "Investor's Business Daily",
@@ -7191,6 +7183,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
+        "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
         "type": "STORY"
       }
     ],
@@ -7256,33 +7256,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.89,
-        "industryAvg": 19.05
+        "value": 16.39,
+        "industryAvg": 19.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.83,
-        "industryAvg": 2.67
+        "value": 4.68,
+        "industryAvg": 2.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.2,
-        "industryAvg": 3.1
+        "value": 7.95,
+        "industryAvg": 2.86
       },
       {
         "metric": "ROE",
         "value": 12.33,
-        "industryAvg": 10.35
+        "industryAvg": 10.37
       },
       {
         "metric": "ROA",
         "value": 6.260000000000001,
-        "industryAvg": 4.390000000000001
+        "industryAvg": 4.3999999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 52.78,
-        "industryAvg": 41.199999999999996
+        "industryAvg": 41.21
       },
       {
         "metric": "EBITDA Margin",
@@ -7292,7 +7292,7 @@
       {
         "metric": "Net Margin",
         "value": 28.46,
-        "industryAvg": 7.89
+        "industryAvg": 7.91
       }
     ]
   }

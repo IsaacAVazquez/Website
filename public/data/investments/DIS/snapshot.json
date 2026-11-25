@@ -1,8 +1,8 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1212,
-      "ttmPe": 29.18,
-      "marketCap": 208032500000,
-      "psRatio": 2.03,
-      "pbRatio": 1.86,
+      "ttmPe": 28.63,
+      "marketCap": 204105400000,
+      "psRatio": 1.99,
+      "pbRatio": 1.83,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6484,15 +6484,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.78,
-      "costOfEquity": 15.479999999999999,
+      "wacc": 12.35,
+      "costOfEquity": 15.010000000000002,
       "costOfDebt": 1.11,
       "taxRate": 19,
-      "beta": 1.333,
-      "marketCap": 208032500000
+      "beta": 1.2698,
+      "marketCap": 204105400000
     },
     "beta": {
-      "beta5y": 1.333
+      "beta5y": 1.2698
     },
     "price": [
       {
@@ -8530,14 +8530,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
-        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
         "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
         "publisher": "StockStory",
@@ -8546,11 +8538,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
+        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
         "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8567,14 +8575,6 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8647,33 +8647,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.18,
-        "industryAvg": 19.05
+        "value": 28.63,
+        "industryAvg": 19.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.03,
-        "industryAvg": 2.67
+        "value": 1.99,
+        "industryAvg": 2.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.86,
-        "industryAvg": 3.1
+        "value": 1.83,
+        "industryAvg": 2.86
       },
       {
         "metric": "ROE",
         "value": 2.36,
-        "industryAvg": 10.35
+        "industryAvg": 10.37
       },
       {
         "metric": "ROA",
         "value": 1.27,
-        "industryAvg": 4.390000000000001
+        "industryAvg": 4.3999999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 39.28,
-        "industryAvg": 41.199999999999996
+        "industryAvg": 41.21
       },
       {
         "metric": "EBITDA Margin",
@@ -8683,7 +8683,7 @@
       {
         "metric": "Net Margin",
         "value": 10.07,
-        "industryAvg": 7.89
+        "industryAvg": 7.91
       }
     ]
   }

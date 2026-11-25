@@ -1,8 +1,8 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
     "sections": {
       "price": "2026-11-20"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.3624,
-      "ttmPe": 29.26,
-      "marketCap": 247015501013,
-      "psRatio": 3.18,
-      "pbRatio": 11.5,
+      "ttmPe": 27.8,
+      "marketCap": 234641052705,
+      "psRatio": 3.02,
+      "pbRatio": 10.92,
       "pegRatio": 0.52
     },
     "profitability": {
@@ -5704,15 +5704,15 @@
       ]
     },
     "wacc": {
-      "wacc": 15.120000000000001,
-      "costOfEquity": 17.849999999999998,
+      "wacc": 15.110000000000001,
+      "costOfEquity": 17.98,
       "costOfDebt": 0.29,
       "taxRate": 23,
-      "beta": 1.6363,
-      "marketCap": 247015501013
+      "beta": 1.6427,
+      "marketCap": 234641052705
     },
     "beta": {
-      "beta5y": 1.6363
+      "beta5y": 1.6427
     },
     "price": [
       {
@@ -7806,11 +7806,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
-        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
+        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
+        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
         "type": "STORY"
       }
     ],
@@ -7873,18 +7873,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.26,
-        "industryAvg": 24.02
+        "value": 27.8,
+        "industryAvg": 21.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.18,
-        "industryAvg": 2.57
+        "value": 3.02,
+        "industryAvg": 2.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.5,
-        "industryAvg": 5.54
+        "value": 10.92,
+        "industryAvg": 4.36
       },
       {
         "metric": "ROE",
