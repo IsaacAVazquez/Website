@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import { execFile, execFileSync } from "node:child_process";
+import fs from "node:fs";
 import { createServer, type Server } from "node:http";
 import path from "node:path";
 
@@ -14,19 +15,20 @@ interface LedgerPayload {
 interface TestServer {
   baseUrl: string;
   close: () => Promise<void>;
-  hookCalls: () => number;
 }
 
+// `laterLedger` is what every read after the first one gets, which stands in
+// for a deploy that finishes propagating while the verifier polls.
 function startServer(
   initialLedger: LedgerPayload,
-  afterHookLedger?: LedgerPayload
+  laterLedger?: LedgerPayload
 ): Promise<TestServer> {
   let ledger = initialLedger;
-  let hookCalls = 0;
   const server: Server = createServer((request, response) => {
     if (request.url?.startsWith("/ledger")) {
       response.writeHead(200, { "Content-Type": "application/json" });
       response.end(JSON.stringify(ledger));
+      if (laterLedger) ledger = laterLedger;
       return;
     }
     if (request.url?.startsWith("/challenged")) {
@@ -36,13 +38,6 @@ function startServer(
         "cf-mitigated": "challenge",
       });
       response.end("<title>Just a moment...</title>");
-      return;
-    }
-    if (request.url === "/hook" && request.method === "POST") {
-      hookCalls += 1;
-      if (afterHookLedger) ledger = afterHookLedger;
-      response.writeHead(200, { "Content-Type": "application/json" });
-      response.end("{}");
       return;
     }
     response.writeHead(404);
@@ -63,7 +58,6 @@ function startServer(
           new Promise<void>((closeResolve, closeReject) => {
             server.close((error) => (error ? closeReject(error) : closeResolve()));
           }),
-        hookCalls: () => hookCalls,
       });
     });
   });
@@ -88,7 +82,6 @@ function runVerifier(
         script,
         expectedRevision,
         ledgerUrlOverride ?? `${server.baseUrl}/ledger`,
-        `${server.baseUrl}/hook`,
         expectedCommit,
       ],
       {
@@ -131,7 +124,6 @@ describe("production data publication verifier", () => {
     try {
       const result = await runVerifier(server, expectedRevision, headCommit);
       expect(result.stdout).toContain("expected committed data revision");
-      expect(server.hookCalls()).toBe(0);
     } finally {
       await server.close();
     }
@@ -153,13 +145,12 @@ describe("production data publication verifier", () => {
         expectedAncestor
       );
       expect(result.stdout).toContain("expected newer deployment commit");
-      expect(server.hookCalls()).toBe(0);
     } finally {
       await server.close();
     }
   });
 
-  it("triggers the build hook and polls until committed data arrives", async () => {
+  it("polls until the published deploy serves the committed data", async () => {
     const server = await startServer(
       {
         revision: "b".repeat(64),
@@ -174,28 +165,26 @@ describe("production data publication verifier", () => {
     );
     try {
       const result = await runVerifier(server, expectedRevision, headCommit);
-      expect(result.stdout).toContain("Build hook accepted");
-      expect(result.stdout).toContain("expected committed data revision");
-      expect(server.hookCalls()).toBe(1);
+      expect(result.stdout).toContain("Deploy already published. Confirming ledger");
+      expect(result.stdout).toContain("Production serves the expected committed data revision");
     } finally {
       await server.close();
     }
   });
 
-  it("still fires the build hook when the pre-hook ledger read is unreachable", async () => {
+  it("keeps polling when the ledger read is unreachable", async () => {
     // A transport-level failure (request timeout, DNS failure, TLS reset) used to
-    // reject out of readProductionLedger and exit the run through main().catch
-    // before the hook POST, so committed snapshots stayed unpublished for up to
-    // six hours while the opened incident pointed on-call at the build hook. HTTP
-    // failure was already tolerated; transport failure was not.
+    // reject out of readProductionLedger and exit the run through main().catch on
+    // the first read. HTTP failure was already tolerated; transport failure was not.
     const server = await startServer({
       revision: "b".repeat(64),
       publicationRevision: "c".repeat(64),
       deploymentCommit: null,
     });
     try {
-      // Port 1 is reserved and refuses immediately, so the ledger read throws
-      // while the hook endpoint on the stub server stays reachable.
+      // Port 1 is reserved and refuses immediately, so every ledger read throws.
+      // The run still fails, because production never confirmed the revision,
+      // but only after it has used both of its poll attempts.
       await expect(
         runVerifier(
           server,
@@ -203,14 +192,22 @@ describe("production data publication verifier", () => {
           headCommit,
           "http://127.0.0.1:1/ledger"
         )
-      ).rejects.toThrow();
-
-      // The run still fails, because production never confirmed the revision.
-      // What matters is that the publish was attempted rather than skipped.
-      expect(server.hookCalls()).toBe(1);
+      ).rejects.toThrow(/Attempt 2\/2: HTTP 0[\s\S]*Production did not serve data ledger/);
     } finally {
       await server.close();
     }
+  });
+
+  it("is called with the revision, the endpoint, and the commit, in that order", () => {
+    // The arguments are positional. A fourth one, or an empty one left in the
+    // middle, would shift the commit out of place and skip the commit match.
+    const workflow = fs.readFileSync(
+      path.join(process.cwd(), ".github", "workflows", "publish-data.yml"),
+      "utf8"
+    );
+    expect(workflow).toContain(
+      'node scripts/ci/ensure-production-data-ledger.mjs \\\n            "$EXPECTED_REVISION" "$revision_url" "$EXPECTED_COMMIT"\n'
+    );
   });
 
   it("names the layer that answered when the check is rejected", async () => {
@@ -229,7 +226,6 @@ describe("production data publication verifier", () => {
           `${server.baseUrl}/challenged`
         )
       ).rejects.toThrow(/HTTP 403 from cloudflare \(cf-mitigated: challenge\)/);
-      expect(server.hookCalls()).toBe(0);
     } finally {
       await server.close();
     }

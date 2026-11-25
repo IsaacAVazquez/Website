@@ -128,10 +128,18 @@ const FANTASY_ACTUAL_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 const FANTASY_FLEX_POSITIONS = ["RB", "WR", "TE"] as const;
 type FantasyActualPosition = (typeof FANTASY_ACTUAL_POSITIONS)[number];
 
-type FantasySliceSupport = {
-  supported: boolean;
-  sourceKind: FantasySnapshotSliceSourceKind;
-  rangeKind: FantasySnapshotRangeKind;
+const FANTASY_SLICE_KINDS: Record<
+  FantasyRoutePosition,
+  { sourceKind: FantasySnapshotSliceSourceKind; rangeKind: FantasySnapshotRangeKind }
+> = {
+  overall: { sourceKind: "overall_consensus", rangeKind: "overall" },
+  flex: { sourceKind: "derived_flex", rangeKind: "overall" },
+  qb: { sourceKind: "shared_position_consensus", rangeKind: "position" },
+  k: { sourceKind: "shared_position_consensus", rangeKind: "position" },
+  dst: { sourceKind: "shared_position_consensus", rangeKind: "position" },
+  rb: { sourceKind: "position_consensus", rangeKind: "position" },
+  wr: { sourceKind: "position_consensus", rangeKind: "position" },
+  te: { sourceKind: "position_consensus", rangeKind: "position" },
 };
 
 type RawFantasySnapshotSliceMetadata = Partial<FantasySnapshotSliceMetadata> & {
@@ -456,6 +464,28 @@ function normalizeVorpSourceMetadata(
   };
 }
 
+// The optional numbers a published player keeps, in the order they are written.
+const PUBLISHED_NUMBER_FIELDS = [
+  "standardDeviation",
+  "rankEcr",
+  "rankAverage",
+  "tier",
+  "positionRank",
+  "minRank",
+  "maxRank",
+  "byeWeek",
+  "ownership",
+  "adp",
+  "adpHigh",
+  "adpLow",
+  "adpStandardDeviation",
+  "adpTimesDrafted",
+  "rankMove7d",
+  "rankMove14d",
+  "adpMove7d",
+  "adpMove14d",
+] as const;
+
 export function publishFantasyPlayer(player: Player): Player {
   const publishedPlayer: Partial<Player> = {
     id: player.id,
@@ -465,76 +495,12 @@ export function publishFantasyPlayer(player: Player): Player {
     averageRank: player.averageRank,
   };
 
-  if (isFiniteNumber(player.standardDeviation)) {
-    publishedPlayer.standardDeviation = player.standardDeviation;
-  }
-
-  if (isFiniteNumber(player.rankEcr)) {
-    publishedPlayer.rankEcr = player.rankEcr;
-  }
-
-  if (isFiniteNumber(player.rankAverage)) {
-    publishedPlayer.rankAverage = player.rankAverage;
-  }
-
-  if (isFiniteNumber(player.tier)) {
-    publishedPlayer.tier = player.tier;
-  }
-
-  if (isFiniteNumber(player.positionRank)) {
-    publishedPlayer.positionRank = player.positionRank;
-  }
-
-  if (player.minRank !== undefined) {
-    publishedPlayer.minRank = player.minRank;
-  }
-
-  if (player.maxRank !== undefined) {
-    publishedPlayer.maxRank = player.maxRank;
-  }
-
-  if (isFiniteNumber(player.byeWeek)) {
-    publishedPlayer.byeWeek = player.byeWeek;
-  }
-
-  if (isFiniteNumber(player.ownership)) {
-    publishedPlayer.ownership = player.ownership;
-  }
-
-  if (isFiniteNumber(player.adp)) {
-    publishedPlayer.adp = player.adp;
-  }
-
-  if (isFiniteNumber(player.adpHigh)) {
-    publishedPlayer.adpHigh = player.adpHigh;
-  }
-
-  if (isFiniteNumber(player.adpLow)) {
-    publishedPlayer.adpLow = player.adpLow;
-  }
-
-  if (isFiniteNumber(player.adpStandardDeviation)) {
-    publishedPlayer.adpStandardDeviation = player.adpStandardDeviation;
-  }
-
-  if (isFiniteNumber(player.adpTimesDrafted)) {
-    publishedPlayer.adpTimesDrafted = player.adpTimesDrafted;
-  }
-
-  if (isFiniteNumber(player.rankMove7d)) {
-    publishedPlayer.rankMove7d = player.rankMove7d;
-  }
-
-  if (isFiniteNumber(player.rankMove14d)) {
-    publishedPlayer.rankMove14d = player.rankMove14d;
-  }
-
-  if (isFiniteNumber(player.adpMove7d)) {
-    publishedPlayer.adpMove7d = player.adpMove7d;
-  }
-
-  if (isFiniteNumber(player.adpMove14d)) {
-    publishedPlayer.adpMove14d = player.adpMove14d;
+  for (const key of PUBLISHED_NUMBER_FIELDS) {
+    const value = player[key];
+    // minRank and maxRank keep any defined value; the rest must be finite.
+    if (key === "minRank" || key === "maxRank" ? value !== undefined : isFiniteNumber(value)) {
+      publishedPlayer[key] = value;
+    }
   }
 
   // Every figure has to be finite before the panel can draw a meter from it,
@@ -652,42 +618,6 @@ function toPlayerArray(
   return players;
 }
 
-function getFantasySliceSupport(
-  _scoring: FantasyRouteScoring,
-  position: FantasyRoutePosition
-): FantasySliceSupport {
-  switch (position) {
-    case "overall":
-      return {
-        supported: true,
-        sourceKind: "overall_consensus",
-        rangeKind: "overall",
-      };
-    case "flex":
-      return {
-        supported: true,
-        sourceKind: "derived_flex",
-        rangeKind: "overall",
-      };
-    case "qb":
-    case "k":
-    case "dst":
-      return {
-        supported: true,
-        sourceKind: "shared_position_consensus",
-        rangeKind: "position",
-      };
-    case "rb":
-    case "wr":
-    case "te":
-      return {
-        supported: true,
-        sourceKind: "position_consensus",
-        rangeKind: "position",
-      };
-  }
-}
-
 function getFantasySnapshotUnavailableReason(
   scoring: FantasyRouteScoring,
   position: FantasyRoutePosition
@@ -708,9 +638,7 @@ function buildFantasySliceMetadata(
   playerCount: number,
   updatedAt?: string | null
 ): FantasySnapshotSliceMetadata {
-  const support = getFantasySliceSupport(scoring, position);
-
-  if (!support.supported || playerCount <= 0) {
+  if (playerCount <= 0) {
     return {
       available: false,
       sourceKind: "unavailable",
@@ -723,14 +651,14 @@ function buildFantasySliceMetadata(
 
   return {
     available: true,
-    sourceKind: support.sourceKind,
-    rangeKind: support.rangeKind,
+    ...FANTASY_SLICE_KINDS[position],
     playerCount,
     updatedAt: updatedAt ?? null,
   };
 }
 
-function buildLegacyFlexPlayers(overallPlayers: Player[]): Player[] {
+/** The flex board is the overall board's RB, WR, and TE rows, re-ranked from one. */
+export function deriveFlexPlayers(overallPlayers: Player[]): Player[] {
   return overallPlayers
     .filter((player) => ["RB", "WR", "TE"].includes(player.position))
     .map((player, index) =>
@@ -851,70 +779,21 @@ export function normalizeFantasySnapshot(
   }
 
   if (positions.FLEX.length === 0 && overallPlayers.length > 0) {
-    positions.FLEX = buildLegacyFlexPlayers(overallPlayers);
+    positions.FLEX = deriveFlexPlayers(overallPlayers);
   }
 
-  const fallbackSliceMetadata: FantasySnapshotSliceMap = {
-    overall: buildFantasySliceMetadata(scoring, "overall", overallPlayers.length, getSliceUpdatedAt(overallPlayers)),
-    qb: buildFantasySliceMetadata(scoring, "qb", positions.QB.length, getSliceUpdatedAt(positions.QB)),
-    rb: buildFantasySliceMetadata(scoring, "rb", positions.RB.length, getSliceUpdatedAt(positions.RB)),
-    wr: buildFantasySliceMetadata(scoring, "wr", positions.WR.length, getSliceUpdatedAt(positions.WR)),
-    te: buildFantasySliceMetadata(scoring, "te", positions.TE.length, getSliceUpdatedAt(positions.TE)),
-    flex: buildFantasySliceMetadata(scoring, "flex", positions.FLEX.length, getSliceUpdatedAt(positions.FLEX)),
-    k: buildFantasySliceMetadata(scoring, "k", positions.K.length, getSliceUpdatedAt(positions.K)),
-    dst: buildFantasySliceMetadata(scoring, "dst", positions.DST.length, getSliceUpdatedAt(positions.DST)),
-  };
-
-  const sliceMetadata: FantasySnapshotSliceMap = {
-    overall: normalizeRawSliceMetadata(
-      rawSliceMetadata.overall,
-      fallbackSliceMetadata.overall,
-      overallPlayers.length,
-      getSliceUpdatedAt(overallPlayers)
-    ),
-    qb: normalizeRawSliceMetadata(
-      rawSliceMetadata.qb,
-      fallbackSliceMetadata.qb,
-      positions.QB.length,
-      getSliceUpdatedAt(positions.QB)
-    ),
-    rb: normalizeRawSliceMetadata(
-      rawSliceMetadata.rb,
-      fallbackSliceMetadata.rb,
-      positions.RB.length,
-      getSliceUpdatedAt(positions.RB)
-    ),
-    wr: normalizeRawSliceMetadata(
-      rawSliceMetadata.wr,
-      fallbackSliceMetadata.wr,
-      positions.WR.length,
-      getSliceUpdatedAt(positions.WR)
-    ),
-    te: normalizeRawSliceMetadata(
-      rawSliceMetadata.te,
-      fallbackSliceMetadata.te,
-      positions.TE.length,
-      getSliceUpdatedAt(positions.TE)
-    ),
-    flex: normalizeRawSliceMetadata(
-      rawSliceMetadata.flex,
-      fallbackSliceMetadata.flex,
-      positions.FLEX.length,
-      getSliceUpdatedAt(positions.FLEX)
-    ),
-    k: normalizeRawSliceMetadata(
-      rawSliceMetadata.k,
-      fallbackSliceMetadata.k,
-      positions.K.length,
-      getSliceUpdatedAt(positions.K)
-    ),
-    dst: normalizeRawSliceMetadata(
-      rawSliceMetadata.dst,
-      fallbackSliceMetadata.dst,
-      positions.DST.length,
-      getSliceUpdatedAt(positions.DST)
-    ),
-  };
+  const sliceMetadata = {} as FantasySnapshotSliceMap;
+  for (const position of FANTASY_ROUTE_POSITIONS) {
+    const snapshotPosition = routePositionToSnapshotPosition(position);
+    const players = snapshotPosition === "OVERALL" ? overallPlayers : positions[snapshotPosition];
+    const updatedAt = getSliceUpdatedAt(players);
+    sliceMetadata[position] = normalizeRawSliceMetadata(
+      rawSliceMetadata[position],
+      buildFantasySliceMetadata(scoring, position, players.length, updatedAt),
+      players.length,
+      updatedAt
+    );
+  }
 
   for (const snapshotPosition of FANTASY_SNAPSHOT_POSITIONS) {
     const routePosition = snapshotPositionToRoutePosition(snapshotPosition);
@@ -974,10 +853,6 @@ export function getFantasyPlayersForPosition(
     return [];
   }
 
-  if (position === "overall") {
-    return snapshot.overall;
-  }
-
   const snapshotPosition = routePositionToSnapshotPosition(position);
   return snapshotPosition === "OVERALL" ? snapshot.overall : snapshot.positions[snapshotPosition];
 }
@@ -986,31 +861,20 @@ export function getFantasySliceMetadata(
   snapshot: FantasySnapshot,
   position: FantasyRoutePosition
 ): FantasySnapshotSliceMetadata {
-  const scoring = scoringFormatToRouteScoring(snapshot.scoringFormat);
-  const playerCount =
-    position === "overall"
-      ? Array.isArray(snapshot.overall)
-        ? snapshot.overall.length
-        : 0
-      : (() => {
-          const snapshotPosition = routePositionToSnapshotPosition(position);
-          return snapshotPosition !== "OVERALL" && Array.isArray(snapshot.positions?.[snapshotPosition])
-            ? snapshot.positions[snapshotPosition].length
-            : 0;
-        })();
-  const updatedAt =
-    position === "overall"
-      ? getSliceUpdatedAt(snapshot.overall)
-      : (() => {
-          const snapshotPosition = routePositionToSnapshotPosition(position);
-          return snapshotPosition !== "OVERALL"
-            ? getSliceUpdatedAt(snapshot.positions?.[snapshotPosition] ?? [])
-            : getSliceUpdatedAt(snapshot.overall);
-        })();
+  const published = snapshot.sliceMetadata?.[position];
+  if (published) {
+    return published;
+  }
 
-  return (
-    snapshot.sliceMetadata?.[position] ??
-    buildFantasySliceMetadata(scoring, position, playerCount, updatedAt)
+  // Only a snapshot that skipped normalizeFantasySnapshot lacks the map.
+  const snapshotPosition = routePositionToSnapshotPosition(position);
+  const players =
+    (snapshotPosition === "OVERALL" ? snapshot.overall : snapshot.positions?.[snapshotPosition]) ?? [];
+  return buildFantasySliceMetadata(
+    scoringFormatToRouteScoring(snapshot.scoringFormat),
+    position,
+    players.length,
+    getSliceUpdatedAt(players)
   );
 }
 

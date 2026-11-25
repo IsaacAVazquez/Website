@@ -9,6 +9,7 @@ import {
   type ScorePoolLeagueSource,
 } from "../scorePoolsData";
 import {
+  manualFixtureToSnapshot,
   manualOddsToEntry,
   parseScorePoolsCsv,
 } from "../scorePools/providers/manual";
@@ -119,6 +120,19 @@ describe("CSV fallback parsing", () => {
     expect(() =>
       parseScorePoolsCsv([header, "f1,Alpha,,2026-08-01T19:00:00Z,,,2.4,3.2,3.1,,,,,,"].join("\n")),
     ).toThrow(/row 2/);
+  });
+
+  it("rejects a kickoff that is not a date, in a CSV row and in a typed entry", () => {
+    expect(() =>
+      parseScorePoolsCsv([header, "f1,Alpha,Beta,2026-13-45 kickoff tbc,,,2.4,3.2,3.1,,,,,,"].join("\n")),
+    ).toThrow(/row 2 has an unreadable kickoff/);
+    expect(() =>
+      manualFixtureToSnapshot(
+        { id: "f1", kickoff: "tbc", homeTeam: "Alpha", awayTeam: "Beta" },
+        {},
+        "2026-08-01T12:00:00.000Z",
+      ),
+    ).toThrow(/"f1" has an unreadable kickoff/);
   });
 
   it("ignores comments and blank lines", () => {

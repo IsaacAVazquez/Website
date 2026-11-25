@@ -254,6 +254,27 @@ describe("buildFantasyWeeklySnapshot", () => {
     expect(JSON.parse(await fs.readFile(target, "utf8")).week).toBe(3);
   });
 
+  it.each([
+    ["half_ppr", "flex", /half_ppr flex board dropped to 402 players from 804/],
+    ["standard", "flex", /standard flex board dropped to 400 players from 800/],
+    ["ppr", "quarterbacks", /ppr quarterback board dropped to 64 players from 128/],
+  ] as const)(
+    "refuses to overwrite a fuller %s %s board from the same week",
+    async (scoring, key, message) => {
+      const { target, committed } = await publishedOutput();
+      // The committed board is doubled, so the same pages now read as half of it.
+      const fuller = JSON.parse(committed);
+      const rows = fuller.boards[scoring][key] as Array<{ id: string }>;
+      rows.push(...rows.map((row) => ({ ...row, id: `${row.id}-again` })));
+      const doubled = `${JSON.stringify(fuller)}\n`;
+      await fs.writeFile(target, doubled);
+      serve();
+
+      await expect(buildFantasyWeeklySnapshot(NOW, target)).rejects.toThrow(message);
+      expect(await fs.readFile(target, "utf8")).toBe(doubled);
+    }
+  );
+
   it("refuses a quarterback page that is a week behind the flex pages", async () => {
     const { target, committed } = await publishedOutput();
     serve((url) => (url === QB_URL ? { week: 2 } : {}));

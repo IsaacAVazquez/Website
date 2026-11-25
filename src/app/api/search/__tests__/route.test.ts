@@ -5,6 +5,8 @@ jest.mock("@/lib/blog", () => ({
   getBlogPostSearchEntries: jest.fn(),
 }));
 
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { NextRequest } from "next/server";
 import { GET } from "../route";
 import { getBlogPostSearchEntries } from "@/lib/blog";
@@ -118,6 +120,17 @@ describe("GET /api/search", () => {
     );
     const sorted = [...scores].sort((a, b) => b - a);
     expect(scores).toEqual(sorted);
+  });
+
+  it("scores a query the same with stray spaces around or inside it", async () => {
+    const score = async (query: string) => {
+      const response = await GET(makeRequest(`?q=${encodeURIComponent(query)}&type=post`));
+      return (await response.json()).results[0].relevanceScore;
+    };
+    // The exact-title bonus used to compare the untrimmed query to the title.
+    const exact = await score("quantum search internals");
+    expect(await score("quantum search internals ")).toBe(exact);
+    expect(await score(" quantum  search internals")).toBe(exact);
   });
 
   it("returns the full corpus sorted (not a 400) when the query is missing", async () => {
@@ -497,6 +510,22 @@ describe("GET /api/search corpus", () => {
       const response = await GET(makeRequest(`?category=${encodeURIComponent(id)}&limit=1`));
       expect([id, (await response.json()).total > 0]).toEqual([id, true]);
     }
+  });
+
+  it("keys every curated keyword line to a URL in the corpus", async () => {
+    // The map is private to the route, so its keys are read from the source.
+    // A renamed route would otherwise drop its curated terms with no failure.
+    const source = readFileSync(join(__dirname, "../route.ts"), "utf8");
+    const start = source.indexOf("const SEARCH_KEYWORDS");
+    const keys = [...source.slice(start, source.indexOf("\n};", start)).matchAll(/^ {2}'([^']+)':/gm)]
+      .map((match) => match[1]);
+    expect(keys.length).toBeGreaterThan(40);
+
+    const response = await GET(makeRequest("?limit=100"));
+    const body = await response.json();
+    expect(body.total).toBe(body.results.length);
+    const urls = body.results.map((r: { url: string }) => r.url);
+    for (const key of keys) expect(urls).toContain(key);
   });
 
   it("indexes the routes that were missing", async () => {

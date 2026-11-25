@@ -4,6 +4,12 @@ jest.mock("@/components/StructuredData", () => ({
   StructuredData: () => null,
 }));
 
+// Catalog97Header defers its theme toggle through next/dynamic, which would
+// resolve after the first render and commit outside act() during a later test.
+jest.mock("@/components/ui/DeferredThemeToggle", () => ({
+  DeferredThemeToggle: () => null,
+}));
+
 jest.mock("next/image", () => ({
   __esModule: true,
   default: ({ alt }: { alt: string }) => <img alt={alt} />,
@@ -18,10 +24,8 @@ const mockPmWorkflowsPosts = [
     publishedAt: "2026-09-25",
     category: "Product Management",
     tags: ["PM", "Workflow"],
-    featured: false,
     readingTime: "4 min read",
     wordCount: 800,
-    author: "Isaac Vazquez",
     coverImage: "/writing/lead-workflow-essay/opengraph-image",
     cluster: "PM Workflows" as const,
   },
@@ -35,10 +39,8 @@ const mockAgenticAiPosts = [
     publishedAt: "2026-04-09",
     category: "Agentic AI",
     tags: ["AI", "Agents"],
-    featured: false,
     readingTime: "5 min read",
     wordCount: 900,
-    author: "Isaac Vazquez",
     coverImage: "/writing/lead-agentic-essay/opengraph-image",
     cluster: "Agentic AI" as const,
   },
@@ -52,10 +54,8 @@ const mockFintechPosts = [
     publishedAt: "2026-04-08",
     category: "Fintech Product",
     tags: ["Fintech", "Pricing"],
-    featured: false,
     readingTime: "6 min read",
     wordCount: 1100,
-    author: "Isaac Vazquez",
     coverImage: "/writing/lead-fintech-essay/opengraph-image",
     cluster: "Fintech Product & Pricing" as const,
   },
@@ -69,10 +69,8 @@ const mockSystemsPosts = [
     publishedAt: "2026-04-07",
     category: "Systems Design",
     tags: ["Systems", "Quality"],
-    featured: false,
     readingTime: "7 min read",
     wordCount: 1200,
-    author: "Isaac Vazquez",
     coverImage: "/writing/lead-systems-essay/opengraph-image",
     cluster: "Systems & Quality" as const,
   },
@@ -87,10 +85,8 @@ const mockArchiveByBucket = {
       publishedAt: "2026-03-17",
       category: "Sports Analytics",
       tags: ["Sports"],
-      featured: false,
       readingTime: "4 min read",
       wordCount: 700,
-      author: "Isaac Vazquez",
       coverImage: "/writing/sports-archive-essay/opengraph-image",
       archiveBucket: "Sports & Fantasy" as const,
     },
@@ -101,12 +97,12 @@ const mockArchiveByBucket = {
       title: "Weekly Tech Note",
       excerpt: "A weekly commentary piece.",
       publishedAt: "2026-04-06",
+      // Edited after every other post was published, for the metadata test.
+      updatedAt: "2026-10-23",
       category: "Technology",
       tags: ["Commentary"],
-      featured: false,
       readingTime: "3 min read",
       wordCount: 600,
-      author: "Isaac Vazquez",
       coverImage: "/writing/weekly-tech-note/opengraph-image",
       archiveBucket: "Signals & Commentary" as const,
     },
@@ -119,10 +115,8 @@ const mockArchiveByBucket = {
       publishedAt: "2026-04-02",
       category: "Space Exploration",
       tags: ["Space"],
-      featured: false,
       readingTime: "4 min read",
       wordCount: 650,
-      author: "Isaac Vazquez",
       coverImage: "/writing/space-product-note/opengraph-image",
       archiveBucket: "Space & Experiments" as const,
     },
@@ -149,16 +143,25 @@ jest.mock("@/lib/blog", () => {
       "Systems & Quality": mockSystemsPosts,
     })),
     getArchiveBlogPostPreviewsByBucket: jest.fn(() => mockArchiveByBucket),
+    newestBlogPostDate: jest.requireActual("@/lib/blog").newestBlogPostDate,
   };
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let WritingPage: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let generateMetadata: any;
 
 describe("WritingPage", () => {
   beforeAll(async () => {
     const mod = await import("../page");
     WritingPage = mod.default;
+    generateMetadata = mod.generateMetadata;
+  });
+
+  // The sitemap dates /writing by its newest post, so the page says the same.
+  it("dates the index by the most recently published or edited post", () => {
+    expect(generateMetadata().other["og:updated_time"]).toBe("2026-10-23");
   });
 
   it("renders the archive controls with curated filters before archive buckets", () => {

@@ -72,7 +72,6 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
           GET
         </text>
       </svg>
-      <figcaption className="sr-only">{label}</figcaption>
     </figure>
   );
 }

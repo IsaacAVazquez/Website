@@ -1,6 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
 import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
-import { getScorePoolsSnapshotData } from "@/lib/scorePoolsSnapshot";
 import {
   constructMetadata,
   freeApplicationOffer,
@@ -23,10 +22,9 @@ interface ScorePoolsPageProps {
 
 export default async function ScorePoolsPage({ searchParams }: ScorePoolsPageProps) {
   const { fixture } = await searchParams;
-  const snapshot = getScorePoolsSnapshotData();
   const validFixture =
     typeof fixture === "string" &&
-    snapshot.leagues.some((league) => league.fixtures.some((entry) => entry.id === fixture))
+    scorePoolsSnapshot.leagues.some((league) => league.fixtures.some((entry) => entry.id === fixture))
       ? fixture
       : null;
   const breadcrumbs = [
@@ -66,7 +64,7 @@ export default async function ScorePoolsPage({ searchParams }: ScorePoolsPagePro
           offers: freeApplicationOffer,
         }}
       />
-      <ScorePoolsClient snapshot={snapshot} initialFixtureId={validFixture} />
+      <ScorePoolsClient snapshot={scorePoolsSnapshot} initialFixtureId={validFixture} />
     </>
   );
 }

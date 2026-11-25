@@ -24,4 +24,12 @@ describe("build config", () => {
     const compiler = loadProductionConfig<{ removeConsole?: unknown }>("config.compiler");
     expect(compiler.removeConsole).toEqual({ exclude: ["error", "warn"] });
   });
+
+  it("lets the image optimizer fetch no remote host and no SVG", () => {
+    const images = loadProductionConfig<{ remotePatterns?: unknown[]; dangerouslyAllowSVG?: boolean }>(
+      "config.images"
+    );
+    expect(images.remotePatterns ?? []).toEqual([]);
+    expect(images.dangerouslyAllowSVG ?? false).toBe(false);
+  });
 });

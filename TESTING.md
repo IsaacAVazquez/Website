@@ -2,11 +2,11 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-25
 
 ---
 
-## Test Stack
+## Test stack
 
 ### Unit and integration
 
@@ -45,7 +45,7 @@ npm run test:all
 
 ---
 
-## Coverage Thresholds
+## Coverage thresholds
 
 `jest.config.js` (`coverageThreshold.global`) is the single source of truth for the
 enforced coverage gates, applied in CI through `npm run test:ci`. They ratchet upward
@@ -56,7 +56,7 @@ toward the numbers.
 
 ---
 
-## Where Tests Live
+## Where tests live
 
 ### Jest
 
@@ -84,7 +84,7 @@ toward the numbers.
 
 ### Python
 
-- `scripts/tests/test_fetch_investments_data.py` tests the timeouts, symbol rotation, and price checks in `scripts/fetch_investments_data.py` with `unittest`. Jest does not run it. `update-investments.yml` runs it before each refresh with `.venv/bin/python3 -m unittest scripts.tests.test_fetch_investments_data`, and the same command runs it locally from the repo root with the `.venv` described in `DEVELOPMENT.md`
+- `scripts/tests/test_fetch_investments_data.py` tests the timeouts, symbol rotation, and price checks in `scripts/fetch_investments_data.py` with `unittest`. Jest does not run it. `update-investments.yml` runs it before each refresh with `.venv/bin/python3 -m unittest scripts.tests.test_fetch_investments_data`, the `Python Tests` job in `test.yml` runs the same command on every push and pull request that workflow covers, and the command also runs locally from the repo root with the `.venv` described in `DEVELOPMENT.md`
 
 ### Playwright
 
@@ -119,7 +119,7 @@ on paper there.
 
 ---
 
-## Playwright Projects
+## Playwright projects
 
 Defined in `playwright.config.ts`:
 
@@ -129,7 +129,7 @@ Defined in `playwright.config.ts`:
 - `Mobile Chrome` (Pixel 5)
 - `Mobile Safari` (iPhone 12)
 
-By default (CI and local), only `chromium` runs so PR feedback stays fast. Set `E2E_FULL_MATRIX=1`, or run `npm run test:e2e:full`, to run the full matrix (Firefox, WebKit, and the mobile projects), which CI does on every push to `main`. No workflow runs it on a nightly schedule.
+By default (CI and local), only `chromium` runs so PR feedback stays fast. Set `E2E_FULL_MATRIX=1`, or run `npm run test:e2e:full`, to run the full matrix, which adds Firefox, WebKit, and the mobile projects to `chromium`. On every push to `main` CI runs those four added projects and leaves desktop Chromium out, since the three shards already ran it on the same commit and build. No workflow runs the matrix on a nightly schedule.
 
 Some local environments may only have a subset of browsers installed, so targeted project runs are also common during local work. Without `E2E_FULL_MATRIX=1` the config defines only `chromium`, so a run of one other project needs both, as in `E2E_FULL_MATRIX=1 npx playwright test --project=firefox`.
 
@@ -137,11 +137,11 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ## Continuous integration
 
-`.github/workflows/test.yml` runs on every push and pull request to `main` or `develop`, except a push whose commit message carries `[skip ci]`, as every snapshot refresh and changelog commit does. The unit test job runs `npm run check:blog-dates` against the pull request's base commit (or, on a push, the commit before it), which fails when a change edits an existing article's body under `content/blog/` without changing its `updatedAt`, and then `npm run test:ci`, whose coverage report it uploads to Codecov in a step that cannot fail the job. The build job runs `npm run typecheck` and `npm run build`, the lint job runs `npm run lint`, which is ESLint over `src/` alone, and the `chromium` end to end run splits the specs across three shards against the build job's `.next` output. On a push to `main` a separate job runs `npm run test:e2e:full` on the same build and opens or updates a GitHub issue labeled `e2e-matrix-failure` when it fails, which the next passing run closes.
+`.github/workflows/test.yml` runs on every push and pull request to `main` or `develop`, except a push whose commit message carries `[skip ci]`, as every snapshot refresh and changelog commit does. The unit test job runs `npm run check:blog-dates` against the pull request's base commit (or, on a push, the commit before it), which fails when a change edits an existing article's body under `content/blog/` without changing its `updatedAt`, and then `npm run test:ci`, whose coverage report it uploads to Codecov in a step that cannot fail the job. The build job runs `npm run typecheck` and `npm run build`, the lint job runs `npm run lint`, which is ESLint over `src`, `scripts`, `extension` (without `extension/dist`), `netlify`, and `e2e`, and the `chromium` end to end run splits the specs across three shards against the build job's `.next` output, each shard with a 15 minute limit. On a push to `main` a separate job with a 90 minute limit runs `npm run test:e2e:full` on the same build for the `firefox`, `webkit`, `Mobile Chrome`, and `Mobile Safari` projects, and it opens or updates a GitHub issue labeled `e2e-matrix-failure` when it fails, which the next passing run closes. The `Python Tests` job runs the investments fetch suite described under Python above, with a 15 minute limit. The ruleset on `main` required only the Lint, Unit Tests, and Build checks when I read it on 2026-11-25, so a failed `Python Tests` job does not block a merge.
 
 ---
 
-## Testing Guidance
+## Testing guidance
 
 - Prefer targeted test runs while iterating
 - Match the style of nearby tests instead of forcing a single pattern
@@ -156,7 +156,7 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ---
 
-## Current Caveats
+## Current caveats
 
 - `@testing-library/react` is present, but the repo also uses direct `createRoot` tests; follow local conventions
 - Playwright config starts the Next dev server locally and `npm run start` in CI. The local server runs with `JOB_SEARCH_PRIVATE_SYNC=0`, so a test never writes the private job search files, and `reuseExistingServer` is on locally, so a server already answering on `E2E_PORT` (then `PORT`, then 3000) gets tested instead, even one started from another checkout, and that server keeps whatever private sync setting it started with. `E2E_BASE_URL` points a run at another address
@@ -165,7 +165,7 @@ Some local environments may only have a subset of browsers installed, so targete
 
 ---
 
-## Source Files
+## Source files
 
 - `jest.config.js`
 - `jest.setup.js`

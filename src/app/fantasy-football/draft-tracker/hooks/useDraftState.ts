@@ -10,6 +10,7 @@ import {
   getPickDelta,
   reconcileTeamRosters,
 } from '@/lib/draftAnalytics';
+import { DRAFT_ROUND_COUNTS, DRAFT_TEAM_COUNTS, DRAFT_TIMER_SECONDS } from '@/lib/draftPresets';
 import { DEFAULT_REDRAFT_LINEUP, normalizeRedraftLineup } from '@/lib/redraftLineup';
 import {
   DRAFT_STORAGE_VERSION,
@@ -43,7 +44,6 @@ export const getDefaultSettings = (): DraftSettings => ({
   lineup: { ...DEFAULT_REDRAFT_LINEUP },
   timerSeconds: 90,
   leagueName: 'My Fantasy League',
-  draftDate: new Date(),
 });
 
 // Initialize empty team rosters
@@ -93,6 +93,30 @@ const rebuildTeams = (
   return teams;
 };
 
+// Remove every pick from a target pick number on. Both undo actions run through
+// this, so the rosters are rebuilt the same way for one pick or for several.
+const undoFromPick = (prev: DraftState, targetPickNumber: number): DraftState => {
+  const removed = prev.picks.filter(pick => pick.pickNumber >= targetPickNumber);
+  if (removed.length === 0) return prev;
+
+  const keptPicks = prev.picks.filter(pick => pick.pickNumber < targetPickNumber);
+  const newCurrentPick = keptPicks.length + 1;
+
+  return {
+    ...prev,
+    picks: keptPicks,
+    teams: rebuildTeams(prev.settings.totalTeams, keptPicks, prev.teams),
+    currentPick: newCurrentPick,
+    currentRound: calculateCurrentRound(newCurrentPick, prev.settings.totalTeams),
+    undoHistory: [
+      ...prev.undoHistory,
+      ...[...removed].sort((left, right) => right.pickNumber - left.pickNumber),
+    ],
+    isActive: true,
+    endTime: undefined,
+  };
+};
+
 // Calculate draft order for snake draft
 export const calculateDraftOrder = (pick: number, totalTeams: number, draftType: 'snake' | 'linear'): number => {
   if (draftType === 'linear') {
@@ -125,9 +149,6 @@ const calculateCappedCurrentRound = (
 
 type UnknownRecord = Record<string, unknown>;
 
-const SUPPORTED_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
-const SUPPORTED_ROUND_COUNTS = [13, 14, 15, 16, 17, 18] as const;
-const SUPPORTED_TIMER_SECONDS = [0, 45, 60, 90, 120, 180] as const;
 const DRAFT_ROSTER_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'] as const;
 type DraftRosterPosition = (typeof DRAFT_ROSTER_POSITIONS)[number];
 
@@ -164,12 +185,12 @@ function decodeDraftSettings(value: unknown): DraftSettings {
   const record = isRecord(value) ? value : {};
   const totalTeams = nearestSupportedInteger(
     record.totalTeams,
-    SUPPORTED_TEAM_COUNTS,
+    DRAFT_TEAM_COUNTS,
     defaults.totalTeams
   );
   const rounds = nearestSupportedInteger(
     record.rounds,
-    SUPPORTED_ROUND_COUNTS,
+    DRAFT_ROUND_COUNTS,
     defaults.rounds
   );
   const scoringFormat =
@@ -184,10 +205,9 @@ function decodeDraftSettings(value: unknown): DraftSettings {
       : defaults.draftType;
   const timerSeconds = nearestSupportedInteger(
     record.timerSeconds,
-    SUPPORTED_TIMER_SECONDS,
+    DRAFT_TIMER_SECONDS,
     defaults.timerSeconds ?? 90
   );
-  const draftDate = decodeDate(record.draftDate) ?? defaults.draftDate;
 
   return {
     totalTeams,
@@ -203,7 +223,6 @@ function decodeDraftSettings(value: unknown): DraftSettings {
       typeof record.leagueName === 'string'
         ? record.leagueName.slice(0, 60)
         : defaults.leagueName,
-    draftDate,
   };
 }
 
@@ -300,8 +319,6 @@ function decodePick(value: unknown): DraftPick | null {
     teamNumber: Number(value.teamNumber),
     player,
     timestamp,
-    pickTimeSeconds: clampInteger(value.pickTimeSeconds, 0, 3600, 0),
-    isKeeper: value.isKeeper === true,
   };
 }
 
@@ -625,8 +642,6 @@ export const useDraftState = () => {
         teamNumber: currentTeam,
         player,
         timestamp: new Date(),
-        pickTimeSeconds: 0,
-        isKeeper: false,
       };
 
       // Update team roster
@@ -674,42 +689,8 @@ export const useDraftState = () => {
   // Undo last pick
   const undoLastPick = useCallback(() => {
     commitDraftState(prev => {
-      if (prev.picks.length === 0) return prev;
-      
       const lastPick = prev.picks[prev.picks.length - 1];
-      const updatedPicks = prev.picks.slice(0, -1);
-      
-      // Update team rosters
-      const updatedTeams = prev.teams.map(team => {
-        if (team.teamNumber === lastPick.teamNumber) {
-          const teamPicks = team.picks.filter(pick => pick.pickNumber !== lastPick.pickNumber);
-          const newPositionCounts = { ...team.positionCounts };
-          
-          if (lastPick.player.position !== 'FLEX' && lastPick.player.position !== 'OVERALL') {
-            newPositionCounts[lastPick.player.position as keyof typeof newPositionCounts]--;
-          }
-          
-          return {
-            ...team,
-            picks: teamPicks,
-            positionCounts: newPositionCounts,
-            totalValue: team.totalValue - (lastPick.player.auctionValue || 0),
-            projectedPoints: team.projectedPoints - (lastPick.player.projectedPoints || 0),
-          };
-        }
-        return team;
-      });
-
-      return {
-        ...prev,
-        picks: updatedPicks,
-        currentPick: lastPick.pickNumber,
-        currentRound: calculateCurrentRound(lastPick.pickNumber, prev.settings.totalTeams),
-        teams: updatedTeams,
-        undoHistory: [...prev.undoHistory, lastPick],
-        isActive: true,
-        endTime: undefined,
-      };
+      return lastPick ? undoFromPick(prev, lastPick.pickNumber) : prev;
     });
   }, [commitDraftState]);
 
@@ -731,8 +712,6 @@ export const useDraftState = () => {
         teamNumber: currentTeam,
         player,
         timestamp: new Date(),
-        pickTimeSeconds: 0,
-        isKeeper: false,
       };
 
       const updatedTeams = prev.teams.map(team => {
@@ -773,27 +752,7 @@ export const useDraftState = () => {
   // Undo every pick back to (and including) a target pick number, rebuilding the
   // affected rosters in one pass. Undone picks land on the redo stack newest-out.
   const undoToPick = useCallback((targetPickNumber: number) => {
-    commitDraftState(prev => {
-      const removed = prev.picks.filter(pick => pick.pickNumber >= targetPickNumber);
-      if (removed.length === 0) return prev;
-
-      const keptPicks = prev.picks.filter(pick => pick.pickNumber < targetPickNumber);
-      const newCurrentPick = keptPicks.length + 1;
-
-      return {
-        ...prev,
-        picks: keptPicks,
-        teams: rebuildTeams(prev.settings.totalTeams, keptPicks, prev.teams),
-        currentPick: newCurrentPick,
-        currentRound: calculateCurrentRound(newCurrentPick, prev.settings.totalTeams),
-        undoHistory: [
-          ...prev.undoHistory,
-          ...[...removed].sort((left, right) => right.pickNumber - left.pickNumber),
-        ],
-        isActive: true,
-        endTime: undefined,
-      };
-    });
+    commitDraftState(prev => undoFromPick(prev, targetPickNumber));
   }, [commitDraftState]);
 
   // Rename a team in the room (league-mate personalization).
@@ -959,17 +918,6 @@ export const useDraftState = () => {
     return calculateDraftOrder(draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType);
   }, [draftState.currentPick, draftState.settings.totalTeams, draftState.settings.draftType]);
 
-  const currentTeamName = useMemo(() => {
-    if (isDraftComplete) return 'Draft Complete';
-    const resolvedName = resolveTeamName(currentTeamNumber);
-    if (currentTeamNumber !== draftState.settings.userTeam) return resolvedName;
-    return resolvedName === `Team ${currentTeamNumber}` ? 'Your Turn' : `${resolvedName} (you)`;
-  }, [currentTeamNumber, draftState.settings.userTeam, isDraftComplete, resolveTeamName]);
-
-  const userTeam = useMemo(() => {
-    return draftState.teams.find(team => team.teamNumber === draftState.settings.userTeam);
-  }, [draftState.teams, draftState.settings.userTeam]);
-
   const canRedo = draftState.undoHistory.length > 0 && !isDraftComplete;
 
   return {
@@ -988,8 +936,6 @@ export const useDraftState = () => {
     isUserPick,
     isDraftComplete,
     currentTeamNumber,
-    currentTeamName,
-    userTeam,
     isLoaded,
     persistenceError,
     storageBlocked,

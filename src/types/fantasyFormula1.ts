@@ -10,8 +10,6 @@ export interface FantasyFormula1Asset {
   teamColor: string | null;
   headshotUrl: string | null;
   standingPosition: number | null;
-  seasonPoints: number;
-  lastRacePoints: number;
   price: number;
   projectedPoints: number;
   valueRating: number;

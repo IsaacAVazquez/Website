@@ -33,7 +33,7 @@ describe("fantasy companion room config", () => {
         teams: 10,
         rounds: 16,
         userTeam: 4,
-        draftType: "linear",
+        draftOrder: "linear",
         scoring: "HALF_PPR",
         lineup: { WR: 3, K: 0, DST: 0 },
       })
@@ -61,11 +61,8 @@ describe("fantasy companion room config", () => {
       });
   });
 
-  it("rejects invalid and conflicting room inputs", () => {
+  it("rejects invalid room inputs", () => {
     expect(() => createRedraftRoomConfig({ season: 2026, teams: 1 })).toThrow(RangeError);
-    expect(() =>
-      createRedraftRoomConfig({ season: 2026, draftOrder: "snake", draftType: "linear" })
-    ).toThrow("cannot disagree");
     expect(() =>
       createBestBallRoomConfig({ season: 2026, contestId: "bbm-vii", userTeam: 13 })
     ).toThrow(RangeError);

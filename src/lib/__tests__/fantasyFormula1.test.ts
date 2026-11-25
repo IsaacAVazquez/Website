@@ -5,6 +5,7 @@ import {
   FANTASY_FORMULA1_CONSTRUCTOR_SLOTS,
   FANTASY_FORMULA1_DRIVER_SLOTS,
   optimizeFantasyFormula1Lineups,
+  sanitizeFantasyFormula1Lineup,
   summarizeFantasyFormula1Lineup,
 } from "@/lib/fantasyFormula1";
 import committedSnapshot from "@/data/formula1Snapshot.json";
@@ -274,6 +275,73 @@ describe("fantasyFormula1", () => {
     for (const asset of assets) {
       expect(asset.riskReason === "Stable recent production").toBe(asset.risk === "low");
     }
+  });
+
+  it("lifts every projection by 12% on a sprint weekend and leaves the prices alone", () => {
+    const plain = buildFantasyFormula1Assets(createSnapshot());
+    const sprint = buildFantasyFormula1Assets(
+      createSnapshot({ nextMeeting: { ...bahrainMeeting, hasSprint: true } })
+    );
+
+    expect(sprint.map((asset) => asset.price)).toEqual(plain.map((asset) => asset.price));
+    sprint.forEach((asset, index) => {
+      // Both figures are rounded to one decimal after the multiplier, so they can sit 0.11 apart.
+      expect(Math.abs(asset.projectedPoints - plain[index].projectedPoints * 1.12)).toBeLessThan(0.11);
+      expect(asset.projectedPoints).toBeGreaterThan(plain[index].projectedPoints);
+    });
+  });
+
+  it("rates risk from the last-race gain first and the standings position second", () => {
+    const base = createSnapshot();
+    const assets = buildFantasyFormula1Assets(
+      createSnapshot({
+        driverStandings: base.driverStandings.map((standing) =>
+          standing.driverNumber === 16
+            ? { ...standing, pointsDelta: 0 }
+            : standing.driverNumber === 12
+              ? { ...standing, pointsDelta: 2 }
+              : standing
+        ),
+        constructorStandings: base.constructorStandings.map((standing) =>
+          standing.teamName === "Mercedes" ? { ...standing, pointsDelta: 0 } : standing
+        ),
+      })
+    );
+    const read = (id: string) => {
+      const asset = assets.find((entry) => entry.id === id);
+      return [asset?.risk, asset?.riskReason];
+    };
+
+    expect(read("driver-4")).toEqual(["low", "Stable recent production"]);
+    expect(read("driver-16")).toEqual(["high", "No last-race points"]);
+    expect(read("driver-12")).toEqual(["medium", "Small last-race gain"]);
+    // Sixth of eight is past the 68% line, which outranks a small gain.
+    expect(read("driver-77")).toEqual(["medium", "Back-half standings profile"]);
+    expect(read("constructor-mclaren")).toEqual(["low", "Stable recent production"]);
+    expect(read("constructor-mercedes")).toEqual(["high", "No last-race team gain"]);
+    expect(read("constructor-cadillac")).toEqual(["medium", "Lower-table constructor profile"]);
+  });
+
+  it("drops duplicate, misfiled, surplus, and unselected ids from a saved lineup", () => {
+    const assets = buildFantasyFormula1Assets(createSnapshot());
+
+    expect(
+      sanitizeFantasyFormula1Lineup(
+        {
+          driverIds: [
+            "driver-4", "driver-4", "constructor-mclaren", "driver-63", "driver-16",
+            "driver-12", "driver-87", "driver-77", "driver-999",
+          ],
+          constructorIds: ["constructor-mclaren", "driver-4", "constructor-mclaren", "constructor-mercedes", "constructor-cadillac"],
+          lockedAssetIds: ["driver-4", "driver-77", "constructor-mercedes", "constructor-cadillac"],
+        },
+        assets
+      )
+    ).toEqual({
+      driverIds: ["driver-4", "driver-63", "driver-16", "driver-12", "driver-87"],
+      constructorIds: ["constructor-mclaren", "constructor-mercedes"],
+      lockedAssetIds: ["driver-4", "constructor-mercedes"],
+    });
   });
 
   it("returns complete optimized lineups inside the budget", () => {

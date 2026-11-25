@@ -46,7 +46,6 @@ export function buildContentSecurityPolicy(
 
   const connectSrc = [
     "'self'",
-    "https://api.fantasypros.com",
     "https://cloudflareinsights.com",
     ...(analyticsEnabled
       ? [

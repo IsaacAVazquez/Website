@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import type { RetirementResult } from "@/lib/retirement";
+import type { RetirementResult, WithdrawalStrategy } from "@/lib/retirement";
 import { CAPITAL_MARKET_ASSUMPTIONS, formatPercent } from "@/lib/retirement";
 import type { AssetClassId } from "@/lib/retirement";
 
@@ -9,10 +9,11 @@ interface Props {
   result: RetirementResult;
 }
 
-const STRATEGY_LABEL: Record<string, string> = {
+/** One name per strategy, for the form's select and the record below it. */
+export const STRATEGY_LABEL: Record<WithdrawalStrategy, string> = {
   "fixed-real": "Fixed real (4%-rule style)",
-  "fixed-percent": "Fixed % of balance",
   guardrails: "Dynamic guardrails (Guyton-Klinger)",
+  "fixed-percent": "Fixed % of balance",
 };
 
 /**
@@ -27,7 +28,7 @@ export function RetirementAssumptions({ result }: Props) {
     { label: "Return volatility", value: formatPercent(assumptions.volatility, 1) },
     { label: "Inflation", value: formatPercent(assumptions.inflation, 1) },
     { label: "Healthcare inflation (pre-65)", value: formatPercent(input.assumptions.healthcareInflation, 1) },
-    { label: "Withdrawal strategy", value: STRATEGY_LABEL[input.assumptions.withdrawalStrategy] ?? input.assumptions.withdrawalStrategy },
+    { label: "Withdrawal strategy", value: STRATEGY_LABEL[input.assumptions.withdrawalStrategy] },
     { label: "Safe withdrawal rate (target #)", value: formatPercent(result.safeWithdrawalRate, 1) },
     { label: "On-track threshold", value: formatPercent(assumptions.successThreshold, 0) },
     { label: "Monte Carlo trials", value: result.monteCarlo.simulations.toLocaleString("en-US") },
@@ -41,8 +42,8 @@ export function RetirementAssumptions({ result }: Props) {
       <header>
         <h3>Assumptions</h3>
         <p>
-          Editable in the form. Returns are derived from your allocation, never a single hardcoded
-          number.
+          Editable in the form. Returns are derived from your allocation and the per-asset-class
+          assumptions below.
         </p>
       </header>
 

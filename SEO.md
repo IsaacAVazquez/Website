@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
@@ -46,7 +46,7 @@ The X handle @isaacvazquez came out of `profile.sameAs`, the Person `alternateNa
 
 ## `constructMetadata(options)` — The Main Builder
 
-The root layout calls it, and every page that sets its own metadata goes through it, `/about` by way of `generateAIOptimizedMetadata`. The exceptions are `/back-room/[discovery]`, `not-found.tsx`, and the not-found branches of the two writing routes, which return plain metadata objects marked noindex. It returns a Next.js `Metadata` object with Open Graph, Twitter, and robots settings, plus a canonical when `canonicalUrl` is passed.
+The root layout calls it, and every page that sets its own metadata calls it. The exceptions are `/back-room/[discovery]`, `not-found.tsx`, and the not-found branches of the two writing routes, which return plain metadata objects marked noindex. It returns a Next.js `Metadata` object with Open Graph, Twitter, and robots settings, plus a canonical when `canonicalUrl` is passed.
 
 ```ts
 import { constructMetadata } from "@/lib/seo";
@@ -76,7 +76,7 @@ export const metadata = constructMetadata({
 
 - `title`: with a `title` option, an absolute title with the site name appended once (`"Contact | Isaac Vazquez"`), or the title as given when it already contains the name. With no title, which is the root layout's call, `default: "Isaac Vazquez | Berkeley Haas MBA Candidate"` and `template: "%s | Isaac Vazquez"`.
 - `description`, `authors`, `creator`, `publisher`. The description is fitted to 160 characters by `fitMetaDescription`, which ends on the last full sentence when one ends at 70 characters or later, and otherwise clips at a word with an ellipsis.
-- `openGraph`: type, title, description, `siteName`, locale, one 1200x630 image with `siteConfig.ogImageAlt` as its alt, and article fields when `ogType: "article"`. `url` is set only when `canonicalUrl` is passed.
+- `openGraph`: type, title, description, `siteName`, locale, one 1200x630 image, and article fields when `ogType: "article"`. The image's alt is `siteConfig.ogImageAlt` on the default share card and the page's social title when the page passes an image of its own. `url` is set only when `canonicalUrl` is passed.
 - `twitter`: a `summary_large_image` card with no creator or site handle
 - `alternates.canonical`, plus an `en-US` entry under `alternates.languages`: set only when `canonicalUrl` is passed. There is deliberately no default. The root layout calls `constructMetadata()` with no arguments and every route without metadata of its own inherits the result, so a homepage default told Google those routes were copies of the homepage.
 - `robots`: indexable with full GoogleBot directives (`max-image-preview: large`, `max-snippet: -1`, `max-video-preview: -1`), or with `noIndex: true`, `index: false`, `follow: true`, and `nocache: true`
@@ -97,20 +97,7 @@ When set, the OpenGraph block outputs the correct `article:published_time`, `art
 
 ## `generateAIOptimizedMetadata(pageData)` — Alternative Builder
 
-`/about` is the only page that calls it. It is a compatibility wrapper that passes the title, description, image, `noIndex`, `canonicalUrl`, and dates through to `constructMetadata`. It still accepts `summary`, `expertise`, `context`, `author`, and `readingTime` so older calls compile, and it drops all five.
-
-```ts
-// src/app/about/page.tsx
-import { generateAIOptimizedMetadata } from "@/lib/seo";
-
-export const metadata = generateAIOptimizedMetadata({
-  title: "About Isaac Vazquez | Berkeley Haas MBA Candidate",
-  description:
-    "I'm a second-year Berkeley Haas MBA moving into product, after six years in campaign data and QA and a summer on Juno's MBA growth team.",
-  canonicalUrl: "/about",
-  dateModified: "2026-10-19",
-});
-```
+No page calls it as of 2026-11-24. `/about` was its last caller and now calls `constructMetadata` directly. It is still exported from `src/lib/seo.ts` as a compatibility wrapper that passes the title, description, image, `noIndex`, `canonicalUrl`, and dates through to `constructMetadata`. It still accepts `summary`, `expertise`, `context`, `author`, and `readingTime` so older calls compile, and it drops all five.
 
 Prefer `constructMetadata` for new pages.
 
@@ -201,7 +188,7 @@ export { metadata } from "./metadata"; // metadata.ts uses constructMetadata()
 
 ```tsx
 // src/app/about/page.tsx
-export const metadata = generateAIOptimizedMetadata({ ... });
+export const metadata = constructMetadata({ ... });
 
 // In JSX:
 <AIStructuredData schema={{ type: "Breadcrumb", data: { items: breadcrumbs } }} />
@@ -290,7 +277,7 @@ The root layout provides the baseline for every page:
 
 Runs automatically as the first `postbuild` step (`npm run generate:sitemap && npm run build:llms && node scripts/patch-nft-sharp.mjs`) and writes `public/sitemap.xml`. The snapshot refresh workflows also regenerate it through `scripts/ci/commit-and-push-snapshot.sh` and commit it with each changed snapshot, so snapshot-dated `lastmod` values move with the data.
 
-`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`, prefixing each path with `SITE_URL` (default `https://isaacvazquez.com`). URLs already in the committed file keep their order, and new ones are appended alphabetically. `src/lib/sitemap.js` walks every `page.tsx` under `src/app`, skipping `api/` and `_`-prefixed folders, and lists each page unless it opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers pages whose metadata cannot say so, and it is empty as of 2026-11-02. Dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change that alters an entry, such as a new or removed page or post, a post date, a snapshot refresh, or a row in `STATIC_ROUTE_LASTMOD` or `CHANGEFREQ_BY_ROUTE`, because the consistency test compares the committed file.
+`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`, prefixing each path with `SITE_URL` (default `https://isaacvazquez.com`). The file lists them in the order `src/lib/sitemap.js` returns them, which is alphabetical by path, under the one sitemap namespace. `src/lib/sitemap.js` walks every `page.tsx` under `src/app`, skipping `api/` and `_`-prefixed folders, and lists each page unless it opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. Dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change that alters an entry, such as a new or removed page or post, a post date, a snapshot refresh, or a row in `STATIC_ROUTE_LASTMOD` or `CHANGEFREQ_BY_ROUTE`, because the consistency test compares the committed file.
 
 ### Output fields
 
@@ -303,7 +290,7 @@ Each entry emits `loc`, `lastmod`, `changefreq`, and `priority`. `priority` is 1
 1. Static routes come from the route walk above, dated from the `STATIC_ROUTE_LASTMOD` map. Snapshot-driven routes take the later of their snapshot's timestamp, read by functions such as `readPremierLeagueLastmod`, `readInvestmentsLastmod`, `readFantasyLastmod`, and `readEarthquakeLastmod`, and a hand date for their last redesign. The identity pages carry the date of their last copy change, kept in step with each page's own `dateModified`, and `/writing` takes the later of its own copy change and its newest post. A route with no row gets the build date and a warning.
 2. Writing topic pages come one per `BLOG_TOPIC_PAGES` entry, each dated by the newest post filed under its label through the `cluster` or `archiveBucket` frontmatter, and never earlier than `WRITING_TOPIC_LASTMOD` (2026-06-22).
 3. Portfolio case studies come from `getPortfolioSlugEntries()`, which regex-extracts top-level slug keys from `src/constants/caseStudies.ts`, skipping any entry with a top-level `link:` (those `[slug]` routes `permanentRedirect()` to the live tool instead of rendering a page). Every current case study has one, so none is listed.
-4. Blog posts come from `getBlogRouteEntries()`, which discovers `content/blog/*.{mdx,md}` at build time, using `updatedAt || publishedAt` for `lastmod` and excluding future-dated posts (their `publishedAt` is later than today).
+4. Blog posts come from `getBlogRouteEntries()`, which discovers `content/blog/*.mdx` at build time, using `updatedAt || publishedAt` for `lastmod` and excluding future-dated posts (their `publishedAt` is later than today).
 
 Google uses `lastmod` only while it keeps matching real changes, which is why none of these dates is left to drift by hand when a source for it exists.
 
@@ -363,19 +350,19 @@ Status of metadata and structured data for the routes listed below. The table do
 
 | Page | Metadata | ogType | canonicalUrl | dateModified | Structured Data | Breadcrumbs | Status |
 |---|---|---|---|---|---|---|---|
-| `/` | `constructMetadata` | website | `/` | 2026-10-01 | Person, WebSite | N/A (root) | OK |
-| `/about` | `generateAIOptimizedMetadata` | website | `/about` | 2026-10-19 | Breadcrumb, ProfilePage, FAQ | Yes | OK |
+| `/` | `constructMetadata` | website | `/` | 2026-10-21 | Person, WebSite | N/A (root) | OK |
+| `/about` | `constructMetadata` | website | `/about` | 2026-10-19 | Breadcrumb, ProfilePage, FAQ | Yes | OK |
 | `/contact` | `constructMetadata` | website | `/contact` | 2026-10-19 | BreadcrumbList, ContactPage | Yes | OK |
 | `/resume` | `constructMetadata` | website | `/resume` | 2026-10-19 | BreadcrumbList, ProfilePage | Yes | OK |
 | `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-10-19 | BreadcrumbList, ItemList | Yes | OK |
 | `/portfolio/[slug]` | None | None | None | None | None | None | OK; a redirect stub since 2026-10-02, every case study slug answers 308 to its live tool and any other slug is a 404, and the home and portfolio cards link to the tool directly |
-| `/writing` | `constructMetadata` | website | `/writing` | 2026-09-28 | BreadcrumbList, ItemList | Yes | OK |
+| `/writing` | `generateMetadata` | website | `/writing` | the later of 2026-09-28 and the newest post's `updatedAt` or `publishedAt` | BreadcrumbList, ItemList | Yes | OK |
 | `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
-| `/writing/topics/[topic]` | `generateMetadata` | website | relative | newest post's `publishedAt` | BreadcrumbList, ItemList | Yes | OK |
+| `/writing/topics/[topic]` | `generateMetadata` | website | relative | newest post's `updatedAt` or `publishedAt` | BreadcrumbList, ItemList | Yes | OK |
 | `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
-| `/accessibility` | `constructMetadata` | website | `/accessibility` | 2026-10-02 | WebPage, BreadcrumbList | Yes | OK |
-| `/privacy` | `constructMetadata` | website | `/privacy` | 2026-10-21 | WebPage, BreadcrumbList | Yes | OK |
-| `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
+| `/accessibility` | `constructMetadata` | website | `/accessibility` | 2026-10-26 | WebPage, BreadcrumbList | Yes | OK |
+| `/privacy` | `constructMetadata` | website | `/privacy` | 2026-11-16 | WebPage, BreadcrumbList | Yes | OK |
+| `/search` | `constructMetadata` | website | `/search` | 2026-10-26 | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | 308 in `next.config.mjs` | n/a | n/a | n/a | n/a | n/a | OK; page file removed |
@@ -385,12 +372,12 @@ Status of metadata and structured data for the routes listed below. The table do
 | `/score-pools/settings` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, WebPage | Yes | OK, `noIndex` |
 | `/premier-league` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
 | `/la-liga` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp | Yes | OK |
-| `/news-pulse` | `constructMetadata` | website | relative | 2026-10-12 | BreadcrumbList, SoftwareApp | Yes | OK |
-| `/march-madness-2026` | `constructMetadata` | website | relative | 2026-10-26 | BreadcrumbList, Article, FAQ, SportsApp | Yes | OK |
+| `/news-pulse` | `constructMetadata` | website | relative | 2026-11-03 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/march-madness-2026` | `constructMetadata` | website | relative | 2026-11-23 | BreadcrumbList, Article, FAQ, SportsApp | Yes | OK |
 | `/spacex-mission-control` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApp | Yes | OK |
 | `/polling-aggregator` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApp | Yes | OK |
-| `/fintech-tools/budget-planner` | `constructMetadata` | website | relative | 2026-10-12 | BreadcrumbList, SoftwareApp | Yes | OK |
-| `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | 2026-10-12 | BreadcrumbList, SoftwareApplication | Yes | OK |
+| `/fintech-tools/budget-planner` | `constructMetadata` | website | relative | 2026-11-03 | BreadcrumbList, SoftwareApp | Yes | OK |
+| `/fintech-tools/interchange-iq` | `constructMetadata` | website | relative | 2026-10-22, the date of the processor rates | BreadcrumbList, SoftwareApplication | Yes | OK |
 
 ### Gaps to address
 
@@ -561,15 +548,6 @@ Prefixes `siteConfig.url` to a relative path and returns an absolute URL unchang
 ### `freeApplicationOffer`
 
 The free `Offer` (price `"0"`, currency USD) that the `SoftwareApplication` preset adds when a page passes no `offers`. The `SportsApplication` preset adds no offer of its own, so every page that uses it passes `offers: freeApplicationOffer`.
-
-### `calculateReadingTime(text: string): number`
-
-Returns estimated reading time in minutes (200 wpm). Only `src/lib/__tests__/seo.test.ts` calls it. Blog posts get their reading time from a separate `calculateReadingTime` in `src/lib/blog.ts`, which uses the same 200 words per minute and returns a string such as "4 min read".
-
-```ts
-import { calculateReadingTime } from "@/lib/seo";
-const minutes = calculateReadingTime(post.content); // e.g. 4
-```
 
 ---
 

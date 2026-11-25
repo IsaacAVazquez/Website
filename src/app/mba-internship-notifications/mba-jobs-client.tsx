@@ -40,6 +40,7 @@ import {
 } from "@/lib/mba-applications";
 import {
   describeAttentionItem,
+  formatDateKey,
   getApplicationAttentionItems,
   isFollowUpAttention,
   sortApplicationsForColumn,
@@ -48,6 +49,7 @@ import {
   type MBAAttentionItem,
   type MBAAttentionKind,
 } from "@/lib/mba-application-insights";
+import { normalizeMBAJobText } from "@/lib/mba-job-matching";
 import { useMBAApplications, useMBAJobCandidates } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
@@ -139,14 +141,6 @@ function timeAgo(iso: string, now: number | null): string {
     return RELATIVE_FORMATTER.format(Math.round(diff / 3_600_000), "hour");
   return RELATIVE_FORMATTER.format(Math.round(diff / 86_400_000), "day");
 }
-
-// tz-local: follow-up/deadline dates the visitor picked in <input type="date">
-// on their own tracked applications (client-only, localStorage-backed; never
-// renders with real data during SSR since `applications` starts empty).
-const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-});
 
 function formatFetchedAt(d: Date | null): string {
   if (!d) return "—";
@@ -268,18 +262,8 @@ function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSS
   return active ? { borderColor: company.color, color: "var(--c97-ink)" } : {};
 }
 
-function normalizeSearchText(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/&/g, " ")
-    .replace(/\+/g, " ")
-    .replace(/[^a-z0-9]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function splitSearchTokens(value: string): string[] {
-  const normalized = normalizeSearchText(value);
+  const normalized = normalizeMBAJobText(value);
   return normalized ? Array.from(new Set(normalized.split(" "))) : [];
 }
 
@@ -289,7 +273,7 @@ function buildJobSearchHaystack(job: MBAJob): string {
     ...MBA_ROLE_FAMILY_SEARCH_TERMS[family],
   ]);
 
-  return normalizeSearchText(
+  return normalizeMBAJobText(
     [
       job.title,
       job.companyName,
@@ -306,7 +290,7 @@ function buildJobSearchHaystack(job: MBAJob): string {
 }
 
 function getQueryScore(job: MBAJob, query: string): number {
-  const normalizedQuery = normalizeSearchText(query);
+  const normalizedQuery = normalizeMBAJobText(query);
   if (!normalizedQuery) return 0;
 
   const haystack = buildJobSearchHaystack(job);
@@ -345,7 +329,7 @@ const LOCATION_PRESETS = [
 ] as const;
 
 function getLocationLabels(location: string): string[] {
-  const normalizedLocation = normalizeSearchText(location);
+  const normalizedLocation = normalizeMBAJobText(location);
   if (!normalizedLocation) return [];
 
   const labels = new Set<string>();
@@ -371,7 +355,7 @@ function buildLocationOptions(jobs: MBAJob[]): LocationOption[] {
   for (const job of jobs) {
     const labels = new Set(getLocationLabels(job.location));
     for (const label of labels) {
-      const normalizedValue = normalizeSearchText(label);
+      const normalizedValue = normalizeMBAJobText(label);
       const current = counts.get(normalizedValue);
       if (current) {
         current.count += 1;
@@ -386,27 +370,26 @@ function buildLocationOptions(jobs: MBAJob[]): LocationOption[] {
     .slice(0, 6);
 }
 
+/** The typed query, or the role family and career type when nothing is typed. */
+function roleQueryParts(state: MBAJobsSearchState): string[] {
+  if (state.q.trim()) return [state.q.trim()];
+
+  const parts = [
+    state.roleFamily !== "all" ? MBA_ROLE_FAMILY_LABELS[state.roleFamily] : "MBA business roles",
+  ];
+  if (state.roleType === "internship") {
+    parts.push("internship");
+  } else if (state.roleType === "full-time") {
+    parts.push("full time");
+  }
+  return parts;
+}
+
 function buildManualLinkedInQuery(
   companyName: string,
   state: MBAJobsSearchState
 ): string {
-  const parts: string[] = [];
-
-  if (state.q.trim()) {
-    parts.push(state.q.trim());
-  } else {
-    if (state.roleFamily !== "all") {
-      parts.push(MBA_ROLE_FAMILY_LABELS[state.roleFamily]);
-    } else {
-      parts.push("MBA business roles");
-    }
-
-    if (state.roleType === "internship") {
-      parts.push("internship");
-    } else if (state.roleType === "full-time") {
-      parts.push("full time");
-    }
-  }
+  const parts = roleQueryParts(state);
 
   parts.push(companyName);
   if (state.location.trim()) {
@@ -416,23 +399,7 @@ function buildManualLinkedInQuery(
 }
 
 function buildRoleSearchQuery(state: MBAJobsSearchState, suffix?: string): string {
-  const parts: string[] = [];
-
-  if (state.q.trim()) {
-    parts.push(state.q.trim());
-  } else {
-    if (state.roleFamily !== "all") {
-      parts.push(MBA_ROLE_FAMILY_LABELS[state.roleFamily]);
-    } else {
-      parts.push("MBA business roles");
-    }
-
-    if (state.roleType === "internship") {
-      parts.push("internship");
-    } else if (state.roleType === "full-time") {
-      parts.push("full time");
-    }
-  }
+  const parts = roleQueryParts(state);
 
   if (state.category !== "all") {
     parts.push(CATEGORY_LABELS[state.category]);
@@ -492,13 +459,6 @@ function hasActiveFilters(state: MBAJobsSearchState): boolean {
     state.roleFamily !== DEFAULT_MBA_JOBS_STATE.roleFamily ||
     state.sort !== DEFAULT_MBA_JOBS_STATE.sort
   );
-}
-
-function formatDateKey(value: string | null): string {
-  if (!value) return "";
-  const date = new Date(`${value}T00:00:00`);
-  if (Number.isNaN(date.getTime())) return value;
-  return DATE_KEY_FORMATTER.format(date);
 }
 
 // ---------------------------------------------------------------------------
@@ -1017,7 +977,6 @@ function CompanyFilterStrip({
 function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceStatus[] }) {
   const okCount = sourceStatuses.filter((status) => status.status === "ok").length;
   const failedCount = sourceStatuses.filter((status) => status.status === "failed").length;
-  const skippedCount = sourceStatuses.filter((status) => status.status === "skipped").length;
   const externalDisabledCount = sourceStatuses.filter(
     (status) => status.status === "external-disabled"
   ).length;
@@ -1030,7 +989,6 @@ function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceSt
       <p className="mba-health-counts">
         <span>{okCount} healthy</span>
         <span>{failedCount} failed</span>
-        <span>{skippedCount} manual-only</span>
         {externalDisabledCount > 0 && <span>{externalDisabledCount} external disabled</span>}
       </p>
       <details className="c97-disclosure">
@@ -1052,7 +1010,6 @@ function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceSt
               <ColorTag
                 key={`${source.companyId}-${source.status}`}
                 accent={accent}
-                title={source.message}
                 label={`${source.companyName} · ${
                   source.status === "ok" ? countOf(source.jobCount, "role") : source.status
                 }`}
@@ -1060,6 +1017,14 @@ function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceSt
             );
           })}
         </div>
+        {/* Printed, since a tooltip never reaches a keyboard, a touch screen, or a screen reader. */}
+        {sourceStatuses
+          .filter((source) => source.message)
+          .map((source) => (
+            <p key={`${source.companyId}-${source.status}`} className="mba-small">
+              {source.companyName}: {source.message}
+            </p>
+          ))}
       </details>
     </section>
   );
@@ -1654,12 +1619,14 @@ export function MBAJobsClient({
     setUiState(routeState);
   }, [routeState]);
 
-  function updateRouteState(next: Partial<MBAJobsSearchState>) {
+  // A pill, a sort, or a view change is a step Back can undo. Typing passes
+  // "replace", so a ten-letter query is one history entry and not ten.
+  function updateRouteState(next: Partial<MBAJobsSearchState>, method: "push" | "replace" = "push") {
     const nextState = { ...uiState, ...next };
     const href = buildMBAJobsHref(nextState);
     setUiState(nextState);
     pushedHrefsRef.current.add(href);
-    startTransition(() => router.push(href, { scroll: false }));
+    startTransition(() => router[method](href, { scroll: false }));
   }
 
   const {
@@ -1708,8 +1675,8 @@ export function MBAJobsClient({
   const view = uiState.view === "candidates" && !candidates.enabled ? "feed" : uiState.view;
   const applicationTodayKey = getTodayDateKey();
   const applicationInsights = useMemo(
-    () => summarizeApplicationPipeline(applications, applicationTodayKey),
-    [applications, applicationTodayKey]
+    () => summarizeApplicationPipeline(applications),
+    [applications]
   );
   const attentionItems = useMemo(
     () => getApplicationAttentionItems(applications, applicationTodayKey),
@@ -1765,16 +1732,16 @@ export function MBAJobsClient({
 
   // ── Derived: filtered + sorted job list ──────────────────────────────
   const displayJobs = useMemo(() => {
-    const normalizedLocation = normalizeSearchText(effectiveState.location);
+    const normalizedLocation = normalizeMBAJobText(effectiveState.location);
     // A suggested place matches on the same terms its pill was counted with
     // ("nyc" for New York), so the list holds every role the pill promised.
     // Anything else typed stays a plain substring test.
     const locationTerms: readonly string[] =
-      LOCATION_PRESETS.find((preset) => normalizeSearchText(preset.label) === normalizedLocation)
+      LOCATION_PRESETS.find((preset) => normalizeMBAJobText(preset.label) === normalizedLocation)
         ?.terms ?? [normalizedLocation];
     const filtered = locationScopedEntries.filter((entry) => {
       if (!normalizedLocation) return true;
-      const jobLocation = normalizeSearchText(entry.job.location);
+      const jobLocation = normalizeMBAJobText(entry.job.location);
       return locationTerms.some((term) => jobLocation.includes(term));
     });
 
@@ -1829,7 +1796,7 @@ export function MBAJobsClient({
   const totalTracked = MBA_COMPANIES.filter((c) => c.atsType !== "manual").length;
   const totalCompanies = MBA_COMPANIES.length;
   const externalLeadCount = jobs.filter((job) => job.atsType === "external-api").length;
-  const normalizedLocationFilter = normalizeSearchText(uiState.location);
+  const normalizedLocationFilter = normalizeMBAJobText(uiState.location);
   const matchingRoleCount = locationScopedEntries.length;
   const refreshLabel = isLoading
     ? "Loading…"
@@ -2026,6 +1993,13 @@ export function MBAJobsClient({
           </p>
         )}
 
+        {view === "candidates" && candidates.error && (
+          <p className="mba-notice" role="status">
+            <span className="mba-notice-tag">Not saved.</span>
+            <span>The candidates save hit a problem. {candidates.error}</span>
+          </p>
+        )}
+
         {view === "candidates" ? (
           <CandidatesView
             candidates={candidates.candidates}
@@ -2064,7 +2038,7 @@ export function MBAJobsClient({
                     ref={searchInputRef}
                     type="text"
                     value={uiState.q}
-                    onChange={(event) => updateRouteState({ q: event.target.value })}
+                    onChange={(event) => updateRouteState({ q: event.target.value }, "replace")}
                     placeholder="Search PM, PMM, strategy, ops, growth, finance…"
                     aria-label="Search roles"
                     className="c97-field"
@@ -2090,7 +2064,7 @@ export function MBAJobsClient({
                     ref={locationInputRef}
                     type="text"
                     value={uiState.location}
-                    onChange={(event) => updateRouteState({ location: event.target.value })}
+                    onChange={(event) => updateRouteState({ location: event.target.value }, "replace")}
                     placeholder="Remote, New York, San Francisco…"
                     aria-label="Filter by location"
                     className="c97-field"

@@ -283,12 +283,11 @@ describe("DraftPickGrid", () => {
 });
 
 describe("DraftScorebug", () => {
-  it("is a named section with one announcement, the room's cells, and its actions", () => {
+  it("is a named section with the room's cells and its actions", () => {
     const cellRef = createRef<HTMLDivElement>();
     render(
       <DraftScorebug
         label="Live mock draft status"
-        announcement="Pick 3 of 48."
         className="room-bug"
         actions={<button type="button" className="ffb-bug-btn">Take back</button>}
       >
@@ -304,7 +303,6 @@ describe("DraftScorebug", () => {
     const bar = screen.getByRole("region", { name: "Live mock draft status" });
 
     expect(bar).toHaveClass("ffb-sticky");
-    expect(within(bar).getByRole("status")).toHaveTextContent("Pick 3 of 48.");
     expect(bar.querySelector(".ffb-bug")).toHaveClass("room-bug");
     expect(within(bar).getByRole("button", { name: "Take back" }).parentElement).toHaveClass("ffb-bug-actions");
 
@@ -341,7 +339,7 @@ describe("DraftScorebug", () => {
 
   it("leaves the actions out when a room passes none", () => {
     const { container } = render(
-      <DraftScorebug label="Live draft status" announcement="">
+      <DraftScorebug label="Live draft status">
         <DraftScorebugCell label="Pick">1</DraftScorebugCell>
       </DraftScorebug>
     );
@@ -365,9 +363,9 @@ describe("DraftLastPicks", () => {
   });
 
   it("prints plain stickers under a room's own heading when there is no undo", () => {
-    render(<DraftLastPicks picks={picks([1, 2]).reverse()} userTeam={1} heading="Since your pick" headingLevel={2} />);
+    render(<DraftLastPicks picks={picks([1, 2]).reverse()} userTeam={1} heading="Since your pick" />);
 
-    expect(screen.getByRole("heading", { level: 2, name: "Since your pick" })).toHaveClass("ffb-h3");
+    expect(screen.getByRole("heading", { level: 3, name: "Since your pick" })).toHaveClass("ffb-h3");
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
     expect(screen.queryByText("Select one to undo back to it")).not.toBeInTheDocument();
     const stickers = screen.getAllByRole("listitem");

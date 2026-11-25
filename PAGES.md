@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
@@ -43,7 +43,7 @@ Current route inventory and page ownership for the live app.
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Filterable AI coding and agent tool directory |
 | `/frontier-models` | `src/app/frontier-models/page.tsx` | Snapshot-backed frontier model tracker |
 | `/github-trending-pulse` | `src/app/github-trending-pulse/page.tsx` | Snapshot-backed GitHub repository trend dashboard |
-| `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Weekly read on public AI agent repositories gaining attention, ranked by measured star movement; reads the GitHub Trending snapshot through `getAgentBuildIndex` and carries the newsletter signup |
+| `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Daily read on public AI agent repositories gaining attention, ranked by seven-day star movement; reads the GitHub Trending snapshot through `getAgentBuildIndex` and carries the newsletter signup |
 | `/premier-league` | `src/app/premier-league/page.tsx` | Snapshot-backed Premier League dashboard |
 | `/la-liga` | `src/app/la-liga/page.tsx` | Snapshot-backed La Liga dashboard |
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
@@ -153,7 +153,6 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`, along with t
 Most routes build their metadata with `constructMetadata(...)` from `src/lib/seo.ts`:
 
 - static and query-driven pages export its result as `metadata`
-- `/writing/[slug]`, `/writing/topics/[topic]`, and `/changelog` export a Next.js `generateMetadata` function that returns it, and `/back-room/[discovery]` returns a plain noindexed object from its own `generateMetadata`
-- `/about` uses `generateAIOptimizedMetadata(...)` from the same file
+- `/writing`, `/writing/[slug]`, `/writing/topics/[topic]`, and `/changelog` export a Next.js `generateMetadata` function that returns it, and `/back-room/[discovery]` returns a plain noindexed object from its own `generateMetadata`
 
 Structured data is added route-by-route with `StructuredData` and `AIStructuredData`.

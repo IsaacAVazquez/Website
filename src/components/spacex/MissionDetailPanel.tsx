@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { AlertTriangle, ExternalLink, MapPin, Orbit, Rocket, Users } from "lucide-react";
 import type { MissionLaunchDetail, MissionControlPanel } from "@/types/spacex";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatCurrencyCompact, formatInteger } from "./formatters";
 
@@ -64,13 +65,16 @@ export function MissionDetailPanel({
   const idBase = useId();
   const tabId = (key: MissionControlPanel) => `${idBase}-tab-${key}`;
   const panelId = `${idBase}-panel`;
+  // Every tab stays in the Tab order here. The drawer's focus trap wraps on
+  // its last focusable element, which can be an unselected tab.
+  const onTabKey = useTablistKeyboard(PANEL_OPTIONS, (option) => onPanelChange(option.key));
   const tabs = (
     <div
       className="inline-flex flex-wrap border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
       role="tablist"
       aria-label="Mission detail panels"
     >
-      {PANEL_OPTIONS.map((option) => (
+      {PANEL_OPTIONS.map((option, index) => (
         <button
           key={option.key}
           type="button"
@@ -78,6 +82,7 @@ export function MissionDetailPanel({
           id={tabId(option.key)}
           aria-selected={activePanel === option.key}
           aria-controls={panelId}
+          onKeyDown={(event) => onTabKey(event, index)}
           onClick={() => onPanelChange(option.key)}
           style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
           className={`tap-target text-sm font-semibold transition ${
@@ -131,8 +136,8 @@ export function MissionDetailPanel({
             Select a mission to inspect its full record.
           </p>
           <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            The detail rail will expand launch context, vehicle information, payload records,
-            and outbound references once a mission is selected.
+            This drawer shows launch context, vehicle information, payload records, and outbound
+            references once a mission is selected.
           </p>
         </div>
       ) : null}
@@ -442,8 +447,6 @@ export function MissionDetailPanel({
                   { href: launch.links.article, label: "Read article" },
                   { href: launch.links.wikipedia, label: "Open Wikipedia" },
                   { href: launch.links.presskit, label: "Open press kit" },
-                  { href: launch.links.redditLaunch, label: "Launch thread" },
-                  { href: launch.links.redditMedia, label: "Media thread" },
                 ]}
               />
             </div>

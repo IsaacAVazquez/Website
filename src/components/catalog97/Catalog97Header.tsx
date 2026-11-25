@@ -39,7 +39,13 @@ export function Catalog97Header() {
           target.tagName === "SELECT" ||
           target.isContentEditable);
 
+      // Search opened over a page's modal dialog would take focus out of it.
+      const modal = document.querySelector('[aria-modal="true"]');
+
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        // The search panel is a modal dialog too, inside this header, and the
+        // shortcut stays claimed while it is the one that is open.
+        if (modal && !modal.closest(".c97-header")) return;
         event.preventDefault();
         setIsSearchOpen(true);
         return;
@@ -51,8 +57,7 @@ export function Catalog97Header() {
         !event.metaKey &&
         !event.ctrlKey &&
         !event.altKey &&
-        // Search opened over a page's modal dialog would take focus out of it.
-        !document.querySelector('[aria-modal="true"]')
+        !modal
       ) {
         event.preventDefault();
         setIsSearchOpen(true);

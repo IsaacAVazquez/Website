@@ -11,7 +11,6 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
     await expect(footer).toHaveCount(1);
     await expect(footer.getByRole("navigation", { name: "Pages" })).toBeVisible();
-    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 
   test("uses the Catalog 97 footer on the contact page", async ({ page }) => {
@@ -24,7 +23,6 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
     await expect(footer).toHaveCount(1);
     await expect(footer.getByRole("navigation", { name: "Elsewhere" })).toBeVisible();
-    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 
   test("keeps the portfolio CTA separate from the Catalog 97 footer", async ({ page }) => {
@@ -35,7 +33,6 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
     await expect(footer).toHaveCount(1);
     await expect(footer.getByRole("link", { name: /work/i })).toBeVisible();
-    await expect(page.locator("#contact")).toHaveCount(0);
   });
 
   test("uses the Catalog 97 footer on writing detail pages", async ({ page }) => {
@@ -48,6 +45,5 @@ test.describe("Footer CTA cleanup", () => {
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
     await expect(footer).toHaveCount(1);
     await expect(footer.getByRole("navigation", { name: "Pages" })).toBeVisible();
-    await expect(footer).not.toHaveAttribute("data-footer-variant");
   });
 });

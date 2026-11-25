@@ -1,18 +1,35 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
-import type { TransitStationBoard } from "@/types/bayAreaTransit";
+import type { TransitLine, TransitStation, TransitStationBoard } from "@/types/bayAreaTransit";
 import { TransitSignature, upcomingDepartures } from "../TransitSignature";
 
-const station = (id: string, abbr: string, lat: number, lon: number) =>
-  ({ id, abbr, name: `${abbr} station`, latitude: lat, longitude: lon, city: "SF", lines: ["Yellow"] }) as never;
+const station = (id: string, abbr: string, lat: number, lon: number): TransitStation => ({
+  id,
+  abbr,
+  name: `${abbr} station`,
+  latitude: lat,
+  longitude: lon,
+  city: "SF",
+  lines: ["Yellow"],
+});
 const stations = [station("s1", "EMBR", 37.79, -122.39), station("s2", "MONT", 37.78, -122.4)];
-const lines = [{ id: "y", colorName: "Yellow", hexColor: "#ffe800", originAbbr: "EMBR", destinationAbbr: "MONT", stationCount: 2 }] as never;
-const board = (delay: number, status = "fresh") =>
-  ({
-    station: stations[0],
-    departures: [{ destination: "Antioch", minutes: 4, delaySeconds: delay, colorName: "Yellow", hexColor: "#ffe800", platform: "2", direction: "North", cars: 8, bikesAllowed: true }],
-    status,
-  }) as never;
+const line = (
+  fields: Pick<TransitLine, "id" | "colorName" | "hexColor"> & Partial<TransitLine>
+): TransitLine => ({
+  routeId: "",
+  name: "",
+  origin: "",
+  destination: "",
+  stationCount: 0,
+  ...fields,
+});
+const lines = [line({ id: "y", colorName: "Yellow", hexColor: "#ffe800" })];
+/** One train four minutes out on a board read just now, so nothing ages it. */
+const board = (delay: number): TransitStationBoard => {
+  const read = servedBoard([4], new Date().toISOString());
+  read.departures[0].delaySeconds = delay;
+  return read;
+};
 
 function signature(props: Partial<Parameters<typeof TransitSignature>[0]> = {}) {
   return (
@@ -63,7 +80,7 @@ it("says so on the board when BART has no departures to give", () => {
 });
 
 it("describes an empty direction filter without claiming no trains are scheduled", () => {
-  renderSignature({ stationBoard: { ...(board(0) as TransitStationBoard), departures: [] }, directionFilter: "North" });
+  renderSignature({ stationBoard: { ...board(0), departures: [] }, directionFilter: "North" });
   expect(screen.getByText("No upcoming northbound trains in this feed for EMBR station.")).toBeVisible();
   expect(screen.queryByText(/No trains are scheduled/)).toBeNull();
 });
@@ -175,7 +192,7 @@ describe("the platform board's clock", () => {
   it("ages a copy the CDN held from when BART answered, not from when the server rendered it", () => {
     // Rendered the moment the board was read, then held for 40 minutes.
     jest.useFakeTimers({ now: minutesAfterRead(40) });
-    const held = { ...servedBoard([4, 12, 47], READ_AT), servedAt: READ_AT };
+    const held = servedBoard([4, 12, 47], READ_AT);
     renderSignature({ stationBoard: held });
 
     expect(screen.getByText("7 min")).toBeInTheDocument();
@@ -192,7 +209,7 @@ describe("the platform board's clock", () => {
       jest.advanceTimersByTime(30 * 60_000);
     });
     const readNow = new Date(minutesAfterRead(30)).toISOString();
-    const fresh = { ...servedBoard([4, 12], readNow), servedAt: readNow };
+    const fresh = servedBoard([4, 12], readNow);
     rerender(signature({ stationBoard: fresh }));
 
     expect(screen.getByText("4 min")).toBeInTheDocument();
@@ -263,9 +280,9 @@ describe("an empty platform board", () => {
 
 describe("the drawn map's lines", () => {
   const sequenced = [
-    { id: "y", colorName: "Yellow", hexColor: "#ffe800", stationSequence: ["EMBR", "MONT"] },
-    { id: "r", colorName: "Red", hexColor: "#ff0000", stationSequence: ["MONT", "EMBR"] },
-  ] as never;
+    line({ id: "y", colorName: "Yellow", hexColor: "#ffe800", stationSequence: ["EMBR", "MONT"] }),
+    line({ id: "r", colorName: "Red", hexColor: "#ff0000", stationSequence: ["MONT", "EMBR"] }),
+  ];
   const stroke = (container: HTMLElement, hex: string) =>
     container.querySelector(`svg[role="img"] line[stroke="${hex}"]`)!;
 
@@ -334,7 +351,7 @@ describe("the board's rows", () => {
 
 it("names a line button by its route as well as its colour", () => {
   renderSignature({
-    lines: [{ id: "y", colorName: "Yellow", hexColor: "#ffe800", name: "Antioch to SFO/Millbrae" }] as never,
+    lines: [line({ id: "y", colorName: "Yellow", hexColor: "#ffe800", name: "Antioch to SFO/Millbrae" })],
   });
   expect(
     screen.getByRole("button", { name: "Yellow line, Antioch to SFO/Millbrae" })

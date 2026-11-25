@@ -338,6 +338,18 @@ describe("SearchInterface", () => {
     );
   });
 
+  it("names an active filter by its button's label, and prints an id the row does not offer as it is", () => {
+    window.history.replaceState({}, "", "/search?type=post&category=Sports");
+    const { unmount } = render(<SearchHarness />);
+    expect(screen.getByText("Type: Writing")).toBeVisible();
+    expect(screen.getByText("Category: Sports Dashboards")).toBeVisible();
+    unmount();
+
+    window.history.replaceState({}, "", "/search?category=Hand%20typed");
+    render(<SearchHarness />);
+    expect(screen.getByText("Category: Hand typed")).toBeVisible();
+  });
+
   it("reports a search and a filter change without the typed query or the picked option", async () => {
     const user = userEvent.setup({
       advanceTimers: jest.advanceTimersByTime,

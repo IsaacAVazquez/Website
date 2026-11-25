@@ -20,3 +20,11 @@ it("ages out observations, keeps separate outlets, and rejects unsafe restored r
   expect(observeNews(first, [], "2026-10-23T09:00:00Z")).toEqual([]);
   expect(parseNewsHistory([{ ...first[0], link: "javascript:alert(1)" }, null, { ...first[0], source: "constructor" }])).toEqual([]);
 });
+
+it("does not record a new revision each time it sees the same headline longer than the stored 600 characters", () => {
+  const long = { ...article, title: "A".repeat(700) };
+  const first = observeNews([], [long], "2026-10-23T09:00:00Z");
+  const second = observeNews(first, [long], "2026-10-23T10:00:00Z");
+  expect(second[0].revisions).toHaveLength(1);
+  expect(second[0].revisions[0].title).toHaveLength(600);
+});

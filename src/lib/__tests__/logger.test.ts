@@ -2,51 +2,19 @@ import { logger } from '../logger';
 
 describe('Logger', () => {
   let consoleSpy: {
-    log: jest.SpyInstance;
     warn: jest.SpyInstance;
     error: jest.SpyInstance;
-    debug: jest.SpyInstance;
   };
 
   beforeEach(() => {
     consoleSpy = {
-      log: jest.spyOn(console, 'log').mockImplementation(() => {}),
       warn: jest.spyOn(console, 'warn').mockImplementation(() => {}),
       error: jest.spyOn(console, 'error').mockImplementation(() => {}),
-      debug: jest.spyOn(console, 'debug').mockImplementation(() => {}),
     };
   });
 
   afterEach(() => {
     jest.restoreAllMocks();
-  });
-
-  // ─── info ──────────────────────────────────────────────────────────────────
-
-  describe('info', () => {
-    it('logs to console.log in development', () => {
-      const original = process.env.NODE_ENV;
-      Object.defineProperty(process.env, 'NODE_ENV', { value: 'development', writable: true });
-
-      logger.info('hello info');
-      expect(consoleSpy.log).toHaveBeenCalledWith(
-        expect.stringContaining('[INFO]'),
-        expect.anything()
-      );
-
-      Object.defineProperty(process.env, 'NODE_ENV', { value: original, writable: true });
-    });
-
-    it('does not log in production', () => {
-      const original = process.env.NODE_ENV;
-      Object.defineProperty(process.env, 'NODE_ENV', { value: 'production', writable: true });
-
-      // Re-instantiate to pick up production env
-      // Since logger is a singleton constructed at module load we test the
-      // branch indirectly: NODE_ENV=test (not 'production') so isDevelopment=true
-      // We can verify by checking the logger still works in the test env (test !== production).
-      Object.defineProperty(process.env, 'NODE_ENV', { value: original, writable: true });
-    });
   });
 
   // ─── warn ──────────────────────────────────────────────────────────────────
@@ -94,16 +62,24 @@ describe('Logger', () => {
     });
   });
 
-  // ─── debug ─────────────────────────────────────────────────────────────────
+  // ─── production ────────────────────────────────────────────────────────────
 
-  describe('debug', () => {
-    it('calls console.debug with [DEBUG] prefix in development', () => {
-      logger.debug('debug message');
-      expect(consoleSpy.debug).toHaveBeenCalledWith(
-        expect.stringContaining('[DEBUG]'),
-        expect.anything()
-      );
-    });
+  // The logger reads NODE_ENV once at import, so production needs its own copy.
+  it('keeps warn silent in production and still logs errors', () => {
+    const original = process.env.NODE_ENV;
+    Object.defineProperty(process.env, 'NODE_ENV', { value: 'production', writable: true });
+    try {
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.isolateModules requires a synchronous callback; dynamic import() would not work here
+        const { logger: productionLogger } = require('../logger') as typeof import('../logger');
+        productionLogger.warn('quiet');
+        productionLogger.error('loud');
+      });
+    } finally {
+      Object.defineProperty(process.env, 'NODE_ENV', { value: original, writable: true });
+    }
+
+    expect(consoleSpy.warn).not.toHaveBeenCalled();
+    expect(consoleSpy.error).toHaveBeenCalledWith(expect.stringContaining('[ERROR]'), expect.anything());
   });
-
 });

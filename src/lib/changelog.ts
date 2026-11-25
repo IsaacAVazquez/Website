@@ -22,12 +22,6 @@ interface ChangelogEntry {
 
 const changelogDirectory = path.join(process.cwd(), "content/changelog");
 
-function ensureChangelogDirectory() {
-  if (!fs.existsSync(changelogDirectory)) {
-    fs.mkdirSync(changelogDirectory, { recursive: true });
-  }
-}
-
 function compareByPublishedDateDesc(
   a: { publishedAt: string; slug: string },
   b: { publishedAt: string; slug: string }
@@ -65,7 +59,6 @@ async function renderMarkdown(content: string): Promise<string> {
 }
 
 function getChangelogSlugs(): string[] {
-  ensureChangelogDirectory();
   try {
     // A slug with both .mdx and .md files is listed once; readChangelogSource prefers .mdx.
     return Array.from(

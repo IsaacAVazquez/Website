@@ -51,9 +51,7 @@ export default defineConfig({
         entryFileNames: (chunk) =>
           chunk.name === "service-worker"
             ? "service-worker.js"
-            : chunk.name === "autodraft-content"
-              ? "autodraft-content.js"
-              : "assets/[name]-[hash].js",
+            : "assets/[name]-[hash].js",
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },

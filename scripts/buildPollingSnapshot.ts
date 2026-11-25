@@ -8,10 +8,6 @@ import { writeFileAtomic } from "./snapshotFallback";
 // committed fallback seed; day-to-day freshness comes from the blob lane.
 const SNAPSHOT_PATH = path.join(process.cwd(), "src", "data", "pollingSnapshot.json");
 
-// Compatibility re-export: tests and callers imported the builder from here
-// before the logic moved to src/lib/pollingData.ts.
-export { buildPollingSnapshotData as buildPollingSnapshot };
-
 async function main() {
   const snapshot = await buildPollingSnapshotData();
   const contents = JSON.stringify(snapshot, null, 2) + "\n";

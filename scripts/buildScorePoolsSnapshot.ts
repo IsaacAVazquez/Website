@@ -5,8 +5,9 @@
 // (scripts/data/score-pools/*.csv, filename = league key). Odds history is
 // append-only and capped per fixture so line movement stays queryable.
 //
-// Runs without keys too — provider leagues then carry a note and only
-// manual/CSV data. A failed refresh keeps the previous snapshot.
+// Without both provider keys the quality check below finds no live league and
+// the run exits nonzero without writing. A failed refresh keeps the previous
+// snapshot.
 
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";

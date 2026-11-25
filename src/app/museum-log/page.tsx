@@ -5,7 +5,7 @@ import { MuseumLogClient } from "./museum-log-client";
 import { normalizeMuseumState } from "./museum-log-state";
 
 /** The day the page's own design last changed; a later snapshot refresh moves the date past it. */
-const REDESIGNED_ON = "2026-10-12";
+const REDESIGNED_ON = "2026-11-03";
 
 /** The later of two ISO day keys, which compare as strings. */
 function latestDate(a: string, b: string) {

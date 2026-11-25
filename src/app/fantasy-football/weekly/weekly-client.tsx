@@ -43,7 +43,6 @@ import {
   FantasyRouteHeader,
   FantasySectionHeading,
   FreshnessParts,
-  TitleAccent,
   type FreshnessPart,
 } from "@/components/fantasy/FantasyRouteHeader";
 import { formatStableDateTime } from "@/lib/date-formatters";
@@ -52,6 +51,7 @@ import { PositionFilterBar, type PositionFilterOption } from "@/components/fanta
 import { ExpertSpread, SpreadScaleLabels, TierSection } from "@/components/fantasy/TierSection";
 import { fitRowsScale, type SpreadScale } from "@/components/fantasy/spreadScale";
 import { positionClass } from "@/components/fantasy/positionClass";
+import { normalizeWeeklyBoard, type WeeklyRouteState } from "./weekly-state";
 import "@/components/fantasy/fantasy-weekly.css";
 
 const WAIVER_LIST_LENGTH = 20;
@@ -137,8 +137,6 @@ function formatSourceStamp(asOf: string, hydrated: boolean): string {
     : `${formatStableDateTime(UTC_STAMP_FORMATTER, date)} UTC`;
 }
 
-export type WeeklyBoardKey = "flex" | "quarterbacks";
-
 type WeeklyPositionFilter = "ALL" | "RB" | "WR" | "TE";
 
 const POSITION_OPTIONS: PositionFilterOption<WeeklyPositionFilter>[] = [
@@ -153,18 +151,6 @@ const SPREAD_UNIT = 12;
 
 function formatAverage(player: FantasyWeeklyPlayer): string {
   return player.rankAverage === undefined ? "—" : player.rankAverage.toFixed(1);
-}
-
-export interface WeeklyRouteState {
-  scoring: FantasyRouteScoring;
-  board: WeeklyBoardKey;
-}
-
-/** Kept in step with the same normalization in page.tsx. */
-function normalizeWeeklyBoard(
-  value: string | null | undefined,
-): WeeklyBoardKey {
-  return value === "quarterbacks" ? "quarterbacks" : "flex";
 }
 
 function formatOwnership(value: number | undefined): string {
@@ -455,12 +441,7 @@ export function WeeklyBoardClient({
   return (
     <section className="relative min-h-dvh overflow-x-clip print:min-h-0" aria-label={viewConfig.ariaLabel}>
       <FantasyRouteHeader
-        title={
-          <>
-            Fantasy Football{" "}
-            <TitleAccent>{view === "waivers" ? "Waivers" : "Weekly"}</TitleAccent>
-          </>
-        }
+        title={view === "waivers" ? "Fantasy Football Waivers" : "Fantasy Football Weekly"}
         lead={
           view === "rankings" ? (
             <>
@@ -680,7 +661,7 @@ export function WeeklyBoardClient({
                 <p className="ffb-method">
                   Players the experts rank ahead of where the rostering rate
                   puts them. The gap is the player&rsquo;s percentile on this board minus
-                  the percentage of leagues rostering him, so both numbers are
+                  the percentage of leagues rostering the player, so both numbers are
                   printed beside it and any row can be checked by hand.
                 </p>
                 {waivers.length === 0 ? (
@@ -773,7 +754,7 @@ export function WeeklyBoardClient({
                 <p className="ffb-method ffb-wk-foot-note">
                   The percentile is measured against the whole published
                   board rather than the startable part of it, so it is the count
-                  of players at or below him divided by all{" "}
+                  of players at or below the player&rsquo;s rank divided by all{" "}
                   {activeBoard.flex.length} on the flex board, or all{" "}
                   {activeBoard.quarterbacks.length} on the quarterback board,
                   which is why the same percentile means something different in

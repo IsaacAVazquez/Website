@@ -8,7 +8,7 @@ import type {
   MBAJobsSourceStatus,
 } from "@/types/mba-jobs";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
-import { matchMBAJobRole } from "@/lib/mba-job-matching";
+import { matchMBAJobRole, normalizeMBAJobText } from "@/lib/mba-job-matching";
 import { mbaJobsRateLimiter } from "@/lib/rateLimit";
 import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 import type { DataDeliveryStatus } from "@/lib/dataRevision";
@@ -37,39 +37,13 @@ type DirectHtmlMBACompany = MBACompany & { atsType: "direct-html" };
 // Helpers
 // ---------------------------------------------------------------------------
 
-const HTML_ENTITY_MAP: Record<string, string> = {
-  amp: "&",
-  apos: "'",
-  gt: ">",
-  lt: "<",
-  nbsp: " ",
-  quot: '"',
-};
-
-// String.fromCodePoint throws past U+10FFFF, which would fail the whole board.
-function decodeCodePoint(value: number, entity: string): string {
-  return Number.isNaN(value) || value > 0x10ffff ? `&${entity};` : String.fromCodePoint(value);
-}
-
-function decodeHtmlEntity(entity: string): string {
-  const normalized = entity.toLowerCase();
-  if (normalized.startsWith("#x")) {
-    const value = Number.parseInt(normalized.slice(2), 16);
-    return decodeCodePoint(value, entity);
-  }
-  if (normalized.startsWith("#")) {
-    const value = Number.parseInt(normalized.slice(1), 10);
-    return decodeCodePoint(value, entity);
-  }
-  return HTML_ENTITY_MAP[normalized] ?? `&${entity};`;
-}
-
+// cheerio's parser knows every named entity and maps a numeric one past
+// U+10FFFF to the replacement character. Escaping "<" first keeps the markup
+// as text, so tags are still stripped by normalizeJobSnippet's own pattern.
 function decodeHtmlEntities(value: string): string {
   let output = value;
   for (let pass = 0; pass < 2; pass += 1) {
-    const decoded = output.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (_, entity: string) =>
-      decodeHtmlEntity(entity)
-    );
+    const decoded = load(output.replace(/</g, "&lt;"), null, false).text();
     if (decoded === output) break;
     output = decoded;
   }
@@ -645,14 +619,6 @@ interface ExternalFetchResult {
   status: MBAJobsSourceStatus;
 }
 
-function normalizeDedupeText(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function normalizeJobUrlForDedupe(value: string): string {
   try {
     const url = new URL(value);
@@ -671,7 +637,7 @@ function normalizeJobUrlForDedupe(value: string): string {
 function getJobDedupeKey(job: MBAJob): string {
   const urlKey = normalizeJobUrlForDedupe(job.applyUrl);
   if (urlKey) return `url:${urlKey}`;
-  return `title:${normalizeDedupeText(job.companyName)}:${normalizeDedupeText(job.title)}`;
+  return `title:${normalizeMBAJobText(job.companyName)}:${normalizeMBAJobText(job.title)}`;
 }
 
 function dedupeJobs(jobs: MBAJob[]): MBAJob[] {
@@ -685,8 +651,8 @@ function dedupeJobs(jobs: MBAJob[]): MBAJob[] {
 }
 
 function getKnownCompanyForName(companyName: string): MBACompany | undefined {
-  const normalized = normalizeDedupeText(companyName);
-  return MBA_COMPANIES.find((company) => normalizeDedupeText(company.name) === normalized);
+  const normalized = normalizeMBAJobText(companyName);
+  return MBA_COMPANIES.find((company) => normalizeMBAJobText(company.name) === normalized);
 }
 
 async function fetchAdzunaExternalLeads(): Promise<ExternalFetchResult> {

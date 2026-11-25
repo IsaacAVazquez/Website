@@ -25,14 +25,15 @@ describe("useMountOnFirstOpen", () => {
     expect(result.current).toBe(true);
   });
 
-  it("loads the overlay's code once, after the page has settled", () => {
+  it("loads the overlay's code once, after the page has settled", async () => {
     jest.useFakeTimers();
     try {
       const preload = jest.fn(() => Promise.resolve());
       const { rerender } = renderHook(() => useMountOnFirstOpen(false, preload));
       expect(preload).not.toHaveBeenCalled();
 
-      act(() => {
+      // Async, so the preload's promise settles inside act.
+      await act(async () => {
         jest.advanceTimersByTime(2000);
       });
       expect(preload).toHaveBeenCalledTimes(1);

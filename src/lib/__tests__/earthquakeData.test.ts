@@ -227,7 +227,6 @@ describe("buildEarthquakeSnapshotData", () => {
     expect(strong.place).toBe("12 km S of Eureka, CA");
     expect(strong.region).toBe("CA"); // tail after last comma
     expect(strong.felt).toBe(540);
-    expect(strong.alert).toBe("green");
     expect(strong.depthKm).toBe(12.3);
     expect(strong.latitude).toBe(40.6);
     expect(strong.longitude).toBe(-124.1);
@@ -242,7 +241,6 @@ describe("buildEarthquakeSnapshotData", () => {
     ]);
     expect(summary.significant[0].magnitude).toBe(7.1);
     expect(summary.significant[0].tier).toBe("major");
-    expect(summary.heroStats.significant30d).toBe(2);
 
     // --- hero stats from the day + week feeds ---
     // 2 valid earthquakes in the day feed (the quarry blast is filtered out),
@@ -253,9 +251,6 @@ describe("buildEarthquakeSnapshotData", () => {
     expect(summary.heroStats.strongest24hPlace).toBe("12 km S of Eureka, CA");
     // week feed: 3 of 4 events are within 7d (Chile is stale).
     expect(summary.heroStats.total7d).toBe(3);
-    expect(summary.heroStats.largest7dMag).toBe(6.4); // Fiji
-    expect(summary.heroStats.tsunamiAlerts7d).toBe(1); // Fiji
-    expect(summary.heroStats.deepestKm).toBe(540); // Fiji depth, rounded
 
     // --- regions: grouped + aggregated from the week feed (within 7d only) ---
     const ca = summary.regions.find((r) => r.region === "CA");
@@ -351,13 +346,9 @@ describe("buildEarthquakeSnapshotData", () => {
     expect(summary.heroStats.felt24h).toBe(0);
     expect(summary.heroStats.strongest24hMag).toBeNull();
     expect(summary.heroStats.strongest24hPlace).toBeNull();
-    expect(summary.heroStats.largest7dMag).toBeNull();
-    expect(summary.heroStats.deepestKm).toBeNull();
-    expect(summary.heroStats.tsunamiAlerts7d).toBe(0);
 
     // The significant feed still flows through.
     expect(summary.significant.map((e) => e.id)).toEqual(["us-sig-only"]);
-    expect(summary.heroStats.significant30d).toBe(1);
     expect(summary.quakeDetails["us-sig-only"].tier).toBe("major");
   });
 
@@ -385,6 +376,44 @@ describe("buildEarthquakeSnapshotData", () => {
     const { summary } = await buildEarthquakeSnapshotData();
     expect(summary.recent.map((e) => e.id)).toEqual(["us-good"]);
     expect(summary.heroStats.total24h).toBe(1);
+  });
+
+  it("groups an offshore 'X region' place with X", async () => {
+    const now = Date.now();
+    const hourAgo = -60 * 60 * 1000;
+    const weekFeed = featureCollection(
+      [
+        makeFeature(now, {
+          id: "us-jp-1",
+          mag: 5.3,
+          place: "Bonin Islands, Japan region",
+          timeOffsetMs: hourAgo,
+        }),
+        makeFeature(now, {
+          id: "us-jp-2",
+          mag: 4.6,
+          place: "41 km E of Namie, Japan",
+          timeOffsetMs: hourAgo,
+        }),
+        makeFeature(now, {
+          id: "us-vu-1",
+          mag: 5.0,
+          place: "Vanuatu region",
+          timeOffsetMs: hourAgo,
+        }),
+      ],
+      now
+    );
+
+    mockFeeds({ week: weekFeed });
+
+    const { summary } = await buildEarthquakeSnapshotData();
+    expect(
+      summary.regions.map((region) => [region.region, region.count])
+    ).toEqual([
+      ["Japan", 2],
+      ["Vanuatu", 1],
+    ]);
   });
 
   describe("with feeds shaped like the live USGS responses", () => {

@@ -71,13 +71,9 @@ tmp/
 temp/
 
 # Backup files
-*backup*
 *.backup
 src/data/*backup*.json
 scripts/*backup*
-!src/components/admin/LocalDataBackupCard.tsx
-!src/lib/localDataBackup.ts
-!src/lib/__tests__/localDataBackup.test.ts
 
 # Large data files (script-only usage)
 scripts/player-matching-results.json

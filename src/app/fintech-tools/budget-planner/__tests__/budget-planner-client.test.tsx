@@ -5,6 +5,9 @@ import { renderToString } from "react-dom/server";
 import { BudgetPlannerClient } from "../budget-planner-client";
 import { BUDGET_PLANNER_STORAGE_KEY } from "@/lib/budgetPlanner";
 import { toLocalDateKey } from "@/lib/date-formatters";
+import { downloadFile } from "@/lib/downloadFile";
+
+jest.mock("@/lib/downloadFile", () => ({ downloadFile: jest.fn() }));
 
 describe("BudgetPlannerClient", () => {
   beforeAll(() => {
@@ -264,6 +267,85 @@ describe("BudgetPlannerClient", () => {
 
     expect(screen.queryByText("Pick a date in April 2026.")).toBeNull();
     expect(screen.getByRole("button", { name: "Add expense" })).toBeEnabled();
+  });
+
+  it("hands the month's ledger to the browser as a CSV named for the month", () => {
+    localStorage.setItem(
+      BUDGET_PLANNER_STORAGE_KEY,
+      JSON.stringify({
+        "2026-04": {
+          monthKey: "2026-04",
+          income: 3000,
+          savingsTarget: 0,
+          categories: [{ id: "groceries", name: "Groceries", budgetedAmount: 600 }],
+          expenses: [{ id: "e1", categoryId: "groceries", amount: 120, date: "2026-04-01", note: "Market, weekly" }],
+        },
+      })
+    );
+    render(<BudgetPlannerClient />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Export CSV" }));
+
+    expect(downloadFile).toHaveBeenCalledTimes(1);
+    const [filename, text, type] = jest.mocked(downloadFile).mock.calls[0];
+    expect(filename).toBe("budget-2026-04.csv");
+    expect(type).toBe("text/csv;charset=utf-8");
+    expect(text).toContain('2026-04-01,Groceries,"Market, weekly",120');
+    expect(text).toContain("Remaining to spend,2880");
+  });
+
+  // A browser moves a reordered input in the page, which drops its focus, so
+  // an envelope must hold its place while its budget is typed.
+  it("keeps envelopes in the order they were added when a typed budget crosses what was spent", () => {
+    localStorage.setItem(
+      BUDGET_PLANNER_STORAGE_KEY,
+      JSON.stringify({
+        "2026-04": {
+          monthKey: "2026-04",
+          income: 5000,
+          savingsTarget: 0,
+          categories: [
+            { id: "housing", name: "Housing", budgetedAmount: 2200 },
+            { id: "groceries", name: "Groceries", budgetedAmount: 0 },
+          ],
+          expenses: [
+            { id: "rent", categoryId: "housing", amount: 2000, date: "2026-04-01", note: "Rent" },
+            { id: "market", categoryId: "groceries", amount: 120, date: "2026-04-02", note: "Market" },
+          ],
+        },
+      })
+    );
+    render(<BudgetPlannerClient />);
+    const names = () =>
+      screen.getAllByLabelText(/^Category name for /).map((input) => (input as HTMLInputElement).value);
+
+    // Groceries is the one over budget, and it still follows Housing.
+    expect(names()).toEqual(["Housing", "Groceries"]);
+    for (const typed of ["6", "60", "600"]) {
+      fireEvent.change(screen.getByLabelText("Budget amount for Housing"), { target: { value: typed } });
+      expect(names()).toEqual(["Housing", "Groceries"]);
+    }
+    expect(screen.getByText("$2,000 spent, over by $1,400")).toBeInTheDocument();
+  });
+
+  // Firefox and desktop Safari draw the month field as text, where every
+  // keystroke short of a whole month used to snap back. jsdom empties any
+  // partial month, so the empty value stands in for a month half typed.
+  it("holds a month that is not whole yet and puts the month back when the field is left", async () => {
+    render(<BudgetPlannerClient />);
+    const month = screen.getByLabelText("Budget month");
+
+    fireEvent.change(month, { target: { value: "" } });
+    expect(month).toHaveValue("");
+    expect(screen.getAllByText("April 2026").length).toBeGreaterThan(0);
+
+    fireEvent.change(month, { target: { value: "2026-05" } });
+    expect(month).toHaveValue("2026-05");
+    await waitFor(() => expect(screen.getAllByText("May 2026").length).toBeGreaterThan(0));
+
+    fireEvent.change(month, { target: { value: "" } });
+    fireEvent.blur(month);
+    expect(month).toHaveValue("2026-05");
   });
 
   it("puts the month, income, and savings target ahead of the envelopes and the figures", () => {

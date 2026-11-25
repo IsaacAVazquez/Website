@@ -90,6 +90,10 @@ export function manualFixtureToSnapshot(
   defaults: { allKnockout?: boolean },
   defaultFetchedAt: string,
 ): SnapshotFixture {
+  // The pick sheet turns the kickoff into a lock time, which throws on an invalid date.
+  if (Number.isNaN(Date.parse(input.kickoff))) {
+    throw new Error(`Score-pools fixture "${input.id}" has an unreadable kickoff "${input.kickoff}"`);
+  }
   return {
     id: input.id,
     kickoff: input.kickoff,
@@ -180,11 +184,15 @@ export function parseScorePoolsCsv(csvText: string): ManualFixtureInput[] {
       throw new Error(`Score-pools CSV row ${row + 1} has unknown odds format "${format}"`);
     }
     const totalLine = cell("totalLine");
+    const kickoff = requiredCell("kickoff");
+    if (Number.isNaN(Date.parse(kickoff))) {
+      throw new Error(`Score-pools CSV row ${row + 1} has an unreadable kickoff "${kickoff}"`);
+    }
     fixtures.push({
       id: requiredCell("fixtureId"),
       homeTeam: requiredCell("homeTeam"),
       awayTeam: requiredCell("awayTeam"),
-      kickoff: requiredCell("kickoff"),
+      kickoff,
       knockout: cell("knockout") === "true",
       stage: cell("stage"),
       odds: {

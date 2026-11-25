@@ -7,15 +7,7 @@ import { Search, X } from "@/components/ui/ServerIcons";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useModal } from "@/hooks/useModal";
 import { trackNavigationClick } from "@/lib/analytics";
-
-interface HeaderSearchResult {
-  id: string;
-  title: string;
-  excerpt: string;
-  url: string;
-  type: "post" | "project" | "page";
-  category?: string;
-}
+import type { SearchResult } from "./SearchInterface";
 
 interface HeaderSearchPanelProps {
   /** Called to dismiss the panel. The panel is mounted only while open, so the
@@ -23,7 +15,7 @@ interface HeaderSearchPanelProps {
   onClose: () => void;
 }
 
-const TYPE_LABELS: Record<HeaderSearchResult["type"], string> = {
+const TYPE_LABELS: Record<SearchResult["type"], string> = {
   project: "Project",
   post: "Writing",
   page: "Page",
@@ -46,11 +38,10 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const router = useRouter();
   const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const searchControllerRef = useRef<AbortController | null>(null);
   const listboxId = useId();
 
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<HeaderSearchResult[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -72,7 +63,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
         { signal }
       );
       if (!response.ok) throw new Error(`search failed: ${response.status}`);
-      const data: { results?: HeaderSearchResult[]; total?: number } = await response.json();
+      const data: { results?: SearchResult[]; total?: number } = await response.json();
       if (signal.aborted) return;
       setResults(Array.isArray(data.results) ? data.results : []);
       setTotal(typeof data.total === "number" ? data.total : 0);
@@ -91,7 +82,6 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   useEffect(() => {
     if (!hasQuery || debouncedQuery !== query.trim()) return;
     const controller = new AbortController();
-    searchControllerRef.current = controller;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Debounced search on query change; runSearch updates loading/results state internally
     runSearch(debouncedQuery, controller.signal);
     return () => controller.abort();
@@ -114,7 +104,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   }, [allResultsHref, onClose, router]);
 
   const goToResult = useCallback(
-    (result: HeaderSearchResult) => {
+    (result: SearchResult) => {
       trackNavigationClick({
         link_text: result.title,
         link_url: result.url,
@@ -128,7 +118,6 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const next = event.target.value;
-    searchControllerRef.current?.abort();
     setQuery(next);
     setResults([]);
     setTotal(0);
@@ -145,9 +134,8 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
     }
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      setActiveIndex((current) =>
-        results.length ? (current - 1 + results.length) % results.length : -1
-      );
+      // From nothing selected (-1), Up goes to the last result.
+      setActiveIndex((current) => (current <= 0 ? results.length : current) - 1);
       return;
     }
     if (event.key === "Enter") {
@@ -220,23 +208,27 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
           </div>
 
           <div className="max-h-[60dvh] overflow-y-auto overscroll-contain">
-            {hasQuery && loading && results.length === 0 && (
-              <p role="status" className="text-sm" style={STATUS_STYLE}>
-                Searching…
-              </p>
-            )}
+            {/* One live region that stays mounted, since a region inserted
+                with its text already in it is not announced reliably. */}
+            <div role="status">
+              {hasQuery && loading && results.length === 0 && (
+                <p className="text-sm" style={STATUS_STYLE}>
+                  Searching…
+                </p>
+              )}
 
-            {hasQuery && !loading && error && (
-              <p role="status" className="text-sm" style={STATUS_STYLE}>
-                Search isn&apos;t answering right now, so try again in a moment.
-              </p>
-            )}
+              {hasQuery && !loading && error && (
+                <p className="text-sm" style={STATUS_STYLE}>
+                  Search isn&apos;t answering right now, so try again in a moment.
+                </p>
+              )}
 
-            {hasQuery && !loading && !error && results.length === 0 && (
-              <p role="status" className="text-sm" style={STATUS_STYLE}>
-                No results for “{debouncedQuery}”.
-              </p>
-            )}
+              {hasQuery && !loading && !error && results.length === 0 && (
+                <p className="text-sm" style={STATUS_STYLE}>
+                  No results for “{debouncedQuery}”.
+                </p>
+              )}
+            </div>
 
             {!hasQuery && (
               <p className="text-sm" style={STATUS_STYLE}>

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
+import { isKonami, isTypingTarget, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
 import styles from "./arcade.module.css";
@@ -272,7 +272,7 @@ export default function ArcadeClient() {
   // Keyboard support: number keys 1-9 map left-to-right, top-to-bottom.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (statusRef.current !== "playing") return;
+      if (statusRef.current !== "playing" || isTypingTarget(e.target)) return;
       const n = Number.parseInt(e.key, 10);
       if (n >= 1 && n <= 9) {
         e.preventDefault();

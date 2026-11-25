@@ -98,7 +98,7 @@ export function BeforeYouBuyClient() {
   const rows: EditorRow[] = source === "custom" ? portfolio.draft ?? [] : source === "sample" ? editorRows(SAMPLE)
     : portfolio.saved.map((holding) => {
       const entry = loaded[holding.symbol];
-      return { symbol: holding.symbol, amount: entry && entry !== "missing" ? String(holding.shares * entry.history.prices.at(-1)!.close) : "" };
+      return { symbol: holding.symbol, amount: entry && entry !== "missing" ? String(Math.round(holding.shares * entry.history.prices.at(-1)!.close * 100) / 100) : "" };
     });
   const amountValid = positive(amountText);
   const ready = neededKey.split(",").every((key) => Object.hasOwn(loaded, key));
@@ -182,7 +182,7 @@ export function BeforeYouBuyClient() {
             <p className="byb-note">{source === "sample" ? "A $50,000 sample across seven holdings. Edit it below to try your own mix." : source === "saved" ? "Your holdings from Investments, valued at each stock's latest close. Edits here create a separate draft." : "Your working portfolio. Values are dollar amounts you can change below."}</p>
           </div>
           <details className="byb-portfolio byb-detail">
-            <summary>View and edit {rows.length} holdings{portfolioValid ? ` · ${formatMoney(total)}` : ""}</summary>
+            <summary>View and edit {rows.length} {rows.length === 1 ? "holding" : "holdings"}{portfolioValid ? ` · ${formatMoney(total)}` : ""}</summary>
             <p className="byb-note">{portfolio.persistence === "memory-only" ? "Changes stay in this tab because browser storage is unavailable." : "Valid edits are saved in this browser as a separate draft."}</p>
             {rows.length ? <TableScroll label="Portfolio holdings"><table className="byb-table byb-editor">
               <caption className="sr-only">Starting holdings in dollars</caption>

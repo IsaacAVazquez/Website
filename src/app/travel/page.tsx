@@ -5,9 +5,9 @@ import { TravelPlannerClient } from "./travel-planner-client";
 export const metadata = constructMetadata({
   title: "Travel Planner",
   description:
-    "Plan trips, track day-by-day itineraries, and journal as you go. Browser-persisted, no account required.",
+    "Plan trips, track day-by-day itineraries with planned costs, export the itinerary to a calendar, and journal as you go. Browser-persisted, no account required.",
   canonicalUrl: "/travel",
-  dateModified: "2026-10-12",
+  dateModified: "2026-10-22",
 });
 
 export default function TravelPlannerPage() {
@@ -30,7 +30,7 @@ export default function TravelPlannerPage() {
         data={{
           name: "Travel Planner",
           description:
-            "Browser-persisted travel planner for trip dates, day-by-day itineraries, and trip journaling.",
+            "Browser-persisted travel planner for trip dates, day-by-day itineraries, planned costs, a calendar export, and trip journaling.",
           url: "https://isaacvazquez.com/travel",
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

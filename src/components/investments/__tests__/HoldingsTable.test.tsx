@@ -1,10 +1,12 @@
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { cleanup, render, screen, fireEvent, within } from "@testing-library/react";
 
 // HoldingRow pulls historical prices through useStockData to draw a sparkline.
 // We don't exercise charting here, so stub the hook to an empty state — the row
 // then renders the "no trend" placeholder and stays deterministic.
-jest.mock("@/hooks/useStockData", () => ({
-  useStockData: () => ({
+const mockUseStockData = jest.fn((symbol: string | null, section: string) => {
+  void symbol;
+  void section;
+  return {
     data: null,
     isLoading: false,
     error: null,
@@ -14,7 +16,10 @@ jest.mock("@/hooks/useStockData", () => ({
     source: null,
     capabilities: {},
     refetch: () => {},
-  }),
+  };
+});
+jest.mock("@/hooks/useStockData", () => ({
+  useStockData: (symbol: string | null, section: string) => mockUseStockData(symbol, section),
 }));
 
 import { HoldingsTable } from "../HoldingsTable";
@@ -149,6 +154,28 @@ describe("HoldingsTable", () => {
     // useStockData mocked to null -> sparkData empty -> em dash placeholder
     const trendCells = screen.getAllByText("—");
     expect(trendCells.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("asks for a holding's price history only where the trend column shows", () => {
+    // The stylesheet hides the column in print and at 1500px and under.
+    mockUseStockData.mockClear();
+    renderTable([makeHolding({ symbol: "AAPL" })]);
+    expect(mockUseStockData).toHaveBeenLastCalledWith(null, "price");
+    cleanup();
+
+    const matchMedia = window.matchMedia;
+    window.matchMedia = jest.fn().mockImplementation((query: string) => ({
+      matches: query === "screen and (min-width: 1501px)",
+      media: query,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
+    try {
+      renderTable([makeHolding({ symbol: "AAPL" })]);
+      expect(mockUseStockData).toHaveBeenLastCalledWith("AAPL", "price");
+    } finally {
+      window.matchMedia = matchMedia;
+    }
   });
 
   it("invokes onResearch when the research action is clicked", () => {

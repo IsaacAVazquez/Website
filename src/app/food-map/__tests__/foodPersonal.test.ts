@@ -43,3 +43,16 @@ it("keeps a record for a place that is no longer in the catalog", () => {
     parseFoodRecords('{"delisted-place":{"saved":true,"note":"go back"}}'),
   ).toEqual({ "delisted-place": { saved: true, visited: false, note: "go back" } });
 });
+
+it("rejects an impossible date even when it sorts inside the trip", () => {
+  const trip = createTrip({
+    name: "Austin",
+    destination: "Austin",
+    startDate: "2026-02-27",
+    endDate: "2026-03-02",
+  });
+  expect(addFoodToTrip(trip, FOOD_MAP_PLACES[0], "2026-02-30")).toBe(trip);
+  expect(
+    addFoodToTrip(trip, FOOD_MAP_PLACES[0], "2026-02-28").activities,
+  ).toHaveLength(1);
+});

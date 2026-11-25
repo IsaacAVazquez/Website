@@ -126,7 +126,7 @@ export function GrowthPanel({ symbol }: Props) {
   const metrics = useMemo(() => extractMetrics(raw), [raw]);
 
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>YoY growth</h3>
 
       {isLoading && (

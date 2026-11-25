@@ -55,7 +55,6 @@ interface StoredPlan {
 /** Optional values used to seed a *fresh* plan from the user's portfolio. */
 export interface RetirementSeed {
   portfolioValue?: number;
-  allocation?: AllocationInput;
 }
 
 function safeWrite(plan: RetirementPlanInput): void {
@@ -85,9 +84,6 @@ function seedFreshPlan(seed?: RetirementSeed): RetirementPlanInput {
       ...plan.accounts.map((a) => ({ ...a, balance: 0 })),
     ];
   }
-  if (seed?.allocation) {
-    plan.allocation = { ...plan.allocation, ...seed.allocation };
-  }
   return plan;
 }
 
@@ -97,9 +93,9 @@ interface LeverState {
   levers: LeverEffect[];
 }
 
-function leversFor(plan: RetirementPlanInput): LeverState {
+function leversFor(plan: RetirementPlanInput, baseSuccessRate?: number): LeverState {
   try {
-    return { plan, levers: computeLevers(plan, getCurrentYear()) };
+    return { plan, levers: computeLevers(plan, getCurrentYear(), baseSuccessRate) };
   } catch {
     return { plan, levers: [] };
   }
@@ -199,7 +195,11 @@ export function useRetirementPlan(
     (updater: React.SetStateAction<RetirementPlanInput>) => {
       trackToolAction({ tool_name: "retirement_planner", action: "input_edit" });
       const current = loadPlan() ?? planRef.current;
-      const next = typeof updater === "function" ? updater(current) : updater;
+      const edited = typeof updater === "function" ? updater(current) : updater;
+      // The next edit starts from the decoded save, so decode now. A clamp the
+      // edit causes in another field (retirement age lifted above a raised
+      // current age) then shows on this edit, not without notice on the next.
+      const next = decodeRetirementPlan(edited) ?? edited;
       safeWrite(next);
       planRef.current = next;
       setIsSampleScenario(false);
@@ -243,7 +243,11 @@ export function useRetirementPlan(
     // A print has already run the search for this plan by the time it turns
     // the projection on, so there is nothing left to defer.
     if (!core || leversReady) return;
-    const handle = setTimeout(() => setLeverState(leversFor(debouncedPlan)), 0);
+    // core was projected from debouncedPlan, so its success rate is the baseline.
+    const handle = setTimeout(
+      () => setLeverState(leversFor(debouncedPlan, core.monteCarlo.successRate)),
+      0,
+    );
     return () => clearTimeout(handle);
   }, [debouncedPlan, core, leversReady]);
 

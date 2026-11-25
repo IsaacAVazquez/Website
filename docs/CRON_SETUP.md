@@ -2,7 +2,7 @@
 
 Current reference for how scheduled data refreshes work across the site.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
@@ -25,7 +25,7 @@ Each workflow lives in `.github/workflows/update-*.yml`. They all support `workf
 
 This file does not keep its own cron table, since a copy would drift from the workflows. The exact cron expression for each workflow is in its own file under `.github/workflows/`. The cadence, artifact, and upstream source for each surface are in the master table in `DATA_UPDATE_OPERATIONS.md`.
 
-Workflows commit regenerated snapshots back to `main` using the default `GITHUB_TOKEN`. Look for commits authored by `github-actions[bot]`.
+Workflows commit regenerated snapshots back to `main` through `scripts/ci/commit-and-push-snapshot.sh` and push with the `SNAPSHOT_DEPLOY_KEY` deploy key, since the ruleset on `main` requires status checks that the default `GITHUB_TOKEN` cannot be exempted from. Look for commits authored by `github-actions[bot]`.
 
 Every lane except `update-article-images.yml` checks the snapshot it built with `scripts/verifyDataRefresh.ts`, a step the Formula 1 lane skips only when OpenF1 is locked for a live session and the builder kept the committed snapshot, and the fantasy, investments, and SpaceX workflows add quality checks of their own. A failed run opens a GitHub issue labeled for its lane, such as `nba-refresh-failure`, or comments on the one already open, and the next successful run closes it. `update-article-images.yml` opens no issue, and it commits the covers that did arrive before it fails the run over a planned cover that did not.
 
@@ -54,7 +54,7 @@ This separation keeps deploys reproducible while the data workflows own freshnes
 When you need a snapshot to update right now, run the relevant `npm run update:*` command and commit the result:
 
 ```bash
-npm run update:fantasy            # ~30s
+npm run update:fantasy            # redraft, best ball, then weekly; CI allows those lanes 15, 10, and 10 minutes
 npm run update:investments        # needs .venv; no overall time cap unless GLOBAL_BUDGET_SECONDS is set (CI sets 1320, 22 minutes)
 npm run update:football           # ~16m, both leagues including team data
 npm run update:premier-league     # ~8m, full PL refresh

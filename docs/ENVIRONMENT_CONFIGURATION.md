@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-25
 
 ---
 
@@ -103,7 +103,6 @@ Without this token, the Premier League and La Liga routes still work from the ch
 | `NETLIFY_SITE_ID` | set in the workflow | Site identifier that `netlify deploy` uses to pick the site, since the command passes no `--site` flag, and that `scripts/ci/verify-deploy-assets.mjs` reads; `publish-data.yml` sets it inline for the whole job |
 | `EXPECTED_COMMIT` | set in the workflow | Commit that `scripts/ci/verify-deploy-assets.mjs` expects in the published deploy's message. The check skips that comparison when it is unset |
 | `DATA_LEDGER_POLL_ATTEMPTS`, `DATA_LEDGER_POLL_INTERVAL_MS`, `DATA_LEDGER_REQUEST_TIMEOUT_MS` | optional | Polling limits for `scripts/ci/ensure-production-data-ledger.mjs`, default `60` attempts `10000` ms apart, with a `20000` ms timeout on each request |
-| `NETLIFY_BUILD_HOOK` | optional | Repository secret that `update-article-images.yml` posts to after it commits new covers. The step skips itself when the secret is unset |
 | `ANALYZE` | optional | `true` adds `webpack-bundle-analyzer` to a production build. `npm run analyze` and `npm run build:analyze` set it |
 | `PRODUCTION_DATA_REVISION_URL` | optional | Repository secret that overrides where `publish-data.yml` reads the ledger. The default is the Netlify origin, `https://isaacvazquez.netlify.app/api/data-revisions`, because Cloudflare challenges runner traffic on the custom domain |
 | `SNAPSHOT_PUSH_ATTEMPTS` | optional | Overrides the default 8 push attempts in `scripts/ci/commit-and-push-snapshot.sh` |

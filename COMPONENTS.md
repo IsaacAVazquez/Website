@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -32,6 +32,7 @@ Current component map for the live application.
 | `RouteLoadingState` | `src/components/RouteLoadingState.tsx` | The matching loading band, rendered by every `loading.tsx` outside the eight fantasy football routes, which use `FantasyLoadingState` |
 | `ProjectBuildNote` | `src/components/ProjectBuildNote.tsx` | The build-note aside `Catalog97ToolShell` adds under a route listed in `projectBuildNoteLinks.ts`, loaded as its own chunk, with its prose in `projectBuildNoteContent.ts` |
 | `NotFoundNote` | `src/components/NotFoundNote.tsx` | The line `src/app/not-found.tsx` prints under the 404's lead for a few addresses people type on purpose or that scanners try, matched on the lower-cased pathname and listed in `docs/EASTER_EGGS.md` |
+| `ProjectWorkspace` | `src/components/ProjectWorkspace.tsx`, `project-workspace.css` | The titled section that the saved comparison and following blocks on the project routes render inside. The file also exports `FollowPicker`, a select and list for following up to 20 items, and `StorageNotice`, the line a block prints when browser storage is unavailable and its changes last only while the page stays open |
 
 ### Homepage, work, writing, dashboards, about, résumé, contact
 
@@ -119,7 +120,7 @@ imports each file by its path, and a route client never imports `PlayerDetailDra
 | Component | File | Role |
 |----------|------|------|
 | `FantasyProductBar` | `src/components/fantasy/FantasyProductBar.tsx` | The bar the layout renders above every fantasy route, naming the product and linking the eight tools with the current one marked |
-| `FantasyRouteHeader` | `src/components/fantasy/FantasyRouteHeader.tsx` | The page head (title, one orienting sentence, the freshness line) on the rankings board, the best ball board, the trade calculator, and the weekly pages. The file also exports `TitleAccent`, `FantasySectionHeading`, and `FreshnessParts`, the line of source dates the three draft rooms print in their own heads |
+| `FantasyRouteHeader` | `src/components/fantasy/FantasyRouteHeader.tsx` | The page head (title, one orienting sentence, the freshness line) on the rankings board, the best ball board, the trade calculator, and the weekly pages. The file also exports `FantasySectionHeading` and `FreshnessParts`, the line of source dates the three draft rooms print in their own heads |
 | `FantasyLoadingState` | `src/components/fantasy/FantasyLoadingState.tsx` | The loading skeleton in all eight `loading.tsx` files, with `role="status"` and a "Loading …" name |
 | `SeasonalScopeNote` | `src/components/fantasy/SeasonalScopeNote.tsx` | The dated note a draft-season page prints from Week 1, which names the week and the season and then carries the page's own sentence about its board |
 | `PositionFilterBar` | `src/components/fantasy/PositionFilterBar.tsx` | The position switch on the rankings board, the best ball board, the weekly board's flex view, and the three draft rooms. One radiogroup with a roving tab stop, where each position button carries its colour and an unavailable option is disabled and marked "NA" |
@@ -160,7 +161,8 @@ composes the portfolio and research surfaces (all under
 Retirement planner components live in `src/components/investments/retirement/`
 (`RetirementPlanner` shell, `RetirementInputs`/`RetirementFields`,
 `RetirementVerdict`, `RetirementProjectionChart` D3 confidence-band chart,
-`RetirementLevers`, `RetirementAssumptions`, `RetirementDisclaimer`). They sit on
+`RetirementLevers`, `RetirementAssumptions`, `RetirementDisclaimer`, and
+`RetirementScenarios` with its `RetirementScenarioTable` for saved plans). They sit on
 the pure engine in `src/lib/retirement/` and `useRetirementPlan` browser-local
 state — see `RETIREMENT_PLANNER_ENGINE.md` for the engine reference.
 
@@ -185,8 +187,8 @@ Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`,
 | `InfoChip` | `src/components/football/InfoChip.tsx` | Inline label chip for league/competition context |
 | `CrestAvatar` | `src/components/football/CrestAvatar.tsx` | Team crest image with fallback initials |
 | `TeamResultPill` | `src/components/football/TeamResultPill.tsx` | Win/draw/loss pill for form strips |
-| `SurfaceCard` | `src/components/football/SurfaceCard.tsx` | Consistent card surface wrapper |
 | `EmptyPanel` | `src/components/football/EmptyPanel.tsx` | Empty-state placeholder panel |
+| `PersonalTeams` | `src/components/football/PersonalTeams.tsx` | The "My teams and standings changes" block on the Premier League, La Liga, MLB, NBA, and NFL pages. It keeps up to ten favorite teams under `<league>-favorite-teams-v1` and the standings this browser has seen under `<league>-observed-standings-v1`, both through `useBrowserRecord` |
 
 Beside them, `fixtureFormat.ts` formats a fixture's day, time, and kickoff, a rate, and a rank and reads a team's result, `fixtureGroups.ts` and `fixtureLedgerUtils.ts` group fixtures for `FixtureLedgerSection` under a caller's label or by matchday, and `useKeepPressedInView.ts` keeps the pressed pill of a sideways view switch on screen, which the GitHub Trending Pulse and Decision Lab pages use too.
 
@@ -216,7 +218,7 @@ which keeps no browser state.
 | Formula 1 and Fantasy Formula 1 | `src/app/formula-1/*`, `src/app/fantasy-formula-1/*`, `src/data/formula1Snapshot.json` | The season dashboard and the fantasy lineup optimizer, both reading the committed OpenF1 snapshot |
 | Frontier Models | `src/app/frontier-models/*`, `src/data/frontierModelsSnapshot.json`, `src/lib/frontierModels.ts` | Curated tracker of frontier language models, built from `scripts/data/frontierModels.source.ts` |
 | AI Dev Tools | `src/app/ai-dev-tools/*` | Filterable directory of AI coding and agent tools, curated in the route's `ai-dev-tools-data.ts` |
-| GitHub Trending Pulse and Agent Build Index | `src/app/github-trending-pulse/*`, `src/app/agent-build-index/*`, `src/data/githubTrendingSnapshot.json`, `src/lib/agentBuildIndex.ts` | The trending repositories dashboard, and the weekly read on AI agent repositories drawn from the same snapshot |
+| GitHub Trending Pulse and Agent Build Index | `src/app/github-trending-pulse/*`, `src/app/agent-build-index/*`, `src/data/githubTrendingSnapshot.json`, `src/lib/agentBuildIndex.ts` | The trending repositories dashboard, and the daily read on AI agent repositories, ranked by seven-day star movement and drawn from the same snapshot |
 | Score Pools | `src/app/score-pools/*`, `src/data/scorePoolsSnapshot.json`, `src/lib/scorePools/*`, `src/hooks/useScorePools.ts` | Exact-score prediction pools with a tracker and settings page, picks kept in the browser. `SCORE_POOLS_ENGINE.md` is the engine reference |
 | Rent vs Buy | `src/app/fintech-tools/rent-vs-buy/*`, `src/lib/rentVsBuy/*`, `src/hooks/useRentVsBuy.ts` | Browser-persisted month-by-month rent versus buy net-worth calculator |
 | Before You Buy | `src/app/investments/before-you-buy/*`, `src/lib/beforeYouBuy.ts` | Compares two purchases of the same amount against an edited portfolio, reading the investments snapshots and the saved holdings |

@@ -1,12 +1,12 @@
-# Redirects & Navigation — AI Context
+# Redirects and navigation (AI context)
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Global Navigation
+## Global navigation
 
 Defined in `src/constants/catalog97Nav.ts` as `catalog97NavLinks`.
 
@@ -103,7 +103,7 @@ Every fantasy shortcut and typo redirect is temporary except the two retired tie
 
 ---
 
-## Important Accuracy Notes
+## Important accuracy notes
 
 - `/portfolio` is the canonical projects route
 - `/writing` is the canonical writing route

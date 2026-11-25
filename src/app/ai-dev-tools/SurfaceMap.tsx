@@ -67,7 +67,7 @@ function Plate({
       type="button"
       onClick={() => onSelect(tool.id)}
       aria-pressed={isSelected}
-      className="c97-surface-map-plate"
+      className="adt-surface-map-plate"
     >
       <ToolCategoryIcon category={tool.category} className="h-3.5 w-3.5" />
       {tool.name}
@@ -101,24 +101,24 @@ export function SurfaceMap({ tools, categories, pricing, selectedToolId, onSelec
         <div
           role="table"
           aria-label="AI dev tools by category and pricing model"
-          className="c97-surface-map"
-          style={{ "--c97-surface-map-cols": colKeys.length } as React.CSSProperties}
+          className="adt-surface-map"
+          style={{ "--adt-surface-map-cols": colKeys.length } as React.CSSProperties}
         >
-          <div role="row" className="c97-surface-map-row">
+          <div role="row" className="adt-surface-map-row">
             <span role="columnheader" aria-hidden="true" />
             {colKeys.map((pricingKey) => (
-              <span key={pricingKey} role="columnheader" className="c97-kicker c97-surface-map-col-header">
+              <span key={pricingKey} role="columnheader" className="c97-kicker adt-surface-map-col-header">
                 {pricingLabel(pricingKey)}
               </span>
             ))}
           </div>
           {rows.map((row) => (
-            <div key={row.category} role="row" className="c97-surface-map-row">
-              <span role="rowheader" className="c97-surface-map-row-header">
+            <div key={row.category} role="row" className="adt-surface-map-row">
+              <span role="rowheader" className="adt-surface-map-row-header">
                 {categoryLabel(row.category)}
               </span>
               {row.cells.map((cell) => (
-                <div key={cell.pricing} role="cell" className="c97-surface-map-cell">
+                <div key={cell.pricing} role="cell" className="adt-surface-map-cell">
                   {cell.tools.map(plate)}
                 </div>
               ))}
@@ -126,17 +126,17 @@ export function SurfaceMap({ tools, categories, pricing, selectedToolId, onSelec
           ))}
         </div>
       ) : (
-        <dl className="c97-surface-map-list">
+        <dl className="adt-surface-map-list">
           {rows.map((row: SurfaceMapRow) => {
             const cellsWithTools = row.cells.filter((cell) => cell.tools.length > 0);
             if (cellsWithTools.length === 0) return null;
             return (
-              <div key={row.category} className="c97-surface-map-list-group">
-                <dt className="c97-surface-map-list-title">{categoryLabel(row.category)}</dt>
+              <div key={row.category} className="adt-surface-map-list-group">
+                <dt className="adt-surface-map-list-title">{categoryLabel(row.category)}</dt>
                 {cellsWithTools.map((cell) => (
-                  <dd key={cell.pricing} className="c97-surface-map-list-cell">
+                  <dd key={cell.pricing} className="adt-surface-map-list-cell">
                     <span className="c97-kicker">{pricingLabel(cell.pricing)}</span>
-                    <div className="c97-surface-map-list-plates">{cell.tools.map(plate)}</div>
+                    <div className="adt-surface-map-list-plates">{cell.tools.map(plate)}</div>
                   </dd>
                 ))}
               </div>

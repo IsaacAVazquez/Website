@@ -97,13 +97,13 @@ describe("ComparisonRadarChart", () => {
     const { container } = render(<ComparisonRadarChart data={data.slice(0, 2)} symbolA="AAPL" symbolB="MSFT" />);
     expect(container.querySelector("svg")).toBeNull();
     expect(
-      screen.getByText("There are not enough shared, verified metrics to draw this comparison.")
+      screen.getByText("There are not enough shared metrics to draw this comparison.")
     ).toBeInTheDocument();
   });
 
   it("handles an empty dimension list", () => {
     const { container } = render(<ComparisonRadarChart data={[]} symbolA="AAPL" symbolB="MSFT" />);
     expect(container.querySelector("svg")).toBeNull();
-    expect(screen.getByText(/not enough shared, verified metrics/)).toBeInTheDocument();
+    expect(screen.getByText(/not enough shared metrics/)).toBeInTheDocument();
   });
 });

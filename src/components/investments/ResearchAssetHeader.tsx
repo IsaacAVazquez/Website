@@ -6,6 +6,7 @@ import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
 import { useClientNow } from "@/hooks/useClientNow";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
+import { MetricTooltip } from "./MetricTooltip";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
 import {
   formatBalance,
@@ -33,6 +34,8 @@ interface Props {
   portfolioSymbols?: readonly string[];
 }
 
+// `raw` is the quote's own market time, so the label names the quote and a
+// weekend refresh does not read as a stale fetch.
 // `now` is the caller's `useClientNow()` reading (null on the server and
 // during hydration): `lastUpdated` is a live-fetched instant, so computing
 // "ago" straight from `Date.now()` at render time would print different text
@@ -41,7 +44,7 @@ function formatRefreshLabel(raw: string | Date | null | undefined, now: number |
   if (!raw || now === null) return "Refresh";
   const d = raw instanceof Date ? raw : new Date(raw);
   if (isNaN(d.getTime())) return "Refresh";
-  return `Refreshed ${formatMinutesAgo(d, now)}`;
+  return `Market quote ${formatMinutesAgo(d, now)}`;
 }
 
 function formatMarketAsOf(raw: string | null | undefined): string {
@@ -134,12 +137,11 @@ function KeyMetricCell({ metric }: KeyMetricCellProps) {
         ? "text-[var(--c97-negative)]"
         : "text-[var(--c97-ink)]";
   return (
-    <div className="research-key-metric">
-      <span
-        className="research-key-metric-label"
-        title={metric.hint}
-      >
-        {metric.label}
+    <div className="research-key-metric" role="listitem">
+      <span className="research-key-metric-label">
+        <MetricTooltip term={metric.label} definition={metric.hint} focusable>
+          {metric.label}
+        </MetricTooltip>
       </span>
       <span
         className={`research-key-metric-value ${valueColor}`}

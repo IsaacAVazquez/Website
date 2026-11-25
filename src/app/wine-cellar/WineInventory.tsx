@@ -1,10 +1,7 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
-import {
-  useLocalStorageString,
-  useLocalStoragePersistenceStatus,
-} from "@/hooks/useLocalStorageString";
+import { useState, type FormEvent } from "react";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import {
   loadWineInventory,
   parseWineInventory,
@@ -21,9 +18,10 @@ export function WineInventory({
 }: {
   onOpen: (bottle: InventoryBottle) => void;
 }) {
-  const raw = useLocalStorageString(WINE_INVENTORY_KEY, "[]");
-  const bottles = useMemo(() => parseWineInventory(raw), [raw]);
-  const persistence = useLocalStoragePersistenceStatus(WINE_INVENTORY_KEY);
+  const { value: bottles, status: persistence } = useBrowserRecord(
+    WINE_INVENTORY_KEY,
+    parseWineInventory,
+  );
   const [wishlist, setWishlist] = useState(false);
   const [name, setName] = useState("");
   const [producer, setProducer] = useState("");

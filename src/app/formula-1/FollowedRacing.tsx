@@ -114,7 +114,7 @@ export function FollowedRacing({
               <table className="pw-table">
                 <caption>
                   Published Grand Prix classifications · snapshot{" "}
-                  {summary.generatedAt}
+                  {formatDateTime(summary.generatedAt)}
                 </caption>
                 <thead>
                   <tr>

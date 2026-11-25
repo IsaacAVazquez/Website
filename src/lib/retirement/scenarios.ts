@@ -49,8 +49,6 @@ const PLAN_GROUPS: Record<keyof RetirementPlanInput, string> = {
   currentAge: "Current age",
   retirementAge: "Retirement age",
   horizonAge: "Planning horizon",
-  filingStatus: "Filing status",
-  region: "Region",
   desiredAnnualSpend: "Annual spending",
   preMedicareHealthcare: "Healthcare before Medicare",
   accounts: "Account balances and contributions",

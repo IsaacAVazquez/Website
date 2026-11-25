@@ -4,7 +4,7 @@ import { Funnel, Search, X } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SearchResults } from "./SearchResults";
-import { SearchFilters } from "./SearchFilters";
+import { SearchFilters, categories, contentTypes } from "./SearchFilters";
 import { useDebounce } from "@/hooks/useDebounce";
 import { GA_EVENT, trackEvent } from "@/lib/analytics";
 import { logger } from "@/lib/logger";
@@ -41,6 +41,12 @@ export interface SearchState {
   error: boolean;
   totalResults: number;
   searchTime: number;
+}
+
+// A chip prints the label on the button that set it. An id the filter row does
+// not offer, which a hand-typed URL can carry, prints as it is.
+function filterLabel(options: { id: string; label: string }[], id: string) {
+  return options.find((option) => option.id === id)?.label ?? id;
 }
 
 function getSearchStateKey(query: string, type: string, category: string) {
@@ -430,10 +436,10 @@ export function SearchInterface({
           >
             <span className="c97-kicker">Active filters:</span>
             {searchState.type !== 'all' && (
-              <span className="c97-chip">Type: {searchState.type}</span>
+              <span className="c97-chip">Type: {filterLabel(contentTypes, searchState.type)}</span>
             )}
             {searchState.category !== 'all' && (
-              <span className="c97-chip">Category: {searchState.category}</span>
+              <span className="c97-chip">Category: {filterLabel(categories, searchState.category)}</span>
             )}
             <button type="button" onClick={clearFilters} className="c97-btn-ghost">
               Clear filters

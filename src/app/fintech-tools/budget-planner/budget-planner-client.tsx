@@ -12,6 +12,7 @@ import {
   getDefaultExpenseDate,
   isBudgetMonthKey,
   isDateInBudgetMonth,
+  sanitizeNonNegativeAmount,
 } from "@/lib/budgetPlanner";
 import { downloadFile } from "@/lib/downloadFile";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
@@ -59,12 +60,6 @@ function createEmptyExpenseDraft(categoryId = ""): ExpenseDraft {
     date: null,
     note: "",
   };
-}
-
-function parseAmountInput(value: string) {
-  const parsed = Number(value);
-  if (!Number.isFinite(parsed)) return 0;
-  return Math.max(0, Math.round(parsed * 100) / 100);
 }
 
 function CategoryNameField({
@@ -208,6 +203,9 @@ export function BudgetPlannerClient() {
   const amountInputRef = useRef<HTMLInputElement | null>(null);
   const [newCategoryName, setNewCategoryName] = useState("");
   const [confirmReset, setConfirmReset] = useState(false);
+  // Firefox and desktop Safari draw type="month" as a text field, so a month
+  // that is still being typed is held here until it is a whole YYYY-MM key.
+  const [monthDraft, setMonthDraft] = useState<string | null>(null);
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
     createEmptyExpenseDraft(activeMonth.categories[0]?.id ?? "")
@@ -242,8 +240,19 @@ export function BudgetPlannerClient() {
     [summary.availableToBudget, summary.expenseEntries]
   );
 
+  // Envelopes keep the order their categories were added in. The summary puts
+  // over-budget categories first, which moved an envelope out from under the
+  // cursor as soon as a typed budget crossed what was spent.
+  const envelopes = activeMonth.categories.flatMap(
+    (category) => summary.categorySummaries.find((entry) => entry.id === category.id) ?? []
+  );
+
   function handleMonthChange(nextMonthKey: string) {
-    if (!isBudgetMonthKey(nextMonthKey)) return;
+    if (!isBudgetMonthKey(nextMonthKey)) {
+      setMonthDraft(nextMonthKey);
+      return;
+    }
+    setMonthDraft(null);
     setEditingExpenseId(null);
     setConfirmReset(false);
     setExpenseDraft(createEmptyExpenseDraft(activeMonth.categories[0]?.id ?? ""));
@@ -281,7 +290,7 @@ export function BudgetPlannerClient() {
 
     const payload = {
       categoryId: resolvedExpenseCategoryId,
-      amount: parseAmountInput(expenseDraft.amount),
+      amount: sanitizeNonNegativeAmount(expenseDraft.amount),
       date: expenseDate,
       note: expenseDraft.note,
     };
@@ -351,8 +360,9 @@ export function BudgetPlannerClient() {
               <input
                 aria-label="Budget month"
                 type="month"
-                value={activeMonthKey}
+                value={monthDraft ?? activeMonthKey}
                 onChange={(event) => handleMonthChange(event.target.value)}
+                onBlur={() => setMonthDraft(null)}
                 className="bp-field"
               />
             </label>
@@ -456,7 +466,7 @@ export function BudgetPlannerClient() {
           </div>
 
           <ul className="bp-envelope-grid">
-            {summary.categorySummaries.map((category) => (
+            {envelopes.map((category) => (
               <Envelope
                 key={category.id}
                 category={category}

@@ -111,6 +111,21 @@ describe("FrontierCostContextChart", () => {
     expect(onSelect).toHaveBeenLastCalledWith(null);
   });
 
+  it("keeps its drawing when only the select handler changes, and calls the newest one", () => {
+    const { rerender } = render(
+      <FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />
+    );
+    const drawn = points();
+
+    const onSelect = jest.fn();
+    rerender(<FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={onSelect} />);
+    expect(points()).toEqual(drawn);
+    expect(points()[0]).toBe(drawn[0]);
+
+    fireEvent.click(points()[0]);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+  });
+
   it("hides every other tick label on a phone-width chart", () => {
     observedWidth = 360;
     render(<FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />);

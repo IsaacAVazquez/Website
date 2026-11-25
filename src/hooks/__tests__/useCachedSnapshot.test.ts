@@ -45,4 +45,16 @@ describe("useCachedSnapshot", () => {
     expect(result.current.isLoading).toBe(false);
     expect(result.current.snapshot).toBeNull();
   });
+
+  it("reports the fallback when an error response is not JSON", async () => {
+    fetchMock.mockResolvedValueOnce({
+      ok: false,
+      json: () => Promise.reject(new SyntaxError("Unexpected token '<', \"<html>\" is not valid JSON")),
+    } as Response);
+    const { result } = renderHook(() =>
+      useCachedSnapshot<Snapshot>("/api/nba/teams", "bos", { id: null, snapshot: null }, "Unable")
+    );
+    await waitFor(() => expect(result.current.error).toBe("Unable"));
+    expect(result.current.isLoading).toBe(false);
+  });
 });

@@ -1,13 +1,12 @@
 import type { FrontierModel } from "@/types/frontierModels";
 
 export interface FrontierReadouts {
-  count: number;
   cheapest: FrontierModel | null;
   largestContext: FrontierModel | null;
 }
 
 /**
- * The three numbers the hero leads with. Cheapest ignores any model with no
+ * The two models the hero names. Cheapest ignores any model with no
  * listed input price and breaks a tie on name so the pick is deterministic.
  */
 export function frontierReadouts(models: FrontierModel[]): FrontierReadouts {
@@ -37,5 +36,5 @@ export function frontierReadouts(models: FrontierModel[]): FrontierReadouts {
           model.contextWindow > lead.contextWindow ? model : lead,
         );
 
-  return { count: models.length, cheapest, largestContext };
+  return { cheapest, largestContext };
 }

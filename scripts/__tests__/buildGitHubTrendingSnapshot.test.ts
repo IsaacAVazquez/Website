@@ -10,8 +10,14 @@ import type { GitHubTrendingSnapshot } from "../../src/types/githubTrending";
 const GENERATED_AT = "2026-06-15T00:00:00.000Z";
 const SILENT_LOGGER = { log: jest.fn(), warn: jest.fn() };
 
+// Only the roots this file made are removed. A sweep of the temp directory by
+// prefix deleted the roots of a second run of the same suite.
+const projectRoots: string[] = [];
+
 async function makeProjectRoot(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "github-trending-snapshot-"));
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "github-trending-snapshot-"));
+  projectRoots.push(root);
+  return root;
 }
 
 function snapshotPathFor(projectRoot: string): string {
@@ -166,11 +172,8 @@ describe("buildGitHubTrendingSnapshot resilience", () => {
     if (originalGhToken === undefined) delete process.env.GH_TOKEN;
     else process.env.GH_TOKEN = originalGhToken;
 
-    const entries = await fs.readdir(os.tmpdir());
     await Promise.all(
-      entries
-        .filter((entry) => entry.startsWith("github-trending-snapshot-"))
-        .map((entry) => fs.rm(path.join(os.tmpdir(), entry), { recursive: true, force: true }))
+      projectRoots.splice(0).map((root) => fs.rm(root, { recursive: true, force: true }))
     );
   });
 

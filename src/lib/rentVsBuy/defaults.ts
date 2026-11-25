@@ -71,6 +71,17 @@ const CAPITAL_GAINS_EXCLUSION: Record<FilingStatus, number> = {
   married: 500_000,
 };
 
+// Limit on the home acquisition debt whose interest is deductible, for debt
+// taken on after December 15, 2017 ($375,000 if married filing separately).
+// The engine deducts the interest on the whole loan and does not apply this
+// limit, so the constant exists for the on-page disclosure only. Sources:
+// https://www.irs.gov/publications/p936 (2025 edition, read 2026-11-23)
+// https://www.law.cornell.edu/uscode/text/26/163 (26 USC 163(h)(3)(F), which
+// covers taxable years beginning after 2017 and names no end, read 2026-11-24)
+const MORTGAGE_INTEREST_DEBT_LIMIT = 750_000;
+// Later than TAX_FIGURES_READ_ON, so the disclosure prints this date itself.
+const MORTGAGE_INTEREST_DEBT_LIMIT_READ_ON = "2026-11-23";
+
 // Freddie Mac Primary Mortgage Market Survey, 30 year fixed rate average as of
 // 2026-10-08. Source, read 2026-10-09: https://www.freddiemac.com/pmms
 // The survey publishes every Thursday, so this default ages weekly.
@@ -89,7 +100,7 @@ export function createAssumptionsMeta(filingStatus: FilingStatus): RentVsBuyAssu
     defaultMortgageRatePercent: DEFAULT_MORTGAGE_RATE_PERCENT,
     mortgageRateAsOf: DEFAULT_MORTGAGE_RATE_AS_OF,
     verified: false,
-    taxNote: `With Itemize deductions on, the tax benefit treats mortgage interest plus property tax (capped by SALT) as fully marginal at your rate, without comparing against the standard deduction. With it off, no tax benefit is modeled. Investment growth on both sides is untaxed, and sale gains are assumed to fall under the primary-residence exclusion, so no capital-gains tax is modeled. Year 1 of the projection is treated as tax year ${TAX_YEAR}. The cap on the state and local tax (SALT) deduction is ${dollars(SALT_CAP)} in ${TAX_YEAR}, rises 1% a year through 2029, and is ${dollars(SALT_CAP_OUTSIDE_SCHEDULE)} in 2030 and in every later year, which is the schedule in the tax law enacted on July 4, 2025 (Public Law 119-21). The tool applies the full cap every year and does not model the reduction the law makes when modified adjusted gross income is above ${dollars(SALT_PHASE_DOWN_THRESHOLD)} in ${TAX_YEAR}.`,
+    taxNote: `With Itemize deductions on, the tax benefit treats mortgage interest plus property tax (capped by SALT) as fully marginal at your rate, without comparing against the standard deduction. With it off, no tax benefit is modeled. Investment growth on both sides is untaxed, and sale gains are assumed to fall under the primary-residence exclusion, so no capital-gains tax is modeled. Year 1 of the projection is treated as tax year ${TAX_YEAR}. The cap on the state and local tax (SALT) deduction is ${dollars(SALT_CAP)} in ${TAX_YEAR}, rises 1% a year through 2029, and is ${dollars(SALT_CAP_OUTSIDE_SCHEDULE)} in 2030 and in every later year, which is the schedule in the tax law enacted on July 4, 2025 (Public Law 119-21). The tool applies the full cap every year and does not model the reduction the law makes when modified adjusted gross income is above ${dollars(SALT_PHASE_DOWN_THRESHOLD)} in ${TAX_YEAR}. The tool also deducts the interest on the whole mortgage and does not apply the federal limit, which allows the deduction on the first ${dollars(MORTGAGE_INTEREST_DEBT_LIMIT)} of home acquisition debt (IRS Publication 936, read on ${MORTGAGE_INTEREST_DEBT_LIMIT_READ_ON}), so on a larger loan it overstates the tax benefit of buying.`,
   };
 }
 

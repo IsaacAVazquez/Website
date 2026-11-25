@@ -111,6 +111,22 @@ describe("Finnhub quote parsing", () => {
     expect((global.fetch as jest.Mock).mock.calls[0][0]).not.toContain("token=");
   });
 
+  it("names a missing key in the log once and never calls the provider", async () => {
+    const consoleError = jest.spyOn(console, "error").mockImplementation(() => {});
+    jest.resetModules();
+    delete process.env.FINNHUB_API_KEY;
+    const { fetchFinnhubQuote } = await import("@/lib/finnhub");
+
+    const first = await fetchFinnhubQuote("AAPL");
+    await fetchFinnhubQuote("MSFT");
+
+    expect(first.error).toMatch(/temporarily unavailable/i);
+    expect(global.fetch).not.toHaveBeenCalled();
+    expect(consoleError).toHaveBeenCalledTimes(1);
+    expect(consoleError.mock.calls[0][0]).toContain("FINNHUB_API_KEY is not set");
+    consoleError.mockRestore();
+  });
+
   it("aborts newly started provider work at the caller's shorter deadline", async () => {
     let capturedSignal: AbortSignal | undefined;
     global.fetch = jest.fn().mockImplementation(

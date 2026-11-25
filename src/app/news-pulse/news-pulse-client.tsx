@@ -52,6 +52,13 @@ function formatFetchedAt(value: string): string {
     : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
+const STALE_FALLBACK_NOTICE =
+  "None of the feeds answered on this refresh, so these are the last good headlines.";
+
+function staleFallbackMessage(payload: FeedResponse | null | undefined): string | null {
+  return payload?.dataStatus === "stale-fallback" ? payload.message ?? STALE_FALLBACK_NOTICE : null;
+}
+
 function buildFeedErrorMessage(status: number, payload: FeedResponse | null): string {
   const parts = [
     payload?.message,
@@ -120,6 +127,8 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
   const [feedErrors, setFeedErrors] = useState<string[]>(
     initialFeed?.errors ?? []
   );
+  // Set when no feed answered and the server sent its last good headlines.
+  const [staleNotice, setStaleNotice] = useState<string | null>(staleFallbackMessage(initialFeed));
   const [fetchedAt, setFetchedAt] = useState(initialFeed?.fetchedAt ?? "");
   const [history, setHistory] = useState(() => parseNewsHistory(initialFeed?.history));
   const [reloadKey, setReloadKey] = useState(0);
@@ -141,6 +150,7 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
       setLoading(true);
       setError(null);
       setFeedErrors([]);
+      setStaleNotice(null);
 
       try {
         const response = await fetch("/api/news-pulse", { signal: controller.signal });
@@ -160,15 +170,16 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
         setHistory(parseNewsHistory(payload?.history));
         setFetchedAt(payload?.fetchedAt ?? "");
         setFeedErrors(Array.isArray(payload?.errors) ? payload.errors : []);
-      } catch (fetchError) {
+        setStaleNotice(staleFallbackMessage(payload));
+      } catch {
         if (unmounted) return;
-        const message = timedOut
-          ? "The news feed took too long to respond. Refresh to try again."
-          : fetchError instanceof Error
-            ? fetchError.message
-            : "I could not load the feeds.";
+        // The browser's own error text ("Failed to fetch") says nothing a reader can use.
         setArticles([]);
-        setError(message);
+        setError(
+          timedOut
+            ? "The news feed took too long to respond. Refresh to try again."
+            : "The request for the latest headlines did not go through. Try again in a moment."
+        );
       } finally {
         clearTimeout(timeoutId);
         if (!unmounted) setLoading(false);
@@ -233,7 +244,9 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
           <div role="status" aria-live="polite" className="np-feed-errors">
             <CircleAlert className="np-feed-errors-icon" aria-hidden="true" />
             <div>
-              <p className="np-strong">Some feeds did not come through on this refresh.</p>
+              <p className="np-strong">
+                {staleNotice ?? "Some feeds did not come through on this refresh."}
+              </p>
               <p className="np-muted">{feedErrors.join("; ")}</p>
             </div>
           </div>
@@ -272,8 +285,8 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
               <div className="np-section-head">
                 <h2 id="np-tone-title" className="np-section-title">Tone and density</h2>
                 <p className="np-muted np-small">
-                  I read this as a rough lean in how each outlet frames its headlines, and it
-                  doesn&apos;t measure the sentiment of whole articles.
+                  I read this as a rough lean in how each outlet frames its headlines and feed
+                  summaries, and it doesn&apos;t measure the sentiment of whole articles.
                   Higher readability scans faster.
                 </p>
               </div>

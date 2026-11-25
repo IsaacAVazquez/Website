@@ -12,8 +12,6 @@ import {
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { RECIPES } from "@/data/recipesSnapshot";
 import { useIsClient } from "@/hooks/useIsClient";
-import { useLocalStorageString } from "@/hooks/useLocalStorageString";
-import { getBrowserStorageSnapshot, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   formatTotalTime,
   getIngredientCatalog,
@@ -109,25 +107,15 @@ function parsePantry(raw: string): string[] {
   }
 }
 
-// Reads go through the shared memory-mirrored store, so a write that another
-// tab or this one just made is what the next edit builds on.
-function loadPantry(): string[] {
-  return parsePantry(getBrowserStorageSnapshot(PANTRY_STORAGE_KEY, "[]"));
-}
-
-function savePantry(items: string[]) {
-  writeBrowserStorageJson(PANTRY_STORAGE_KEY, items);
-}
-
 function totalMinutes(recipe: Recipe): number {
   return recipe.prepMinutes + recipe.cookMinutes;
 }
 
 export function RecipeFinderClient() {
   // The pantry is read from the shared store, which also carries another
-  // tab's edits in, and the server render sees an empty shelf.
-  const pantrySnapshot = useLocalStorageString(PANTRY_STORAGE_KEY, "[]");
-  const pantry = useMemo(() => parsePantry(pantrySnapshot), [pantrySnapshot]);
+  // tab's edits in, and the server render sees an empty shelf. Each edit
+  // builds on the latest save.
+  const { value: pantry, update: updatePantry } = useBrowserRecord(PANTRY_STORAGE_KEY, parsePantry);
   const hydrated = useIsClient();
   const [pantryDraft, setPantryDraft] = useState("");
   const [query, setQuery] = useState("");
@@ -196,18 +184,18 @@ export function RecipeFinderClient() {
   function addIngredient(rawValue: string) {
     const values = cleanPantryItems(rawValue.split(","));
     if (values.length === 0) return;
-    savePantry(cleanPantryItems([...loadPantry(), ...values]));
+    updatePantry((latest) => cleanPantryItems([...latest, ...values]));
     setPantryDraft("");
     pantryInputRef.current?.focus();
   }
 
   function removeIngredient(value: string) {
-    savePantry(loadPantry().filter((item) => item !== value));
+    updatePantry((latest) => latest.filter((item) => item !== value));
     pantryInputRef.current?.focus();
   }
 
   function clearPantry() {
-    savePantry([]);
+    updatePantry(() => []);
     pantryInputRef.current?.focus();
   }
 

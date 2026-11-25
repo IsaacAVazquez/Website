@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacvazquez.com](https://isaacvazquez.com)
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
@@ -42,7 +42,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 
 ---
 
-## Main Routes
+## Main routes
 
 | Route | Purpose |
 |------|---------|
@@ -74,7 +74,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/ai-dev-tools` | AI development tools directory |
 | `/frontier-models` | Frontier model tracker |
 | `/github-trending-pulse` | GitHub Trending Pulse dashboard |
-| `/agent-build-index` | Focused weekly AI agent repository index |
+| `/agent-build-index` | Daily AI agent repository index ranked by seven-day star movement |
 | `/food-map` | Food map |
 | `/recipe-finder` | Recipe finder |
 | `/wine-cellar` | Wine cellar |
@@ -114,7 +114,7 @@ Redirects:
 
 ---
 
-## Getting Started
+## Getting started
 
 Use Node 22 (`.nvmrc` pins 22, and `package.json` requires `>=22.12.0`).
 
@@ -126,7 +126,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-### Key scripts
+### Scripts
 
 ```bash
 npm run dev
@@ -163,7 +163,7 @@ Football refreshes run through their explicit update commands and scheduled work
 
 ---
 
-## Environment Notes
+## Environment notes
 
 Copy `.env.example` to `.env.local` and fill in values. Never commit `.env.local`. In production the keys the running site reads belong in the Netlify dashboard, and the scheduled refresh workflows read the snapshot keys from GitHub Actions secrets (`refresh-snapshot.yml`, `update-score-pools.yml`, and `update-spacex.yml`).
 
@@ -199,7 +199,7 @@ The newsletter keys are described in [`docs/EMAIL_DELIVERY.md`](docs/EMAIL_DELIV
 
 ---
 
-## Important Repo Facts
+## Important repo facts
 
 - Global nav is the seven links in `src/constants/catalog97Nav.ts`, labeled `Home / Work / Writing / Dashboards / About / Résumé / Contact`
 - `Writing` is live and intentionally promoted in the header
@@ -210,7 +210,7 @@ The newsletter keys are described in [`docs/EMAIL_DELIVERY.md`](docs/EMAIL_DELIV
 
 ---
 
-## Documentation Map
+## Documentation map
 
 Current source-of-truth docs:
 
@@ -246,6 +246,6 @@ Found a vulnerability? Please do not open a public issue. See [`SECURITY.md`](SE
 
 ---
 
-## License and Use
+## License and use
 
 This repository is published primarily as a personal portfolio. Source code is provided for reference and evaluation; it is not licensed for redistribution or commercial reuse. Written content under `content/`, project copy, brand assets, and resume material are © Isaac Vazquez and reserved. Reach out via [/contact](https://isaacvazquez.com/contact) before reusing anything beyond small, attributed code excerpts.

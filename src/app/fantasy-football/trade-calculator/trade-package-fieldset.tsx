@@ -6,6 +6,7 @@ import type { FantasyTradePlayerEvaluation, FantasyTradeSideEvaluation } from "@
 import { FANTASY_TRADE_MAX_PLAYERS_PER_SIDE } from "@/lib/fantasyTradePersistence";
 import type { Player } from "@/types";
 import { positionChip, TradePlayerCombobox, type TradeSearchHandle } from "./trade-player-combobox";
+import { formatIndex } from "./trade-result-rail";
 
 const NO_SAMPLE_WARNING = /no ADP sample/;
 
@@ -19,10 +20,6 @@ function heldStatus(player: FantasyTradePlayerEvaluation | undefined): string | 
   return player.warnings.some((warning) => NO_SAMPLE_WARNING.test(warning))
     ? "No ADP sample"
     : "No market reading";
-}
-
-function formatTradeValue(value: number | null | undefined): string {
-  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
 }
 
 interface TradePackageFieldsetProps {
@@ -133,7 +130,7 @@ export function TradePackageFieldset({
                     {evaluated ? (
                       <span className="ffb-c-num ffb-is-strong">
                         <span className="ffb-vh">Index </span>
-                        {exactValuesAvailable ? formatTradeValue(valued?.blendedValue) : "—"}
+                        {exactValuesAvailable ? formatIndex(valued?.blendedValue) : "—"}
                       </span>
                     ) : null}
                     <button

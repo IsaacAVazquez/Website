@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
@@ -260,7 +260,7 @@ The system is token-driven:
 
 Notable build constraints:
 
-- `better-sqlite3` and `sharp` are kept out of inappropriate bundles
+- `sharp` is the one entry in `serverExternalPackages`, and `outputFileTracingExcludes` keeps it and its `@img` binaries out of the traced server functions
 - `.github/workflows/test.yml` runs `npm run typecheck` before `npm run build` on every push and pull request to `main` or `develop`, and the deploy in `publish-data.yml` does not run that script
 
 ---

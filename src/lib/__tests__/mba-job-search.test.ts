@@ -1,6 +1,7 @@
 import {
   cleanRelativePath,
   createMBAApplicationFromJob,
+  dropKnownCandidates,
   mergeMBAJobCandidates,
   parseMBAApplications,
   parseMBAJobCandidates,
@@ -162,6 +163,31 @@ describe("candidates", () => {
     const fresh = selectNewCandidates(jobs, [existing], [tracked], targets, now);
     expect(fresh.map((candidate) => candidate.id).sort()).toEqual(["acme-1", "cos", "remote-us"]);
     expect(fresh[0]).toMatchObject({ triage: "sourced", fit: null, sourcedAt: now.toISOString() });
+  });
+
+  it("drops an inbox candidate that is already tracked or already a candidate", () => {
+    const inboxCandidate = (id: string, applyUrl: string): MBAJobCandidate => ({
+      id,
+      job: { ...makeJob({ id, applyUrl, atsType: "manual" }), capturedAt: now.toISOString(), source: "manual" },
+      triage: "sourced",
+      fit: null,
+      sourcedAt: now.toISOString(),
+      // A newer date would win the merge, which is how a dismissed role came back.
+      updatedAt: "2099-01-01T00:00:00.000Z",
+    });
+    const tracked = createMBAApplicationFromJob(makeJob({ id: "tracked", applyUrl: "https://example.com/tracked" }), "applied", now);
+    const dismissed: MBAJobCandidate = {
+      ...inboxCandidate("seen", "https://example.com/seen"),
+      triage: "dismissed",
+      updatedAt: now.toISOString(),
+    };
+    const inbox = [
+      inboxCandidate("inbox-tracked", "https://example.com/tracked/"),
+      inboxCandidate("inbox-seen", "HTTPS://example.com/seen"),
+      inboxCandidate("inbox-new", "https://example.com/new"),
+    ];
+
+    expect(dropKnownCandidates(inbox, [dismissed], [tracked]).map((candidate) => candidate.id)).toEqual(["inbox-new"]);
   });
 
   it("falls back to permissive defaults for a missing or broken targets file", () => {

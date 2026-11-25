@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Personal wine reviewing app for logging tastings, rating bottles, and tracking the wines you've poured. Saved locally in your browser.",
   canonicalUrl: "/wine-cellar",
-  dateModified: "2026-10-11",
+  dateModified: "2026-11-03",
 });
 
 export default function WineCellarPage() {

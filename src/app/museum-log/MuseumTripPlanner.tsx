@@ -1,10 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import {
-  useLocalStorageString,
-  useLocalStoragePersistenceStatus,
-} from "@/hooks/useLocalStorageString";
+import { useState } from "react";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import {
   TRAVEL_PLANNER_STORAGE_KEY,
   loadTrips,
@@ -26,10 +23,9 @@ export function MuseumTripPlanner({
   museums: Museum[];
   onOpenMuseum: (slug: string) => void;
 }) {
-  const raw = useLocalStorageString(TRAVEL_PLANNER_STORAGE_KEY, "[]");
-  const trips = useMemo(() => parseTrips(raw), [raw]);
-  const persistence = useLocalStoragePersistenceStatus(
+  const { value: trips, status: persistence } = useBrowserRecord(
     TRAVEL_PLANNER_STORAGE_KEY,
+    parseTrips,
   );
   const [tripId, setTripId] = useState("");
   const [start, setStart] = useState("");
@@ -215,11 +211,9 @@ export function MuseumTripPlanner({
               ))}
             </ul>
           )}
-          {message && (
-            <p role="status" className="mlog-meta">
-              {message}
-            </p>
-          )}
+          <p role="status" className="mlog-meta">
+            {message}
+          </p>
           {persistence === "memory-only" && (
             <p role="status" className="mlog-meta">
               Trip changes last only while this tab is open because browser

@@ -89,6 +89,47 @@ describe("provider draft pick extraction", () => {
       extractEspnDraftContext("https://fantasy.espn.com/football/team?leagueId=42")
     ).toBeNull();
     expect(extractEspnDraftContext("not a url")).toBeNull();
+    expect(
+      extractEspnDraftContext(
+        "https://fantasy.espn.com/football/draft?leagueId=..%2F..%2Fplayers&seasonId=2026"
+      )
+    ).toBeNull();
+  });
+
+  it("fetches the ESPN player list once when a drafted id stays missing from it", async () => {
+    const league = {
+      draftDetail: {
+        picks: [
+          { overallPickNumber: 1, playerId: 4429795 },
+          { overallPickNumber: 2, playerId: 999 },
+        ],
+      },
+    };
+    const players = { players: [{ id: 4429795, fullName: "Jahmyr Gibbs", defaultPositionId: 2, proTeamId: 8 }] };
+    const fetcher = jest.fn(async (url: string) => ({
+      ok: true,
+      json: async () => (url.includes("/players?") ? players : league),
+    }));
+    const controller = startDraftPickSync("espn", () => {}, {
+      href: "https://fantasy.espn.com/football/draft?leagueId=42&seasonId=2026",
+      fetcher: fetcher as unknown as typeof fetch,
+    });
+    try {
+      await controller.request();
+      const read = await controller.request();
+      expect(read.picks).toEqual([
+        { pickNumber: 1, name: "Jahmyr Gibbs", position: "RB", team: "DET" },
+        { pickNumber: 2, name: "ESPN player 999" },
+      ]);
+      const playerListFetches = fetcher.mock.calls.filter(([url]) => url.includes("/players?"));
+      // startDraftPickSync polls once on start, so three reads ran in all.
+      expect(playerListFetches.length).toBeLessThanOrEqual(2);
+      const before = playerListFetches.length;
+      await controller.request();
+      expect(fetcher.mock.calls.filter(([url]) => url.includes("/players?"))).toHaveLength(before);
+    } finally {
+      controller.stop();
+    }
   });
 
   it("maps ESPN draft detail picks onto named players and skips empty slots", () => {

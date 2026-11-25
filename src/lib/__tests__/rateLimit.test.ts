@@ -79,9 +79,19 @@ describe('getClientIdentifier', () => {
     expect(getClientIdentifier(req)).toBe('1.1.1.1:ua');
   });
 
-  it('falls back to x-real-ip when x-forwarded-for is absent', () => {
+  it('uses x-real-ip when the Netlify header is absent', () => {
     const req = makeReq({ 'x-real-ip': '5.6.7.8', 'user-agent': 'agent' });
     expect(getClientIdentifier(req)).toBe('5.6.7.8:agent');
+  });
+
+  // x-forwarded-for's first entry is whatever the client sent, so it is the
+  // last resort, and Netlify's own header beats both of the others.
+  it('ranks the Netlify peer above x-real-ip, and x-real-ip above x-forwarded-for', () => {
+    const spoofable = { 'x-real-ip': '5.6.7.8', 'x-forwarded-for': '9.9.9.9, 1.1.1.1', 'user-agent': 'ua' };
+    expect(getClientIdentifier(makeReq(spoofable))).toBe('5.6.7.8:ua');
+    expect(getClientIdentifier(makeReq({ ...spoofable, 'x-nf-client-connection-ip': '203.0.113.9' }))).toBe(
+      '203.0.113.9:ua'
+    );
   });
 
   it('falls back to "unknown" when no IP headers are present', () => {

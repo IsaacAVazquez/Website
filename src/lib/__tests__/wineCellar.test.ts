@@ -1,13 +1,11 @@
 import type { WineEntry } from "@/types/wine";
 import {
-  WINE_CELLAR_STORAGE_KEY,
   applyWineDraft,
   calculateWineSummary,
   createWineEntry,
   filterAndSortWines,
   getTodayIsoDate,
   parseWineEntries,
-  saveWineEntries,
 } from "../wineCellar";
 
 const now = new Date("2026-06-08T12:00:00.000Z");
@@ -102,7 +100,7 @@ describe("wineCellar", () => {
     });
   });
 
-  it("parses only valid stored entries and saves through injected storage", () => {
+  it("parses only valid stored entries", () => {
     const parsed = parseWineEntries(
       JSON.stringify([
         entries[0],
@@ -110,29 +108,18 @@ describe("wineCellar", () => {
         { name: "Broken", type: "blue" },
       ])
     );
-    const storage = { setItem: jest.fn() };
-
-    saveWineEntries(parsed, storage);
 
     expect(parsed).toHaveLength(1);
-    expect(storage.setItem).toHaveBeenCalledWith(
-      WINE_CELLAR_STORAGE_KEY,
-      JSON.stringify(parsed)
-    );
   });
 
   it("summarizes, filters, and sorts wines", () => {
     const summary = calculateWineSummary(entries);
 
-    expect(summary).toMatchObject({
-      totalWines: 2,
-      averageRating: 4.25,
-      totalSpend: 112.5,
-      topRegion: "Piedmont",
-      topVarietal: "Nebbiolo",
-    });
-    expect(summary.recent[0].id).toBe("wine-2");
-    expect(summary.topRated[0].id).toBe("wine-1");
+    expect(summary.averageRating).toBe(4.25);
+    expect(summary.typeBreakdown.map(({ type, count }) => [type, count])).toEqual([
+      ["red", 1],
+      ["white", 1],
+    ]);
 
     expect(
       filterAndSortWines(entries, {

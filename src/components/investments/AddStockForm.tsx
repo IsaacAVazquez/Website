@@ -3,14 +3,13 @@
 import { Plus, X } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { ModernButton } from "@/components/ui/ModernButton";
+import { isValidSymbol } from "@/lib/investmentSymbol";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, PortfolioHolding } from "@/types/investment";
 
 interface Props {
   onAdd: (holding: PortfolioHolding) => void;
 }
-
-const SYMBOL_RE = /^[A-Z0-9.-]{1,10}$/;
 
 function Field({
   label,
@@ -74,7 +73,7 @@ export function AddStockForm({ onAdd }: Props) {
   function validate(): { field: "symbol" | "shares" | "cost"; message: string } | null {
     const sym = symbol.trim().toUpperCase();
     if (!sym) return { field: "symbol", message: "Symbol is required." };
-    if (!SYMBOL_RE.test(sym)) return { field: "symbol", message: "Invalid symbol format (e.g. AAPL, BRK-B)." };
+    if (!isValidSymbol(sym)) return { field: "symbol", message: "Invalid symbol format (e.g. AAPL, BRK-B)." };
     if (indexError) {
       return {
         field: "symbol",

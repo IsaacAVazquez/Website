@@ -315,6 +315,19 @@ describe("evaluateFantasyTrade", () => {
     expect(result.winner).toBe("side-a");
   });
 
+  it("holds a supported deal past the clear-edge gap to a lean while the ranges overlap", () => {
+    let snapshot = buildSnapshot();
+    for (const id of ["RB-10", "RB-14"]) {
+      snapshot = replaceOverallPlayer(snapshot, id, { standardDeviation: 12, adpStandardDeviation: 12 });
+    }
+    const result = evaluateFantasyTrade(input(["RB-10"], ["RB-14"], { snapshot }));
+
+    expect(result.coverage).toBe("supported");
+    expect(result.relativeGap).toBeGreaterThanOrEqual(0.15);
+    expect(result.rangesOverlap).toBe(true);
+    expect(result.verdict).toBe("leans-side-a");
+  });
+
   describe("from Week 1", () => {
     // 2026 opens Wednesday September 9. The provider kept stamping the
     // mock-draft feed after kickoff, so these pin the season boundary with a
@@ -420,7 +433,7 @@ describe("evaluateFantasyTrade", () => {
     const WEEK_6 = new Date("2026-10-15T12:00:00.000Z");
     const ROS_AS_OF = "2026-10-14T12:00:00.000Z";
 
-    function withScoring(snapshot: FantasySnapshot, games = 5, season = 2026): FantasySnapshot {
+    function withScoring(snapshot: FantasySnapshot, games = 5, season = 2026, throughWeek = 5): FantasySnapshot {
       return {
         ...snapshot,
         upstreamUpdatedAt: "2026-09-10T00:19:00.000Z",
@@ -429,7 +442,7 @@ describe("evaluateFantasyTrade", () => {
           const average = 30 - (player.positionRank ?? 0) * 0.2;
           return {
             ...player,
-            gameLog: { season, throughWeek: 5, games, low: average - 2, median: average, average, high: average + 2 },
+            gameLog: { season, throughWeek, games, low: average - 2, median: average, average, high: average + 2 },
           };
         }),
       };
@@ -532,7 +545,7 @@ describe("evaluateFantasyTrade", () => {
 
       expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
       expect(result.sideA.players[0].warnings).toContain(
-        "This player has no 2026 scoring log of at least four games, so the experts price him alone."
+        "This player has no 2026 scoring log of at least four games, so the experts price this player alone."
       );
       expect(result.coverage).toBe("limited");
       expect(result.verdict).toBe("leans-side-a");
@@ -584,12 +597,62 @@ describe("evaluateFantasyTrade", () => {
       expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
     });
 
+    it("says the scoring log does not cover a kicker, with no four-game claim", () => {
+      const scored = withScoring(buildSnapshot());
+      const snapshot = {
+        ...scored,
+        overall: scored.overall.map(({ gameLog, ...player }) =>
+          player.position === "K" ? player : { ...player, gameLog }
+        ),
+      };
+      const base = inSeasonInput(["K-1"], ["K-2"], { snapshot });
+      const result = evaluateFantasyTrade({
+        ...base,
+        league: { ...base.league, lineup: { ...base.league.lineup, K: 1 } },
+      });
+
+      expect(result.sideA.players[0].warnings).toEqual([
+        "The scoring log does not cover kickers or team defenses, so the experts price this player alone.",
+      ]);
+      expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
+      expect(result.coverage).toBe("limited");
+    });
+
+    it("still prices a log two weeks behind the calendar", () => {
+      const result = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 5, 2026, 4) })
+      );
+
+      expect(result.sources.market).toMatchObject({ provider: "2026 scoring through Week 4", usable: true });
+      expect(result.sideA.players[0].production).toEqual({ pointsPerGame: 29.8, games: 5 });
+    });
+
+    it("drops a log three weeks behind and says it stopped, not that the season has no scoring yet", () => {
+      const result = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 5, 2026, 3) })
+      );
+
+      expect(result.sources.market).toMatchObject({
+        provider: "2026 scoring stopped at Week 3",
+        freshness: "stale",
+        usable: false,
+      });
+      expect(result.sideA.players[0].production).toBeNull();
+      expect(result.warnings).toContain(
+        "The 2026 scoring log stopped at Week 3, so the experts price every player alone."
+      );
+    });
+
     it("ignores last season's scoring", () => {
       const result = evaluateFantasyTrade(
         inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 17, 2025) })
       );
       expect(result.sideA.players[0].production).toBeNull();
       expect(result.sources.market.usable).toBe(false);
+      expect(result.sources.market.provider).toBe("2026 scoring");
+      expect(result.warnings).toContain(
+        "No player has a current 2026 scoring log yet, so the experts price every player alone."
+      );
       expect(result.coverage).toBe("limited");
     });
 
@@ -614,8 +677,16 @@ describe("evaluateFantasyTrade", () => {
       const snapshot = withScoring(buildSnapshot());
       const rows = restOfSeasonRows(snapshot).filter((row) => row.id !== "RB-30");
       const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot, rows }));
-      expect(result.sideB.players[0].warnings).toEqual(["Player RB-30 is not on the rest-of-season board."]);
+      // The draft board still lists the player, so the row and the warning carry the name.
+      expect(result.sideB.players[0].name).toBe("RB 30");
+      expect(result.sideB.players[0].warnings).toEqual(["RB 30 is not on the rest-of-season board."]);
       expect(result.verdict).toBe("insufficient");
+    });
+
+    it("never prints a stored id as a name when neither board lists the player", () => {
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["fp-19788"]));
+      expect(result.sideB.players[0].name).toBe("Unavailable player");
+      expect(result.sideB.players[0].warnings).toEqual(["A selected player is not on the rest-of-season board."]);
     });
   });
 });

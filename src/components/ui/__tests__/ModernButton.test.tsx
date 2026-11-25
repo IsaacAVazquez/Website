@@ -120,13 +120,6 @@ describe('ModernButton', () => {
     expect(button).toHaveAttribute('aria-label', 'Submit form')
   })
 
-  it('has proper focus styles', () => {
-    render(<ModernButton>Button</ModernButton>)
-    const button = screen.getByText('Button')
-    expect(button).toHaveClass('focus-visible:outline-none')
-    expect(button).toHaveClass('focus-visible:ring-2')
-  })
-
   it('has transition styles', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')

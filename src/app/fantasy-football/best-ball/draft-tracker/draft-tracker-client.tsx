@@ -190,6 +190,13 @@ export function BestBallDraftTrackerClient({
   const [contestId, setContestId] = useState<BestBallContestId>(() =>
     normalizeContestId(initialContest)
   );
+  // A link to this route with another ?contest, or with none, hands down a new
+  // prop without remounting the page, so the room follows it the way a reload would.
+  const [seenInitialContest, setSeenInitialContest] = useState(initialContest);
+  if (seenInitialContest !== initialContest) {
+    setSeenInitialContest(initialContest);
+    setContestId(normalizeContestId(initialContest));
+  }
   // Same split the redraft tracker made on 2026-08-07: setup keeps the
   // headline and the pitch, because that visitor is still deciding whether to
   // use the tool, and an open room gets one compact line so the live state leads.

@@ -399,15 +399,6 @@ button.eq-region {
   letter-spacing: -0.04em;
 }
 
-.eq-root .eq-tsunami {
-  display: flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--eq-negative);
-}
-
 .eq-detail-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

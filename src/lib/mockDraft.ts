@@ -1,5 +1,6 @@
 import type { Player, RedraftLineupSettings, TeamRoster } from "@/types";
 import { getPickBaseline } from "@/lib/draftAnalytics";
+import { DEFAULT_REDRAFT_LINEUP } from "@/lib/redraftLineup";
 
 /**
  * Pure auto-pick engine behind the mock draft practice simulator. Given the
@@ -16,26 +17,12 @@ export interface MockDraftEngineConfig {
   temper?: MockDraftTemper;
   /**
    * Starting lineup the required starters and K/DST caps derive from;
-   * omitted keeps the one-QB defaults below.
+   * omitted means the default one-QB lineup.
    */
   lineup?: RedraftLineupSettings;
 }
 
 type CountedPosition = keyof TeamRoster["positionCounts"];
-
-/**
- * One-QB starting lineup minimums every simulated roster must exit the draft
- * with. When a team's remaining picks are down to its unfilled minimums, the
- * engine stops taking best-available and fills them.
- */
-const REQUIRED_STARTERS: Record<CountedPosition, number> = {
-  QB: 1,
-  RB: 2,
-  WR: 2,
-  TE: 1,
-  K: 1,
-  DST: 1,
-};
 
 /** Hard caps that keep a simulated roster from hoarding a position. */
 const POSITION_CAPS: Record<CountedPosition, number> = {
@@ -61,8 +48,12 @@ const TEMPER_WINDOWS: Record<MockDraftTemper, readonly [number, number, number]>
   chaotic: [6, 10, 14],
 };
 
-function getRequiredStarters(lineup?: RedraftLineupSettings): Record<CountedPosition, number> {
-  if (!lineup) return REQUIRED_STARTERS;
+/**
+ * Starting lineup minimums every simulated roster must exit the draft with.
+ * When a team's remaining picks are down to its unfilled minimums, the engine
+ * stops taking best-available and fills them.
+ */
+function getRequiredStarters(lineup: RedraftLineupSettings): Record<CountedPosition, number> {
   return {
     QB: lineup.QB,
     RB: lineup.RB,
@@ -73,8 +64,7 @@ function getRequiredStarters(lineup?: RedraftLineupSettings): Record<CountedPosi
   };
 }
 
-function getPositionCaps(lineup?: RedraftLineupSettings): Record<CountedPosition, number> {
-  if (!lineup) return POSITION_CAPS;
+function getPositionCaps(lineup: RedraftLineupSettings): Record<CountedPosition, number> {
   // A lineup with no K or DST starter means the room never drafts one.
   return { ...POSITION_CAPS, K: lineup.K, DST: lineup.DST };
 }
@@ -135,8 +125,9 @@ export function pickForTeam(
   const round = Math.ceil(pickNumber / config.totalTeams);
   const remainingPicks = config.rounds - roster.picks.length;
   const counts = roster.positionCounts;
-  const required = getRequiredStarters(config.lineup);
-  const caps = getPositionCaps(config.lineup);
+  const lineup = config.lineup ?? DEFAULT_REDRAFT_LINEUP;
+  const required = getRequiredStarters(lineup);
+  const caps = getPositionCaps(lineup);
 
   const missing = (Object.keys(required) as CountedPosition[]).filter(
     (position) => (counts[position] ?? 0) < required[position]

@@ -48,11 +48,7 @@ async function fetchTransitStationBoard(
   };
 
   if (!response.ok) {
-    const error = new Error(payload.error || "Unable to load station board.") as Error & {
-      status?: number;
-    };
-    error.status = response.status;
-    throw error;
+    throw new Error(payload.error || "Unable to load station board.");
   }
 
   return payload;
@@ -188,9 +184,14 @@ export function BayAreaTransitClient({
           ),
         }
       : stationBoard;
-  const staleSections = Object.entries(summary.sectionStatus ?? {})
-    .filter(([, status]) => status !== "fresh")
-    .map(([section]) => section);
+  // A held section is the last good copy. An unavailable one is empty, because
+  // the builder had no earlier copy to keep.
+  const sectionsWith = (wanted: TransitSectionStatus) =>
+    Object.entries(summary.sectionStatus ?? {})
+      .filter(([, status]) => status === wanted)
+      .map(([section]) => section);
+  const heldSections = sectionsWith("stale-fallback");
+  const unavailableSections = sectionsWith("unavailable");
 
   // BART scopes some advisories to one station; system-wide ones say "BART".
   const advisoryStations = useMemo(() => {
@@ -275,32 +276,8 @@ export function BayAreaTransitClient({
           return next;
         });
       })
-      .catch((error: Error & { status?: number }) => {
+      .catch((error: Error) => {
         if (cancelled || error.name === "AbortError") {
-          return;
-        }
-        if (error.status === 404) {
-          // The station is real (it's in the directory) — the snapshot just
-          // has no departures for it. Render the neutral empty state, not a
-          // red error.
-          setBoardTicks((current) => ({ ...current, [selectedStationId]: refreshTick }));
-          setStationBoards((current) =>
-            current[selectedStationId]
-              ? current
-              : {
-                  ...current,
-                  [selectedStationId]: {
-                    id: selectedStationId,
-                    abbr: selectedStationId.toUpperCase(),
-                    name:
-                      summary.stations.find(
-                        (station) => station.id === selectedStationId
-                      )?.name ?? selectedStationId.toUpperCase(),
-                    departures: [],
-                    generatedAt: summary.system?.generatedAt ?? "",
-                  },
-                }
-          );
           return;
         }
         setStationBoardErrors((current) => ({
@@ -314,7 +291,7 @@ export function BayAreaTransitClient({
       cancelled = true;
       controller.abort();
     };
-  }, [stationBoardErrors, stationBoards, boardTicks, refreshTick, selectedStationId, summary]);
+  }, [stationBoardErrors, stationBoards, boardTicks, refreshTick, selectedStationId]);
 
   function navigate(nextState: TransitRouteState) {
     const href = buildTransitHref(nextState, searchParams);
@@ -392,7 +369,7 @@ export function BayAreaTransitClient({
               </button>
             </div>
             <p className="bt-stamp">
-              {`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${staleSections.length > 0 ? ` · ${staleSections.join(", ")} from the last good snapshot` : ""}`}
+              {`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${heldSections.length > 0 ? ` · ${heldSections.join(", ")} from the last good snapshot` : ""}${unavailableSections.length > 0 ? ` · ${unavailableSections.join(", ")} unavailable` : ""}`}
             </p>
             <p className="bt-stamp">
               {system.seed
@@ -404,16 +381,22 @@ export function BayAreaTransitClient({
 
         {/* Always in the DOM so the toggle's aria-controls resolves; hidden while closed. */}
         <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts" hidden={!alertsOpen}>
-          {staleSections.length > 0 ? (
+          {heldSections.length > 0 ? (
             <p className="bt-alert" role="status">
-              BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
+              BART did not return fresh {heldSections.join(", ")} data on this pass, so I kept
               the last good result instead of showing a false zero.
+            </p>
+          ) : null}
+          {unavailableSections.length > 0 ? (
+            <p className="bt-alert" role="status">
+              BART did not answer the {unavailableSections.join(", ")} request on this pass, so
+              no {unavailableSections.join(", ")} notices are shown.
             </p>
           ) : null}
 
           {alertCount === 0 ? (
-            // A held feed cannot vouch for an all clear, so its sentence above stands alone.
-            staleSections.length === 0 ? (
+            // A held or missing feed cannot vouch for an all clear, so its sentence above stands alone.
+            heldSections.length + unavailableSections.length === 0 ? (
               <p className="bt-alert">
                 <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
                 No delays reported and all elevators in service at the last refresh.

@@ -21,9 +21,11 @@ const accentThemes: Record<
 };
 
 /** Cut at a word boundary so a long excerpt cannot push the sheet past the card. */
-function clip(text: string, max: number): string {
+export function clip(text: string, max: number): string {
   if (text.length <= max) return text;
-  return `${text.slice(0, text.lastIndexOf(" ", max)).replace(/[,.;:]$/, "")}…`;
+  // With no space inside the limit lastIndexOf returns -1, so cut at the limit.
+  const cut = text.lastIndexOf(" ", max);
+  return `${text.slice(0, cut > 0 ? cut : max).replace(/[,.;:]$/, "")}…`;
 }
 
 interface EditorialOgImageOptions {

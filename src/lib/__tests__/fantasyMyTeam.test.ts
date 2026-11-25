@@ -32,11 +32,10 @@ it("never subtracts QB ranks from flex ranks", () => {
   expect(compareMyTeamWaiver(team, board, add, qb.id).rankGain).toBeNull();
 });
 
-it("keeps unranked roster players and reports incomplete coverage", () => {
+it("reports no rank gain when the dropped player is unranked", () => {
   const unknown = player("unknown", "RB");
   const result = compareMyTeamWaiver({ ...team, players: [...team.players, unknown] }, board, add, unknown.id);
   expect(result.rankGain).toBeNull();
-  expect(result.missing).toEqual([unknown]);
 });
 
 it("rejects damaged and previous-season storage, deduplicates players, and excludes rostered availability", () => {

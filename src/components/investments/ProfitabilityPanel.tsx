@@ -70,7 +70,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
   const isLoading = profLoading || marginsLoading;
 
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>Profitability and margins</h3>
 
       {isLoading ? (

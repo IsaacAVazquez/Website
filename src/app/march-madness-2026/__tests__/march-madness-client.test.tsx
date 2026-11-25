@@ -39,6 +39,22 @@ describe("MarchMadnessClient", () => {
     expect(screen.getAllByText("Duke").length).toBeGreaterThan(0);
   });
 
+  it("names each tab panel after its selected tab", () => {
+    render(<MarchMadnessClient initialState={DEFAULT_MARCH_MADNESS_STATE} />);
+
+    const east = screen.getByRole("tab", { name: "East" });
+    expect(screen.getByRole("tabpanel", { name: "East" })).toHaveAttribute(
+      "id",
+      east.getAttribute("aria-controls")
+    );
+    expect(screen.getByRole("tabpanel", { name: "Bracket" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("tab", { name: "Analytics" }));
+    fireEvent.click(screen.getByRole("tab", { name: "Injuries" }));
+    expect(screen.getByRole("tabpanel", { name: "Analytics" })).toBeVisible();
+    expect(screen.getByRole("tabpanel", { name: "Injuries" })).toBeVisible();
+  });
+
   it("explains every badge the picks board uses, CONFIRM included", () => {
     render(
       <MarchMadnessClient initialState={{ view: "picks", region: "east", analytics: "rankings" }} />

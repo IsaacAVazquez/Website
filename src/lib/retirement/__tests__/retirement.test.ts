@@ -486,4 +486,61 @@ describe("lever targets", () => {
     expect(applied.simulations).toBe(plan.assumptions.simulations);
     expect(applied.successRate).toBeGreaterThanOrEqual(plan.assumptions.successThreshold);
   });
+
+  const successRate = (plan: RetirementPlanInput) =>
+    runMonteCarlo(plan, {
+      ...computePortfolioAssumptions(plan.allocation),
+      referenceYear: REF_YEAR,
+    }).successRate;
+  const quick = (overrides: Partial<RetirementPlanInput>) => {
+    const plan = planWith(overrides);
+    return { ...plan, assumptions: { ...plan.assumptions, simulations: 100 } };
+  };
+
+  it("solves all three dials on the default plan, and each one reaches the threshold", () => {
+    const plan = createDefaultPlan();
+    const threshold = plan.assumptions.successThreshold;
+    const levers = computeLevers(plan, REF_YEAR);
+    const target = (id: string) => levers.find((l) => l.id === id)?.toReachTarget?.value;
+
+    expect(levers.map((l) => Math.round(l.newSuccessRate * 100))).toEqual([60, 52, 50, 47]);
+    expect(target("save-more")).toBe("+$14,500/yr");
+    expect(target("retire-later")).toBe("retire at 75");
+    expect(target("spend-less")).toBe("$39,609/yr");
+    expect(target("more-stocks")).toBeUndefined();
+
+    expect(successRate(plan)).toBeLessThan(threshold);
+    expect(
+      successRate({
+        ...plan,
+        accounts: plan.accounts.map((a) => ({ ...a, annualContribution: a.annualContribution + 14_500 })),
+      }),
+    ).toBeGreaterThanOrEqual(threshold);
+    expect(successRate({ ...plan, retirementAge: 75 })).toBeGreaterThanOrEqual(threshold);
+    expect(successRate({ ...plan, retirementAge: 74 })).toBeLessThan(threshold);
+    expect(successRate({ ...plan, desiredAnnualSpend: 39_609 })).toBeGreaterThanOrEqual(threshold);
+  });
+
+  it("prints no target for a dial that cannot reach the threshold", () => {
+    const levers = computeLevers(quick({ desiredAnnualSpend: 500_000 }), REF_YEAR);
+    expect(levers).toHaveLength(4);
+    expect(levers.map((l) => l.toReachTarget)).toEqual([null, null, null, null]);
+  });
+
+  it("gives the same rows when the caller passes the headline success rate", () => {
+    const plan = quick({});
+    expect(computeLevers(plan, REF_YEAR, successRate(plan))).toEqual(computeLevers(plan, REF_YEAR));
+    expect(project(plan, REF_YEAR).levers).toEqual(computeLevers(plan, REF_YEAR));
+  });
+
+  it("leaves out the retire later row when there is no later age to name", () => {
+    const row = (overrides: Partial<RetirementPlanInput>) =>
+      computeLevers(quick(overrides), REF_YEAR).find((l) => l.id === "retire-later");
+
+    // 93 can still move one year, to the last year before the horizon.
+    expect(row({ currentAge: 60, retirementAge: 93 })?.changeLabel).toBe("retire at 94");
+    expect(row({ currentAge: 60, retirementAge: 94 })).toBeUndefined();
+    // Already past the retirement age.
+    expect(row({ currentAge: 70, retirementAge: 65 })).toBeUndefined();
+  });
 });

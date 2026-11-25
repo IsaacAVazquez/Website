@@ -117,14 +117,19 @@ export function PortfolioHeroCard({
         .attr("height", HEIGHT)
         .append("g")
         .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
-      // Two short lines centred on the whole svg, so the note fits a phone-width chart.
+      // Short lines centred on the whole svg, so the note fits a phone-width chart.
+      // A point needs a current quote for every holding, so the first line says so.
       const lines =
         snapshots.length === 0
-          ? ["A point is saved each day you visit,", "and the line draws once there are two."]
+          ? [
+              "A point is saved on a day you visit",
+              "with a current quote for every holding,",
+              "and the line draws once there are two.",
+            ]
           : ["Not enough saved points", "in this range yet."];
       const note = root
         .append("text")
-        .attr("y", innerH / 2 - 8)
+        .attr("y", innerH / 2 - 8 * (lines.length - 1))
         .attr("text-anchor", "middle")
         .style("fill", "var(--c97-ink-2)")
         .style("font-size", "12px")

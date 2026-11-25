@@ -76,7 +76,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-          SPACEDEVS_API_TOKEN: ${{ secrets.SPACEDEVS_API_TOKEN }}
 
       # A builder that kept its snapshot because the source was locked for a live
       # session (Formula 1 writes live_lock=true) has nothing fresh to verify.
@@ -101,8 +100,10 @@ jobs:
         with:
           script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, '${{ inputs.label }}', '${{ inputs.title }}')
 
+      # A live-lock run fetched and verified nothing, so it has not shown that an
+      # open failure is resolved.
       - name: Close resolved failure issues
-        if: success()
+        if: success() && steps.refresh.outputs.live_lock != 'true'
         uses: actions/github-script@v9
         with:
           script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, '${{ inputs.label }}')

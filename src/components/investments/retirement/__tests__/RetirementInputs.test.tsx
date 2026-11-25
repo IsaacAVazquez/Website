@@ -13,7 +13,7 @@ function controllerFor(plan: RetirementPlanInput = createDefaultPlan(), isSample
     ready: true,
     isComputing: false,
     hasError: false,
-    persistenceStatus: { ok: true },
+    persistenceStatus: "persistent",
     isSampleScenario,
     updatePlan: jest.fn(),
     updateAssumptions: jest.fn(),
@@ -27,7 +27,7 @@ function controllerFor(plan: RetirementPlanInput = createDefaultPlan(), isSample
     removeLumpyExpense: jest.fn(),
     applyPortfolioBalance: jest.fn(),
     reset: jest.fn(),
-  } as unknown as jest.Mocked<UseRetirementPlanReturn>;
+  } satisfies UseRetirementPlanReturn as unknown as jest.Mocked<UseRetirementPlanReturn>;
 }
 
 /**
@@ -276,10 +276,22 @@ describe("RetirementInputs", () => {
     type("On-track threshold", "90");
     expect(controller.updateAssumptions).toHaveBeenLastCalledWith({ successThreshold: 0.9 });
 
+    // The select and the assumptions record under the form print one name.
+    expect(screen.getByRole("option", { name: "Dynamic guardrails (Guyton-Klinger)" })).toBeInTheDocument();
+
     const { taxRates } = createDefaultPlan().assumptions;
     type("Tax on traditional withdrawals", "22");
     expect(controller.updateAssumptions).toHaveBeenLastCalledWith({ taxRates: { ...taxRates, traditional: 0.22 } });
     type("Tax on taxable withdrawals", "15");
     expect(controller.updateAssumptions).toHaveBeenLastCalledWith({ taxRates: { ...taxRates, taxable: 0.15 } });
+  });
+
+  it("says the withdrawal rate also sets the spend under fixed percent", () => {
+    const plan = createDefaultPlan();
+    const fixedPercent = { ...plan, assumptions: { ...plan.assumptions, withdrawalStrategy: "fixed-percent" as const } };
+    const { rerender } = render(<RetirementInputs controller={controllerFor(plan)} result={null} />);
+    expect(screen.queryByText(/share of the balance spent each year/)).toBeNull();
+    rerender(<RetirementInputs controller={controllerFor(fixedPercent)} result={null} />);
+    expect(screen.getByText(/share of the balance spent each year/)).toBeInTheDocument();
   });
 });

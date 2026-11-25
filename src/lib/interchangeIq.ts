@@ -10,7 +10,8 @@ export const PROCESSOR_RATES_AS_OF = "2026-10-22";
 interface FlatProcessor {
   sourceUrl?: string;
   subscription?: number;
-  inPerson?: { pctRate: number; fixedFee: number };
+  /** `note` replaces the processor's own where that one names the online channel. */
+  inPerson?: { pctRate: number; fixedFee: number; note?: string };
   id: string;
   name: string;
   model: "Flat Rate";
@@ -47,7 +48,13 @@ const PROCESSORS: Processor[] = [
     model: "Flat Rate",
     pctRate: 0.033,
     fixedFee: 0.3,
-    inPerson: { pctRate: 0.026, fixedFee: 0.15 },
+    // The page lists this rate as "Tap, dip, or swipe" for in-person payments
+    // when a card is present. Read 2026-11-24.
+    inPerson: {
+      pctRate: 0.026,
+      fixedFee: 0.15,
+      note: "Square Free plan; tap, dip, or swipe with the card present",
+    },
     sourceUrl: "https://squareup.com/us/en/payments/our-fees",
     note: "Square Free plan; online checkout, excluding Online API and manual entry",
   },
@@ -191,7 +198,7 @@ export function calcProcessorResults(
         effectiveRate: volume > 0 ? fee / volume : 0,
         txCount,
         perTxAvg: txCount > 0 ? fee / txCount : 0,
-        note: processor.note,
+        note: rates.note ?? processor.note,
         sourceUrl:
           processor.model === "Flat Rate" ? processor.sourceUrl : undefined,
       };

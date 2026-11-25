@@ -129,7 +129,8 @@ export function NewsHistory({
       </p>
       {previousVisit ? (
         <p className="np-muted np-small">
-          Compared with your last visit on {timestamp(previousVisit)}.
+          Compared with the feed this browser saw on your last visit, which
+          was fetched {timestamp(previousVisit)}.
         </p>
       ) : (
         <p className="np-muted np-small">

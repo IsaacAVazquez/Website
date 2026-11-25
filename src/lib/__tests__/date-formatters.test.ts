@@ -1,6 +1,5 @@
 import {
   formatDateTime,
-  formatShortDate,
   formatStableDateTime,
   formatUpdatedAt,
   isLocalDateKey,
@@ -20,7 +19,6 @@ describe("date-formatters", () => {
     }
   );
   it("returns fallback labels for invalid dates", () => {
-    expect(formatShortDate("not-a-date")).toBe("TBD");
     expect(formatDateTime("not-a-date")).toBe("TBD");
     expect(formatUpdatedAt("not-a-date")).toBe("Unavailable");
   });
@@ -29,7 +27,6 @@ describe("date-formatters", () => {
     // 21:30 UTC is 2:30 PM in Pacific daylight time, whatever zone Jest runs in.
     const date = new Date("2026-04-25T21:30:00Z");
 
-    expect(formatShortDate(date)).toBe("Apr 25");
     expect(formatUpdatedAt(date)).toContain("Apr 25");
     expect(formatUpdatedAt(date)).toContain("2:30");
     expect(formatDateTime(date)).toContain("Apr 25");
@@ -40,7 +37,6 @@ describe("date-formatters", () => {
   it("prints the same text in every host zone", () => {
     // Just after midnight UTC is still the previous evening in the Bay Area.
     const date = new Date("2026-04-26T00:15:00Z");
-    expect(formatShortDate(date)).toBe("Apr 25");
     expect(formatUpdatedAt(date)).toBe("Apr 25, 5:15 PM PDT");
   });
 

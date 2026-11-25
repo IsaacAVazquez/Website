@@ -7,7 +7,6 @@ import styles from "./TerminalPanel.module.css";
 interface TerminalPanelProps {
   children: React.ReactNode;
   className?: string;
-  padding: "none" | "sm";
   ariaLabel?: string;
 }
 
@@ -19,13 +18,14 @@ interface TerminalPanelProps {
 export const TerminalPanel = React.memo(function TerminalPanel({
   children,
   className,
-  padding,
   ariaLabel,
 }: TerminalPanelProps) {
   return (
+    // Only a named panel is exposed as an article, since an unnamed one adds an
+    // anonymous entry to a screen reader's landmark list.
     <div
-      className={cn(styles.panel, padding === "sm" && "p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]", className)}
-      role="article"
+      className={cn(styles.panel, "p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]", className)}
+      role={ariaLabel ? "article" : undefined}
       aria-label={ariaLabel}
     >
       {children}

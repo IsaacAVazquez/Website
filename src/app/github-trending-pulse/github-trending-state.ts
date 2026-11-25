@@ -60,14 +60,21 @@ export function resolveGitHubTrendingState(
 ): GitHubTrendingRouteState {
   const segments = state.kind === "language" ? snapshot.languages : snapshot.topics;
   const validSegments = new Set(segments.map((segment) => segment.key));
-  const validRepoIds = new Set(snapshot.repositories.map((repo) => repo.id));
+  const segment =
+    state.segment === "all" || validSegments.has(state.segment) ? state.segment : "all";
+  // Only a repository the chosen segment lists can open, so any other id drops out of the address.
+  const shownRepoIds = new Set(
+    segments
+      .filter((entry) => segment === "all" || entry.key === segment)
+      .flatMap((entry) => entry.repoIds)
+  );
+  const validRepoIds = new Set(
+    snapshot.repositories.filter((repo) => shownRepoIds.has(repo.id)).map((repo) => repo.id)
+  );
 
   return {
     kind: enumValue(state.kind, GITHUB_TRENDING_KIND_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.kind),
-    segment:
-      state.segment === "all" || validSegments.has(state.segment)
-        ? state.segment
-        : "all",
+    segment,
     sort: enumValue(state.sort, GITHUB_TRENDING_SORT_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.sort),
     selectedRepoId:
       state.selectedRepoId && validRepoIds.has(state.selectedRepoId)

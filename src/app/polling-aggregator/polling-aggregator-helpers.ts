@@ -115,11 +115,23 @@ export const REP_COLOR = "var(--c97-party-r-mark)";
 interface Point { x: number; y: number }
 
 /**
+ * Where each trend point sits along the x axis, from 0 to 1, by calendar month.
+ * The builder skips a month with no polls, so spacing by index would draw a
+ * two-month gap at the width of one month.
+ */
+export function monthFractions(dates: string[]): number[] {
+  const months = dates.map((iso) => Number(iso.slice(0, 4)) * 12 + Number(iso.slice(5, 7)));
+  const span = (months.at(-1) ?? 0) - (months[0] ?? 0) || 1;
+  return months.map((month) => (month - months[0]) / span);
+}
+
+/**
  * Maps a series into an SVG polyline using a *shared* Y-domain so multiple
  * series (e.g. approve + disapprove) align on one scale. The caller computes
  * `minVal`/`maxVal` across every series and passes the same values for each
  * polyline, the gridlines, and the end-dots so the chart is internally
- * consistent.
+ * consistent. `fractions` places each point along the x axis (0 to 1), and
+ * the points are spaced evenly without it.
  */
 export function buildPolyline(
   values: number[],
@@ -127,12 +139,13 @@ export function buildPolyline(
   height: number,
   padding: number,
   minVal: number,
-  maxVal: number
+  maxVal: number,
+  fractions?: number[]
 ): string {
   if (values.length < 2) return "";
   const range = maxVal - minVal || 1;
   const pts: Point[] = values.map((v, i) => ({
-    x: padding + (i / (values.length - 1)) * (width - padding * 2),
+    x: padding + (fractions?.[i] ?? i / (values.length - 1)) * (width - padding * 2),
     y: height - padding - ((v - minVal) / range) * (height - padding * 2),
   }));
   return pts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");

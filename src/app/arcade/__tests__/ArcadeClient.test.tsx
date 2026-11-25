@@ -113,4 +113,23 @@ describe("ArcadeClient", () => {
     start();
     expect(lives()).toHaveTextContent("♥♥♥");
   });
+
+  it("leaves a digit typed in a field to the field while a run is live", () => {
+    boot();
+    start();
+    act(() => jest.advanceTimersByTime(400));
+    const score = () => screen.getByText("SCORE").nextElementSibling;
+    const input = document.body.appendChild(document.createElement("input"));
+
+    // One of the nine cells is the live target, so one of these would score.
+    const sent = "123456789".split("").map((key) => fireEvent.keyDown(input, { key }));
+    input.remove();
+
+    // fireEvent returns false when a handler called preventDefault.
+    expect(sent).toEqual(Array(9).fill(true));
+    expect(score()).toHaveTextContent("00000");
+
+    "123456789".split("").forEach((key) => fireEvent.keyDown(window, { key }));
+    expect(score()).toHaveTextContent("00010");
+  });
 });

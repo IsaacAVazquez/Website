@@ -43,7 +43,7 @@ function buildApplication(
 
 describe("pipelineStages", () => {
   it("returns four zeroed stages with dashes when nothing is tracked", () => {
-    const insights = summarizeApplicationPipeline([], TODAY);
+    const insights = summarizeApplicationPipeline([]);
     const stages = pipelineStages(insights);
 
     expect(stages.map((stage) => stage.key)).toEqual([
@@ -65,7 +65,7 @@ describe("pipelineStages", () => {
       buildApplication({ id: "a4", status: "interviewing" }),
       buildApplication({ id: "a5", status: "offer" }),
     ];
-    const insights = summarizeApplicationPipeline(applications, TODAY);
+    const insights = summarizeApplicationPipeline(applications);
     const stages = pipelineStages(insights);
 
     const [applied, responded, interview, offer] = stages;
@@ -90,7 +90,7 @@ describe("pipelineStages", () => {
       buildApplication({ id: "a2", status: "applied" }),
       buildApplication({ id: "a3", status: "applied" }),
     ];
-    const insights = summarizeApplicationPipeline(applications, TODAY);
+    const insights = summarizeApplicationPipeline(applications);
     const stages = pipelineStages(insights);
     const [applied, responded, interview, offer] = stages;
 
@@ -107,7 +107,7 @@ describe("pipelineStages", () => {
     const applications = Array.from({ length: 500 }, (_, i) =>
       buildApplication({ id: `a${i}`, status: i < 400 ? "offer" : "applied" })
     );
-    const insights = summarizeApplicationPipeline(applications, TODAY);
+    const insights = summarizeApplicationPipeline(applications);
     const stages = pipelineStages(insights);
     const [applied, responded, interview, offer] = stages;
 

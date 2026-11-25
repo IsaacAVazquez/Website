@@ -14,7 +14,7 @@
  *      load in. A stylesheet stays loaded after in-app navigation, so every selector here
  *      starts with a class this file owns.
  *
- * KIT.md (the build reference) documents each class with its markup.
+ * docs/FANTASY_FOOTBALL_KIT.md (the build reference) documents each class with its markup.
  */
 
 /* The three column minimums do not inherit, so a grid inside a grid keeps its own.
@@ -382,7 +382,8 @@ html.dark .ffb-scope {
   /* ========================================================================
    * 7. Helpers
    * ====================================================================== */
-  .ffb-vh {
+  .ffb-vh,
+  .ffb-skip:not(:focus) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -403,16 +404,7 @@ html.dark .ffb-scope {
   }
   /* A way past a long list for a keyboard. It is out of sight until it takes focus. */
   .ffb-skip { margin-bottom: var(--ffb-s2); }
-  .ffb-skip:not(:focus) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
+  .ffb-skip:not(:focus) { padding: 0; border: 0; }
   .ffb-muted { color: var(--ffb-muted); }
   .ffb-good { color: var(--ffb-good); }
   .ffb-bad { color: var(--ffb-bad); }
@@ -1343,15 +1335,6 @@ html.dark .ffb-scope {
   /* The rank cell, which needs the table's own weight to beat the body cell's. */
   .ffb-table tbody td.ffb-c-rank { color: var(--ffb-ink); font-size: 15px; font-weight: 700; text-align: right; }
   .ffb-table tbody tr:hover > * { background-color: var(--ffb-sunk); }
-  /* The head stays on screen while the page scrolls under it. Not inside .ffb-table-wrap. */
-  .ffb-table-sticky thead th {
-    position: sticky;
-    top: var(--ffb-sticky-top, 0px);
-    z-index: 1;
-    border-bottom-color: transparent;
-    background: var(--ffb-surface);
-    box-shadow: inset 0 -2px 0 var(--ffb-ink);
-  }
   /* Compare: a label column and one column per player. */
   .ffb-table-compare { table-layout: fixed; }
   .ffb-table-compare thead th { color: var(--ffb-ink); white-space: normal; vertical-align: top; }
@@ -1847,7 +1830,6 @@ html.dark .ffb-scope {
   .ffb-verdict-body { font-size: 15px; line-height: 1.45; }
   .ffb-scale { margin: 0; padding-block: var(--ffb-s3); color: var(--ffb-ink); }
   .ffb-scale > svg { display: block; width: 100%; height: auto; }
-  .ffb-scale > figcaption { margin-top: var(--ffb-s2); color: var(--ffb-muted); font-size: 12.5px; }
 
   /* ========================================================================
    * 13. Overlays
@@ -2663,17 +2645,15 @@ html.dark .ffb-scope {
   .ffb-root :is(.ffb-bar, .ffb-toolbar, .ffb-star, .ffb-log, .ffb-more, .ffb-bug-actions, .ffb-iconbtn, .ffb-search, .ffb-toggle, .ffb-tray, .ffb-tray-space, .ffb-toast, .ffb-scrim, .ffb-head-aside, .ffb-notice-actions) {
     display: none;
   }
-  .ffb-root :is(.ffb-sticky, .ffb-rail, .ffb-table-sticky thead th) { position: static; }
+  .ffb-root :is(.ffb-sticky, .ffb-rail) { position: static; }
   .ffb-root .ffb-sticky { box-shadow: none; }
-  /* On paper the table head is not stuck, so it takes its real border back. An inset edge leaves seams between head cells in a PDF. */
-  .ffb-root .ffb-table-sticky thead th { border-bottom-color: var(--ffb-ink); box-shadow: none; }
   /* A scrolling rail prints whole. */
   .ffb-root.ffb-root .ffb-rail-scroll { max-height: none; margin-inline: 0; padding-inline: 0; overflow: visible; }
   /* A disclosure marked to print opens on paper, so what it holds (a method, a model's limits) is on the page. */
   .ffb-root .ffb-details-print::details-content { content-visibility: visible; }
   .ffb-root .ffb-details-print > summary::after { display: none; }
   /* With the highlighter off, what was highlighted keeps an ink outline. */
-  .ffb-root :is(.ffb-bug-live, .ffb-cell.ffb-is-live, .ffb-turn-tab, .ffb-countbadge) { outline: 2px solid #15191c; outline-offset: -2px; }
+  .ffb-root :is(.ffb-bug-live, .ffb-cell.ffb-is-live, .ffb-turn-tab, .ffb-countbadge) { outline: 2px solid var(--ffb-ink); outline-offset: -2px; }
   /* With a note under its value the cell needs more than the bar's height, so it takes 4px of room
      above and below and its label clears the outline. */
   .ffb-root .ffb-bug-live { margin-block: 0; padding-block: var(--ffb-s1); }

@@ -7,10 +7,8 @@ import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
 import { FANTASY_WEEKLY_SNAPSHOT_URL } from "@/lib/fantasyWeeklySnapshot";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
-import {
-  WeeklyBoardClient,
-  type WeeklyRouteState,
-} from "../weekly/weekly-client";
+import { WeeklyBoardClient } from "../weekly/weekly-client";
+import type { WeeklyRouteState } from "../weekly/weekly-state";
 
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Waiver Targets",

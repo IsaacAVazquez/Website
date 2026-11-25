@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { AiDevToolsClient } from "../ai-dev-tools-client";
+import { aiDevTools } from "../ai-dev-tools-data";
 
 let currentSearchParams = new URLSearchParams();
 // The page writes its state with the native history API, which the router
@@ -42,6 +43,14 @@ describe("AiDevToolsClient", () => {
     replaceState.mockRestore();
     pushState.mockRestore();
     jest.useRealTimers();
+  });
+
+  it("prints the days since a release beside its freshness dot", () => {
+    const dated = aiDevTools.find((tool) => tool.latestRelease) as (typeof aiDevTools)[number];
+    jest.setSystemTime(Date.parse(dated.latestRelease as string) + 3 * 86_400_000);
+    render(<AiDevToolsClient />);
+
+    expect(screen.getAllByText(/· 3 days ago$/).length).toBeGreaterThan(0);
   });
 
   it("renders the directory and writes filters and search to the URL in place", () => {

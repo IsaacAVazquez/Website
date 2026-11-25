@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Civic Product",
     title: "Bay Area Transit Pulse",
     description:
-      "BART dashboard for Bay Area lines, station departure boards, and service alerts from a checked-in transit snapshot.",
+      "BART dashboard for Bay Area lines, departure boards refreshed from BART, and service alerts.",
     accent: "teal",
     footer: "isaacvazquez.com/bay-area-transit",
   });

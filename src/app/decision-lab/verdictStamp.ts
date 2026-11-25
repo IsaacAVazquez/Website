@@ -2,23 +2,7 @@ import {
   DECISION_WEIGHTS,
   type DecisionAxis,
   type DecisionMetrics,
-  type DecisionRecommendation,
 } from "./decision-lab-data";
-
-export interface VerdictStamp {
-  word: "SHIP" | "TEST" | "HOLD";
-}
-
-const STAMP_WORDS: Record<DecisionRecommendation, VerdictStamp["word"]> = {
-  ship: "SHIP",
-  test: "TEST",
-  hold: "HOLD",
-};
-
-/** The word the rubber stamp prints across the matrix for a given verdict. */
-export function verdictStamp(recommendation: DecisionRecommendation): VerdictStamp {
-  return { word: STAMP_WORDS[recommendation] };
-}
 
 export interface VerdictContribution {
   axis: DecisionAxis;

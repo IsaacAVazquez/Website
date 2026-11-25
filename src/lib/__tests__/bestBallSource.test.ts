@@ -6,7 +6,6 @@ import {
   fetchBestBallRankingsBoard,
   getBestBallRefreshFallback,
   isBestBallRefreshRedundant,
-  getExpectedBestBallSeason,
   parseBestBallAdpPayload,
   parseBestBallSchedulePayload,
 } from "@/lib/bestBallSource";
@@ -75,11 +74,6 @@ describe("best ball public sources", () => {
   afterEach(() => {
     jest.restoreAllMocks();
     jest.useRealTimers();
-  });
-
-  it("keeps January and February attached to the season that began the prior year", () => {
-    expect(getExpectedBestBallSeason(new Date("2027-02-15T00:00:00.000Z"))).toBe(2026);
-    expect(getExpectedBestBallSeason(new Date("2027-03-01T00:00:00.000Z"))).toBe(2027);
   });
 
   it("rejects a rankings feed with the wrong scoring label", () => {

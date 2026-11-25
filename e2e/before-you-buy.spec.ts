@@ -65,9 +65,12 @@ test.describe("Before You Buy", () => {
     await page.addInitScript(() => localStorage.setItem("portfolio_holdings", JSON.stringify(["SPY", "AAPL", "MSFT", "GOOGL", "AMZN", "JPM", "COST", "NVDA", "XOM", "KO", "V", "ABBV", "ACN", "ADBE"].map((symbol) => ({ symbol, shares: 10, averageCost: 100 })))));
     await page.goto(ROUTE);
     await expect(status(page)).toContainText("NVDA");
-    const search = await page.getByRole("combobox", { name: "Search stock symbol", exact: true }).boundingBox();
-    const result = await status(page).boundingBox();
-    expect(result!.y - search!.y).toBeLessThanOrEqual(844);
+    // Measured in the page. boundingBox() returns null when WebKit fails a quad
+    // read, and dereferencing it threw here on Mobile Safari and desktop WebKit.
+    const search = page.getByRole("combobox", { name: "Search stock symbol", exact: true });
+    const searchTop = await search.evaluate((element) => element.getBoundingClientRect().y);
+    const resultTop = await status(page).evaluate((element) => element.getBoundingClientRect().y);
+    expect(resultTop - searchTop).toBeLessThanOrEqual(844);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByText(/View and edit/).click();
     await expect(page.locator(".byb-editor tbody tr")).toHaveCount(14);

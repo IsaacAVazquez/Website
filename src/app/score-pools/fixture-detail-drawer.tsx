@@ -20,11 +20,7 @@ import type { SnapshotFixture } from "@/types/scorePools";
 import {
   ConfidenceChip,
   EpMeter,
-  FIELD_HINT,
-  FIELD_INPUT,
-  FIELD_LABEL,
   LockBadge,
-  PILL_BUTTON,
   SCORE_FIELD_STYLE,
   formatAge,
   formatKickoff,
@@ -55,8 +51,6 @@ const FLAG_LABELS: Array<{ key: ContextFlagKey; label: string; hint: string }> =
   { key: "rotationRiskAway", label: "Rotation risk (away)", hint: "Expect a weakened away eleven." },
 ];
 
-const SECTION = "sp-section";
-const SECTION_TITLE = "sp-h3";
 
 function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
   const grid = analysis.distribution.grid;
@@ -261,21 +255,21 @@ export function FixtureDetailDrawer({
             </p>
             <div style={{ marginTop: "var(--c97-sp-0)" }}><LockBadge locked={locked} /></div>
           </div>
-          <button ref={closeRef} type="button" onClick={onClose} className={PILL_BUTTON} aria-label="Close">
+          <button ref={closeRef} type="button" onClick={onClose} className="c97-btn" aria-label="Close">
             Close
           </button>
         </header>
 
         <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
           {/* My pick */}
-          <section className={SECTION} aria-label="My pick">
-            <h3 className={SECTION_TITLE}>My pick</h3>
+          <section className="sp-section" aria-label="My pick">
+            <h3 className="sp-h3">My pick</h3>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
               <span className="font-mono text-lg font-bold text-[var(--c97-ink)]">
                 {myPick ? formatScoreline(myPick) : "not set"}
               </span>
               {myPick ? (
-                <button type="button" className={PILL_BUTTON} onClick={() => onClearPick(fixture.id)}>
+                <button type="button" className="c97-btn" onClick={() => onClearPick(fixture.id)}>
                   Clear
                 </button>
               ) : null}
@@ -305,7 +299,7 @@ export function FixtureDetailDrawer({
                   className="c97-field"
                   style={SCORE_FIELD_STYLE}
                 />
-                <button type="button" className={`${PILL_BUTTON} disabled:cursor-not-allowed disabled:opacity-50`} onClick={submitPick} disabled={locked}>
+                <button type="button" className="c97-btn disabled:cursor-not-allowed disabled:opacity-50" onClick={submitPick} disabled={locked}>
                   Set
                 </button>
               </div>
@@ -319,9 +313,9 @@ export function FixtureDetailDrawer({
 
           {/* Recommendation */}
           {rec && analysis ? (
-            <section className={SECTION} aria-label="Recommendation">
+            <section className="sp-section" aria-label="Recommendation">
               <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                <h3 className={SECTION_TITLE}>Recommendation</h3>
+                <h3 className="sp-h3">Recommendation</h3>
                 <ConfidenceChip level={rec.confidence.level} />
               </div>
               <div className="grid sm:grid-cols-3" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
@@ -338,7 +332,7 @@ export function FixtureDetailDrawer({
                     </p>
                     <button
                       type="button"
-                      className={`${PILL_BUTTON} w-full justify-center disabled:cursor-not-allowed disabled:opacity-50`}
+                      className="c97-btn w-full justify-center disabled:cursor-not-allowed disabled:opacity-50"
                       // .c97-btn is unlayered and sets nowrap and wide padding, so the
                       // three-up column needs its own inline spacing to fit the label.
                       // The auto top margin pins it to the card's foot, so the three
@@ -362,8 +356,8 @@ export function FixtureDetailDrawer({
           ) : null}
 
           {/* Market */}
-          <section className={SECTION} aria-label="Market">
-            <h3 className={SECTION_TITLE}>The market it used</h3>
+          <section className="sp-section" aria-label="Market">
+            <h3 className="sp-h3">The market it used</h3>
             {shownOdds ? (
               <div className="flex flex-col text-sm text-[var(--c97-ink)]" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <p className="font-mono tabular-nums">
@@ -433,7 +427,7 @@ export function FixtureDetailDrawer({
                   ] as const
                 ).map(([key, label]) => (
                   <label key={key} className="block">
-                    <span className={FIELD_LABEL}>{label}</span>
+                    <span className="c97-kicker">{label}</span>
                     <input
                       type="text"
                       inputMode="decimal"
@@ -441,14 +435,14 @@ export function FixtureDetailDrawer({
                       onChange={(event) =>
                         setManualDraft((draft) => ({ ...draft, [key]: event.target.value }))
                       }
-                      className={FIELD_INPUT}
+                      className="c97-field"
                       style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                 ))}
               </div>
               <span
-                className={FIELD_HINT}
+                className="c97-prose"
                 style={{
                   display: "block",
                   marginTop: "var(--c97-sp-1)",
@@ -465,13 +459,13 @@ export function FixtureDetailDrawer({
                 </p>
               ) : null}
               <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
-                <button type="button" className={PILL_BUTTON} onClick={saveManualOdds}>
+                <button type="button" className="c97-btn" onClick={saveManualOdds}>
                   Save odds
                 </button>
                 {existingManual ? (
                   <button
                     type="button"
-                    className={PILL_BUTTON}
+                    className="c97-btn"
                     onClick={() => onSaveManualOdds(fixture.id, null)}
                   >
                     Remove hand-entered odds
@@ -483,8 +477,8 @@ export function FixtureDetailDrawer({
 
           {/* Model */}
           {analysis ? (
-            <section className={SECTION} aria-label="Scoreline model">
-              <h3 className={SECTION_TITLE}>The scoreline distribution</h3>
+            <section className="sp-section" aria-label="Scoreline model">
+              <h3 className="sp-h3">The scoreline distribution</h3>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Expected goals {analysis.distribution.lambdaHome.toFixed(2)} vs{" "}
                 {analysis.distribution.lambdaAway.toFixed(2)}, total{" "}
@@ -548,8 +542,8 @@ export function FixtureDetailDrawer({
           ) : null}
 
           {/* Context flags */}
-          <section className={SECTION} aria-label="Context flags">
-            <h3 className={SECTION_TITLE}>Context flags</h3>
+          <section className="sp-section" aria-label="Context flags">
+            <h3 className="sp-h3">Context flags</h3>
             <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               Flags shade the calibration modestly; the market already prices most context.
             </p>
@@ -576,7 +570,7 @@ export function FixtureDetailDrawer({
                       {suggestion.reason}
                     </p>
                     {!flags[suggestion.flag] ? (
-                      <button type="button" className={PILL_BUTTON} onClick={() => toggleFlag(suggestion.flag)}>
+                      <button type="button" className="c97-btn" onClick={() => toggleFlag(suggestion.flag)}>
                         Apply
                       </button>
                     ) : (
@@ -590,8 +584,8 @@ export function FixtureDetailDrawer({
 
           {/* Recheck */}
           {analysis && analysis.recheck.length > 0 ? (
-            <section className={SECTION} aria-label="Before it locks">
-              <h3 className={SECTION_TITLE}>Recheck before it locks</h3>
+            <section className="sp-section" aria-label="Before it locks">
+              <h3 className="sp-h3">Recheck before it locks</h3>
               <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)" }}>
                 {analysis.recheck.map((item) => (
                   <li key={item} className="flex text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
@@ -604,8 +598,8 @@ export function FixtureDetailDrawer({
           ) : null}
 
           {fixture.injuryNotes.length > 0 ? (
-            <section className={SECTION} aria-label="Injury notes">
-              <h3 className={SECTION_TITLE}>Injury notes</h3>
+            <section className="sp-section" aria-label="Injury notes">
+              <h3 className="sp-h3">Injury notes</h3>
               <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)" }}>
                 {fixture.injuryNotes.map((note) => (
                   <li key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</li>

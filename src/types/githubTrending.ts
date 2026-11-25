@@ -88,11 +88,18 @@ export interface GitHubTrendingSnapshot {
  */
 export type GitHubTrendingClientRepository = Omit<
   GitHubTrendingRepository,
-  "nodeId" | "homepageUrl" | "watchers" | "createdAt" | "updatedAt" | "starHistory"
+  | "nodeId"
+  | "owner"
+  | "name"
+  | "homepageUrl"
+  | "watchers"
+  | "createdAt"
+  | "updatedAt"
+  | "starHistory"
 >;
 
 export interface GitHubTrendingClientSnapshot
-  extends Omit<GitHubTrendingSnapshot, "repositories"> {
+  extends Omit<GitHubTrendingSnapshot, "repositories" | "agentEditions"> {
   repositories: GitHubTrendingClientRepository[];
 }
 

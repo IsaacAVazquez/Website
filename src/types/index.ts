@@ -72,39 +72,6 @@ export interface Player {
   expertCount?: number; // Number of experts ranking this player
   consensusLevel?: 'high' | 'medium' | 'low'; // Expert consensus agreement
   
-  // Detailed projections (position-specific)
-  projections?: {
-    // QB projections
-    passingYards?: number;
-    passingTDs?: number;
-    interceptions?: number;
-    rushingYards?: number;
-    rushingTDs?: number;
-    
-    // RB/WR/TE projections
-    receptions?: number;
-    receivingYards?: number;
-    receivingTDs?: number;
-    targets?: number;
-    targetShare?: number;
-    redZoneTargets?: number;
-    
-    // RB specific
-    carries?: number;
-    redZoneCarries?: number;
-    
-    // DST specific
-    sacks?: number;
-    fumblesRecovered?: number;
-    safeties?: number;
-    touchdowns?: number;
-    
-    // K specific
-    fieldGoalAttempts?: number;
-    fieldGoalPercentage?: number;
-    extraPointAttempts?: number;
-  };
-  
   // Weekly performance data
   weeklyProjections?: Array<{
     week: number;

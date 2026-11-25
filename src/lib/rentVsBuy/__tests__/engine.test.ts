@@ -158,6 +158,9 @@ describe("tax year figures", () => {
     expect(taxNote).toContain("$10,000 in 2030");
     expect(taxNote).toContain("does not model the reduction");
     expect(taxNote).toContain("$505,000");
+    // The interest deduction is not held to the acquisition debt limit, and the note says so.
+    expect(taxNote).toContain("does not apply the federal limit");
+    expect(taxNote).toContain("$750,000");
   });
 });
 

@@ -63,7 +63,6 @@ export function ModernButton({
         "inline-flex items-center justify-center font-semibold",
         "transition-[background-color,border-color,color,transform] duration-200",
         "disabled:opacity-40 disabled:cursor-not-allowed",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--c97-accent)]",
         !disabled && "active:scale-[0.98]",
         fullWidth && "w-full",
         sizes[size],

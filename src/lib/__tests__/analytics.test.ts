@@ -104,7 +104,7 @@ describe("analytics with a measurement id configured", () => {
   it("routes each helper to its canonical GA4 event name", () => {
     const analytics = loadAnalytics("G-TEST1");
 
-    analytics.trackNavigationClick({ link_text: "Home", link_url: "/", nav_location: "header_brand" });
+    analytics.trackNavigationClick({ link_text: "Home", link_url: "/", nav_location: "header_primary" });
     analytics.trackCodeCopy({ code_location: "article", code_language: "ts", char_count: 42 });
     analytics.trackScrollDepth({ percent_scrolled: 75, page_path: "/writing" });
     analytics.trackNewsletterSubscribe({ signup_location: "footer" });

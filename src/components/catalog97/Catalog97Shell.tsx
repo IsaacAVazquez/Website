@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { profile } from "@/lib/profile";
 import { Catalog97Header } from "./Catalog97Header";
 import { VisitLedger } from "@/components/discoveries/VisitLedger";
 
@@ -85,13 +86,10 @@ const footerPages = [
   { href: "/dashboards", label: "Dashboards" },
 ];
 
+// ActionClickTracker counts a click by comparing the href to profile.sameAs.
 const footerElsewhere = [
-  { href: "https://github.com/IsaacAVazquez", label: "GitHub", external: true },
-  {
-    href: "https://www.linkedin.com/in/isaac-vazquez/",
-    label: "LinkedIn",
-    external: true,
-  },
+  { href: profile.sameAs.github, label: "GitHub", external: true },
+  { href: profile.sameAs.linkedin, label: "LinkedIn", external: true },
   { href: "/resume", label: "Résumé", external: false },
 ];
 

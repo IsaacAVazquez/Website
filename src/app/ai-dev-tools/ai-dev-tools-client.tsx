@@ -111,21 +111,19 @@ function sortTools(tools: AiDevTool[], sort: SortKey): AiDevTool[] {
   }
 }
 
-// Days since the latest release → a freshness tone. Recent ships read as
-// momentum; long gaps read as a watch-out. `nowMs` is null while
-// useClientNow() hasn't resolved yet (server render and first hydration
-// pass), so the dot stays neutral and the title shows the absolute date
-// instead of a day count that could disagree between server and client.
-function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: "none" | "recent" | "steady" | "stale"; title: string } {
+// Days since the latest release, as a freshness tone and the day count that
+// prints beside it, so the tone never rides on the dot's colour alone. `nowMs`
+// is null while useClientNow() hasn't resolved yet (server render and first
+// hydration pass), so the dot stays neutral and no day count prints that could
+// disagree between server and client.
+function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: "none" | "recent" | "steady" | "stale"; age: string | null } {
   const ms = releaseTimeMs(tool);
-  if (!ms) return { dot: "none", title: "No dated release" };
-  if (nowMs === null) {
-    return { dot: "none", title: `Released ${formatReleaseDate(tool.latestRelease)}` };
-  }
+  if (!ms || nowMs === null) return { dot: "none", age: null };
   const days = Math.max(0, Math.round((nowMs - ms) / 86_400_000));
-  if (days <= 30) return { dot: "recent", title: `Shipped ${days}d ago` };
-  if (days <= 120) return { dot: "steady", title: `Shipped ${days}d ago` };
-  return { dot: "stale", title: `Last ship ${days}d ago` };
+  const age = `${days} ${days === 1 ? "day" : "days"} ago`;
+  if (days <= 30) return { dot: "recent", age };
+  if (days <= 120) return { dot: "steady", age };
+  return { dot: "stale", age };
 }
 
 /**
@@ -363,7 +361,7 @@ export function AiDevToolsClient() {
               {filteredTools.length} of {aiDevTools.length} tools shown
             </p>
             <p className="adt-disclosure">
-              {`Stars and releases as of ${updatedAt} · pricing checked ${TOOL_PRICING_CHECKED_AT}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified"}`}
+              {`Stars and releases as of ${updatedAt} · pricing checked ${formatLongUtcDate(TOOL_PRICING_CHECKED_AT)}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified"}`}
             </p>
             <div className="adt-view">
               <FilterSelect
@@ -500,8 +498,9 @@ function ToolDirectoryList({
                   <span className="adt-cell-label">Release</span>
                   <span className="adt-fact">{AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}</span>
                   <span className="adt-note adt-date">
-                    <span className="adt-dot" data-tone={freshness.dot} title={freshness.title} aria-hidden="true" />
+                    <span className="adt-dot" data-tone={freshness.dot} aria-hidden="true" />
                     {formatReleaseDate(tool.latestRelease)}
+                    {freshness.age ? ` · ${freshness.age}` : null}
                   </span>
                 </span>
                 <span className="adt-cell adt-cell--stars">

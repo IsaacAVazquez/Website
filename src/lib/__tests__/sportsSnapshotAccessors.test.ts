@@ -82,12 +82,15 @@ jest.mock("@/data/githubTrendingSnapshot", () => ({
   githubTrendingSnapshot: {
     generatedAt: "2026-09-30T00:00:00.000Z",
     sourceLabel: "GitHub search",
+    agentEditions: [{ weekStart: "2026-09-28" }],
     repositories: [
       {
         fullName: "acme/rocket",
         stars: 1200,
         language: "TypeScript",
         nodeId: "R_123",
+        owner: "acme",
+        name: "rocket",
         homepageUrl: "https://acme.dev",
         watchers: 40,
         createdAt: "2026-01-01T00:00:00Z",
@@ -408,5 +411,6 @@ describe("GitHub trending client snapshot", () => {
     expect(snapshot.repositories).toEqual([
       { fullName: "acme/rocket", stars: 1200, language: "TypeScript" },
     ]);
+    expect(snapshot).not.toHaveProperty("agentEditions");
   });
 });

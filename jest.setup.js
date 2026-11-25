@@ -6,10 +6,6 @@ import { TextEncoder, TextDecoder } from 'util'
 global.TextEncoder = TextEncoder
 global.TextDecoder = TextDecoder
 
-// Note: MSW is available but not auto-loaded to avoid polyfill issues
-// Import manually in tests that need API mocking:
-// import { server } from '@/test-utils/mocks/server'
-
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}

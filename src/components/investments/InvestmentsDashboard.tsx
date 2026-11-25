@@ -11,6 +11,7 @@ import { ResearchSection } from "./ResearchSection";
 import { StockSearch } from "./StockSearch";
 import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
+import { useIsClient } from "@/hooks/useIsClient";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { InvestmentsTask, ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
@@ -128,6 +129,9 @@ export function InvestmentsDashboard({
   const addHoldingRef = useRef<HTMLElement | null>(null);
   const researchSectionRef = useRef<HTMLElement | null>(null);
   const filterInputRef = useRef<HTMLInputElement | null>(null);
+  // The handler below takes either key, so the badge names the one on this keyboard.
+  const isClient = useIsClient();
+  const filterShortcut = isClient && !/Mac|iPhone|iPad/.test(navigator.platform) ? "Ctrl K" : "⌘K";
 
   // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
   // Leave the shortcut alone while the user is typing somewhere else, and on
@@ -327,7 +331,7 @@ export function InvestmentsDashboard({
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
+                    <span className="invest-search-kbd" aria-hidden="true">{filterShortcut}</span>
                   </label>
                 )
               }
@@ -424,7 +428,7 @@ export function InvestmentsDashboard({
         <div className={styles.titleStatus}>
           <span>Research data as of {formatDatasetDate(datasetLastUpdated)}</span>
           {isEmpty ? null : (
-            <DataFreshnessIndicator lastUpdated={lastUpdated} onRefresh={refetch} isRefreshing={isLoading} />
+            <DataFreshnessIndicator lastUpdated={lastUpdated} mode="live" onRefresh={refetch} isRefreshing={isLoading} />
           )}
         </div>
         <button type="button" className={`invest-ghost ${styles.titleAdd}`} onClick={focusAddHolding}>

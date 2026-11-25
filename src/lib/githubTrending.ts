@@ -138,8 +138,10 @@ export function calculateWeeklyStars(
     };
   }
 
+  // Signed, so a repository that lost stars over the window prints the loss
+  // and does not read as a measured week with no change.
   return {
-    weeklyStars: Math.max(0, currentStars - baseline.stars),
+    weeklyStars: currentStars - baseline.stars,
     status: exact && ordered.at(-1)?.date === today ? "measured" : "partial",
     baselineDate: baseline.date,
   };

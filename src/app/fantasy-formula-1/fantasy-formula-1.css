@@ -66,7 +66,9 @@
   list-style: none;
 }
 
-.ff1-root :where(button:focus-visible, summary:focus-visible, [tabindex]:focus-visible) {
+/* Buttons and summaries take the shell's ring, which reads --c97-accent, mapped to
+   --ff1-focus above. This covers the scroll region, which the shell's rule does not name. */
+.ff1-root :where([tabindex]:focus-visible) {
   outline: 2px solid var(--ff1-focus);
   outline-offset: 2px;
 }

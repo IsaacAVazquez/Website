@@ -1,7 +1,6 @@
 import type { Museum } from "@/types/museum";
 import {
   admissionStub,
-  averageRating,
   filterMuseums,
   formatAdmission,
   getMuseumExhibitStatus,
@@ -117,8 +116,6 @@ describe("museum-log-helpers", () => {
     expect(formatRuntime(125)).toBe("2h 5m");
     expect(formatAdmission(null)).toBe("Free");
     expect(formatAdmission(18)).toBe("$18");
-    expect(averageRating([])).toBe(0);
-    expect(averageRating([4, 5])).toBe(4.5);
   });
 
   it("converts ratings into half-star fill fractions", () => {

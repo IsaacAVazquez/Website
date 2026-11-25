@@ -90,7 +90,7 @@ export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
             Your target is {formatPercent(input.assumptions.successThreshold, 0)}.{" "}
             {meetsThreshold
               ? "You're meeting it."
-              : "A “miss” usually just means a mid-course spending adjustment, not running out."}
+              : "A miss usually means a mid-course spending adjustment."}
           </p>
         </div>
       </div>

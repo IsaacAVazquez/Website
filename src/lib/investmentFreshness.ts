@@ -9,7 +9,7 @@ import { isRecord } from "@/lib/utils";
 
 type SnapshotLike = Pick<InvestmentSnapshot, "lastUpdated" | "sections" | "freshness">;
 
-const RETAINABLE_SECTIONS: InvestmentSection[] = [
+export const RETAINABLE_SECTIONS: InvestmentSection[] = [
   "price",
   "info",
   "fundamentals",

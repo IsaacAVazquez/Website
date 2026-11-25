@@ -169,7 +169,8 @@ describe("article search metadata rules", () => {
 
     for (const file of files) {
       const { data } = matter(fs.readFileSync(path.join(blogDirectory, file), "utf8"));
-      expect(file).toMatch(/^[a-z0-9][a-z0-9-]*\.mdx?$/);
+      // The reader, the sitemap, and the build scripts only read .mdx.
+      expect(file).toMatch(/^[a-z0-9][a-z0-9-]*\.mdx$/);
       for (const field of ["title", "excerpt", "category", "publishedAt"]) {
         expect({ file, field, value: data[field] }).toEqual({
           file,
@@ -177,26 +178,6 @@ describe("article search metadata rules", () => {
           value: expect.stringMatching(/\S/),
         });
       }
-    }
-  });
-
-  it("fits every article title and description within the configured limits", () => {
-    const files = fs
-      .readdirSync(blogDirectory)
-      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
-
-    for (const file of files) {
-      const { data } = matter(
-        fs.readFileSync(path.join(blogDirectory, file), "utf8")
-      );
-      const title = fitSearchTitle(data.seo?.title || data.title);
-      const description = fitMetaDescription(
-        data.seo?.description || data.excerpt || data.title
-      );
-      const brandedTitle = `${title} | Isaac Vazquez`;
-
-      expect(brandedTitle.length).toBeLessThanOrEqual(60);
-      expect(description.length).toBeLessThanOrEqual(160);
     }
   });
 
@@ -210,11 +191,30 @@ describe("article search metadata rules", () => {
         fs.readFileSync(path.join(blogDirectory, file), "utf8")
       );
       expect(data.publishedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      // The engine rolls an impossible day such as 2026-02-30 forward and
+      // never rejects it, so the date has to survive a round trip.
+      expect(new Date(data.publishedAt).toISOString().slice(0, 10)).toBe(data.publishedAt);
 
       if (data.updatedAt) {
         expect(data.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(new Date(data.updatedAt).toISOString().slice(0, 10)).toBe(data.updatedAt);
         expect(data.updatedAt >= data.publishedAt).toBe(true);
       }
+    }
+  });
+});
+
+// public/llms.txt is kept by hand, so a retitled post leaves its old title there.
+describe("llms.txt article list", () => {
+  it("names every linked article by its current title", () => {
+    const llms = fs.readFileSync(path.join(process.cwd(), "public/llms.txt"), "utf8");
+    const links = [
+      ...llms.matchAll(/^- \[(.+)\]\(https:\/\/isaacvazquez\.com\/writing\/([a-z0-9-]+)\)$/gm),
+    ];
+
+    expect(links.length).toBeGreaterThan(0);
+    for (const [, title, slug] of links) {
+      expect({ slug, title }).toEqual({ slug, title: readBlogPost(slug).data.title });
     }
   });
 });

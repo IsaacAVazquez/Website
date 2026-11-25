@@ -197,6 +197,13 @@
   display: none;
 }
 
+/* Held open by a set filter, so it reads as a note and not as a control. */
+.frm-more > summary[aria-disabled="true"] {
+  color: var(--frm-ink-2);
+  text-decoration: none;
+  cursor: default;
+}
+
 .frm-more:not([open]) [data-when="open"],
 .frm-more[open] [data-when="closed"] {
   display: none;
@@ -223,9 +230,14 @@
   letter-spacing: -0.02em;
 }
 
-.frm-count {
+.frm-count,
+.frm-tier-note {
   font-size: 0.875rem;
   color: var(--frm-ink-2);
+}
+
+.frm-root .frm-tier-note {
+  max-inline-size: 72ch;
 }
 
 .frm-root .frm-warn {
@@ -271,14 +283,14 @@
  * the smaller inline step. Two classes, so the rule outranks `.c97-table td`
  * whichever stylesheet loads first. */
 @media print, screen and (max-width: 767px) {
-  .c97-table.c97-frontier-spec :is(th, td) {
+  .c97-table.frm-spec :is(th, td) {
     padding-inline: var(--c97-sp-1);
   }
 
   /* At 320px the three figures left the model name 50px, which broke it into
    * four-character lines. The name keeps this floor, and the sheet's own
    * scroll region takes the 26px that no longer fits at that width. */
-  .c97-table.c97-frontier-spec :is(th, td):first-child {
+  .c97-table.frm-spec :is(th, td):first-child {
     min-width: 5.75rem;
   }
 }

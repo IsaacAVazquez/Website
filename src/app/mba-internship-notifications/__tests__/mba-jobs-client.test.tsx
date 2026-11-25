@@ -18,6 +18,7 @@ function dayKeyOffset(days: number): string {
 }
 
 const mockPush = jest.fn();
+const mockReplace = jest.fn();
 let currentSearchParams = new URLSearchParams();
 const mockUseMBAJobs = useMBAJobs as jest.MockedFunction<typeof useMBAJobs>;
 const mockUseMBAApplications = useMBAApplications as jest.MockedFunction<typeof useMBAApplications>;
@@ -29,6 +30,7 @@ function buildCandidatesHookValue(
   return {
     candidates: [] as MBAJobCandidate[],
     enabled: false,
+    error: null,
     setTriage: jest.fn(),
     removeCandidate: jest.fn(),
     ...overrides,
@@ -128,7 +130,6 @@ function buildApplicationsHookValue(
   return {
     applications: [],
     activeApplications: [],
-    applicationsByJobId: new Map<string, MBATrackedApplication>(),
     getApplicationForJob: jest.fn(),
     trackJob: jest.fn(),
     addManualApplication: jest.fn(),
@@ -140,7 +141,6 @@ function buildApplicationsHookValue(
     importApplications: jest.fn(() => ({ imported: 0, total: 0 })),
     exportJson: jest.fn(() => "{}"),
     exportCsv: jest.fn(() => ""),
-    searchApplications: jest.fn((query: string, source: MBATrackedApplication[] = []) => source),
     privateSync: null,
     ...overrides,
   };
@@ -149,7 +149,7 @@ function buildApplicationsHookValue(
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: mockPush,
-    replace: jest.fn(),
+    replace: mockReplace,
   }),
   useSearchParams: () => currentSearchParams,
 }));
@@ -167,6 +167,7 @@ describe("MBAJobsClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
+    mockReplace.mockReset();
     mockUseMBAJobs.mockReturnValue(buildHookValue());
     mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue());
     mockUseMBAJobCandidates.mockReturnValue(buildCandidatesHookValue());
@@ -186,7 +187,8 @@ describe("MBAJobsClient", () => {
 
   it("renders sourced candidates by fit and wires promote and dismiss", () => {
     currentSearchParams = new URLSearchParams("view=candidates");
-    const trackJob = jest.fn();
+    const trackJob = jest.fn(() => buildApplication({ id: "app-promoted" }));
+    const updateApplication = jest.fn();
     const setTriage = jest.fn();
     const removeCandidate = jest.fn();
     const strong = buildCandidate({
@@ -196,7 +198,7 @@ describe("MBAJobsClient", () => {
       sourcedAt: "2026-09-30T10:00:00.000Z",
     });
     const weaker = buildCandidate({ id: "cand-weaker", fit: { score: 64, rationale: "Adjacent operations role.", scoredAt: "2026-10-02T10:00:00.000Z" } });
-    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ trackJob }));
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ trackJob, updateApplication }));
     mockUseMBAJobCandidates.mockReturnValue(
       buildCandidatesHookValue({ enabled: true, candidates: [strong, weaker], setTriage, removeCandidate })
     );
@@ -211,6 +213,8 @@ describe("MBAJobsClient", () => {
     const [promote] = screen.getAllByRole("button", { name: "Save to pipeline" });
     fireEvent.click(promote);
     expect(trackJob).toHaveBeenCalledWith(strong.job);
+    // The candidate's fit score goes with it onto the pipeline card.
+    expect(updateApplication).toHaveBeenCalledWith("app-promoted", { fit: strong.fit });
     expect(removeCandidate).toHaveBeenCalledWith("cand-strong");
 
     const [dismiss] = screen.getAllByRole("button", { name: "Dismiss" });
@@ -421,25 +425,27 @@ describe("MBAJobsClient", () => {
       target: { value: "pmm" },
     });
 
-    expect(mockPush).toHaveBeenLastCalledWith(
+    // Typing replaces the entry, so Back does not step through each letter.
+    expect(mockReplace).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?q=pmm",
       { scroll: false }
     );
+    expect(mockPush).not.toHaveBeenCalled();
   });
 
-  it("keeps typed search text when an earlier push lands, and follows the URL on a back step", () => {
+  it("keeps typed search text when an earlier URL update lands, and follows the URL on a back step", () => {
     const { rerender } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
     const search = screen.getByLabelText("Search roles");
 
     fireEvent.change(search, { target: { value: "pr" } });
     fireEvent.change(search, { target: { value: "product " } });
 
-    // The push for "pr" lands after the visitor has typed on.
+    // The update for "pr" lands after the visitor has typed on.
     currentSearchParams = new URLSearchParams("q=pr");
     rerender(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
     expect(search).toHaveValue("product ");
 
-    // The latest push lands with the trimmed query, and the trailing space stays.
+    // The latest update lands with the trimmed query, and the trailing space stays.
     currentSearchParams = new URLSearchParams("q=product");
     rerender(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
     expect(search).toHaveValue("product ");
@@ -819,7 +825,6 @@ describe("MBAJobsClient", () => {
     const heading = screen.getByRole("heading", { name: "Source health" });
     expect(heading).toBeVisible();
     expect(screen.getByText("1 healthy")).toBeVisible();
-    expect(screen.getByText("1 manual-only")).toBeVisible();
     expect(screen.getByText("1 external disabled")).toBeVisible();
 
     // The counts stay in view. The tag for each source opens on request.
@@ -828,6 +833,10 @@ describe("MBAJobsClient", () => {
     fireEvent.click(screen.getByText("Show all 3 sources"));
     expect(stripe).toBeVisible();
     expect(screen.getByText(/Adzuna leads · external-disabled/)).toBeVisible();
+    // A source's reason is printed text, since a tooltip is mouse only.
+    expect(
+      screen.getByText("Adzuna leads: Set ADZUNA_APP_ID and ADZUNA_APP_KEY to enable external leads.")
+    ).toBeVisible();
 
     // Source health prints after the roles, with a link to it beside them.
     const roles = screen.getByRole("heading", { name: "Live roles" });
@@ -920,14 +929,20 @@ describe("MBAJobsClient", () => {
 
   it("shows the next scheduled interview with access to its preparation path", () => {
     currentSearchParams = new URLSearchParams("view=applications");
+    const interviewDay = dayKeyOffset(1);
     const application = buildApplication({
-      interviewRounds: [{ label: "Hiring manager", date: dayKeyOffset(1), outcome: "scheduled", notes: "Discuss product scope" }],
+      interviewRounds: [{ label: "Hiring manager", date: interviewDay, outcome: "scheduled", notes: "Discuss product scope" }],
       materialsDir: "private/job-search/roles/stripe-pm",
     });
     mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
     const agenda = screen.getByRole("list", { name: "Upcoming interviews" });
     expect(within(agenda).getByText(/Hiring manager/)).toBeVisible();
+    // The agenda prints the date the way the pipeline card does, as "Nov 5".
+    const printedDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(
+      new Date(`${interviewDay}T00:00:00`)
+    );
+    expect(within(agenda).getByText(printedDay)).toHaveAttribute("datetime", interviewDay);
     expect(within(agenda).getByText("Discuss product scope")).toBeVisible();
     expect(within(agenda).getByRole("button", { name: "Copy preparation path" })).toBeVisible();
   });

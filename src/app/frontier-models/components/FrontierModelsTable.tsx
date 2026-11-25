@@ -118,7 +118,7 @@ export function FrontierModelsTable({
           ) : null}
         </button>
       </div>
-      <table className="c97-table c97-frontier-spec">
+      <table className="c97-table frm-spec">
         <thead>
           <tr>
             {COLUMNS.map((column) => {

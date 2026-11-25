@@ -3,7 +3,6 @@ import type {
   EarthquakeSnapshot,
   EarthquakeSummary,
   MagnitudeBucket,
-  QuakeAlert,
   QuakeEvent,
   QuakeTier,
   RegionCount,
@@ -47,7 +46,6 @@ interface UsgsFeatureProperties {
   time?: number | null;
   url?: string | null;
   felt?: number | null;
-  alert?: string | null;
   tsunami?: number | null;
   sig?: number | null;
   magType?: string | null;
@@ -104,17 +102,6 @@ const TIER_ORDER: QuakeTier[] = [
   "great",
 ];
 
-function normalizeAlert(alert: string | null | undefined): QuakeAlert | null {
-  if (!alert) return null;
-  const value = alert.toLowerCase();
-  return value === "green" ||
-    value === "yellow" ||
-    value === "orange" ||
-    value === "red"
-    ? (value as QuakeAlert)
-    : null;
-}
-
 /** USGS place strings read like "10 km NE of Ridgecrest, CA" or "south of Fiji". */
 function cleanPlace(place: string | null | undefined): string {
   if (!place) return "Unknown location";
@@ -126,15 +113,13 @@ function cleanPlace(place: string | null | undefined): string {
  * Derives a coarse region for grouping. USGS places usually end in a region tail
  * after the last comma (US state, country); oceanic events ("90 km W of …") have
  * no comma, so we strip the leading "<distance> of " bearing and use the body.
+ * USGS tags offshore events "Japan region", which groups with "Japan".
  */
 function deriveRegion(place: string): string {
   const commaIndex = place.lastIndexOf(", ");
-  if (commaIndex !== -1) {
-    const tail = place.slice(commaIndex + 2).trim();
-    if (tail.length > 0) return tail;
-  }
-  const withoutBearing = place.replace(/^.*?\bof\s+/i, "").trim();
-  return withoutBearing.length > 0 ? withoutBearing : place;
+  const tail = commaIndex === -1 ? "" : place.slice(commaIndex + 2).trim();
+  const body = tail || place.replace(/^.*?\bof\s+/i, "").trim() || place;
+  return body.replace(/\s+region$/i, "") || body;
 }
 
 function toFeatureEvent(feature: UsgsFeature | null): QuakeEvent | null {
@@ -168,7 +153,6 @@ function toFeatureEvent(feature: UsgsFeature | null): QuakeEvent | null {
     latitude: Math.round(latitude * 1000) / 1000,
     tsunami: props.tsunami === 1,
     felt: typeof props.felt === "number" && props.felt > 0 ? props.felt : null,
-    alert: normalizeAlert(props.alert),
     significance: typeof props.sig === "number" ? props.sig : 0,
     url: props.url ?? "",
     tier: classifyMagnitude(magnitude),
@@ -310,14 +294,6 @@ export async function buildEarthquakeSnapshotData(
       !strongest || event.magnitude > strongest.magnitude ? event : strongest,
     null
   );
-  const largest7d = weekEvents.reduce<number | null>(
-    (max, event) => (max === null || event.magnitude > max ? event.magnitude : max),
-    null
-  );
-  const deepest = weekEvents.reduce<number | null>(
-    (max, event) => (max === null || event.depthKm > max ? event.depthKm : max),
-    null
-  );
 
   const regions = buildRegionCounts(weekEvents);
 
@@ -333,10 +309,6 @@ export async function buildEarthquakeSnapshotData(
       felt24h: last24h.filter((event) => event.felt !== null).length,
       strongest24hMag: strongest24h?.magnitude ?? null,
       strongest24hPlace: strongest24h?.place ?? null,
-      significant30d: significantParsed.events.length,
-      largest7dMag: largest7d,
-      tsunamiAlerts7d: weekEvents.filter((event) => event.tsunami).length,
-      deepestKm: deepest === null ? null : Math.round(deepest),
     },
     recent,
     significant,

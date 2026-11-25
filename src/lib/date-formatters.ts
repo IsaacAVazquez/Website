@@ -60,11 +60,6 @@ export const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZoneName: "short",
 });
 
-export function formatShortDate(value: string | Date): string {
-  const date = typeof value === "string" ? new Date(value) : value;
-  return Number.isNaN(date.getTime()) ? "TBD" : SHORT_DATE_FORMATTER.format(date);
-}
-
 export function formatDateTime(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
   return Number.isNaN(date.getTime()) ? "TBD" : formatStableDateTime(DATE_TIME_FORMATTER, date);

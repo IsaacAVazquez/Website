@@ -324,9 +324,6 @@ const CONTEST_ALIASES: Readonly<Record<string, BestBallContestId>> = (() => {
   aliases.standard = "bbm-vii";
   aliases.tournament = "bbm-vii";
   aliases.bestball = "bbm-vii";
-  aliases.bestballmaniavii = "bbm-vii";
-  aliases.bestballmania7 = "bbm-vii";
-  aliases.sitandgo = "sit-and-go";
   return aliases;
 })();
 

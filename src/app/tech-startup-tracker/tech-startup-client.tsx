@@ -294,6 +294,13 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
                 ? " Figures have not been individually verified against a single dated source, so treat them as directional."
                 : ""}
             </p>
+            <p>
+              Momentum is my own score for sorting. It adds how recent the latest round is, counted
+              back over 24 months, to the size of that round and to the valuation, or to the total
+              raised where I have no valuation, with both dollar figures on a log scale. A tender
+              offer or an acquisition price counts as the latest round&apos;s amount, and a round
+              with no disclosed size adds nothing.
+            </p>
           </div>
         </section>
         <CompanyResearch snapshot={snapshot} />

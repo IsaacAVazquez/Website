@@ -56,14 +56,14 @@ describe("changelog directory reads", () => {
    * its frontmatter, and reading a file returns its path so gray-matter can
    * look the frontmatter back up.
    */
-  function serveDirectory(files: Record<string, Frontmatter>, { directoryExists = true } = {}) {
+  function serveDirectory(files: Record<string, Frontmatter>) {
     const byPath = new Map(
       Object.entries(files).map(([name, data]) => [`content/changelog/${name}`, data])
     );
     const relative = (fullPath: string) => fullPath.slice(fullPath.indexOf("content/changelog"));
     mockFs.existsSync = jest.fn((target: unknown) => {
       const key = relative(String(target));
-      return key === "content/changelog" ? directoryExists : byPath.has(key);
+      return key === "content/changelog" || byPath.has(key);
     }) as unknown as typeof mockFs.existsSync;
     mockFs.mkdirSync = jest.fn();
     mockFs.readdirSync = jest.fn().mockReturnValue(Object.keys(files));
@@ -80,15 +80,16 @@ describe("changelog directory reads", () => {
     warnSpy.mockRestore();
   });
 
-  it("creates the directory when it is missing and returns nothing", async () => {
-    serveDirectory({}, { directoryExists: false });
+  it("returns nothing when the directory is missing, and does not create it", async () => {
+    serveDirectory({});
+    const missing = Object.assign(new Error("ENOENT"), { code: "ENOENT" });
+    mockFs.readdirSync = jest.fn(() => {
+      throw missing;
+    }) as unknown as typeof mockFs.readdirSync;
 
     await expect(getAllChangelogEntries()).resolves.toEqual([]);
-    expect(mockFs.mkdirSync).toHaveBeenCalledWith(
-      expect.stringContaining("content/changelog"),
-      { recursive: true }
-    );
     expect(getLatestChangelogEntryDate()).toBeNull();
+    expect(mockFs.mkdirSync).not.toHaveBeenCalled();
   });
 
   it("returns nothing and warns when the directory cannot be read", async () => {
@@ -133,10 +134,8 @@ describe("changelog directory reads", () => {
 
     const entries = await getAllChangelogEntries();
 
-    // Only the title is pinned here. Both files currently yield an entry each
-    // (the slug list is not deduplicated), which is reported, not locked in.
-    expect(entries.length).toBeGreaterThan(0);
-    expect(entries.every((entry) => entry.title === "From mdx")).toBe(true);
+    expect(entries).toHaveLength(1);
+    expect(entries[0].title).toBe("From mdx");
   });
 
   it("skips entries whose source vanished or whose title or date is malformed", async () => {

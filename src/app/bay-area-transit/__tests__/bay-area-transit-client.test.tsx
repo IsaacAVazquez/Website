@@ -292,16 +292,6 @@ describe("BayAreaTransitClient", () => {
     expect(mockReplace).toHaveBeenCalledWith("/bay-area-transit?station=mont", { scroll: false });
   });
 
-  it("treats a 404 board as a station with no trains rather than an error", async () => {
-    currentSearchParams = new URLSearchParams("station=rich");
-    mockFetch((url) => (url.includes("/stations/") ? jsonResponse({ error: "Not found" }, 404) : never()));
-
-    // The server sends the board for the station in the URL, and here it had none.
-    renderClient({ initialStationBoard: null });
-    expect(await screen.findByText("No trains are scheduled at Richmond right now.")).toBeInTheDocument();
-    expect(screen.queryByRole("alert")).toBeNull();
-  });
-
   it("shows a failed board with a retry that loads it again", async () => {
     currentSearchParams = new URLSearchParams("station=mont");
     let attempts = 0;
@@ -382,9 +372,15 @@ describe("BayAreaTransitClient", () => {
     });
 
     expect(
-      screen.getByText(/feed time unavailable · refreshed .* · seed data · advisories, elevator from the last good snapshot$/)
+      screen.getByText(
+        /feed time unavailable · refreshed .* · seed data · advisories from the last good snapshot · elevator unavailable$/
+      )
     ).toBeInTheDocument();
-    expect(screen.getByText(/did not return fresh advisories, elevator data/)).toBeInTheDocument();
+    expect(screen.getByText(/did not return fresh advisories data/)).toBeInTheDocument();
+    // The builder writes an empty list for a feed that failed, so nothing was kept.
+    expect(
+      screen.getByText(/did not answer the elevator request on this pass, so no elevator notices are shown/)
+    ).toBeInTheDocument();
     expect(screen.queryByText(/No delays reported/)).toBeNull();
     expect(screen.getByText(/This is a hand-authored seed shipped with the app/)).toBeInTheDocument();
   });

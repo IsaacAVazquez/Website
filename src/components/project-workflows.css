@@ -5,11 +5,14 @@
   padding-block: var(--c97-sp-2);
   color: var(--c97-ink);
 }
-.project-workflow > summary {
+/* list-item keeps the browser's disclosure triangle, which a flex summary
+   drops, so a closed workflow still shows that it expands. */
+.project-workflow > summary,
+.project-workflow-summary {
   cursor: pointer;
   min-height: 44px;
-  display: flex;
-  align-items: center;
+  display: list-item;
+  padding-block: var(--c97-sp-1);
   font-weight: 600;
 }
 .project-workflow h2,

@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Fintech Tool",
     title: "Rent vs. Buy Calculator",
     description:
-      "A month-by-month net-worth model that credits the renter's opportunity cost and finds the exact year buying pulls ahead.",
+      "A month-by-month net-worth model that credits the renter's opportunity cost and finds about when buying pulls ahead.",
     accent: "cobalt",
     footer: "isaacvazquez.com/fintech-tools/rent-vs-buy",
   });

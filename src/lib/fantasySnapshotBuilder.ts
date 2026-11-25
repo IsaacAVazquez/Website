@@ -8,6 +8,7 @@ import {
   FantasySnapshot,
   FantasySnapshotPosition,
   FantasySnapshotSliceMetadata,
+  deriveFlexPlayers,
   publishFantasyPlayer,
   routeScoringToScoringFormat,
 } from "@/lib/fantasy";
@@ -36,12 +37,19 @@ import {
   getFantasyPositionDataMetadata,
 } from "@/lib/fantasyPositionData";
 import { Player } from "@/types";
-// The season-week helper is pure calendar math and the client surfaces need
-// it too, so it lives in fantasyUtils and is re-exported here for the build
-// scripts that already import it from this module.
-import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
+// The season helpers are pure calendar math and the client surfaces need them
+// too, so they live in fantasyUtils and are re-exported here for the build
+// scripts that already import them from this module.
+import { getCurrentDraftSeason, getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 
-export { getNflRegularSeasonWeek };
+/**
+ * The NFL season a snapshot belongs to. The season is named for the year it
+ * kicks off in, but it runs into the next calendar year, so a snapshot built in
+ * January is the *previous* year's season (championship weeks, playoffs), not
+ * a brand-new "Preseason". It rolls to the new season in March, on the same
+ * rule the draft tracker keys its saved rooms by.
+ */
+export { getCurrentDraftSeason as getSnapshotSeason, getNflRegularSeasonWeek };
 
 const ADP_MATCH_GATE_MIN_ROWS = 50;
 const ADP_MATCH_GATE_MIN_RATE = 0.6;
@@ -50,24 +58,10 @@ const ADP_TOP_BOARD_MIN_RATE = 0.9;
 const VORP_TOP_BOARD_SIZE = 150;
 const VORP_TOP_BOARD_MIN_RATE = 0.9;
 
-/**
- * The NFL season a snapshot belongs to. The season is named for the year it
- * kicks off in, but it runs into the next calendar year, so a snapshot built in
- * January is the *previous* year's season (championship weeks, playoffs), not
- * a brand-new "Preseason". Roll to the new season in March, matching the
- * draft tracker's `getCurrentDraftSeason`.
- */
-export function getSnapshotSeason(now: Date = new Date()): number {
-  const year = now.getUTCFullYear();
-  return now.getUTCMonth() >= 2 ? year : year - 1;
-}
-
-const SNAPSHOT_SEASON = getSnapshotSeason();
+const SNAPSHOT_SEASON = getCurrentDraftSeason();
 
 const SNAPSHOT_WEEK = getNflRegularSeasonWeek(SNAPSHOT_SEASON);
 const FANTASY_SNAPSHOT_POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
-
-const FLEX_ELIGIBLE_POSITIONS = ["RB", "WR", "TE"] as const;
 
 const SNAPSHOT_POSITION_TO_ROUTE: Record<FantasySnapshotPosition, FantasyRoutePosition> = {
   QB: "qb",
@@ -199,92 +193,32 @@ function normalizeSourcedPlayers(
     .sort((left, right) => numericRank(left.averageRank) - numericRank(right.averageRank));
 }
 
-function buildPositionSlice(
-  players: Player[],
-  position: Player["position"],
-  adpIndex?: FantasyAdpIndex | null,
-  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
-  gameLogSeason?: number | null,
-  gameLogThroughWeek?: number | null
-): Player[] {
-  return normalizeSourcedPlayers(
-    players,
-    position,
-    adpIndex,
-    gameLogIndex,
-    gameLogSeason,
-    gameLogThroughWeek
-  );
-}
-
-function buildOverallSlice(
-  players: Player[],
-  adpIndex?: FantasyAdpIndex | null,
-  gameLogIndex?: FantasyAdpIndex<FantasyGameLogEntry> | null,
-  gameLogSeason?: number | null,
-  gameLogThroughWeek?: number | null
-): Player[] {
-  return normalizeSourcedPlayers(
-    players,
-    undefined,
-    adpIndex,
-    gameLogIndex,
-    gameLogSeason,
-    gameLogThroughWeek
-  );
-}
-
-function buildFlexSlice(overallPlayers: Player[]): Player[] {
-  return overallPlayers
-    .filter((player) =>
-      FLEX_ELIGIBLE_POSITIONS.includes(player.position as (typeof FLEX_ELIGIBLE_POSITIONS)[number])
-    )
-    .map((player, index) =>
-      publishFantasyPlayer({
-        ...player,
-        averageRank: index + 1,
-      })
-    );
-}
-
-function buildUnavailableSlice(
+function unavailableSliceMetadata(
   reason: string,
   updatedAt?: string | null
-): {
-  players: Player[];
-  metadata: FantasySnapshotSliceMetadata;
-} {
+): FantasySnapshotSliceMetadata {
   return {
-    players: [],
-    metadata: {
-      available: false,
-      sourceKind: "unavailable",
-      rangeKind: "none",
-      playerCount: 0,
-      updatedAt: updatedAt ?? null,
-      reason,
-    },
+    available: false,
+    sourceKind: "unavailable",
+    rangeKind: "none",
+    playerCount: 0,
+    updatedAt: updatedAt ?? null,
+    reason,
   };
 }
 
-function buildAvailableSlice(
+function availableSliceMetadata(
   players: Player[],
   sourceKind: FantasySnapshotSliceMetadata["sourceKind"],
   rangeKind: FantasySnapshotSliceMetadata["rangeKind"],
   updatedAt?: string | null
-): {
-  players: Player[];
-  metadata: FantasySnapshotSliceMetadata;
-} {
+): FantasySnapshotSliceMetadata {
   return {
-    players,
-    metadata: {
-      available: true,
-      sourceKind,
-      rangeKind,
-      playerCount: players.length,
-      updatedAt: updatedAt ?? null,
-    },
+    available: true,
+    sourceKind,
+    rangeKind,
+    playerCount: players.length,
+    updatedAt: updatedAt ?? null,
   };
 }
 
@@ -312,14 +246,14 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   const gameLogThroughWeek = gameLogDataset.throughWeek;
 
   const sliceMetadata = {
-    overall: buildUnavailableSlice(buildUnavailableReason(scoring, "overall")).metadata,
-    qb: buildUnavailableSlice(buildUnavailableReason(scoring, "qb")).metadata,
-    rb: buildUnavailableSlice(buildUnavailableReason(scoring, "rb")).metadata,
-    wr: buildUnavailableSlice(buildUnavailableReason(scoring, "wr")).metadata,
-    te: buildUnavailableSlice(buildUnavailableReason(scoring, "te")).metadata,
-    flex: buildUnavailableSlice(buildUnavailableReason(scoring, "flex")).metadata,
-    k: buildUnavailableSlice(buildUnavailableReason(scoring, "k")).metadata,
-    dst: buildUnavailableSlice(buildUnavailableReason(scoring, "dst")).metadata,
+    overall: unavailableSliceMetadata(buildUnavailableReason(scoring, "overall")),
+    qb: unavailableSliceMetadata(buildUnavailableReason(scoring, "qb")),
+    rb: unavailableSliceMetadata(buildUnavailableReason(scoring, "rb")),
+    wr: unavailableSliceMetadata(buildUnavailableReason(scoring, "wr")),
+    te: unavailableSliceMetadata(buildUnavailableReason(scoring, "te")),
+    flex: unavailableSliceMetadata(buildUnavailableReason(scoring, "flex")),
+    k: unavailableSliceMetadata(buildUnavailableReason(scoring, "k")),
+    dst: unavailableSliceMetadata(buildUnavailableReason(scoring, "dst")),
   } satisfies FantasySnapshot["sliceMetadata"];
 
   const positions = {
@@ -333,8 +267,9 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
   } satisfies FantasySnapshot["positions"];
 
   const overallSourcePlayers = getFantasyOverallData(scoringFormat);
-  const overallPlayers = buildOverallSlice(
+  const overallPlayers = normalizeSourcedPlayers(
     overallSourcePlayers,
+    undefined,
     adpIndex,
     gameLogIndex,
     gameLogSeason,
@@ -404,8 +339,8 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
 
   sliceMetadata.overall =
     overallPlayers.length > 0
-      ? buildAvailableSlice(overallPlayers, "overall_consensus", "overall", overallUpdatedAt).metadata
-      : buildUnavailableSlice(buildUnavailableReason(scoring, "overall"), overallUpdatedAt).metadata;
+      ? availableSliceMetadata(overallPlayers, "overall_consensus", "overall", overallUpdatedAt)
+      : unavailableSliceMetadata(buildUnavailableReason(scoring, "overall"), overallUpdatedAt);
 
   for (const position of FANTASY_SNAPSHOT_POSITION_ORDER) {
     const routePosition = SNAPSHOT_POSITION_TO_ROUTE[position];
@@ -415,7 +350,7 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
       continue;
     }
 
-    const builtPlayers = buildPositionSlice(
+    const builtPlayers = normalizeSourcedPlayers(
       sourcePlayers,
       position,
       adpIndex,
@@ -425,25 +360,25 @@ export function buildFantasySnapshot(scoring: FantasyRouteScoring): FantasySnaps
     );
     const updatedAt = getSliceUpdatedAt(builtPlayers);
     positions[position] = builtPlayers;
-    sliceMetadata[routePosition] = buildAvailableSlice(
+    sliceMetadata[routePosition] = availableSliceMetadata(
       builtPlayers,
       position === "QB" || position === "K" || position === "DST"
         ? "shared_position_consensus"
         : "position_consensus",
       "position",
       updatedAt
-    ).metadata;
+    );
   }
 
   if (overallPlayers.length > 0) {
-    const flexPlayers = buildFlexSlice(overallPlayers);
+    const flexPlayers = deriveFlexPlayers(overallPlayers);
     positions.FLEX = flexPlayers;
-    sliceMetadata.flex = buildAvailableSlice(
+    sliceMetadata.flex = availableSliceMetadata(
       flexPlayers,
       "derived_flex",
       "overall",
       overallUpdatedAt
-    ).metadata;
+    );
   }
 
   const matchedPlayerIds = new Set<string>();

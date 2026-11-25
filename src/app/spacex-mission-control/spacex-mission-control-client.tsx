@@ -508,7 +508,8 @@ export function SpaceXMissionControlClient({
       { key: "completed archive", label: "Flights to date" },
       { key: "historical success", label: "Success rate" },
       { key: "upcoming queue", label: "Upcoming queue" },
-      { key: "active rockets", label: "Active rockets" },
+      // The insight counts launcher families, so Falcon 9 and Falcon Heavy are one.
+      { key: "active rockets", label: "Active rocket families" },
     ];
 
     return rows
@@ -529,6 +530,16 @@ export function SpaceXMissionControlClient({
   const sectionOptions = hasRecovery
     ? SECTION_OPTIONS
     : SECTION_OPTIONS.filter((option) => option.key !== "recovery");
+
+  // Back and Forward change the board in the URL without the switch's handler,
+  // so the list in state can belong to the other board. The board prints only
+  // its own list, and waits on it until it arrives or its fetch fails.
+  const boardLaunches = launchesStatus === routeState.status ? launches : [];
+  const boardPending = launchesStatus !== routeState.status && !launchesError;
+  // The same holds for the drawer, whose detail can belong to the launch the
+  // URL just left.
+  const drawerDetail = detail?.id === routeState.launch ? detail : null;
+  const drawerPending = Boolean(routeState.launch) && !drawerDetail && !detailError;
 
   function handleCloseDrawer() {
     setDetailLoading(false);
@@ -597,7 +608,8 @@ export function SpaceXMissionControlClient({
         </div>
       </div>
 
-      <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-labelledby="mission-manifest-title">
+      {/* Its own region, ahead of the manifest and outside it. */}
+      <div className="c97-shell c97-frame" style={{ paddingBlockStart: "var(--c97-sp-3)" }}>
         <FollowedLaunches launches={trackerLaunches} sourceAt={initialData?.summary?.generatedAt ?? null} onSelect={(id) => {
           const launch = trackerLaunches.find((item) => item.id === id);
           if (!launch) return;
@@ -612,6 +624,9 @@ export function SpaceXMissionControlClient({
           setDetail(null);
           updateRouteState({ status, launch: id, panel: "overview" });
         }} />
+      </div>
+
+      <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-labelledby="mission-manifest-title">
         <h2 id="mission-manifest-title" className="sr-only">Launch manifest</h2>
         <div className="sx-toolbar">
           <div role="tablist" aria-label="Mission control sections" className="sx-tabs">
@@ -623,6 +638,7 @@ export function SpaceXMissionControlClient({
                 id={`mission-section-tab-${option.key}`}
                 aria-selected={section === option.key}
                 aria-controls="mission-section-panel"
+                tabIndex={section === option.key ? 0 : -1}
                 onKeyDown={(event) => onSectionTabKey(event, index)}
                 onClick={() => setSection(option.key)}
               >
@@ -636,10 +652,10 @@ export function SpaceXMissionControlClient({
         <div role="tabpanel" id="mission-section-panel" aria-labelledby={`mission-section-tab-${section}`}>
           {section === "manifest" ? (
             <MissionLaunchBoard
-              launches={launches}
+              launches={boardLaunches}
               status={routeState.status}
               selectedLaunchId={routeState.launch}
-              isLoading={launchesLoading || detailLoading}
+              isLoading={launchesLoading || detailLoading || boardPending}
               error={launchesError}
               onStatusChange={handleStatusChange}
               onSelectLaunch={(id) => {
@@ -665,9 +681,9 @@ export function SpaceXMissionControlClient({
 
       <DeferredMissionDrawer
         launchId={routeState.launch}
-        detail={routeState.launch ? detail : null}
+        detail={drawerDetail}
         activePanel={routeState.panel}
-        isLoading={routeState.launch ? detailLoading : false}
+        isLoading={routeState.launch ? detailLoading || drawerPending : false}
         error={routeState.launch ? detailError : null}
         onPanelChange={(panel) => updateRouteState({ panel })}
         onClose={handleCloseDrawer}

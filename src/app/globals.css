@@ -62,13 +62,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Tailwind's preflight paints placeholders at half the text colour, which
-     measured 3.34:1 on paper. 64% stays lighter than typed text, follows each
-     input's own colour, and clears 4.5:1 on paper and the field tint. */
-  ::placeholder {
-    color: color-mix(in srgb, currentColor 64%, transparent);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -238,17 +231,6 @@
       14px 100%,
       14px 100%;
     background-attachment: local, local, scroll, scroll;
-  }
-
-  .scrollbar-thin {
-    scrollbar-width: thin;
-  }
-  .scrollbar-thin::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: var(--c97-rule);
   }
 }
 

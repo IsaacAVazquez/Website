@@ -3,18 +3,13 @@ import {
   writeBrowserStorageString,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
-import type { FantasyRouteScoring } from "@/lib/fantasy";
+import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
 import { isRecord } from "@/lib/utils";
 
 export const FANTASY_TRADE_PERSISTENCE_VERSION = 1 as const;
 export const FANTASY_TRADE_MAX_PLAYERS_PER_SIDE = 6;
 
 const FANTASY_TRADE_STORAGE_PREFIX = "fantasy-trade-calculator-v1";
-const FANTASY_TRADE_SCORING_VALUES = new Set<FantasyRouteScoring>([
-  "ppr",
-  "half_ppr",
-  "standard",
-]);
 
 export interface FantasyTradeStorageScope {
   season: number;
@@ -49,7 +44,7 @@ export function isValidFantasyTradeSeason(value: unknown): value is number {
 }
 
 function isFantasyTradeScoring(value: unknown): value is FantasyRouteScoring {
-  return typeof value === "string" && FANTASY_TRADE_SCORING_VALUES.has(value as FantasyRouteScoring);
+  return typeof value === "string" && Object.hasOwn(FANTASY_SCORING_LABELS, value);
 }
 
 function normalizeModelVersion(value: unknown): string | null {
@@ -72,9 +67,10 @@ function assertStorageScope(scope: FantasyTradeStorageScope): void {
 
 /**
  * Returns the season-and-scoring storage key used by the calculator. Model
- * versions deliberately do not change the key, so a newer model can re-evaluate
- * the same selected players while retaining the version that produced the last
- * saved result.
+ * versions deliberately do not change the key, so a newer model re-evaluates
+ * the same selected players. The stored modelVersion is only checked to be a
+ * non-empty string. Nothing reads it back, and the hook always writes the
+ * preseason constant.
  */
 export function getFantasyTradeStorageKey(scope: FantasyTradeStorageScope): string {
   assertStorageScope(scope);

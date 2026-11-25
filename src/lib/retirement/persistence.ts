@@ -2,7 +2,6 @@ import { createDefaultPlan } from "./defaults";
 import type {
   AccountType,
   AllocationInput,
-  FilingStatus,
   LumpyExpense,
   OtherIncomeInput,
   RetirementAccountInput,
@@ -13,7 +12,6 @@ import type {
 } from "./types";
 import { isRecord, boundedNumber, enumValue } from "@/lib/utils";
 
-const FILING_STATUSES = ["single", "married"] as const satisfies readonly FilingStatus[];
 const ACCOUNT_TYPES = ["taxable", "traditional", "roth", "hsa"] as const satisfies readonly AccountType[];
 const WITHDRAWAL_STRATEGIES = [
   "fixed-real",
@@ -222,8 +220,6 @@ export function decodeRetirementPlan(value: unknown): RetirementPlanInput | unde
     currentAge,
     retirementAge,
     horizonAge,
-    filingStatus: enumValue(value.filingStatus, FILING_STATUSES, fallback.filingStatus),
-    region: typeof value.region === "string" ? value.region.slice(0, 100) : fallback.region,
     desiredAnnualSpend: boundedNumber(
       value.desiredAnnualSpend,
       fallback.desiredAnnualSpend,

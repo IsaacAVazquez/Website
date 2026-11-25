@@ -139,10 +139,7 @@ describe("public sitemap", () => {
       .filter(({ loc }) => /^\/writing\/(?!topics\/)[^/]+$/.test(loc))
       .map(({ loc, lastmod }) => {
         const slug = loc.replace("/writing/", "");
-        const file = ["mdx", "md"]
-          .map((extension) => `content/blog/${slug}.${extension}`)
-          .find((candidate) => fs.existsSync(candidate)) as string;
-        const { data } = matter(fs.readFileSync(file, "utf8"));
+        const { data } = matter(fs.readFileSync(`content/blog/${slug}.mdx`, "utf8"));
         return { lastmod, topic: data.cluster || data.archiveBucket };
       });
     const newest = (candidates: typeof posts) =>

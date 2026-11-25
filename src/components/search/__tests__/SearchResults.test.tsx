@@ -61,6 +61,25 @@ describe("SearchResults", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("highlights each matched word and leaves the rest of the text as it was written", () => {
+    // Escaping before matching let "39" and "amp" match inside &#39; and &amp;.
+    const { container } = render(
+      <SearchResults
+        query="39 amp ship"
+        results={[{ ...postResult, title: "I'd ship 39 fixes", excerpt: "Q&A on <b>lamps</b>" }]}
+        isLoading={false}
+        hasSearched
+        totalResults={1}
+        searchTime={5}
+      />
+    );
+
+    expect(screen.getByRole("link", { name: "I'd ship 39 fixes" })).toBeVisible();
+    expect(screen.getByText(/Q&A on <b>l/)).toHaveTextContent("Q&A on <b>lamps</b>");
+    expect([...container.querySelectorAll("mark")].map((mark) => mark.textContent)).toEqual(["ship", "39", "amp"]);
+    expect(container.querySelector("b")).toBeNull();
+  });
+
   it("renders the empty-results heading as an h2 (no h1 -> h3 skip)", () => {
     render(
       <SearchResults

@@ -5,6 +5,7 @@ import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatMissionScheduleLabel } from "./formatters";
 import { crossedScheduledT0 } from "./liftoff";
 import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
+import { useClientNow } from "@/hooks/useClientNow";
 import liftoffStyles from "./MissionLiftoff.module.css";
 
 /** One fleet figure, printed as text in the masthead's fleet line. */
@@ -23,6 +24,9 @@ interface MissionControlHeroProps {
   onInspect: () => void;
   onRetry: () => void;
 }
+
+/** The same grace the builder gives a schedule (UPCOMING_STALE_GRACE_MS in spacexData.ts). */
+const SCHEDULE_GRACE_MS = 30 * 60 * 1000;
 
 function formatCountdown(dateUtc: string, now = Date.now()): string | null {
   const diff = Date.parse(dateUtc) - now;
@@ -151,6 +155,7 @@ export function MissionControlHero({
   // The site-wide handler in Catalog97EasterEggs leaves the code to this page.
   const [drills, setDrills] = useState(0);
   const heroLaunch = summary?.heroLaunch ?? null;
+  const clientNow = useClientNow();
 
   useEffect(() => {
     let history: string[] = [];
@@ -210,12 +215,26 @@ export function MissionControlHero({
       : `${heroLaunch.payloadCount} payload${heroLaunch.payloadCount === 1 ? "" : "s"}`,
   ].filter((fact): fact is string => fact !== null);
 
+  // The builder stamps isStaleSchedule against its own clock, and this page
+  // can be served or left open long after that, so an exact launch time is
+  // checked against the visitor's clock as well.
+  const scheduleLapsed =
+    heroLaunch.isStaleSchedule ||
+    (summary?.heroMode !== "fallback" &&
+      heroLaunch.hasExactTime &&
+      clientNow !== null &&
+      clientNow - Date.parse(heroLaunch.dateUtc) > SCHEDULE_GRACE_MS);
+
   return (
     <section data-testid="mission-hero" aria-label="Next launch hero" className="sx-mast">
       <div className="sx-mast-main">
         <p className="sx-mast-kicker">
-          {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"} · Flight #
-          {heroLaunch.flightNumber}
+          {summary?.heroMode === "fallback"
+            ? "Latest completed mission"
+            : scheduleLapsed
+              ? "Scheduled mission"
+              : "Next mission"}{" "}
+          · Flight #{heroLaunch.flightNumber}
         </p>
         <h2 className="sx-mast-name">{heroLaunch.name}</h2>
 
@@ -223,7 +242,11 @@ export function MissionControlHero({
           {heroLaunch.hasExactTime ? (
             <MissionCountdown dateUtc={heroLaunch.dateUtc} initialNow={renderTimestampMs} />
           ) : null}
-          <p className="sx-mast-schedule">{formatMissionScheduleLabel(heroLaunch)}</p>
+          <p className="sx-mast-schedule">
+            {formatMissionScheduleLabel(
+              scheduleLapsed ? { ...heroLaunch, isStaleSchedule: true } : heroLaunch
+            )}
+          </p>
           {drills > 0 ? (
             <>
               <MissionLiftoff key={drills} />

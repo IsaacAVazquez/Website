@@ -2,7 +2,7 @@
 
 import { spawnSync } from "node:child_process";
 
-const [expectedRevision, revisionEndpoint, buildHook, expectedCommit] = process.argv.slice(2);
+const [expectedRevision, revisionEndpoint, expectedCommit] = process.argv.slice(2);
 const pollAttempts = Number.parseInt(process.env.DATA_LEDGER_POLL_ATTEMPTS ?? "60", 10);
 const pollIntervalMs = Number.parseInt(
   process.env.DATA_LEDGER_POLL_INTERVAL_MS ?? "10000",
@@ -16,7 +16,7 @@ const commitPattern = /^[a-f0-9]{40}$/;
 
 if (!expectedRevision || !revisionEndpoint) {
   console.error(
-    "Usage: ensure-production-data-ledger.mjs <expected-revision> <revision-endpoint> [build-hook] [expected-commit]"
+    "Usage: ensure-production-data-ledger.mjs <expected-revision> <revision-endpoint> [expected-commit]"
   );
   process.exit(2);
 }
@@ -41,11 +41,9 @@ async function readProductionLedger() {
   // HTTP-level failure is already tolerated below by returning a soft result, but
   // transport-level failure was not, and neither call site wraps this function.
   // An AbortSignal.timeout, a DNS failure, or a TLS reset therefore rejected out
-  // of the first call in main() and exited the run before the build hook ever
-  // fired, so committed snapshots stayed unpublished for up to six hours while
-  // the opened incident pointed on-call at the hook and the access policy. From
-  // the poll loop the same rejection discarded the remaining attempts and filed a
-  // false alarm about a deploy that was succeeding. The retired
+  // of the first call in main() and exited the run before the poll loop started,
+  // and from the poll loop the same rejection discarded the remaining attempts
+  // and filed a false alarm about a deploy that was succeeding. The retired
   // ensure-production-data-revision.sh deliberately swallowed this same class of
   // failure and stated the policy; the .mjs rewrite dropped it for the read path.
   let response;
@@ -158,27 +156,10 @@ async function main() {
     return;
   }
 
-  // The hook is optional because the caller may have published the deploy
-  // itself, which is what publish-data.yml now does: it builds in GitHub Actions
-  // and uploads in the same `netlify deploy` command, so publication never draws on
-  // Netlify's 300 monthly build minutes. With no hook there is nothing left to
-  // trigger, only to confirm.
-  if (buildHook) {
-    const hookResponse = await fetch(buildHook, {
-      method: "POST",
-      signal: AbortSignal.timeout(requestTimeoutMs),
-      headers: { "Content-Type": "application/json" },
-      body: "{}",
-    });
-    if (!hookResponse.ok) {
-      throw new Error(
-        `Netlify build hook failed with HTTP ${hookResponse.status}.`
-      );
-    }
-    console.log(`Build hook accepted. Waiting for ledger ${expectedRevision}.`);
-  } else {
-    console.log(`Deploy already published. Confirming ledger ${expectedRevision}.`);
-  }
+  // publish-data.yml builds in GitHub Actions and uploads in the same
+  // `netlify deploy` command, so by the time this runs the deploy is published
+  // and there is nothing left to trigger, only to confirm.
+  console.log(`Deploy already published. Confirming ledger ${expectedRevision}.`);
   for (let attempt = 1; attempt <= pollAttempts; attempt += 1) {
     await wait(pollIntervalMs);
     const current = await readProductionLedger();

@@ -160,6 +160,18 @@ function formatScore(pick: RankedPick): string {
   return `${pick.score.home}-${pick.score.away}`;
 }
 
+/** Each context flag as the words a reader sees, never its key. */
+function flagWords(fixture: FixtureInput): Record<ContextFlagKey, string> {
+  return {
+    deadRubber: "a dead rubber",
+    drawSuitsBoth: "a draw suiting both sides",
+    mustWinHome: `a must-win for ${fixture.homeTeam}`,
+    mustWinAway: `a must-win for ${fixture.awayTeam}`,
+    rotationRiskHome: `rotation risk for ${fixture.homeTeam}`,
+    rotationRiskAway: `rotation risk for ${fixture.awayTeam}`,
+  };
+}
+
 function buildReason(
   fixture: FixtureInput,
   pool: PoolAnalysisConfig,
@@ -212,16 +224,9 @@ function buildReason(
   }
 
   if (appliedFlags.length > 0) {
-    const flagWords: Record<ContextFlagKey, string> = {
-      deadRubber: "a dead rubber",
-      drawSuitsBoth: "a draw suiting both sides",
-      mustWinHome: `a must-win for ${fixture.homeTeam}`,
-      mustWinAway: `a must-win for ${fixture.awayTeam}`,
-      rotationRiskHome: `rotation risk for ${fixture.homeTeam}`,
-      rotationRiskAway: `rotation risk for ${fixture.awayTeam}`,
-    };
+    const words = flagWords(fixture);
     parts.push(
-      `The numbers are shaded for ${appliedFlags.map((flag) => flagWords[flag]).join(" and ")}.`,
+      `The numbers are shaded for ${appliedFlags.map((flag) => words[flag]).join(" and ")}.`,
     );
   }
 
@@ -244,9 +249,11 @@ function buildRecheckList(
   if (markets.fetchedAt) {
     const ageMinutes = (new Date(now).getTime() - new Date(markets.fetchedAt).getTime()) / 60_000;
     if (ageMinutes > pool.staleOddsMinutes) {
+      // Days past 48 hours, the same switch the page's age stamps make.
       const hours = Math.round(ageMinutes / 60);
+      const age = hours < 48 ? `${hours} hours` : `${Math.round(hours / 24)} days`;
       recheck.push(
-        `The odds are about ${hours} hours old, so check for line movement before you lock.`,
+        `The odds are about ${age} old, so check for line movement before you lock.`,
       );
     }
   } else {
@@ -265,8 +272,11 @@ function buildRecheckList(
   }
   const applied = new Set(Object.entries(fixture.flags ?? {}).filter(([, v]) => v).map(([k]) => k));
   const pendingSuggestions = suggested.filter((s) => !applied.has(s.flag));
+  const words = flagWords(fixture);
   for (const suggestion of pendingSuggestions) {
-    recheck.push(`Standings suggest ${suggestion.flag}: ${suggestion.reason}`);
+    recheck.push(
+      `${suggestion.reason} That suggests ${words[suggestion.flag]}, and the flag is not applied yet.`,
+    );
   }
   if (!distribution.diagnostics.converged) {
     recheck.push(

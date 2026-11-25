@@ -13,7 +13,6 @@ import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAna
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
 import {
-  PILL_BUTTON,
   SCORE_FIELD_STYLE,
   SampleDataNotice,
   ScorePoolsTitleBar,
@@ -135,7 +134,7 @@ function ManualResultForm({
           </label>
         </>
       ) : null}
-      <button type="submit" className={PILL_BUTTON}>
+      <button type="submit" className="c97-btn">
         Save result
       </button>
       {error ? (
@@ -196,6 +195,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
     return league.fixtures.filter(
       (fixture) =>
         !effectiveResult(fixture, activePool) &&
+        // A postponed game keeps its original kickoff and has no result to enter.
+        fixture.status !== "postponed" &&
         (fixture.status === "finished" || new Date(fixture.kickoff).getTime() < nowMs) &&
         activePool.submissions[fixture.id],
     );
@@ -327,7 +328,9 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   ) : null}
                                 </>
                               ) : (
-                                <span className="text-2xs text-[var(--c97-ink-2)]">pending</span>
+                                <span className="text-2xs text-[var(--c97-ink-2)]">
+                                  {row.fixture.status === "postponed" ? "postponed" : "pending"}
+                                </span>
                               )}
                             </td>
                             <td className="hidden text-2xs text-[var(--c97-ink-2)] sm:table-cell">
@@ -522,14 +525,14 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                 />
                                 <button
                                   type="submit"
-                                  className={PILL_BUTTON}
+                                  className="c97-btn"
                                 >
                                   Save
                                 </button>
                                 {existing ? (
                                   <button
                                     type="button"
-                                    className={PILL_BUTTON}
+                                    className="c97-btn"
                                     onClick={(event) => {
                                       (event.currentTarget.previousElementSibling as HTMLButtonElement | null)?.focus();
                                       updateRival(activePool.id, selectedRival.id, (rival) => {

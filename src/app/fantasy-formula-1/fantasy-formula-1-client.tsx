@@ -47,10 +47,6 @@ interface FantasyFormula1ClientProps {
   summary: Formula1Summary;
 }
 
-function formatStamp(value: string | null | undefined): string {
-  return value ? formatUpdatedAt(value) : "Unavailable";
-}
-
 function formatPoints(value: number): string {
   return value.toFixed(1);
 }
@@ -531,7 +527,7 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
   const nextRaceStart = nextMeeting?.raceStartsAt ?? nextMeeting?.startAt ?? null;
   const statusLine = [
     `${seasonSummary.season} season`,
-    `OpenF1 snapshot built ${formatStamp(seasonSummary.generatedAt)}`,
+    `OpenF1 snapshot built ${formatUpdatedAt(seasonSummary.generatedAt)}`,
     // The start prints with its time and zone, since a bare Pacific date reads a day early for some rounds.
     nextMeeting ? `Next race ${nextMeeting.name}${nextRaceStart ? `, ${formatDateTime(nextRaceStart)}` : ""}` : null,
   ]

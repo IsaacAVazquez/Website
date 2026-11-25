@@ -51,20 +51,20 @@ describe("PremierLeagueClient", () => {
 
   it("opens the club drawer for a deep-linked club and closes it on Escape", async () => {
     const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("team=57");
+    // Read off the snapshot, which the refresh lane rewrites between test runs.
+    const club = premierLeagueSnapshot.summary.standings[5]!;
+    currentSearchParams = new URLSearchParams(`team=${club.team.id}`);
 
     render(
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
         summary={premierLeagueSnapshot.summary}
-        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
+        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots[club.team.id] ?? null}
       />
     );
 
-    const club = premierLeagueSnapshot.summary.standings.find((row) => row.team.id === "57");
-    expect(club).toBeDefined();
     expect(
-      screen.getByRole("dialog", { name: `${club!.team.name} detail` })
+      screen.getByRole("dialog", { name: `${club.team.name} detail` })
     ).toBeInTheDocument();
 
     await user.keyboard("{Escape}");
@@ -109,6 +109,8 @@ describe("PremierLeagueClient", () => {
       expect(mockPush).toHaveBeenCalled();
       expect(screen.getByRole("tab", { name })).toHaveAttribute("aria-selected", "true");
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+      // A fresh load opens the drawer for any ?team=, so the link carries none.
+      expect(currentSearchParams.get("team")).toBeNull();
     });
 
     it.each([/title chase/i, /relegation fight/i])("the %s filter opens no drawer", async (name) => {
@@ -120,6 +122,8 @@ describe("PremierLeagueClient", () => {
 
       expect(mockPush).toHaveBeenCalled();
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+      expect(currentSearchParams.get("view")).not.toBeNull();
+      expect(currentSearchParams.get("team")).toBeNull();
     });
 
     it("picking a club in the table opens that club's drawer", async () => {
@@ -177,7 +181,9 @@ describe("PremierLeagueClient", () => {
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
         summary={premierLeagueSnapshot.summary}
-        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
+        initialTeamSnapshot={
+          premierLeagueSnapshot.teamSnapshots[premierLeagueSnapshot.summary.standings[0]!.team.id] ?? null
+        }
       />
     );
 

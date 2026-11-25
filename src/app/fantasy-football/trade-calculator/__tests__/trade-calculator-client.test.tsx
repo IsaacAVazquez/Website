@@ -663,9 +663,59 @@ describe("TradeCalculatorClient", () => {
       expect(within(evaluation).getByText("limited coverage")).toBeInTheDocument();
       expect(
         within(evaluation).getByText(
-          "This player has no 2026 scoring log of at least four games, so the experts price him alone.",
+          "This player has no 2026 scoring log of at least four games, so the experts price this player alone.",
         ),
       ).toBeInTheDocument();
+    });
+
+    it("says the scoring log stopped when every log is past the two-week window", () => {
+      pinClock(WEEK_6_NOW);
+      const snapshot = seasonSnapshot();
+      const stalled = {
+        ...snapshot,
+        overall: snapshot.overall.map((player) => ({
+          ...player,
+          gameLog: { ...player.gameLog!, throughWeek: 2 },
+        })),
+      };
+      useSnapshot(stalled);
+      useRestOfSeason(stalled);
+      render(<TradeCalculatorClient />);
+
+      expect(screen.getByText("2026 scoring stopped at Week 2").closest("header")).not.toBeNull();
+      expect(screen.queryByText("No 2026 scoring yet")).not.toBeInTheDocument();
+    });
+
+    it("names the missing board and offers a retry when the weekly file fails in season", () => {
+      pinClock(WEEK_6_NOW);
+      useSnapshot(seasonSnapshot());
+      const retryWeekly = jest.fn();
+      mockUseFantasyWeeklySnapshot.mockReturnValue({
+        ...NOT_PUBLISHED_WEEKLY,
+        notPublished: false,
+        error: "The weekly board is unavailable right now.",
+        retry: retryWeekly,
+      });
+      render(<TradeCalculatorClient />);
+
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveTextContent("The rest-of-season board could not be loaded.");
+      expect(alert).toHaveTextContent("this page prices the frozen draft board in its place");
+      fireEvent.click(within(alert).getByRole("button", { name: "Retry the rest-of-season board" }));
+      expect(retryWeekly).toHaveBeenCalledTimes(1);
+    });
+
+    it("says nothing about the rest-of-season board before Week 1, when a weekly error is not this page's fault", () => {
+      pinClock(PRESEASON_NOW);
+      useSnapshot(buildSnapshot());
+      mockUseFantasyWeeklySnapshot.mockReturnValue({
+        ...NOT_PUBLISHED_WEEKLY,
+        notPublished: false,
+        error: "The weekly board is unavailable right now.",
+      });
+      render(<TradeCalculatorClient />);
+
+      expect(screen.queryByRole("alert")).not.toBeInTheDocument();
     });
   });
 

@@ -199,6 +199,30 @@ export function countElevatorOutages(elevator: TransitElevatorStatus[]): number 
   }, 0);
 }
 
+function countTrains(boards: Record<string, TransitStationBoard>): number {
+  return Object.values(boards).reduce(
+    (total, board) => total + board.departures.length,
+    0
+  );
+}
+
+/**
+ * A busy core station that has live departures, else the first station that
+ * does, else the fallback.
+ */
+function pickDefaultStation(
+  boards: Record<string, TransitStationBoard>,
+  fallback: string | null
+): string | null {
+  return (
+    ["embr", "mont", "powl", "12th", "mcar"].find(
+      (id) => (boards[id]?.departures.length ?? 0) > 0
+    ) ??
+    Object.values(boards).find((board) => board.departures.length > 0)?.id ??
+    fallback
+  );
+}
+
 function parseDepartures(etdStation: BartEtdStation): TransitDeparture[] {
   const departures: TransitDeparture[] = [];
   for (const etd of asArray(etdStation.etd)) {
@@ -447,19 +471,11 @@ export async function buildBayAreaTransitSnapshotData(
   const departuresStatus: TransitSectionStatus = departuresDegraded
     ? "stale-fallback"
     : "fresh";
-  const trainsTracked = Object.values(stationBoards).reduce(
-    (total, board) => total + board.departures.length,
-    0
+  const trainsTracked = countTrains(stationBoards);
+  const defaultStation = pickDefaultStation(
+    stationBoards,
+    stations[0]?.id ?? null
   );
-
-  // Default to a busy core station that has live departures, else the first
-  // station that does.
-  const preferredDefaults = ["embr", "mont", "powl", "12th", "mcar"];
-  const defaultStation =
-    preferredDefaults.find((id) => (stationBoards[id]?.departures.length ?? 0) > 0) ??
-    Object.values(stationBoards).find((board) => board.departures.length > 0)?.id ??
-    stations[0]?.id ??
-    null;
 
   const summary: TransitSummary = {
     system: {
@@ -541,18 +557,13 @@ export async function buildBayAreaTransitLiveSnapshotData(
     const parsed = parseBoards(departuresResult.value.root, generatedAt);
     stationBoards = parsed.boards;
     feedTime = parsed.feedTime;
-    trainsTracked = Object.values(parsed.boards).reduce(
-      (total, board) => total + board.departures.length,
-      0
-    );
+    trainsTracked = countTrains(parsed.boards);
   }
 
-  const defaultStation =
-    ["embr", "mont", "powl", "12th", "mcar"].find(
-      (id) => (stationBoards[id]?.departures.length ?? 0) > 0
-    ) ??
-    Object.values(stationBoards).find((board) => board.departures.length > 0)?.id ??
-    fallback.summary.defaultStation;
+  const defaultStation = pickDefaultStation(
+    stationBoards,
+    fallback.summary.defaultStation
+  );
 
   return {
     summary: {

@@ -7,7 +7,11 @@ import {
   BLOG_TOPIC_PAGES,
   getBlogTopicPage,
 } from "@/lib/blog-config";
-import { getBlogPostPreviewsByTopicSlug, type BlogPostPreview } from "@/lib/blog";
+import {
+  getBlogPostPreviewsByTopicSlug,
+  newestBlogPostDate,
+  type BlogPostPreview,
+} from "@/lib/blog";
 import {
   absoluteUrl,
   constructMetadata,
@@ -84,7 +88,9 @@ export async function generateMetadata({
     title: topic.seoTitle,
     description: topic.metaDescription,
     canonicalUrl: `/writing/topics/${topic.slug}`,
-    dateModified: posts[0]?.publishedAt,
+    // A topic page prints each post's title and excerpt, so an edit to a
+    // post changes it, which is how sitemap.js dates it too.
+    dateModified: newestBlogPostDate(posts),
   });
 }
 

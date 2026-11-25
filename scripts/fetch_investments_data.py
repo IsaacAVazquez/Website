@@ -449,76 +449,65 @@ def fetch_beta(t: Ticker, out: Path) -> None:
     write_json(out / "beta.json", df_to_json(safe_call(lambda: t.beta())))
 
 
-def fetch_fundamentals(t: Ticker, out: Path) -> None:
-    print("  fundamentals...")
+def fetch_table(t: Ticker, out: Path, name: str, fields: dict[str, str]) -> None:
+    """Write one section as {key: rows}, one provider method per key."""
+    print(f"  {name}...")
     data = {}
-    for key, fn in [
-        ("ttmEps",    lambda: t.ttm_eps()),
-        ("ttmPe",     lambda: t.ttm_pe()),
-        ("marketCap", lambda: t.market_capitalization()),
-        ("psRatio",   lambda: t.ps_ratio()),
-        ("pbRatio",   lambda: t.pb_ratio()),
-        ("pegRatio",  lambda: t.peg_ratio()),
-    ]:
-        result = safe_call(fn)
-        data[key] = df_to_json(result)
-    write_json(out / "fundamentals.json", data)
+    for key, method in fields.items():
+        data[key] = df_to_json(safe_call(lambda method=method: getattr(t, method)()))
+    write_json(out / f"{name}.json", data)
+
+
+def fetch_fundamentals(t: Ticker, out: Path) -> None:
+    fetch_table(t, out, "fundamentals", {
+        "ttmEps":    "ttm_eps",
+        "ttmPe":     "ttm_pe",
+        "marketCap": "market_capitalization",
+        "psRatio":   "ps_ratio",
+        "pbRatio":   "pb_ratio",
+        "pegRatio":  "peg_ratio",
+    })
 
 
 def fetch_profitability(t: Ticker, out: Path) -> None:
-    print("  profitability...")
-    data = {}
-    for key, fn in [
-        ("roe",              lambda: t.roe()),
-        ("roa",              lambda: t.roa()),
-        ("roic",             lambda: t.roic()),
-        ("equityMultiplier", lambda: t.equity_multiplier()),
-        ("assetTurnover",    lambda: t.asset_turnover()),
-    ]:
-        result = safe_call(fn)
-        data[key] = df_to_json(result)
-    write_json(out / "profitability.json", data)
+    fetch_table(t, out, "profitability", {
+        "roe":              "roe",
+        "roa":              "roa",
+        "roic":             "roic",
+        "equityMultiplier": "equity_multiplier",
+        "assetTurnover":    "asset_turnover",
+    })
 
 
 def fetch_margins(t: Ticker, out: Path) -> None:
-    print("  margins...")
-    data = {}
-    for key, fn in [
-        ("quarterly_gross",     lambda: t.quarterly_gross_margin()),
-        ("annual_gross",        lambda: t.annual_gross_margin()),
-        ("quarterly_operating", lambda: t.quarterly_operating_margin()),
-        ("annual_operating",    lambda: t.annual_operating_margin()),
-        ("quarterly_net",       lambda: t.quarterly_net_margin()),
-        ("annual_net",          lambda: t.annual_net_margin()),
-        ("quarterly_ebitda",    lambda: t.quarterly_ebitda_margin()),
-        ("annual_ebitda",       lambda: t.annual_ebitda_margin()),
-        ("quarterly_fcf",       lambda: t.quarterly_fcf_margin()),
-        ("annual_fcf",          lambda: t.annual_fcf_margin()),
-    ]:
-        result = safe_call(fn)
-        data[key] = df_to_json(result)
-    write_json(out / "margins.json", data)
+    fetch_table(t, out, "margins", {
+        "quarterly_gross":     "quarterly_gross_margin",
+        "annual_gross":        "annual_gross_margin",
+        "quarterly_operating": "quarterly_operating_margin",
+        "annual_operating":    "annual_operating_margin",
+        "quarterly_net":       "quarterly_net_margin",
+        "annual_net":          "annual_net_margin",
+        "quarterly_ebitda":    "quarterly_ebitda_margin",
+        "annual_ebitda":       "annual_ebitda_margin",
+        "quarterly_fcf":       "quarterly_fcf_margin",
+        "annual_fcf":          "annual_fcf_margin",
+    })
 
 
 def fetch_growth(t: Ticker, out: Path) -> None:
-    print("  growth...")
-    data = {}
-    for key, fn in [
-        ("quarterly_revenue",          lambda: t.quarterly_revenue_yoy_growth()),
-        ("annual_revenue",             lambda: t.annual_revenue_yoy_growth()),
-        ("quarterly_operating_income", lambda: t.quarterly_operating_income_yoy_growth()),
-        ("annual_operating_income",    lambda: t.annual_operating_income_yoy_growth()),
-        ("quarterly_ebitda",           lambda: t.quarterly_ebitda_yoy_growth()),
-        ("annual_ebitda",              lambda: t.annual_ebitda_yoy_growth()),
-        ("quarterly_net_income",       lambda: t.quarterly_net_income_yoy_growth()),
-        ("annual_net_income",          lambda: t.annual_net_income_yoy_growth()),
-        ("quarterly_fcf",              lambda: t.quarterly_fcf_yoy_growth()),
-        ("annual_fcf",                 lambda: t.annual_fcf_yoy_growth()),
-        ("quarterly_eps",              lambda: t.quarterly_eps_yoy_growth()),
-    ]:
-        result = safe_call(fn)
-        data[key] = df_to_json(result)
-    write_json(out / "growth.json", data)
+    fetch_table(t, out, "growth", {
+        "quarterly_revenue":          "quarterly_revenue_yoy_growth",
+        "annual_revenue":             "annual_revenue_yoy_growth",
+        "quarterly_operating_income": "quarterly_operating_income_yoy_growth",
+        "annual_operating_income":    "annual_operating_income_yoy_growth",
+        "quarterly_ebitda":           "quarterly_ebitda_yoy_growth",
+        "annual_ebitda":              "annual_ebitda_yoy_growth",
+        "quarterly_net_income":       "quarterly_net_income_yoy_growth",
+        "annual_net_income":          "annual_net_income_yoy_growth",
+        "quarterly_fcf":              "quarterly_fcf_yoy_growth",
+        "annual_fcf":                 "annual_fcf_yoy_growth",
+        "quarterly_eps":              "quarterly_eps_yoy_growth",
+    })
 
 
 def statement_to_json(stmt) -> object:

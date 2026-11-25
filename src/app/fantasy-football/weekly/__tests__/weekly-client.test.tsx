@@ -463,7 +463,7 @@ describe("WeeklyBoardClient waivers view", () => {
   it("opens the method with the sentence that says what the list is", () => {
     renderClient("waivers");
     expect(
-      screen.getByText(/^Players the experts rank ahead of where the rostering rate puts them\. The gap is the player’s percentile on this board minus the percentage of leagues rostering him/),
+      screen.getByText(/^Players the experts rank ahead of where the rostering rate puts them\. The gap is the player’s percentile on this board minus the percentage of leagues rostering the player/),
     ).toBeInTheDocument();
   });
 

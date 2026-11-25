@@ -12,7 +12,7 @@ import {
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { escapeHtml } from "@/lib/utils";
 import type { TransitLine, TransitStation } from "@/types/bayAreaTransit";
-import { bundleTrack, linePath } from "./station-map";
+import { bundleTrack, lineKey, linePath } from "./station-map";
 
 interface TransitMapProps {
   stations: TransitStation[];
@@ -33,8 +33,6 @@ const TRANSFER_LABEL_ZOOM = 11;
 const STATION_ZOOM = 13;
 /** One line's stroke width; lines sharing track sit this far apart. */
 const LINE_WEIGHT = 4;
-
-const lineKey = (colorName: string) => colorName.trim().toLowerCase();
 
 /** Stops shrink when the whole network is in view, so they don't bury the lines. */
 function stopRadius(zoom: number, isSelected: boolean, isTransfer: boolean): number {

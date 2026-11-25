@@ -152,7 +152,7 @@ export function FinancialStatementsPanel({ symbol }: Props) {
   const [period, setPeriod] = useState<Period>("quarterly");
 
   return (
-    <TerminalPanel padding="sm">
+    <TerminalPanel>
       {/* Statement type tabs + period toggle */}
       <div className="flex items-center justify-between flex-wrap" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
         <div className="flex overflow-x-auto" style={{ gap: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-0)" }} role="group" aria-label="Financial statement">

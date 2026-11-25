@@ -23,8 +23,6 @@ const SPORT_ID = "1";
 const AL_LEAGUE_ID = 103;
 const NL_LEAGUE_ID = 104;
 const REQUEST_TIMEOUT_MS = 15_000;
-const SUMMARY_REVALIDATE_SECONDS = 300;
-const TEAM_REVALIDATE_SECONDS = 300;
 const RECENT_GAME_LIMIT = 10;
 const UPCOMING_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
@@ -381,10 +379,9 @@ function dateOffsetIso(days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number): Promise<T> {
+async function fetchStatsApiJsonOnce<T>(path: string): Promise<T> {
   const response = await fetch(`${MLB_STATS_BASE_URL}${path}`, {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    next: { revalidate: revalidateSeconds },
   });
   if (!response.ok) {
     if (response.status === 404) {
@@ -403,10 +400,10 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
  * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
-async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+async function fetchStatsApiJson<T>(path: string): Promise<T> {
   return retryLinear(
     3,
-    () => fetchStatsApiJsonOnce<T>(path, revalidateSeconds),
+    () => fetchStatsApiJsonOnce<T>(path),
     (error) => !hasClientErrorStatus(error)
   ).catch((error) => {
     throw isTimeoutError(error) ? new HttpStatusError("MLB data provider timed out.", 504) : error;
@@ -419,8 +416,7 @@ export function isValidMlbTeamId(teamId: string): boolean {
 
 async function getTeams(season: string): Promise<MlbTeamOption[]> {
   const response = await fetchStatsApiJson<StatsApiTeamsResponse>(
-    `/teams?${new URLSearchParams({ sportId: SPORT_ID, season, activeStatus: "Y", hydrate: "venue" })}`,
-    SUMMARY_REVALIDATE_SECONDS
+    `/teams?${new URLSearchParams({ sportId: SPORT_ID, season, activeStatus: "Y", hydrate: "venue" })}`
   );
   return (response.teams ?? [])
     .map((team) => normalizeTeamOption(team))
@@ -434,8 +430,7 @@ async function getStandings(season: string, teamLookup: Map<string, MlbTeamOptio
       leagueId: `${AL_LEAGUE_ID},${NL_LEAGUE_ID}`,
       season,
       standingsTypes: "regularSeason",
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
+    })}`
   );
   const rows: MlbStandingsRow[] = [];
   for (const group of response.records ?? []) {
@@ -484,8 +479,7 @@ async function getRecentSchedule(teamLookup: Map<string, MlbTeamOption>): Promis
       sportId: SPORT_ID,
       startDate: dateOffsetIso(-RECENT_WINDOW_DAYS),
       endDate: dateOffsetIso(0),
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
+    })}`
   );
   return collectScheduleGames(response, teamLookup)
     .filter((game) => game.status === "FINISHED")
@@ -499,8 +493,7 @@ async function getUpcomingSchedule(teamLookup: Map<string, MlbTeamOption>): Prom
       sportId: SPORT_ID,
       startDate: dateOffsetIso(-1),
       endDate: dateOffsetIso(UPCOMING_WINDOW_DAYS),
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
+    })}`
   );
   return collectScheduleGames(response, teamLookup)
     .filter((game) => game.status !== "FINISHED")
@@ -522,8 +515,7 @@ async function getLeaders(
       statGroup,
       limit: "10",
       hydrate: `person(stats(group=[${statGroup}],type=[season],season=${season}))`,
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
+    })}`
   );
   const leaderGroup = response.leagueLeaders?.[0];
   return (leaderGroup?.leaders ?? [])
@@ -589,8 +581,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
 
   const [profileResponse, recentResponse, upcomingResponse] = await Promise.all([
     fetchStatsApiJson<StatsApiTeamsResponse>(
-      `/teams/${teamId}?${new URLSearchParams({ hydrate: "venue" })}`,
-      TEAM_REVALIDATE_SECONDS
+      `/teams/${teamId}?${new URLSearchParams({ hydrate: "venue" })}`
     ),
     fetchStatsApiJson<StatsApiScheduleResponse>(
       `/schedule?${new URLSearchParams({
@@ -598,8 +589,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
         teamId,
         startDate: dateOffsetIso(-RECENT_WINDOW_DAYS - 5),
         endDate: dateOffsetIso(0),
-      })}`,
-      TEAM_REVALIDATE_SECONDS
+      })}`
     ),
     fetchStatsApiJson<StatsApiScheduleResponse>(
       `/schedule?${new URLSearchParams({
@@ -607,8 +597,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
         teamId,
         startDate: dateOffsetIso(-1),
         endDate: dateOffsetIso(UPCOMING_WINDOW_DAYS + 5),
-      })}`,
-      TEAM_REVALIDATE_SECONDS
+      })}`
     ),
   ]);
 

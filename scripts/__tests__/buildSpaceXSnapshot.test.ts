@@ -15,8 +15,14 @@ jest.mock("../../src/lib/spacexData", () => ({
 
 const mockBuildMissionControlSnapshot = jest.mocked(buildMissionControlSnapshot);
 
+// Only the roots this file made are removed. A sweep of the temp directory by
+// prefix deleted the roots of a second run of the same suite.
+const projectRoots: string[] = [];
+
 async function makeProjectRoot(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "spacex-data-snapshot-"));
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "spacex-data-snapshot-"));
+  projectRoots.push(root);
+  return root;
 }
 
 async function readSnapshot(projectRoot: string): Promise<MissionControlSnapshot> {
@@ -29,13 +35,8 @@ describe("buildSpaceXSnapshot", () => {
   afterEach(async () => {
     mockBuildMissionControlSnapshot.mockReset();
 
-    const tempRootEntries = await fs.readdir(os.tmpdir());
     await Promise.all(
-      tempRootEntries
-        .filter((entry) => entry.startsWith("spacex-data-snapshot-"))
-        .map((entry) =>
-          fs.rm(path.join(os.tmpdir(), entry), { recursive: true, force: true })
-        )
+      projectRoots.splice(0).map((root) => fs.rm(root, { recursive: true, force: true }))
     );
   });
 

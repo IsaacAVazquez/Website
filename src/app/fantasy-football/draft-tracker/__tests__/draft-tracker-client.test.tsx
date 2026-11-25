@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import React from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { DraftTrackerClient } from "../draft-tracker-client";
+import { DraftTrackerClient, waitCellReading } from "../draft-tracker-client";
 
 const mockUseDraftState = jest.fn();
 const mockUseFantasySnapshot = jest.fn();
@@ -9,6 +9,14 @@ const mockExportDraftResults = jest.fn();
 const mockDraftPlayer = jest.fn();
 const mockUpdateSettings = jest.fn();
 const FRESH_AS_OF = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+// The shape useDraftState emits for a logged pick: a full player and a Date.
+const LOGGED_PICK = {
+  pickNumber: 1,
+  teamNumber: 1,
+  round: 1,
+  timestamp: new Date("2026-08-31T00:00:00.000Z"),
+  player: { id: "picked-1", name: "Pat One", team: "ATL", position: "RB", averageRank: 1, adp: 1 },
+};
 
 function mockSnapshotWithVorp(asOf: string) {
   const snapshotResult = mockUseFantasySnapshot();
@@ -98,7 +106,7 @@ describe("DraftTrackerClient", () => {
           timerSeconds: 90,
           lineup: { QB: 1, RB: 2, WR: 2, TE: 1, FLEX: 1, K: 1, DST: 1 },
         },
-        picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1", adp: 1 } }],
+        picks: [LOGGED_PICK],
         currentPick: 2,
         currentRound: 1,
         isActive: true,
@@ -106,7 +114,7 @@ describe("DraftTrackerClient", () => {
         teams: [
           {
             teamNumber: 1,
-            picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1", adp: 1 } }],
+            picks: [LOGGED_PICK],
             positionCounts: { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 },
             totalValue: 0,
             projectedPoints: 0,
@@ -126,15 +134,7 @@ describe("DraftTrackerClient", () => {
       exportDraftResults: mockExportDraftResults,
       isUserPick: true,
       isDraftComplete: false,
-      currentTeamName: "Your Turn",
       currentTeamNumber: 1,
-      userTeam: {
-        teamNumber: 1,
-        picks: [],
-        positionCounts: { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 },
-        totalValue: 0,
-        projectedPoints: 0,
-      },
     });
 
     mockUseFantasySnapshot.mockReturnValue({
@@ -202,7 +202,7 @@ describe("DraftTrackerClient", () => {
     // The scorebug is the room's one statement of where the draft is.
     expect(screen.queryByText(/Draft assistant ·/)).not.toBeInTheDocument();
     // The pinned bar names the pick just logged, under the team on the clock.
-    expect(within(screen.getByText("On the clock").closest("div") as HTMLElement).getByText(/^Prev · .*#1$/)).toBeVisible();
+    expect(within(screen.getByText("On the clock").closest("div") as HTMLElement).getByText("Prev · P. One #1")).toBeVisible();
     expect(screen.getByText("#2 / 150")).toBeVisible();
     expect(screen.getByText("On the clock")).toBeVisible();
     expect(screen.getByText("You")).toBeVisible();
@@ -788,5 +788,73 @@ describe("DraftTrackerClient", () => {
     fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
 
     expect(within(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).getByText(/2025 season · PPR · 17 games/)).toBeInTheDocument();
+  });
+
+  it("offers New room when a parked room's scoring has no overall board", () => {
+    const snapshotResult = mockUseFantasySnapshot();
+    mockUseFantasySnapshot.mockReturnValue({
+      ...snapshotResult,
+      snapshot: {
+        ...snapshotResult.snapshot,
+        overall: [],
+        sliceMetadata: {
+          overall: {
+            ...snapshotResult.snapshot.sliceMetadata.overall,
+            available: false,
+            reason: "Published PPR overall rankings are unavailable in the current snapshot.",
+          },
+        },
+      },
+    });
+    render(<DraftTrackerClient />);
+
+    expect(screen.getByText("Draft assistant unavailable for this scoring format")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    expect(screen.getByTestId("draft-setup-mock")).toBeVisible();
+  });
+
+  it("undoes one pick for a held U key", () => {
+    const undoLastPick = jest.fn();
+    mockUseDraftState.mockReturnValue({ ...mockUseDraftState(), undoLastPick });
+    render(<DraftTrackerClient />);
+
+    fireEvent.keyDown(document, { key: "u" });
+    fireEvent.keyDown(document, { key: "u", repeat: true });
+    fireEvent.keyDown(document, { key: "u", repeat: true });
+
+    expect(undoLastPick).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("waitCellReading", () => {
+  const survivor = {
+    player: { id: "rb-1", name: "Bijan Robinson", team: "ATL", position: "RB", averageRank: 1 },
+    expertRank: 1,
+    replacementDrop: 0,
+  };
+  const reading = (rankCost: number, pointsDrop: number | null) =>
+    waitCellReading({
+      wait: {
+        kind: "measured",
+        nextPick: 20,
+        survivor: { ...survivor, rankCost, pointsDrop },
+        plausibleSurvivor: null,
+        saferSurvivor: null,
+        coverage: "supported",
+      },
+    } as unknown as Parameters<typeof waitCellReading>[0]);
+
+  it("says the best option likely lasts where the drop is zero, with no signed zero", () => {
+    expect(reading(0, 0)).toMatchObject({
+      value: "Likely lasts",
+      sub: "B. Robinson reaches #20 at the market midpoint",
+    });
+    expect(reading(0, null).value).toBe("Likely lasts");
+  });
+
+  it("keeps the signed cost for a real drop", () => {
+    expect(reading(3, 12.4).value).toBe("−12 pts");
+    expect(reading(3, 0.4).value).toBe("−0.4 pts");
+    expect(reading(3, null).value).toBe("−3 spots");
   });
 });

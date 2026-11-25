@@ -11,7 +11,7 @@ import {
   type CSSProperties,
 } from "react";
 import { useSearchParams } from "next/navigation";
-import { Activity, AlertTriangle, ExternalLink, Layers3 } from "lucide-react";
+import { Activity, ExternalLink, Layers3 } from "lucide-react";
 import type {
   EarthquakeRouteState,
   EarthquakeSummary,
@@ -220,12 +220,7 @@ function QuakeRow({
         <span className="eq-quake-log-name">{quake.place}</span>
         {quake.tsunami || quake.felt ? (
           <span className="eq-quake-log-flags">
-            {quake.tsunami ? (
-              <span className="inline-flex items-center" style={{ color: "var(--c97-negative)", fontWeight: 600, gap: "var(--c97-sp-0)" }}>
-                <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
-                Tsunami
-              </span>
-            ) : null}
+            {quake.tsunami ? <span>Tsunami flag</span> : null}
             {quake.felt ? (
               <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                 <Activity className="h-3.5 w-3.5" aria-hidden="true" />
@@ -401,9 +396,9 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
       </div>
 
       {quake.tsunami ? (
-        <p className="eq-tsunami" role="note">
-          <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          Tsunami evaluation issued for this event
+        <p className="eq-muted eq-small" role="note">
+          USGS sets its tsunami flag on large quakes in oceanic regions. The flag does not say
+          a tsunami happened, and the USGS page for this quake carries any alert.
         </p>
       ) : null}
 

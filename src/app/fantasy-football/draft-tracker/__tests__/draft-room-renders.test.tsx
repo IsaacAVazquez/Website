@@ -27,7 +27,15 @@ const mockDraftStateResult = {
       timerSeconds: 90,
       lineup: { QB: 1, RB: 2, WR: 2, TE: 1, FLEX: 1, K: 1, DST: 1 },
     },
-    picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1", adp: 1 } }],
+    picks: [
+      {
+        pickNumber: 1,
+        teamNumber: 1,
+        round: 1,
+        timestamp: new Date("2026-08-31T00:00:00.000Z"),
+        player: { id: "picked-1", name: "Pat One", team: "ATL", position: "RB", averageRank: 1, adp: 1 },
+      },
+    ],
     currentPick: 2,
     currentRound: 1,
     isActive: true,
@@ -47,9 +55,7 @@ const mockDraftStateResult = {
   exportDraftResults: jest.fn(),
   isUserPick: true,
   isDraftComplete: false,
-  currentTeamName: "Your Turn",
   currentTeamNumber: 1,
-  userTeam: mockTeam,
 };
 
 const mockSnapshotResult = {
@@ -100,6 +106,12 @@ jest.mock("@/hooks/useFantasySnapshot", () => ({
 jest.mock("../hooks/useDraftState", () => ({
   ...jest.requireActual("../hooks/useDraftState"),
   useDraftState: () => mockDraftStateResult,
+}));
+
+// The drawer preloads on an idle timer, which these fake-timer tests would
+// fire and then resolve outside act. The room's renders are the subject here.
+jest.mock("@/components/fantasy/DeferredPlayerDetailDrawer", () => ({
+  DeferredPlayerDetailDrawer: () => null,
 }));
 
 // The board is the expensive part of the room. It renders whenever the room's

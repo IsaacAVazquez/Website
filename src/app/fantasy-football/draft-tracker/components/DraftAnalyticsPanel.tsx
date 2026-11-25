@@ -187,7 +187,7 @@ export function DraftAnalyticsPanel({
               <PickValueRow pick={biggestReach} label="Reach" teamName={getTeamName(biggestReach.teamNumber)} />
             ) : (
               <p className="ffb-entry-note">
-                Nobody jumped a player far enough ahead of his baseline to count.
+                Nobody jumped a player far enough ahead of the baseline to count.
               </p>
             )}
           </div>

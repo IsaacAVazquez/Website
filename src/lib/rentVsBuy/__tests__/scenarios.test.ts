@@ -28,3 +28,16 @@ it("varies one assumption at a time without changing the source input", () => {
   expect(input.mortgageRatePercent).toBe(7.4);
   expect(rows.every((row) => Number.isFinite(row.delta))).toBe(true);
 });
+
+it("marks the current row and drops a step that clamps back onto it at a bound", () => {
+  const rows = rentSensitivity({ ...createDefaultInput(), yearsStaying: 1 });
+  expect(
+    rows
+      .filter((row) => row.field === "yearsStaying")
+      .map((row) => [row.value, row.current]),
+  ).toEqual([
+    [1, true],
+    [3, false],
+  ]);
+  expect(rows.filter((row) => row.current)).toHaveLength(3);
+});

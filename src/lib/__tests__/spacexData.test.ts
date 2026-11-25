@@ -1221,6 +1221,9 @@ describe("spacexData launch normalization", () => {
     [{ name: "Half Year", abbrev: "H1" }, "half"],
     [{ name: "Year", abbrev: "YR" }, "year"],
     [{ name: "", abbrev: "Y" }, "year"],
+    [{ name: "Week", abbrev: "WK" }, "week"],
+    [{ name: "Decade", abbrev: "DEC" }, "decade"],
+    [{ name: "Morning", abbrev: "AM" }, "day"],
     [{ name: "Fortnight", abbrev: "F" }, "day"],
     [null, "day"],
   ])("maps net precision %p to %s", async (precision, expected) => {

@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import {
+  absoluteUrl,
   constructMetadata,
   freeApplicationOffer,
   generateBreadcrumbStructuredData,
@@ -53,7 +54,7 @@ export default async function BestBallPage({ searchParams }: BestBallPageProps) 
           name: "Best Ball Rankings and Draft Assistant",
           description:
             "A sourced 2026 best ball rankings board with contest specific draft guidance and a manual draft tracker.",
-          url: "/fantasy-football/best-ball",
+          url: absoluteUrl("/fantasy-football/best-ball"),
           dateModified,
           applicationCategory: "SportsApplication",
           operatingSystem: "Web browser",

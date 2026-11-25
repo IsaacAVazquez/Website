@@ -14,8 +14,9 @@ describe("RentVsBuyClient", () => {
       screen.getByRole("heading", { name: "Rent vs. Buy Calculator" }),
     ).toBeVisible();
     expect(screen.getByLabelText("Home price")).toHaveValue(450000);
-    // A verdict status is always shown.
-    expect(screen.getByRole("status")).toBeInTheDocument();
+    // A verdict status is always shown. The saved-scenario workflow keeps an
+    // empty status region of its own mounted, so the verdict is picked by class.
+    expect(document.querySelector('.rvb-verdict[role="status"]')).toBeInTheDocument();
   });
 
   it("recomputes and persists when an input changes", async () => {
@@ -58,7 +59,7 @@ describe("RentVsBuyClient", () => {
 
   it("puts the five main inputs ahead of the result and keeps the full disclosure one link away", () => {
     render(<RentVsBuyClient />);
-    const verdict = screen.getByRole("status");
+    const verdict = document.querySelector<HTMLElement>('.rvb-verdict[role="status"]')!;
     for (const label of ["Home price", "Monthly rent", "Years staying", "Down payment", "Mortgage rate"]) {
       expect(screen.getByLabelText(label).compareDocumentPosition(verdict) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     }

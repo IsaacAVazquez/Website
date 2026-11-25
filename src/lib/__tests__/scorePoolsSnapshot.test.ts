@@ -1,6 +1,5 @@
 import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
 import {
-  getScorePoolsSnapshotData,
   hasLiveScorePoolsData,
   oddsEntryToMarkets,
   toFixtureInput,
@@ -60,12 +59,6 @@ function league(overrides: Partial<ScorePoolLeagueSnapshot> = {}): ScorePoolLeag
 const snapshotOf = (...leagues: ScorePoolLeagueSnapshot[]): ScorePoolsSnapshot => ({
   generatedAt: "2026-08-01T09:00:00.000Z",
   leagues,
-});
-
-describe("getScorePoolsSnapshotData", () => {
-  it("returns the committed snapshot", () => {
-    expect(getScorePoolsSnapshotData()).toBe(scorePoolsSnapshot);
-  });
 });
 
 describe("hasLiveScorePoolsData", () => {

@@ -59,7 +59,7 @@ export function trackEvent(eventName: string, params: GtagParams = {}): boolean 
 }
 
 // ---------------------------------------------------------------------------
-// Canonical event names (single source of truth, also used by the reference page)
+// Canonical event names (single source of truth)
 // ---------------------------------------------------------------------------
 
 export const GA_EVENT = {
@@ -76,15 +76,10 @@ export const GA_EVENT = {
 
 type NavLocation =
   | "header_primary"
-  | "header_brand"
-  | "header_mobile"
-  | "header_mobile_toggle"
   | "header_search_result"
-  | "header_search_view_all"
-  | "footer_social"
-  | "footer_links";
+  | "header_search_view_all";
 
-/** Navigation clicks: header links, brand wordmark, mobile menu, footer links. */
+/** Navigation clicks: the header's links and the links in its search panel. */
 export function trackNavigationClick(params: {
   link_text: string;
   link_url: string;

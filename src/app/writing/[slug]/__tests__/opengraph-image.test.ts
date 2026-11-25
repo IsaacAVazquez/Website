@@ -55,10 +55,8 @@ describe("Writing article opengraph image", () => {
       updatedAt: "2026-04-09",
       category: "Product Management",
       tags: ["Product Management", "AI"],
-      featured: false,
       readingTime: "4 min read",
       wordCount: 800,
-      author: "Isaac Vazquez",
       coverImage: "/writing/test-post/opengraph-image",
       cluster: "PM Workflows",
       cta: undefined,
@@ -75,6 +73,16 @@ describe("Writing article opengraph image", () => {
     );
   });
 
+  // The article page answers 404 for a slug with no post, and so does its card.
+  it("draws nothing for a slug with no article", async () => {
+    mockGetBlogPostPreviewBySlug.mockReturnValue(null);
+
+    await expect(
+      Image({ params: Promise.resolve({ slug: "no-such-post" }) })
+    ).rejects.toMatchObject({ digest: expect.stringContaining("404") });
+    expect(mockCreateEditorialOgImage).not.toHaveBeenCalled();
+  });
+
   it("falls back to the archive bucket label when a post is not clustered", async () => {
     mockGetBlogPostPreviewBySlug.mockReturnValue({
       slug: "archive-post",
@@ -84,10 +92,8 @@ describe("Writing article opengraph image", () => {
       updatedAt: "2026-04-09",
       category: "Technology",
       tags: ["Technology", "AI"],
-      featured: false,
       readingTime: "4 min read",
       wordCount: 800,
-      author: "Isaac Vazquez",
       coverImage: "/writing/archive-post/opengraph-image",
       archiveBucket: "Signals & Commentary",
       cta: undefined,

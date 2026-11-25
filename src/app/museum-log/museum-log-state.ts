@@ -1,32 +1,15 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { MuseumRouteState } from "@/types/museum";
 import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
+import { REGION_FILTER_OPTIONS, SORT_OPTIONS, TYPE_FILTER_OPTIONS } from "./museum-log-helpers";
 
 const MUSEUM_LOG_ROUTE = "/museum-log";
 
 const MUSEUM_VIEW_OPTIONS = ["discover", "journal", "lists", "museum"] as const;
 
-const SORTS = ["rating", "popular", "recent", "alpha"] as const;
-const TYPES = [
-  "all",
-  "art",
-  "history",
-  "science",
-  "natural-history",
-  "design",
-  "photography",
-  "specialty",
-] as const;
-const REGIONS = [
-  "all",
-  "northeast",
-  "south",
-  "midwest",
-  "west",
-  "europe",
-  "asia",
-  "latin-america",
-] as const;
+// The values the selects and sort buttons offer, so the URL accepts exactly those.
+const TYPES = TYPE_FILTER_OPTIONS.map((option) => option.value);
+const REGIONS = REGION_FILTER_OPTIONS.map((option) => option.value);
 
 export const DEFAULT_MUSEUM_STATE: MuseumRouteState = {
   view: "discover",
@@ -55,7 +38,7 @@ export function normalizeMuseumState(input: SearchParamInput): MuseumRouteState 
         : readEnum(input, "view", MUSEUM_VIEW_OPTIONS, DEFAULT_MUSEUM_STATE.view),
     museum,
     list,
-    sort: readEnum(input, "sort", SORTS, DEFAULT_MUSEUM_STATE.sort),
+    sort: readEnum(input, "sort", SORT_OPTIONS, DEFAULT_MUSEUM_STATE.sort),
     type: readEnum(input, "type", TYPES, DEFAULT_MUSEUM_STATE.type),
     region: readEnum(input, "region", REGIONS, DEFAULT_MUSEUM_STATE.region),
   };

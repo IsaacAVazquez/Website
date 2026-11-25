@@ -680,7 +680,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .bt-chevron {
-    transition: transform 160ms ease;
+    transition: transform 160ms var(--c97-ease);
   }
 }
 

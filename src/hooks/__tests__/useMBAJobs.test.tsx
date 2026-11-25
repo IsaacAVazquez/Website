@@ -132,6 +132,27 @@ describe("useMBAJobs", () => {
     delete (window as unknown as { Notification?: unknown }).Notification;
   });
 
+  it("fires one notification when a later fetch brings a role the last one did not have", async () => {
+    const notify = jest.fn();
+    (window as unknown as { Notification: unknown }).Notification = Object.assign(notify, {
+      permission: "granted",
+    });
+    mockJobsResponse([jobA]);
+    const { result } = renderHook(() => useMBAJobs({ initialData: buildResponse([jobA]) }));
+    await waitFor(() => expect(result.current.hasFetched).toBe(true));
+    expect(notify).not.toHaveBeenCalled();
+
+    mockJobsResponse([jobA, jobB]);
+    act(() => {
+      result.current.refresh();
+    });
+    await waitFor(() => expect(result.current.jobs).toHaveLength(2));
+
+    expect(notify).toHaveBeenCalledTimes(1);
+    expect(notify).toHaveBeenCalledWith("New MBA role at Brex", expect.any(Object));
+    delete (window as unknown as { Notification?: unknown }).Notification;
+  });
+
   it("derives newJobCount from unseen jobs and updates after marking one seen", async () => {
     mockJobsResponse([jobA, jobB]);
 

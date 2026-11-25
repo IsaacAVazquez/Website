@@ -574,6 +574,15 @@ function normalizePrecision(precision?: RawLl2Precision | null): string {
     return "year";
   }
 
+  // Launch Library also publishes Week and Decade, which are no calendar day.
+  if (name.includes("week")) {
+    return "week";
+  }
+
+  if (name.includes("decade")) {
+    return "decade";
+  }
+
   return "day";
 }
 

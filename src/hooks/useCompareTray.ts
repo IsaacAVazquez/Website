@@ -43,7 +43,6 @@ export function useCompareTray() {
   );
 
   const clear = useCallback(() => commit(() => []), [commit]);
-  const replace = useCallback((ids: string[]) => commit(() => ids), [commit]);
 
   return {
     compareIds,
@@ -54,7 +53,6 @@ export function useCompareTray() {
     toggle,
     remove,
     clear,
-    replace,
     persistenceStatus,
   };
 }

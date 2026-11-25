@@ -1,12 +1,12 @@
-# Data Pipeline — AI Context
+# Data pipeline (AI context)
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 ---
 
-## Portfolio And Route Data
+## Portfolio and route data
 
 - project metadata comes from `src/constants/caseStudies.ts`
 - navigation data comes from `src/constants/catalog97Nav.ts`
@@ -15,7 +15,7 @@ Current high-level data flow reference.
 
 ---
 
-## Writing Pipeline
+## Writing pipeline
 
 Source:
 
@@ -36,7 +36,7 @@ Cover images come from `npm run update:article-images` (`scripts/buildArticleCov
 
 ---
 
-## Investments Pipeline
+## Investments pipeline
 
 The live investments experience uses a curated snapshot model.
 
@@ -56,7 +56,7 @@ Update path:
 - runs the Python fetch script and snapshot build pipeline
 - `.github/workflows/update-investments.yml` runs it Tuesday through Saturday at 08:30 UTC and commits `public/data/investments`
 
-## Football Dashboard Pipeline
+## Football dashboard pipeline
 
 Premier League and La Liga use committed JSON snapshots, each with a typed `.ts` re-export beside it:
 
@@ -74,7 +74,7 @@ The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read tho
 
 ---
 
-## US Sports Dashboard Pipeline
+## US sports dashboard pipeline
 
 MLB, NBA, and NFL use committed JSON snapshots, each with a typed `.ts` re-export beside it:
 
@@ -98,7 +98,7 @@ Score pools uses `src/data/scorePoolsSnapshot.json`, rebuilt by `npm run update:
 
 ---
 
-## Civic And Curated Tool Pipelines
+## Civic and curated tool pipelines
 
 - `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.json`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` fetch BART at request time and fall back to the committed snapshot.
 - `/earthquake-pulse` uses `src/data/earthquakeSnapshot.json`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it daily at 06:20 UTC. `/api/earthquake-pulse/summary` fetches USGS at request time and falls back to the committed snapshot, with event detail embedded in the summary payload.
@@ -107,7 +107,7 @@ Score pools uses `src/data/scorePoolsSnapshot.json`, rebuilt by `npm run update:
 
 ---
 
-## Shared Snapshot Commit/Push Step
+## Shared snapshot commit and push step
 
 Every scheduled snapshot workflow ends by committing and pushing the refreshed snapshot through one shared helper:
 
@@ -126,7 +126,7 @@ Committed data reaches production through `.github/workflows/publish-data.yml`, 
 
 ---
 
-## Fantasy Football Pipeline
+## Fantasy football pipeline
 
 The fantasy stack is generated snapshot first:
 
@@ -159,7 +159,7 @@ The public app and `/api/fantasy-data` read those generated snapshot files. Loca
 
 ---
 
-## Search Pipeline
+## Search pipeline
 
 Current search is intentionally limited:
 
@@ -170,7 +170,7 @@ Do not describe this as a full dynamic content index.
 
 ---
 
-## Seasonal Analysis Pipeline
+## Seasonal analysis pipeline
 
 March Madness is split between:
 
@@ -178,7 +178,7 @@ March Madness is split between:
 - interactive state in the client route files, with the URL state in `src/app/march-madness-2026/march-madness-state.ts` and the bracket, picks, rankings, and result note in `src/app/march-madness-2026/march-madness-data.ts`, which the weekly curated-data audit lists as archived
 - companion articles in `content/blog/2026-march-madness-bracket-analysis.mdx` and `content/blog/2026-march-madness-postmortem.mdx`
 
-## Other Standalone Data Tools
+## Other standalone data tools
 
 - `/news-pulse` reads data through `/api/news-pulse` and `getNewsPulseData()` in `src/lib/newsPulseServer.ts`, which the page's server render also calls and which keeps each feed's last good result in Netlify Blobs; `src/lib/news-pulse-utils.ts` holds the client-side clustering and sentiment helpers
 - `/spacex-mission-control` reads `src/data/spacexSnapshot.generated.json` (rebuilt by `npm run update:spacex`, with launch images from `npm run update:spacex-images`) through `src/lib/spacexData.ts` for both the server render and the client's `/api/spacex/*` calls, and `spacexData.ts` fetches Launch Library live only when the snapshot has no data
@@ -199,7 +199,7 @@ March Madness is split between:
 
 ---
 
-## Job Search & MBA Roles Pipeline
+## Job search and MBA roles pipeline
 
 - **Sources:** ATS boards for 59 tracked companies in `src/constants/mba-companies.ts` (37 Greenhouse, 7 Ashby, 2 SmartRecruiters, 1 Lever, 1 direct-HTML, and 11 manual; 48 actively fetched).
 - **Request-time aggregation:** `/api/mba-jobs` aggregates and normalizes listings with a 30-minute `s-maxage` cache and 8s per-target timeout, filtered by role families and keywords in `src/lib/mba-job-matching.ts`. A request with `?external=on` also pulls Adzuna leads when `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` are set, and the last good result per source persists in the `runtime-last-good` Netlify Blobs store.
@@ -208,7 +208,7 @@ March Madness is split between:
 
 ---
 
-## Rule Of Thumb
+## Rule of thumb
 
 When updating docs:
 

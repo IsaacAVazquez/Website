@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-25
 
 ---
 
@@ -197,7 +197,7 @@ npm run dev
 - `npm run update:tech-startups` processes a hand-maintained seed inside `scripts/buildTechStartupSnapshot.ts`; there is no live source to poll.
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
-- `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot), so set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. Since 2026-06-18 the `update-spacex.yml` workflow also fails loudly when the snapshot is more than 4 days old.
+- `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot), so set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. The `update-spacex.yml` workflow runs `scripts/verifyDataRefresh.ts spacex` right after the refresh, and that step fails the run when the snapshot it leaves is more than 36 hours old, the limit `src/lib/dataFreshnessPolicy.ts` sets for the surface.
 - `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.json` from `scripts/data/frontierModels.source.ts`.
 - If the investments fetch step fails on imports, install the pinned Python packages with `.venv/bin/pip install -r scripts/requirements-investments.txt`. That file is the one place the `defeatbeta-api` version is set.
 
@@ -383,7 +383,7 @@ The MLB, NBA, NFL, golf, and World Cup dashboards read committed JSON snapshots 
 | `npm run build:llms` | Rebuild `public/llms-full.txt` from the profile text and representative articles named in `scripts/buildLlmsFull.mjs` (the second `postbuild` step) |
 | `npm run submit:indexnow` | Post every URL in `public/sitemap.xml` to IndexNow, or only validate the payload with `--dry-run`; no workflow runs it |
 | `npm run start` | Serve the production build |
-| `npm run lint` | Run ESLint against `src` |
+| `npm run lint` | Run ESLint against `src`, `scripts`, `extension` (without `extension/dist`), `netlify`, and `e2e` |
 | `npm run check:blog-dates -- --base=<revision>` | Fail when an existing article's body changed since `<revision>` without a new `updatedAt`; CI runs it before the unit tests |
 | `npm test` | Run Jest |
 | `npm run test:watch` | Run Jest in watch mode |
@@ -453,7 +453,7 @@ Checked-in operational workflows:
 
 Current behavior:
 
-- `test.yml` runs the writing date review (`npm run check:blog-dates`) and unit tests, the TypeScript check and build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`, and a failure there opens or updates an `e2e-matrix-failure` issue
+- `test.yml` runs the writing date review (`npm run check:blog-dates`) and unit tests, the TypeScript check and build, sharded Chromium Playwright E2E, the Python tests for the investments fetch, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`, on Firefox, WebKit, and the two mobile projects, since the shards already ran desktop Chromium on that commit, and a failure there opens or updates an `e2e-matrix-failure` issue
 - `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request, and its concurrency group sets `queue: max` so a burst of merges waits in line and none is cancelled; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
 - `update-investments.yml` runs on manual dispatch and Tuesday through Saturday at `08:30 UTC`, after the provider's dataset for the prior trading day lands (05:53 UTC on 2026-09-28), then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed. The run fails when fewer than 95% of symbols carry a recent price
 - `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July). They share one concurrency group, since both spend the same football-data.org request budget

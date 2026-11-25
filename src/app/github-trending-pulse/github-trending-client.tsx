@@ -71,8 +71,8 @@ function formatShortDate(isoOrDateKey: string): string {
 
 function formatDelta(repo: GitHubTrendingClientRepository): string {
   if (repo.weeklyStarsStatus === "baseline") return "Baseline";
-  const value = formatGitHubCompactNumber(repo.weeklyStars);
-  return repo.weeklyStars > 0 ? `+${value}` : value;
+  const value = formatGitHubCompactNumber(Math.abs(repo.weeklyStars));
+  return repo.weeklyStars > 0 ? `+${value}` : repo.weeklyStars < 0 ? `\u2212${value}` : value;
 }
 
 function statusLabel(repo: GitHubTrendingClientRepository, windowDays: number): string {
@@ -87,6 +87,18 @@ function statusLabel(repo: GitHubTrendingClientRepository, windowDays: number): 
 
 function segmentsAre(count: number): string {
   return `${count} ${count === 1 ? "segment is" : "segments are"}`;
+}
+
+/** The builder lists every failed segment, and separately the ones it restored from the last snapshot. */
+function degradedLine(failedSegments: string[], reusedSegments: string[]): string {
+  const reused = reusedSegments.length;
+  const missing = failedSegments.filter((label) => !reusedSegments.includes(label)).length;
+  if (reused > 0 && missing > 0) {
+    return `${segmentsAre(reused)} using earlier data and ${missing} ${missing === 1 ? "is" : "are"} unavailable right now.`;
+  }
+  return reused > 0
+    ? `${segmentsAre(reused)} using earlier data.`
+    : `${segmentsAre(failedSegments.length)} unavailable right now.`;
 }
 
 function toLogRepo(repo: GitHubTrendingClientRepository): StarLogRepo {
@@ -220,9 +232,10 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
           </p>
           {snapshot.sourceStatus?.status === "degraded" ? (
             <p className="gt-status gt-warn" role="status">
-              {snapshot.sourceStatus.reusedSegments.length > 0
-                ? `${segmentsAre(snapshot.sourceStatus.reusedSegments.length)} using earlier data.`
-                : `${segmentsAre(snapshot.sourceStatus.failedSegments.length)} unavailable right now.`}
+              {degradedLine(
+                snapshot.sourceStatus.failedSegments,
+                snapshot.sourceStatus.reusedSegments
+              )}
             </p>
           ) : null}
         </header>
@@ -366,7 +379,11 @@ function LanguageStrip({
       <div className="gt-strip-notes">
         {leader ? (
           <p className="gt-caption">
-            {leader.language} has {Math.round(leader.share * 100)}% of this week&apos;s star
+            {/* languageShares folds a repository with no primary language into "Other". */}
+            {leader.language === "Other"
+              ? "Repositories with no primary language have"
+              : `${leader.language} has`}{" "}
+            {Math.round(leader.share * 100)}% of this week&apos;s star
             gain, counted across the {count} {count === 1 ? "repository" : "repositories"} in this
             view that gained stars.
           </p>
@@ -556,7 +573,7 @@ function RepoRow({ repo, rank, share, isExpanded, matchedSegments, windowDays, o
         <td data-align="end" className="gt-wide gt-num">
           {formatGitHubCompactNumber(repo.stars)}
         </td>
-        <td className="gt-wide gt-muted">{repo.primaryLanguage ?? "Mixed"}</td>
+        <td className="gt-wide gt-muted">{repo.primaryLanguage ?? "Other"}</td>
         <td className="gt-wide gt-muted">{formatShortDate(repo.pushedAt)}</td>
         <td className="gt-wide" data-align="end">
           <a
@@ -604,7 +621,7 @@ function RepoRow({ repo, rank, share, isExpanded, matchedSegments, windowDays, o
                 </div>
                 <div className="gt-narrow">
                   <dt>Language</dt>
-                  <dd>{repo.primaryLanguage ?? "Mixed"}</dd>
+                  <dd>{repo.primaryLanguage ?? "Other"}</dd>
                 </div>
                 <div className="gt-narrow">
                   <dt>Pushed</dt>

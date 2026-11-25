@@ -12,15 +12,15 @@ const PUBLISHED_POSTS = getPublishedPosts();
 // undated route just gets the build date and a warning naming it. Keep the
 // hand dates in step with each page's own dateModified.
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-10-01",
+  "/": "2026-10-21",
   "/about": "2026-10-19",
-  "/accessibility": "2026-10-02",
+  "/accessibility": "2026-10-26",
   "/privacy": "2026-11-16",
   "/agent-build-index": latestIso(snapshotLastmod("src/data/githubTrendingSnapshot.json"), "2026-10-12"),
   "/ai-dev-tools": "2026-10-25",
   "/arcade": "2026-07-16",
   "/contact": "2026-10-19",
-  "/dashboards": "2026-10-05",
+  "/dashboards": "2026-10-26",
   "/resume": "2026-10-19",
   "/portfolio": "2026-10-09",
   // The index changes whenever a post is published or edited.
@@ -34,24 +34,23 @@ const STATIC_ROUTE_LASTMOD = {
   "/frontier-models": latestIso(snapshotLastmod("src/data/frontierModelsSnapshot.json"), "2026-10-24"),
   "/mba-internship-notifications": "2026-10-12",
   "/mlb": latestIso(snapshotLastmod("src/data/mlbSnapshot.json"), "2026-10-12"),
-  "/museum-log": "2026-10-12",
+  "/museum-log": "2026-11-03",
   "/nba": latestIso(snapshotLastmod("src/data/nbaSnapshot.json"), "2026-10-12"),
   "/now": "2026-10-01",
   "/recipe-finder": "2026-10-12",
-  "/wine-cellar": "2026-10-11",
+  "/wine-cellar": "2026-11-03",
   "/bay-area-transit": latestIso(snapshotLastmod("src/data/bayAreaTransitSnapshot.json"), "2026-10-12"),
   "/changelog": "2026-07-23",
   "/github-trending-pulse": latestIso(snapshotLastmod("src/data/githubTrendingSnapshot.json"), "2026-10-12"),
   "/tech-startup-tracker": latestIso(snapshotLastmod("src/data/techStartupSnapshot.json"), "2026-10-25"),
   "/investments": latestIso(readInvestmentsLastmod(), "2026-10-11"),
   "/investments/before-you-buy": "2026-10-21",
-  "/news-pulse": "2026-10-12",
+  "/news-pulse": "2026-11-03",
   "/spacex-mission-control": latestIso(readSpaceXLastmod(), "2026-10-25"),
   "/polling-aggregator": latestIso(readPollingLastmod(), "2026-10-25"),
   "/premier-league": latestIso(snapshotLastmod("src/data/premierLeagueSnapshot.json"), "2026-10-11"),
   "/score-pools": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
   "/score-pools/tracker": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
-  "/score-pools/settings": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
   "/la-liga": latestIso(snapshotLastmod("src/data/laLigaSnapshot.json"), "2026-10-11"),
   "/nfl": latestIso(snapshotLastmod("src/data/nflSnapshot.json", "updatedAt"), "2026-10-12"),
   "/world-cup-2026": latestIso(snapshotLastmod("src/data/worldCupSnapshot.json"), "2026-10-12"),
@@ -64,12 +63,12 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/trade-calculator": latestIso(readFantasyLastmod(), "2026-10-15"),
   "/fantasy-football/weekly": latestIso(readWeeklyFantasyLastmod(), "2026-10-15"),
   "/fantasy-football/waivers": latestIso(readWeeklyFantasyLastmod(), "2026-10-13"),
-  "/fintech-tools/budget-planner": "2026-10-12",
+  "/fintech-tools/budget-planner": "2026-11-03",
   "/fintech-tools/interchange-iq": "2026-10-12",
   "/fintech-tools/rent-vs-buy": "2026-10-25",
   "/fintech-tools/offer-comparison": "2026-11-02",
   "/food-map": "2026-10-25",
-  "/travel": "2026-10-12",
+  "/travel": "2026-10-22",
   "/travel-deals": "2026-10-25",
   "/blackjack-trainer": "2026-11-10",
 };
@@ -150,7 +149,6 @@ const CHANGEFREQ_BY_ROUTE = {
   // Score pools — odds snapshot refreshes every six hours
   "/score-pools": "daily",
   "/score-pools/tracker": "daily",
-  "/score-pools/settings": "monthly",
   // Sub-daily refresh cadence
   "/earthquake-pulse": "hourly",
   "/bay-area-transit": "hourly",
@@ -264,11 +262,6 @@ function readWeeklyFantasyLastmod() {
   }
 }
 
-// Routable pages that are deliberately unlisted. A page that opts out through
-// its own metadata does not need a row here; this is only for pages whose
-// metadata cannot say it.
-const UNLISTED_ROUTES = {};
-
 /**
  * Every `page.tsx` under `src/app`, as the URL path it serves. Route groups
  * like `(marketing)` contribute no segment, `api/` holds handlers rather than
@@ -315,7 +308,7 @@ function getStaticRouteEntries() {
 
   for (const { route, file } of findPageRoutes(path.join(process.cwd(), "src", "app"))) {
     // Dynamic segments are enumerated by the per-collection builders below.
-    if (route.includes("[") || UNLISTED_ROUTES[route]) continue;
+    if (route.includes("[")) continue;
     if (isRouteOptedOut(fs.readFileSync(file, "utf8"))) continue;
 
     const lastmod = toIsoString(STATIC_ROUTE_LASTMOD[route]);
@@ -457,7 +450,7 @@ function getPublishedPosts() {
 
   return fs
     .readdirSync(contentDirectory)
-    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
+    .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
       const { data } = matter(readFile(path.join("content/blog", file)));
       // The reader in blog.ts drops a post without these (it 404s), so the
@@ -469,7 +462,7 @@ function getPublishedPosts() {
         return null;
       }
       return {
-        slug: file.replace(/\.(mdx|md)$/, ""),
+        slug: file.replace(/\.mdx$/, ""),
         lastmod: toIsoString(data.updatedAt || data.publishedAt),
         topic: data.cluster || data.archiveBucket,
       };

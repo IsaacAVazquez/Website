@@ -16,7 +16,11 @@ import {
   withMinusSign,
   ADP_COMPARABLE_MAX_RANK,
   resolveDraftPicksForModel,
+  assignLineupSlots,
+  formatUpdatedAt,
+  getCurrentDraftSeason,
 } from "@/lib/fantasyUtils";
+import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 import type { Player } from "@/types";
 
 const MS_PER_DAY = 86_400_000;
@@ -39,6 +43,65 @@ describe("dated draft practice eligibility", () => {
 
 /** Minimal Player factory — only the fields getValueVsAdp reads matter here. */
 const playerWith = (fields: Partial<Player>): Player => fields as Player;
+
+describe("formatUpdatedAt", () => {
+  it("prints the year and the display zone, and reads a missing or unparseable stamp as unavailable", () => {
+    expect(formatUpdatedAt("2026-10-26T19:05:00.000Z")).toMatch(/^Oct 26, 2026, 12:05\sPM P[DS]T$/);
+    expect(formatUpdatedAt(null)).toBe("Unavailable");
+    expect(formatUpdatedAt("not-a-date")).toBe("Unavailable");
+  });
+});
+
+describe("getCurrentDraftSeason", () => {
+  it("rolls over on March 1 in UTC", () => {
+    expect(getCurrentDraftSeason(new Date("2027-02-28T23:59:59.000Z"))).toBe(2026);
+    expect(getCurrentDraftSeason(new Date("2027-03-01T00:00:00.000Z"))).toBe(2027);
+  });
+
+  it("reads the UTC month, so a March 1 instant that is still February in Los Angeles is the new season", () => {
+    // 2027-03-01T05:00Z is 9pm on February 28 in Los Angeles.
+    expect(getCurrentDraftSeason(new Date("2027-03-01T05:00:00.000Z"))).toBe(2027);
+  });
+});
+
+describe("assignLineupSlots", () => {
+  const picks = (...positions: Player["position"][]) =>
+    positions.map((position, index) => playerWith({ id: `${position}-${index}`, position }));
+  const lineupFor = (id: (typeof REDRAFT_LINEUP_PRESETS)[number]["id"]) =>
+    REDRAFT_LINEUP_PRESETS.find((preset) => preset.id === id)!.lineup;
+  const seated = (assignment: ReturnType<typeof assignLineupSlots>) =>
+    assignment.slots.map((slot) => `${slot.slot}:${slot.player?.id ?? ""}`);
+
+  it("fills the exact slot before the flex and benches the overflow", () => {
+    const assignment = assignLineupSlots(lineupFor("traditional"), picks("RB", "RB", "WR", "RB", "RB"));
+    expect(seated(assignment)).toEqual([
+      "QB:", "RB:RB-0", "RB:RB-1", "WR:WR-2", "WR:", "TE:", "FLX:RB-3", "K:", "DST:",
+    ]);
+    expect(assignment.bench).toBe(1);
+    expect(assignment.openExact).toEqual({ QB: 1, WR: 1, TE: 1, K: 1, DST: 1 });
+    expect(assignment.flexOpen).toBe(false);
+  });
+
+  it("keeps a wide receiver out of the flex while a third receiver slot is open", () => {
+    const assignment = assignLineupSlots(lineupFor("three-wr"), picks("WR", "WR", "WR", "QB", "QB"));
+    expect(assignment.slots.filter((slot) => slot.slot === "WR").every((slot) => slot.player)).toBe(true);
+    expect(assignment.flexOpen).toBe(true);
+    expect(assignment.bench).toBe(1);
+    expect(assignment.openExact).toEqual({ RB: 2, TE: 1, K: 1, DST: 1 });
+  });
+
+  it("has two flex slots and no kicker or defense slot on the no K/DST preset", () => {
+    const assignment = assignLineupSlots(lineupFor("three-wr-no-kdst"), picks("TE", "TE", "TE", "TE", "K"));
+    expect(assignment.slots.map((slot) => slot.slot)).toEqual([
+      "QB", "RB", "RB", "WR", "WR", "WR", "TE", "FLX", "FLX",
+    ]);
+    expect(assignment.slots.filter((slot) => slot.slot === "FLX").map((slot) => slot.player?.id)).toEqual([
+      "TE-1", "TE-2",
+    ]);
+    expect(assignment.bench).toBe(2);
+    expect(assignment.flexOpen).toBe(false);
+  });
+});
 
 describe("getConsensusSpread", () => {
   it("returns no label when the source does not publish expert spread", () => {
@@ -78,6 +141,18 @@ describe("getSnapshotStaleness", () => {
     const stale = new Date(inSeasonNow.getTime() - 5 * MS_PER_DAY).toISOString();
     expect(getSnapshotStaleness(aging, inSeasonNow)).toBe("aging");
     expect(getSnapshotStaleness(stale, inSeasonNow)).toBe("stale");
+  });
+
+  it("holds the daily thresholds through Weeks 17 and 18 in early January", () => {
+    // The cron also runs daily on January 1 to 12, so a five day old board is
+    // stale on the 5th and back on the weekly band from the 13th.
+    const fiveDaysBefore = (now: Date) => new Date(now.getTime() - 5 * MS_PER_DAY).toISOString();
+    const weekEighteen = new Date("2027-01-05T12:00:00.000Z");
+    const lastDailyDay = new Date("2027-01-12T23:59:59.000Z");
+    const firstWeeklyDay = new Date("2027-01-13T00:00:00.000Z");
+    expect(getSnapshotStaleness(fiveDaysBefore(weekEighteen), weekEighteen)).toBe("stale");
+    expect(getSnapshotStaleness(fiveDaysBefore(lastDailyDay), lastDailyDay)).toBe("stale");
+    expect(getSnapshotStaleness(fiveDaysBefore(firstWeeklyDay), firstWeeklyDay)).toBe("fresh");
   });
 
   it("treats a missing or invalid date as stale rather than fresh", () => {

@@ -90,14 +90,7 @@ export function createRedraftRoomConfig(
     MAXIMUM_SEASON,
     "season"
   );
-  if (
-    options.draftOrder !== undefined &&
-    options.draftType !== undefined &&
-    options.draftOrder !== options.draftType
-  ) {
-    throw new RangeError("draftOrder and draftType cannot disagree.");
-  }
-  const draftOrder = options.draftOrder ?? options.draftType ?? "snake";
+  const draftOrder = options.draftOrder ?? "snake";
   const scoring = options.scoring ?? "PPR";
 
   if (!DRAFT_ORDERS.includes(draftOrder)) {

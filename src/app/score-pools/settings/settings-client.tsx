@@ -12,10 +12,6 @@ import type { StoredPool } from "@/lib/scorePools/persistence";
 import type { DevigMethod, Posture, ScoringBasis } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot } from "@/types/scorePools";
 import {
-  FIELD_HINT,
-  FIELD_INPUT,
-  FIELD_LABEL,
-  PILL_BUTTON,
   SampleDataNotice,
   ScorePoolsTitleBar,
   formatAge,
@@ -38,7 +34,6 @@ const TIMEZONES = [
   "UTC",
 ];
 
-const SECTION = "sp-section";
 const HINT_STYLE = {
   display: "block" as const,
   marginTop: "var(--c97-sp-1)",
@@ -75,7 +70,7 @@ function NumberSetting({
   const outOfRange = typed !== null && Number.isFinite(typed) && clamp(typed) !== typed;
   return (
     <label className="block">
-      <span className={FIELD_LABEL}>{label}</span>
+      <span className="c97-kicker">{label}</span>
       <input
         type="number"
         inputMode="decimal"
@@ -100,16 +95,16 @@ function NumberSetting({
           else if (!allowEmpty) onChange(clamp(0));
           setDraft(null);
         }}
-        className={FIELD_INPUT}
+        className="c97-field"
         style={{ marginTop: "var(--c97-sp-1)" }}
       />
       {hint ? (
-        <span className={FIELD_HINT} style={HINT_STYLE}>
+        <span className="c97-prose" style={HINT_STYLE}>
           {hint}
         </span>
       ) : null}
       {outOfRange ? (
-        <span className={FIELD_HINT} style={{ ...HINT_STYLE, color: "var(--c97-negative)" }}>
+        <span className="c97-prose" style={{ ...HINT_STYLE, color: "var(--c97-negative)" }}>
           Use a value from {min ?? "any"} to {max ?? "any"}. It snaps into range when you leave the field.
         </span>
       ) : null}
@@ -132,11 +127,11 @@ function SelectSetting<T extends string>({
 }) {
   return (
     <label className="block">
-      <span className={FIELD_LABEL}>{label}</span>
+      <span className="c97-kicker">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value as T)}
-        className={FIELD_INPUT}
+        className="c97-field"
         style={{ marginTop: "var(--c97-sp-1)" }}
       >
         {options.map((option) => (
@@ -146,7 +141,7 @@ function SelectSetting<T extends string>({
         ))}
       </select>
       {hint ? (
-        <span className={FIELD_HINT} style={HINT_STYLE}>
+        <span className="c97-prose" style={HINT_STYLE}>
           {hint}
         </span>
       ) : null}
@@ -174,6 +169,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
   const [newRivalError, setNewRivalError] = useState("");
   const [status, setStatus] = useState("");
   const newRivalErrorId = useId();
+  const shootoutNoteId = useId();
   const newRivalInputRef = useRef<HTMLInputElement>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   // One "now" per visit keeps the freshness column pure across renders.
@@ -196,7 +192,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
           <SampleDataNotice snapshot={snapshot} />
         </div>
 
-        <section className={SECTION} aria-label="Pools">
+        <section className="sp-section" aria-label="Pools">
           <h2 className="sp-h2">Pools</h2>
           <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
             {pools.map((entry) => (
@@ -229,11 +225,11 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             }}
           >
             <label className="block">
-              <span className={FIELD_LABEL}>League</span>
+              <span className="c97-kicker">League</span>
               <select
                 value={newPoolLeague}
                 onChange={(event) => setNewPoolLeague(event.target.value)}
-                className={FIELD_INPUT}
+                className="c97-field"
                 style={{ marginTop: "var(--c97-sp-1)" }}
               >
                 {snapshot.leagues.map((entry) => (
@@ -244,19 +240,19 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </select>
             </label>
             <label className="block">
-              <span className={FIELD_LABEL}>Name</span>
+              <span className="c97-kicker">Name</span>
               <input
                 type="text"
                 value={newPoolName}
                 onChange={(event) => setNewPoolName(event.target.value)}
                 placeholder="Office pool"
-                className={FIELD_INPUT}
+                className="c97-field"
                 style={{ marginTop: "var(--c97-sp-1)" }}
               />
             </label>
             <button
               type="submit"
-              className={PILL_BUTTON}
+              className="c97-btn"
             >
               Add pool
             </button>
@@ -268,14 +264,18 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
         {pool ? (
           <>
-            <section className={SECTION} aria-label="Scoring rules">
+            <section className="sp-section" aria-label="Scoring rules">
               <h2 className="sp-h2">Scoring rules</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Set these to match your pool&apos;s own rules, since every recommendation is ranked by
                 the points it should earn under them. The scoring basis matters most in knockouts,
                 since under 90-minute scoring a game that finishes 1-1 and goes to penalties scores
                 as a 1-1 draw, and under final-result scoring your pick compares against the score
-                after extra time.
+                after extra time.{" "}
+                <span id={shootoutNoteId}>
+                  The shootout setting only applies under final-result scoring, so it is switched
+                  off while the basis is the 90-minute result.
+                </span>
               </p>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <NumberSetting
@@ -329,6 +329,9 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   <input
                     type="checkbox"
                     checked={pool.rules.penaltiesCountAsWin}
+                    // Only the final-result path reads it, so it is off under 90-minute scoring.
+                    disabled={pool.rules.basis !== "finalResult"}
+                    aria-describedby={shootoutNoteId}
                     onChange={(event) =>
                       patch((current) => ({
                         ...current,
@@ -344,18 +347,18 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </div>
             </section>
 
-            <section className={SECTION} aria-label="Pool basics">
+            <section className="sp-section" aria-label="Pool basics">
               <h2 className="sp-h2">
                 {pool.name}
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <label className="block">
-                  <span className={FIELD_LABEL}>Pool name</span>
+                  <span className="c97-kicker">Pool name</span>
                   <input
                     type="text"
                     value={pool.name}
                     onChange={(event) => patch((current) => ({ ...current, name: event.target.value }))}
-                    className={FIELD_INPUT}
+                    className="c97-field"
                     style={{ marginTop: "var(--c97-sp-1)" }}
                   />
                 </label>
@@ -396,7 +399,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </div>
             </section>
 
-            <section className={SECTION} aria-label="Rivals">
+            <section className="sp-section" aria-label="Rivals">
               <h2 className="sp-h2">Rivals</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 The people you&apos;re actually racing. Their picks go in on the tracker page; the
@@ -406,7 +409,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 {pool.rivals.map((rival) => (
                   <li key={rival.id} className="sp-row sp-row-form">
                     <label className="block">
-                      <span className={FIELD_LABEL}>Name</span>
+                      <span className="c97-kicker">Name</span>
                       <input
                         type="text"
                         value={rival.name}
@@ -416,7 +419,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                             name: event.target.value,
                           }))
                         }
-                        className={FIELD_INPUT}
+                        className="c97-field"
                         style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
@@ -432,7 +435,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     />
                     <button
                       type="button"
-                      className={PILL_BUTTON}
+                      className="c97-btn"
                       onClick={() => {
                         removeRival(pool.id, rival.id);
                         setStatus(`Removed ${rival.name} and their saved picks.`);
@@ -463,7 +466,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 }}
               >
                 <label className="block">
-                  <span className={FIELD_LABEL}>New rival</span>
+                  <span className="c97-kicker">New rival</span>
                   <input
                     type="text"
                     ref={newRivalInputRef}
@@ -475,13 +478,13 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     aria-invalid={!!newRivalError || undefined}
                     aria-describedby={newRivalError ? newRivalErrorId : undefined}
                     placeholder="Dana"
-                    className={FIELD_INPUT}
+                    className="c97-field"
                     style={{ marginTop: "var(--c97-sp-1)" }}
                   />
                 </label>
                 <button
                   type="submit"
-                  className={PILL_BUTTON}
+                  className="c97-btn"
                 >
                   Add rival
                 </button>
@@ -504,7 +507,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 so a new pool can skip them.
               </p>
               <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)" }}>
-                <section className={SECTION} aria-label="Standing and risk">
+                <section className="sp-section" aria-label="Standing and risk">
                   <h3 className="sp-h3">Your standing and how much risk to take</h3>
                   <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     The gap to whoever sits nearest above and below you, against the games remaining,
@@ -592,7 +595,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </div>
                 </section>
 
-                <section className={SECTION} aria-label="Rest of the pool">
+                <section className="sp-section" aria-label="Rest of the pool">
                   <h3 className="sp-h3">What the rest of the pool picks</h3>
                   <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     An estimate of what everyone else in the pool submits, which is mostly the favorite
@@ -632,7 +635,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </div>
                 </section>
 
-                <section className={SECTION} aria-label="Odds conversion">
+                <section className="sp-section" aria-label="Odds conversion">
                   <h3 className="sp-h3">How the odds become probabilities</h3>
                   <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                     <SelectSetting<DevigMethod>
@@ -650,7 +653,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </div>
             </details>
 
-            <section className={SECTION} aria-label="Data status">
+            <section className="sp-section" aria-label="Data status">
               <h2 className="sp-h2">Data status</h2>
               <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="League data status (scrollable)" tabIndex={0}>
                 <table className="c97-table" aria-label="Snapshot status per league">
@@ -694,7 +697,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </p>
             </section>
 
-            <section className={SECTION} aria-label="Delete pool">
+            <section className="sp-section" aria-label="Delete pool">
               <h2 className="sp-h2">Delete this pool</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
@@ -702,14 +705,14 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </p>
               <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {!confirmDelete ? (
-                  <button type="button" className={PILL_BUTTON} onClick={() => setConfirmDelete(true)}>
+                  <button type="button" className="c97-btn" onClick={() => setConfirmDelete(true)}>
                     Delete pool…
                   </button>
                 ) : (
                   <>
                     <button
                       type="button"
-                      className={PILL_BUTTON}
+                      className="c97-btn"
                       // A pool name has no length limit and .c97-btn sets nowrap,
                       // so a long name wraps inside the button, not past the column.
                       style={{
@@ -726,7 +729,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     >
                       Yes, delete {pool.name}
                     </button>
-                    <button type="button" className={PILL_BUTTON} onClick={() => setConfirmDelete(false)}>
+                    <button type="button" className="c97-btn" onClick={() => setConfirmDelete(false)}>
                       Keep it
                     </button>
                   </>

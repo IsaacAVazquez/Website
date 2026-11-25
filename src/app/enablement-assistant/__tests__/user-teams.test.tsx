@@ -24,3 +24,16 @@ it("saves a real team, restores progress, merges another tab's name, and creates
   fireEvent.click(screen.getByRole("button", { name: "Save team" }));
   expect(screen.getByRole("button", { name: "Edit New team" })).toBeVisible();
 });
+it("keeps the checklist when a layer is unchecked and checked again before saving", () => {
+  render(<UserTeams />);
+  fireEvent.change(screen.getByLabelText("Team name"), { target: { value: "Payments" } });
+  fireEvent.click(screen.getByRole("button", { name: "Save team" }));
+  fireEvent.click(screen.getByRole("checkbox", { name: /Complete Name the first workflows/ }));
+  expect(screen.getByText("1 of 5 steps complete.")).toBeVisible();
+  // Checking a layer again moves it to the end of the list the form holds.
+  fireEvent.click(screen.getByRole("checkbox", { name: "Unit" }));
+  fireEvent.click(screen.getByRole("checkbox", { name: "Unit" }));
+  fireEvent.click(screen.getByRole("button", { name: "Save team changes" }));
+  expect(screen.getByText("1 of 5 steps complete.")).toBeVisible();
+  expect(screen.getByRole("checkbox", { name: /Complete Name the first workflows/ })).toBeChecked();
+});

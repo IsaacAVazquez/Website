@@ -1,6 +1,6 @@
 # Fantasy football platform setup
 
-Status as of November 2, 2026.
+Status as of November 24, 2026.
 
 This is the current operating map for the fantasy football pages, their supported room types, and the checked-in data behind them. I would treat anything outside the matrices below as unsupported until it has its own source, rules contract, model, and tests.
 
@@ -43,7 +43,7 @@ The redraft tracker is a one-QB, managed redraft assistant. These are the exact 
 
 The three saved lineup presets are 2 WR plus FLEX, 3 WR plus FLEX, and 3 WR with two FLEX spots and no K or DST. A user can also choose any lineup inside the bounds above as long as the starting slots fit inside the selected number of rounds.
 
-The redraft contract does not include Superflex, two-QB, tight end premium, points per first down, custom passing touchdown values, yardage bonuses, IDP, auction or salary cap, keeper, dynasty, third-round reversal, guillotine, or arbitrary team and round counts. The tracker records `isKeeper: false` on manual picks and has no keeper assignment workflow. It also has no historical season selector.
+The redraft contract does not include Superflex, two-QB, tight end premium, points per first down, custom passing touchdown values, yardage bonuses, IDP, auction or salary cap, keeper, dynasty, third-round reversal, guillotine, or arbitrary team and round counts. The tracker has no keeper assignment workflow and records no keeper flag on a pick. It also has no historical season selector.
 
 ## Trade estimate contract
 
@@ -115,7 +115,7 @@ Reading the public pages does not by itself grant permission to store and public
 
 `generatedAt` says when this site built a file. `upstreamUpdatedAt` or a source-specific `asOf` says when the underlying board changed. The redraft API response headers and the data revision ledger use `upstreamUpdatedAt`, with `generatedAt` only as a legacy fallback.
 
-From July through December, the UI labels a source Current before two days, Aging from two through four days, and Stale after four days. Outside that window, the boundaries are eight and fourteen days. Missing or invalid dates fail closed as stale. The operations freshness gate for redraft publication allows a 36-hour upstream age from July through September until Week 1 opens, 200 days from the Week 1 opener while FantasyPros keeps its draft board frozen, and ten days otherwise. Best ball workflow checks require ranking, ADP, Superflex, and schedule sources no older than four days from July through December or fourteen days outside it, and the built snapshot cannot be older than ten days. Once the regular season opens those age checks only warn, because the best ball board is frozen at its dated sources by design. The workflow holds redraft ADP to the same four and fourteen-day limits. Before the regular season opens an older ADP reading turns the run red without holding back the rankings commit, and after it opens the same reading only warns.
+From July through January 12, the window the daily refresh runs in, the UI labels a source Current before two days, Aging from two through four days, and Stale after four days. Outside that window, the boundaries are eight and fourteen days. Missing or invalid dates fail closed as stale. The operations freshness gate for redraft publication allows a 36-hour upstream age from July through September until Week 1 opens, 200 days from the Week 1 opener while FantasyPros keeps its draft board frozen, and ten days otherwise. Best ball workflow checks require ranking, ADP, Superflex, and schedule sources no older than four days from July through January 12 or fourteen days outside it, and the built snapshot cannot be older than ten days. Once the regular season opens those age checks only warn, because the best ball board is frozen at its dated sources by design. The workflow holds redraft ADP to the same four and fourteen-day limits. Before the regular season opens an older ADP reading turns the run red without holding back the rankings commit, and after it opens the same reading only warns.
 
 Exact best ball cards disappear when their required consensus or matching ADP is stale, when the PPR best ball consensus fails its self-consistency check, or, for the contests that score Week 17 game stacks, when the Week 17 schedule is missing, stale, or maps fewer than 30 teams. Redraft removes stale or prior-slate market fields before Draft Outlook uses a restored pick. Neither snapshot contains a separate live injury or player-news feed, so every draft page tells the user to check the live room and current team news.
 
@@ -131,7 +131,7 @@ At runtime, redraft normalization rejects a present scoring format that does not
 
 Best ball requires at least four recorded ranking experts, 250 ranking rows, and 80% preservation of the prior same-season board and top 150. The PPR best ball board also has to agree with itself, so among its top 150 players by published average rank no more than five may carry a consensus rank more than ten places outside that player's published expert range. A fresh ADP join needs at least 150 matches and 80% preservation of prior matches and top prices. A fresh Superflex board needs at least 150 matches, 90% coverage of the full board, 95% coverage of the top 150, 90% coverage of all quarterbacks, and complete rank and tier coverage for the first 42 quarterbacks. The 42-player core matches the midpoint of three to four quarterbacks across the supported 12-team room. The workflow also requires at least 30 validated Week 17 team mappings.
 
-The weekly board sets its own floors. Each weekly page needs at least five contributing experts, the flex page at least 150 rows, and the quarterback page at least 24. The builder refuses a page more than one week behind the calendar, a page last updated more than 72 hours before the build, and a flex page from a different week than the quarterback page. Every published format must carry at least 120 flex players and 24 quarterbacks, and within the same week the PPR flex board cannot drop below 80% of the committed one. The rest-of-season board needs 300 rows from at least four experts, and a failed rest-of-season fetch keeps the previous build's board for the same season without failing the weekly board.
+The weekly board sets its own floors. Each weekly page needs at least five contributing experts, the flex page at least 150 rows, and the quarterback page at least 24. The builder refuses a page more than one week behind the calendar, a page last updated more than 72 hours before the build, and a flex page from a different week than the quarterback page. Every published format must carry at least 120 flex players and 24 quarterbacks, and within the same week no format's flex board and no quarterback board can drop below 80% of the committed one. The rest-of-season board needs 300 rows from at least four experts, and a failed rest-of-season fetch keeps the previous build's board for the same season without failing the weekly board.
 
 Consensus publication safety takes precedence over ADP. The redraft ADP fetch keeps the prior attributed source when possible and lets ADP degrade independently from consensus. Best ball secondary fetches keep the prior same-season ADP, Superflex, or schedule input when possible. A failed best ball rankings refresh, including one rejected by the self-consistency check, keeps the committed snapshot while it is at most ten days old, and at any age once the regular season has opened. The UI hides market-driven surfaces when provenance or freshness is not usable.
 
@@ -181,7 +181,6 @@ Run the repository gates before shipping a data, route, or model change.
 ```bash
 npm run typecheck
 npm run lint
-npx eslint scripts/buildFantasySnapshots.ts scripts/__tests__/buildFantasySnapshots.test.ts
 npm run build
 npx playwright test e2e/fantasy-football.spec.ts
 ```

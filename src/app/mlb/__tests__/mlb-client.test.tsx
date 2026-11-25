@@ -53,6 +53,8 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe("MlbClient", () => {
+  const originalFetch = global.fetch;
+
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
@@ -61,6 +63,8 @@ describe("MlbClient", () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    // restoreAllMocks does not undo a direct assignment, so a test's fetch would leak into the next.
+    global.fetch = originalFetch;
   });
 
   it("renders standings, navigates league filters, and switches detail tabs", async () => {
@@ -184,6 +188,8 @@ describe("MlbClient", () => {
 
   it("opens a bare wild card link on the wild card races", async () => {
     currentSearchParams = new URLSearchParams("view=wildcard");
+    // Never settles, so the test ends with the request still open.
+    global.fetch = jest.fn(() => new Promise(() => {})) as unknown as typeof fetch;
     render(
       <MlbClient
         initialState={{ ...DEFAULT_MLB_STATE, view: "wildcard" }}

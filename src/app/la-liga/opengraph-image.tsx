@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Sports Product",
     title: "La Liga Pulse",
     description:
-      "La Liga dashboard for the standings, the title race, European qualification, and relegation pressure from a checked-in official snapshot.",
+      "La Liga dashboard for the standings, the title race, European qualification, and relegation pressure from a checked-in football-data.org snapshot.",
     accent: "cobalt",
     footer: "isaacvazquez.com/la-liga",
   });

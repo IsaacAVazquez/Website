@@ -7,16 +7,12 @@ export const metadata: Metadata = constructMetadata({
   title: "Search",
   description: "Search across the pages, writing, and tools on this site, covering product strategy, QA engineering, fantasy football analytics, and fintech tooling.",
   canonicalUrl: "/search",
-  dateModified: "2025-02-05",
+  dateModified: "2026-10-26",
   noIndex: true,
 });
 
 interface SearchPageProps {
-  searchParams: Promise<{
-    q?: string;
-    type?: string;
-    category?: string;
-  }>;
+  searchParams: Promise<unknown>;
 }
 
 // Each chip runs that search. The popular queries that used to sit in their
@@ -33,7 +29,9 @@ const topicSearches = [
 ];
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const { q, type, category } = await searchParams;
+  // The client wrapper reads the query string itself. Awaiting it here keeps
+  // the route dynamic, which useSearchParams needs without a Suspense boundary.
+  await searchParams;
 
   return (
     <>
@@ -51,11 +49,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
       <section className="c97-band c97-band-continues" data-c97-surface="paper">
         <div className="c97-shell">
-          <SearchInterfaceClient
-            initialQuery={q}
-            initialType={type}
-            initialCategory={category}
-          />
+          <SearchInterfaceClient />
         </div>
       </section>
 

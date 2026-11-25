@@ -117,7 +117,7 @@ export function FrontierModelsClient({
   const [extraFiltersOpen, setExtraFiltersOpen] = useState(hasExtraFilter);
 
   const liveFactsNote = snapshot.liveFacts
-    ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
+    ? ` · facts auto-checked ${formatLongUtcDate(snapshot.liveFacts.checkedAt)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
     : "";
   const asOfLine = `Snapshot built ${updatedAt}${liveFactsNote}`;
 
@@ -179,14 +179,18 @@ export function FrontierModelsClient({
             >
               {/* A set filter holds the block open. React would not reopen a
                   details the browser had just closed, because the open prop
-                  stays true, so the close is stopped at the click. */}
+                  stays true, so the close is stopped at the click, and the
+                  summary says why it will not close. */}
               <summary
+                aria-disabled={hasExtraFilter || undefined}
                 onClick={(event) => {
                   if (hasExtraFilter) event.preventDefault();
                 }}
               >
                 <span data-when="closed">More filters</span>
-                <span data-when="open">Fewer filters</span>
+                <span data-when="open">
+                  {hasExtraFilter ? "Open while a filter is set" : "Fewer filters"}
+                </span>
               </summary>
               <div className="frm-more-body">
                 <FilterGroup
@@ -225,6 +229,10 @@ export function FrontierModelsClient({
                     })
                   }
                 />
+                <p className="frm-tier-note">
+                  A tier goes by the higher of a model&apos;s input and output price per million
+                  tokens, so Budget is under $1, Standard is under $10, and Premium is $10 and up.
+                </p>
               </div>
             </details>
           </div>

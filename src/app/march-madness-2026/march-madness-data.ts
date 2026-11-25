@@ -236,7 +236,7 @@ export const BRACKET: Record<"east" | "west" | "south" | "midwest", RegionData> 
     winner: "Arizona",
     r1: [
       { s1: 1, t1: "Arizona", s2: 16, t2: "Long Island", w: 1, tags: [] },
-      { s1: 9, t1: "Utah St.", s2: 8, t2: "Villanova", w: 1, tags: ["Villanova −9%+ Hodge out"] },
+      { s1: 9, t1: "Utah St.", s2: 8, t2: "Villanova", w: 1, tags: ["Villanova −6% + Hodge out"] },
       { s1: 5, t1: "Wisconsin", s2: 12, t2: "High Point", w: 1, tags: ["Both going to PT"] },
       { s1: 4, t1: "Arkansas", s2: 13, t2: "Hawaii", w: 1, tags: ["Hawaii −9%"] },
       { s1: 6, t1: "BYU", s2: 11, t2: "NC St./Texas", w: 1, tags: [] },
@@ -344,8 +344,8 @@ export const PICKS: PickEntry[] = [
     round: "R1",
     region: "West",
     pick: "Utah St. over Villanova",
-    reason: "Villanova ET→PT −9% + Matthew Hodge (starting guard) out",
-    body: "Villanova (Philadelphia, PA, Eastern) travels all the way west to San Diego (Pacific), a 3-zone westward jump in the final broadcast slot carrying a 9% output penalty. On top of that, Matthew Hodge (starting guard, 9 Pts/4 Reb) is out. Utah St. is a Mountain time team traveling to Pacific, just 1 zone, not in the final slot, so only a −3% hit. The net differential is enormous. Utah St. wins comfortably.",
+    reason: "Villanova ET→PT −6% final slot + Matthew Hodge (starting guard) out",
+    body: "Villanova (Philadelphia, PA, Eastern) travels all the way west to San Diego (Pacific), a 3-zone westward jump in the final broadcast slot carrying a 6% output penalty. On top of that, Matthew Hodge (starting guard, 9 Pts/4 Reb) is out. Utah St. is a Mountain time team traveling to Pacific, just 1 zone west in the same slot, so only a −2% hit. The travel gap and the injury both point the same way. Utah St. wins comfortably.",
   },
   {
     group: "tz",
@@ -390,7 +390,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Houston over Florida",
     reason: "Florida ET→CT −2% final slot · Houston home regional (0%) · KP#5 vs KP#4 · Florida fringe-trap",
-    body: "This is the biggest upset in the bracket and the most analytically loaded pick. Houston's regional site is literally their home city. They play Round 1/2 in Oklahoma City (CT, same zone), then the Elite Eight in Houston, TX (CT, still home). Zero accumulated TZ penalty through five rounds. Florida (Gainesville, Eastern) travels one zone west to Houston in what will be the final evening game, triggering the 2% westward penalty. The KenPom gap is razor thin: Florida is #4, Houston is #5 in the blended rankings. Florida is flagged as 'Fringe Trap, too fast' in the Trapezoid model. Houston's defense is elite (#5 adj. def. eff.). The TZ advantage plus defensive profile plus Trapezoid flag tips this to Houston.",
+    body: "This is the biggest upset in the bracket and the most analytically loaded pick. Houston's regional site is literally their home city. They play Round 1/2 in Oklahoma City (CT, same zone), then the Elite Eight in Houston, TX (CT, still home). Zero accumulated TZ penalty through four rounds. Florida (Gainesville, Eastern) travels one zone west to Houston in what will be the final evening game, triggering the 2% westward penalty. The KenPom gap is razor thin: Florida is #4, Houston is #5 in the blended rankings. Florida is flagged as 'Fringe Trap, too fast' in the Trapezoid model. Houston's defense is elite (#5 adj. def. eff.). The TZ advantage plus defensive profile plus Trapezoid flag tips this to Houston.",
   },
   {
     group: "analytics",
@@ -399,7 +399,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "St. John's over N. Iowa",
     reason: "St. John's underseeded +3 · KP#15 as a 5-seed · N. Iowa is 68th in adjusted offensive efficiency",
-    body: "St. John's (Big East) is the 15th-best team in the blended multi-system rankings playing as a 5-seed, underseeded by 3 positions on the S-curve. Northern Iowa ranks 68th in adjusted offensive efficiency among the 68 tournament teams (second-worst in the field). This is a comfortable first-round win.",
+    body: "St. John's (Big East) is the 15th-best team in the blended multi-system rankings playing as a 5-seed, underseeded by 3 positions on the S-curve. Northern Iowa ranks 68th in adjusted offensive efficiency among the 68 tournament teams (worst in the field). This is a comfortable first-round win.",
   },
   {
     group: "analytics",
@@ -480,7 +480,7 @@ export const PICKS: PickEntry[] = [
     region: "West",
     pick: "Arizona to the Final Four (then −9% in Indy)",
     reason: "Perfect PT path all the way, then the cliff: PT→ET −9% vs Duke at 0%",
-    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through six rounds. They're #3 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke, who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
+    body: "Arizona's path through the West is perfectly aligned: Tucson (Pacific), San Diego (Pacific), San Jose (Pacific). Zero accumulated travel penalty through four rounds. They're #3 in the blended rankings, #1 in SOR. Then they board a plane to Indianapolis (Eastern) and absorb a 9% output penalty for the national semifinal against Duke, who has been at 100% output since day one. The analytics gap between Duke and Arizona is not large enough to survive a 9-point swing. Arizona is eliminated in the semis.",
   },
   {
     group: "confirm",
@@ -489,7 +489,7 @@ export const PICKS: PickEntry[] = [
     region: "South",
     pick: "Houston to the Final Four",
     reason: "Home regional (0% accumulated) · KP#5 · elite defense · only −3% at Final Four",
-    body: "Houston's structural TZ advantage is the most underappreciated factor in the bracket. Oklahoma City (Round 1/2) is Central time, same zone as Houston. Their regional site is literally Houston, TX. Zero accumulated TZ penalty through five rounds. They pick up just −3% heading to Indianapolis for the Final Four, the smallest penalty among the four Final Four teams. For a KP#5 team with the 5th-best adjusted defensive efficiency in the field, that's a significant structural edge. They beat Florida (who pays −2% at the Houston regional) in the Elite Eight and face Michigan in Indianapolis.",
+    body: "Houston's structural TZ advantage is the most underappreciated factor in the bracket. Oklahoma City (Round 1/2) is Central time, same zone as Houston. Their regional site is literally Houston, TX. Zero accumulated TZ penalty through four rounds. They pick up just −3% heading to Indianapolis for the Final Four, the smallest penalty among the four Final Four teams. For a KP#5 team with the 5th-best adjusted defensive efficiency in the field, that's a significant structural edge. They beat Florida (who pays −2% at the Houston regional) in the Elite Eight and face Michigan in Indianapolis.",
   },
 ];
 

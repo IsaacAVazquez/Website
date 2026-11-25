@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useId, useImperativeHandle, useMemo, useRef, useState, type Ref } from "react";
 import { normalizeAdpPlayerName, normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
+import { FANTASY_TRADE_MAX_PLAYERS_PER_SIDE } from "@/lib/fantasyTradePersistence";
 import type { Player } from "@/types";
 
 const RESULT_LIMIT = 8;
@@ -189,7 +190,7 @@ export function TradePlayerCombobox({
               setActiveIndex(-1);
             }
           }}
-          placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
+          placeholder={disabled ? `${FANTASY_TRADE_MAX_PLAYERS_PER_SIDE}-player limit reached` : "Search name, team, or position"}
           className="ffb-search-input"
         />
       </label>

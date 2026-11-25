@@ -39,6 +39,5 @@ export function useDraftTimer({ currentPick, durationSeconds, enabled, isActive 
   return {
     secondsLeft,
     isExpired: enabled && isActive && secondsLeft <= 0,
-    isRunning: enabled && isActive,
   };
 }

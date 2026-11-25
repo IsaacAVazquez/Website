@@ -65,14 +65,12 @@ import { MuseumTripPlanner } from "./MuseumTripPlanner";
 import { MUSEUM_EXHIBITIONS_CHECKED_AT } from "@/data/museumExhibitions";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useClientNow } from "@/hooks/useClientNow";
 
 interface Props {
   initialState: MuseumRouteState;
   snapshot: MuseumSnapshot;
 }
-
-const subscribeToLocalDate = () => () => {};
-const getServerLocalDate = () => null;
 
 // The width from which the title and the strip of last visits fit one row of
 // the shell (see .mlog-head .mlog-strip-wrap). It reads the viewport, so a
@@ -1249,9 +1247,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     removeVisit,
   } = useMuseumLog();
 
-  // The server snapshot stays null because its timezone can differ from the
-  // visitor's. React reads the local date after hydration without an effect.
-  const today = useSyncExternalStore(subscribeToLocalDate, toLocalDateKey, getServerLocalDate);
+  // Null on the server, whose timezone can differ from the visitor's, and the
+  // visitor's local date once the page has hydrated.
+  const now = useClientNow();
+  const today = now === null ? null : toLocalDateKey(new Date(now));
 
   // The strip only renders once the saved log is read. Beside the title it
   // costs the catalog a line or two, and where it cannot fit there it goes
@@ -1367,16 +1366,21 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   ];
 
   // A dash until the saved log is read, so the server render never states a count of zero.
-  const visitedCount = hydrated ? userState.visited.length : "—";
+  // Only visits to museums the catalog still holds count, so the figure cannot pass the total.
+  const visitedCount = hydrated ? userState.visited.filter((v) => museumById[v.museumId]).length : "—";
   // The sentence at its widest, which the stylesheet sizes the real one to. Two
   // zeros at least, since the dash is wider than one figure and narrower than two.
   const widestVisitedLine = `You’ve visited ${"0".repeat(Math.max(2, String(snapshot.museums.length).length))} of the ${snapshot.museums.length}.`;
+  // Empty until the visitor's date is known, since the server cannot say what runs today.
   const exhibitsLine =
-    exhibitsNowCount === 0
-      ? "None lists an exhibit running today."
-      : exhibitsNowCount === 1
-        ? "1 museum has an exhibit on view today."
-        : `${exhibitsNowCount} museums have an exhibit on view today.`;
+    today === null
+      ? ""
+      : exhibitsNowCount === 0
+        ? "None lists an exhibit running today."
+        : exhibitsNowCount === 1
+          ? "1 museum has an exhibit on view today."
+          : `${exhibitsNowCount} museums have an exhibit on view today.`;
+  const widestExhibitsLine = `${"0".repeat(String(snapshot.museums.length).length)} museums have an exhibit on view today.`;
 
   return (
     <div className="mlog-root">
@@ -1422,7 +1426,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
           <p className="mlog-meta mlog-summary">
             {snapshot.museums.length} museums catalogued, {snapshot.reviews.length}{" "}
             {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, and {snapshot.visitLog.length}{" "}
-            {snapshot.visitLog.length === 1 ? "visit" : "visits"} in the curator&rsquo;s diary. {exhibitsLine}{" "}
+            {snapshot.visitLog.length === 1 ? "visit" : "visits"} in the curator&rsquo;s diary.{" "}
+            <span data-testid="museum-log-exhibits" className="mlog-visited" data-widest={widestExhibitsLine}>
+              {exhibitsLine}
+            </span>{" "}
             <span data-testid="museum-log-visited" className="mlog-visited" data-widest={widestVisitedLine}>
               {`You’ve visited ${visitedCount} of the ${snapshot.museums.length}.`}
             </span>{" "}

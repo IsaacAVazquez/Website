@@ -594,7 +594,7 @@ function getTeamStoryline(team: NbaTeam, context: ConferenceContext): string {
   }
   if (seed <= 6) {
     const aheadOfPlayIn = gamesBetween(team, seventhSeed);
-    return `${team.shortName} are locked into a playoff seed${
+    return `${team.shortName} hold a playoff seed${
       aheadOfPlayIn !== null ? ` with a cushion of ${aheadOfPlayIn} over the play-in line` : ""
     }.`;
   }

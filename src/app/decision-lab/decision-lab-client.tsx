@@ -17,7 +17,7 @@ import {
   normalizeDecisionLabState,
   type DecisionLabState,
 } from "./decision-lab-state";
-import { verdictContributions, verdictStamp, type VerdictContribution } from "./verdictStamp";
+import { verdictContributions, type VerdictContribution } from "./verdictStamp";
 import "./decision-lab.css";
 import { SavedBets } from "./SavedBetWorkspace";
 
@@ -97,7 +97,7 @@ function DecisionMatrix({
   evaluation: DecisionEvaluation;
   pointLabel: string;
 }) {
-  const stamp = verdictStamp(evaluation.recommendation);
+  const stampWord = evaluation.recommendation.toUpperCase();
   const activeX = plotX(metrics.confidence);
   const activeY = plotY(metrics.impact);
   const thresholdX = PAD_L + (SHIP_CONFIDENCE / 100) * PLOT_SIZE;
@@ -126,7 +126,7 @@ function DecisionMatrix({
     <svg
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
       role="img"
-      aria-label={`Confidence ${metrics.confidence}, impact ${metrics.impact}, for ${pointLabel}. Verdict stamped ${stamp.word}.`}
+      aria-label={`Confidence ${metrics.confidence}, impact ${metrics.impact}, for ${pointLabel}. Verdict stamped ${stampWord}.`}
       className="dl-matrix"
     >
       {/* Tokens go through `style`, since an SVG presentation attribute
@@ -221,7 +221,7 @@ function DecisionMatrix({
             strokeWidth={1.5}
           />
           <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="dl-stamp-word">
-            {stamp.word}
+            {stampWord}
           </text>
         </g>
       </g>
@@ -367,7 +367,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
 
   const activePreset = getDecisionPreset(draftState.preset);
   const evaluation = evaluateDecision(draftState);
-  const stamp = verdictStamp(evaluation.recommendation);
+  const stampWord = evaluation.recommendation.toUpperCase();
   const currentHref = buildDecisionLabHref(draftState);
   const hasPresetOverride =
     draftState.impact !== activePreset.impact ||
@@ -488,7 +488,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
             <h2 className="sr-only">Score the tradeoff</h2>
             {/* The verdict line and the four sliders come first, so on a phone the call changes right above the control that moved it. */}
             <p className="dl-caption" role="status" aria-live="polite">
-              Score {evaluation.weightedScore} · {stamp.word}
+              Score {evaluation.weightedScore} · {stampWord}
             </p>
             {metricDefinitions.map((metric) => (
               <MetricSlider

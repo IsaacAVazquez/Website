@@ -176,7 +176,8 @@ const AMBIGUOUS_SINGLE_WORD_ROLE_TERMS = new Set([
   "strategy",
 ]);
 
-function normalizeMBAJobText(value: string): string {
+/** Lowercase words and digits separated by single spaces, the form every job text match compares. */
+export function normalizeMBAJobText(value: string): string {
   return value
     .toLowerCase()
     .replace(/&/g, " ")

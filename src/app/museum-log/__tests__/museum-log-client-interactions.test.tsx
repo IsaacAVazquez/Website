@@ -435,6 +435,17 @@ describe("MuseumLogClient interactions", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log?list=east-coast", { scroll: false });
   });
 
+  it("leaves a saved visit to a museum the catalog no longer holds out of the visited count", () => {
+    seed({
+      visited: [
+        { museumId: "atlas", date: "2026-10-01" },
+        { museumId: "retired-museum", date: "2026-10-02" },
+      ],
+    });
+    renderClient();
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
+  });
+
   it("says in words when no exhibit in the catalog is running", () => {
     const quiet = { ...SNAPSHOT, museums: SNAPSHOT.museums.map((m) => ({ ...m, exhibits: [] })) };
     renderClient(quiet);

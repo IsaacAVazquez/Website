@@ -78,7 +78,8 @@ export function extractEspnDraftContext(value: string): EspnDraftContext | null 
   try {
     const url = new URL(value);
     const leagueId = url.searchParams.get("leagueId");
-    if (!leagueId || !/\/draft\b/.test(url.pathname)) return null;
+    // The id goes into the read API path, so it has to be the number ESPN issues.
+    if (!leagueId || !/^\d+$/.test(leagueId) || !/\/draft\b/.test(url.pathname)) return null;
     const season = Number(url.searchParams.get("seasonId"));
     return { leagueId, season: Number.isInteger(season) && season > 0 ? season : new Date().getFullYear() };
   } catch {
@@ -304,6 +305,8 @@ export function startDraftPickSync(
   let pollId: number | null = null;
 
   let espnPlayers: EspnPlayerIndex = new Map();
+  // Drafted ids the player list did not hold when it was last fetched.
+  const espnMissingIds = new Set<number>();
 
   const getJson = async (url: string, headers: Record<string, string> = {}): Promise<unknown> => {
     const response = await fetcher(url, {
@@ -327,15 +330,19 @@ export function startDraftPickSync(
     const ids = espnPlayerIdsFromDraftDetail(league);
     if (ids.length === 0) return [];
     // The player list is one request for the whole season; fetch it once and
-    // again only when a drafted id is missing from it.
-    if (ids.some((id) => !espnPlayers.has(id))) {
+    // again only when a drafted id is missing from it. An id the list still
+    // lacks after a fetch is remembered, so it does not refetch on every poll.
+    if (ids.some((id) => !espnPlayers.has(id) && !espnMissingIds.has(id))) {
       const fetched = parseEspnPlayerIndex(
         await getJson(
           `${ESPN_LEAGUE_API}/seasons/${context.season}/players?scoringPeriodId=0&view=players_wl`,
           { "X-Fantasy-Filter": JSON.stringify({ filterActive: { value: true } }) }
         )
       );
-      if (fetched.size > 0) espnPlayers = fetched;
+      if (fetched.size > 0) {
+        espnPlayers = fetched;
+        for (const id of ids) if (!fetched.has(id)) espnMissingIds.add(id);
+      }
     }
     return parseEspnDraftPicks(league, espnPlayers);
   };

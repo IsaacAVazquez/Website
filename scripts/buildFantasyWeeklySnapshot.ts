@@ -288,13 +288,19 @@ export async function buildFantasyWeeklySnapshot(
     }
   }
 
+  // Every format's flex board and the shared quarterback board are compared, so
+  // a truncated half PPR, standard, or quarterback page cannot replace a fuller one.
   if (previous && previous.week === snapshot.week && previous.season === snapshot.season) {
-    const priorFlex = previous.boards.ppr.flex.length;
-    const freshFlex = snapshot.boards.ppr.flex.length;
-    if (freshFlex < priorFlex * 0.8) {
-      throw new Error(
-        `Weekly flex board dropped to ${freshFlex} players from ${priorFlex} in the same week. Refusing to overwrite the committed board.`
-      );
+    for (const scoring of scoringKeys) {
+      for (const [key, label] of [["flex", "flex"], ["quarterbacks", "quarterback"]] as const) {
+        const prior = previous.boards[scoring][key].length;
+        const fresh = snapshot.boards[scoring][key].length;
+        if (fresh < prior * 0.8) {
+          throw new Error(
+            `Weekly ${scoring} ${label} board dropped to ${fresh} players from ${prior} in the same week. Refusing to overwrite the committed board.`
+          );
+        }
+      }
     }
   }
 

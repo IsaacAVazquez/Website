@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Draft Tools",
     title: "Draft Tracker",
     description:
-      "Live board, tier columns, and reach-or-value reads against the published market while your draft runs.",
+      "Your board, tier breaks, and reach-or-value reads against the published market while your draft runs.",
     accent: "amber",
     footer: "isaacvazquez.com/fantasy-football/draft-tracker",
   });

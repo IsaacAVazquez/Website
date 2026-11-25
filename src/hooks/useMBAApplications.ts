@@ -6,14 +6,14 @@ import { readBrowserStorageString } from "@/lib/browserStorage";
 import {
   buildMBAApplicationsCsv,
   buildMBAApplicationsExport,
-  buildMBAApplicationSearchText,
   createManualMBAApplication,
   createMBAApplicationFromJob,
+  findApplicationForJob,
+  getMBAJobSource,
   loadMBAApplications,
   MBA_APPLICATIONS_STORAGE_KEY,
   mergeMBAApplications,
   parseMBAApplications,
-  parseMBAApplicationsImport,
   parseMBAJobCandidates,
   saveMBAApplications,
   updateMBAApplicationStatus,
@@ -61,21 +61,6 @@ function commitApplications(updater: (current: MBATrackedApplication[]) => MBATr
   return next;
 }
 
-function findMatchingApplication(
-  applications: MBATrackedApplication[],
-  job: MBAJob
-): MBATrackedApplication | undefined {
-  const normalizedApplyUrl = job.applyUrl.trim().replace(/\/+$/, "").toLowerCase();
-  return applications.find((application) => {
-    if (application.jobId && application.jobId === job.id) return true;
-    const applicationUrl = application.jobSnapshot.applyUrl
-      .trim()
-      .replace(/\/+$/, "")
-      .toLowerCase();
-    return !!normalizedApplyUrl && applicationUrl === normalizedApplyUrl;
-  });
-}
-
 function visibleApplication(application: MBATrackedApplication) {
   return application.status !== "archived";
 }
@@ -93,16 +78,8 @@ export function useMBAApplications() {
     [applications]
   );
 
-  const applicationsByJobId = useMemo(() => {
-    const map = new Map<string, MBATrackedApplication>();
-    for (const application of applications) {
-      if (application.jobId) map.set(application.jobId, application);
-    }
-    return map;
-  }, [applications]);
-
   const getApplicationForJob = useCallback(
-    (job: MBAJob) => findMatchingApplication(applications, job),
+    (job: MBAJob) => findApplicationForJob(applications, job),
     [applications]
   );
 
@@ -111,7 +88,7 @@ export function useMBAApplications() {
       let tracked: MBATrackedApplication | null = null;
       commitApplications((current) => {
         const now = new Date();
-        const existing = findMatchingApplication(current, job);
+        const existing = findApplicationForJob(current, job);
         if (!existing) {
           tracked = createMBAApplicationFromJob(job, status, now);
           return mergeMBAApplications(current, [tracked]);
@@ -134,7 +111,7 @@ export function useMBAApplications() {
                   ...existing.jobSnapshot,
                   ...job,
                   capturedAt: now.toISOString(),
-                  source: "live-feed" as const,
+                  source: getMBAJobSource(job),
                 },
                 updatedAt: now.toISOString(),
               }
@@ -146,7 +123,7 @@ export function useMBAApplications() {
                     ...existing.jobSnapshot,
                     ...job,
                     capturedAt: now.toISOString(),
-                    source: "live-feed" as const,
+                    source: getMBAJobSource(job),
                   },
                 },
                 nextStatus,
@@ -240,7 +217,7 @@ export function useMBAApplications() {
   }, []);
 
   const importApplications = useCallback((raw: string) => {
-    const incoming = parseMBAApplicationsImport(raw);
+    const incoming = parseMBAApplications(raw);
     if (incoming.length === 0) {
       return { imported: 0, total: applications.length };
     }
@@ -262,18 +239,9 @@ export function useMBAApplications() {
     return buildMBAApplicationsCsv(applications);
   }, [applications]);
 
-  function searchApplications(query: string, source = activeApplications) {
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) return source;
-    return source.filter((application) =>
-      buildMBAApplicationSearchText(application).includes(normalized)
-    );
-  }
-
   return {
     applications,
     activeApplications,
-    applicationsByJobId,
     getApplicationForJob,
     trackJob,
     addManualApplication,
@@ -285,7 +253,6 @@ export function useMBAApplications() {
     importApplications,
     exportJson,
     exportCsv,
-    searchApplications,
     privateSync,
   };
 }
@@ -319,6 +286,13 @@ async function readPayload(response: Response): Promise<SyncPayload> {
     revision: typeof body.revision === "string" ? body.revision : "0",
     items: Array.isArray(body.items) ? body.items : [],
   };
+}
+
+/** The status code plus the route's own message, which names a busy lock or a broken file. */
+async function syncFailure(response: Response, action: "read" | "write"): Promise<Error> {
+  const body = (await response.json().catch(() => null)) as { error?: unknown } | null;
+  const detail = typeof body?.error === "string" ? ` ${body.error}` : "";
+  return new Error(`Sync ${action} failed (${response.status}).${detail}`);
 }
 
 function putJson(file: "pipeline" | "candidates", revision: string, items: unknown[]) {
@@ -421,7 +395,7 @@ function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | n
         const { merged } = absorb(current.items);
         response = await putJson("pipeline", current.revision, merged);
       }
-      if (!response.ok) throw new Error(`Sync write failed (${response.status}).`);
+      if (!response.ok) throw await syncFailure(response, "write");
       const saved = await readPayload(response);
       revisionRef.current = saved.revision;
       serverIdsRef.current = new Set(applicationsFromServer(saved.items).map((application) => application.id));
@@ -442,7 +416,7 @@ function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | n
   const pull = useCallback(async () => {
     try {
       const response = await fetch(syncUrl("pipeline"));
-      if (!response.ok) throw new Error(`Sync read failed (${response.status}).`);
+      if (!response.ok) throw await syncFailure(response, "read");
       const payload = await readPayload(response);
       revisionRef.current = payload.revision;
       const { localAhead } = absorb(payload.items);
@@ -479,6 +453,8 @@ function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | n
 export function useMBAJobCandidates() {
   const enabled = privateSyncEnabled();
   const [candidates, setCandidates] = useState<MBAJobCandidate[]>([]);
+  // The last save's failure, cleared by the next save that lands.
+  const [error, setError] = useState<string | null>(null);
   const revisionRef = useRef("0");
 
   const pull = useCallback(async () => {
@@ -512,12 +488,14 @@ export function useMBAJobCandidates() {
           setCandidates(replayed);
           response = await putJson("candidates", current.revision, replayed);
         }
-        if (!response.ok) return;
+        if (!response.ok) throw await syncFailure(response, "write");
         const payload = await readPayload(response);
         revisionRef.current = payload.revision;
         setCandidates(candidatesFromServer(payload.items));
-      } catch {
+        setError(null);
+      } catch (failure) {
         // Local state already reflects the edit; the next pull reconciles.
+        setError(failure instanceof Error ? failure.message : String(failure));
       }
     },
     [candidates, enabled]
@@ -542,5 +520,5 @@ export function useMBAJobCandidates() {
     [put]
   );
 
-  return { candidates, enabled, setTriage, removeCandidate };
+  return { candidates, enabled, error, setTriage, removeCandidate };
 }

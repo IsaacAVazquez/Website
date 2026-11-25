@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-25
 
 ---
 
@@ -33,7 +33,6 @@ Active secrets used by the running app and update scripts:
 | `RESEND_CONTACTS_API_KEY` | Contact-management key that `/api/newsletter/subscribe` reads first when it creates a newsletter contact. |
 | `RESEND_API_KEY` | Fallback key for contact creation on the public newsletter signup when `RESEND_CONTACTS_API_KEY` is unset. |
 | `NETLIFY_AUTH_TOKEN` | GitHub Actions secret that `publish-data.yml` uses to build and deploy production and to check the published deploy. |
-| `NETLIFY_BUILD_HOOK` | Optional GitHub Actions secret that `update-article-images.yml` posts to after it commits new covers. |
 | `PRODUCTION_DATA_REVISION_URL` | Optional GitHub Actions secret that replaces the default ledger URL `publish-data.yml` polls after a deploy. Its value is a URL. |
 | `BART_API_KEY` | Optional BART key read by `src/lib/bayAreaTransitData.ts` and the transit refresh. Without it the code uses BART's published demo key. |
 | `SPACEDEVS_API_TOKEN` | Optional Launch Library 2 token for `src/lib/spacexData.ts` and the SpaceX snapshot builders. |
@@ -85,7 +84,7 @@ These power the live UI. Most send cache headers on success, while `/api/data-re
 
 Every per-client rate limit comes from `src/lib/rateLimit.ts`, which keeps its counts in memory inside each function instance, so a limit starts over when Netlify starts a new instance and is not shared between instances.
 
-`/api/search` is still a limited, mostly hardcoded index. It uses `Object.hasOwn` on dictionary lookups to prevent prototype pollution from inherited properties like `constructor`. Do not treat it as complete site search.
+`/api/search` is a limited index. It covers the published posts, the case studies, and a short hand-written table of pages, and none of the dashboards' data. It uses `Object.hasOwn` on dictionary lookups to prevent prototype pollution from inherited properties like `constructor`. Do not treat it as complete site search.
 
 There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, or `/api/scrape` route in the live app. Older docs that reference these are historical.
 
@@ -112,7 +111,7 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 - run `npm audit` and review GitHub Dependabot alerts before each release window
 - `.github/dependabot.yml` opens version-update pull requests every Monday for npm, GitHub Actions, and the Python packages under `scripts/`
 - prefer minor/patch upgrades over majors unless a CVE forces it
-- pin `next` and `react` explicitly in `package.json`
+- `react` and `react-dom` are pinned to exact versions in `package.json`, while `next` carries a caret range, so `package-lock.json` and `npm ci` are what hold `next` to one version
 - when adding a new dependency, prefer well-maintained packages with TypeScript types and recent releases
 
 ---

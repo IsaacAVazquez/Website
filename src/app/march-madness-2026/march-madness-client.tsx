@@ -129,9 +129,9 @@ function Matchup({
   w,
   tags = [],
 }: {
-  s1: number;
+  s1?: number;
   t1: string;
-  s2: number;
+  s2?: number;
   t2: string;
   w: number;
   tags?: string[];
@@ -140,25 +140,6 @@ function Matchup({
     <div className="mm-matchup">
       <TeamRow seed={s1} name={t1} win={w === 1} tags={w === 1 ? tags : []} />
       <TeamRow seed={s2} name={t2} win={w === 2} tags={w === 2 ? tags : []} />
-    </div>
-  );
-}
-
-function Matchup2({
-  t1,
-  t2,
-  w,
-  tags = [],
-}: {
-  t1: string;
-  t2: string;
-  w: number;
-  tags?: string[];
-}) {
-  return (
-    <div className="mm-matchup">
-      <TeamRow name={t1} win={w === 1} tags={w === 1 ? tags : []} />
-      <TeamRow name={t2} win={w === 2} tags={w === 2 ? tags : []} />
     </div>
   );
 }
@@ -176,11 +157,14 @@ function TabBar<T extends string>({
   active,
   onChange,
   label,
+  panelId,
 }: {
   items: { label: string; value: T }[];
   active: T;
   onChange: (tab: T) => void;
   label: string;
+  /** The id of the TabPanel these tabs switch. */
+  panelId: string;
 }) {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = items.length - 1;
@@ -221,6 +205,8 @@ function TabBar<T extends string>({
           key={item.value}
           type="button"
           role="tab"
+          id={`${panelId}-tab-${item.value}`}
+          aria-controls={panelId}
           aria-selected={active === item.value}
           tabIndex={active === item.value ? 0 : -1}
           onKeyDown={(event) => handleKeyDown(event, index)}
@@ -229,6 +215,15 @@ function TabBar<T extends string>({
           {item.label}
         </button>
       ))}
+    </div>
+  );
+}
+
+/** The content a TabBar switches, named by whichever tab is selected. */
+function TabPanel({ id, active, children }: { id: string; active: string; children: ReactNode }) {
+  return (
+    <div role="tabpanel" id={id} aria-labelledby={`${id}-tab-${active}`}>
+      {children}
     </div>
   );
 }
@@ -523,17 +518,17 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
         <div>
           <RoundLabel>Round 2</RoundLabel>
           {data.r2.map((matchup, index) => (
-            <Matchup2 key={`r2-${index}`} {...matchup} />
+            <Matchup key={`r2-${index}`} {...matchup} />
           ))}
           <RoundLabel>Sweet 16: {data.site}</RoundLabel>
           {data.s16.map((matchup, index) => (
-            <Matchup2 key={`s16-${index}`} {...matchup} />
+            <Matchup key={`s16-${index}`} {...matchup} />
           ))}
         </div>
 
         <div>
           <RoundLabel>Elite Eight</RoundLabel>
-          <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={data.e8.w} tags={["Final Four"]} />
+          <Matchup t1={data.e8.t1} t2={data.e8.t2} w={data.e8.w} tags={["Final Four"]} />
           <p className="mm-body mm-note">{data.e8.note}</p>
         </div>
       </div>
@@ -833,11 +828,14 @@ export function MarchMadnessClient({ initialState }: { initialState: MarchMadnes
                 active={region}
                 onChange={(nextRegion) => updateRouteState({ region: nextRegion })}
                 label="March Madness regions"
+                panelId="mm-region-panel"
               />
             </div>
-            <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
-              <RegionBracket data={BRACKET[region]} />
-            </div>
+            <TabPanel id="mm-region-panel" active={region}>
+              <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
+                <RegionBracket data={BRACKET[region]} />
+              </div>
+            </TabPanel>
           </section>
 
           <aside className="mm-column" aria-label="Champion pick and top upsets">
@@ -897,6 +895,7 @@ export function MarchMadnessClient({ initialState }: { initialState: MarchMadnes
               active={view}
               onChange={(nextView) => updateRouteState({ view: nextView })}
               label="March Madness primary sections"
+              panelId="mm-view-panel"
             />
             <p className="mm-copy">
               <button type="button" onClick={handleCopyLink} className="c97-btn-ghost">
@@ -913,25 +912,30 @@ export function MarchMadnessClient({ initialState }: { initialState: MarchMadnes
             </p>
           </div>
 
-          {view === "bracket" ? <RegionBracketDetail data={BRACKET[region]} /> : null}
+          <TabPanel id="mm-view-panel" active={view}>
+            {view === "bracket" ? <RegionBracketDetail data={BRACKET[region]} /> : null}
 
-          {view === "picks" ? <PicksSection expanded={pick} onToggle={handleTogglePick} /> : null}
+            {view === "picks" ? <PicksSection expanded={pick} onToggle={handleTogglePick} /> : null}
 
-          {view === "analytics" ? (
-            <div className="mm-stack">
-              <TabBar
-                items={ANALYTICS_TAB_ITEMS}
-                active={analytics}
-                onChange={(nextAnalytics) => updateRouteState({ analytics: nextAnalytics })}
-                label="March Madness analytics sections"
-              />
-              {analytics === "rankings" ? <RankingsSection /> : null}
-              {analytics === "s-curve" ? <SCurveSection /> : null}
-              {analytics === "injuries" ? <InjuriesSection /> : null}
-            </div>
-          ) : null}
+            {view === "analytics" ? (
+              <div className="mm-stack">
+                <TabBar
+                  items={ANALYTICS_TAB_ITEMS}
+                  active={analytics}
+                  onChange={(nextAnalytics) => updateRouteState({ analytics: nextAnalytics })}
+                  label="March Madness analytics sections"
+                  panelId="mm-analytics-panel"
+                />
+                <TabPanel id="mm-analytics-panel" active={analytics}>
+                  {analytics === "rankings" ? <RankingsSection /> : null}
+                  {analytics === "s-curve" ? <SCurveSection /> : null}
+                  {analytics === "injuries" ? <InjuriesSection /> : null}
+                </TabPanel>
+              </div>
+            ) : null}
 
-          {view === "time-zones" ? <TZSection /> : null}
+            {view === "time-zones" ? <TZSection /> : null}
+          </TabPanel>
         </section>
 
         <section id="why-this-model-is-different" className="mm-prose" aria-labelledby="mm-method-heading">

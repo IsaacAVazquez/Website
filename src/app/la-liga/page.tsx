@@ -6,12 +6,18 @@ import {
 } from "@/lib/laLigaSnapshot";
 import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { LaLigaClient } from "./la-liga-client";
-import { buildClubAliasMap, normalizeState, resolveDefaultState } from "./la-liga-state.core";
+import {
+  buildClubAliasMap,
+  filterClubs,
+  getDefaultClub,
+  normalizeState,
+  resolveDefaultState,
+} from "./la-liga-state.core";
 
 export const metadata = constructMetadata({
   title: "La Liga Pulse",
   description:
-    "Interactive La Liga dashboard with standings, title-race context, European qualification cutoffs, relegation pressure, and official snapshot leaderboards.",
+    "Interactive La Liga dashboard with standings, title-race context, European qualification cutoffs, relegation pressure, and leaderboards from a checked-in football-data.org snapshot.",
   canonicalUrl: "/la-liga",
   image: "/la-liga/opengraph-image",
   dateModified: laLigaSnapshot.updatedAt,
@@ -25,13 +31,20 @@ interface LaLigaPageProps {
 }
 
 export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
+  const defaultState = resolveDefaultState(laLigaSnapshot.clubs);
   const initialState = normalizeState(
     await searchParams,
-    resolveDefaultState(laLigaSnapshot.clubs),
+    defaultState,
     buildClubAliasMap(laLigaSnapshot.teams)
   );
   const summary = await getLaLigaSummarySnapshot();
-  const initialTeamSnapshot = await getLaLigaTeamSnapshot(initialState.club).catch(() => null);
+  // The client selects the view's first club when the linked one sits outside
+  // the view, and it files this snapshot under the club it selected.
+  const { clubs } = laLigaSnapshot;
+  const selectedClubId = filterClubs(clubs, initialState.view).some((club) => club.id === initialState.club)
+    ? initialState.club
+    : getDefaultClub(clubs, initialState.view, defaultState.club);
+  const initialTeamSnapshot = await getLaLigaTeamSnapshot(selectedClubId).catch(() => null);
   // The team snapshots list results newest first; the table reads oldest first.
   const formByClub = Object.fromEntries(
     Object.entries(laLigaSnapshot.teamSnapshots).map(([id, team]) => [
@@ -65,7 +78,7 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
           featureList: [
             "Competition-pressure filters for title race, Europe, and relegation",
             "Deep-linkable club selection and URL state",
-            "Official snapshot standings and leaderboard context",
+            "Standings and leaderboards from a checked-in football-data.org snapshot",
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
           dateModified: laLigaSnapshot.updatedAt,

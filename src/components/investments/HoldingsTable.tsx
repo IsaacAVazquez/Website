@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Pencil, Search, Trash2, X } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStockData } from "@/hooks/useStockData";
 import { escapeCsvValue } from "@/lib/utils";
 import { downloadFile } from "@/lib/downloadFile";
@@ -27,6 +27,16 @@ interface Props {
   emptyMessage?: string;
 }
 
+// The stylesheet hides .col-trend in print and at 1500px and under, and the
+// sparkline is all a row reads from the per-symbol snapshot, so a row only
+// downloads it where the column shows. Keep this in step with that rule.
+const TREND_COLUMN_QUERY = "screen and (min-width: 1501px)";
+
+function subscribeToTrendColumn(onChange: () => void) {
+  const query = window.matchMedia(TREND_COLUMN_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
 
 function sparkPath(data: number[], w = 86, h = 26): string {
   if (data.length < 2) return "";
@@ -46,12 +56,13 @@ function sparkPath(data: number[], w = 86, h = 26): string {
 interface RowProps {
   holding: EnhancedHolding;
   color: string;
+  showTrend: boolean;
   onUpdate: Props["onUpdate"];
   onRemove: Props["onRemove"];
   onResearch: Props["onResearch"];
 }
 
-function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps) {
+function HoldingRow({ holding, color, showTrend, onUpdate, onRemove, onResearch }: RowProps) {
   const [editing, setEditing] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   // Focus follows the remove confirmation so a keyboard user is not dropped
@@ -64,7 +75,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   const [editShares, setEditShares] = useState(String(holding.shares));
   const [editCost, setEditCost] = useState(String(holding.averageCost));
 
-  const { data: priceData } = useStockData<PriceData>(holding.symbol, "price");
+  const { data: priceData } = useStockData<PriceData>(showTrend ? holding.symbol : null, "price");
   const sparkData = React.useMemo(() => {
     if (!priceData || !Array.isArray(priceData)) return [];
     return (priceData as StockPrice[]).slice(-30).map((p) => p.close);
@@ -340,6 +351,11 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
       ),
     [holdings],
   );
+  const showTrend = useSyncExternalStore(
+    subscribeToTrendColumn,
+    () => window.matchMedia(TREND_COLUMN_QUERY).matches,
+    () => false,
+  );
 
   function handleExportCsv() {
     if (holdings.length === 0) return;
@@ -404,6 +420,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
                 key={h.symbol}
                 holding={h}
                 color={holdingColor(h.symbol, portfolioSymbols ?? holdings.map((holding) => holding.symbol))}
+                showTrend={showTrend}
                 onUpdate={onUpdate}
                 onRemove={onRemove}
                 onResearch={onResearch}

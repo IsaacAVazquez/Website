@@ -95,7 +95,9 @@ export function buildHref(
   state: LaLigaRouteState,
   defaultState: LaLigaRouteState,
   aliasMap: Map<string, string>,
-  baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
+  baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams,
+  /** The club `state.view` selects on its own, from `getDefaultClub`. */
+  viewDefaultClub: string = defaultState.club
 ): string {
   const params = new URLSearchParams(
     baseSearchParams ? Array.from(baseSearchParams.entries()) : []
@@ -108,7 +110,9 @@ export function buildHref(
     params.set("view", state.view);
   }
 
-  if (canonicalClubId === defaultState.club && state.view === defaultState.view) {
+  // A link with no club lands on the view's own club, and a fresh load opens
+  // the drawer for any club the link names, so that club is left out.
+  if (canonicalClubId === viewDefaultClub) {
     params.delete("club");
   } else {
     params.set("club", canonicalClubId);

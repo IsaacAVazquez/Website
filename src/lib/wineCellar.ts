@@ -165,51 +165,21 @@ export function parseWineEntries(raw: string | null): WineEntry[] {
   }
 }
 
-export function loadWineEntries(storage?: Pick<Storage, "getItem">): WineEntry[] {
-  if (storage) return parseWineEntries(storage.getItem(WINE_CELLAR_STORAGE_KEY));
+export function loadWineEntries(): WineEntry[] {
   if (typeof window === "undefined") return [];
   // Read through the shared memory-mirrored store so an entry still reads back
   // even when a prior durable write failed (Safari private mode / quota).
   return parseWineEntries(getBrowserStorageSnapshot(WINE_CELLAR_STORAGE_KEY, "[]"));
 }
 
-export function saveWineEntries(
-  entries: WineEntry[],
-  storage?: Pick<Storage, "setItem">
-) {
-  const payload = JSON.stringify(entries);
-  if (storage) {
-    storage.setItem(WINE_CELLAR_STORAGE_KEY, payload);
-    return;
-  }
+export function saveWineEntries(entries: WineEntry[]) {
   // Guarded write: mirrors in memory first, then attempts durable storage, so a
   // QuotaExceededError never throws out of the interaction and aborts the save.
-  writeBrowserStorageString(WINE_CELLAR_STORAGE_KEY, payload);
-}
-
-function pickMostFrequent(values: string[]): string | null {
-  const counts = new Map<string, number>();
-  for (const raw of values) {
-    const key = raw.trim();
-    if (!key) continue;
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
-  if (counts.size === 0) return null;
-  let topKey: string | null = null;
-  let topCount = 0;
-  counts.forEach((count, key) => {
-    if (count > topCount) {
-      topKey = key;
-      topCount = count;
-    }
-  });
-  return topKey;
+  writeBrowserStorageString(WINE_CELLAR_STORAGE_KEY, JSON.stringify(entries));
 }
 
 export function calculateWineSummary(entries: WineEntry[]): WineSummary {
-  const totalWines = entries.length;
   const totalRating = entries.reduce((sum, entry) => sum + entry.rating, 0);
-  const totalSpend = entries.reduce((sum, entry) => sum + (entry.price ?? 0), 0);
 
   const typeGroups = new Map<WineType, { count: number; totalRating: number }>();
   for (const entry of entries) {
@@ -227,27 +197,9 @@ export function calculateWineSummary(entries: WineEntry[]): WineSummary {
     }))
     .sort((left, right) => right.count - left.count);
 
-  const sortedByRating = [...entries].sort((left, right) => {
-    if (right.rating !== left.rating) return right.rating - left.rating;
-    return right.tastedOn.localeCompare(left.tastedOn);
-  });
-
-  const sortedByDate = [...entries].sort((left, right) => {
-    if (right.tastedOn !== left.tastedOn) {
-      return right.tastedOn.localeCompare(left.tastedOn);
-    }
-    return right.createdAt.localeCompare(left.createdAt);
-  });
-
   return {
-    totalWines,
-    averageRating: totalWines > 0 ? roundTwo(totalRating / totalWines) : 0,
-    totalSpend: roundTwo(totalSpend),
-    topRated: sortedByRating.slice(0, 3),
-    recent: sortedByDate.slice(0, 5),
+    averageRating: entries.length > 0 ? roundTwo(totalRating / entries.length) : 0,
     typeBreakdown,
-    topRegion: pickMostFrequent(entries.map((entry) => entry.region)),
-    topVarietal: pickMostFrequent(entries.map((entry) => entry.varietal)),
   };
 }
 

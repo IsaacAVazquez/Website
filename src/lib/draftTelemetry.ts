@@ -1,4 +1,4 @@
-import type { DraftPick, Player } from "@/types";
+import type { DraftPick } from "@/types";
 import { isRecord, roundTo } from "@/lib/utils";
 
 /**
@@ -199,23 +199,16 @@ function average(values: readonly number[]): number | null {
  * Scores stored per-turn records against the room's final pick log. A record
  * only counts when the logged pick at its number still matches the chosen
  * player, so undone timelines fall out on their own. Realized wait cost is
- * reconstructed from the pick log and the current board rather than stored.
+ * reconstructed from the pick log and the board frozen on the record.
  */
 export function resolveDraftTelemetry({
   records,
   picks,
-  players,
-  rankOf,
-  vorpOf,
 }: {
   records: readonly DraftTurnRecord[];
   picks: readonly DraftPick[];
-  players: readonly Player[];
-  rankOf: (player: Player) => number | null;
-  vorpOf: (playerId: string) => number | null;
 }): DraftTelemetryRecap {
   const pickByNumber = new Map(picks.map((pick) => [pick.pickNumber, pick]));
-  const playerById = new Map(players.map((player) => [player.id, player]));
   const valid = [...records]
     .filter((record) => pickByNumber.get(record.pick)?.player.id === record.chosenPlayerId)
     .sort((left, right) => left.pick - right.pick);
@@ -244,7 +237,6 @@ export function resolveDraftTelemetry({
 
     let realizedBestId: string | null = null;
     let realizedBestName: string | null = null;
-    let realizedBestRank: number | null = null;
     let realizedDropSpots: number | null = null;
     let realizedDropPoints: number | null = null;
     if (measured && record.waitPosition) {
@@ -277,54 +269,6 @@ export function resolveDraftTelemetry({
               )
             );
           }
-        }
-      } else {
-        // Legacy records do not carry a frozen position board. Keep their old
-        // recap behavior, while every v2 record remains tied to its draft-time
-        // inputs. The user's own pick is a choice rather than market attrition.
-        const takenBeforeNext = new Set<string>();
-        for (const loggedPick of picks) {
-          if (
-            loggedPick.pickNumber < (nextPick as number) &&
-            loggedPick.pickNumber !== record.pick
-          ) {
-            takenBeforeNext.add(loggedPick.player.id);
-          }
-        }
-        let realizedBest: Player | null = null;
-        for (const candidate of players) {
-          if (
-            candidate.position !== record.waitPosition ||
-            takenBeforeNext.has(candidate.id)
-          ) {
-            continue;
-          }
-          const rank = rankOf(candidate);
-          if (rank === null) continue;
-          if (realizedBestRank === null || rank < realizedBestRank) {
-            realizedBest = candidate;
-            realizedBestId = candidate.id;
-            realizedBestName = candidate.name;
-            realizedBestRank = rank;
-          }
-        }
-        const baselinePlayer = record.waitBaselineId
-          ? playerById.get(record.waitBaselineId)
-          : undefined;
-        const baselineRank = baselinePlayer ? rankOf(baselinePlayer) : null;
-        if (realizedBestRank !== null && baselineRank !== null) {
-          realizedDropSpots = roundTo(
-            Math.max(0, realizedBestRank - baselineRank)
-          );
-        }
-        const baselineVorp = record.waitBaselineId
-          ? vorpOf(record.waitBaselineId)
-          : null;
-        const realizedVorp = realizedBest ? vorpOf(realizedBest.id) : null;
-        if (baselineVorp !== null && realizedVorp !== null) {
-          realizedDropPoints = roundTo(
-            Math.max(0, baselineVorp - realizedVorp)
-          );
         }
       }
     }

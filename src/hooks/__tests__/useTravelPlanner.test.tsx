@@ -175,7 +175,6 @@ describe("useTravelPlanner", () => {
     expect(entry.id).toEqual(expect.any(String));
     expect(entry.title).toBe("Day one");
     expect(entry.mood).toBe("amazing");
-    expect(result.current.summary?.journalCount).toBe(1);
     expect(readStored()[0].journal).toHaveLength(1);
 
     act(() => {

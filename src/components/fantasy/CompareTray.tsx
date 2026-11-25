@@ -15,8 +15,6 @@ interface CompareTrayProps {
   resolvePlayer: (id: string) => Player | undefined;
   /** True only after the complete player snapshot can resolve persisted IDs. */
   playerDataReady?: boolean;
-  /** Remove unresolved IDs only when this surface has the complete shared player universe. */
-  pruneUnresolvedIds?: boolean;
   publishedRank?: (player: Player) => string;
   /** Passed through to CompareModal, which names the rank row after it. */
   publishedRankLabel?: string;
@@ -67,7 +65,6 @@ function focusFirst(candidates: Array<HTMLElement | null | undefined>) {
 export function CompareTray({
   resolvePlayer,
   playerDataReady = false,
-  pruneUnresolvedIds = true,
   publishedRank,
   publishedRankLabel,
   consensusWithheld,
@@ -76,7 +73,6 @@ export function CompareTray({
 }: CompareTrayProps) {
   const compare = useCompareTray();
   const compareIds = compare.compareIds;
-  const replaceCompare = compare.replace;
   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const bandRef = useRef<HTMLDivElement>(null);
@@ -106,11 +102,6 @@ export function CompareTray({
         .filter((player): player is Player => Boolean(player)),
     [compareIds, resolvePlayer]
   );
-
-  useEffect(() => {
-    if (!playerDataReady || !pruneUnresolvedIds || players.length === compareIds.length) return;
-    replaceCompare(players.map((player) => player.id));
-  }, [compareIds.length, playerDataReady, players, pruneUnresolvedIds, replaceCompare]);
 
   const canCompare = players.length >= 2;
   const hiddenCount = compareIds.length - players.length;

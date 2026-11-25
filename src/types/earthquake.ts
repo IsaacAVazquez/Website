@@ -17,9 +17,6 @@ export type QuakeTier =
   | "major"
   | "great";
 
-/** USGS PAGER impact alert level, when one has been issued. */
-export type QuakeAlert = "green" | "yellow" | "orange" | "red";
-
 export interface QuakeEvent {
   /** USGS event id, e.g. "us7000n7yz". Used as the deep-link `quake` param. */
   id: string;
@@ -37,7 +34,6 @@ export interface QuakeEvent {
   tsunami: boolean;
   /** Number of "Did You Feel It?" reports, when available. */
   felt: number | null;
-  alert: QuakeAlert | null;
   /** USGS significance score (0–1000+); higher means more newsworthy. */
   significance: number;
   /** USGS event page URL. */
@@ -70,10 +66,6 @@ interface EarthquakeHeroStats {
   felt24h: number;
   strongest24hMag: number | null;
   strongest24hPlace: string | null;
-  significant30d: number;
-  largest7dMag: number | null;
-  tsunamiAlerts7d: number;
-  deepestKm: number | null;
 }
 
 export interface EarthquakeSummary {

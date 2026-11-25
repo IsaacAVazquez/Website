@@ -11,6 +11,8 @@ import {
   describeDraftPreset,
   toDraftPresetSettings,
   type DraftPreset,
+  DRAFT_ROUND_COUNTS,
+  DRAFT_TEAM_COUNTS,
 } from "@/lib/draftPresets";
 import {
   REDRAFT_LINEUP_PRESETS,
@@ -317,7 +319,7 @@ export function DraftSetup({
               onChange={(event) => updateField("totalTeams", Number(event.target.value))}
               className="ffb-select"
             >
-              {[8, 10, 12, 14, 16].map((teamCount) => (
+              {DRAFT_TEAM_COUNTS.map((teamCount) => (
                 <option key={teamCount} value={teamCount}>
                   {teamCount} teams
                 </option>
@@ -473,7 +475,7 @@ export function DraftSetup({
                 onChange={(event) => updateField("rounds", Number(event.target.value))}
                 className="ffb-select"
               >
-                {[13, 14, 15, 16, 17, 18].map((roundCount) => (
+                {DRAFT_ROUND_COUNTS.map((roundCount) => (
                   <option key={roundCount} value={roundCount}>
                     {roundCount} rounds
                   </option>

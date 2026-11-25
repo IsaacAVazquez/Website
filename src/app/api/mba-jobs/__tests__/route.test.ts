@@ -317,6 +317,45 @@ describe("GET /api/mba-jobs", () => {
     ]);
   });
 
+  it("decodes typographic and out-of-range entities in a snippet without failing the board", async () => {
+    installFetchMock({
+      "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
+        JSON.stringify(
+          buildGreenhouseResponse({
+            jobs: [
+              {
+                id: 1011,
+                title: "Growth Marketing Manager",
+                location: { name: "San Francisco, CA" },
+                absolute_url: "https://example.com/jobs/1011",
+                updated_at: "2026-04-14T16:30:00.000Z",
+                departments: [{ name: "Growth" }],
+                // Greenhouse escapes the body once more, so "&rsquo;" arrives as "&amp;rsquo;".
+                content:
+                  "&lt;p&gt;Don&amp;rsquo;t miss this &amp;mdash; caf&amp;eacute; team, 5&amp;ndash;7 yrs, &amp;ldquo;MBA&amp;rdquo; welcome at AT&amp;amp;T &#1114112;.&lt;/p&gt;",
+              },
+            ],
+          })
+        ),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      ),
+    });
+
+    const response = await GET(
+      new NextRequest("https://isaacvazquez.com/api/mba-jobs?companies=stripe")
+    );
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.errors).toEqual([]);
+    expect(body.jobs[0].snippet).toBe(
+      "Don’t miss this — café team, 5–7 yrs, “MBA” welcome at AT&T �."
+    );
+  });
+
   it("parses Ashby public job board payloads and matches PMM and chief-of-staff variants", async () => {
     installFetchMock({
       "https://api.ashbyhq.com/posting-api/job-board/notion?includeCompensation=true": new Response(

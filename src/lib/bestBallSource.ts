@@ -8,7 +8,7 @@ import {
 } from "@/lib/bestBallSnapshot";
 import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
-import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
+import { getCurrentDraftSeason, getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import type { Player, Position, ScoringFormat } from "@/types";
 
 const BEST_BALL_RANKINGS_URL =
@@ -37,10 +37,6 @@ const BEST_BALL_MIN_CONSENSUS_EXPERTS = 4;
 const BEST_BALL_FALLBACK_MAX_AGE_DAYS = 10;
 const BEST_BALL_SCHEDULE_SOURCE_URL =
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
-
-export function getExpectedBestBallSeason(now: Date = new Date()): number {
-  return now.getUTCMonth() < 2 ? now.getUTCFullYear() - 1 : now.getUTCFullYear();
-}
 
 export type BestBallRefreshFallback =
   | { keep: true; reason: "recent" | "season-open" }
@@ -309,7 +305,7 @@ async function fetchEligibleRankingsBoard(options: {
     requestedPosition: "OVERALL",
     publicSourceUrl: options.publicSourceUrl,
     expectedRankingType: options.expectedRankingType,
-    expectedSeason: getExpectedBestBallSeason(),
+    expectedSeason: getCurrentDraftSeason(),
     minimumExperts: options.minimumExperts,
   });
 

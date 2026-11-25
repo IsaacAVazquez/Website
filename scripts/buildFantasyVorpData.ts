@@ -1,4 +1,5 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { withRetry } from "@/lib/fetchRetry";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import {
@@ -130,7 +131,11 @@ export async function buildFantasyVorpData(
   console.log(`Wrote fantasy VORP data: ${outputPath}`);
 }
 
-if (process.env.NODE_ENV !== "test") {
+const isMainModule =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
   buildFantasyVorpData().catch((error) => {
     // Unexpected failures (filesystem, programming errors) are still non-fatal:
     // VORP must never block the consensus refresh.

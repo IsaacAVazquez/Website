@@ -92,6 +92,39 @@ describe("Catalog97Header utilities", () => {
     expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
   });
 
+  it("opens search from Cmd+K and Ctrl+K, inside an input too", () => {
+    render(<Catalog97Header />);
+
+    const input = document.createElement("input");
+    document.body.appendChild(input);
+    const commandK = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true, cancelable: true });
+    fireEvent(input, commandK);
+    input.remove();
+
+    expect(commandK.defaultPrevented).toBe(true);
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Close search" }));
+    fireEvent.keyDown(window, { key: "K", ctrlKey: true });
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+  });
+
+  it("leaves Ctrl+K alone while a page's modal dialog is open", () => {
+    render(<Catalog97Header />);
+
+    const drawer = document.createElement("div");
+    drawer.setAttribute("role", "dialog");
+    drawer.setAttribute("aria-modal", "true");
+    document.body.appendChild(drawer);
+
+    const controlK = new KeyboardEvent("keydown", { key: "k", ctrlKey: true, bubbles: true, cancelable: true });
+    fireEvent(drawer, controlK);
+    drawer.remove();
+
+    expect(controlK.defaultPrevented).toBe(false);
+    expect(screen.queryByRole("dialog", { name: "Site search" })).not.toBeInTheDocument();
+  });
+
   it("opens search from slash without swallowing slash inside an input", () => {
     render(<Catalog97Header />);
 

@@ -20,7 +20,7 @@ const RANKED_LIMIT = 10;
 export const metadata = constructMetadata({
   title: "Agent Build Index",
   description:
-    "A weekly read on the public AI agent repositories gaining attention on GitHub, ranked by measured star movement with source and freshness context.",
+    "A daily read on the public AI agent repositories gaining attention on GitHub, ranked by seven-day star movement, with each figure labeled measured, partial, or baseline.",
   canonicalUrl: PATH,
   dateModified: index.generatedAt.slice(0, 10),
 });
@@ -95,12 +95,12 @@ export default function AgentBuildIndexPage() {
         data={{
           name: "Agent Build Index",
           description:
-            "A weekly index of active public AI agent repositories ranked by measured GitHub star movement.",
+            "A daily index of active public AI agent repositories ranked by seven-day GitHub star movement.",
           url: `${siteConfig.url}${PATH}`,
           applicationCategory: "DeveloperApplication",
           operatingSystem: "Web browser",
           featureList: [
-            "Measured seven-day GitHub star movement",
+            "Seven-day GitHub star movement, labeled measured, partial, or baseline",
             "Focused AI agent repository ranking",
             "Comparison with adjacent developer topics",
             "Source and snapshot freshness disclosure",
@@ -113,7 +113,7 @@ export default function AgentBuildIndexPage() {
         data={{
           name: "Open-Source AI Agent Repository and Velocity Index",
           description:
-            "A weekly index of public open-source AI agent repositories on GitHub, tracking star counts and measured seven-day star movement.",
+            "A daily index of public open-source AI agent repositories on GitHub, tracking star counts and seven-day star movement.",
           url: `${siteConfig.url}${PATH}`,
           keywords: [
             "AI agents",
@@ -140,8 +140,9 @@ export default function AgentBuildIndexPage() {
             <h1 className="abi-title">Agent Build Index</h1>
             <p className="abi-lede">
               I track the public agent repositories gaining attention on GitHub because the
-              movement is more useful than another market map. This is a weekly read of measured
-              star changes, with the source and gaps left visible.
+              movement is more useful than another market map. This is a daily read of seven-day
+              star changes, with each figure labeled measured, partial, or baseline, and the source
+              and gaps left visible.
             </p>
             <p className="abi-status">
               {index.sourceLabel} · snapshot {formatDateTime(index.generatedAt)} · repositories
@@ -214,7 +215,7 @@ export default function AgentBuildIndexPage() {
               <p className="abi-note">The agent segment is waiting on its next successful snapshot.</p>
             )}
             <p className="abi-note">
-              The weekly figure uses a persisted baseline rather than a single scrape. A new
+              The weekly figure comes from a persisted baseline, so no single scrape sets it. A new
               repository stays labeled as a partial or new baseline until enough history exists.
             </p>
           </section>

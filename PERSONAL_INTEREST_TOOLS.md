@@ -7,7 +7,7 @@ server, no API, and no snapshot pipeline — state lives in the user's browser.
 This doc captures the shared pattern and the per-tool specifics so the next one
 is easy to add.
 
-**Last updated:** 2026-11-16
+**Last updated:** 2026-11-24
 
 ---
 
@@ -69,12 +69,12 @@ Conventions that hold across the stores:
 Two hook patterns are in use, and both sit on the shared
 `src/lib/browserStorage.ts` helper. It mirrors each write in memory, reports a
 `memory-only` status when `localStorage` refuses a write, and keeps a listener
-set per key plus one `storage` event handler. `useTravelPlanner` and
-`useWineCellar` read their key through `useLocalStorageString`, which wraps
+set per key plus one `storage` event handler. `useTravelPlanner` reads its key
+through `useLocalStorageString`, which wraps
 `useSyncExternalStore` around that helper to keep multiple tabs consistent and
 give React a stable external store. I would use this pattern for new stores, and
-`useBrowserRecord` packages it for one key and one parser, rereading the latest
-save before each edit.
+`useBrowserRecord`, which `useWineCellar` uses, packages it for one key and one
+parser, rereading the latest save before each edit.
 
 `useMuseumLog` uses `useState` and `useEffect`, subscribes to the shared browser
 storage helper, and applies each edit to the latest validated save. It also

@@ -123,16 +123,11 @@ export function useTravelPlanner(today?: string) {
       activities: trip.activities.map((activity) =>
         activity.id === activityId
           ? {
-              ...activity,
-              ...draft,
+              // The factory owns the trims, the length caps, and the time rules.
+              ...createActivity(draft),
+              id: activity.id,
+              completed: activity.completed,
               date: isIsoDate(draft.date) ? draft.date : activity.date,
-              endTime:
-                draft.time && draft.endTime && draft.endTime > draft.time
-                  ? draft.endTime
-                  : "",
-              title: draft.title.trim() || "Untitled stop",
-              location: draft.location.trim(),
-              notes: draft.notes.trim(),
             }
           : activity
       ),
@@ -171,11 +166,9 @@ export function useTravelPlanner(today?: string) {
       journal: trip.journal.map((entry) =>
         entry.id === entryId
           ? {
-              ...entry,
-              ...draft,
+              ...createJournalEntry(draft),
+              id: entry.id,
               date: isIsoDate(draft.date) ? draft.date : entry.date,
-              title: draft.title.trim() || "Untitled entry",
-              body: draft.body.trim(),
             }
           : entry
       ),

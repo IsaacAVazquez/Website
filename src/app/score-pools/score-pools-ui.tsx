@@ -99,9 +99,6 @@ export function EpMeter({ value, max }: { value: number; max: number }) {
   );
 }
 
-/** A data-honesty line: same words wherever it prints, as a ruled note rather than a box. */
-export const SAMPLE_NOTICE = "sp-notice";
-
 const SCORE_POOLS_PAGES = [
   { key: "sheet", href: "/score-pools", label: "Pick sheet" },
   { key: "tracker", href: "/score-pools/tracker", label: "Tracker" },
@@ -141,17 +138,25 @@ export function ScorePoolsTitleBar({
 // UTC, so the server render and the browser print the same day.
 const SNAPSHOT_DATE = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" });
 
-/** Printed on every score-pools page until a provider league carries fetched odds. */
+/** The snapshot's build date, which the server and the browser print alike. */
+export function formatSnapshotDate(iso: string): string {
+  const built = new Date(iso);
+  return Number.isNaN(built.getTime()) ? "an unknown date" : SNAPSHOT_DATE.format(built);
+}
+
+/**
+ * Printed on every score-pools page until a provider league carries fetched odds.
+ * A data-honesty line: the same words wherever it prints, as a ruled note, not a box.
+ */
 export function SampleDataNotice({ snapshot }: { snapshot: ScorePoolsSnapshot }) {
   if (hasLiveScorePoolsData(snapshot)) return null;
-  const built = new Date(snapshot.generatedAt);
-  const builtOn = Number.isNaN(built.getTime()) ? "an unknown date" : SNAPSHOT_DATE.format(built);
+  const builtOn = formatSnapshotDate(snapshot.generatedAt);
   // Hand-entered fixtures in a real league are not a sample, so they get their own wording.
   const sampleOnly = snapshot.leagues.every(
     (league) => league.sample || league.fixtures.length === 0,
   );
   return (
-    <p className={SAMPLE_NOTICE}>
+    <p className="sp-notice">
       {sampleOnly
         ? `This page is showing sample data only. The sample was built on ${builtOn}, and no live odds feed is connected.`
         : `No live odds feed is connected. The odds on this page were entered by hand, and the snapshot was built on ${builtOn}.`}
@@ -168,12 +173,6 @@ export function leagueOptionLabel(league: ScorePoolLeagueSnapshot): string {
   const name = `${league.name}${league.sample ? " (sample)" : ""}`;
   return league.fixtures.length === 0 ? `${name} · no fixtures` : name;
 }
-
-export const PILL_BUTTON = "c97-btn";
-
-export const FIELD_LABEL = "c97-kicker";
-export const FIELD_INPUT = "c97-field";
-export const FIELD_HINT = "c97-prose";
 
 /** A one- or two-digit goal count on .c97-field, which otherwise fills its row. */
 export const SCORE_FIELD_STYLE = {

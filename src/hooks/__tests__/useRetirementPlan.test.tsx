@@ -210,24 +210,21 @@ describe("useRetirementPlan", () => {
     expect(atPrint[0]?.input.retirementAge).toBe(55);
     expect(atPrint[0]?.levers.length).toBeGreaterThan(0);
     expect(result.current.isComputing).toBe(false);
-    expect(leverSearch).toHaveBeenLastCalledWith(result.current.plan, expect.any(Number));
+    // The print path has no projection for the pending edit, so no baseline.
+    expect(leverSearch).toHaveBeenLastCalledWith(result.current.plan, expect.any(Number), undefined);
     await waitForDeferredWork(DEBOUNCE_MS);
     expect(leverSearch).toHaveBeenCalledTimes(1);
     expect(result.current.result?.input.retirementAge).toBe(55);
   })());
 
   it("seeds a fresh plan from a portfolio value into a taxable account", () => {
-    const seed: RetirementSeed = {
-      portfolioValue: 250000,
-      allocation: { stocks: 60, bonds: 30, cash: 10, other: 0 },
-    };
+    const seed: RetirementSeed = { portfolioValue: 250000 };
     const { result } = renderHook(() => useRetirementPlan(seed));
 
     expect(result.current.ready).toBe(true);
 
     const taxable = result.current.plan.accounts.find((a) => a.type === "taxable");
     expect(taxable?.balance).toBe(250000);
-    expect(result.current.plan.allocation).toMatchObject({ stocks: 60, bonds: 30, cash: 10 });
   });
 
   // The hook writes the plan in an effect, and act has run that effect by the
@@ -249,6 +246,20 @@ describe("useRetirementPlan", () => {
     expect(result.current.plan.allocation.stocks).toBe(50);
     expect(result.current.plan.allocation.bonds).toBe(40);
     expect(readStoredPlan().allocation.stocks).toBe(50);
+  });
+
+  // The next edit starts from the decoded save, so a clamp left for then
+  // would change a field the visitor was not editing.
+  it("shows a clamp in another field on the edit that causes it", () => {
+    const { result } = renderHook(() => useRetirementPlan(undefined, false));
+
+    act(() => result.current.updatePlan({ currentAge: 66 }));
+    expect(result.current.plan.retirementAge).toBe(67);
+    expect(readStoredPlan().retirementAge).toBe(67);
+
+    act(() => result.current.updatePlan({ retirementAge: 72 }));
+    expect(result.current.plan.otherIncome).toMatchObject({ partTimeStartAge: 72, partTimeEndAge: 72 });
+    expect(readStoredPlan().otherIncome).toMatchObject({ partTimeStartAge: 72, partTimeEndAge: 72 });
   });
 
   it("recomputes the projection after the debounced inputs settle", tracked(async () => {

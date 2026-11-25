@@ -12,7 +12,7 @@ import {
   Plane,
 } from "lucide-react";
 import { useClientNow } from "@/hooks/useClientNow";
-import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import {
   DEAL_TACTICS,
   DESTINATION_REGIONS,
@@ -39,7 +39,6 @@ import {
   type PointsRating,
 } from "@/lib/travelDeals";
 import { clamp } from "@/lib/utils";
-import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { FareGaugeSignature } from "./FareGaugeSignature";
 import { FlightQuoteComparison } from "./FlightQuoteComparison";
 import "./travel-deals.css";
@@ -104,10 +103,6 @@ function decodeState(value: unknown): TripState {
   };
 }
 
-function loadState(): TripState {
-  return readValidatedBrowserStorage(STORAGE_KEY, decodeState, () => DEFAULT_STATE).value;
-}
-
 function parseState(raw: string): TripState {
   if (!raw) return DEFAULT_STATE;
   try {
@@ -115,10 +110,6 @@ function parseState(raw: string): TripState {
   } catch {
     return DEFAULT_STATE;
   }
-}
-
-function saveState(state: TripState) {
-  writeBrowserStorageJson(STORAGE_KEY, state);
 }
 
 const CATEGORY_LABELS: Record<TacticCategory, string> = {
@@ -178,8 +169,8 @@ function RatingChip({ tone, label }: { tone: "positive" | "negative" | null; lab
 }
 
 export function TravelDealLabClient() {
-  const rawState = useLocalStorageString(STORAGE_KEY);
-  const state = useMemo(() => parseState(rawState), [rawState]);
+  // Each edit is applied to the latest save, so another tab's change is kept.
+  const { value: state, update: updateState } = useBrowserRecord(STORAGE_KEY, parseState);
 
   const [showAllTactics, setShowAllTactics] = useState(false);
   const quotedFare = state.quotedFare;
@@ -210,25 +201,23 @@ export function TravelDealLabClient() {
   // The quote is for the whole party and the region's band is per seat, so the gauge reads the per-seat fare.
   const perTravelerFare = quotedFare / Math.max(1, state.travelers);
   const points = useMemo(
-    () => (pointsUsed > 0 ? valuePoints(cashPrice, taxesFees, pointsUsed) : null),
+    () => valuePoints(cashPrice, taxesFees, pointsUsed),
     [cashPrice, taxesFees, pointsUsed],
   );
 
   const appliedCount = state.checkedTactics.length;
 
   function updateTrip(patch: Partial<TripState>) {
-    saveState({ ...loadState(), ...patch });
+    updateState((latest) => ({ ...latest, ...patch }));
   }
 
   function toggleTactic(id: string) {
-    const current = loadState();
-    const has = current.checkedTactics.includes(id);
-    saveState({
+    updateState((current) => ({
       ...current,
-      checkedTactics: has
+      checkedTactics: current.checkedTactics.includes(id)
         ? current.checkedTactics.filter((tacticId) => tacticId !== id)
         : [...current.checkedTactics, id],
-    });
+    }));
   }
 
   const disclosure = `Fare bands and the points baseline are curated, unverified estimates as of ${TRAVEL_DEALS_AS_OF}, and none of them is a live quote, so I'd use them to judge a price you've already found.`;
@@ -383,7 +372,7 @@ export function TravelDealLabClient() {
                 Points value
               </h3>
               <div>
-                {points ? (
+                {pointsUsed > 0 ? (
                   <>
                     <p className="td-row-lead">
                       {points.centsPerPoint.toFixed(2)}¢ per point, against a {points.baseline.toFixed(1)}¢ baseline{" "}
@@ -392,7 +381,7 @@ export function TravelDealLabClient() {
                     <p>{points.message}</p>
                   </>
                 ) : (
-                  <p>Enter how many points the award costs to see the value.</p>
+                  <p>{points.message}</p>
                 )}
               </div>
             </div>

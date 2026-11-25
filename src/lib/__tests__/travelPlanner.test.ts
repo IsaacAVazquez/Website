@@ -78,6 +78,15 @@ describe("parseTrips", () => {
     expect(trips[0].journal[0].title).toBe("Kept");
   });
 
+  it("blanks a stored time no clock can show and keeps the stop", () => {
+    const stored = [{ ...makeTrip(), activities: [makeActivity({ id: "act-1", time: "25:99" })] }];
+    const [trip] = parseTrips(JSON.stringify(stored));
+    expect(trip.activities).toHaveLength(1);
+    expect(trip.activities[0].time).toBe("");
+    const valid = [{ ...makeTrip(), activities: [makeActivity({ id: "act-1", time: "23:59" })] }];
+    expect(parseTrips(JSON.stringify(valid))[0].activities[0].time).toBe("23:59");
+  });
+
   it("falls back to a placeholder name when the stored name is blank", () => {
     const trips = parseTrips(JSON.stringify([{ ...makeTrip(), name: "   " }]));
     expect(trips[0].name).toBe("Untitled trip");
@@ -147,17 +156,6 @@ describe("findActivityOverlaps", () => {
 });
 
 describe("calculateTripSummary", () => {
-  it("reports the number of overlapping pairs, not flagged stops", () => {
-    const trip = makeTrip({
-      activities: [
-        makeActivity({ id: "a", time: "09:00", endTime: "11:00" }),
-        makeActivity({ id: "b", time: "10:00", endTime: "12:00" }),
-      ],
-    });
-    const summary = calculateTripSummary(trip, "2026-06-12");
-    expect(summary.conflictCount).toBe(1);
-  });
-
   it("caps the rendered itinerary for absurd date spans and flags the truncation", () => {
     const trip = makeTrip({ startDate: "2026-06-12", endDate: "2126-06-12" });
     const summary = calculateTripSummary(trip, "2026-06-12");

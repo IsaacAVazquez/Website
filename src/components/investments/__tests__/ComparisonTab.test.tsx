@@ -167,7 +167,7 @@ describe("ComparisonTab", () => {
     seed("AAPL", { fundamentals: apple.fundamentals });
     seed("MSFT", microsoft);
     await renderTab();
-    expect(screen.getByText(/not enough shared, verified metrics/)).toBeInTheDocument();
+    expect(screen.getByText(/not enough shared metrics/)).toBeInTheDocument();
   });
 
   it("requests the newly chosen symbol", async () => {

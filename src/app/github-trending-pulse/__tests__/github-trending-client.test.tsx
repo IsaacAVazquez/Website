@@ -330,6 +330,53 @@ describe("GitHubTrendingClient", () => {
     expect(screen.getByRole("status")).toHaveTextContent("1 segment is using earlier data.");
   });
 
+  it("counts a segment with nothing to restore apart from the reused ones", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          sourceStatus: {
+            status: "degraded",
+            failedSegments: ["Swift", "Java"],
+            reusedSegments: ["Swift"],
+          },
+        }}
+      />
+    );
+
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "1 segment is using earlier data and 1 is unavailable right now."
+    );
+  });
+
+  it("prints a lost week with a minus sign, and one word for a repository with no language", () => {
+    const lost = { ...repo, primaryLanguage: null, weeklyStars: -10 };
+    const { unmount } = render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{ ...snapshot, repositories: [lost] }}
+      />
+    );
+    const row = within(screen.getByRole("table")).getAllByRole("row")[1];
+    expect(row).toHaveTextContent("\u221210");
+    expect(row).toHaveTextContent("Other");
+    expect(row).not.toHaveTextContent("Mixed");
+    unmount();
+
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{ ...snapshot, repositories: [{ ...lost, weeklyStars: 40 }] }}
+      />
+    );
+    expect(
+      screen.getByText(
+        "Repositories with no primary language have 100% of this week's star gain, counted across the 1 repository in this view that gained stars."
+      )
+    ).toBeVisible();
+  });
+
   it("names the pool behind the leading language share", () => {
     render(
       <GitHubTrendingClient

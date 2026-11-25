@@ -37,31 +37,27 @@ const REPRESENTATIVE_SLUGS = [
 ];
 
 async function readPost(slug) {
-  for (const ext of ["mdx", "md"]) {
-    const filePath = path.join(blogDirectory, `${slug}.${ext}`);
-    try {
-      const source = await fs.readFile(filePath, "utf8");
-      const { data, content } = matter(source);
-      return {
-        slug,
-        title: data.title,
-        publishedAt: data.publishedAt,
-        category: data.category,
-        excerpt: data.excerpt,
-        content: content.replace(/^\s*#\s+.+(?:\r?\n)+/, "").trim(),
-      };
-    } catch {
-      // Try next extension
-    }
+  try {
+    const source = await fs.readFile(path.join(blogDirectory, `${slug}.mdx`), "utf8");
+    const { data, content } = matter(source);
+    return {
+      slug,
+      title: data.title,
+      publishedAt: data.publishedAt,
+      category: data.category,
+      excerpt: data.excerpt,
+      content: content.replace(/^\s*#\s+.+(?:\r?\n)+/, "").trim(),
+    };
+  } catch {
+    return null;
   }
-  return null;
 }
 
 async function generate() {
   const sections = [];
 
   // Header & Identity
-  sections.push(`# Isaac Vazquez — Complete Corpus (llms-full.txt)
+  sections.push(`# Isaac Vazquez, the complete corpus (llms-full.txt)
 
 > Second-year MBA candidate at UC Berkeley Haas, Class of 2027, moving into product. Six years across campaign data at Open Progress and QA at Civitech, where the QA role grew into product work, then a summer 2026 growth internship at Juno.
 
@@ -111,7 +107,7 @@ A simple comparison can easily mislead. At Juno, advising meetings superficially
 - [Decision Lab](https://isaacvazquez.com/decision-lab): Product-bet triage framework scoring impact, confidence, effort, and reversibility.
 - [Automation Enablement Assistant](https://isaacvazquez.com/enablement-assistant): Recommends standard test stacks, builds onboarding plans, and diagnoses automation gaps.
 - [News Pulse](https://isaacvazquez.com/news-pulse): RSS-backed media analytics comparing story frequency, topic coverage, and editorial tone.
-- [SpaceX Mission Control](https://isaacvazquez.com/spacex-mission-control): Real-time launch schedules, booster tracking, and launch economics from public space APIs.
+- [SpaceX Mission Control](https://isaacvazquez.com/spacex-mission-control): Launch schedules, booster tracking, and launch economics from a Launch Library snapshot that refreshes twice a day.
 - [Bay Area Transit Pulse](https://isaacvazquez.com/bay-area-transit): Live BART departures, elevator alerts, and line status for the San Francisco Bay Area.
 - [Sports Pulse Family](https://isaacvazquez.com/dashboards): Dedicated daily-updated data dashboards for Premier League, La Liga, MLB, NBA, NFL, Formula 1, Golf, and World Cup 2026.
 

@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import type { ReactNode } from "react";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { Catalog97EasterEggs } from "@/components/catalog97/Catalog97EasterEggs";
 import {
@@ -87,13 +87,29 @@ describe("Catalog97EasterEggs", () => {
   });
 
   it("logs the console note once, even under strict mode and a remount", () => {
-    const { unmount } = render(
-      <StrictMode>
-        <Catalog97EasterEggs />
-      </StrictMode>,
-    );
-    unmount();
-    render(<Catalog97EasterEggs />);
+    // The once-flag is module scope, so this loads its own copy of the
+    // component, and of the React that copy imports, to start with the flag
+    // unset whichever test mounted the shared copy first.
+    jest.isolateModules(() => {
+      /* eslint-disable @typescript-eslint/no-require-imports */
+      const React = require("react") as typeof import("react");
+      const { createRoot } = require("react-dom/client") as typeof import("react-dom/client");
+      const { Catalog97EasterEggs: FreshEasterEggs } =
+        require("@/components/catalog97/Catalog97EasterEggs") as typeof import("@/components/catalog97/Catalog97EasterEggs");
+      /* eslint-enable @typescript-eslint/no-require-imports */
+
+      const mount = (node: ReactNode) => {
+        const root = createRoot(document.createElement("div"));
+        React.act(() => root.render(node));
+        return root;
+      };
+
+      const strict = mount(React.createElement(React.StrictMode, null, React.createElement(FreshEasterEggs)));
+      React.act(() => strict.unmount());
+      const remount = mount(React.createElement(FreshEasterEggs));
+      React.act(() => remount.unmount());
+    });
+
     const notes = log.mock.calls.filter(([text]) => String(text).includes("Civitech"));
     expect(notes).toHaveLength(1);
     expect(notes[0][0]).toContain("https://github.com/IsaacAVazquez/Website");

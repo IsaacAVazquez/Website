@@ -47,6 +47,23 @@ export function diffInDays(fromKey: string, toKey: string): number | null {
   return Math.round((to - from) / DAY_MS);
 }
 
+// tz-local: follow-up, deadline, and interview dates the visitor picked in
+// <input type="date"> on their own tracked applications (client-only,
+// localStorage-backed; never renders with real data during SSR since
+// `applications` starts empty).
+const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
+
+/** A YYYY-MM-DD key as "Nov 5", or the raw value when it is not a date. */
+export function formatDateKey(value: string | null): string {
+  if (!value) return "";
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return DATE_KEY_FORMATTER.format(date);
+}
+
 export interface MBAUpcomingInterview {
   application: MBATrackedApplication;
   round: MBAInterviewRound;
@@ -105,17 +122,9 @@ interface MBAApplicationFunnel {
   rejected: number;
 }
 
-interface MBAApplicationBucketCounts {
-  // For deadlines, `overdue` means the deadline has already passed.
-  overdue: number;
-  dueToday: number;
-  upcoming: number;
-}
-
 export interface MBAApplicationInsights {
-  // Non-archived applications only; archived ones are counted separately.
-  total: number;
   archived: number;
+  // Non-archived applications only; archived ones are counted separately.
   funnel: MBAApplicationFunnel;
   // Known progress across all applications, including those now archived.
   submitted: number;
@@ -124,15 +133,6 @@ export interface MBAApplicationInsights {
   // Reached at least the interview stage (interviewing + offer).
   interviews: number;
   offers: number;
-  // Shares of `submitted`; null when nothing has been submitted yet so the UI
-  // can show a dash instead of a misleading 0%.
-  responseRate: number | null;
-  interviewRate: number | null;
-  offerRate: number | null;
-  followUps: MBAApplicationBucketCounts;
-  deadlines: MBAApplicationBucketCounts;
-  // Applications with at least one actionable follow-up/deadline signal.
-  attentionCount: number;
 }
 
 const EMPTY_FUNNEL: MBAApplicationFunnel = {
@@ -147,52 +147,22 @@ function isActive(application: MBATrackedApplication): boolean {
   return application.status !== "archived";
 }
 
-function rate(part: number, whole: number): number | null {
-  return whole > 0 ? part / whole : null;
-}
-
 /**
- * Summarize the tracked pipeline into funnel counts, stage-conversion rates,
- * and follow-up/deadline bucket counts. The funnel excludes archived records;
- * conversion rates include prior stages supported by history or other evidence.
+ * Summarize the tracked pipeline into funnel counts and the counts that reached
+ * each stage. The funnel excludes archived records; the stage counts include
+ * prior stages supported by history or other evidence.
  */
 export function summarizeApplicationPipeline(
-  applications: MBATrackedApplication[],
-  todayKey: string
+  applications: MBATrackedApplication[]
 ): MBAApplicationInsights {
   const funnel: MBAApplicationFunnel = { ...EMPTY_FUNNEL };
-  const followUps: MBAApplicationBucketCounts = { overdue: 0, dueToday: 0, upcoming: 0 };
-  const deadlines: MBAApplicationBucketCounts = { overdue: 0, dueToday: 0, upcoming: 0 };
   let archived = 0;
-  let active = 0;
 
   for (const application of applications) {
     if (!isActive(application)) {
       archived += 1;
-      continue;
-    }
-    active += 1;
-    if (application.status in funnel) {
+    } else if (application.status in funnel) {
       funnel[application.status as keyof MBAApplicationFunnel] += 1;
-    }
-
-    if (application.followUpDate) {
-      const diff = diffInDays(todayKey, application.followUpDate);
-      if (diff !== null) {
-        if (diff < 0) followUps.overdue += 1;
-        else if (diff === 0) followUps.dueToday += 1;
-        else if (diff <= MBA_ATTENTION_WINDOW_DAYS) followUps.upcoming += 1;
-      }
-    }
-
-    // Deadlines only matter while a role is still un-submitted ("saved").
-    if (application.status === "saved" && application.deadline) {
-      const diff = diffInDays(todayKey, application.deadline);
-      if (diff !== null) {
-        if (diff < 0) deadlines.overdue += 1;
-        else if (diff === 0) deadlines.dueToday += 1;
-        else if (diff <= MBA_ATTENTION_WINDOW_DAYS) deadlines.upcoming += 1;
-      }
     }
   }
 
@@ -202,21 +172,7 @@ export function summarizeApplicationPipeline(
   const interviews = reached.filter((item) => item.interview).length;
   const offers = reached.filter((item) => item.offer).length;
 
-  return {
-    total: active,
-    archived,
-    funnel,
-    submitted,
-    responded,
-    interviews,
-    offers,
-    responseRate: rate(responded, submitted),
-    interviewRate: rate(interviews, submitted),
-    offerRate: rate(offers, submitted),
-    followUps,
-    deadlines,
-    attentionCount: getApplicationAttentionItems(applications, todayKey).length,
-  };
+  return { archived, funnel, submitted, responded, interviews, offers };
 }
 
 // ── Needs-attention list ───────────────────────────────────────────────────

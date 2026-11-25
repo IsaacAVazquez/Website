@@ -25,7 +25,7 @@ import { formatScoreToPar, isCutMade, leaderboardSlats, type ParTone } from "./l
 import "./golf.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
-import { formatStableDateTime } from "@/lib/date-formatters";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and this route takes nothing else from it.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
@@ -38,16 +38,6 @@ interface GolfClientProps {
   summary: GolfSummary;
   initialPlayerSnapshot: GolfPlayerSnapshot | null;
 }
-
-// Pinned to UTC so the server and the browser print the same string.
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "UTC",
-  timeZoneName: "short",
-});
 
 // Tournament dates arrive as calendar days, which parse as UTC midnight, so
 // they print in UTC. In local time a reader west of Greenwich saw the day before.
@@ -87,12 +77,6 @@ function Movement({ movement }: { movement: number }) {
       <span className="sr-only">{label}</span>
     </span>
   );
-}
-
-function formatGeneratedAt(value: string | null | undefined): string {
-  if (!value) return "Unavailable";
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : formatStableDateTime(LAST_UPDATED_FORMATTER, date);
 }
 
 // A bare YYYY-MM-DD parses as UTC midnight, which DATE_RANGE_FORMATTER's
@@ -474,7 +458,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
               ))}
             </div>
             <p className="golf-on-ground golf-checked">
-              {tournament.tour} · last checked {formatGeneratedAt(tournament.generatedAt)}
+              {tournament.tour} · last checked {formatUpdatedAt(tournament.generatedAt)}
             </p>
           </div>
 

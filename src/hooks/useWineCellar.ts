@@ -1,16 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
 import {
   applyWineDraft,
   calculateWineSummary,
   createWineEntry,
   DEFAULT_WINE_FILTERS,
   filterAndSortWines,
-  loadWineEntries,
   parseWineEntries,
-  saveWineEntries,
   WINE_CELLAR_STORAGE_KEY,
   type WineDraft,
   type WineFilters,
@@ -18,9 +16,11 @@ import {
 import type { WineEntry } from "@/types/wine";
 
 export function useWineCellar() {
-  const storedSnapshot = useLocalStorageString(WINE_CELLAR_STORAGE_KEY, "[]");
-
-  const entries = useMemo(() => parseWineEntries(storedSnapshot), [storedSnapshot]);
+  // Each edit is applied to the latest save, so another tab's write is kept.
+  const { value: entries, update: commitEntries } = useBrowserRecord(
+    WINE_CELLAR_STORAGE_KEY,
+    parseWineEntries,
+  );
   const [filters, setFilters] = useState<WineFilters>(DEFAULT_WINE_FILTERS);
 
   const summary = useMemo(() => calculateWineSummary(entries), [entries]);
@@ -35,15 +35,6 @@ export function useWineCellar() {
 
   function resetFilters() {
     setFilters(DEFAULT_WINE_FILTERS);
-  }
-
-  function commitEntries(updater: (current: WineEntry[]) => WineEntry[]) {
-    // Read fresh at commit time (loadWineEntries goes through the mirror-aware
-    // shared store) so a concurrent cross-tab write isn't clobbered by a
-    // render-captured value. saveWineEntries notifies subscribers itself.
-    const current = loadWineEntries();
-    const next = updater(current);
-    saveWineEntries(next);
   }
 
   function addEntry(draft: WineDraft) {

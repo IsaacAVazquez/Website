@@ -400,7 +400,13 @@ export function buildComparisonDistribution(
   };
 
   const pDraw90 = dist.outcome.draw;
-  let pPenalties = 0;
+  // Extra time: the 90-minute scoring rate pro-rated to 30 minutes at the
+  // configured tempo. P(still level after it) is shown under either basis.
+  const etCap = extraTime.maxGoalsPerSide;
+  const etHome = normalizeRow(poissonRow((dist.lambdaHome / 3) * extraTime.tempo, etCap));
+  const etAway = normalizeRow(poissonRow((dist.lambdaAway / 3) * extraTime.tempo, etCap));
+  let pLevelEt = 0;
+  for (let k = 0; k <= etCap; k++) pLevelEt += etHome[k] * etAway[k];
 
   if (basis === "ninetyMinutes" || !knockout) {
     for (let h = 0; h <= dist.maxGoals; h++) {
@@ -410,12 +416,6 @@ export function buildComparisonDistribution(
     }
   } else {
     // Final-result scoring in a knockout: draws extend through extra time.
-    const etLambdaHome = (dist.lambdaHome / 3) * extraTime.tempo;
-    const etLambdaAway = (dist.lambdaAway / 3) * extraTime.tempo;
-    const etCap = extraTime.maxGoalsPerSide;
-    const etHome = normalizeRow(poissonRow(etLambdaHome, etCap));
-    const etAway = normalizeRow(poissonRow(etLambdaAway, etCap));
-
     for (let h = 0; h <= dist.maxGoals; h++) {
       for (let a = 0; a <= dist.maxGoals; a++) {
         const p90 = dist.grid[h][a];
@@ -434,14 +434,11 @@ export function buildComparisonDistribution(
             };
             if (i !== j) {
               add(finalScore, i > j ? "home" : "away", pCell);
+            } else if (penaltiesCountAsWin) {
+              add(finalScore, "home", pCell * extraTime.penaltyHomeWinProbability);
+              add(finalScore, "away", pCell * (1 - extraTime.penaltyHomeWinProbability));
             } else {
-              pPenalties += pCell;
-              if (penaltiesCountAsWin) {
-                add(finalScore, "home", pCell * extraTime.penaltyHomeWinProbability);
-                add(finalScore, "away", pCell * (1 - extraTime.penaltyHomeWinProbability));
-              } else {
-                add(finalScore, "draw", pCell);
-              }
+              add(finalScore, "draw", pCell);
             }
           }
         }
@@ -458,7 +455,7 @@ export function buildComparisonDistribution(
     cells,
     outcome,
     pExtraTime: knockout ? pDraw90 : 0,
-    pPenalties: knockout && basis === "finalResult" ? pPenalties : knockout ? estimatePenalties(dist, extraTime) : 0,
+    pPenalties: knockout ? pDraw90 * pLevelEt : 0,
   };
 }
 
@@ -467,14 +464,3 @@ function normalizeRow(row: number[]): number[] {
   return row.map((p) => p / total);
 }
 
-/** P(still level after extra time), for display under 90-minute scoring. */
-function estimatePenalties(dist: ScorelineDistribution, extraTime: ExtraTimeConfig): number {
-  const etLambdaHome = (dist.lambdaHome / 3) * extraTime.tempo;
-  const etLambdaAway = (dist.lambdaAway / 3) * extraTime.tempo;
-  const cap = extraTime.maxGoalsPerSide;
-  const etHome = normalizeRow(poissonRow(etLambdaHome, cap));
-  const etAway = normalizeRow(poissonRow(etLambdaAway, cap));
-  let pLevelEt = 0;
-  for (let k = 0; k <= cap; k++) pLevelEt += etHome[k] * etAway[k];
-  return dist.outcome.draw * pLevelEt;
-}

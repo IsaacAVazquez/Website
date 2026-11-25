@@ -15,6 +15,7 @@ import {
   evaluateFantasyTrade,
   getRestOfSeasonFreshness,
   getScoringThroughWeek,
+  getStoppedScoringWeek,
   type FantasyTradeEvaluation,
   type FantasyTradeLeagueSettings,
   type FantasyTradeRestOfSeasonInput,
@@ -23,6 +24,7 @@ import {
   FANTASY_TRADE_MAX_PLAYERS_PER_SIDE,
   isValidFantasyTradeSeason,
 } from "@/lib/fantasyTradePersistence";
+import { pickWorseFantasySnapshotStaleness } from "@/lib/fantasyWeeklySnapshot";
 import {
   formatUpdatedAt,
   getCurrentDraftSeason,
@@ -337,6 +339,15 @@ export function TradeCalculatorClient() {
     () => (snapshot ? getScoringThroughWeek(players, snapshot.season, seasonWeek) : 0),
     [players, seasonWeek, snapshot]
   );
+  // Logs that stopped updating read as stopped, and "yet" stays for a season with none.
+  const scoringStopped = useMemo(
+    () =>
+      snapshot && scoringThrough === 0 ? getStoppedScoringWeek(players, snapshot.season, seasonWeek) : 0,
+    [players, scoringThrough, seasonWeek, snapshot]
+  );
+  // In season a failed weekly fetch leaves the page on the frozen draft board,
+  // so it says which board is missing and offers the retry.
+  const restOfSeasonFailed = seasonWeek >= 1 && !restOfSeason && Boolean(weekly.error);
   const expertFreshness: FantasySnapshotStaleness = restOfSeason
     ? getRestOfSeasonFreshness(restOfSeason.source.asOf)
     : snapshot
@@ -349,15 +360,7 @@ export function TradeCalculatorClient() {
       : getFantasyAdpFreshness(snapshot.adpSource.asOf, snapshot.season) === "current"
         ? getSnapshotStaleness(snapshot.adpSource.asOf)
         : "stale";
-  const FRESHNESS_SEVERITY: Record<FantasySnapshotStaleness, number> = {
-    fresh: 0,
-    aging: 1,
-    stale: 2,
-  };
-  const sourceFreshness =
-    FRESHNESS_SEVERITY[expertFreshness] >= FRESHNESS_SEVERITY[marketFreshness]
-      ? expertFreshness
-      : marketFreshness;
+  const sourceFreshness = pickWorseFantasySnapshotStaleness(expertFreshness, marketFreshness);
   // In season with a rest-of-season board, the calculator prices the rest of
   // the season. Without one (before its first build, or if the weekly file
   // fails) it falls back to the draft board, where the engine gates on the
@@ -418,7 +421,9 @@ export function TradeCalculatorClient() {
                     {
                       label: scoringThrough > 0
                         ? `${snapshot?.season} scoring through Week ${scoringThrough}`
-                        : `No ${snapshot?.season} scoring yet`,
+                        : scoringStopped > 0
+                          ? `${snapshot?.season} scoring stopped at Week ${scoringStopped}`
+                          : `No ${snapshot?.season} scoring yet`,
                     },
                   ]
                 : [
@@ -462,7 +467,9 @@ export function TradeCalculatorClient() {
                 The second side is this season&rsquo;s points per game above each position&rsquo;s
                 replacement level, weighted by games played, so five games count for half as much
                 as the experts. A player with fewer than four games, a rookie or someone back from
-                injury most often, is priced on the experts alone at limited coverage.{" "}
+                injury most often, is priced on the experts alone at limited coverage, and so is
+                every kicker and team defense, since the scoring log does not cover those two
+                positions.{" "}
               </>
             ) : marketFreshness === "stale" ? (
               <>
@@ -494,6 +501,20 @@ export function TradeCalculatorClient() {
             </Link>
             .
           </SeasonalScopeNote>
+        ) : null}
+
+        {restOfSeasonFailed && !error ? (
+          <div role="alert" className="ffb-notice ffb-notice-bad">
+            <p>
+              <strong>The rest-of-season board could not be loaded.</strong> Until it loads, this
+              page prices the frozen draft board in its place.
+            </p>
+            <div className="ffb-notice-actions">
+              <button type="button" onClick={weekly.retry} className="ffb-btn">
+                Retry the rest-of-season board
+              </button>
+            </div>
+          </div>
         ) : null}
 
         {trade.persistenceStatus === "memory-only" ? (

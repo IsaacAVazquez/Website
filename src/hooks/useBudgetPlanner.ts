@@ -12,13 +12,14 @@ import {
   loadBudgetMonths,
   parseBudgetMonths,
   saveBudgetMonths,
+  sanitizeNonNegativeAmount,
   copyBudgetPlan,
   getAdjacentBudgetMonthKey,
   isBudgetPlanEmpty,
   recordRecurringExpenses,
 } from "@/lib/budgetPlanner";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
-import { prefixedId, roundTo } from "@/lib/utils";
+import { prefixedId } from "@/lib/utils";
 import type { BudgetExpense, BudgetMonth, BudgetMonthMap } from "@/types/budget";
 
 interface ExpenseDraftInput {
@@ -26,10 +27,6 @@ interface ExpenseDraftInput {
   amount: number;
   date: string;
   note: string;
-}
-
-function roundAmount(value: number) {
-  return Number.isFinite(value) ? Math.max(0, roundTo(value, 2)) : 0;
 }
 
 /**
@@ -80,14 +77,14 @@ export function useBudgetPlanner(currentMonthKey: string) {
   function updateIncome(value: number) {
     updateActiveMonth((month) => ({
       ...month,
-      income: roundAmount(value),
+      income: sanitizeNonNegativeAmount(value),
     }));
   }
 
   function updateSavingsTarget(value: number) {
     updateActiveMonth((month) => ({
       ...month,
-      savingsTarget: roundAmount(value),
+      savingsTarget: sanitizeNonNegativeAmount(value),
     }));
   }
 
@@ -122,7 +119,7 @@ export function useBudgetPlanner(currentMonthKey: string) {
         category.id === categoryId
           ? {
               ...category,
-              budgetedAmount: roundAmount(nextBudget),
+              budgetedAmount: sanitizeNonNegativeAmount(nextBudget),
             }
           : category
       ),
@@ -158,7 +155,7 @@ export function useBudgetPlanner(currentMonthKey: string) {
           ? {
               ...expense,
               categoryId: draft.categoryId,
-              amount: roundAmount(draft.amount),
+              amount: sanitizeNonNegativeAmount(draft.amount),
               date: draft.date,
               note: draft.note.trim(),
             }
@@ -200,7 +197,7 @@ export function useBudgetPlanner(currentMonthKey: string) {
   function addRecurringBill(draft: { categoryId: string; amount: number; day: number; note: string }) {
     if (!Number.isFinite(draft.amount) || draft.amount <= 0 || !Number.isInteger(draft.day) || draft.day < 1 || draft.day > 31) return;
     updateActiveMonth(month => !month.categories.some(c => c.id === draft.categoryId) ? month : ({ ...month,
-      recurringExpenses: [...(month.recurringExpenses ?? []), { ...draft, amount: roundAmount(draft.amount),
+      recurringExpenses: [...(month.recurringExpenses ?? []), { ...draft, amount: sanitizeNonNegativeAmount(draft.amount),
         note: draft.note.trim().slice(0, 140), id: prefixedId("bill") }] }));
   }
 

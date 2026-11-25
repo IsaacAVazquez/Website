@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-24
 
 Tracked Markdown audit scope: `git ls-files -- '*.md' '*.mdx'` returned 438 tracked files on 2026-11-02, split across `content/blog/` (249 live articles), `content/changelog/` (59), `docs/` (55), `.impeccable/surfaces/` (51), the repository root (23), and `public/project-screenshots/README.md`. `ds-bundle/` is gitignored and not tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is 78 files. On 2026-09-30 the same command returned 621. The cleanups of 2026-10-01 and 2026-10-02 then deleted old docs and the historical `content/` snapshots, and untracked `.agents/` and the Impeccable critique output. Re-run the command rather than trusting these numbers.
 
@@ -10,7 +10,7 @@ The 2026-05-03 project coverage pass adds markdown snapshots for the remaining l
 
 ---
 
-## Current Source Of Truth
+## Current source of truth
 
 Start here for live implementation and agent context:
 
@@ -43,13 +43,13 @@ AI-oriented technical references:
 
 Subsystem references (current):
 
-- `PROJECT_TOOL_WORKFLOWS.md` - saved decisions, meal planning, trip costs and calendar export, transit commutes, own team records, and payment channel comparisons
+- `PROJECT_TOOL_WORKFLOWS.md` - the workflows added to the project tools from 2026-10-22 to 2026-10-24, from saved decisions, meal planning, trip costs and calendar export, transit commutes, own team records, and payment channel comparisons, to the budget, wine inventory, news history, and repository shortlist workflows, the frontier workload comparisons, and the saved rent scenarios, restaurants, flight quotes, Formula 1 lineups, and favorite teams
 - `PROJECT_FOLLOWING_WORKFLOWS.md` - following and saved research on the developer tools, startup tracker, SpaceX, golf, polling, and earthquake routes
 - `PROJECT_COMPARISON_WORKFLOWS.md` - saved retirement plans, score pool pick review, and the weekly agent index archive
-- `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
-- `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
-- `../RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine (`src/lib/retirement/`)
-- `../SCORE_POOLS_ENGINE.md` — exact-score prediction engine behind `/score-pools` (`src/lib/scorePools/`)
+- `../SNAPSHOT_DRIVEN_DASHBOARDS.md` - shared snapshot-driven dashboard architecture
+- `../PERSONAL_INTEREST_TOOLS.md` - browser-persisted localStorage tools
+- `../RETIREMENT_PLANNER_ENGINE.md` - pure retirement projection engine (`src/lib/retirement/`)
+- `../SCORE_POOLS_ENGINE.md` - exact-score prediction engine behind `/score-pools` (`src/lib/scorePools/`)
 - `BEFORE_YOU_BUY.md` - the comparison model and saved state behind `/investments/before-you-buy`
 - `FANTASY_DRAFT_MODEL.md` - fantasy draft and trade metrics, formulas, data limits, and validation contract
 - `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
@@ -61,7 +61,7 @@ Subsystem references (current):
 
 ---
 
-## Supporting Operational Docs
+## Supporting operational docs
 
 Use these when the task is specifically about setup, deployment, data operations, security, or troubleshooting:
 
@@ -91,7 +91,7 @@ Dated audits and research dossiers. Each one is a point-in-time snapshot rather 
 - `DESIGN_AUDIT_2026-06.md` (the audit `../DESIGN_CHECKLIST.md` is derived from)
 - `DESIGN_REVIEW_2026-07.md`
 - `codebase-audit-2026-10-02.md` (code correctness, security, persistence, and publication audit with verified repairs)
-- `PROJECT_AUDIT_2026-10-12.md` (37 project surfaces checked after #595, with ten verified issues, nine of them fixed in #596 and the Interchange IQ payment channel comparison on 2026-10-22)
+- `PROJECT_AUDIT_2026-10-12.md` (37 project surfaces checked after #595, with ten verified issues, nine of them fixed in #596 and the tenth, the Interchange IQ payment channel comparison, on 2026-10-22)
 - `REPOSITORY_AUDIT_2026-11-03.md` (the whole repository at f591b5fff plus the project tools branch, 720 verified findings with 9 rated P1)
 - `REPOSITORY_REVIEW_2026-10-14.md` (five more findings from a second look at the October 7 to 12 changes, with the job search and empty-query fixes merged, two left out because main already handled them, and three smaller problems still open)
 - `accessibility-audit-2026-06.md`
@@ -102,7 +102,7 @@ Older audits, roadmaps, and research reading were removed on 2026-10-01 and are 
 
 ---
 
-## Historical Or Reference Docs
+## Historical or reference docs
 
 These remain in the repo for context, but they should not be treated as live source-of-truth docs:
 
@@ -135,7 +135,7 @@ The historical snapshots under `../content/` were deleted on 2026-10-02, and git
 
 ---
 
-## Bundled Skill Docs
+## Bundled skill docs
 
 `../.agents/` held the bundled skill-library docs until 2026-10-02, when it was untracked and added to `.gitignore`, so a checkout may still hold a local copy that is no longer part of this inventory. Those are skill-library docs, not website implementation docs, and website documentation sync work leaves them alone.
 
@@ -147,7 +147,7 @@ Two more root files are owned by tooling rather than by this index, and a docume
 
 ---
 
-## Usage Guidance
+## Usage guidance
 
 - If a Markdown file conflicts with app code, trust the code.
 - If a historical doc conflicts with a current doc, trust the current doc.

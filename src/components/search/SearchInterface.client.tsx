@@ -15,12 +15,11 @@ const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
   }
 );
 
-export function SearchInterfaceClient(props: SearchInterfaceProps) {
+export function SearchInterfaceClient() {
   const searchParams = useSearchParams();
 
   return (
     <SearchInterfaceNoSSR
-      {...props}
       initialQuery={searchParams.get("q") ?? ""}
       initialType={searchParams.get("type") ?? "all"}
       initialCategory={searchParams.get("category") ?? "all"}

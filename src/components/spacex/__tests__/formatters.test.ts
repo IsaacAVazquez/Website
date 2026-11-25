@@ -102,6 +102,18 @@ describe("SpaceX formatters", () => {
       ).toBe("2027");
     });
 
+    it("names no calendar day for a week or a decade", () => {
+      expect(
+        formatMissionMoment({ dateUtc: "2026-11-23T00:00:00Z", datePrecision: "week" })
+      ).toBe("November 2026");
+      expect(
+        formatMissionMoment({ dateUtc: "2034-01-01T00:00:00Z", datePrecision: "decade" })
+      ).toBe("2030s");
+      expect(
+        formatMissionScheduleLabel(buildLaunch({ tbd: true, datePrecision: "week" }))
+      ).toBe("Date TBD (week precision)");
+    });
+
     it("falls back to date formatting for unknown precision", () => {
       const label = formatMissionMoment({
         dateUtc: "2026-04-20T17:30:00.000Z",

@@ -36,8 +36,10 @@ export function useCachedSnapshot<T>(
     // Async so any fetch failure, even a missing fetch, lands in the catch below.
     const load = async () => {
       const response = await fetch(`${basePath}/${id}`, { signal: controller.signal });
-      const payload = (await response.json()) as T & { error?: string };
-      if (!response.ok) throw new Error(payload.error || fallbackError);
+      // An error page from the CDN is not JSON, and the parser's message is
+      // not something to show a visitor, so that case gets the fallback too.
+      const payload = (await response.json().catch(() => null)) as (T & { error?: string }) | null;
+      if (!response.ok || !payload) throw new Error(payload?.error || fallbackError);
       return payload;
     };
 

@@ -79,11 +79,13 @@ export function PremierLeagueClient({
   }
 
   function handleViewChange(view: PremierLeagueView) {
-    const visibleRows = filterStandingsForView(summary.standings, view);
-    const nextTeam = visibleRows.some((r) => r.team.id === selectedTeamId)
-      ? selectedTeamId
-      : visibleRows[0]?.team.id ?? null;
-    navigate({ view, team: nextTeam, detail: routeState.detail });
+    // Only a club the visitor picked rides along. The table leader the page
+    // falls back to would read as a pick, and open the drawer, on a fresh
+    // load of the link.
+    const keepsTeam = filterStandingsForView(summary.standings, view).some(
+      (r) => r.team.id === canonicalTeamId
+    );
+    navigate({ view, team: keepsTeam ? canonicalTeamId : null, detail: routeState.detail });
   }
 
   function handleTeamChange(teamId: string) {
@@ -194,7 +196,7 @@ export function PremierLeagueClient({
       selectedId={selectedTeamId}
       onSelect={handleTeamChange}
       detail={routeState.detail}
-      onDetailChange={(detail) => navigate({ view: routeState.view, team: selectedTeamId, detail })}
+      onDetailChange={(detail) => navigate({ view: routeState.view, team: canonicalTeamId, detail })}
       matchday={summary.competition?.currentMatchday ?? null}
       updatedLabel={formatUpdatedAt(summary.generatedAt)}
       recentFixtures={summary.recentFixtures}

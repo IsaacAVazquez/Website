@@ -1,6 +1,6 @@
 # Project tool workflows
 
-The six following and research workflows added on October 25, 2026 are documented in [Project following workflows](PROJECT_FOLLOWING_WORKFLOWS.md).
+The six following and research workflows added on October 25, 2026 are documented in [Project following workflows](PROJECT_FOLLOWING_WORKFLOWS.md). The comparison and history workflows are documented in [Project comparisons and history](PROJECT_COMPARISON_WORKFLOWS.md).
 
 I added these workflows on October 22, 2026. The tools keep their existing routes and designs. Personal records stay in the visitor's browser, and downloads start only when the visitor chooses them.
 
@@ -92,7 +92,7 @@ I added these workflows to six existing routes.
 
 The stores use the shared browser adapter and validate restored records. Edits read the latest save. The trip loader now also reads the latest browser value before an edit, so a restaurant addition preserves trip edits made in another tab before its storage event arrives. Failed storage writes stay in memory and show a notice.
 
-Rent scenarios keep every entered input and recalculate through the existing engine. Each compared result uses its own holding period and assumptions. The sensitivity table varies one input at a time, respects the input bounds, and assigns no probabilities.
+Rent scenarios keep every entered input and recalculate through the existing engine. Each compared result uses its own holding period and assumptions. The sensitivity table varies one input at a time, respects the input bounds, and assigns no probabilities. It marks the row that repeats the visitor's own input "(current)", and when that input already sits at a bound it leaves out the step in that direction, since the clamped value would only repeat the current row.
 
 Restaurant stops have no price until the visitor enters one in Travel Planner. The same restaurant is added once per trip date. I checked four official sources on October 23, 2026, covering [Franklin Barbecue’s location and hours](https://franklinbbq.com/home), [Di Fara’s listed locations](https://www.difarapizzany.com/restaurants), [Staplehouse’s counter service](https://www.staplehouse.com/staplehouseabout), and [Noma’s published Copenhagen season](https://noma.dk/da/reservation/). Each checked listing shows its source, date, and the facts covered. The checks do not validate curator attributions, approximate map pins, or the rest of the catalog. The catalog keeps its earlier review date and unverified flag.
 
