@@ -291,7 +291,12 @@ describe("snapshot refresh workflow infrastructure", () => {
     )?.[0];
 
     expect(discardStep).toBeDefined();
-    expect(discardStep).toContain("if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'");
+    expect(discardStep).toContain("if: steps.build_redraft.outcome != 'success' || steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'");
+    // A build that dies after rewriting its inputs leaves both gates passing on
+    // the committed boards, which committed four source files on 2026-11-25.
+    expect(workflow).toContain(
+      "if: steps.build_redraft.outcome == 'success' && steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'"
+    );
     expect(discardStep).toContain("git checkout --");
     expect(discardStep).toContain("public/data/fantasy/ppr.json");
     expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
