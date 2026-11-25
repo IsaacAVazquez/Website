@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 28.45,
-      "marketCap": 80492742603,
-      "psRatio": 9.85,
-      "pbRatio": 24.63,
-      "pegRatio": 1.6
+      "ttmPe": 29.58,
+      "marketCap": 83694658140,
+      "psRatio": 10.24,
+      "pbRatio": 25.61,
+      "pegRatio": 1.67
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,33 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.59,
-      "costOfEquity": 14.799999999999999,
+      "wacc": 13.81,
+      "costOfEquity": 14.99,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2431,
-      "marketCap": 80492742603
+      "beta": 1.266,
+      "marketCap": 83694658140
     },
     "beta": {
-      "beta5y": 1.2431
+      "beta5y": 1.266
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 478.03,
-        "high": 480.53,
-        "low": 472.62,
-        "close": 474.52,
-        "volume": 842500
-      },
-      {
-        "date": "2025-11-21",
-        "open": 476.2,
-        "high": 483.4,
-        "low": 473.56,
-        "close": 479.65,
-        "volume": 707600
-      },
       {
         "date": "2025-11-24",
         "open": 480,
@@ -8658,6 +8642,22 @@
         "low": 465.43,
         "close": 466.83,
         "volume": 871100
+      },
+      {
+        "date": "2026-11-23",
+        "open": 475.44,
+        "high": 482.53,
+        "low": 470.48,
+        "close": 480.59,
+        "volume": 924800
+      },
+      {
+        "date": "2026-11-24",
+        "open": 480.04,
+        "high": 490.72,
+        "low": 478.85,
+        "close": 485.4,
+        "volume": 649400
       }
     ],
     "news": [
@@ -8670,19 +8670,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
-        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
         "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-17",
         "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
+        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
         "type": "STORY"
       },
       {
@@ -8726,11 +8726,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
-        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
+        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
+        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
+        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
         "type": "STORY"
       },
       {
@@ -8803,18 +8803,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.45,
-        "industryAvg": 25.28
+        "value": 29.58,
+        "industryAvg": 25.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.85,
-        "industryAvg": 7.75
+        "value": 10.24,
+        "industryAvg": 7.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.63,
-        "industryAvg": 4.35
+        "value": 25.61,
+        "industryAvg": 4.47
       },
       {
         "metric": "ROE",

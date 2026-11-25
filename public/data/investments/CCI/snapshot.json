@@ -1,10 +1,10 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.9334,
-      "ttmPe": 20.95,
-      "marketCap": 35102400000,
-      "psRatio": 8.6,
-      "pbRatio": -10.25,
+      "ttmPe": 21.03,
+      "marketCap": 35234460000,
+      "psRatio": 8.63,
+      "pbRatio": -10.29,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5862,33 +5862,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.539999999999999,
-      "costOfEquity": 11.99,
+      "wacc": 7.66,
+      "costOfEquity": 12.16,
       "costOfDebt": 0.75,
       "taxRate": 2,
-      "beta": 0.8892,
-      "marketCap": 35102400000
+      "beta": 0.9107,
+      "marketCap": 35234460000
     },
     "beta": {
-      "beta5y": 0.8892
+      "beta5y": 0.9107
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 90.85,
-        "high": 91.59,
-        "low": 89.15,
-        "close": 90.12,
-        "volume": 2639300
-      },
-      {
-        "date": "2025-11-21",
-        "open": 90.7,
-        "high": 91.29,
-        "low": 89.63,
-        "close": 90.01,
-        "volume": 3163300
-      },
       {
         "date": "2025-11-24",
         "open": 89.86,
@@ -7888,23 +7872,39 @@
         "low": 82.28,
         "close": 82.4,
         "volume": 3041900
+      },
+      {
+        "date": "2026-11-23",
+        "open": 82.96,
+        "high": 83.86,
+        "low": 81.2,
+        "close": 81.24,
+        "volume": 2904400
+      },
+      {
+        "date": "2026-11-24",
+        "open": 81.69,
+        "high": 83.16,
+        "low": 80.38,
+        "close": 82.71,
+        "volume": 2150600
       }
     ],
     "news": [
-      {
-        "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
-        "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/keybanc-adjusts-price-target-crown-155131405.html",
-        "type": "STORY"
-      },
       {
         "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
         "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
+        "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/keybanc-adjusts-price-target-crown-155131405.html",
         "type": "STORY"
       },
       {
@@ -7916,19 +7916,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
-        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d9d2c464-1153-3359-9b60-77757fef2c3f",
         "title": "Crown Castle's Q1 AFFO Surpasses Estimates, Revenues Fall Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/crown-castles-q1-affo-surpasses-175200746.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
+        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
         "type": "STORY"
       },
       {
@@ -7940,19 +7940,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
-        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
         "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
+        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
         "type": "STORY"
       },
       {
@@ -8035,18 +8035,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.95,
-        "industryAvg": 34.07
+        "value": 21.03,
+        "industryAvg": 34.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.6,
-        "industryAvg": 6.31
+        "value": 8.63,
+        "industryAvg": 6.39
       },
       {
         "metric": "P/B Ratio",
-        "value": -10.25,
-        "industryAvg": 4.08
+        "value": -10.29,
+        "industryAvg": 4.13
       },
       {
         "metric": "ROE",

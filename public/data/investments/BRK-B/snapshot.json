@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 39.7715,
-      "ttmPe": 14.33,
-      "marketCap": 1224097230000,
-      "psRatio": 2.79,
-      "pbRatio": 1.61,
+      "ttmPe": 14.51,
+      "marketCap": 1239580986190,
+      "psRatio": 2.82,
+      "pbRatio": 1.63,
       "pegRatio": 0.13
     },
     "profitability": {
@@ -4696,33 +4696,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.19,
-      "costOfEquity": 8.97,
+      "wacc": 8.4,
+      "costOfEquity": 9.2,
       "costOfDebt": 1.04,
       "taxRate": 18,
-      "beta": 0.5091,
-      "marketCap": 1224097230000
+      "beta": 0.5389,
+      "marketCap": 1239580986190
     },
     "beta": {
-      "beta5y": 0.5091
+      "beta5y": 0.5389
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 501.11,
-        "high": 506.45,
-        "low": 500.81,
-        "close": 501.12,
-        "volume": 5486900
-      },
-      {
-        "date": "2025-11-21",
-        "open": 503.28,
-        "high": 507.84,
-        "low": 502.49,
-        "close": 504.04,
-        "volume": 6059000
-      },
       {
         "date": "2025-11-24",
         "open": 501.9,
@@ -6721,24 +6705,40 @@
         "high": 576.89,
         "low": 566.52,
         "close": 570,
-        "volume": 6712900
+        "volume": 6732100
+      },
+      {
+        "date": "2026-11-23",
+        "open": 572.53,
+        "high": 575.6,
+        "low": 568.35,
+        "close": 572.36,
+        "volume": 4772800
+      },
+      {
+        "date": "2026-11-24",
+        "open": 574,
+        "high": 579.79,
+        "low": 571.34,
+        "close": 577.21,
+        "volume": 4040400
       }
     ],
     "news": [
-      {
-        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
-        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
-        "type": "STORY"
-      },
       {
         "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
+        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
         "type": "STORY"
       },
       {
@@ -6758,11 +6758,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
-        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
-        "publisher": "Zacks",
+        "uuid": "03a69758-d01e-4cb7-bb25-47b066e8c7ef",
+        "title": "Bill Ackman on his move to recreate Warren Buffett's Berkshire Hathaway",
+        "publisher": "Yahoo Finance",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
         "type": "STORY"
       },
       {
@@ -6774,11 +6774,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "03a69758-d01e-4cb7-bb25-47b066e8c7ef",
-        "title": "Bill Ackman on his move to recreate Warren Buffett's Berkshire Hathaway",
-        "publisher": "Yahoo Finance",
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
+        "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       },
       {
@@ -6866,18 +6866,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.33,
-        "industryAvg": 15.48
+        "value": 14.51,
+        "industryAvg": 15.68
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.79,
-        "industryAvg": 2.63
+        "value": 2.82,
+        "industryAvg": 2.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.61,
-        "industryAvg": 1.6
+        "value": 1.63,
+        "industryAvg": 1.62
       },
       {
         "metric": "ROE",

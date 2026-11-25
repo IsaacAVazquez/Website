@@ -1,10 +1,10 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.6029,
-      "ttmPe": 35.78,
-      "marketCap": 107133306190,
-      "psRatio": 3.43,
-      "pbRatio": 2.55,
+      "ttmPe": 36.16,
+      "marketCap": 108260661930,
+      "psRatio": 3.47,
+      "pbRatio": 2.57,
       "pegRatio": 0.68
     },
     "profitability": {
@@ -6527,33 +6527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.53,
-      "costOfEquity": 7.090000000000001,
+      "wacc": 4.5600000000000005,
+      "costOfEquity": 7.109999999999999,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 0.2732,
-      "marketCap": 107133306190
+      "beta": 0.2768,
+      "marketCap": 108260661930
     },
     "beta": {
-      "beta5y": 0.2732
+      "beta5y": 0.2768
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 89.23,
-        "high": 89.5,
-        "low": 88.43,
-        "close": 88.57,
-        "volume": 7947400
-      },
-      {
-        "date": "2025-11-21",
-        "open": 88.69,
-        "high": 90.06,
-        "low": 88.5,
-        "close": 89.27,
-        "volume": 6434600
-      },
       {
         "date": "2025-11-24",
         "open": 89.59,
@@ -8553,6 +8537,22 @@
         "low": 93.01,
         "close": 93.13,
         "volume": 6873300
+      },
+      {
+        "date": "2026-11-23",
+        "open": 92.65,
+        "high": 93.29,
+        "low": 92.04,
+        "close": 93.11,
+        "volume": 5800600
+      },
+      {
+        "date": "2026-11-24",
+        "open": 93.05,
+        "high": 94.71,
+        "low": 92.49,
+        "close": 94.11,
+        "volume": 5542500
       }
     ],
     "news": [
@@ -8597,14 +8597,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
-        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "788a09d6-6bac-3c74-8faa-426127ea0cd2",
         "title": "SO Reaches a Settlement for Extension of Rate Plan Through 2028",
         "publisher": "Zacks",
@@ -8618,6 +8610,14 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
+        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
         "type": "STORY"
       },
       {
@@ -8704,23 +8704,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.78,
-        "industryAvg": 16.87
+        "value": 36.16,
+        "industryAvg": 15.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.43,
-        "industryAvg": 2.34
+        "value": 3.47,
+        "industryAvg": 2.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.55,
-        "industryAvg": 1.82
+        "value": 2.57,
+        "industryAvg": 1.75
       },
       {
         "metric": "ROE",
         "value": 5.01,
-        "industryAvg": 11.84
+        "industryAvg": 11.87
       },
       {
         "metric": "ROA",
@@ -8730,17 +8730,17 @@
       {
         "metric": "Gross Margin",
         "value": 55.16,
-        "industryAvg": 46.07
+        "industryAvg": 46.150000000000006
       },
       {
         "metric": "EBITDA Margin",
         "value": 56.779999999999994,
-        "industryAvg": 43.89
+        "industryAvg": 44.07
       },
       {
         "metric": "Net Margin",
         "value": 23.14,
-        "industryAvg": 16.830000000000002
+        "industryAvg": 16.81
       }
     ]
   }

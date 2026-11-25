@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.7184,
-      "ttmPe": 18.49,
-      "marketCap": 59270027800,
-      "psRatio": 4.3,
-      "pbRatio": 4.9,
-      "pegRatio": 0.46
+      "ttmPe": 18.82,
+      "marketCap": 60341248800,
+      "psRatio": 4.37,
+      "pbRatio": 4.99,
+      "pegRatio": 0.47
     },
     "profitability": {
       "roe": 7.53,
@@ -6139,33 +6139,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.259999999999998,
-      "costOfEquity": 19.13,
+      "wacc": 16.63,
+      "costOfEquity": 19.509999999999998,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.7876,
-      "marketCap": 59270027800
+      "beta": 1.8336,
+      "marketCap": 60341248800
     },
     "beta": {
-      "beta5y": 1.7876
+      "beta5y": 1.8336
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 192.17,
-        "high": 194.17,
-        "low": 183,
-        "close": 184.19,
-        "volume": 3426800
-      },
-      {
-        "date": "2025-11-21",
-        "open": 184.65,
-        "high": 193.83,
-        "low": 183.2,
-        "close": 191.35,
-        "volume": 3403000
-      },
       {
         "date": "2025-11-24",
         "open": 192.25,
@@ -8165,6 +8149,22 @@
         "low": 233.69,
         "close": 235.15,
         "volume": 9772800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 259.09,
+        "high": 260.43,
+        "low": 252.3,
+        "close": 256.03,
+        "volume": 6195600
+      },
+      {
+        "date": "2026-11-24",
+        "open": 246.3,
+        "high": 247.99,
+        "low": 233.99,
+        "close": 239.4,
+        "volume": 5826200
       }
     ],
     "news": [
@@ -8209,19 +8209,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
-        "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
         "title": "3 Profitable Stocks with Mounting Challenges",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
+        "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
         "type": "STORY"
       },
       {
@@ -8313,43 +8313,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.49,
-        "industryAvg": 15.74
+        "value": 18.82,
+        "industryAvg": 17.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.3,
-        "industryAvg": 7.71
+        "value": 4.37,
+        "industryAvg": 8.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.9,
-        "industryAvg": 7
+        "value": 4.99,
+        "industryAvg": 7.72
       },
       {
         "metric": "ROE",
         "value": 7.53,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 57.82000000000001,
-        "industryAvg": 68.32000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.8,
-        "industryAvg": 81.53
+        "industryAvg": 81.51
       },
       {
         "metric": "Net Margin",
         "value": 23.35,
-        "industryAvg": 56.769999999999996
+        "industryAvg": 56.76
       }
     ]
   }

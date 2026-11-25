@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 8.01,
-      "marketCap": 672390810000,
-      "psRatio": 5.05,
-      "pbRatio": 4.86,
+      "ttmPe": 8.49,
+      "marketCap": 712292490000,
+      "psRatio": 5.35,
+      "pbRatio": 5.15,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,33 +5964,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.52,
-      "costOfEquity": 24.709999999999997,
+      "wacc": 24.4,
+      "costOfEquity": 24.58,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.4894,
-      "marketCap": 672390810000
+      "beta": 2.4711,
+      "marketCap": 712292490000
     },
     "beta": {
-      "beta5y": 2.4894
+      "beta5y": 2.4711
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 230.24,
-        "high": 230.6,
-        "low": 199.6,
-        "close": 201.37,
-        "volume": 47420700
-      },
-      {
-        "date": "2025-11-21",
-        "open": 204.53,
-        "high": 212,
-        "low": 192.59,
-        "close": 207.37,
-        "volume": 36679700
-      },
       {
         "date": "2025-11-24",
         "open": 213.41,
@@ -7989,7 +7973,23 @@
         "high": 669,
         "low": 585.25,
         "close": 594.51,
-        "volume": 59094000
+        "volume": 59423100
+      },
+      {
+        "date": "2026-11-23",
+        "open": 690.72,
+        "high": 720.69,
+        "low": 666.66,
+        "close": 707.7,
+        "volume": 49973900
+      },
+      {
+        "date": "2026-11-24",
+        "open": 669.39,
+        "high": 672.07,
+        "low": 622.22,
+        "close": 629.79,
+        "volume": 38858600
       }
     ],
     "news": [
@@ -8026,19 +8026,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
-        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
         "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-06-03",
         "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
+        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
         "type": "STORY"
       },
       {
@@ -8050,14 +8050,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
-        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "29a5977c-32e7-3ab0-8167-d6a7447ca16d",
         "title": "Mizuho Adjusts Price Target on Micron Technology to $130 From $124, Maintains Outperform Rating",
         "publisher": "MT Newswires",
@@ -8066,11 +8058,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
-        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
-        "publisher": "Motley Fool",
+        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
+        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
+        "publisher": "Zacks",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
+        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
+        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
         "type": "STORY"
       }
     ],
@@ -8140,43 +8140,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.01,
-        "industryAvg": 15.74
+        "value": 8.49,
+        "industryAvg": 17.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.05,
-        "industryAvg": 7.71
+        "value": 5.35,
+        "industryAvg": 8.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.86,
-        "industryAvg": 7
+        "value": 5.15,
+        "industryAvg": 7.72
       },
       {
         "metric": "ROE",
         "value": 31.540000000000003,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 22.85,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 86.76,
-        "industryAvg": 68.32000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 86.45,
-        "industryAvg": 81.53
+        "industryAvg": 81.51
       },
       {
         "metric": "Net Margin",
         "value": 69.52000000000001,
-        "industryAvg": 56.769999999999996
+        "industryAvg": 56.76
       }
     ]
   }

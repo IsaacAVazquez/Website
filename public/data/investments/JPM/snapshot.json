@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.8359,
-      "ttmPe": 13.03,
-      "marketCap": 824643468000,
-      "psRatio": 4.15,
-      "pbRatio": 2.21,
-      "pegRatio": 1.34
+      "ttmPe": 13.3,
+      "marketCap": 842090760000,
+      "psRatio": 4.24,
+      "pbRatio": 2.26,
+      "pegRatio": 1.37
     },
     "profitability": {
       "roe": 4,
@@ -6408,33 +6408,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.35,
-      "costOfEquity": 12.98,
+      "wacc": 9.45,
+      "costOfEquity": 13.059999999999999,
       "costOfDebt": 4.9,
       "taxRate": 24,
-      "beta": 1.0133,
-      "marketCap": 824643468000
+      "beta": 1.0238,
+      "marketCap": 842090760000
     },
     "beta": {
-      "beta5y": 1.0133
+      "beta5y": 1.0238
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 306.34,
-        "high": 309.92,
-        "low": 298.16,
-        "close": 298.38,
-        "volume": 7501600
-      },
-      {
-        "date": "2025-11-21",
-        "open": 301.29,
-        "high": 301.68,
-        "low": 292.81,
-        "close": 298.02,
-        "volume": 11766800
-      },
       {
         "date": "2025-11-24",
         "open": 298.24,
@@ -8433,7 +8417,23 @@
         "high": 320.88,
         "low": 309.18,
         "close": 310.53,
-        "volume": 12506100
+        "volume": 12517400
+      },
+      {
+        "date": "2026-11-23",
+        "open": 319.19,
+        "high": 321.61,
+        "low": 315,
+        "close": 316.66,
+        "volume": 8710800
+      },
+      {
+        "date": "2026-11-24",
+        "open": 314.78,
+        "high": 319.01,
+        "low": 313.62,
+        "close": 317.1,
+        "volume": 7195900
       }
     ],
     "news": [
@@ -8591,18 +8591,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.03,
-        "industryAvg": 11.49
+        "value": 13.3,
+        "industryAvg": 11.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.15,
-        "industryAvg": 3.15
+        "value": 4.24,
+        "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.21,
-        "industryAvg": 1.45
+        "value": 2.26,
+        "industryAvg": 1.49
       },
       {
         "metric": "ROE",

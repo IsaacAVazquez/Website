@@ -1,11 +1,14 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
-    }
+      "price": "2026-11-24"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.1397,
-      "ttmPe": 10.91,
-      "marketCap": 87325900000,
-      "psRatio": 2.89,
-      "pbRatio": 1.31,
-      "pegRatio": 1.04
+      "ttmPe": 11.3,
+      "marketCap": 90473060000,
+      "psRatio": 2.99,
+      "pbRatio": 1.36,
+      "pegRatio": 1.07
     },
     "profitability": {
       "roe": 3.1300000000000003,
@@ -5830,33 +5833,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.63,
-      "costOfEquity": 12.85,
+      "wacc": 8.76,
+      "costOfEquity": 12.950000000000001,
       "costOfDebt": 4.53,
       "taxRate": 21,
-      "beta": 0.9974,
-      "marketCap": 87325900000
+      "beta": 1.01,
+      "marketCap": 90473060000
     },
     "beta": {
-      "beta5y": 0.9974
+      "beta5y": 1.01
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 47.2,
-        "high": 47.76,
-        "low": 46.43,
-        "close": 46.49,
-        "volume": 8172200
-      },
-      {
-        "date": "2025-11-21",
-        "open": 46.83,
-        "high": 48.16,
-        "low": 46.63,
-        "close": 47.78,
-        "volume": 7874000
-      },
       {
         "date": "2025-11-24",
         "open": 47.77,
@@ -7856,6 +7843,22 @@
         "low": 55.86,
         "close": 56.05,
         "volume": 9169300
+      },
+      {
+        "date": "2026-11-23",
+        "open": 57.48,
+        "high": 57.71,
+        "low": 56.8,
+        "close": 57.41,
+        "volume": 6868200
+      },
+      {
+        "date": "2026-11-24",
+        "open": 57.19,
+        "high": 58.15,
+        "low": 56.97,
+        "close": 58.07,
+        "volume": 6792400
       }
     ],
     "news": [

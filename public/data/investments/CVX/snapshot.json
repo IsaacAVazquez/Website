@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 13.672,
-      "ttmPe": 15.24,
-      "marketCap": 411691465781,
-      "psRatio": 1.82,
+      "ttmPe": 15.27,
+      "marketCap": 412402743449,
+      "psRatio": 1.83,
       "pbRatio": 2.12,
       "pegRatio": 0.09
     },
@@ -5622,33 +5622,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.469999999999999,
-      "costOfEquity": 9.11,
+      "wacc": 8.36,
+      "costOfEquity": 8.98,
       "costOfDebt": 0.91,
       "taxRate": 26,
-      "beta": 0.5267,
-      "marketCap": 411691465781
+      "beta": 0.5107,
+      "marketCap": 412402743449
     },
     "beta": {
-      "beta5y": 0.5267
+      "beta5y": 0.5107
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 152.54,
-        "high": 153.04,
-        "low": 150.05,
-        "close": 150.31,
-        "volume": 7623400
-      },
-      {
-        "date": "2025-11-21",
-        "open": 150.44,
-        "high": 151.01,
-        "low": 148.75,
-        "close": 149.98,
-        "volume": 9248400
-      },
       {
         "date": "2025-11-24",
         "open": 149.82,
@@ -7648,6 +7632,22 @@
         "low": 205.94,
         "close": 208.37,
         "volume": 11889800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 206,
+        "high": 209.12,
+        "low": 205.34,
+        "close": 206.17,
+        "volume": 8861100
+      },
+      {
+        "date": "2026-11-24",
+        "open": 207.04,
+        "high": 210.49,
+        "low": 206.18,
+        "close": 208.73,
+        "volume": 7142400
       }
     ],
     "news": [
@@ -7802,12 +7802,12 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.24,
+        "value": 15.27,
         "industryAvg": 9.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.82,
+        "value": 1.83,
         "industryAvg": 0.9
       },
       {
@@ -7818,7 +7818,7 @@
       {
         "metric": "ROE",
         "value": 5.17,
-        "industryAvg": 17.64
+        "industryAvg": 17.630000000000003
       },
       {
         "metric": "ROA",

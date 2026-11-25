@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6077,
-      "ttmPe": 13.14,
-      "marketCap": 260433240000,
-      "psRatio": 3.48,
-      "pbRatio": 2.22,
-      "pegRatio": 1.59
+      "ttmPe": 13.39,
+      "marketCap": 265337880000,
+      "psRatio": 3.55,
+      "pbRatio": 2.27,
+      "pegRatio": 1.62
     },
     "profitability": {
       "roe": 4.07,
@@ -6098,33 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.07,
-      "costOfEquity": 14.549999999999999,
+      "wacc": 7.17,
+      "costOfEquity": 14.67,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.2117,
-      "marketCap": 260433240000
+      "beta": 1.2262,
+      "marketCap": 265337880000
     },
     "beta": {
-      "beta5y": 1.2117
+      "beta5y": 1.2262
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 164.2,
-        "high": 166.94,
-        "low": 158.51,
-        "close": 158.7,
-        "volume": 5258600
-      },
-      {
-        "date": "2025-11-21",
-        "open": 159.78,
-        "high": 160.11,
-        "low": 155.23,
-        "close": 158.17,
-        "volume": 9021300
-      },
       {
         "date": "2025-11-24",
         "open": 161.33,
@@ -8123,7 +8107,23 @@
         "high": 173.4,
         "low": 164.91,
         "close": 165.67,
-        "volume": 10399400
+        "volume": 10499200
+      },
+      {
+        "date": "2026-11-23",
+        "open": 174.97,
+        "high": 175.06,
+        "low": 171.29,
+        "close": 172.6,
+        "volume": 8075100
+      },
+      {
+        "date": "2026-11-24",
+        "open": 170.6,
+        "high": 174.02,
+        "low": 167.4,
+        "close": 168.79,
+        "volume": 9311100
       }
     ],
     "news": [
@@ -8184,19 +8184,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
-        "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
         "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
+        "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
         "type": "STORY"
       },
       {
@@ -8270,41 +8270,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.14,
-        "industryAvg": 13.11
+        "value": 13.39,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.48,
-        "industryAvg": 1.81
+        "value": 3.55,
+        "industryAvg": 1.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.22,
-        "industryAvg": 2.1
+        "value": 2.27,
+        "industryAvg": 2.15
       },
       {
         "metric": "ROE",
         "value": 4.07,
-        "industryAvg": 15.879999999999999
+        "industryAvg": 15.9
       },
       {
         "metric": "ROA",
         "value": 0.27999999999999997,
-        "industryAvg": 1.17
+        "industryAvg": 1.18
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.120000000000001
+        "industryAvg": 15.14
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 6.370000000000001
+        "industryAvg": 6.43
       },
       {
         "metric": "Net Margin",
         "value": 25.180000000000003,
-        "industryAvg": 20.28
+        "industryAvg": 20.32
       }
     ]
   }

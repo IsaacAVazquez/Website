@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 40.07,
-      "marketCap": 82612838420,
-      "psRatio": 4.76,
-      "pbRatio": 7.93,
+      "ttmPe": 41.76,
+      "marketCap": 86100126204,
+      "psRatio": 4.96,
+      "pbRatio": 8.26,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,33 +6315,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.85,
-      "costOfEquity": 11.379999999999999,
+      "wacc": 9.959999999999999,
+      "costOfEquity": 11.450000000000001,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8132,
-      "marketCap": 82612838420
+      "beta": 0.8221,
+      "marketCap": 86100126204
     },
     "beta": {
-      "beta5y": 0.8132
+      "beta5y": 0.8221
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 261.93,
-        "high": 262.9,
-        "low": 260.97,
-        "close": 261.74,
-        "volume": 1694500
-      },
-      {
-        "date": "2025-11-21",
-        "open": 262.37,
-        "high": 268.67,
-        "low": 261.74,
-        "close": 267.07,
-        "volume": 1914700
-      },
       {
         "date": "2025-11-24",
         "open": 267.45,
@@ -8341,6 +8325,22 @@
         "low": 293.72,
         "close": 294.7,
         "volume": 1831200
+      },
+      {
+        "date": "2026-11-23",
+        "open": 297.96,
+        "high": 306.63,
+        "low": 295.5,
+        "close": 305.91,
+        "volume": 1652800
+      },
+      {
+        "date": "2026-11-24",
+        "open": 304.7,
+        "high": 308.59,
+        "low": 300.61,
+        "close": 307.14,
+        "volume": 1450700
       }
     ],
     "news": [
@@ -8393,14 +8393,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
-        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
         "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
         "publisher": "Simply Wall St.",
@@ -8409,11 +8401,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
-        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
+        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
+        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
         "type": "STORY"
       },
       {
@@ -8422,6 +8414,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
+        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
         "type": "STORY"
       }
     ],
@@ -8491,23 +8491,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.07,
-        "industryAvg": 28.98
+        "value": 41.76,
+        "industryAvg": 29.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.76,
-        "industryAvg": 2.27
+        "value": 4.96,
+        "industryAvg": 2.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.93,
-        "industryAvg": 3.12
+        "value": 8.26,
+        "industryAvg": 3.3
       },
       {
         "metric": "ROE",
         "value": 5.38,
-        "industryAvg": 9.700000000000001
+        "industryAvg": 9.69
       },
       {
         "metric": "ROA",
@@ -8517,17 +8517,17 @@
       {
         "metric": "Gross Margin",
         "value": 44.080000000000005,
-        "industryAvg": 30.049999999999997
+        "industryAvg": 30.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.810000000000002,
-        "industryAvg": 17.330000000000002
+        "industryAvg": 17.31
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 6.39
+        "industryAvg": 6.38
       }
     ]
   }

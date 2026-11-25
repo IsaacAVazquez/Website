@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 41.05,
-      "marketCap": 167620897760,
-      "psRatio": 12.07,
-      "pbRatio": 5,
-      "pegRatio": 0.25
+      "ttmPe": 37.14,
+      "marketCap": 151644773225,
+      "psRatio": 10.92,
+      "pbRatio": 4.52,
+      "pegRatio": 0.23
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,33 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.52,
-      "costOfEquity": 15.260000000000002,
+      "wacc": 14.75,
+      "costOfEquity": 15.590000000000002,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.3002,
-      "marketCap": 167620897760
+      "beta": 1.3415,
+      "marketCap": 151644773225
     },
     "beta": {
-      "beta5y": 1.3002
+      "beta5y": 1.3415
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 234.29,
-        "high": 235.28,
-        "low": 224.25,
-        "close": 225.2,
-        "volume": 4316600
-      },
-      {
-        "date": "2025-11-21",
-        "open": 225.63,
-        "high": 234.53,
-        "low": 225,
-        "close": 232.32,
-        "volume": 4467200
-      },
       {
         "date": "2025-11-24",
         "open": 233.65,
@@ -8128,6 +8112,22 @@
         "low": 343.94,
         "close": 345.92,
         "volume": 10199800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 385.92,
+        "high": 388.74,
+        "low": 371.62,
+        "close": 378.75,
+        "volume": 8900600
+      },
+      {
+        "date": "2026-11-24",
+        "open": 328,
+        "high": 337.57,
+        "low": 304.23,
+        "close": 312.95,
+        "volume": 13097500
       }
     ],
     "news": [
@@ -8196,19 +8196,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
-        "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
         "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
+        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
         "type": "STORY"
       }
     ],
@@ -8281,43 +8281,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.05,
-        "industryAvg": 15.74
+        "value": 37.14,
+        "industryAvg": 17.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.07,
-        "industryAvg": 7.71
+        "value": 10.92,
+        "industryAvg": 8.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 5,
-        "industryAvg": 7
+        "value": 4.52,
+        "industryAvg": 7.72
       },
       {
         "metric": "ROE",
         "value": 3.9800000000000004,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 2.78,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 67.32000000000001,
-        "industryAvg": 68.32000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.93,
-        "industryAvg": 81.53
+        "industryAvg": 81.51
       },
       {
         "metric": "Net Margin",
         "value": 33.32,
-        "industryAvg": 56.769999999999996
+        "industryAvg": 56.76
       }
     ]
   }

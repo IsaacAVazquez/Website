@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 32.59,
-      "marketCap": 63237031430,
-      "psRatio": 5.99,
-      "pbRatio": -6.32,
-      "pegRatio": 0.98
+      "ttmPe": 31.77,
+      "marketCap": 61636247366.18,
+      "psRatio": 5.84,
+      "pbRatio": -6.16,
+      "pegRatio": 0.96
     },
     "profitability": {
       "roe": -5.94,
@@ -6472,32 +6472,16 @@
     },
     "wacc": {
       "wacc": 8.290000000000001,
-      "costOfEquity": 12.21,
+      "costOfEquity": 12.32,
       "costOfDebt": 1.54,
       "taxRate": 25,
-      "beta": 0.9152,
-      "marketCap": 63237031430
+      "beta": 0.9306,
+      "marketCap": 61636247366.18
     },
     "beta": {
-      "beta5y": 0.9152
+      "beta5y": 0.9306
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 1352.9,
-        "high": 1364.16,
-        "low": 1321.33,
-        "close": 1327.87,
-        "volume": 266000
-      },
-      {
-        "date": "2025-11-21",
-        "open": 1329.62,
-        "high": 1360.84,
-        "low": 1317.03,
-        "close": 1347.22,
-        "volume": 294400
-      },
       {
         "date": "2025-11-24",
         "open": 1341.36,
@@ -8497,6 +8481,22 @@
         "low": 1116.46,
         "close": 1121.22,
         "volume": 470800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 1150.47,
+        "high": 1159.96,
+        "low": 1139.75,
+        "close": 1140.33,
+        "volume": 586100
+      },
+      {
+        "date": "2026-11-24",
+        "open": 1139.15,
+        "high": 1149.67,
+        "low": 1120.91,
+        "close": 1129.3199,
+        "volume": 266300
       }
     ],
     "news": [
@@ -8533,19 +8533,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
-        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
         "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
+        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
         "type": "STORY"
       },
       {
@@ -8557,19 +8557,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
-        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ed77a5e7-8829-3f7a-b272-30e43dbd5d3d",
         "title": "Alembic Global Advisory Adjusts TransDigm Group Price Target to $1,537 From $1,463",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/alembic-global-advisory-adjusts-transdigm-113010660.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
+        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
         "type": "STORY"
       },
       {
@@ -8640,23 +8640,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.59,
-        "industryAvg": 30.39
+        "value": 31.77,
+        "industryAvg": 31.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.99,
-        "industryAvg": 2.69
+        "value": 5.84,
+        "industryAvg": 5.21
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.32,
-        "industryAvg": 5.65
+        "value": -6.16,
+        "industryAvg": 6.81
       },
       {
         "metric": "ROE",
         "value": -5.94,
-        "industryAvg": 12.25
+        "industryAvg": 12.26
       },
       {
         "metric": "ROA",
@@ -8666,17 +8666,17 @@
       {
         "metric": "Gross Margin",
         "value": 59,
-        "industryAvg": 20.810000000000002
+        "industryAvg": 20.82
       },
       {
         "metric": "EBITDA Margin",
         "value": 48.06,
-        "industryAvg": 15.03
+        "industryAvg": 15.040000000000001
       },
       {
         "metric": "Net Margin",
         "value": 19.68,
-        "industryAvg": 6.41
+        "industryAvg": 6.419999999999999
       }
     ]
   }

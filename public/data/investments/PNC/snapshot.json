@@ -1,10 +1,10 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.803,
-      "ttmPe": 11.33,
-      "marketCap": 84660342912,
-      "psRatio": 3.36,
-      "pbRatio": 1.36,
-      "pegRatio": 0.79
+      "ttmPe": 11.63,
+      "marketCap": 86845177212,
+      "psRatio": 3.44,
+      "pbRatio": 1.39,
+      "pegRatio": 0.81
     },
     "profitability": {
       "roe": 3.16,
@@ -54,8 +54,8 @@
     },
     "margins": [
       {
-        "netMargin": 30.48,
-        "fcfMargin": 46.839999999999996
+        "netMargin": 30.43,
+        "fcfMargin": 46.78
       }
     ],
     "growth": [
@@ -80,8 +80,8 @@
       "quarterly": [
         {
           "Breakdown": "Total Revenue",
-          "TTM": "25197000000.0",
-          "2026-09-30": "6543000000.0",
+          "TTM": "25213000000.0",
+          "2026-09-30": "6552000000.0",
           "2026-06-30": "6435000000.0",
           "2026-03-31": "6157000000.0",
           "2025-12-31": "6068000000.0",
@@ -300,8 +300,8 @@
         },
         {
           "Breakdown": "Non Interest Income",
-          "TTM": "9192000000.0",
-          "2026-09-30": "2337000000.0",
+          "TTM": "9208000000.0",
+          "2026-09-30": "2346000000.0",
           "2026-06-30": "2328000000.0",
           "2026-03-31": "2196000000.0",
           "2025-12-31": "2337000000.0",
@@ -476,8 +476,8 @@
         },
         {
           "Breakdown": "Other Non Interest Income",
-          "TTM": "705000000.0",
-          "2026-09-30": "204000000.0",
+          "TTM": "721000000.0",
+          "2026-09-30": "213000000.0",
           "2026-06-30": "186000000.0",
           "2026-03-31": "125000000.0",
           "2025-12-31": "224000000.0",
@@ -520,8 +520,8 @@
         },
         {
           "Breakdown": "Non Interest Expense",
-          "TTM": "15328000000.0",
-          "2026-09-30": "3751000000.0",
+          "TTM": "15083000000.0",
+          "2026-09-30": "3724000000.0",
           "2026-06-30": "3977000000.0",
           "2026-03-31": "3670000000.0",
           "2025-12-31": "3711000000.0",
@@ -696,8 +696,8 @@
         },
         {
           "Breakdown": "Other Non Interest Expense",
-          "TTM": "3761000000.0",
-          "2026-09-30": "917000000.0",
+          "TTM": "3516000000.0",
+          "2026-09-30": "890000000.0",
           "2026-06-30": "907000000.0",
           "2026-03-31": "800000000.0",
           "2025-12-31": "918000000.0",
@@ -718,8 +718,8 @@
         },
         {
           "Breakdown": "Special Income Charges",
-          "TTM": "567000000.0",
-          "2026-09-30": "11000000.0",
+          "TTM": "306000000.0",
+          "2026-09-30": "-25000000.0",
           "2026-06-30": "321000000.0",
           "2026-03-31": "-98000000.0",
           "2025-12-31": "108000000.0",
@@ -741,7 +741,7 @@
         {
           "Breakdown": "Restructuring & Mergers Acquisition",
           "TTM": "*",
-          "2026-09-30": "*",
+          "2026-09-30": "36000000.0",
           "2026-06-30": "127000000.0",
           "2026-03-31": "98000000.0",
           "2025-12-31": "*",
@@ -1136,8 +1136,8 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "TTM": "7437032599.75",
-          "2026-09-30": "2072202517.16",
+          "TTM": "7650604895.1",
+          "2026-09-30": "2100994279.18",
           "2026-06-30": "1784912993.04",
           "2026-03-31": "1839403749.43",
           "2025-12-31": "1925726062.69",
@@ -1202,8 +1202,8 @@
         },
         {
           "Breakdown": "Total Unusual Items Excluding Goodwill",
-          "TTM": "567000000.0",
-          "2026-09-30": "11000000.0",
+          "TTM": "306000000.0",
+          "2026-09-30": "-25000000.0",
           "2026-06-30": "321000000.0",
           "2026-03-31": "-98000000.0",
           "2025-12-31": "108000000.0",
@@ -1224,8 +1224,8 @@
         },
         {
           "Breakdown": "Total Unusual Items",
-          "TTM": "567000000.0",
-          "2026-09-30": "11000000.0",
+          "TTM": "306000000.0",
+          "2026-09-30": "-25000000.0",
           "2026-06-30": "321000000.0",
           "2026-03-31": "-98000000.0",
           "2025-12-31": "108000000.0",
@@ -1268,8 +1268,8 @@
         },
         {
           "Breakdown": "Tax Effect of Unusual Items",
-          "TTM": "103032599.75",
-          "2026-09-30": "2202517.16",
+          "TTM": "55604895.1",
+          "2026-09-30": "-5005720.82",
           "2026-06-30": "65912993.04",
           "2026-03-31": "-18596250.57",
           "2025-12-31": "13726062.69",
@@ -1290,8 +1290,8 @@
         },
         {
           "Breakdown": "Operating Revenue",
-          "TTM": "25197000000.0",
-          "2026-09-30": "6543000000.0",
+          "TTM": "25213000000.0",
+          "2026-09-30": "6552000000.0",
           "2026-06-30": "6435000000.0",
           "2026-03-31": "6157000000.0",
           "2025-12-31": "6068000000.0",
@@ -5766,33 +5766,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.53,
-      "costOfEquity": 11.97,
+      "wacc": 7.630000000000001,
+      "costOfEquity": 12.049999999999999,
       "costOfDebt": 3.51,
       "taxRate": 20,
-      "beta": 0.8873,
-      "marketCap": 84660342912
+      "beta": 0.8968,
+      "marketCap": 86845177212
     },
     "beta": {
-      "beta5y": 0.8873
+      "beta5y": 0.8968
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 184.6,
-        "high": 187.22,
-        "low": 182.92,
-        "close": 183.54,
-        "volume": 2710200
-      },
-      {
-        "date": "2025-11-21",
-        "open": 184.05,
-        "high": 189.34,
-        "low": 183.9,
-        "close": 186.99,
-        "volume": 2391000
-      },
       {
         "date": "2025-11-24",
         "open": 186.64,
@@ -7792,6 +7776,22 @@
         "low": 212.24,
         "close": 213.12,
         "volume": 1685600
+      },
+      {
+        "date": "2026-11-23",
+        "open": 220.26,
+        "high": 220.26,
+        "low": 215.35,
+        "close": 217.13,
+        "volume": 1181200
+      },
+      {
+        "date": "2026-11-24",
+        "open": 216.69,
+        "high": 219.57,
+        "low": 215.88,
+        "close": 218.62,
+        "volume": 1299500
       }
     ],
     "news": [
@@ -7812,19 +7812,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
-        "title": "Company News for Apr 16, 2025",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
+        "title": "Company News for Apr 16, 2025",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
         "type": "STORY"
       },
       {
@@ -7868,11 +7868,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "781690ba-88ec-3c1b-9ed7-8fc575c8991b",
-        "title": "PNC Financial's Arm Enters Deal to Acquire Aqueduct Capital Group",
-        "publisher": "Zacks",
+        "uuid": "d501b543-8a7b-30e2-a6ea-7ee6a98823b0",
+        "title": "PNC Bank Agrees to Acquire Aqueduct Capital Group to Complement Harris Williams Capabilities",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/pnc-financials-arm-enters-deal-132900257.html",
+        "link": "https://finance.yahoo.com/news/pnc-bank-agrees-acquire-aqueduct-202800063.html",
         "type": "STORY"
       }
     ],
@@ -7942,23 +7942,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.33,
-        "industryAvg": 10.85
+        "value": 11.63,
+        "industryAvg": 11.04
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.36,
-        "industryAvg": 2.86
+        "value": 3.44,
+        "industryAvg": 2.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.36,
-        "industryAvg": 1.2
+        "value": 1.39,
+        "industryAvg": 1.21
       },
       {
         "metric": "ROE",
         "value": 3.16,
-        "industryAvg": 10.41
+        "industryAvg": 10.42
       },
       {
         "metric": "ROA",
@@ -7967,8 +7967,8 @@
       },
       {
         "metric": "Net Margin",
-        "value": 30.48,
-        "industryAvg": 24.91
+        "value": 30.43,
+        "industryAvg": 24.94
       }
     ]
   }

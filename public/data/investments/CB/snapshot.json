@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 13.01,
-      "marketCap": 143313163420,
-      "psRatio": 2.3,
-      "pbRatio": 1.96,
-      "pegRatio": 2.87
+      "ttmPe": 13.14,
+      "marketCap": 144755434580,
+      "psRatio": 2.32,
+      "pbRatio": 1.98,
+      "pegRatio": 2.9
     },
     "profitability": {
       "roe": 3.83,
@@ -5728,33 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.29,
-      "costOfEquity": 7.000000000000001,
+      "wacc": 6.370000000000001,
+      "costOfEquity": 7.08,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2622,
-      "marketCap": 143313163420
+      "beta": 0.2721,
+      "marketCap": 144755434580
     },
     "beta": {
-      "beta5y": 0.2622
+      "beta5y": 0.2721
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 294.94,
-        "high": 297.46,
-        "low": 293.17,
-        "close": 296.32,
-        "volume": 1599900
-      },
-      {
-        "date": "2025-11-21",
-        "open": 298,
-        "high": 301.03,
-        "low": 297.74,
-        "close": 298.29,
-        "volume": 2130100
-      },
       {
         "date": "2025-11-24",
         "open": 299,
@@ -7754,6 +7738,22 @@
         "low": 371,
         "close": 371.63,
         "volume": 2250300
+      },
+      {
+        "date": "2026-11-23",
+        "open": 369.62,
+        "high": 372.06,
+        "low": 367.52,
+        "close": 368.67,
+        "volume": 2308400
+      },
+      {
+        "date": "2026-11-24",
+        "open": 369.32,
+        "high": 375.92,
+        "low": 367.56,
+        "close": 375.37,
+        "volume": 1359400
       }
     ],
     "news": [
@@ -7822,11 +7822,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
-        "title": "Chubb rejigs investment and asset management leadership",
-        "publisher": "Life Insurance International",
+        "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
+        "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
+        "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
         "type": "STORY"
       },
       {
@@ -7902,18 +7902,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.01,
-        "industryAvg": 32.23
+        "value": 13.14,
+        "industryAvg": 32.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.3,
-        "industryAvg": 3.97
+        "value": 2.32,
+        "industryAvg": 4
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.96,
-        "industryAvg": 5.33
+        "value": 1.98,
+        "industryAvg": 5.42
       },
       {
         "metric": "ROE",
@@ -7936,7 +7936,7 @@
       {
         "metric": "Net Margin",
         "value": 17.41,
-        "industryAvg": 13.389999999999999
+        "industryAvg": 13.3
       }
     ]
   }
