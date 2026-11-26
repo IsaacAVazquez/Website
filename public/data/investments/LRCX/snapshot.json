@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 27.28,
-      "marketCap": 228930804150,
-      "psRatio": 8.76,
-      "pbRatio": 16.46,
-      "pegRatio": 0.35
+      "ttmPe": 29.2,
+      "marketCap": 245032283200,
+      "psRatio": 9.38,
+      "pbRatio": 17.62,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,33 +5781,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.74,
-      "costOfEquity": 21.07,
+      "wacc": 20.7,
+      "costOfEquity": 21,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 2.031,
-      "marketCap": 228930804150
+      "beta": 2.0211,
+      "marketCap": 245032283200
     },
     "beta": {
-      "beta5y": 2.031
+      "beta5y": 2.0211
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 153.46,
-        "high": 154.37,
-        "low": 138.3,
-        "close": 139.59,
-        "volume": 13695500
-      },
-      {
-        "date": "2025-11-21",
-        "open": 139.8,
-        "high": 144.41,
-        "low": 135.5,
-        "close": 142.65,
-        "volume": 14654600
-      },
       {
         "date": "2025-11-24",
         "open": 145.6,
@@ -7806,7 +7790,23 @@
         "high": 199.78,
         "low": 181.77,
         "close": 183.27,
-        "volume": 23736700
+        "volume": 23875800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 217.17,
+        "high": 217.19,
+        "low": 204.65,
+        "close": 209.76,
+        "volume": 17265000
+      },
+      {
+        "date": "2026-11-24",
+        "open": 202.06,
+        "high": 203.17,
+        "low": 190.44,
+        "close": 196.16,
+        "volume": 13973300
       }
     ],
     "news": [
@@ -7827,19 +7827,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
-        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
         "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
+        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
         "type": "STORY"
       },
       {
@@ -7859,14 +7859,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "af0d9419-10be-3fc3-95c2-7602b7866c4f",
-        "title": "3 Reasons Growth Investors Will Love Lam Research (LRCX)",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/3-reasons-growth-investors-love-164507608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
         "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
         "publisher": "Zacks",
@@ -7875,11 +7867,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
-        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "uuid": "af0d9419-10be-3fc3-95c2-7602b7866c4f",
+        "title": "3 Reasons Growth Investors Will Love Lam Research (LRCX)",
         "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/3-reasons-growth-investors-love-164507608.html",
         "type": "STORY"
       },
       {
@@ -7888,6 +7880,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
+        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
         "type": "STORY"
       }
     ],
@@ -7958,23 +7958,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.28,
-        "industryAvg": 29.25
+        "value": 29.2,
+        "industryAvg": 31.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.76,
-        "industryAvg": 8.58
+        "value": 9.38,
+        "industryAvg": 9.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.46,
-        "industryAvg": 11.85
+        "value": 17.62,
+        "industryAvg": 12.82
       },
       {
         "metric": "ROE",
         "value": 20.87,
-        "industryAvg": 43.169999999999995
+        "industryAvg": 43.18
       },
       {
         "metric": "ROA",

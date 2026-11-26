@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 42.7592,
-      "ttmPe": 25.77,
-      "marketCap": 178698984000,
-      "psRatio": 6.26,
-      "pbRatio": 3.07,
-      "pegRatio": 0.81
+      "ttmPe": 26.8,
+      "marketCap": 185886066000,
+      "psRatio": 6.51,
+      "pbRatio": 3.2,
+      "pegRatio": 0.84
     },
     "profitability": {
       "roe": 2.87,
@@ -5659,33 +5659,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.180000000000001,
-      "costOfEquity": 15.32,
+      "wacc": 14.46,
+      "costOfEquity": 15.57,
       "costOfDebt": 0.89,
       "taxRate": 27,
-      "beta": 1.3088,
-      "marketCap": 178698984000
+      "beta": 1.3388,
+      "marketCap": 185886066000
     },
     "beta": {
-      "beta5y": 1.3088
+      "beta5y": 1.3388
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 1029.11,
-        "high": 1032.49,
-        "low": 990.58,
-        "close": 992.52,
-        "volume": 677800
-      },
-      {
-        "date": "2025-11-21",
-        "open": 999,
-        "high": 1015.38,
-        "low": 990.81,
-        "close": 1014.72,
-        "volume": 1229200
-      },
       {
         "date": "2025-11-24",
         "open": 1006.85,
@@ -7685,6 +7669,22 @@
         "low": 1095.09,
         "close": 1101.72,
         "volume": 1193500
+      },
+      {
+        "date": "2026-11-23",
+        "open": 1150,
+        "high": 1159.87,
+        "low": 1135.51,
+        "close": 1144.52,
+        "volume": 611600
+      },
+      {
+        "date": "2026-11-24",
+        "open": 1135,
+        "high": 1158.9,
+        "low": 1131,
+        "close": 1146.03,
+        "volume": 649600
       }
     ],
     "news": [
@@ -7705,19 +7705,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7835,18 +7835,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.77,
-        "industryAvg": 17.81
+        "value": 26.8,
+        "industryAvg": 18.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.26,
-        "industryAvg": 3.15
+        "value": 6.51,
+        "industryAvg": 3.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.07,
-        "industryAvg": 2.59
+        "value": 3.2,
+        "industryAvg": 2.71
       },
       {
         "metric": "ROE",

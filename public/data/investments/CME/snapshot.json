@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 25.22,
-      "marketCap": 110499572436,
-      "psRatio": 15.85,
-      "pbRatio": 4.16,
-      "pegRatio": 1.55
+      "ttmPe": 25.36,
+      "marketCap": 111106752425,
+      "psRatio": 15.94,
+      "pbRatio": 4.18,
+      "pegRatio": 1.56
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,33 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.15,
-      "costOfEquity": 6.3100000000000005,
+      "wacc": 6.2,
+      "costOfEquity": 6.36,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1743,
-      "marketCap": 110499572436
+      "beta": 0.1823,
+      "marketCap": 111106752425
     },
     "beta": {
-      "beta5y": 0.1743
+      "beta5y": 0.1823
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 272.31,
-        "high": 276.19,
-        "low": 271.16,
-        "close": 275.22,
-        "volume": 2038000
-      },
-      {
-        "date": "2025-11-21",
-        "open": 277.02,
-        "high": 277.52,
-        "low": 272.06,
-        "close": 273.09,
-        "volume": 2248500
-      },
       {
         "date": "2025-11-24",
         "open": 273.39,
@@ -7637,6 +7621,22 @@
         "low": 306.88,
         "close": 307.56,
         "volume": 2678000
+      },
+      {
+        "date": "2026-11-23",
+        "open": 306.62,
+        "high": 308.18,
+        "low": 301,
+        "close": 304.43,
+        "volume": 2488400
+      },
+      {
+        "date": "2026-11-24",
+        "open": 306.23,
+        "high": 312.73,
+        "low": 303.91,
+        "close": 309.25,
+        "volume": 1667600
       }
     ],
     "news": [
@@ -7681,14 +7681,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
-        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
         "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
         "publisher": "Simply Wall St.",
@@ -7697,11 +7689,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
-        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
+        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
         "type": "STORY"
       },
       {
@@ -7710,6 +7702,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
+        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
         "type": "STORY"
       },
       {
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.22,
-        "industryAvg": 25.28
+        "value": 25.36,
+        "industryAvg": 25.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.85,
-        "industryAvg": 7.75
+        "value": 15.94,
+        "industryAvg": 7.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.16,
-        "industryAvg": 4.35
+        "value": 4.18,
+        "industryAvg": 4.47
       },
       {
         "metric": "ROE",

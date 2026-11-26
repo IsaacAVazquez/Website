@@ -1,10 +1,10 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.5559,
-      "ttmPe": 15.02,
-      "marketCap": 174994650000,
-      "psRatio": 6.07,
-      "pbRatio": 2.85,
+      "ttmPe": 15.22,
+      "marketCap": 177364260000,
+      "psRatio": 6.15,
+      "pbRatio": 2.88,
       "pegRatio": 0.16
     },
     "profitability": {
@@ -6068,33 +6068,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.8500000000000005,
-      "costOfEquity": 9.36,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 9.51,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.5588,
-      "marketCap": 174994650000
+      "beta": 0.5776,
+      "marketCap": 177364260000
     },
     "beta": {
-      "beta5y": 0.5588
+      "beta5y": 0.5776
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 84.79,
-        "high": 86.49,
-        "low": 84.2,
-        "close": 84.3,
-        "volume": 10967000
-      },
-      {
-        "date": "2025-11-21",
-        "open": 84.18,
-        "high": 84.67,
-        "low": 81.64,
-        "close": 83.48,
-        "volume": 13930100
-      },
       {
         "date": "2025-11-24",
         "open": 83.77,
@@ -8094,6 +8078,22 @@
         "low": 83.26,
         "close": 83.45,
         "volume": 14151200
+      },
+      {
+        "date": "2026-11-23",
+        "open": 83.56,
+        "high": 84.15,
+        "low": 82.94,
+        "close": 83.97,
+        "volume": 12400300
+      },
+      {
+        "date": "2026-11-24",
+        "open": 83.79,
+        "high": 85.05,
+        "low": 83.27,
+        "close": 84.58,
+        "volume": 7734900
       }
     ],
     "news": [
@@ -8106,19 +8106,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "03e55f62-1ff6-3798-8ef9-27158b99013d",
-        "title": "SunRun and Other Solar Stocks Fall on Tax Bill",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/03e55f62-1ff6-3798-8ef9-27158b99013d/sunrun-and-other-solar-stocks.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
         "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "03e55f62-1ff6-3798-8ef9-27158b99013d",
+        "title": "SunRun and Other Solar Stocks Fall on Tax Bill",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/03e55f62-1ff6-3798-8ef9-27158b99013d/sunrun-and-other-solar-stocks.html",
         "type": "STORY"
       },
       {
@@ -8242,23 +8242,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.02,
-        "industryAvg": 16.87
+        "value": 15.22,
+        "industryAvg": 15.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.07,
-        "industryAvg": 2.34
+        "value": 6.15,
+        "industryAvg": 2.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.85,
-        "industryAvg": 1.82
+        "value": 2.88,
+        "industryAvg": 1.75
       },
       {
         "metric": "ROE",
         "value": 8.05,
-        "industryAvg": 11.84
+        "industryAvg": 11.87
       },
       {
         "metric": "ROA",
@@ -8268,17 +8268,17 @@
       {
         "metric": "Gross Margin",
         "value": 61.35,
-        "industryAvg": 46.07
+        "industryAvg": 46.150000000000006
       },
       {
         "metric": "EBITDA Margin",
         "value": 54.279999999999994,
-        "industryAvg": 43.89
+        "industryAvg": 44.07
       },
       {
         "metric": "Net Margin",
         "value": 59.019999999999996,
-        "industryAvg": 16.830000000000002
+        "industryAvg": 16.81
       }
     ]
   }

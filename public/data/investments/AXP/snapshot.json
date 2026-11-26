@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.7575,
-      "ttmPe": 16.99,
-      "marketCap": 202440700000,
-      "psRatio": 2.61,
-      "pbRatio": 5.66,
-      "pegRatio": 0.55
+      "ttmPe": 17.38,
+      "marketCap": 207090730000,
+      "psRatio": 2.67,
+      "pbRatio": 5.79,
+      "pegRatio": 0.56
     },
     "profitability": {
       "roe": 10.41,
@@ -5979,33 +5979,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.82,
-      "costOfEquity": 13.25,
+      "wacc": 10.97,
+      "costOfEquity": 13.389999999999999,
       "costOfDebt": 3.2,
       "taxRate": 18,
-      "beta": 1.0475,
-      "marketCap": 202440700000
+      "beta": 1.0658,
+      "marketCap": 207090730000
     },
     "beta": {
-      "beta5y": 1.0475
+      "beta5y": 1.0658
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 349.97,
-        "high": 353.13,
-        "low": 340.32,
-        "close": 343.8,
-        "volume": 3095700
-      },
-      {
-        "date": "2025-11-21",
-        "open": 345.6,
-        "high": 356.31,
-        "low": 344.3,
-        "close": 352.89,
-        "volume": 3044100
-      },
       {
         "date": "2025-11-24",
         "open": 353.62,
@@ -8005,6 +7989,22 @@
         "low": 300.9,
         "close": 301.7,
         "volume": 3507800
+      },
+      {
+        "date": "2026-11-23",
+        "open": 308.08,
+        "high": 309.72,
+        "low": 303.23,
+        "close": 306.9,
+        "volume": 3641500
+      },
+      {
+        "date": "2026-11-24",
+        "open": 305.97,
+        "high": 311.09,
+        "low": 305,
+        "close": 308.63,
+        "volume": 2468600
       }
     ],
     "news": [
@@ -8065,11 +8065,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
-        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
+        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
+        "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
         "type": "STORY"
       },
       {
@@ -8081,11 +8081,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
-        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
-        "publisher": "Zacks",
+        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
+        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
+        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
         "type": "STORY"
       }
     ],
@@ -8158,18 +8158,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.99,
-        "industryAvg": 21.95
+        "value": 17.38,
+        "industryAvg": 22.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.61,
-        "industryAvg": 5.17
+        "value": 2.67,
+        "industryAvg": 5.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.66,
-        "industryAvg": 5.66
+        "value": 5.79,
+        "industryAvg": 5.85
       },
       {
         "metric": "ROE",

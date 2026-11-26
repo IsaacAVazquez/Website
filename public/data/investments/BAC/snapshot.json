@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 11.22,
-      "marketCap": 325643586912,
-      "psRatio": 2.76,
-      "pbRatio": 1.1,
+      "ttmPe": 11.58,
+      "marketCap": 336166083768,
+      "psRatio": 2.85,
+      "pbRatio": 1.13,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5757,33 +5757,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.450000000000001,
-      "costOfEquity": 14.11,
+      "wacc": 8.61,
+      "costOfEquity": 14.280000000000001,
       "costOfDebt": 4.68,
       "taxRate": 23,
-      "beta": 1.1554,
-      "marketCap": 325643586912
+      "beta": 1.1766,
+      "marketCap": 336166083768
     },
     "beta": {
-      "beta5y": 1.1554
+      "beta5y": 1.1766
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 52.5,
-        "high": 52.95,
-        "low": 50.97,
-        "close": 51,
-        "volume": 36661600
-      },
-      {
-        "date": "2025-11-21",
-        "open": 51.29,
-        "high": 51.78,
-        "low": 50.7,
-        "close": 51.56,
-        "volume": 43867200
-      },
       {
         "date": "2025-11-24",
         "open": 51.65,
@@ -7782,7 +7766,23 @@
         "high": 48.77,
         "low": 46.88,
         "close": 47.04,
-        "volume": 49962500
+        "volume": 50112100
+      },
+      {
+        "date": "2026-11-23",
+        "open": 48.28,
+        "high": 48.59,
+        "low": 47.69,
+        "close": 48.14,
+        "volume": 33778600
+      },
+      {
+        "date": "2026-11-24",
+        "open": 47.88,
+        "high": 48.89,
+        "low": 47.81,
+        "close": 48.56,
+        "volume": 36898900
       }
     ],
     "news": [
@@ -7827,19 +7827,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
-        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
         "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
         "publisher": "Financial Times",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
+        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
         "type": "STORY"
       },
       {
@@ -7935,18 +7935,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.22,
-        "industryAvg": 11.49
+        "value": 11.58,
+        "industryAvg": 11.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.76,
-        "industryAvg": 3.15
+        "value": 2.85,
+        "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.1,
-        "industryAvg": 1.45
+        "value": 1.13,
+        "industryAvg": 1.49
       },
       {
         "metric": "ROE",

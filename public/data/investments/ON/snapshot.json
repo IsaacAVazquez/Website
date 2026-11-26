@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 35.41,
-      "marketCap": 23682487140,
-      "psRatio": 3.72,
-      "pbRatio": 3.13,
-      "pegRatio": 1.34
+      "ttmPe": 35.79,
+      "marketCap": 23935505165,
+      "psRatio": 3.76,
+      "pbRatio": 3.17,
+      "pegRatio": 1.35
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,33 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.27,
-      "costOfEquity": 21.68,
+      "wacc": 18.62,
+      "costOfEquity": 22.06,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.1084,
-      "marketCap": 23682487140
+      "beta": 2.1544,
+      "marketCap": 23935505165
     },
     "beta": {
-      "beta5y": 2.1084
+      "beta5y": 2.1544
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 46.49,
-        "high": 47.15,
-        "low": 44.69,
-        "close": 44.9,
-        "volume": 10385600
-      },
-      {
-        "date": "2025-11-21",
-        "open": 45.17,
-        "high": 47.66,
-        "low": 44.56,
-        "close": 46.7,
-        "volume": 14423200
-      },
       {
         "date": "2025-11-24",
         "open": 47.19,
@@ -8110,6 +8094,22 @@
         "low": 59.14,
         "close": 60.84,
         "volume": 15247300
+      },
+      {
+        "date": "2026-11-23",
+        "open": 66.52,
+        "high": 67.01,
+        "low": 64.88,
+        "close": 66.77,
+        "volume": 14654300
+      },
+      {
+        "date": "2026-11-24",
+        "open": 63.53,
+        "high": 64.09,
+        "low": 59.81,
+        "close": 61.49,
+        "volume": 16184200
       }
     ],
     "news": [
@@ -8138,11 +8138,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
-        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
+        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
+        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
         "type": "STORY"
       },
       {
@@ -8154,19 +8154,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
-        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
-        "publisher": "Investing.com",
+        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
+        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
-        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
         "type": "STORY"
       },
       {
@@ -8175,6 +8167,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
+        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
         "type": "STORY"
       },
       {
@@ -8250,43 +8250,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.41,
-        "industryAvg": 15.74
+        "value": 35.79,
+        "industryAvg": 17.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.72,
-        "industryAvg": 7.71
+        "value": 3.76,
+        "industryAvg": 8.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.13,
-        "industryAvg": 7
+        "value": 3.17,
+        "industryAvg": 7.72
       },
       {
         "metric": "ROE",
         "value": 4.25,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 2.29,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 41.4,
-        "industryAvg": 68.32000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.830000000000002,
-        "industryAvg": 81.53
+        "industryAvg": 81.51
       },
       {
         "metric": "Net Margin",
         "value": 18.23,
-        "industryAvg": 56.769999999999996
+        "industryAvg": 56.76
       }
     ]
   }

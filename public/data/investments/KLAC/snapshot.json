@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0009,
-      "ttmPe": 31.71,
-      "marketCap": 165816933210,
-      "psRatio": 11.43,
-      "pbRatio": 25.42,
-      "pegRatio": 0.81
+      "ttmPe": 33.4,
+      "marketCap": 174678277950,
+      "psRatio": 12.04,
+      "pbRatio": 26.78,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 24.060000000000002,
@@ -6461,33 +6461,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.49,
-      "costOfEquity": 17.05,
+      "wacc": 16.38,
+      "costOfEquity": 16.91,
       "costOfDebt": 1.13,
       "taxRate": 15,
-      "beta": 1.5255,
-      "marketCap": 165816933210
+      "beta": 1.5079,
+      "marketCap": 174678277950
     },
     "beta": {
-      "beta5y": 1.5255
+      "beta5y": 1.5079
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 118.796,
-        "high": 120.149,
-        "low": 109.758,
-        "close": 110.245,
-        "volume": 11719000
-      },
-      {
-        "date": "2025-11-21",
-        "open": 109.7,
-        "high": 111.083,
-        "low": 107.196,
-        "close": 109.712,
-        "volume": 14384000
-      },
       {
         "date": "2025-11-24",
         "open": 110.49,
@@ -8486,7 +8470,23 @@
         "high": 139.14,
         "low": 125.72,
         "close": 126.87,
-        "volume": 22642500
+        "volume": 22749700
+      },
+      {
+        "date": "2026-11-23",
+        "open": 150.1,
+        "high": 150.86,
+        "low": 139.87,
+        "close": 145.85,
+        "volume": 17548900
+      },
+      {
+        "date": "2026-11-24",
+        "open": 138.44,
+        "high": 140,
+        "low": 129.54,
+        "close": 133.65,
+        "volume": 15802400
       }
     ],
     "news": [
@@ -8563,11 +8563,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b284d14-6b62-3ee7-a618-c21dd56b00bc",
-        "title": "KLA Corp (KLAC) Q3 2025 Earnings Call Highlights: Surpassing Revenue Expectations and Strategic ...",
-        "publisher": "GuruFocus.com",
+        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
+        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
+        "publisher": "StockStory",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corp-klac-q3-2025-071854024.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
         "type": "STORY"
       }
     ],
@@ -8637,23 +8637,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.71,
-        "industryAvg": 29.25
+        "value": 33.4,
+        "industryAvg": 31.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.43,
-        "industryAvg": 8.58
+        "value": 12.04,
+        "industryAvg": 9.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.42,
-        "industryAvg": 11.85
+        "value": 26.78,
+        "industryAvg": 12.82
       },
       {
         "metric": "ROE",
         "value": 24.060000000000002,
-        "industryAvg": 43.169999999999995
+        "industryAvg": 43.18
       },
       {
         "metric": "ROA",

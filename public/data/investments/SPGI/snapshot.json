@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.812,
-      "ttmPe": 26.15,
-      "marketCap": 127431343000,
-      "psRatio": 8.01,
-      "pbRatio": 6.47,
-      "pegRatio": 2.59
+      "ttmPe": 27.07,
+      "marketCap": 131953783000,
+      "psRatio": 8.29,
+      "pbRatio": 6.69,
+      "pegRatio": 2.68
     },
     "profitability": {
       "roe": 4.84,
@@ -5935,33 +5935,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.64,
-      "costOfEquity": 12.82,
+      "wacc": 11.77,
+      "costOfEquity": 12.920000000000002,
       "costOfDebt": 0.65,
       "taxRate": 25,
-      "beta": 0.9939,
-      "marketCap": 127431343000
+      "beta": 1.0067,
+      "marketCap": 131953783000
     },
     "beta": {
-      "beta5y": 0.9939
+      "beta5y": 1.0067
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 467.1712,
-        "high": 471.4475,
-        "low": 462.5828,
-        "close": 464.4371,
-        "volume": 1316916
-      },
-      {
-        "date": "2025-11-21",
-        "open": 467.4267,
-        "high": 470.1987,
-        "low": 463.9073,
-        "close": 466.982,
-        "volume": 2013479
-      },
       {
         "date": "2025-11-24",
         "open": 467.3604,
@@ -7961,6 +7945,22 @@
         "low": 438.34,
         "close": 439.57,
         "volume": 1980300
+      },
+      {
+        "date": "2026-11-23",
+        "open": 445.73,
+        "high": 452.63,
+        "low": 445.64,
+        "close": 451.96,
+        "volume": 1531000
+      },
+      {
+        "date": "2026-11-24",
+        "open": 451,
+        "high": 460.8,
+        "low": 449.03,
+        "close": 455.17,
+        "volume": 1406900
       }
     ],
     "news": [
@@ -8110,18 +8110,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.15,
-        "industryAvg": 25.28
+        "value": 27.07,
+        "industryAvg": 25.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.01,
-        "industryAvg": 7.75
+        "value": 8.29,
+        "industryAvg": 7.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.47,
-        "industryAvg": 4.35
+        "value": 6.69,
+        "industryAvg": 4.47
       },
       {
         "metric": "ROE",

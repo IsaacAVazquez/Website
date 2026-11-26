@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 40.26,
-      "marketCap": 107215104000,
-      "psRatio": 11.35,
-      "pbRatio": 5.79,
-      "pegRatio": 0.81
+      "ttmPe": 43.32,
+      "marketCap": 115360576000,
+      "psRatio": 12.21,
+      "pbRatio": 6.23,
+      "pegRatio": 0.88
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,33 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.14,
-      "costOfEquity": 24.22,
+      "wacc": 22.97,
+      "costOfEquity": 23.97,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.428,
-      "marketCap": 107215104000
+      "beta": 2.3948,
+      "marketCap": 115360576000
     },
     "beta": {
-      "beta5y": 2.428
+      "beta5y": 2.3948
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 83.4,
-        "high": 84.44,
-        "low": 76.08,
-        "close": 76.68,
-        "volume": 23315900
-      },
-      {
-        "date": "2025-11-21",
-        "open": 76.76,
-        "high": 78.92,
-        "low": 73.62,
-        "close": 77.45,
-        "volume": 16211000
-      },
       {
         "date": "2025-11-24",
         "open": 78.49,
@@ -7980,7 +7964,23 @@
         "high": 134.18,
         "low": 120.56,
         "close": 122.28,
-        "volume": 40302600
+        "volume": 40483400
+      },
+      {
+        "date": "2026-11-23",
+        "open": 145.97,
+        "high": 149.98,
+        "low": 139.26,
+        "close": 144.74,
+        "volume": 36890300
+      },
+      {
+        "date": "2026-11-24",
+        "open": 139.54,
+        "high": 140.75,
+        "low": 128.14,
+        "close": 131.57,
+        "volume": 28020900
       }
     ],
     "news": [
@@ -8041,11 +8041,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
-        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
+        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
+        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
         "type": "STORY"
       },
       {
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
+        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
+        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
         "type": "STORY"
       }
     ],
@@ -8130,43 +8130,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.26,
-        "industryAvg": 15.74
+        "value": 43.32,
+        "industryAvg": 17.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.35,
-        "industryAvg": 7.71
+        "value": 12.21,
+        "industryAvg": 8.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.79,
-        "industryAvg": 7
+        "value": 6.23,
+        "industryAvg": 7.72
       },
       {
         "metric": "ROE",
         "value": 1.68,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 1.13,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 53.14,
-        "industryAvg": 68.32000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.03,
-        "industryAvg": 81.53
+        "industryAvg": 81.51
       },
       {
         "metric": "Net Margin",
         "value": 11.24,
-        "industryAvg": 56.769999999999996
+        "industryAvg": 56.76
       }
     ]
   }

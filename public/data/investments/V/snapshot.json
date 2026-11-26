@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.0196,
-      "ttmPe": 33.43,
-      "marketCap": 769849258038,
-      "psRatio": 16.77,
-      "pbRatio": 21.32,
-      "pegRatio": 2.36
+      "ttmPe": 34.68,
+      "marketCap": 798411858972,
+      "psRatio": 17.39,
+      "pbRatio": 22.11,
+      "pegRatio": 2.45
     },
     "profitability": {
       "roe": 16.3,
@@ -5785,33 +5785,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.66,
-      "costOfEquity": 10.95,
+      "wacc": 10.71,
+      "costOfEquity": 10.99,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 18,
-      "beta": 0.7583,
-      "marketCap": 769849258038
+      "beta": 0.7644,
+      "marketCap": 798411858972
     },
     "beta": {
-      "beta5y": 0.7583
+      "beta5y": 0.7644
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 324.12,
-        "high": 328.4,
-        "low": 323.14,
-        "close": 323.77,
-        "volume": 6510300
-      },
-      {
-        "date": "2025-11-21",
-        "open": 325.38,
-        "high": 331.08,
-        "low": 324.29,
-        "close": 327.98,
-        "volume": 8930000
-      },
       {
         "date": "2025-11-24",
         "open": 329.24,
@@ -7810,24 +7794,40 @@
         "high": 408.74,
         "low": 401.19,
         "close": 401.87,
-        "volume": 8407600
+        "volume": 8426600
+      },
+      {
+        "date": "2026-11-23",
+        "open": 404.01,
+        "high": 411.41,
+        "low": 404.01,
+        "close": 409.4,
+        "volume": 8676200
+      },
+      {
+        "date": "2026-11-24",
+        "open": 409,
+        "high": 416.87,
+        "low": 407.4,
+        "close": 416.78,
+        "volume": 6253600
       }
     ],
     "news": [
-      {
-        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
-        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
-        "type": "STORY"
-      },
       {
         "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
         "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
+        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
         "type": "STORY"
       },
       {
@@ -7855,19 +7855,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
-        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
         "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
+        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
         "type": "STORY"
       },
       {
@@ -7887,11 +7887,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
-        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       }
     ],
@@ -7963,18 +7963,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.43,
-        "industryAvg": 21.95
+        "value": 34.68,
+        "industryAvg": 22.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.77,
-        "industryAvg": 5.17
+        "value": 17.39,
+        "industryAvg": 5.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.32,
-        "industryAvg": 5.66
+        "value": 22.11,
+        "industryAvg": 5.85
       },
       {
         "metric": "ROE",

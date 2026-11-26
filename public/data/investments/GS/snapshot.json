@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 69.5502,
-      "ttmPe": 11.37,
-      "marketCap": 233727964000,
-      "psRatio": 3.35,
-      "pbRatio": 1.87,
-      "pegRatio": 0.29
+      "ttmPe": 11.59,
+      "marketCap": 238259512000,
+      "psRatio": 3.42,
+      "pbRatio": 1.91,
+      "pegRatio": 0.3
     },
     "profitability": {
       "roe": 4.12,
@@ -6535,33 +6535,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.959999999999999,
-      "costOfEquity": 15.09,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 15.190000000000001,
       "costOfDebt": 3.9600000000000004,
       "taxRate": 24,
-      "beta": 1.2793,
-      "marketCap": 233727964000
+      "beta": 1.2912,
+      "marketCap": 238259512000
     },
     "beta": {
-      "beta5y": 1.2793
+      "beta5y": 1.2912
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 795.25,
-        "high": 816,
-        "low": 772.19,
-        "close": 773.7,
-        "volume": 2599000
-      },
-      {
-        "date": "2025-11-21",
-        "open": 776.83,
-        "high": 780.37,
-        "low": 754,
-        "close": 774.03,
-        "volume": 2284700
-      },
       {
         "date": "2025-11-24",
         "open": 778.64,
@@ -8560,7 +8544,23 @@
         "high": 827.9,
         "low": 786.66,
         "close": 790.69,
-        "volume": 4716100
+        "volume": 4739700
+      },
+      {
+        "date": "2026-11-23",
+        "open": 831.01,
+        "high": 834.54,
+        "low": 814.09,
+        "close": 823.62,
+        "volume": 3917800
+      },
+      {
+        "date": "2026-11-24",
+        "open": 815.79,
+        "high": 821.11,
+        "low": 791.31,
+        "close": 806.02,
+        "volume": 3025300
       }
     ],
     "news": [
@@ -8637,11 +8637,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8aa45d72-cd98-3a93-9044-f2eac11837af",
-        "title": "Earnings show ‘uncertainty’ is only sure thing for investors",
+        "uuid": "82bb8bb2-b015-3d63-ad38-fef7f33a4c72",
+        "title": "Tariff Ruling Threatens a $2 Trillion Fiscal Hole in Trump Plan",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/earnings-show-uncertainty-only-sure-114412102.html",
+        "link": "https://finance.yahoo.com/news/tariff-ruling-threatens-2-trillion-113000185.html",
         "type": "STORY"
       }
     ],
@@ -8704,41 +8704,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.37,
-        "industryAvg": 13.11
+        "value": 11.59,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.35,
-        "industryAvg": 1.81
+        "value": 3.42,
+        "industryAvg": 1.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.87,
-        "industryAvg": 2.1
+        "value": 1.91,
+        "industryAvg": 2.15
       },
       {
         "metric": "ROE",
         "value": 4.12,
-        "industryAvg": 15.879999999999999
+        "industryAvg": 15.9
       },
       {
         "metric": "ROA",
         "value": 0.24,
-        "industryAvg": 1.17
+        "industryAvg": 1.18
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 15.120000000000001
+        "industryAvg": 15.14
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 6.370000000000001
+        "industryAvg": 6.43
       },
       {
         "metric": "Net Margin",
         "value": 27.33,
-        "industryAvg": 20.28
+        "industryAvg": 20.32
       }
     ]
   }

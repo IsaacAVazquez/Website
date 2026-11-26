@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-11-20T17:30:02.333183+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-20T17:30:02.333183+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7791,
-      "ttmPe": 32.98,
-      "marketCap": 87909280000,
-      "psRatio": 4.63,
-      "pbRatio": 4.24,
-      "pegRatio": 1.83
+      "ttmPe": 32.85,
+      "marketCap": 87563444000,
+      "psRatio": 4.61,
+      "pbRatio": 4.22,
+      "pegRatio": 1.82
     },
     "profitability": {
       "roe": 3.65,
@@ -6487,33 +6487,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.559999999999999,
-      "costOfEquity": 14.31,
+      "wacc": 12.61,
+      "costOfEquity": 14.37,
       "costOfDebt": 0.8,
       "taxRate": 25,
-      "beta": 1.1845,
-      "marketCap": 87909280000
+      "beta": 1.1889,
+      "marketCap": 87563444000
     },
     "beta": {
-      "beta5y": 1.1845
+      "beta5y": 1.1889
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 129.96,
-        "high": 131.19,
-        "low": 123.38,
-        "close": 123.72,
-        "volume": 2930200
-      },
-      {
-        "date": "2025-11-21",
-        "open": 124.1,
-        "high": 129.35,
-        "low": 123.67,
-        "close": 128.22,
-        "volume": 3667900
-      },
       {
         "date": "2025-11-24",
         "open": 128.88,
@@ -8513,6 +8497,22 @@
         "low": 150.36,
         "close": 150.93,
         "volume": 3458000
+      },
+      {
+        "date": "2026-11-23",
+        "open": 158.84,
+        "high": 161.22,
+        "low": 157.16,
+        "close": 158.31,
+        "volume": 3076100
+      },
+      {
+        "date": "2026-11-24",
+        "open": 156.76,
+        "high": 158.11,
+        "low": 153.87,
+        "close": 156.98,
+        "volume": 2781200
       }
     ],
     "news": [
@@ -8549,11 +8549,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
-        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
+        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
+        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
         "type": "STORY"
       },
       {
@@ -8565,11 +8565,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
-        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
+        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
+        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
         "type": "STORY"
       },
       {
@@ -8663,18 +8663,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.98,
-        "industryAvg": 27.29
+        "value": 32.85,
+        "industryAvg": 25.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.63,
-        "industryAvg": 3.02
+        "value": 4.61,
+        "industryAvg": 3.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.24,
-        "industryAvg": 5.25
+        "value": 4.22,
+        "industryAvg": 5.51
       },
       {
         "metric": "ROE",
@@ -8684,7 +8684,7 @@
       {
         "metric": "ROA",
         "value": 1.79,
-        "industryAvg": 6.78
+        "industryAvg": 6.79
       },
       {
         "metric": "Gross Margin",
@@ -8699,7 +8699,7 @@
       {
         "metric": "Net Margin",
         "value": 14.42,
-        "industryAvg": 10.71
+        "industryAvg": 10.72
       }
     ]
   }

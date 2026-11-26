@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 25.95,
-      "marketCap": 85505124120,
-      "psRatio": 7.77,
-      "pbRatio": 24.31,
+      "ttmPe": 25.76,
+      "marketCap": 84864566760,
+      "psRatio": 7.71,
+      "pbRatio": 24.13,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,33 +6462,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.5600000000000005,
-      "costOfEquity": 11.19,
+      "wacc": 7.720000000000001,
+      "costOfEquity": 11.469999999999999,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.7884,
-      "marketCap": 85505124120
+      "beta": 0.8245,
+      "marketCap": 84864566760
     },
     "beta": {
-      "beta5y": 0.7884
+      "beta5y": 0.8245
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 180.5,
-        "high": 180.66,
-        "low": 178.01,
-        "close": 179.12,
-        "volume": 3094500
-      },
-      {
-        "date": "2025-11-21",
-        "open": 180.37,
-        "high": 181.99,
-        "low": 179.01,
-        "close": 179.56,
-        "volume": 2609900
-      },
       {
         "date": "2025-11-24",
         "open": 179.58,
@@ -8488,6 +8472,22 @@
         "low": 182.86,
         "close": 184.21,
         "volume": 2770100
+      },
+      {
+        "date": "2026-11-23",
+        "open": 184.48,
+        "high": 185.37,
+        "low": 179.23,
+        "close": 179.31,
+        "volume": 2712200
+      },
+      {
+        "date": "2026-11-24",
+        "open": 178.94,
+        "high": 183.74,
+        "low": 178.21,
+        "close": 182.83,
+        "volume": 1976900
       }
     ],
     "news": [
@@ -8524,19 +8524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8633,18 +8633,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.95,
-        "industryAvg": 34.07
+        "value": 25.76,
+        "industryAvg": 34.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.77,
-        "industryAvg": 6.31
+        "value": 7.71,
+        "industryAvg": 6.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.31,
-        "industryAvg": 4.08
+        "value": 24.13,
+        "industryAvg": 4.13
       },
       {
         "metric": "ROE",

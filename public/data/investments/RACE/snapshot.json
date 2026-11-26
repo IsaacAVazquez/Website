@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.0597,
-      "ttmPe": 35.49,
-      "marketCap": 68845713755,
-      "psRatio": 8.12,
-      "pbRatio": 15.54,
-      "pegRatio": 2.92
+      "ttmPe": 35.97,
+      "marketCap": 69784192030,
+      "psRatio": 8.23,
+      "pbRatio": 15.75,
+      "pegRatio": 2.96
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -6236,33 +6236,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.09,
-      "costOfEquity": 11.65,
+      "wacc": 11.31,
+      "costOfEquity": 11.87,
       "costOfDebt": 0.27999999999999997,
       "taxRate": 23,
-      "beta": 0.8465,
-      "marketCap": 68845713755
+      "beta": 0.8747,
+      "marketCap": 69784192030
     },
     "beta": {
-      "beta5y": 0.8465
+      "beta5y": 0.8747
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 393.98,
-        "high": 393.98,
-        "low": 383.02,
-        "close": 383.15,
-        "volume": 574700
-      },
-      {
-        "date": "2025-11-21",
-        "open": 390.53,
-        "high": 390.75,
-        "low": 387.27,
-        "close": 389.19,
-        "volume": 786500
-      },
       {
         "date": "2025-11-24",
         "open": 390.45,
@@ -8262,6 +8246,22 @@
         "low": 391.485,
         "close": 392.47,
         "volume": 576900
+      },
+      {
+        "date": "2026-11-23",
+        "open": 396.16,
+        "high": 399.93,
+        "low": 393.71,
+        "close": 399.25,
+        "volume": 724700
+      },
+      {
+        "date": "2026-11-24",
+        "open": 395,
+        "high": 399.3,
+        "low": 394.08,
+        "close": 397.82,
+        "volume": 543100
       }
     ],
     "news": [
@@ -8330,11 +8330,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e1d1e38a-ad1b-36e5-963c-bb0bfe3a7bb8",
-        "title": "Is GRINDR INC (GRND) Stock Outpacing Its Computer and Technology Peers This Year?",
+        "uuid": "e4b46a0d-e375-352e-a0ea-f191583bf366",
+        "title": "Are Business Services Stocks Lagging  GORILLA TECH GP (GRRR) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/grindr-inc-grnd-stock-outpacing-134004098.html",
+        "link": "https://finance.yahoo.com/news/business-services-stocks-lagging-gorilla-134006668.html",
         "type": "STORY"
       },
       {
@@ -8409,18 +8409,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.49,
-        "industryAvg": 27.79
+        "value": 35.97,
+        "industryAvg": 29.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.12,
-        "industryAvg": 1.15
+        "value": 8.23,
+        "industryAvg": 1.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.54,
-        "industryAvg": 2.12
+        "value": 15.75,
+        "industryAvg": 2.27
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
     "sections": {
-      "price": "2026-11-20"
+      "price": "2026-11-24"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 45.21,
-      "marketCap": 546140070000,
-      "psRatio": 15.05,
-      "pbRatio": 80.87,
+      "ttmPe": 46.79,
+      "marketCap": 565215120000,
+      "psRatio": 15.58,
+      "pbRatio": 83.7,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,33 +5641,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.36,
-      "costOfEquity": 10.780000000000001,
+      "wacc": 10.440000000000001,
+      "costOfEquity": 10.85,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.7375,
-      "marketCap": 546140070000
+      "beta": 0.7464,
+      "marketCap": 565215120000
     },
     "beta": {
-      "beta5y": 0.7375
+      "beta5y": 0.7464
     },
     "price": [
-      {
-        "date": "2025-11-20",
-        "open": 533.29,
-        "high": 538.46,
-        "low": 527.18,
-        "close": 527.88,
-        "volume": 3240300
-      },
-      {
-        "date": "2025-11-21",
-        "open": 532.54,
-        "high": 544.41,
-        "low": 531.67,
-        "close": 540.4,
-        "volume": 3807500
-      },
       {
         "date": "2025-11-24",
         "open": 543.44,
@@ -7667,6 +7651,22 @@
         "low": 624.11,
         "close": 625.59,
         "volume": 3668500
+      },
+      {
+        "date": "2026-11-23",
+        "open": 631.3,
+        "high": 638.67,
+        "low": 629,
+        "close": 635.48,
+        "volume": 3605300
+      },
+      {
+        "date": "2026-11-24",
+        "open": 635.04,
+        "high": 648.66,
+        "low": 632.05,
+        "close": 647.44,
+        "volume": 2640200
       }
     ],
     "news": [
@@ -7695,19 +7695,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
-        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
+        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
         "type": "STORY"
       },
       {
@@ -7817,18 +7817,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.21,
-        "industryAvg": 21.95
+        "value": 46.79,
+        "industryAvg": 22.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.05,
-        "industryAvg": 5.17
+        "value": 15.58,
+        "industryAvg": 5.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 80.87,
-        "industryAvg": 5.66
+        "value": 83.7,
+        "industryAvg": 5.85
       },
       {
         "metric": "ROE",
