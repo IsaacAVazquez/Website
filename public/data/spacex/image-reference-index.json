@@ -822,6 +822,11 @@
       "spacecraft": [],
       "pad": [
         {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        },
+        {
           "label": "Unknown Pad",
           "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
