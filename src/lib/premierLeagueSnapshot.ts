@@ -1,6 +1,4 @@
 import { premierLeagueSnapshot } from "@/data/premierLeagueSnapshot";
-import { buildPremierLeagueLiveSummary } from "@/lib/premierLeagueData";
-import { createLiveSummary } from "@/lib/footballLeagueData";
 import type {
   PremierLeagueSummary,
   PremierLeagueTeamSnapshot,
@@ -49,21 +47,8 @@ export function isValidPremierLeagueTeamId(teamId: string): boolean {
   return PL_TEAM_ID_PATTERN.test(teamId) && teamId in premierLeagueSnapshot.teamSnapshots;
 }
 
-interface PremierLeagueSummaryOptions {
-  preferLive?: boolean;
-}
-
-// Request-time live refresh (football-data.org), gated and cached as
-// `createLiveSummary` describes. No caller passes `preferLive` today.
-const liveSummary = createLiveSummary(
-  () => premierLeagueSnapshot.summary,
-  buildPremierLeagueLiveSummary
-);
-
-export async function getPremierLeagueSummary(
-  options: PremierLeagueSummaryOptions = {}
-): Promise<PremierLeagueSummary> {
-  return clampPremierLeagueSummary(await liveSummary.get(options.preferLive));
+export async function getPremierLeagueSummary(): Promise<PremierLeagueSummary> {
+  return clampPremierLeagueSummary(premierLeagueSnapshot.summary);
 }
 
 export async function getPremierLeagueTeamSnapshot(

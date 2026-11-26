@@ -13,13 +13,10 @@ const TONE_COLOR: Record<"signal" | "ink" | "stone", string> = {
 
 /**
  * Landing-method split (droneship / return-to-pad / expended) plus a
- * fleet-leaders list of boosters by flights flown. Gated on real core data:
- * Launch Library's `launcher_stage`/landing payload is currently empty for
- * every SpaceX launch this snapshot hydrates, so this renders an honest
- * empty state instead of fabricating a chart. `normalizeCores` in
- * spacexData.ts already maps the field whenever upstream populates it — no
- * further builder change is needed for this panel to start working on its
- * own once that happens.
+ * fleet-leaders list of boosters by flights flown, built from the core
+ * records `normalizeCores` in spacexData.ts reads off each hydrated detail.
+ * When no detail carries a booster or landing record it renders an empty
+ * state instead of a chart.
  */
 export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProps) {
   const recovery = aggregateMissionRecovery(launchDetails);
@@ -31,9 +28,9 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
           No recovery data in the current snapshot.
         </p>
         <p>
-          Launch Library&apos;s booster and landing records are empty for every mission this
-          snapshot carries detail for, so there is nothing to chart yet. The panel fills in on
-          its own once a refresh picks up populated core records.
+          None of the missions I have full detail for in this snapshot list a booster or a
+          landing attempt, so there is nothing to chart yet. The panel fills in once a refresh
+          brings in missions that do.
         </p>
       </div>
     );

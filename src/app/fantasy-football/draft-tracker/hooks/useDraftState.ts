@@ -574,8 +574,10 @@ export const useDraftState = () => {
   }, [persist, restoreRaw]);
 
   // Update draft settings
-  const updateSettings = useCallback((newSettings: Partial<DraftSettings>) => {
-    commitDraftState(prev => {
+  // Returns false when the save was refused, so a caller can stop before it
+  // starts a room on settings the visitor did not choose.
+  const updateSettings = useCallback((newSettings: Partial<DraftSettings>): boolean => {
+    return commitDraftState(prev => {
       const mergedSettings = { ...prev.settings, ...newSettings };
       const normalizedUserTeam = Math.min(mergedSettings.userTeam, mergedSettings.totalTeams);
 

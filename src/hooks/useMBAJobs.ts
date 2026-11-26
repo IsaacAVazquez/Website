@@ -219,9 +219,9 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   const isMountedRef = useRef(true);
   const requestIdRef = useRef(0);
   const lastRefreshAtRef = useRef(0);
-  const prevJobIdsRef = useRef<Set<string>>(
-    new Set(initialData?.jobs.map((job) => job.id) ?? [])
-  );
+  // Empty until the browser's own fetch lands. Seeded from the server's first
+  // page, every role past that slice would count as new on each visit.
+  const prevJobIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     isMountedRef.current = true;

@@ -344,25 +344,25 @@ export function resolveDraftTelemetry({
 
   const survivorCalls = outcomes.filter((outcome) => outcome.survivorSurvived !== null);
   const atRiskCalls = outcomes.filter((outcome) => outcome.atRiskGone !== null);
-  const realizedDrops = outcomes
+  // Each pair runs over the turns that carry both a prediction and a realized
+  // drop, so the two columns share a denominator and read as a calibration
+  // pair. A turn whose wait was unpriced has a realized drop and no prediction.
+  // With no predicted turn at all there is no pair, and realized stands alone.
+  const notNull = (value: number | null): value is number => value !== null;
+  const dropPairs = outcomes.filter(
+    (outcome) => outcome.realizedDropSpots !== null && outcome.record.waitCostSpots !== null
+  );
+  const pointPairs = outcomes.filter(
+    (outcome) => outcome.realizedDropPoints !== null && outcome.record.waitCostPoints !== null
+  );
+  const realizedDrops = (dropPairs.length > 0 ? dropPairs : outcomes)
     .map((outcome) => outcome.realizedDropSpots)
-    .filter((value): value is number => value !== null);
-  const realizedPointDrops = outcomes
+    .filter(notNull);
+  const realizedPointDrops = (pointPairs.length > 0 ? pointPairs : outcomes)
     .map((outcome) => outcome.realizedDropPoints)
-    .filter((value): value is number => value !== null);
-  // Each predicted average runs over exactly the turns its realized
-  // counterpart resolved on, so the two columns share a denominator and read
-  // as a calibration pair rather than two averages of different turns.
-  const predictedDrops = outcomes
-    .filter(
-      (outcome) => outcome.realizedDropSpots !== null && outcome.record.waitCostSpots !== null
-    )
-    .map((outcome) => outcome.record.waitCostSpots as number);
-  const predictedPointDrops = outcomes
-    .filter(
-      (outcome) => outcome.realizedDropPoints !== null && outcome.record.waitCostPoints !== null
-    )
-    .map((outcome) => outcome.record.waitCostPoints as number);
+    .filter(notNull);
+  const predictedDrops = dropPairs.map((outcome) => outcome.record.waitCostSpots as number);
+  const predictedPointDrops = pointPairs.map((outcome) => outcome.record.waitCostPoints as number);
 
   return {
     outcomes,

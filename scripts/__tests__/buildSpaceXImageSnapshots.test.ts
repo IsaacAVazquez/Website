@@ -21,8 +21,13 @@ function createJsonResponse(data: unknown): Response {
   });
 }
 
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+const JPEG_SIGNATURE = Buffer.from([0xff, 0xd8, 0xff, 0xe0]);
+
+// The builder keeps only bytes that start like a raster image.
 function createImageResponse(body: string, contentType = "image/png"): Response {
-  return new Response(Buffer.from(body, "utf8"), {
+  const signature = contentType === "image/jpeg" ? JPEG_SIGNATURE : PNG_SIGNATURE;
+  return new Response(Buffer.concat([signature, Buffer.from(body, "utf8")]), {
     headers: {
       "content-type": contentType,
     },
@@ -114,31 +119,31 @@ describe("buildSpaceXImageSnapshots", () => {
               full_name: "Falcon 9 Block 5",
               image_url: "https://images.example.com/falcon-9.png",
             },
-          },
-          spacecraft_stage: {
-            spacecraft: {
-              name: "Dragon Freedom",
-              spacecraft_config: {
-                name: "Crew Dragon 2",
-                image_url: "https://images.example.com/dragon.png",
+            spacecraft_stage: {
+              spacecraft: {
+                name: "Dragon Freedom",
+                spacecraft_config: {
+                  name: "Crew Dragon 2",
+                  image_url: "https://images.example.com/dragon.png",
+                },
               },
+              launch_crew: [
+                {
+                  astronaut: {
+                    name: "Zena Cardman",
+                    profile_image: "https://images.example.com/cardman.png",
+                  },
+                },
+              ],
+              onboard_crew: [
+                {
+                  astronaut: {
+                    name: "Mike Fincke",
+                    profile_image: "https://images.example.com/fincke.png",
+                  },
+                },
+              ],
             },
-            launch_crew: [
-              {
-                astronaut: {
-                  name: "Zena Cardman",
-                  profile_image: "https://images.example.com/cardman.png",
-                },
-              },
-            ],
-            onboard_crew: [
-              {
-                astronaut: {
-                  name: "Mike Fincke",
-                  profile_image: "https://images.example.com/fincke.png",
-                },
-              },
-            ],
           },
           pad: {
             name: "Launch Complex 39A",
@@ -656,5 +661,46 @@ describe("buildSpaceXImageSnapshots", () => {
     });
 
     expect(Object.keys(await readReferenceIndex(projectRoot))).toEqual([LL2_UPCOMING_ROW.id]);
+  });
+
+  it("keeps no file for an answer whose bytes are not a raster image", async () => {
+    const projectRoot = await makeProjectRoot();
+    const svgUrl = "https://images.example.com/patch.svg";
+    const fetchMock = jest.fn(async (input: string | URL) => {
+      const url = String(input);
+
+      if (url.includes("/launch/upcoming/")) {
+        return createJsonResponse({ results: [{ id: "svg-launch", name: "SVG", image: svgUrl }] });
+      }
+
+      if (url.includes("/launch/previous/")) {
+        return createJsonResponse({ results: [] });
+      }
+
+      if (url.includes("/launch/svg-launch/")) {
+        return createJsonResponse({ id: "svg-launch", name: "SVG", image: svgUrl });
+      }
+
+      if (url === svgUrl) {
+        return new Response("<svg xmlns='http://www.w3.org/2000/svg'><script>1</script></svg>", {
+          headers: { "content-type": "image/svg+xml" },
+        });
+      }
+
+      throw new Error(`Unexpected fetch: ${url}`);
+    }) as typeof fetch;
+
+    const result = await buildSpaceXImageSnapshots({
+      projectRoot,
+      fetchImpl: fetchMock,
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(svgUrl, expect.anything());
+    expect(result.partial).toBe(true);
+    expect(await readManifest(projectRoot)).toEqual({});
+    expect(
+      await fs.readdir(path.join(projectRoot, "public", "data", "spacex", "images"))
+    ).toEqual([]);
   });
 });

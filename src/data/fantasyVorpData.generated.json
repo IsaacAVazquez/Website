@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T01:01:12.481Z",
+  "generatedAt": "2026-11-24T03:22:15.456Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:13.312Z",
+        "accessedAt": "2026-11-24T03:22:16.420Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2377,7 +2377,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 264,
@@ -2737,7 +2737,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 304,
@@ -3286,7 +3286,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 365,
@@ -4555,7 +4555,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 506,
@@ -4654,7 +4654,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 517,
@@ -5356,7 +5356,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-26T01:01:14.257Z",
+        "accessedAt": "2026-11-24T03:22:16.931Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -7757,7 +7757,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 266,
@@ -8405,7 +8405,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 338,
@@ -8873,7 +8873,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 390,
@@ -9620,7 +9620,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 473,
@@ -9683,7 +9683,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 480,
@@ -10718,7 +10718,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:15.038Z",
+        "accessedAt": "2026-11-24T03:22:17.772Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13209,7 +13209,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 81,
             "rank": 276,
@@ -14046,7 +14046,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 369,
@@ -14271,7 +14271,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 394,
@@ -15180,7 +15180,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 495,
@@ -15234,7 +15234,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -16080,7 +16080,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:15.769Z",
+        "accessedAt": "2026-11-24T03:22:18.797Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18636,7 +18636,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 283,
@@ -19014,7 +19014,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 325,
@@ -19761,7 +19761,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 408,
@@ -20841,7 +20841,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 528,
@@ -20895,7 +20895,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 534,
@@ -21444,7 +21444,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-26T01:01:16.238Z",
+        "accessedAt": "2026-11-24T03:22:19.696Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23782,7 +23782,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 259,
@@ -24709,7 +24709,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 362,
@@ -24799,7 +24799,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 372,
@@ -25762,7 +25762,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 479,
@@ -25852,7 +25852,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 489,
@@ -26806,7 +26806,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:17.081Z",
+        "accessedAt": "2026-11-24T03:22:20.350Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29369,7 +29369,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 284,
@@ -30071,7 +30071,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 362,
@@ -30350,7 +30350,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 393,
@@ -31259,7 +31259,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 494,
@@ -31322,7 +31322,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -32168,7 +32168,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:17.604Z",
+        "accessedAt": "2026-11-24T03:22:21.166Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34598,7 +34598,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 269,
@@ -35534,7 +35534,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 373,
@@ -35588,7 +35588,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 379,
@@ -36821,7 +36821,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 516,
@@ -36884,7 +36884,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 523,
@@ -37532,7 +37532,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-26T01:01:18.357Z",
+        "accessedAt": "2026-11-24T03:22:22.186Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -39996,7 +39996,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 273,
@@ -40932,7 +40932,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 377,
@@ -41076,7 +41076,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 393,
@@ -42183,7 +42183,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 516,
@@ -42264,7 +42264,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 525,
@@ -42894,7 +42894,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:18.840Z",
+        "accessedAt": "2026-11-24T03:22:23.092Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45169,7 +45169,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 83,
             "rank": 252,
@@ -46375,7 +46375,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 386,
@@ -46483,7 +46483,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "FA",
+            "team": "PIT",
             "position": "QB",
             "positionRank": 29,
             "rank": 398,
@@ -47248,7 +47248,7 @@
           {
             "playerId": "fp-27447",
             "name": "LaJohntay Wester",
-            "team": "FA",
+            "team": "BAL",
             "position": "WR",
             "positionRank": 181,
             "rank": 483,
@@ -47347,7 +47347,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 494,
@@ -48256,7 +48256,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "FA",
+            "team": "TB",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,

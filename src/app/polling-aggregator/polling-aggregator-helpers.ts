@@ -1,4 +1,6 @@
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
+import { selectCurrent } from "@/lib/pollingData";
+import type { BasePoll } from "@/types/polling";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
 
@@ -41,6 +43,22 @@ const STALE_AFTER_MS = 14 * 24 * 60 * 60 * 1000;
 
 export function newestPollDate(polls: { endDate: string }[]): string | null {
   return polls.map((poll) => poll.endDate).sort().at(-1) ?? null;
+}
+
+/**
+ * Names the polls behind a national average, the way a race's sidebar does.
+ * The snapshot keeps the newest 30 polls of each series, newest first, which
+ * are the rows the builder's selectCurrent chose from.
+ */
+export function describeAverageWindow(polls: BasePoll[]): string | null {
+  const current = selectCurrent(polls);
+  const newest = current[0];
+  const oldest = current.at(-1);
+  if (!newest || !oldest) return null;
+  const count = `${current.length} ${current.length === 1 ? "poll" : "polls"}`;
+  return oldest.endDate === newest.endDate
+    ? `Average of the ${count} ending ${formatDate(newest.endDate)}.`
+    : `Average of the ${count} from ${formatDate(oldest.endDate)} to ${formatDate(newest.endDate)}.`;
 }
 
 /** Whether a series' newest kept poll ended more than 14 days before `now`. */

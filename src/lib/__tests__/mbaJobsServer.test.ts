@@ -361,6 +361,26 @@ describe("getMBAJobsData", () => {
     expect(opening.startsWith(snippet.slice(0, -1))).toBe(true);
   });
 
+  it("keeps a board whose posting carries a numeric entity past the last code point", async () => {
+    installBoards({
+      [`${GREENHOUSE}/stripe/`]: () =>
+        json({
+          jobs: [
+            {
+              ...greenhouseJob(7004, "MBA Associate"),
+              content: "MBA candidates &#1114112; &#x110000; are welcome.",
+            },
+          ],
+          meta: { total: 1 },
+        }),
+    });
+
+    const result = await getMBAJobsData(["stripe"]);
+
+    expect(result.body.errors).toEqual([]);
+    expect(result.body.jobs.map((job) => job.id)).toEqual(["stripe-7004"]);
+  });
+
   it("pages SmartRecruiters until totalFound is reached", async () => {
     const engineers = (count: number, start: number) =>
       Array.from({ length: count }, (_, index) =>

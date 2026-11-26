@@ -15,8 +15,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/": "2026-10-01",
   "/about": "2026-10-19",
   "/accessibility": "2026-10-02",
-  "/privacy": "2026-10-21",
-  "/agent-build-index": latestIso(readGitHubTrendingLastmod(), "2026-10-12"),
+  "/privacy": "2026-11-16",
+  "/agent-build-index": latestIso(snapshotLastmod("src/data/githubTrendingSnapshot.json"), "2026-10-12"),
   "/ai-dev-tools": "2026-10-25",
   "/arcade": "2026-07-16",
   "/contact": "2026-10-19",
@@ -25,37 +25,37 @@ const STATIC_ROUTE_LASTMOD = {
   "/portfolio": "2026-10-09",
   // The index changes whenever a post is published or edited.
   "/writing": latestIso("2026-09-28", newestPostLastmod()),
-  "/golf": latestIso(readGolfLastmod(), "2026-10-25"),
-  "/earthquake-pulse": latestIso(readEarthquakeLastmod(), "2026-10-25"),
+  "/golf": latestIso(snapshotLastmod("src/data/golfSnapshot.json"), "2026-10-25"),
+  "/earthquake-pulse": latestIso(snapshotLastmod("src/data/earthquakeSnapshot.json"), "2026-10-25"),
   "/decision-lab": "2026-10-12",
   "/enablement-assistant": "2026-10-12",
-  "/formula-1": latestIso(readFormula1Lastmod(), "2026-10-12"),
-  "/fantasy-formula-1": latestIso(readFormula1Lastmod(), "2026-10-12"),
-  "/frontier-models": latestIso(readFrontierModelsLastmod(), "2026-10-24"),
+  "/formula-1": latestIso(snapshotLastmod("src/data/formula1Snapshot.json"), "2026-10-12"),
+  "/fantasy-formula-1": latestIso(snapshotLastmod("src/data/formula1Snapshot.json"), "2026-10-12"),
+  "/frontier-models": latestIso(snapshotLastmod("src/data/frontierModelsSnapshot.json"), "2026-10-24"),
   "/mba-internship-notifications": "2026-10-12",
-  "/mlb": latestIso(readMlbLastmod(), "2026-10-12"),
+  "/mlb": latestIso(snapshotLastmod("src/data/mlbSnapshot.json"), "2026-10-12"),
   "/museum-log": "2026-10-12",
-  "/nba": latestIso(readNbaLastmod(), "2026-10-12"),
+  "/nba": latestIso(snapshotLastmod("src/data/nbaSnapshot.json"), "2026-10-12"),
   "/now": "2026-10-01",
   "/recipe-finder": "2026-10-12",
   "/wine-cellar": "2026-10-11",
-  "/bay-area-transit": latestIso(readBayAreaTransitLastmod(), "2026-10-12"),
+  "/bay-area-transit": latestIso(snapshotLastmod("src/data/bayAreaTransitSnapshot.json"), "2026-10-12"),
   "/changelog": "2026-07-23",
-  "/github-trending-pulse": latestIso(readGitHubTrendingLastmod(), "2026-10-12"),
-  "/tech-startup-tracker": latestIso(readTechStartupLastmod(), "2026-10-25"),
+  "/github-trending-pulse": latestIso(snapshotLastmod("src/data/githubTrendingSnapshot.json"), "2026-10-12"),
+  "/tech-startup-tracker": latestIso(snapshotLastmod("src/data/techStartupSnapshot.json"), "2026-10-25"),
   "/investments": latestIso(readInvestmentsLastmod(), "2026-10-11"),
   "/investments/before-you-buy": "2026-10-21",
   "/news-pulse": "2026-10-12",
   "/spacex-mission-control": latestIso(readSpaceXLastmod(), "2026-10-25"),
   "/polling-aggregator": latestIso(readPollingLastmod(), "2026-10-25"),
-  "/premier-league": latestIso(readPremierLeagueLastmod(), "2026-10-11"),
-  "/score-pools": latestIso(readScorePoolsLastmod(), "2026-10-12"),
-  "/score-pools/tracker": latestIso(readScorePoolsLastmod(), "2026-10-12"),
-  "/score-pools/settings": latestIso(readScorePoolsLastmod(), "2026-10-12"),
-  "/la-liga": latestIso(readLaLigaLastmod(), "2026-10-11"),
-  "/nfl": latestIso(readNflLastmod(), "2026-10-12"),
-  "/world-cup-2026": latestIso(readWorldCupLastmod(), "2026-10-12"),
-  "/march-madness-2026": "2026-10-12",
+  "/premier-league": latestIso(snapshotLastmod("src/data/premierLeagueSnapshot.json"), "2026-10-11"),
+  "/score-pools": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
+  "/score-pools/tracker": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
+  "/score-pools/settings": latestIso(snapshotLastmod("src/data/scorePoolsSnapshot.json"), "2026-10-12"),
+  "/la-liga": latestIso(snapshotLastmod("src/data/laLigaSnapshot.json"), "2026-10-11"),
+  "/nfl": latestIso(snapshotLastmod("src/data/nflSnapshot.json", "updatedAt"), "2026-10-12"),
+  "/world-cup-2026": latestIso(snapshotLastmod("src/data/worldCupSnapshot.json"), "2026-10-12"),
+  "/march-madness-2026": "2026-11-23",
   "/fantasy-football": latestIso(readFantasyLastmod(), "2026-10-13"),
   "/fantasy-football/best-ball": latestIso(readBestBallLastmod(), "2026-10-13"),
   "/fantasy-football/best-ball/draft-tracker": latestIso(readBestBallLastmod(), "2026-10-13"),
@@ -220,6 +220,12 @@ function readFirstMatch(filePath, pattern) {
   return match ? match[1] : undefined;
 }
 
+// First match of a timestamp key in a snapshot file. For the World Cup file
+// that is the tournament block, which comes before the per-team snapshots.
+function snapshotLastmod(filePath, key = "generatedAt") {
+  return toIsoString(readFirstMatch(filePath, new RegExp(`"${key}":\\s*"([^"]+)"`)));
+}
+
 function readInvestmentsLastmod() {
   const source = JSON.parse(readFile("public/data/investments/index.json"));
   return toIsoString(source.lastUpdated);
@@ -231,65 +237,9 @@ function readPollingLastmod() {
   );
 }
 
-function readPremierLeagueLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/premierLeagueSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readLaLigaLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/laLigaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readNflLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/nflSnapshot.json", /"updatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readWorldCupLastmod() {
-  // The tournament block is first in the file, so the first generatedAt match is
-  // the tournament-level timestamp (per-team snapshots also carry one).
-  return toIsoString(
-    readFirstMatch("src/data/worldCupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readFormula1Lastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/formula1Snapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readGolfLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/golfSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readMlbLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/mlbSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readNbaLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/nbaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
 function readSpaceXLastmod() {
   const source = JSON.parse(readFile("src/data/spacexSnapshot.generated.json"));
   return toIsoString(source.generatedAt);
-}
-
-function readEarthquakeLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/earthquakeSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
 }
 
 function readFantasyLastmod() {
@@ -312,36 +262,6 @@ function readWeeklyFantasyLastmod() {
     if (error.code === "ENOENT") return readFantasyLastmod();
     throw error;
   }
-}
-
-function readGitHubTrendingLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/githubTrendingSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readTechStartupLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/techStartupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readFrontierModelsLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/frontierModelsSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readScorePoolsLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/scorePoolsSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
-}
-
-function readBayAreaTransitLastmod() {
-  return toIsoString(
-    readFirstMatch("src/data/bayAreaTransitSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
-  );
 }
 
 // Routable pages that are deliberately unlisted. A page that opts out through
@@ -540,7 +460,12 @@ function getPublishedPosts() {
     .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((file) => {
       const { data } = matter(readFile(path.join("content/blog", file)));
-      if (data.publishedAt && String(data.publishedAt).slice(0, 10) > today) {
+      // The reader in blog.ts drops a post without these (it 404s), so the
+      // sitemap must not list it either.
+      const readable = ["title", "excerpt", "category", "publishedAt"].every(
+        (field) => typeof data[field] === "string" && data[field].trim().length > 0
+      );
+      if (!readable || data.publishedAt.slice(0, 10) > today) {
         return null;
       }
       return {

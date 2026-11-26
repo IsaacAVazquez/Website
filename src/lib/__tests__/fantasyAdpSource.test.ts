@@ -260,10 +260,14 @@ describe("fetchFantasyAdpBoard", () => {
       .spyOn(global, "fetch")
       .mockResolvedValue(new Response(JSON.stringify(ADP_SOURCE_PAYLOAD_FIXTURE), { status: 200 }));
 
+    const timeout = jest.spyOn(AbortSignal, "timeout");
+
     const board = await fetchFantasyAdpBoard("PPR", 2026);
 
+    expect(timeout.mock.calls).toEqual([[20_000]]);
     expect(fetchSpy).toHaveBeenCalledWith(getFantasyAdpUrl("PPR", 2026), {
       headers: { Accept: "application/json" },
+      signal: timeout.mock.results[0].value,
     });
     expect(board.sourceUrl).toBe(getFantasyAdpUrl("PPR", 2026));
     expect(board.entries).toHaveLength(6);

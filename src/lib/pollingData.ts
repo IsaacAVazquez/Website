@@ -172,7 +172,11 @@ function buildGenericPolls(raw: VoteHubPoll[]): GenericBallotPoll[] {
     .filter((poll): poll is GenericBallotPoll => poll !== null);
 }
 
-function selectCurrent<T extends BasePoll>(polls: T[]): T[] {
+/**
+ * The polls an average is taken over, from a newest-first list: those within
+ * 30 days of the newest, or every kept poll when fewer than three fall there.
+ */
+export function selectCurrent<T extends BasePoll>(polls: T[]): T[] {
   const latestTime = Date.parse(polls[0]?.endDate ?? "");
   const cutoff = latestTime - 30 * DAY_MS;
   const inWindow = polls.filter((poll) => Date.parse(poll.endDate) >= cutoff);

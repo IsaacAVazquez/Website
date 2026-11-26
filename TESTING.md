@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 ---
 
@@ -90,7 +90,9 @@ toward the numbers.
 
 - `e2e/*.spec.ts`
 
-Current e2e coverage includes navigation, homepage, portfolio shell, accessibility,
+Current e2e coverage includes navigation, homepage, portfolio shell, accessibility
+(keyboard focus, image alt text, and button names on the homepage; text contrast is
+measured by `scripts/contrastSweep.mjs` and by no e2e spec),
 writing, search, investments, Before You Buy, fantasy football, the fantasy trade
 calculator, March Madness, footer CTA, the résumé PDF download, the designed About,
 Résumé, and Contact pages (`designed-pages.spec.ts`), product surfaces

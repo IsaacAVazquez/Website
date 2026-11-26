@@ -116,6 +116,22 @@ describe("useMBAJobs", () => {
     unmount();
   });
 
+  it("fires no notification when the first browser fetch is longer than the server's first page", async () => {
+    const notify = jest.fn();
+    (window as unknown as { Notification: unknown }).Notification = Object.assign(notify, {
+      permission: "granted",
+    });
+    mockJobsResponse([jobA, jobB, makeJob({ id: "stripe-2" })]);
+
+    const { result } = renderHook(() =>
+      useMBAJobs({ initialData: buildResponse([jobA]) })
+    );
+    await waitFor(() => expect(result.current.hasFetched).toBe(true));
+
+    expect(notify).not.toHaveBeenCalled();
+    delete (window as unknown as { Notification?: unknown }).Notification;
+  });
+
   it("derives newJobCount from unseen jobs and updates after marking one seen", async () => {
     mockJobsResponse([jobA, jobB]);
 

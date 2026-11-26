@@ -537,7 +537,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           <div className="dd-section">
             <p className="dd-label">Form (last 5)</p>
             <div className="dd-form">
-              {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
+              <span className="sr-only">Oldest first, latest last:</span>
+              {formatTeamFormPills(formSequence.slice(0, 5).toReversed()).map((result, i) => (
                 <TeamResultPill key={i} result={result} />
               ))}
             </div>

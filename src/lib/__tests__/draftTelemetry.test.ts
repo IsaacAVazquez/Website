@@ -365,6 +365,57 @@ describe("resolveDraftTelemetry", () => {
     expect(recap.realizedDropMeasured).toBe(1);
   });
 
+  it("averages predicted and realized wait cost over the same turns", () => {
+    // The user holds picks 1, 4, and 7. In the second window rb-2 goes at
+    // pick 5, so rb-3 is the best back left, 7 ranks below the rb-2 baseline.
+    const longer = [
+      ...picks.slice(0, 3),
+      pick(4, 1, player("wr-3", "WR", 8)),
+      pick(5, 2, player("rb-2", "RB", 5)),
+      pick(6, 2, player("qb-1", "QB", 20)),
+      pick(7, 1, player("rb-3", "RB", 12)),
+    ];
+    const unpriced = record({
+      pick: 4,
+      nextUserPick: 7,
+      chosenPlayerId: "wr-3",
+      chosenPlayerName: "wr-3",
+      waitBaselineId: "rb-2",
+      waitBaselineName: "rb-2",
+      waitBaselineRank: 5,
+      waitCandidates: record({}).waitCandidates?.slice(1),
+      waitCostSpots: null,
+      waitCostPoints: null,
+    });
+
+    const recap = resolveDraftTelemetry({
+      records: [record({}), unpriced],
+      picks: longer,
+      players,
+      rankOf,
+      vorpOf: () => null,
+    });
+
+    // The unpriced turn realized a drop but predicted none, so it stays out.
+    expect(recap.outcomes[1].realizedDropSpots).toBe(7);
+    expect(recap.realizedDropMeasured).toBe(1);
+    expect(recap.averagePredictedDropSpots).toBe(3);
+    expect(recap.averageRealizedDropSpots).toBe(3);
+    expect(recap.averagePredictedDropPoints).toBe(10);
+    expect(recap.averageRealizedDropPoints).toBe(10);
+
+    // With no prediction anywhere the realized average stands on its own.
+    const alone = resolveDraftTelemetry({
+      records: [unpriced],
+      picks: longer,
+      players,
+      rankOf,
+      vorpOf: () => null,
+    });
+    expect(alone.averagePredictedDropSpots).toBeNull();
+    expect(alone.averageRealizedDropSpots).toBe(7);
+  });
+
   it("finds no realized best when the whole frozen board was drafted in the window", () => {
     const recap = resolveDraftTelemetry({
       records: [

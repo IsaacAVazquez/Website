@@ -208,33 +208,32 @@ function hashRemoteUrl(value: string): string {
   return crypto.createHash("sha256").update(value).digest("hex").slice(0, 16);
 }
 
-function inferExtension(contentType: string | null, remoteUrl: string): string {
-  const normalizedContentType = contentType?.split(";")[0].trim().toLowerCase() ?? "";
-  const extensionFromContentType: Record<string, string> = {
-    "image/avif": ".avif",
-    "image/gif": ".gif",
-    "image/jpeg": ".jpg",
-    "image/jpg": ".jpg",
-    "image/png": ".png",
-    "image/svg+xml": ".svg",
-    "image/webp": ".webp",
-  };
+const MAX_IMAGE_BYTES = 20 * 1024 * 1024;
 
-  if (normalizedContentType in extensionFromContentType) {
-    return extensionFromContentType[normalizedContentType];
+// The file is committed and served from this site's own origin, so its
+// extension comes from the bytes and only raster types pass. The upstream
+// content type and URL are never trusted: an SVG or HTML answer saved under
+// its own extension would run script when its URL is opened directly.
+function sniffRasterExtension(buffer: Buffer): string | null {
+  const head = buffer.subarray(0, 12).toString("latin1");
+
+  if (head.startsWith("\xff\xd8\xff")) {
+    return ".jpg";
+  }
+  if (head.startsWith("\x89PNG\r\n\x1a\n")) {
+    return ".png";
+  }
+  if (head.startsWith("GIF87a") || head.startsWith("GIF89a")) {
+    return ".gif";
+  }
+  if (head.startsWith("RIFF") && head.slice(8) === "WEBP") {
+    return ".webp";
+  }
+  if (head.slice(4) === "ftypavif") {
+    return ".avif";
   }
 
-  try {
-    const urlPath = new URL(remoteUrl).pathname;
-    const extension = path.extname(urlPath).toLowerCase();
-    if (extension) {
-      return extension;
-    }
-  } catch {
-    return ".img";
-  }
-
-  return ".img";
+  return null;
 }
 
 function absoluteImagePath(projectRoot: string, localPath: string): string {
@@ -421,7 +420,10 @@ async function downloadImage(
   }
 
   const buffer = Buffer.from(await response.arrayBuffer());
-  const extension = inferExtension(response.headers.get("content-type"), remoteUrl);
+  const extension = buffer.length <= MAX_IMAGE_BYTES ? sniffRasterExtension(buffer) : null;
+  if (!extension) {
+    throw new Error("the answer is not a JPEG, PNG, GIF, WebP, or AVIF under 20 MB");
+  }
   const localPath = `/data/spacex/images/${hashRemoteUrl(remoteUrl)}${extension}`;
   const filePath = absoluteImagePath(projectRoot, localPath);
 

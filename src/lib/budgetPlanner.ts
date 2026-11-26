@@ -113,7 +113,8 @@ export function createBudgetExpense(input: Omit<BudgetExpense, "id">): BudgetExp
     categoryId: input.categoryId,
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,
-    note: input.note.trim(),
+    // Same limit the parser applies, so a reload never shortens a saved note.
+    note: input.note.trim().slice(0, 140),
   };
 }
 

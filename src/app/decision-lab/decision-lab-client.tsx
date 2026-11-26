@@ -263,6 +263,10 @@ function WhyThisVerdict({
   headingId: string;
 }) {
   const contributions = verdictContributions(metrics);
+  const total = contributions.reduce((sum, row) => sum + row.contribution, 0).toFixed(2);
+  // The verdict gates on the one-place score, so the ledger names it wherever
+  // the two-place total differs.
+  const rounds = Number(total) !== evaluation.weightedScore;
 
   return (
     <section className="dl-why" aria-labelledby={headingId}>
@@ -277,14 +281,15 @@ function WhyThisVerdict({
               sum print two places. At one place each row rounds on its own
               and the rows stop adding up to this line. */}
           <span className="dl-contribution-math">
-            <strong>{contributions.reduce((sum, row) => sum + row.contribution, 0).toFixed(2)}</strong>
+            <strong>{total}</strong>
+            {rounds ? `, scored as ${evaluation.weightedScore}` : null}
           </span>
         </li>
       </ol>
       <p className="dl-rationale">{evaluation.rationale}</p>
       <p className="dl-fine">
-        Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when impact ≥ 60 or score ≥ 50.
-        Otherwise it holds. Decision Lab keeps those axes separate, then forces a plain call.
+        The score is the weighted total rounded to one decimal place, and a half rounds up. Ship needs score ≥ 68
+        with impact ≥ 65 and confidence ≥ 60. Test fires when impact ≥ 60 or score ≥ 50. Otherwise it holds. Decision Lab keeps those axes separate, then forces a plain call.
       </p>
     </section>
   );

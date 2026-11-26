@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 ---
 
@@ -153,16 +153,11 @@ Data-driven schemas built from `src/lib/ai-seo.ts`. Pass your own data rather th
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 // Supported types:
-<AIStructuredData schema={{ type: "Person",              data: PersonSchemaData }} />
 <AIStructuredData schema={{ type: "Article",             data: ArticleSchemaData }} />
-<AIStructuredData schema={{ type: "Project",             data: ProjectSchemaData }} />
 <AIStructuredData schema={{ type: "ProfilePage",         data: { person, url, description, lastReviewed } }} />
-<AIStructuredData schema={{ type: "ProfessionalService", data: { ... } }} />
 <AIStructuredData schema={{ type: "Breadcrumb",          data: { items: BreadcrumbItem[] } }} />
 <AIStructuredData schema={{ type: "FAQ",                 data: { items: FAQItem[] } }} />
 <AIStructuredData schema={{ type: "ItemList",            data: { name, description, url, items } }} />
-<AIStructuredData schema={{ type: "Navigation",          data: { items: BreadcrumbItem[] } }} />
-<AIStructuredData schema={{ type: "Custom",              data: object }} />   // printed as given
 ```
 
 ### Generator Functions — `src/lib/ai-seo.ts`
@@ -173,13 +168,10 @@ These power `AIStructuredData` but can be called directly when you need the raw 
 |---|---|---|
 | `generateEnhancedPersonSchema(data)` | `Person` | Starts from `buildPersonEntity()` and adds awards, occupations, memberships, and employer; expertise names merge into `knowsAbout` |
 | `generateArticleSchema(data)` | `Article` | wordCount, speakable, genre, about, and mentions support; publisher defaults to the Person |
-| `generateProjectSchema(data)` | `CreativeWork` | AI-friendly problem/solution/impact narrative |
 | `generateProfilePageSchema(data)` | `ProfilePage` | mainEntity as Person; `lastReviewed` becomes `dateModified` as a midnight UTC DateTime |
-| `generateProfessionalServiceSchema(data)` | `ProfessionalService` | Service + provider + areaServed |
 | `generateFAQSchema(items)` | `FAQPage` | Array of `{ question, answer }` |
 | `generateBreadcrumbSchema(items)` | `BreadcrumbList` | Array of `{ name, url }` |
 | `generateItemListSchema(data)` | `ItemList` | For archives, project listings |
-| `generateNavigationSchema(items)` | `SiteNavigationElement` | Main nav |
 
 ### Generator Functions — `src/lib/seo.ts`
 

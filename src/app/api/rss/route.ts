@@ -1,23 +1,15 @@
 import { NextResponse } from "next/server";
-import { getAllBlogPosts } from "@/lib/blog";
+import { getBlogFeedEntries } from "@/lib/blog";
 
-// Built once per deploy. The feed only changes when a post does, and a
-// request that missed the cache rendered every post to HTML to answer.
+// Built once per deploy. The feed only changes when a post does.
 export const dynamic = "force-static";
 
 export async function GET() {
   const baseUrl = (process.env.SITE_URL || "https://isaacvazquez.com").replace(/\/$/, "");
-  const posts = (await getAllBlogPosts()).filter((post) => {
-    if (!post.title?.trim()) {
-      return false;
-    }
-
-    if (!post.publishedAt || Number.isNaN(new Date(post.publishedAt).getTime())) {
-      return false;
-    }
-
-    return true;
-  });
+  // The reader already drops posts without a title; it does not check dates.
+  const posts = getBlogFeedEntries().filter(
+    (post) => !Number.isNaN(new Date(post.publishedAt).getTime())
+  );
   const lastBuildTimestamp = posts.reduce((latest, post) => {
     const candidate = new Date(post.updatedAt || post.publishedAt).getTime();
     return Number.isNaN(candidate) ? latest : Math.max(latest, candidate);

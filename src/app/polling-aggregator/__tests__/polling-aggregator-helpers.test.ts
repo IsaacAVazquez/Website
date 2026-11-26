@@ -1,5 +1,7 @@
+import type { BasePoll } from "@/types/polling";
 import {
   buildPolyline,
+  describeAverageWindow,
   describeStaleSource,
   formatDate,
   formatMargin,
@@ -35,6 +37,20 @@ describe("polling-aggregator-helpers", () => {
     expect(formatMonthYear("2025-10-15")).toBe("Oct 2025");
     expect(formatMonthYear("2026-10-15")).toBe("Oct 2026");
     expect(formatMonthYear("not-a-date")).toBe("not-a-date");
+  });
+
+  it("names the polls a national average covers, widening past 30 days when fewer than three fall there", () => {
+    const polls = (dates: string[]) => dates.map((endDate) => ({ endDate })) as BasePoll[];
+
+    // Two October polls are too few, so the average takes the June polls too.
+    expect(describeAverageWindow(polls(["2026-10-06", "2026-10-04", "2026-06-20", "2026-06-14"]))).toBe(
+      "Average of the 4 polls from Jun 14, 2026 to Oct 6, 2026."
+    );
+    expect(
+      describeAverageWindow(polls(["2026-10-06", "2026-10-04", "2026-09-20", "2026-06-14"]))
+    ).toBe("Average of the 3 polls from Sep 20, 2026 to Oct 6, 2026.");
+    expect(describeAverageWindow(polls(["2026-10-06"]))).toBe("Average of the 1 poll ending Oct 6, 2026.");
+    expect(describeAverageWindow([])).toBeNull();
   });
 
   it("finds the newest poll date in a series whatever the row order", () => {

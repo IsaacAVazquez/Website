@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-11-02
+**Last updated:** 2026-11-16
 
 ---
 
@@ -41,7 +41,6 @@ Current hook inventory and state ownership.
 | `useScorePools` | `src/hooks/useScorePools.ts` | Browser-local score pools store (`score_pools_store_v1`), meaning the pools, picks, rivals, fixture flags, and manually entered odds and results. The scoring math lives in `src/lib/scorePools/` |
 | `useStockData` | `src/hooks/useStockData.ts` | Per-symbol research section data |
 | `useTablistKeyboard` | `src/hooks/useTablistKeyboard.ts` | Roving keyboard navigation for horizontal tablists (WCAG 2.1) |
-| `useTrackedListingSearch` | `src/hooks/useTrackedListingSearch.ts` | Reports a finished site search to GA4 as a `listing_search` event 700 ms after the last change, skipping empty terms and repeats. It holds no search state, and `SearchInterface` is its one caller |
 | `useTravelPlanner` | `src/hooks/useTravelPlanner.ts` | Browser-local trip, itinerary, and journal state for `/travel` |
 | `useWineCellar` | `src/hooks/useWineCellar.ts` | Browser-local wine cellar state for `/wine-cellar` |
 | `useBlackjackProgress` | `src/hooks/useBlackjackProgress.ts` | Browser-local decision, hand, and counting record for `/blackjack-trainer` |

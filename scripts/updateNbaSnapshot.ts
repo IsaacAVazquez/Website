@@ -31,7 +31,12 @@ async function main() {
   );
   // An ESPN 200 with empty arrays never overwrites the committed file, even
   // when the committed one is empty too.
-  if (!snapshot || !hasNbaContents(snapshot)) return;
+  // The kept snapshot can still pass the freshness check, so the exit code is
+  // what reports this run.
+  if (!snapshot || !hasNbaContents(snapshot)) {
+    process.exitCode = 1;
+    return;
+  }
 
   // Off-season / transient-blip guard: ESPN's scoreboard window is empty all
   // summer while standings and leaders keep serving the completed season. Carry

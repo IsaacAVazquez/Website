@@ -408,7 +408,8 @@ export function TradeCalculatorClient() {
         }
         freshness={
           <FreshnessParts
-            parts={[
+            // Nothing has been measured while the board loads, so the line makes no freshness claim yet.
+            parts={!snapshot && draftLoading ? [{ label: "Loading sources" }] : [
               ...(restOfSeason
                 ? [
                     {

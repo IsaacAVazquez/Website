@@ -1,6 +1,6 @@
 # The fantasy football kit
 
-Last updated 2026-11-02.
+Last updated 2026-11-16.
 
 This is the reference for `src/components/fantasy/fantasy.css`, the stylesheet all eight fantasy football pages draw with, and for the shared parts built on it. Read it before you write markup for one of those pages.
 
@@ -31,7 +31,7 @@ These shared parts draw with the kit.
 | `FantasyRouteHeader` | `header.<SHELL_CLASS>.ffb-head` holding `h1.ffb-title`, `p.ffb-lede`, the freshness line, `div.ffb-head-aside` for `aside`, and `div.ffb-head-row` for `children`. A title that opens with "Fantasy Football" shows only the words after it, and the first two stay in the h1 inside `.ffb-vh`, so the accessible name is the same |
 | `TitleAccent` | A plain fragment. It sets no face of its own |
 | `FantasySectionHeading` | `h2.ffb-h2` |
-| `FreshnessParts` | `p.ffb-fresh` of `span.ffb-fresh-part`, one per part. A part holds its label and, after a no-break space, its hidden dot, and from 768px a part does not break. So a wrapped line breaks only between parts, never inside a date, and never opens on a dot. A part with a tone takes the kit's status ink on its label alone, `ffb-warn` or `ffb-bad`, and the label still says what is wrong in words. A part with a `shortLabel` shows it in place of the label below 768px on screen |
+| `FreshnessParts` | `p.ffb-fresh` of `span.ffb-fresh-part`, one per part. A part holds its label and, after a no-break space, its hidden dot, and from 768px a part does not break. So a wrapped line breaks only between parts, never inside a date, and never opens on a dot. A part with a tone takes the kit's status ink on its label alone, `ffb-warn` or `ffb-bad`, and the label still says what is wrong in words. A part with a `shortLabel` shows it in place of the label below 768px, through `ffb-only-phone` and `ffb-not-phone`, so a portrait page on paper prints the short label too |
 | `SeasonalScopeNote` | `div[role=note].ffb-notice.ffb-notice-warn` |
 | `PositionFilterBar` | `div[role=radiogroup].ffb-seg.ffb-seg-pos` of `button[role=radio].ffb-seg-btn.ffb-pos-*`. The class comes from `positionClass` of the option's `position`, or of its `value` when it has none, in capitals either way, so `flex` in any case takes the flex thirds and a value that is not a position (`ALL`) takes no position class. On a phone the row scrolls sideways and keeps the checked button in view |
 | `FantasyLoadingState` | The loading skeleton in all eight `loading.tsx` files, with the same `role="status"` and "Loading …" name |

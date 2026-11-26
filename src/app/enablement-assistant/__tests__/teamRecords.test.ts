@@ -39,6 +39,16 @@ it("preserves progress on ordinary edits and resets it when the intake changes",
     })[0].completedSteps,
   ).toEqual([]);
 });
+it("keeps progress when a layer is turned off and back on", () => {
+  const [stored] = parseTeamRecords(JSON.stringify([team]));
+  // The form appends a re-checked layer to the end of the array.
+  const [validated] = parseTeamRecords(
+    JSON.stringify([
+      { ...stored, intake: { ...stored.intake, layers: ["integration", "e2e", "accessibility", "unit"] } },
+    ]),
+  );
+  expect(saveTeamRecord([stored], validated, stored)[0].completedSteps).toEqual(["scope"]);
+});
 it("preserves another team's progress and removes unknown step ids", () => {
   const records = parseTeamRecords(
     JSON.stringify([{ ...team, completedSteps: ["scope", "unknown"] }]),

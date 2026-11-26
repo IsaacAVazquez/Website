@@ -111,6 +111,27 @@ describe("fantasy draft pick sync", () => {
     ).toMatchObject({ status: "invalid", pickNumber: 1 });
   });
 
+  it("pauses on a lone name match that plays for another team", () => {
+    const backs = [
+      player("javonte", "Javonte Williams", "RB", "DAL", 40),
+      player("gibbs", "Jahmyr Gibbs", "RB", "DET", 1),
+    ];
+    for (const name of ["J. Williams", "Javonte Williams"]) {
+      expect(
+        findFantasyDraftSyncPlayer({ pickNumber: 1, name, position: "RB", team: "LV" }, backs)
+      ).toBeNull();
+    }
+    expect(
+      reconcileFantasyDraftSync(
+        createFantasyCompanionState(
+          createRedraftRoomConfig({ season: 2026, teams: 2, rounds: 2 })
+        ),
+        [{ pickNumber: 1, name: "J. Williams", position: "RB", team: "LV" }],
+        backs
+      )
+    ).toMatchObject({ status: "ambiguous", pickNumber: 1 });
+  });
+
   it("uses a clearly separated ADP only when provider abbreviations still collide", () => {
     const robinsons = [
       player("bijan", "Bijan Robinson", "RB", "ATL", 2, 2),

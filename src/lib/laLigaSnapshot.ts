@@ -1,6 +1,4 @@
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
-import { buildLaLigaLiveSummary } from "@/lib/laLigaData";
-import { createLiveSummary } from "@/lib/footballLeagueData";
 import type { LaLigaSummarySnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
 import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
@@ -55,18 +53,8 @@ export function isValidLaLigaTeamId(teamId: string): boolean {
   return LA_LIGA_TEAM_ID_PATTERN.test(teamId) && teamId in laLigaSnapshot.teamSnapshots;
 }
 
-interface LaLigaSummaryOptions {
-  preferLive?: boolean;
-}
-
-// Request-time live refresh (football-data.org), gated and cached as
-// `createLiveSummary` describes. No caller passes `preferLive` today.
-const liveSummary = createLiveSummary(committedLaLigaSummarySnapshot, buildLaLigaLiveSummary);
-
-export async function getLaLigaSummarySnapshot(
-  options: LaLigaSummaryOptions = {}
-): Promise<LaLigaSummarySnapshot> {
-  return clampLaLigaSummarySnapshot(await liveSummary.get(options.preferLive));
+export async function getLaLigaSummarySnapshot(): Promise<LaLigaSummarySnapshot> {
+  return clampLaLigaSummarySnapshot(committedLaLigaSummarySnapshot());
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {

@@ -100,8 +100,16 @@ function cleanText(value: unknown, fallback = "", maxLength = MAX_TEXT_LENGTH): 
   return (trimmed || fallback).slice(0, maxLength);
 }
 
+// Notes and the fit rationale are textareas, so their line breaks stay.
 function cleanLongText(value: unknown): string {
-  return cleanText(value, "", MAX_NOTES_LENGTH);
+  if (typeof value !== "string") return "";
+  return value
+    .replace(/\r\n?/g, "\n")
+    .replace(/[^\S\n]+/g, " ")
+    .replace(/ ?\n ?/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+    .slice(0, MAX_NOTES_LENGTH);
 }
 
 function cleanNullableText(value: unknown, maxLength = MAX_TEXT_LENGTH): string | null {

@@ -924,11 +924,9 @@ describe("schedule and leader rows from the live API", () => {
     ]);
   });
 
-  it("reads a midnight UTC start as a placeholder on its official day, after the evening before", async () => {
-    // A postseason game before its time is set, as the API served it on
-    // 2026-10-09, listed after a timed 8:08 PM EDT game the evening before.
-    // Keyed at midnight the placeholder sorted above that game (00:00Z before
-    // 00:08Z) and took the next-game slot a day early.
+  it("reads a midnight UTC start as a published 8:00 PM ET first pitch", async () => {
+    // Postseason games listed on the hour, as the API served them on
+    // 2026-10-09. Game 849831's feed gives 8:00 PM and it started at 00:08Z.
     const status = {
       abstractGameState: "Preview",
       codedGameState: "S",
@@ -985,7 +983,7 @@ describe("schedule and leader rows from the live API", () => {
     for (const upcoming of [summary.upcomingGames, cubs.upcomingGames]) {
       expect(upcoming.map((g) => [g.id, g.utcDate, g.startTimeTbd])).toEqual([
         ["849830", "2026-10-10T00:08:00Z", false],
-        ["849831", "2026-10-10T23:59:59Z", true],
+        ["849831", "2026-10-11T00:00:00Z", false],
       ]);
     }
   });

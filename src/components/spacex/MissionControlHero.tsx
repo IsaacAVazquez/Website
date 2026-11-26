@@ -205,8 +205,10 @@ export function MissionControlHero({
   const facts = [
     heroLaunch.rocketName ?? "Rocket unspecified",
     [heroLaunch.launchpadName, heroLaunch.launchpadLocation].filter(Boolean).join(", ") || "Pad pending",
-    `${heroLaunch.payloadCount} payload${heroLaunch.payloadCount === 1 ? "" : "s"}`,
-  ];
+    heroLaunch.payloadCount === null
+      ? null
+      : `${heroLaunch.payloadCount} payload${heroLaunch.payloadCount === 1 ? "" : "s"}`,
+  ].filter((fact): fact is string => fact !== null);
 
   return (
     <section data-testid="mission-hero" aria-label="Next launch hero" className="sx-mast">

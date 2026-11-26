@@ -12,33 +12,6 @@ import {
   type BlogPostCTA,
 } from "./blog-config";
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  publishedAt: string;
-  updatedAt?: string;
-  category: string;
-  tags: string[];
-  featured: boolean;
-  readingTime: string;
-  wordCount: number;
-  author: string;
-  coverImage: string;
-  coverImageAlt?: string;
-  coverImageCredit?: string;
-  coverImageCreditUrl?: string;
-  cluster?: BlogCluster;
-  archiveBucket?: BlogArchiveBucket;
-  cta?: BlogPostCTA;
-  seo?: {
-    title?: string;
-    description?: string;
-    keywords?: string[];
-  };
-}
-
 export interface BlogPostPreview {
   slug: string;
   title: string;
@@ -60,6 +33,15 @@ export interface BlogPostPreview {
   cta?: BlogPostCTA;
 }
 
+export interface BlogPost extends BlogPostPreview {
+  content: string;
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
+}
+
 interface BlogPostMetadata {
   title: string;
   excerpt: string;
@@ -76,11 +58,7 @@ interface BlogPostMetadata {
   cluster?: BlogCluster;
   archiveBucket?: BlogArchiveBucket;
   cta?: BlogPostCTA;
-  seo?: {
-    title?: string;
-    description?: string;
-    keywords?: string[];
-  };
+  seo?: BlogPost["seo"];
 }
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
@@ -114,7 +92,15 @@ function compareBlogEntriesByPublishedDateDesc<
   return a.slug.localeCompare(b.slug);
 }
 
+// The slug is a route param, and Next decodes %2F in it, so anything that is
+// not a plain post slug never reaches the filesystem.
+const BLOG_SLUG_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
+
 function resolveBlogPostPath(slug: string): string | null {
+  if (!BLOG_SLUG_PATTERN.test(slug)) {
+    return null;
+  }
+
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);
   const fallbackPath = path.join(postsDirectory, `${slug}.md`);
 
@@ -129,9 +115,10 @@ function resolveBlogPostPath(slug: string): string | null {
   return null;
 }
 
-// Required frontmatter fields for every blog post. Missing any of these
-// fails the build with a descriptive error rather than silently producing
-// a broken post (e.g., empty title or NaN dates downstream).
+// Required frontmatter fields for every blog post. A post missing any of these
+// is logged and left out of the listings, the article route, the feed, and the
+// sitemap (sitemap.js applies the same rule), and blog-seo-content.test.ts
+// fails on it.
 const REQUIRED_FRONTMATTER_FIELDS = [
   "title",
   "excerpt",
@@ -277,25 +264,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const { metadata, content } = source;
 
     return {
-      slug,
-      title: metadata.title,
-      excerpt: metadata.excerpt,
+      ...buildBlogPostPreview(slug, metadata, content),
       content: await renderBlogPostHtml(stripLeadingMarkdownH1(content)),
-      publishedAt: metadata.publishedAt,
-      updatedAt: metadata.updatedAt,
-      category: metadata.category,
-      tags: metadata.tags || [],
-      featured: metadata.featured || false,
-      readingTime: calculateReadingTime(content),
-      wordCount: calculateWordCount(content),
-      author: metadata.author || "Isaac Vazquez",
-      coverImage: getBlogCoverImageUrl(slug, metadata.coverImage),
-      coverImageAlt: metadata.coverImageAlt,
-      coverImageCredit: metadata.coverImageCredit,
-      coverImageCreditUrl: metadata.coverImageCreditUrl,
-      cluster: metadata.cluster,
-      archiveBucket: metadata.archiveBucket,
-      cta: metadata.cta,
       seo: metadata.seo,
     };
   } catch (error) {
@@ -354,18 +324,20 @@ export function getBlogPostSearchEntries(): (BlogPostPreview & { searchText: str
   }).sort(compareBlogEntriesByPublishedDateDesc);
 }
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const slugs = getBlogPostSlugs();
-  const posts: BlogPost[] = [];
-
-  for (const slug of slugs) {
-    const post = await getBlogPostBySlug(slug);
-    if (post && isBlogPostPublished(post)) {
-      posts.push(post);
+/** Published previews plus the seo block, for the feed. Renders no article HTML. */
+export function getBlogFeedEntries(): (BlogPostPreview & Pick<BlogPost, "seo">)[] {
+  return getBlogPostSlugs().flatMap((slug) => {
+    try {
+      const source = readBlogPostSource(slug);
+      if (!source) return [];
+      const preview = buildBlogPostPreview(slug, source.metadata, source.content);
+      if (!isBlogPostPublished(preview)) return [];
+      return [{ ...preview, seo: source.metadata.seo }];
+    } catch (error) {
+      console.error(`Error reading blog post ${slug}:`, error);
+      return [];
     }
-  }
-
-  return posts.sort(compareBlogEntriesByPublishedDateDesc);
+  }).sort(compareBlogEntriesByPublishedDateDesc);
 }
 
 export function getHomepageProofOfWorkBlogPostPreviews(): BlogPostPreview[] {

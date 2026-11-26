@@ -510,7 +510,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     The gap to whoever sits nearest above and below you, against the games remaining,
                     sets how much risk the recommendation takes. Auto works that out from these numbers,
                     and protect and chase force it. A new pool starts on auto with no gaps entered. My
-                    points is a number you type in, and the tracker does not update it.
+                    points is your full current total in the pool. You type it in, the tracker does not
+                    update it, and the tracker measures each rival&apos;s gap against it.
                   </p>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                     <NumberSetting

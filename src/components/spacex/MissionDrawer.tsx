@@ -126,7 +126,11 @@ export function MissionDrawer({
                 <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   T-0 sequence
                 </h3>
-                <MissionSequenceTimeline rocketName={detail.rocketName} upcoming={detail.upcoming} />
+                <MissionSequenceTimeline
+                  rocketName={detail.rocketName}
+                  timeline={detail.timeline}
+                  upcoming={detail.upcoming}
+                />
               </div>
             ) : null}
           </aside>

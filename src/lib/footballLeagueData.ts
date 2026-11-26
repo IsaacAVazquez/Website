@@ -307,59 +307,6 @@ export async function fetchLeagueSummary<Row>(
   };
 }
 
-export interface LiveSections<Row> {
-  /** Null when the request failed or returned a zeroed rolled-over table. */
-  standings: { rows: Row[]; response: FootballDataCompetitionStandingsResponse } | null;
-  recentFixtures: Fixture[] | null;
-  upcomingFixtures: Fixture[] | null;
-}
-
-/**
- * Request-time refresh of the standings and the recent/upcoming fixture lists
- * (3 upstream requests). A section that fails, comes back empty, or reflects
- * the rolled-over-but-unstarted season is null so the caller keeps the
- * committed value. Throws when no section refreshed, so the caller falls back
- * to the committed snapshot wholesale without caching the failure.
- */
-export async function fetchLiveSections<Row>(league: FootballLeague<Row>): Promise<LiveSections<Row>> {
-  const fetchJson = <T>(path: string) =>
-    fetchFootballDataJson<T>(league.label, path, SUMMARY_REVALIDATE_SECONDS);
-  const competition = `/competitions/${league.code}`;
-  const [standingsResult, recentResult, upcomingResult] = await Promise.allSettled([
-    fetchJson<FootballDataCompetitionStandingsResponse>(`${competition}/standings`),
-    fetchJson<FootballDataMatchesResponse>(
-      `${competition}/matches?status=FINISHED&limit=${RECENT_FIXTURE_LIMIT}`
-    ),
-    fetchJson<FootballDataMatchesResponse>(
-      `${competition}/matches?status=SCHEDULED&limit=${UPCOMING_FIXTURE_LIMIT}`
-    ),
-  ]);
-
-  const sections: LiveSections<Row> = { standings: null, recentFixtures: null, upcomingFixtures: null };
-
-  if (standingsResult.status === "fulfilled") {
-    const rows = normalizeStandings(league, standingsResult.value);
-    // A zeroed rolled-over table (season pointer advanced, no games played)
-    // would wipe the dashboard, so the committed table is kept instead.
-    if (rows.length > 0 && !seasonNotStarted(standingsResult.value.season, rows.map(league.playedGames))) {
-      sections.standings = { rows, response: standingsResult.value };
-    }
-  }
-  if (recentResult.status === "fulfilled") {
-    const fixtures = fixturesFrom(recentResult.value.matches, "recent", RECENT_FIXTURE_LIMIT);
-    if (fixtures.length > 0) sections.recentFixtures = fixtures;
-  }
-  if (upcomingResult.status === "fulfilled") {
-    const fixtures = fixturesFrom(upcomingResult.value.matches, "upcoming", UPCOMING_FIXTURE_LIMIT);
-    if (fixtures.length > 0) sections.upcomingFixtures = fixtures;
-  }
-
-  if (!sections.standings && !sections.recentFixtures && !sections.upcomingFixtures) {
-    throw new HttpStatusError(`${league.label} live refresh produced no usable sections.`, 503);
-  }
-  return sections;
-}
-
 export async function getLeagueTeamSnapshot(
   league: LeagueIdentity,
   teamId: string
@@ -428,40 +375,4 @@ export async function buildLeagueTeamSnapshots<
   }
 
   return pruneToTable(teamSnapshots, tableIds);
-}
-
-/**
- * The request-time live path behind a summary accessor: a 5-minute in-memory
- * TTL plus a single-flight guard, which bounds upstream traffic to roughly one
- * 3-request refresh per 5 minutes per instance, well inside the
- * football-data.org free tier of 10 requests per minute. Double-gated: the
- * caller must ask for it (`preferLive`) and FOOTBALL_DATA_API_TOKEN must be
- * set. The token is read per call, so an un-configured deploy never fetches.
- * A failed refresh serves the committed value and is NOT cached, so the next
- * request retries the live path.
- */
-export function createLiveSummary<T>(committed: () => T, refresh: (base: T) => Promise<T>) {
-  const TTL_MS = 5 * 60 * 1000;
-  let cache: { summary: T; expiresAt: number } | null = null;
-  let inflight: Promise<T> | null = null;
-
-  return {
-    get(preferLive?: boolean): Promise<T> {
-      if (!preferLive || !process.env.FOOTBALL_DATA_API_TOKEN?.trim()) {
-        return Promise.resolve(committed());
-      }
-      if (cache && cache.expiresAt > Date.now()) return Promise.resolve(cache.summary);
-      if (inflight) return inflight;
-      inflight = refresh(committed())
-        .then((summary) => {
-          cache = { summary, expiresAt: Date.now() + TTL_MS };
-          return summary;
-        })
-        .catch(() => committed())
-        .finally(() => {
-          inflight = null;
-        });
-      return inflight;
-    },
-  };
 }

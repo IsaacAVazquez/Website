@@ -72,7 +72,7 @@ import {
 import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
 import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
-import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
+import type { DraftSettings, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
 /** A sentence that ends on a name ends once, even when the name ends in "Jr.". */
 function endOnName(name: string): string {
@@ -778,12 +778,18 @@ export function DraftTrackerClient() {
     draftPlayer(player);
   }
 
-  function handleStartFromSetup() {
+  function handleSaveSetupSettings(settings: Partial<DraftSettings>) {
     // Starting over an existing room is the destructive step; "New room" only
     // parked it, and "Back to room" was the escape hatch on the setup screen.
+    // The reset goes first because it also settles a two-tab conflict that
+    // would refuse the form's settings.
     if (draftState.picks.length > 0) {
       resetDraft();
     }
+    return updateSettings(settings);
+  }
+
+  function handleStartFromSetup() {
     setSpecialistNote(null);
     startDraft();
     setSetupScoringFormat(null);
@@ -1038,7 +1044,7 @@ export function DraftTrackerClient() {
         {showSetup ? (
           <DraftSetup
             settings={draftState.settings}
-            onSaveSettings={updateSettings}
+            onSaveSettings={handleSaveSetupSettings}
             onPreviewScoring={setSetupScoringFormat}
             onStartDraft={handleStartFromSetup}
             rankingsStatus={setupRankingsStatus}

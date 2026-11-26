@@ -1391,7 +1391,9 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             <p className="mlog-meta">
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
-            <p className="mlog-meta">Listed exhibitions checked {formatDate(MUSEUM_EXHIBITIONS_CHECKED_AT)}.</p>
+            <p className="mlog-meta">
+              Exhibitions with a museum source link were checked {formatDate(MUSEUM_EXHIBITIONS_CHECKED_AT)}.
+            </p>
           </div>
           {stripBesideTitle && <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />}
         </header>
