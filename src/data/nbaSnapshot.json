@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-25T14:36:29.434Z",
-  "updatedAt": "2026-11-25",
+  "generatedAt": "2026-11-26T00:31:24.827Z",
+  "updatedAt": "2026-11-26",
   "sourceLabel": "ESPN",
   "sourceUrls": {
     "standings": "https://www.espn.com/nba/standings",
@@ -1216,7 +1216,7 @@
     {
       "id": "401909317",
       "utcDate": "2026-11-25T22:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1235,14 +1235,14 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 111,
+        "away": 102
       }
     },
     {
       "id": "401909318",
       "utcDate": "2026-11-26T00:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1261,8 +1261,8 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 22,
+        "away": 21
       }
     },
     {
@@ -1926,7 +1926,7 @@
         {
           "id": "401909317",
           "utcDate": "2026-11-25T22:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -2067,7 +2067,7 @@
         "pointsFor": 630,
         "pointsAgainst": 620
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "mil": {
       "team": {
@@ -2359,7 +2359,7 @@
         "pointsFor": 595,
         "pointsAgainst": 617
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "chi": {
       "team": {
@@ -2510,7 +2510,7 @@
         {
           "id": "401909318",
           "utcDate": "2026-11-26T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -2651,7 +2651,7 @@
         "pointsFor": 613,
         "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "cle": {
       "team": {
@@ -2943,7 +2943,7 @@
         "pointsFor": 610,
         "pointsAgainst": 597
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 520,
         "pointsAgainst": 521
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "lac": {
       "team": {
@@ -3527,7 +3527,7 @@
         "pointsFor": 536,
         "pointsAgainst": 587
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "mem": {
       "team": {
@@ -3819,7 +3819,7 @@
         "pointsFor": 598,
         "pointsAgainst": 554
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "atl": {
       "team": {
@@ -4111,7 +4111,7 @@
         "pointsFor": 565,
         "pointsAgainst": 537
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "mia": {
       "team": {
@@ -4262,7 +4262,7 @@
         {
           "id": "401909317",
           "utcDate": "2026-11-25T22:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4403,7 +4403,7 @@
         "pointsFor": 658,
         "pointsAgainst": 591
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "cha": {
       "team": {
@@ -4554,7 +4554,7 @@
         {
           "id": "401909318",
           "utcDate": "2026-11-26T00:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 523,
         "pointsAgainst": 560
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "utah": {
       "team": {
@@ -4987,7 +4987,7 @@
         "pointsFor": 550,
         "pointsAgainst": 540
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "sac": {
       "team": {
@@ -5279,7 +5279,7 @@
         "pointsFor": 518,
         "pointsAgainst": 578
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "ny": {
       "team": {
@@ -5571,7 +5571,7 @@
         "pointsFor": 535,
         "pointsAgainst": 511
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 561,
         "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "orl": {
       "team": {
@@ -6155,7 +6155,7 @@
         "pointsFor": 526,
         "pointsAgainst": 557
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "dal": {
       "team": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 556,
         "pointsAgainst": 540
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 567,
         "pointsAgainst": 656
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "den": {
       "team": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 595,
         "pointsAgainst": 607
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "ind": {
       "team": {
@@ -7323,7 +7323,7 @@
         "pointsFor": 578,
         "pointsAgainst": 611
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "no": {
       "team": {
@@ -7615,7 +7615,7 @@
         "pointsFor": 554,
         "pointsAgainst": 579
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "det": {
       "team": {
@@ -7907,7 +7907,7 @@
         "pointsFor": 530,
         "pointsAgainst": 500
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 525,
         "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "hou": {
       "team": {
@@ -8491,7 +8491,7 @@
         "pointsFor": 616,
         "pointsAgainst": 588
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "sa": {
       "team": {
@@ -8783,7 +8783,7 @@
         "pointsFor": 564,
         "pointsAgainst": 517
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 602,
         "pointsAgainst": 563
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "okc": {
       "team": {
@@ -9367,7 +9367,7 @@
         "pointsFor": 596,
         "pointsAgainst": 588
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 557,
         "pointsAgainst": 516
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "por": {
       "team": {
@@ -9951,7 +9951,7 @@
         "pointsFor": 551,
         "pointsAgainst": 534
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "gs": {
       "team": {
@@ -10243,7 +10243,7 @@
         "pointsFor": 459,
         "pointsAgainst": 567
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     },
     "wsh": {
       "team": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 553,
         "pointsAgainst": 556
       },
-      "generatedAt": "2026-11-25T14:36:29.434Z"
+      "generatedAt": "2026-11-26T00:31:24.827Z"
     }
   }
 }
