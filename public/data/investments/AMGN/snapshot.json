@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.2445,
-      "ttmPe": 25.26,
-      "pegRatio": 1.31,
-      "marketCap": 235681240000,
-      "psRatio": 6.06,
-      "pbRatio": 16.42
+      "ttmPe": 27.21,
+      "pegRatio": 1.41,
+      "marketCap": 253858840000,
+      "psRatio": 6.53,
+      "pbRatio": 17.69
     },
     "profitability": {
       "roe": 29.68,
@@ -5506,25 +5506,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.109999999999999,
-      "costOfEquity": 8.51,
+      "wacc": 6.9,
+      "costOfEquity": 8.16,
       "costOfDebt": 1.21,
       "taxRate": 18,
-      "beta": 0.451,
-      "marketCap": 235681240000
+      "beta": 0.4125,
+      "marketCap": 253858840000
     },
     "beta": {
-      "beta5y": 0.451
+      "beta5y": 0.4125
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 335.84,
-        "high": 338.66,
-        "low": 331.71,
-        "close": 334.3,
-        "volume": 3551600
-      },
       {
         "date": "2025-11-25",
         "open": 335.41,
@@ -7532,6 +7524,14 @@
         "low": 450,
         "close": 473.94,
         "volume": 3318800
+      },
+      {
+        "date": "2026-11-25",
+        "open": 472.75,
+        "high": 475.81,
+        "low": 464.09,
+        "close": 469.24,
+        "volume": 3391900
       }
     ],
     "news": [
@@ -7568,14 +7568,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
-        "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
         "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
         "publisher": "BioPharma Dive",
@@ -7584,11 +7576,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
-        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
+        "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
+        "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
         "type": "STORY"
       },
       {
@@ -7600,6 +7592,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
+        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2c85094f-cc5c-3c7c-af61-b7efd268ab99",
         "title": "Top Analyst Reports for Eli Lilly, GE Aerospace & Amgen",
         "publisher": "Zacks",
@@ -7608,11 +7608,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a5c3d64b-cace-3675-a8fc-06676a70e152",
-        "title": "The Smartest High-Yielding Dividend Stocks in the Nasdaq Composite Index to Buy With $1,500 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "2ae33d5c-c3e6-3385-bf18-c31dafc8863f",
+        "title": "With 81% institutional ownership, Amgen Inc. (NASDAQ:AMGN) is a favorite amongst the big guns",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/a5c3d64b-cace-3675-a8fc-06676a70e152/the-smartest-high-yielding.html",
+        "link": "https://finance.yahoo.com/news/81-institutional-ownership-amgen-inc-140011063.html",
         "type": "STORY"
       }
     ],
@@ -7629,15 +7629,15 @@
         "totalPay": 3840115
       },
       {
-        "name": "Mr. Esteban Santos",
-        "title": "Executive Vice President of Operations",
-        "age": 57,
-        "yearBorn": 1968,
-        "totalPay": 3006074
-      },
-      {
         "name": "Mr. Howard Y. Chang M.D., Ph.D.",
         "title": "Senior VP of Global Research & Chief Scientific Officer"
+      },
+      {
+        "name": "Mr. Jonathan P. Graham J.D.",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 64,
+        "yearBorn": 1961,
+        "totalPay": 2440307
       },
       {
         "name": "Mr. Matthew C. Busch",
@@ -7677,18 +7677,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.26,
-        "industryAvg": 29.02
+        "value": 27.21,
+        "industryAvg": 30.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.06,
-        "industryAvg": 4.94
+        "value": 6.53,
+        "industryAvg": 5.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.42,
-        "industryAvg": 6.06
+        "value": 17.69,
+        "industryAvg": 6.33
       },
       {
         "metric": "ROE",

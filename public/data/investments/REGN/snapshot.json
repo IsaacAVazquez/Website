@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 45.2973,
-      "ttmPe": 20.33,
-      "pegRatio": 0.57,
-      "marketCap": 95199346000,
-      "psRatio": 5.63,
-      "pbRatio": 2.84
+      "ttmPe": 21.68,
+      "pegRatio": 0.61,
+      "marketCap": 101525358000,
+      "psRatio": 6.01,
+      "pbRatio": 3.03
     },
     "profitability": {
       "roe": 5.9799999999999995,
@@ -5895,25 +5895,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.6000000000000005,
-      "costOfEquity": 5.75,
+      "wacc": 5.29,
+      "costOfEquity": 5.42,
       "costOfDebt": 0.38999999999999996,
       "taxRate": 15,
-      "beta": 0.1042,
-      "marketCap": 95199346000
+      "beta": 0.0713,
+      "marketCap": 101525358000
     },
     "beta": {
-      "beta5y": 0.1042
+      "beta5y": 0.0713
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 759.05,
-        "high": 773.13,
-        "low": 756.64,
-        "close": 761.45,
-        "volume": 1554900
-      },
       {
         "date": "2025-11-25",
         "open": 764.88,
@@ -7921,23 +7913,31 @@
         "low": 948.09,
         "close": 987.09,
         "volume": 1133400
+      },
+      {
+        "date": "2026-11-25",
+        "open": 983.66,
+        "high": 991.83,
+        "low": 966.26,
+        "close": 981.87,
+        "volume": 854600
       }
     ],
     "news": [
-      {
-        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
-        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
         "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
+        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
         "type": "STORY"
       },
       {
@@ -8068,43 +8068,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.33,
-        "industryAvg": 21.96
+        "value": 21.68,
+        "industryAvg": 23.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.63,
-        "industryAvg": 9.84
+        "value": 6.01,
+        "industryAvg": 11.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.84,
-        "industryAvg": 4.28
+        "value": 3.03,
+        "industryAvg": 4.69
       },
       {
         "metric": "ROE",
         "value": 5.9799999999999995,
-        "industryAvg": -17.080000000000002
+        "industryAvg": -18.09
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": -10.37
+        "industryAvg": -10.91
       },
       {
         "metric": "Gross Margin",
         "value": 88.79,
-        "industryAvg": 82.27
+        "industryAvg": 82.15
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.22,
-        "industryAvg": -28.050000000000004
+        "industryAvg": -29.439999999999998
       },
       {
         "metric": "Net Margin",
         "value": 38.09,
-        "industryAvg": -30.869999999999997
+        "industryAvg": -32.23
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 17.77,
+      "ttmPe": 18.55,
       "pegRatio": 7.61,
-      "marketCap": 32763722940,
-      "psRatio": 3.45,
-      "pbRatio": 9.92
+      "marketCap": 34209120400,
+      "psRatio": 3.6,
+      "pbRatio": 10.36
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,25 +6195,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.8,
-      "costOfEquity": 9.85,
+      "wacc": 7.89,
+      "costOfEquity": 9.879999999999999,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6195,
-      "marketCap": 32763722940
+      "beta": 0.6276,
+      "marketCap": 34209120400
     },
     "beta": {
-      "beta5y": 0.6195
+      "beta5y": 0.6276
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 121.63,
-        "high": 122.94,
-        "low": 120.27,
-        "close": 122.87,
-        "volume": 7826900
-      },
       {
         "date": "2025-11-25",
         "open": 123.78,
@@ -8221,6 +8213,14 @@
         "low": 79.85,
         "close": 81.47,
         "volume": 3285400
+      },
+      {
+        "date": "2026-11-25",
+        "open": 81.56,
+        "high": 83.53,
+        "low": 81.33,
+        "close": 82.6,
+        "volume": 4324700
       }
     ],
     "news": [
@@ -8273,11 +8273,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
+        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
+        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
         "type": "STORY"
       },
       {
@@ -8289,11 +8289,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
-        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
-        "publisher": "Business Wire",
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8314,12 +8314,6 @@
         "totalPay": 1445441
       },
       {
-        "name": "Mr. Abhay U. Nayak",
-        "title": "Executive VP & President of U.S. Commercial Operations",
-        "age": 37,
-        "yearBorn": 1988
-      },
-      {
         "name": "Mr. James K. Saccaro",
         "title": "Executive VP, CFO & COO",
         "age": 52,
@@ -8333,27 +8327,11 @@
         "totalPay": 1742448
       },
       {
-        "name": "Mr. Keith Sarbaugh",
-        "title": "Executive VP & Chief Digital and Technology Officer",
-        "age": 46,
-        "yearBorn": 1979
-      },
-      {
-        "name": "Mr. Steven Frank",
-        "title": "Vice President of Investor Relations"
-      },
-      {
         "name": "Mr. Wetteny N. Joseph C.P.A.",
         "title": "Special Advisor to the CEO",
         "age": 53,
         "yearBorn": 1972,
         "totalPay": 1796941
-      },
-      {
-        "name": "Ms. Julie A. Fuller",
-        "title": "Executive VP, Chief Human Resources Officer & Global Operations",
-        "age": 52,
-        "yearBorn": 1973
       },
       {
         "name": "Ms. Kristin C. Peck",
@@ -8373,23 +8351,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.77,
-        "industryAvg": 32.16
+        "value": 18.55,
+        "industryAvg": 38.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.45,
-        "industryAvg": 2.28
+        "value": 3.6,
+        "industryAvg": 2.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.92,
-        "industryAvg": 2.36
+        "value": 10.36,
+        "industryAvg": 2.57
       },
       {
         "metric": "ROE",
         "value": 18.32,
-        "industryAvg": 1.41
+        "industryAvg": 1.4200000000000002
       },
       {
         "metric": "ROA",
@@ -8409,7 +8387,7 @@
       {
         "metric": "Net Margin",
         "value": 24.72,
-        "industryAvg": 2.12
+        "industryAvg": 2.1399999999999997
       }
     ]
   }

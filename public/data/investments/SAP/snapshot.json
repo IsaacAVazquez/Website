@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1792,
-      "ttmPe": 24.32,
-      "marketCap": 224590776420,
-      "psRatio": 5.03,
-      "pbRatio": 4.32,
-      "pegRatio": 2.16
+      "ttmPe": 25.6,
+      "marketCap": 236377473780,
+      "psRatio": 5.3,
+      "pbRatio": 4.54,
+      "pegRatio": 2.28
     },
     "profitability": {
       "roe": 4.96,
@@ -6276,25 +6276,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.25,
-      "costOfEquity": 13.850000000000001,
+      "wacc": 13.139999999999999,
+      "costOfEquity": 13.700000000000001,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.123,
-      "marketCap": 224590776420
+      "beta": 1.104,
+      "marketCap": 236377473780
     },
     "beta": {
-      "beta5y": 1.123
+      "beta5y": 1.104
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 239.33,
-        "high": 239.56,
-        "low": 237.13,
-        "close": 238.29,
-        "volume": 1856500
-      },
       {
         "date": "2025-11-25",
         "open": 235.72,
@@ -8302,6 +8294,14 @@
         "low": 203.3,
         "close": 208.75,
         "volume": 1871700
+      },
+      {
+        "date": "2026-11-25",
+        "open": 208.34,
+        "high": 211.89,
+        "low": 207.08,
+        "close": 209.37,
+        "volume": 2514700
       }
     ],
     "news": [
@@ -8346,19 +8346,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
-        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
         "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
         "publisher": "Business Wire",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
+        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
         "type": "STORY"
       },
       {
@@ -8378,11 +8378,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
-        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
+        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
+        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
+        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
         "type": "STORY"
       }
     ],
@@ -8461,33 +8461,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.32,
-        "industryAvg": 24.77
+        "value": 25.6,
+        "industryAvg": 26.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.03,
-        "industryAvg": 4.27
+        "value": 5.3,
+        "industryAvg": 4.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.32,
-        "industryAvg": 4.45
+        "value": 4.54,
+        "industryAvg": 4.79
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -0.69
+        "industryAvg": -0.67
       },
       {
         "metric": "ROA",
         "value": 2.96,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.38
       },
       {
         "metric": "Gross Margin",
         "value": 73.13,
-        "industryAvg": 63.519999999999996
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
@@ -8497,7 +8497,7 @@
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -0.9400000000000001
+        "industryAvg": -0.9199999999999999
       }
     ]
   }

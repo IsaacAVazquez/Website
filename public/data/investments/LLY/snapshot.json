@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.218,
-      "ttmPe": 58.02,
+      "ttmPe": 59.96,
       "pegRatio": 1.54,
-      "marketCap": 1267899932000,
-      "psRatio": 14.66,
-      "pbRatio": 31.48
+      "marketCap": 1310357464000,
+      "psRatio": 15.16,
+      "pbRatio": 32.54
     },
     "profitability": {
       "roe": 17.4,
@@ -6202,25 +6202,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.9799999999999995,
-      "costOfEquity": 8.24,
+      "wacc": 7.79,
+      "costOfEquity": 8.03,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.4178,
-      "marketCap": 1267899932000
+      "beta": 0.3971,
+      "marketCap": 1310357464000
     },
     "beta": {
-      "beta5y": 0.4178
+      "beta5y": 0.3971
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 1056.77,
-        "high": 1075.72,
-        "low": 1049.38,
-        "close": 1070.16,
-        "volume": 5497200
-      },
       {
         "date": "2025-11-25",
         "open": 1075.83,
@@ -8228,6 +8220,14 @@
         "low": 1369.84,
         "close": 1407.59,
         "volume": 3081000
+      },
+      {
+        "date": "2026-11-25",
+        "open": 1405,
+        "high": 1412.99,
+        "low": 1370.76,
+        "close": 1392.22,
+        "volume": 2927400
       }
     ],
     "news": [
@@ -8296,19 +8296,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
+        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
         "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
-        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
         "type": "STORY"
       }
     ],
@@ -8379,18 +8379,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 58.02,
-        "industryAvg": 29.02
+        "value": 59.96,
+        "industryAvg": 30.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.66,
-        "industryAvg": 4.94
+        "value": 15.16,
+        "industryAvg": 5.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 31.48,
-        "industryAvg": 6.06
+        "value": 32.54,
+        "industryAvg": 6.33
       },
       {
         "metric": "ROE",

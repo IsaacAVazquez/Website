@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.3877,
-      "ttmPe": 63.13,
-      "marketCap": 90931908282.39,
-      "psRatio": 5.89,
-      "pbRatio": 6.94,
+      "ttmPe": 66.41,
+      "marketCap": 95654430627.84,
+      "psRatio": 6.2,
+      "pbRatio": 7.3,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5623,25 +5623,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.09,
-      "costOfEquity": 13.139999999999999,
+      "wacc": 11.97,
+      "costOfEquity": 12.959999999999999,
       "costOfDebt": 0.96,
       "taxRate": 25,
-      "beta": 1.0344,
-      "marketCap": 90931908282.39
+      "beta": 1.0113,
+      "marketCap": 95654430627.84
     },
     "beta": {
-      "beta5y": 1.0344
+      "beta5y": 1.0113
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 162.68,
-        "high": 163.898,
-        "low": 160.762,
-        "close": 163.168,
-        "volume": 8947000
-      },
       {
         "date": "2025-11-25",
         "open": 162.474,
@@ -7648,7 +7640,15 @@
         "high": 93.03,
         "low": 89.62,
         "close": 91.74,
-        "volume": 12682700
+        "volume": 12695900
+      },
+      {
+        "date": "2026-11-25",
+        "open": 89.19,
+        "high": 92.81,
+        "low": 86.85,
+        "close": 92.16,
+        "volume": 15479100
       }
     ],
     "news": [
@@ -7669,19 +7669,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7796,33 +7796,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 63.13,
-        "industryAvg": 24.77
+        "value": 66.41,
+        "industryAvg": 26.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.89,
-        "industryAvg": 4.27
+        "value": 6.2,
+        "industryAvg": 4.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.94,
-        "industryAvg": 4.45
+        "value": 7.3,
+        "industryAvg": 4.79
       },
       {
         "metric": "ROE",
         "value": 2.16,
-        "industryAvg": -0.69
+        "industryAvg": -0.67
       },
       {
         "metric": "ROA",
         "value": 0.8699999999999999,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.38
       },
       {
         "metric": "Gross Margin",
         "value": 70.50999999999999,
-        "industryAvg": 63.519999999999996
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
@@ -7832,7 +7832,7 @@
       {
         "metric": "Net Margin",
         "value": 6.75,
-        "industryAvg": -0.9400000000000001
+        "industryAvg": -0.9199999999999999
       }
     ]
   }

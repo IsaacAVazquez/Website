@@ -1,10 +1,10 @@
 {
   "symbol": "PFE",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.6992,
-      "ttmPe": 39.19,
+      "ttmPe": 40.7,
       "pegRatio": 0,
-      "marketCap": 156180000000,
-      "psRatio": 2.45,
-      "pbRatio": 1.75
+      "marketCap": 162222000000,
+      "psRatio": 2.55,
+      "pbRatio": 1.82
     },
     "profitability": {
       "roe": 3.7199999999999998,
@@ -6699,25 +6699,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.74,
-      "costOfEquity": 7.64,
+      "wacc": 5.6000000000000005,
+      "costOfEquity": 7.37,
       "costOfDebt": 1.06,
       "taxRate": 4,
-      "beta": 0.3423,
-      "marketCap": 156180000000
+      "beta": 0.3137,
+      "marketCap": 162222000000
     },
     "beta": {
-      "beta5y": 0.3423
+      "beta5y": 0.3137
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 25.11,
-        "high": 25.47,
-        "low": 25.05,
-        "close": 25.22,
-        "volume": 63074900
-      },
       {
         "date": "2025-11-25",
         "open": 25.37,
@@ -8724,7 +8716,15 @@
         "high": 28.6,
         "low": 27.38,
         "close": 28.46,
-        "volume": 31067700
+        "volume": 31080400
+      },
+      {
+        "date": "2026-11-25",
+        "open": 28.61,
+        "high": 28.67,
+        "low": 28.09,
+        "close": 28.46,
+        "volume": 27106200
       }
     ],
     "news": [
@@ -8745,38 +8745,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3bb1808e-367b-3ade-9d4f-08e743dffe14",
-        "title": "Market Chatter: Pfizer Sells Entire Stake in Haleon for $3.24 Billion",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/market-chatter-pfizer-sells-entire-100802735.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1c278afa-490c-38a3-b9cc-8a26e4829669",
-        "title": "Pfizer sells entire Haleon stake for $3.24 billion",
-        "publisher": "Reuters",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-sells-entire-haleon-stake-072643649.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1152f165-8c48-32c4-a775-4f515c152ef7",
-        "title": "Pfizer to sell entire Haleon stake",
-        "publisher": "Reuters",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-sell-entire-haleon-stake-165448665.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4e0619a4-32d0-31f0-bba8-f2ae620ff519",
-        "title": "Pfizer to Reportedly Offload Remaining Stake in Haleon via Share Sale",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-reportedly-offload-remaining-stake-180725984.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af863e42-7898-396f-9797-62a0d3789ed3",
         "title": "Top Midday Stories: EC Notifies Alphabet of DMA Noncompliance, Adopts Requirements for Apple; Boeing Expects Less Q1 Cash Outflow",
         "publisher": "MT Newswires",
@@ -8793,11 +8761,43 @@
         "type": "STORY"
       },
       {
+        "uuid": "4e0619a4-32d0-31f0-bba8-f2ae620ff519",
+        "title": "Pfizer to Reportedly Offload Remaining Stake in Haleon via Share Sale",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/pfizer-reportedly-offload-remaining-stake-180725984.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "418d9b30-a2ae-3a5c-bbba-20acae3495a0",
         "title": "Haleon Agrees to Buy Back Over 44 Million Shares From Pfizer",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/haleon-agrees-buy-back-over-150207516.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3bb1808e-367b-3ade-9d4f-08e743dffe14",
+        "title": "Market Chatter: Pfizer Sells Entire Stake in Haleon for $3.24 Billion",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/market-chatter-pfizer-sells-entire-100802735.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1152f165-8c48-32c4-a775-4f515c152ef7",
+        "title": "Pfizer to sell entire Haleon stake",
+        "publisher": "Reuters",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/pfizer-sell-entire-haleon-stake-165448665.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c278afa-490c-38a3-b9cc-8a26e4829669",
+        "title": "Pfizer sells entire Haleon stake for $3.24 billion",
+        "publisher": "Reuters",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/pfizer-sells-entire-haleon-stake-072643649.html",
         "type": "STORY"
       },
       {
@@ -8872,18 +8872,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.19,
-        "industryAvg": 29.02
+        "value": 40.7,
+        "industryAvg": 30.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.45,
-        "industryAvg": 4.94
+        "value": 2.55,
+        "industryAvg": 5.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.75,
-        "industryAvg": 6.06
+        "value": 1.82,
+        "industryAvg": 6.33
       },
       {
         "metric": "ROE",

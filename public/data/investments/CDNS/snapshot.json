@@ -1,10 +1,10 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.0302,
-      "ttmPe": 55.98,
-      "marketCap": 77259638820,
-      "psRatio": 12.6,
-      "pbRatio": 11.24,
-      "pegRatio": 151.3
+      "ttmPe": 58.62,
+      "marketCap": 80911623310,
+      "psRatio": 13.19,
+      "pbRatio": 11.77,
+      "pegRatio": 158.43
     },
     "profitability": {
       "roe": 4.22,
@@ -6178,25 +6178,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.41,
-      "costOfEquity": 13.87,
+      "wacc": 13.33,
+      "costOfEquity": 13.77,
       "costOfDebt": 1.08,
       "taxRate": 28.999999999999996,
-      "beta": 1.1252,
-      "marketCap": 77259638820
+      "beta": 1.1117,
+      "marketCap": 80911623310
     },
     "beta": {
-      "beta5y": 1.1252
+      "beta5y": 1.1117
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 303.37,
-        "high": 305.72,
-        "low": 299.65,
-        "close": 304.47,
-        "volume": 2997000
-      },
       {
         "date": "2025-11-25",
         "open": 300.75,
@@ -8204,6 +8196,14 @@
         "low": 289.87,
         "close": 296.6,
         "volume": 2477200
+      },
+      {
+        "date": "2026-11-25",
+        "open": 284.48,
+        "high": 297.72,
+        "low": 278.09,
+        "close": 294.89,
+        "volume": 2153600
       }
     ],
     "news": [
@@ -8280,11 +8280,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bec91a8-bc34-344d-94c1-7eb44356d4ca",
-        "title": "Sector Update: Tech Stocks Advance Premarket Thursday",
+        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/sector-tech-stocks-advance-premarket-131131117.html",
+        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
         "type": "STORY"
       }
     ],
@@ -8353,33 +8353,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.98,
-        "industryAvg": 24.77
+        "value": 58.62,
+        "industryAvg": 26.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.6,
-        "industryAvg": 4.27
+        "value": 13.19,
+        "industryAvg": 4.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.24,
-        "industryAvg": 4.45
+        "value": 11.77,
+        "industryAvg": 4.79
       },
       {
         "metric": "ROE",
         "value": 4.22,
-        "industryAvg": -0.69
+        "industryAvg": -0.67
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.38
       },
       {
         "metric": "Gross Margin",
         "value": 85.57000000000001,
-        "industryAvg": 63.519999999999996
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
@@ -8389,7 +8389,7 @@
       {
         "metric": "Net Margin",
         "value": 17.740000000000002,
-        "industryAvg": -0.9400000000000001
+        "industryAvg": -0.9199999999999999
       }
     ]
   }

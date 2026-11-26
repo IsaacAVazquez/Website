@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 25.52,
-      "pegRatio": 30.75,
-      "marketCap": 393582006000,
-      "psRatio": 4.48,
-      "pbRatio": 7.14
+      "ttmPe": 26.1,
+      "pegRatio": 31.45,
+      "marketCap": 402551874000,
+      "psRatio": 4.58,
+      "pbRatio": 7.31
     },
     "profitability": {
       "roe": 8.53,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.69,
-      "costOfEquity": 7.31,
+      "wacc": 6.77,
+      "costOfEquity": 7.380000000000001,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3009,
-      "marketCap": 393582006000
+      "beta": 0.3155,
+      "marketCap": 402551874000
     },
     "beta": {
-      "beta5y": 0.3009
+      "beta5y": 0.3155
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 150.1,
-        "high": 150.41,
-        "low": 146.54,
-        "close": 146.98,
-        "volume": 13846900
-      },
       {
         "date": "2025-11-25",
         "open": 147.32,
@@ -7981,6 +7973,14 @@
         "low": 169.83,
         "close": 172.47,
         "volume": 8763300
+      },
+      {
+        "date": "2026-11-25",
+        "open": 173.26,
+        "high": 174.56,
+        "low": 172.54,
+        "close": 173.23,
+        "volume": 9892500
       }
     ],
     "news": [
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
-        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
-        "publisher": "The Wall Street Journal",
+        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
+        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
+        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
         "type": "STORY"
       }
     ],
@@ -8130,23 +8130,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.52,
-        "industryAvg": 25.62
+        "value": 26.1,
+        "industryAvg": 26.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.48,
-        "industryAvg": 3.26
+        "value": 4.58,
+        "industryAvg": 3.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.14,
-        "industryAvg": 6.89
+        "value": 7.31,
+        "industryAvg": 7.19
       },
       {
         "metric": "ROE",
         "value": 8.53,
-        "industryAvg": 25.75
+        "industryAvg": 25.740000000000002
       },
       {
         "metric": "ROA",
@@ -8156,7 +8156,7 @@
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 52
+        "industryAvg": 51.99
       },
       {
         "metric": "EBITDA Margin",

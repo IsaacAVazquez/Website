@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -36,18 +36,18 @@
       "industry": "Medical Devices",
       "sector": "Healthcare",
       "longBusinessSummary": "Medtronic plc develops, manufactures, and sells device-based medical therapies to healthcare systems, physicians, clinicians, and patients in the United States, Ireland, and internationally. It operates through three segments: The Cardiovascular Portfolio, Neuroscience Portfolio, and Medical Surgical Portfolio. The Cardiovascular Portfolio segment offers implantable cardiac pacemakers, cardioverter defibrillators, and cardiac resynchronization therapy devices; cardiac ablation products; insertable cardiac monitor systems; TYRX products; and remote monitoring and patient-centered software. It also provides aortic valves, surgical valve replacement and repair products, endovascular stent grafts and accessories, and transcatheter pulmonary valves, left atrial appendage exclusion systems, extracorporeal membrane oxygenation (ECMO) systems and percutaneous coronary intervention products, percutaneous angioplasty balloons, and endovenous products. The Neuroscience Portfolio segment offers medical devices and implants, biologic solutions, spinal cord stimulation and brain modulation systems, implantable drug infusion systems, and interventional products, as well as nerve ablation system under the Accurian name. This segment offers its products for spinal surgeons, neurosurgeons, neurologists, pain management specialists, anesthesiologists, orthopedic surgeons, urologists, urogynecologists, and interventional radiologists, as well as ear, nose, and throat specialists, and energy surgical instruments. The Medical Surgical Portfolio segment offers surgical stapling devices, vessel sealing instruments, wound closure and electrosurgery products, AI-powered surgical video and analytics platform, robotic-assisted surgery products, hernia mechanical devices, mesh implants, gynecology products, gastrointestinal and hepatologic diagnostics and therapies, and therapies to treat diseases and conditions, and patient monitoring and airway management products, as well as insulin pumps and consumables, continuous glucose monitoring systems, and sensors. Medtronic plc was founded in 1949 and is headquartered in Galway, Ireland.",
-      "fullTimeEmployees": 95000,
+      "fullTimeEmployees": 90000,
       "website": "https://www.medtronic.com",
       "shortName": "Medtronic plc",
       "longName": "Medtronic plc"
     },
     "fundamentals": {
-      "ttmEps": 4.062,
-      "ttmPe": 24.6,
-      "pegRatio": 0.59,
-      "marketCap": 127927887186,
-      "psRatio": 3.41,
-      "pbRatio": 2.55
+      "ttmEps": 5.1952,
+      "ttmPe": 18.49,
+      "pegRatio": 0.17,
+      "marketCap": 122961305214,
+      "psRatio": 3.28,
+      "pbRatio": 2.45
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -84,7 +84,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 41.57
+        "yoyGrowth": 106.22
       }
     ],
     "income_statement": {
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.37,
-      "costOfEquity": 8.870000000000001,
+      "wacc": 7.630000000000001,
+      "costOfEquity": 9.25,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.4968,
-      "marketCap": 127927887186
+      "beta": 0.5489,
+      "marketCap": 122961305214
     },
     "beta": {
-      "beta5y": 0.4968
+      "beta5y": 0.5489
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 101.53,
-        "high": 103.7,
-        "low": 100.97,
-        "close": 103.2,
-        "volume": 13926400
-      },
       {
         "date": "2025-11-25",
         "open": 103.8,
@@ -7972,6 +7964,14 @@
         "low": 94.49,
         "close": 96.13,
         "volume": 20048700
+      },
+      {
+        "date": "2026-11-25",
+        "open": 95,
+        "high": 97.16,
+        "low": 94.13,
+        "close": 96.06,
+        "volume": 12304600
       }
     ],
     "news": [
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
-        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
         "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
+        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
         "type": "STORY"
       }
     ],
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.6,
-        "industryAvg": 25
+        "value": 18.49,
+        "industryAvg": 26.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.41,
-        "industryAvg": 3.18
+        "value": 3.28,
+        "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.55,
-        "industryAvg": 3.09
+        "value": 2.45,
+        "industryAvg": 3.2
       },
       {
         "metric": "ROE",
@@ -8148,7 +8148,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.51,
-        "industryAvg": 20.48
+        "industryAvg": 20.49
       },
       {
         "metric": "Net Margin",

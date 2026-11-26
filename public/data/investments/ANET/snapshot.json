@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7236,
-      "ttmPe": 45.02,
-      "marketCap": 211402344000,
-      "psRatio": 17.78,
-      "pbRatio": 12.85,
-      "pegRatio": 0.55
+      "ttmPe": 44.04,
+      "marketCap": 206824188000,
+      "psRatio": 17.39,
+      "pbRatio": 12.58,
+      "pegRatio": 0.53
     },
     "profitability": {
       "roe": 9.99,
@@ -5487,17 +5487,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5281
+      "beta5y": 1.5953
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 118.915,
-        "high": 122.42,
-        "low": 118.2,
-        "close": 122.17,
-        "volume": 12758600
-      },
       {
         "date": "2025-11-25",
         "open": 122.4,
@@ -7505,6 +7497,14 @@
         "low": 164.9,
         "close": 168.56,
         "volume": 7566000
+      },
+      {
+        "date": "2026-11-25",
+        "open": 159.88,
+        "high": 165,
+        "low": 154.51,
+        "close": 163.99,
+        "volume": 8264300
       }
     ],
     "news": [
@@ -7581,11 +7581,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
-        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
+        "uuid": "f090691f-d60d-31b4-8801-b74f7623f74f",
+        "title": "Buy 5 Internet-Centric AI Stocks on the Dip to Boost Portfolio Returns",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
+        "link": "https://finance.yahoo.com/news/buy-5-internet-centric-ai-120200754.html",
         "type": "STORY"
       }
     ],
@@ -7648,18 +7648,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.02,
-        "industryAvg": 12.1
+        "value": 44.04,
+        "industryAvg": 17.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.78,
-        "industryAvg": 1.86
+        "value": 17.39,
+        "industryAvg": 2.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.85,
-        "industryAvg": 4.45
+        "value": 12.58,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",

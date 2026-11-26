@@ -1,10 +1,10 @@
 {
   "symbol": "HCA",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 30.1817,
-      "ttmPe": 15.76,
-      "pegRatio": 3.5,
-      "marketCap": 103656806581,
-      "psRatio": 1.32,
-      "pbRatio": -12.83
+      "ttmPe": 16.27,
+      "pegRatio": 3.62,
+      "marketCap": 107022159933,
+      "psRatio": 1.36,
+      "pbRatio": -13.25
     },
     "profitability": {
       "roe": -21.46,
@@ -5109,25 +5109,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.94,
-      "costOfEquity": 13,
+      "wacc": 9.17,
+      "costOfEquity": 13.22,
       "costOfDebt": 1.16,
       "taxRate": 22,
-      "beta": 1.0168,
-      "marketCap": 103656806581
+      "beta": 1.0432,
+      "marketCap": 107022159933
     },
     "beta": {
-      "beta5y": 1.0168
+      "beta5y": 1.0432
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 501.26,
-        "high": 512.66,
-        "low": 493.14,
-        "close": 501.04,
-        "volume": 3187300
-      },
       {
         "date": "2025-11-25",
         "open": 501.3,
@@ -7135,6 +7127,14 @@
         "low": 475,
         "close": 481.77,
         "volume": 1097700
+      },
+      {
+        "date": "2026-11-25",
+        "open": 472.45,
+        "high": 492.9,
+        "low": 472.24,
+        "close": 491.01,
+        "volume": 865500
       }
     ],
     "news": [
@@ -7284,18 +7284,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.76,
-        "industryAvg": 14.91
+        "value": 16.27,
+        "industryAvg": 15.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.32,
-        "industryAvg": 1.01
+        "value": 1.36,
+        "industryAvg": 1.02
       },
       {
         "metric": "P/B Ratio",
-        "value": -12.83,
-        "industryAvg": 1.86
+        "value": -13.25,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",
@@ -7310,7 +7310,7 @@
       {
         "metric": "Gross Margin",
         "value": 42.55,
-        "industryAvg": 41.660000000000004
+        "industryAvg": 41.65
       },
       {
         "metric": "EBITDA Margin",

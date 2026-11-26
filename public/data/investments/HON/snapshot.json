@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.08,
-      "marketCap": 67483111440,
-      "psRatio": 2.2,
-      "pbRatio": 3.01,
+      "ttmPe": 9.62,
+      "marketCap": 71437398350,
+      "psRatio": 2.33,
+      "pbRatio": 3.19,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -6703,25 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.02,
-      "costOfEquity": 11.04,
+      "wacc": 9.09,
+      "costOfEquity": 11.01,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.7694,
-      "marketCap": 67483111440
+      "beta": 0.7676,
+      "marketCap": 71437398350
     },
     "beta": {
-      "beta5y": 0.7694
+      "beta5y": 0.7676
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 199.3183,
-        "high": 199.4651,
-        "low": 196.1615,
-        "close": 197.8605,
-        "volume": 5057555
-      },
       {
         "date": "2025-11-25",
         "open": 199.0771,
@@ -8729,6 +8721,14 @@
         "low": 218,
         "close": 224.82,
         "volume": 3639500
+      },
+      {
+        "date": "2026-11-25",
+        "open": 220.22,
+        "high": 226.93,
+        "low": 217.53,
+        "close": 225.1,
+        "volume": 2490600
       }
     ],
     "news": [
@@ -8757,14 +8757,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
-        "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-meta-134100075.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
         "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
         "publisher": "Zacks",
@@ -8773,19 +8765,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
+        "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-meta-134100075.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "7b2aab77-8e32-39c7-b91d-6b2f07956332",
         "title": "Honeywell Divests PPE Business, Set to Acquire Catalyst Technologies Unit",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/honeywell-divests-ppe-business-set-143200166.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
-        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
-        "publisher": "Investopedia",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
         "type": "STORY"
       },
       {
@@ -8805,11 +8797,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
-        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
-        "publisher": "MT Newswires",
+        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
+        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
+        "publisher": "Investopedia",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
+        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
+        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
         "type": "STORY"
       }
     ],
@@ -8874,18 +8874,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.08,
-        "industryAvg": 17.03
+        "value": 9.62,
+        "industryAvg": 18.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.2,
-        "industryAvg": 1.17
+        "value": 2.33,
+        "industryAvg": 1.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.01,
-        "industryAvg": 2.36
+        "value": 3.19,
+        "industryAvg": 2.46
       },
       {
         "metric": "ROE",
@@ -8905,7 +8905,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 23.189999999999998,
-        "industryAvg": 20.47
+        "industryAvg": 20.46
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "MDLZ",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.1725,
-      "ttmPe": 20.89,
-      "marketCap": 84190360556,
-      "psRatio": 2.14,
-      "pbRatio": 3.16,
+      "ttmPe": 21.37,
+      "marketCap": 86133801287,
+      "psRatio": 2.19,
+      "pbRatio": 3.24,
       "pegRatio": 0.27
     },
     "profitability": {
@@ -6106,25 +6106,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.01,
-      "costOfEquity": 7.470000000000001,
+      "wacc": 6.05,
+      "costOfEquity": 7.489999999999999,
       "costOfDebt": 0.66,
       "taxRate": 25,
-      "beta": 0.321,
-      "marketCap": 84190360556
+      "beta": 0.3288,
+      "marketCap": 86133801287
     },
     "beta": {
-      "beta5y": 0.321
+      "beta5y": 0.3288
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 57,
-        "high": 57.09,
-        "low": 55.89,
-        "close": 56.19,
-        "volume": 10860000
-      },
       {
         "date": "2025-11-25",
         "open": 55.74,
@@ -8132,6 +8124,14 @@
         "low": 65.88,
         "close": 67.01,
         "volume": 8395300
+      },
+      {
+        "date": "2026-11-25",
+        "open": 67.69,
+        "high": 68.41,
+        "low": 67.23,
+        "close": 67.81,
+        "volume": 10118200
       }
     ],
     "news": [
@@ -8168,19 +8168,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "95ccc4a4-a3af-39b6-b1d1-1ef0134e0bf4",
-        "title": "Mondelez Q1 Earnings Beat Estimates, Net Revenues Rise 0.2% Y/Y",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/mondelez-q1-earnings-beat-estimates-162200745.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
         "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
         "publisher": "TipRanks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "95ccc4a4-a3af-39b6-b1d1-1ef0134e0bf4",
+        "title": "Mondelez Q1 Earnings Beat Estimates, Net Revenues Rise 0.2% Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/mondelez-q1-earnings-beat-estimates-162200745.html",
         "type": "STORY"
       },
       {
@@ -8285,18 +8285,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.89,
-        "industryAvg": 27.18
+        "value": 21.37,
+        "industryAvg": 28.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.14,
-        "industryAvg": 2.34
+        "value": 2.19,
+        "industryAvg": 2.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.16,
-        "industryAvg": 3.71
+        "value": 3.24,
+        "industryAvg": 3.84
       },
       {
         "metric": "ROE",
@@ -8311,17 +8311,17 @@
       {
         "metric": "Gross Margin",
         "value": 39.37,
-        "industryAvg": 31.78
+        "industryAvg": 31.790000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 22.220000000000002,
-        "industryAvg": 16.12
+        "industryAvg": 16.13
       },
       {
         "metric": "Net Margin",
         "value": 13.089999999999998,
-        "industryAvg": 8.51
+        "industryAvg": 8.52
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.3707,
-      "ttmPe": 15.97,
-      "marketCap": 176007181680,
+      "ttmPe": 16.03,
+      "marketCap": 176698031125,
       "psRatio": 1.88,
-      "pbRatio": 3.13,
+      "pbRatio": 3.14,
       "pegRatio": 0.47
     },
     "profitability": {
@@ -5899,25 +5899,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.75,
-      "costOfEquity": 7.489999999999999,
+      "wacc": 4.859999999999999,
+      "costOfEquity": 7.66,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 24,
-      "beta": 0.3238,
-      "marketCap": 176007181680
+      "beta": 0.3508,
+      "marketCap": 176698031125
     },
     "beta": {
-      "beta5y": 0.3238
+      "beta5y": 0.3508
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 208.88,
-        "high": 209.25,
-        "low": 205.52,
-        "close": 207.34,
-        "volume": 8026400
-      },
       {
         "date": "2025-11-25",
         "open": 207.71,
@@ -7925,6 +7917,14 @@
         "low": 166.5,
         "close": 167.3,
         "volume": 6041000
+      },
+      {
+        "date": "2026-11-25",
+        "open": 167.03,
+        "high": 168.15,
+        "low": 165.73,
+        "close": 166.25,
+        "volume": 4414400
       }
     ],
     "news": [
@@ -7953,19 +7953,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
-        "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-27",
-        "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
         "title": "4 of your biggest Trump tariff questions answered",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-04-27",
         "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
+        "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-27",
+        "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
         "type": "STORY"
       },
       {
@@ -8076,8 +8076,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.97,
-        "industryAvg": 12.55
+        "value": 16.03,
+        "industryAvg": 12.56
       },
       {
         "metric": "P/S Ratio",
@@ -8086,8 +8086,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.13,
-        "industryAvg": 1.53
+        "value": 3.14,
+        "industryAvg": 1.54
       },
       {
         "metric": "ROE",

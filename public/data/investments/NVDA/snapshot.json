@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.3073,
-      "ttmPe": 13.49,
-      "marketCap": 3031172910000,
-      "psRatio": 10,
-      "pbRatio": 13.24,
-      "pegRatio": 0.13
+      "ttmPe": 16.04,
+      "marketCap": 3605147100000,
+      "psRatio": 11.9,
+      "pbRatio": 15.74,
+      "pegRatio": 0.15
     },
     "profitability": {
       "roe": 28.12,
@@ -5937,25 +5937,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.669999999999998,
-      "costOfEquity": 23.96,
+      "wacc": 23.25,
+      "costOfEquity": 23.49,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.3948,
-      "marketCap": 3031172910000
+      "beta": 2.3237,
+      "marketCap": 3605147100000
     },
     "beta": {
-      "beta5y": 2.3948
+      "beta5y": 2.3237
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 179.49,
-        "high": 183.5,
-        "low": 176.48,
-        "close": 182.55,
-        "volume": 256618300
-      },
       {
         "date": "2025-11-25",
         "open": 174.91,
@@ -7962,7 +7954,15 @@
         "high": 159.92,
         "low": 150.5,
         "close": 155.38,
-        "volume": 383594200
+        "volume": 386223600
+      },
+      {
+        "date": "2026-11-25",
+        "open": 144.06,
+        "high": 150.37,
+        "low": 141.17,
+        "close": 149.3,
+        "volume": 363377300
       }
     ],
     "news": [
@@ -8111,18 +8111,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.49,
-        "industryAvg": 15.74
+        "value": 16.04,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 10,
-        "industryAvg": 7.71
+        "value": 11.9,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.24,
-        "industryAvg": 6.99
+        "value": 15.74,
+        "industryAvg": 7.56
       },
       {
         "metric": "ROE",

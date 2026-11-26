@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 17.5043,
-      "ttmPe": 15.45,
-      "marketCap": 71545172440,
-      "psRatio": 3.26,
-      "pbRatio": 3.92,
+      "ttmPe": 15.52,
+      "marketCap": 71883797720,
+      "psRatio": 3.28,
+      "pbRatio": 3.94,
       "pegRatio": 0.24
     },
     "profitability": {
@@ -6818,25 +6818,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.62,
-      "costOfEquity": 12.8,
+      "wacc": 11.53,
+      "costOfEquity": 12.690000000000001,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 28.000000000000004,
-      "beta": 0.9918,
-      "marketCap": 71545172440
+      "beta": 0.9771,
+      "marketCap": 71883797720
     },
     "beta": {
-      "beta5y": 0.9918
+      "beta5y": 0.9771
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 665.38,
-        "high": 671.01,
-        "low": 647.15,
-        "close": 653.23,
-        "volume": 3184200
-      },
       {
         "date": "2025-11-25",
         "open": 651.95,
@@ -8844,6 +8836,14 @@
         "low": 270.7,
         "close": 279.42,
         "volume": 3751000
+      },
+      {
+        "date": "2026-11-25",
+        "open": 273.05,
+        "high": 278.7,
+        "low": 268.86,
+        "close": 271.72,
+        "volume": 3819700
       }
     ],
     "news": [
@@ -8888,6 +8888,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
+        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
         "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
         "publisher": "Yahoo Finance Video",
@@ -8904,11 +8912,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
-        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
+        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
+        "title": "Company News for May 27, 2025",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
         "type": "STORY"
       },
       {
@@ -8917,14 +8925,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
-        "title": "Company News for May 27, 2025",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
         "type": "STORY"
       }
     ],
@@ -8994,33 +8994,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.45,
-        "industryAvg": 24.77
+        "value": 15.52,
+        "industryAvg": 26.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.26,
-        "industryAvg": 4.27
+        "value": 3.28,
+        "industryAvg": 4.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.92,
-        "industryAvg": 4.45
+        "value": 3.94,
+        "industryAvg": 4.79
       },
       {
         "metric": "ROE",
         "value": 3.73,
-        "industryAvg": -0.69
+        "industryAvg": -0.67
       },
       {
         "metric": "ROA",
         "value": 1.92,
-        "industryAvg": -0.38999999999999996
+        "industryAvg": -0.38
       },
       {
         "metric": "Gross Margin",
         "value": 75.88000000000001,
-        "industryAvg": 63.519999999999996
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
@@ -9030,7 +9030,7 @@
       {
         "metric": "Net Margin",
         "value": 15.959999999999999,
-        "industryAvg": -0.9400000000000001
+        "industryAvg": -0.9199999999999999
       }
     ]
   }

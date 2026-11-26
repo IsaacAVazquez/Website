@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.9699,
-      "ttmPe": 9.53,
+      "ttmPe": 10.32,
       "pegRatio": 0.13,
-      "marketCap": 126541124870,
-      "psRatio": 2.5,
-      "pbRatio": 3.83
+      "marketCap": 137080642145,
+      "psRatio": 2.71,
+      "pbRatio": 4.15
     },
     "profitability": {
       "roe": 7.630000000000001,
@@ -6359,25 +6359,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.15,
-      "costOfEquity": 10.48,
+      "wacc": 9.06,
+      "costOfEquity": 10.27,
       "costOfDebt": 1.17,
       "taxRate": 22,
-      "beta": 0.6993,
-      "marketCap": 126541124870
+      "beta": 0.6762,
+      "marketCap": 137080642145
     },
     "beta": {
-      "beta5y": 0.6993
+      "beta5y": 0.6762
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 43.43,
-        "high": 45.22,
-        "low": 43.08,
-        "close": 44.97,
-        "volume": 73618700
-      },
       {
         "date": "2025-11-25",
         "open": 45.98,
@@ -8385,6 +8377,14 @@
         "low": 39.31,
         "close": 40.31,
         "volume": 9325000
+      },
+      {
+        "date": "2026-11-25",
+        "open": 40.27,
+        "high": 41.29,
+        "low": 39.93,
+        "close": 40.97,
+        "volume": 10249100
       }
     ],
     "news": [
@@ -8413,14 +8413,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
-        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
         "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
         "publisher": "BioPharma Dive",
@@ -8429,11 +8421,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f09b787-e949-3a08-babf-84e7425b5e17",
-        "title": "Novo Nordisk strikes $1bn deal for Lexicon’s oral obesity drug",
-        "publisher": "Pharmaceutical Technology",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
+        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
+        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
         "type": "STORY"
       },
       {
@@ -8445,11 +8437,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
-        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "uuid": "5f09b787-e949-3a08-babf-84e7425b5e17",
+        "title": "Novo Nordisk strikes $1bn deal for Lexicon’s oral obesity drug",
+        "publisher": "Pharmaceutical Technology",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
         "type": "STORY"
       },
       {
@@ -8458,6 +8450,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
+        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
         "type": "STORY"
       },
       {
@@ -8536,18 +8536,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.53,
-        "industryAvg": 29.01
+        "value": 10.32,
+        "industryAvg": 30.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.5,
-        "industryAvg": 4.93
+        "value": 2.71,
+        "industryAvg": 5.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.83,
-        "industryAvg": 6.06
+        "value": 4.15,
+        "industryAvg": 6.33
       },
       {
         "metric": "ROE",

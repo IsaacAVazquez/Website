@@ -1,10 +1,10 @@
 {
   "symbol": "T",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.8546,
-      "ttmPe": 12.03,
-      "marketCap": 150847721938,
-      "psRatio": 1.17,
-      "pbRatio": 1.41,
+      "ttmPe": 12.39,
+      "marketCap": 155310272206,
+      "psRatio": 1.21,
+      "pbRatio": 1.45,
       "pegRatio": 1.17
     },
     "profitability": {
@@ -6549,25 +6549,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.47,
-      "costOfEquity": 6.78,
+      "wacc": 3.51,
+      "costOfEquity": 6.77,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 0.2343,
-      "marketCap": 150847721938
+      "beta": 0.2398,
+      "marketCap": 155310272206
     },
     "beta": {
-      "beta5y": 0.2343
+      "beta5y": 0.2398
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 25.99,
-        "high": 26.02,
-        "low": 25.43,
-        "close": 25.62,
-        "volume": 66605900
-      },
       {
         "date": "2025-11-25",
         "open": 25.76,
@@ -8575,6 +8567,14 @@
         "low": 22.33,
         "close": 22.88,
         "volume": 42533300
+      },
+      {
+        "date": "2026-11-25",
+        "open": 23.04,
+        "high": 23.36,
+        "low": 22.89,
+        "close": 22.97,
+        "volume": 40325800
       }
     ],
     "news": [
@@ -8643,19 +8643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
-        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
         "title": "Charter is in talks to combine with rival Cox Communications",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
+        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
         "type": "STORY"
       }
     ],
@@ -8725,18 +8725,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.03,
-        "industryAvg": 12.55
+        "value": 12.39,
+        "industryAvg": 12.56
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.17,
+        "value": 1.21,
         "industryAvg": 1.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.41,
-        "industryAvg": 1.53
+        "value": 1.45,
+        "industryAvg": 1.54
       },
       {
         "metric": "ROE",

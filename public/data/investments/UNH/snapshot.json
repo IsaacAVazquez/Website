@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-11-21T16:41:14.374058+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-21T16:41:14.374058+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.5216,
-      "ttmPe": 19.4,
-      "pegRatio": 0.25,
-      "marketCap": 307564250000,
-      "psRatio": 0.68,
-      "pbRatio": 3.14
+      "ttmPe": 19.76,
+      "pegRatio": 0.26,
+      "marketCap": 313301950000,
+      "psRatio": 0.7,
+      "pbRatio": 3.19
     },
     "profitability": {
       "roe": 4.18,
@@ -5207,25 +5207,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.99,
-      "costOfEquity": 9.68,
+      "wacc": 7.82,
+      "costOfEquity": 9.43,
       "costOfDebt": 1.3,
       "taxRate": 22,
-      "beta": 0.5993,
-      "marketCap": 307564250000
+      "beta": 0.5707,
+      "marketCap": 313301950000
     },
     "beta": {
-      "beta5y": 0.5993
+      "beta5y": 0.5707
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 324.53,
-        "high": 325.85,
-        "low": 317.62,
-        "close": 319.05,
-        "volume": 10773800
-      },
       {
         "date": "2025-11-25",
         "open": 321.12,
@@ -7233,6 +7225,14 @@
         "low": 329.5,
         "close": 341.88,
         "volume": 8618100
+      },
+      {
+        "date": "2026-11-25",
+        "open": 338.5,
+        "high": 348.04,
+        "low": 334.8,
+        "close": 346.19,
+        "volume": 6592600
       }
     ],
     "news": [
@@ -7309,11 +7309,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c017eb02-e851-3ee3-98c7-3315aaa7c8de",
-        "title": "Health Insurance Providers Stocks Q1 Highlights: Molina Healthcare (NYSE:MOH)",
-        "publisher": "StockStory",
+        "uuid": "9565ba37-626e-3f42-bd78-7532d14b0317",
+        "title": "Why UnitedHealth’s Blowup May Be More Isolated Than Investors Think",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/health-insurance-providers-stocks-q1-033235659.html",
+        "link": "https://finance.yahoo.com/m/9565ba37-626e-3f42-bd78-7532d14b0317/why-unitedhealth%E2%80%99s-blowup-may.html",
         "type": "STORY"
       }
     ],
@@ -7386,18 +7386,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.4,
-        "industryAvg": 15.8
+        "value": 19.76,
+        "industryAvg": 16
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.68,
+        "value": 0.7,
         "industryAvg": 0.38
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.14,
-        "industryAvg": 2.13
+        "value": 3.19,
+        "industryAvg": 2.15
       },
       {
         "metric": "ROE",

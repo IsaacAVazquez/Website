@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.1588,
-      "ttmPe": 13.85,
-      "marketCap": 3261475260000,
-      "psRatio": 6.92,
-      "pbRatio": 4.81,
+      "ttmPe": 14.25,
+      "marketCap": 3357491400000,
+      "psRatio": 7.13,
+      "pbRatio": 4.96,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -6098,25 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.71,
-      "costOfEquity": 14.280000000000001,
+      "wacc": 13.889999999999999,
+      "costOfEquity": 14.45,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 18,
-      "beta": 1.1775,
-      "marketCap": 3261475260000
+      "beta": 1.1976,
+      "marketCap": 3357491400000
     },
     "beta": {
-      "beta5y": 1.1775
+      "beta5y": 1.1976
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 311.13,
-        "high": 319.48,
-        "low": 309.6,
-        "close": 318.58,
-        "volume": 85165100
-      },
       {
         "date": "2025-11-25",
         "open": 326.21,
@@ -8123,7 +8115,15 @@
         "high": 281.78,
         "low": 276.03,
         "close": 279.05,
-        "volume": 33820500
+        "volume": 33924200
+      },
+      {
+        "date": "2026-11-25",
+        "open": 265.1,
+        "high": 273.62,
+        "low": 262.73,
+        "close": 273.1,
+        "volume": 41164500
       }
     ],
     "news": [
@@ -8136,35 +8136,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
         "title": "3 Top Quantum Computing Stocks to Buy in 2025",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -8176,11 +8152,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
-        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
         "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -8192,19 +8184,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
-        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
+        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
         "type": "STORY"
       },
       {
-        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
-        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
-        "publisher": "Reuters",
+        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
+        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
+        "title": "3 Growth Stocks to Buy and Forget About",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -8278,18 +8278,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.85,
-        "industryAvg": 14.68
+        "value": 14.25,
+        "industryAvg": 15.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.92,
-        "industryAvg": 6.23
+        "value": 7.13,
+        "industryAvg": 6.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.81,
-        "industryAvg": 4.53
+        "value": 4.96,
+        "industryAvg": 4.74
       },
       {
         "metric": "ROE",

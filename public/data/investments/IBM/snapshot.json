@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7248,
-      "ttmPe": 19.14,
-      "marketCap": 212095800000,
-      "psRatio": 3.04,
-      "pbRatio": 5.97,
-      "pegRatio": 0.77
+      "ttmPe": 20.77,
+      "marketCap": 230079150000,
+      "psRatio": 3.29,
+      "pbRatio": 6.47,
+      "pegRatio": 0.83
     },
     "profitability": {
       "roe": 6.260000000000001,
@@ -6771,25 +6771,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.75,
-      "costOfEquity": 11.32,
+      "wacc": 8.64,
+      "costOfEquity": 10.97,
       "costOfDebt": 0.73,
       "taxRate": 12,
-      "beta": 0.8051,
-      "marketCap": 212095800000
+      "beta": 0.7632,
+      "marketCap": 230079150000
     },
     "beta": {
-      "beta5y": 0.8051
+      "beta5y": 0.7632
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 299.18,
-        "high": 307.18,
-        "low": 297.51,
-        "close": 304.12,
-        "volume": 6050600
-      },
       {
         "date": "2025-11-25",
         "open": 304.13,
@@ -8797,6 +8789,14 @@
         "low": 231.6,
         "close": 235.62,
         "volume": 3201500
+      },
+      {
+        "date": "2026-11-25",
+        "open": 233.51,
+        "high": 246.24,
+        "low": 232.17,
+        "close": 243.47,
+        "volume": 5230100
       }
     ],
     "news": [
@@ -8849,19 +8849,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
-        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
         "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
+        "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
         "type": "STORY"
       },
       {
@@ -8945,33 +8945,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.14,
-        "industryAvg": 15.04
+        "value": 20.77,
+        "industryAvg": 16.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.04,
-        "industryAvg": 1.43
+        "value": 3.29,
+        "industryAvg": 1.53
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.97,
-        "industryAvg": 3.31
+        "value": 6.47,
+        "industryAvg": 3.55
       },
       {
         "metric": "ROE",
         "value": 6.260000000000001,
-        "industryAvg": 17.49
+        "industryAvg": 17.47
       },
       {
         "metric": "ROA",
         "value": 1.43,
-        "industryAvg": 5.89
+        "industryAvg": 5.88
       },
       {
         "metric": "Gross Margin",
         "value": 56.79,
-        "industryAvg": 31.669999999999998
+        "industryAvg": 31.66
       },
       {
         "metric": "EBITDA Margin",
@@ -8981,7 +8981,7 @@
       {
         "metric": "Net Margin",
         "value": 12.8,
-        "industryAvg": 7.920000000000001
+        "industryAvg": 7.91
       }
     ]
   }

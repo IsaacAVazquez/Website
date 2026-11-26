@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7333,
-      "ttmPe": 17.04,
-      "pegRatio": 0.44,
-      "marketCap": 36460166400,
-      "psRatio": 1.69,
-      "pbRatio": 3.14
+      "ttmPe": 17.61,
+      "pegRatio": 0.45,
+      "marketCap": 37676409550,
+      "psRatio": 1.74,
+      "pbRatio": 3.24
     },
     "profitability": {
       "roe": 5.45,
@@ -6441,25 +6441,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.6,
-      "costOfEquity": 9.49,
+      "wacc": 7.89,
+      "costOfEquity": 9.8,
       "costOfDebt": 1.17,
       "taxRate": 17,
-      "beta": 0.5751,
-      "marketCap": 36460166400
+      "beta": 0.6166,
+      "marketCap": 37676409550
     },
     "beta": {
-      "beta5y": 0.5751
+      "beta5y": 0.6166
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 76.505,
-        "high": 79.02,
-        "low": 76.505,
-        "close": 78.24,
-        "volume": 7118800
-      },
       {
         "date": "2025-11-25",
         "open": 78.24,
@@ -8467,9 +8459,25 @@
         "low": 80.56,
         "close": 82.52,
         "volume": 2354500
+      },
+      {
+        "date": "2026-11-25",
+        "open": 81.93,
+        "high": 83.79,
+        "low": 81.58,
+        "close": 83.33,
+        "volume": 2617000
       }
     ],
     "news": [
+      {
+        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
+        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
+        "type": "STORY"
+      },
       {
         "uuid": "3a8a0cd7-61db-3a85-96ee-ff05c2acb719",
         "title": "GE HealthCare reports first quarter 2025 financial results",
@@ -8479,12 +8487,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
-        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
-        "type": "STORY"
+        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
+        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
@@ -8503,12 +8511,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
-        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
-        "type": "VIDEO"
+        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
+        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
+        "type": "STORY"
       },
       {
         "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
@@ -8516,14 +8524,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
-        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
         "type": "STORY"
       },
       {
@@ -8577,18 +8577,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.04,
-        "industryAvg": 25
+        "value": 17.61,
+        "industryAvg": 26.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.69,
-        "industryAvg": 3.18
+        "value": 1.74,
+        "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.14,
-        "industryAvg": 3.09
+        "value": 3.24,
+        "industryAvg": 3.2
       },
       {
         "metric": "ROE",
@@ -8608,7 +8608,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.81,
-        "industryAvg": 20.48
+        "industryAvg": 20.49
       },
       {
         "metric": "Net Margin",

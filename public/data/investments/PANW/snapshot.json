@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.6166,
-      "ttmPe": 556.8,
-      "marketCap": 281179080000,
-      "psRatio": 22.58,
-      "pbRatio": 9.81,
-      "pegRatio": 25.19
+      "ttmPe": 577.59,
+      "marketCap": 291678660000,
+      "psRatio": 23.43,
+      "pbRatio": 10.18,
+      "pegRatio": 26.14
     },
     "profitability": {
       "roe": 1.72,
@@ -6085,21 +6085,13 @@
       "costOfEquity": 12.58,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9636,
-      "marketCap": 281179080000
+      "beta": 0.9635,
+      "marketCap": 291678660000
     },
     "beta": {
-      "beta5y": 0.9636
+      "beta5y": 0.9635
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 185.42,
-        "high": 186.58,
-        "low": 181.92,
-        "close": 183.89,
-        "volume": 16207000
-      },
       {
         "date": "2025-11-25",
         "open": 183.53,
@@ -8107,6 +8099,14 @@
         "low": 346.44,
         "close": 352.99,
         "volume": 5989300
+      },
+      {
+        "date": "2026-11-25",
+        "open": 339,
+        "high": 358.28,
+        "low": 337.23,
+        "close": 356.14,
+        "volume": 6657600
       }
     ],
     "news": [
@@ -8135,20 +8135,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
-        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
         "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
+        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
+        "type": "STORY"
       },
       {
         "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",
@@ -8237,28 +8237,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 556.8,
-        "industryAvg": 28.68
+        "value": 577.59,
+        "industryAvg": 29.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.58,
-        "industryAvg": 6.56
+        "value": 23.43,
+        "industryAvg": 6.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.81,
-        "industryAvg": 7.1
+        "value": 10.18,
+        "industryAvg": 7.43
       },
       {
         "metric": "ROE",
         "value": 1.72,
-        "industryAvg": 25.790000000000003
+        "industryAvg": 25.8
       },
       {
         "metric": "ROA",
         "value": 0.9900000000000001,
-        "industryAvg": 10.13
+        "industryAvg": 10.14
       },
       {
         "metric": "Gross Margin",
@@ -8273,7 +8273,7 @@
       {
         "metric": "Net Margin",
         "value": 13.99,
-        "industryAvg": 20.5
+        "industryAvg": 20.51
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0864,
-      "ttmPe": 15.78,
-      "marketCap": 48820360000,
-      "psRatio": 1.06,
-      "pbRatio": 3.21,
+      "ttmPe": 17.57,
+      "marketCap": 54366780000,
+      "psRatio": 1.18,
+      "pbRatio": 3.57,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -5597,17 +5597,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.0534
+      "beta5y": 1.0168
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 62.51,
-        "high": 63.07,
-        "low": 61.93,
-        "close": 61.93,
-        "volume": 16681700
-      },
       {
         "date": "2025-11-25",
         "open": 62.34,
@@ -7614,7 +7606,15 @@
         "high": 36.12,
         "low": 33.93,
         "close": 35.75,
-        "volume": 30750300
+        "volume": 30766100
+      },
+      {
+        "date": "2026-11-25",
+        "open": 35.65,
+        "high": 37.06,
+        "low": 35.34,
+        "close": 36.66,
+        "volume": 27945300
       }
     ],
     "news": [
@@ -7643,19 +7643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
-        "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
         "title": "Brunswick (BC) Q1 Earnings: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
+        "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
         "type": "STORY"
       },
       {
@@ -7762,23 +7762,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.78,
-        "industryAvg": 14.45
+        "value": 17.57,
+        "industryAvg": 15.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.06,
-        "industryAvg": 1.24
+        "value": 1.18,
+        "industryAvg": 1.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.21,
-        "industryAvg": 3.11
+        "value": 3.57,
+        "industryAvg": 3.37
       },
       {
         "metric": "ROE",
         "value": 4.73,
-        "industryAvg": 21.89
+        "industryAvg": 21.88
       },
       {
         "metric": "ROA",

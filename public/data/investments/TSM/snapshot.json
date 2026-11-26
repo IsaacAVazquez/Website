@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
     "sections": {
-      "price": "2026-11-24"
+      "price": "2026-11-25"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5375,
-      "ttmPe": 20.51,
-      "marketCap": 1652981128540,
-      "psRatio": 10.65,
-      "pbRatio": 7.53,
-      "pegRatio": 0.36
+      "ttmPe": 22.03,
+      "marketCap": 1775537509160,
+      "psRatio": 11.44,
+      "pbRatio": 8.09,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -7175,25 +7175,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.520000000000003,
-      "costOfEquity": 16.85,
+      "wacc": 16.35,
+      "costOfEquity": 16.650000000000002,
       "costOfDebt": 0.3,
       "taxRate": 16,
-      "beta": 1.5011,
-      "marketCap": 1652981128540
+      "beta": 1.4711,
+      "marketCap": 1775537509160
     },
     "beta": {
-      "beta5y": 1.5011
+      "beta5y": 1.4711
     },
     "price": [
-      {
-        "date": "2025-11-24",
-        "open": 273.19,
-        "high": 285.06,
-        "low": 273.19,
-        "close": 284.64,
-        "volume": 13570300
-      },
       {
         "date": "2025-11-25",
         "open": 282.73,
@@ -9200,7 +9192,15 @@
         "high": 357.2,
         "low": 339.73,
         "close": 349.2,
-        "volume": 17206300
+        "volume": 17256900
+      },
+      {
+        "date": "2026-11-25",
+        "open": 329.13,
+        "high": 343.17,
+        "low": 321.1,
+        "close": 342.34,
+        "volume": 22717200
       }
     ],
     "news": [
@@ -9261,19 +9261,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
-        "title": "5 Brilliant Stocks to Buy in June",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
         "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
         "publisher": "TipRanks",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
         "type": "STORY"
       },
       {
@@ -9332,18 +9332,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.51,
-        "industryAvg": 15.74
+        "value": 22.03,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.65,
-        "industryAvg": 7.71
+        "value": 11.44,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.53,
-        "industryAvg": 6.99
+        "value": 8.09,
+        "industryAvg": 7.56
       },
       {
         "metric": "ROE",
