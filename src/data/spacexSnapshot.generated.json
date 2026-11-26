@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T03:39:49.695Z",
+  "generatedAt": "2026-11-26T19:09:39.013Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-26T03:39:44.551Z"
+    "generatedAt": "2026-11-26T19:09:31.313Z"
   },
   "upcomingLaunches": [
     {
@@ -2548,14 +2548,14 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/2gqOaJVRyzQolq",
+        "webcast": "https://www.youtube.com/watch?v=wp27QzrSj1s",
         "article": "https://www.spacex.com/launches/ng25",
         "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
-        "youtubeId": null,
+        "youtubeId": "wp27QzrSj1s",
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
@@ -3031,6 +3031,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-26T03:39:49.309Z"
+    "generatedAt": "2026-11-26T19:09:38.534Z"
   }
 }
