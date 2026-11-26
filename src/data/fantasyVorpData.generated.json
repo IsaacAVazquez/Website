@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-25T01:27:30.177Z",
+  "generatedAt": "2026-11-26T01:01:12.481Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:30.782Z",
+        "accessedAt": "2026-11-26T01:01:13.312Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2377,7 +2377,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 81,
             "rank": 264,
@@ -2737,7 +2737,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 304,
@@ -4654,7 +4654,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 517,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-25T01:27:31.540Z",
+        "accessedAt": "2026-11-26T01:01:14.257Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -7757,7 +7757,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 81,
             "rank": 266,
@@ -8405,7 +8405,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 338,
@@ -9683,7 +9683,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 480,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:32.440Z",
+        "accessedAt": "2026-11-26T01:01:15.038Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13209,7 +13209,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 81,
             "rank": 276,
@@ -14046,7 +14046,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 369,
@@ -15234,7 +15234,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:33.338Z",
+        "accessedAt": "2026-11-26T01:01:15.769Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18636,7 +18636,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 283,
@@ -19014,7 +19014,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 325,
@@ -20895,7 +20895,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 534,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-25T01:27:34.003Z",
+        "accessedAt": "2026-11-26T01:01:16.238Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23782,7 +23782,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 259,
@@ -24709,7 +24709,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 362,
@@ -25852,7 +25852,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 489,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:34.870Z",
+        "accessedAt": "2026-11-26T01:01:17.081Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29369,7 +29369,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 284,
@@ -30071,7 +30071,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 362,
@@ -31322,7 +31322,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-25T01:27:35.536Z",
+        "accessedAt": "2026-11-26T01:01:17.604Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34598,7 +34598,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 269,
@@ -35534,7 +35534,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 373,
@@ -36884,7 +36884,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 523,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-25T01:27:36.293Z",
+        "accessedAt": "2026-11-26T01:01:18.357Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -39996,7 +39996,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 273,
@@ -40932,7 +40932,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 377,
@@ -42264,7 +42264,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 525,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-25T01:27:36.845Z",
+        "accessedAt": "2026-11-26T01:01:18.840Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45169,7 +45169,7 @@
           {
             "playerId": "fp-12122",
             "name": "Brandin Cooks",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 83,
             "rank": 252,
@@ -46483,7 +46483,7 @@
           {
             "playerId": "fp-9001",
             "name": "Aaron Rodgers",
-            "team": "PIT",
+            "team": "FA",
             "position": "QB",
             "positionRank": 29,
             "rank": 398,
@@ -47347,7 +47347,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 494,
