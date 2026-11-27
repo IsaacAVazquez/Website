@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-26T01:01:12.481Z",
+  "generatedAt": "2026-11-27T01:02:16.321Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:13.312Z",
+        "accessedAt": "2026-11-27T01:02:17.038Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3286,7 +3286,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 365,
@@ -3979,7 +3979,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 442,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-26T01:01:14.257Z",
+        "accessedAt": "2026-11-27T01:02:17.455Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8873,7 +8873,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 390,
@@ -9179,7 +9179,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 424,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:15.038Z",
+        "accessedAt": "2026-11-27T01:02:18.101Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14271,7 +14271,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 394,
@@ -14604,7 +14604,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 431,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:15.769Z",
+        "accessedAt": "2026-11-27T01:02:18.931Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19761,7 +19761,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 408,
@@ -20310,7 +20310,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 469,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-26T01:01:16.238Z",
+        "accessedAt": "2026-11-27T01:02:20.030Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24799,7 +24799,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 372,
@@ -25294,7 +25294,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 427,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:17.081Z",
+        "accessedAt": "2026-11-27T01:02:20.487Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30350,7 +30350,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 129,
             "rank": 393,
@@ -30683,7 +30683,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 430,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-26T01:01:17.604Z",
+        "accessedAt": "2026-11-27T01:02:21.550Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35588,7 +35588,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 379,
@@ -36299,7 +36299,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 458,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-26T01:01:18.357Z",
+        "accessedAt": "2026-11-27T01:02:22.403Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41076,7 +41076,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 393,
@@ -41688,7 +41688,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 461,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-26T01:01:18.840Z",
+        "accessedAt": "2026-11-27T01:02:22.760Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46375,7 +46375,7 @@
           {
             "playerId": "fp-27222",
             "name": "Theo Wease Jr.",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 127,
             "rank": 386,
@@ -46753,7 +46753,7 @@
           {
             "playerId": "fp-25668",
             "name": "Malik Heath",
-            "team": "WAS",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 428,
