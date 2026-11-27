@@ -1,8 +1,8 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     },
@@ -45,9 +45,9 @@
     "fundamentals": {
       "ttmEps": -0.5799,
       "ttmPe": 141.68,
-      "marketCap": 179441352356,
-      "psRatio": 15.49,
-      "pbRatio": 3.69,
+      "marketCap": 180202627572,
+      "psRatio": 15.56,
+      "pbRatio": 3.71,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5559,15 +5559,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.84,
-      "costOfEquity": 10.9,
+      "wacc": 9.8,
+      "costOfEquity": 10.85,
       "costOfDebt": 0.91,
       "taxRate": 2,
-      "beta": 0.7527,
-      "marketCap": 179441352356
+      "beta": 0.748,
+      "marketCap": 180202627572
     },
     "beta": {
-      "beta5y": 0.7527
+      "beta5y": 0.748
     },
     "price": [
       {
@@ -7621,19 +7621,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
-        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
         "title": "Why Camden Property Remains a Solid Hold in the Current Market",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
+        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
         "type": "STORY"
       },
       {
@@ -7732,17 +7732,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 59.94
+        "industryAvg": 60.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.49,
-        "industryAvg": 9.35
+        "value": 15.56,
+        "industryAvg": 9.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.69,
-        "industryAvg": 2.8
+        "value": 3.71,
+        "industryAvg": 2.81
       },
       {
         "metric": "ROE",

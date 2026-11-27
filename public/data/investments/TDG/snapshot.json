@@ -1,8 +1,8 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 31.77,
-      "marketCap": 61636247366.18,
-      "psRatio": 5.84,
-      "pbRatio": -6.16,
-      "pegRatio": 0.96
+      "ttmPe": 32.37,
+      "marketCap": 62804772086,
+      "psRatio": 5.95,
+      "pbRatio": -6.28,
+      "pegRatio": 0.98
     },
     "profitability": {
       "roe": -5.94,
@@ -6471,15 +6471,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.290000000000001,
-      "costOfEquity": 12.32,
+      "wacc": 8.28,
+      "costOfEquity": 12.23,
       "costOfDebt": 1.54,
       "taxRate": 25,
-      "beta": 0.9306,
-      "marketCap": 61636247366.18
+      "beta": 0.9196,
+      "marketCap": 62804772086
     },
     "beta": {
-      "beta5y": 0.9306
+      "beta5y": 0.9196
     },
     "price": [
       {
@@ -8541,19 +8541,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
-        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
         "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
+        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
         "type": "STORY"
       },
       {
@@ -8640,18 +8640,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.77,
-        "industryAvg": 31.34
+        "value": 32.37,
+        "industryAvg": 31.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.84,
-        "industryAvg": 5.21
+        "value": 5.95,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.16,
-        "industryAvg": 6.81
+        "value": -6.28,
+        "industryAvg": 6.86
       },
       {
         "metric": "ROE",

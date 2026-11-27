@@ -1,8 +1,8 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.672,
-      "ttmPe": 15.27,
-      "marketCap": 412402743449,
-      "psRatio": 1.83,
-      "pbRatio": 2.12,
+      "ttmPe": 15.43,
+      "marketCap": 416788955735,
+      "psRatio": 1.85,
+      "pbRatio": 2.14,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -5622,15 +5622,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.36,
-      "costOfEquity": 8.98,
+      "wacc": 8.309999999999999,
+      "costOfEquity": 8.92,
       "costOfDebt": 0.91,
       "taxRate": 26,
-      "beta": 0.5107,
-      "marketCap": 412402743449
+      "beta": 0.5076,
+      "marketCap": 416788955735
     },
     "beta": {
-      "beta5y": 0.5107
+      "beta5y": 0.5076
     },
     "price": [
       {
@@ -7700,19 +7700,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
-        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-15",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "37f5738b-07b3-30fa-a06f-536929356258",
         "title": "Top Analyst Reports for Bank of America, Chevron & Stryker",
         "publisher": "Zacks",
         "reportDate": "2025-04-15",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-bank-america-211500618.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
+        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
         "type": "STORY"
       },
       {
@@ -7802,18 +7802,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.27,
-        "industryAvg": 9.08
+        "value": 15.43,
+        "industryAvg": 9.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
+        "value": 1.85,
         "industryAvg": 0.9
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.12,
-        "industryAvg": 1.5
+        "value": 2.14,
+        "industryAvg": 1.49
       },
       {
         "metric": "ROE",

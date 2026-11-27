@@ -1,8 +1,8 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5991,
-      "ttmPe": 89.86,
-      "marketCap": 674456640000,
-      "psRatio": 14.84,
-      "pbRatio": 9.86,
-      "pegRatio": 0.97
+      "ttmPe": 88.28,
+      "marketCap": 662640960000,
+      "psRatio": 14.58,
+      "pbRatio": 9.69,
+      "pegRatio": 0.95
     },
     "profitability": {
       "roe": 3.58,
@@ -6209,15 +6209,15 @@
       ]
     },
     "wacc": {
-      "wacc": 24.97,
-      "costOfEquity": 25.290000000000003,
+      "wacc": 25.1,
+      "costOfEquity": 25.430000000000003,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 40,
-      "beta": 2.5609,
-      "marketCap": 674456640000
+      "beta": 2.566,
+      "marketCap": 662640960000
     },
     "beta": {
-      "beta5y": 2.5609
+      "beta5y": 2.566
     },
     "price": [
       {
@@ -8234,7 +8234,7 @@
         "high": 407.77,
         "low": 370.4,
         "close": 406.03,
-        "volume": 51340800
+        "volume": 51632000
       }
     ],
     "news": [
@@ -8373,18 +8373,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 89.86,
-        "industryAvg": 17.34
+        "value": 88.28,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.84,
-        "industryAvg": 8.48
+        "value": 14.58,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.86,
-        "industryAvg": 7.72
+        "value": 9.69,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

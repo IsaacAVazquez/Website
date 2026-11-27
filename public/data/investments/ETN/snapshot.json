@@ -1,14 +1,11 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.0061,
-      "ttmPe": 31.11,
-      "marketCap": 120951705000,
-      "psRatio": 3.78,
-      "pbRatio": 5.77,
-      "pegRatio": 4.53
+      "ttmPe": 31.76,
+      "marketCap": 123469185000,
+      "psRatio": 3.86,
+      "pbRatio": 5.89,
+      "pegRatio": 4.62
     },
     "profitability": {
       "roe": 5.2299999999999995,
@@ -5433,15 +5430,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.27,
-      "costOfEquity": 14.26,
+      "wacc": 12.280000000000001,
+      "costOfEquity": 14.23,
       "costOfDebt": 0.95,
       "taxRate": 21,
-      "beta": 1.1748,
-      "marketCap": 120951705000
+      "beta": 1.169,
+      "marketCap": 123469185000
     },
     "beta": {
-      "beta5y": 1.1748
+      "beta5y": 1.169
     },
     "price": [
       {
@@ -7479,6 +7476,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
+        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
         "title": "Eaton: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
@@ -7487,11 +7492,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
-        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
+        "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
+        "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
         "type": "STORY"
       },
       {
@@ -7509,14 +7514,6 @@
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/video/latest-companies-warning-tariffs-204022408.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
-        "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
-        "type": "STORY"
       },
       {
         "uuid": "f5675682-9157-39e7-9a91-2a6739ec90d0",
@@ -7604,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.04,
-        "industryAvg": 27.29
+        "value": 31.76,
+        "industryAvg": 24.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.02,
-        "industryAvg": 3.02
+        "value": 3.86,
+        "industryAvg": 2.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.12,
-        "industryAvg": 5.25
+        "value": 5.89,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",
@@ -7625,7 +7622,7 @@
       {
         "metric": "ROA",
         "value": 1.9,
-        "industryAvg": 6.78
+        "industryAvg": 6.79
       },
       {
         "metric": "Gross Margin",
@@ -7640,7 +7637,7 @@
       {
         "metric": "Net Margin",
         "value": 12.049999999999999,
-        "industryAvg": 10.71
+        "industryAvg": 10.72
       }
     ]
   }

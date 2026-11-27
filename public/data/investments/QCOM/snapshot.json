@@ -1,8 +1,8 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.6978,
-      "ttmPe": 12.99,
-      "marketCap": 176837120000,
-      "psRatio": 4.1,
-      "pbRatio": 5.82,
+      "ttmPe": 13.28,
+      "marketCap": 180803520000,
+      "psRatio": 4.19,
+      "pbRatio": 5.95,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6188,15 +6188,15 @@
       ]
     },
     "wacc": {
-      "wacc": 17.06,
-      "costOfEquity": 18.459999999999997,
+      "wacc": 17.01,
+      "costOfEquity": 18.38,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 40,
-      "beta": 1.7026,
-      "marketCap": 176837120000
+      "beta": 1.6871,
+      "marketCap": 180803520000
     },
     "beta": {
-      "beta5y": 1.7026
+      "beta5y": 1.6871
     },
     "price": [
       {
@@ -8213,7 +8213,7 @@
         "high": 168.95,
         "low": 155.38,
         "close": 168.66,
-        "volume": 14029400
+        "volume": 14054400
       }
     ],
     "news": [
@@ -8365,18 +8365,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.99,
-        "industryAvg": 17.34
+        "value": 13.28,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.1,
-        "industryAvg": 8.48
+        "value": 4.19,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.82,
-        "industryAvg": 7.72
+        "value": 5.95,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.9334,
-      "ttmPe": 21.03,
-      "marketCap": 35234460000,
-      "psRatio": 8.63,
-      "pbRatio": -10.29,
+      "ttmPe": 21.26,
+      "marketCap": 35626380000,
+      "psRatio": 8.72,
+      "pbRatio": -10.4,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5862,15 +5862,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.66,
-      "costOfEquity": 12.16,
+      "wacc": 7.6499999999999995,
+      "costOfEquity": 12.1,
       "costOfDebt": 0.75,
       "taxRate": 2,
-      "beta": 0.9107,
-      "marketCap": 35234460000
+      "beta": 0.9046,
+      "marketCap": 35626380000
     },
     "beta": {
-      "beta5y": 0.9107
+      "beta5y": 0.9046
     },
     "price": [
       {
@@ -7892,14 +7892,6 @@
     ],
     "news": [
       {
-        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
-        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
         "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
         "publisher": "MT Newswires",
@@ -7908,11 +7900,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f734f670-1f48-3b82-928d-dab535236e9b",
-        "title": "Citigroup Adjusts Crown Castle Price Target to $124 From $108",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/citigroup-adjusts-crown-castle-price-130821194.html",
+        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
+        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
         "type": "STORY"
       },
       {
@@ -7929,6 +7921,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f734f670-1f48-3b82-928d-dab535236e9b",
+        "title": "Citigroup Adjusts Crown Castle Price Target to $124 From $108",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/citigroup-adjusts-crown-castle-price-130821194.html",
         "type": "STORY"
       },
       {
@@ -8035,18 +8035,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.03,
-        "industryAvg": 34.49
+        "value": 21.26,
+        "industryAvg": 34.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.63,
-        "industryAvg": 6.39
+        "value": 8.72,
+        "industryAvg": 6.41
       },
       {
         "metric": "P/B Ratio",
-        "value": -10.29,
-        "industryAvg": 4.13
+        "value": -10.4,
+        "industryAvg": 4.14
       },
       {
         "metric": "ROE",

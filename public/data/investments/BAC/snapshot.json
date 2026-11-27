@@ -1,8 +1,8 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     },
@@ -44,8 +44,8 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 11.58,
-      "marketCap": 336166083768,
+      "ttmPe": 11.57,
+      "marketCap": 336027629862,
       "psRatio": 2.85,
       "pbRatio": 1.13,
       "pegRatio": 0.37
@@ -5757,15 +5757,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.61,
-      "costOfEquity": 14.280000000000001,
+      "wacc": 8.6,
+      "costOfEquity": 14.27,
       "costOfDebt": 4.68,
       "taxRate": 23,
-      "beta": 1.1766,
-      "marketCap": 336166083768
+      "beta": 1.1744,
+      "marketCap": 336027629862
     },
     "beta": {
-      "beta5y": 1.1766
+      "beta5y": 1.1744
     },
     "price": [
       {
@@ -7782,24 +7782,24 @@
         "high": 48.73,
         "low": 46.94,
         "close": 48.54,
-        "volume": 38275100
+        "volume": 38285800
       }
     ],
     "news": [
-      {
-        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
       {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {
@@ -7935,18 +7935,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.58,
-        "industryAvg": 11.8
+        "value": 11.57,
+        "industryAvg": 11.76
       },
       {
         "metric": "P/S Ratio",
         "value": 2.85,
-        "industryAvg": 3.24
+        "industryAvg": 3.23
       },
       {
         "metric": "P/B Ratio",
         "value": 1.13,
-        "industryAvg": 1.49
+        "industryAvg": 1.48
       },
       {
         "metric": "ROE",

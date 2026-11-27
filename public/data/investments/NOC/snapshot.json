@@ -1,8 +1,8 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 31.7658,
-      "ttmPe": 16.82,
-      "marketCap": 75906269271,
-      "psRatio": 1.74,
-      "pbRatio": 4.06,
-      "pegRatio": 5.66
+      "ttmPe": 17.5,
+      "marketCap": 78957806139,
+      "psRatio": 1.81,
+      "pbRatio": 4.23,
+      "pegRatio": 5.89
     },
     "profitability": {
       "roe": 6.15,
@@ -5565,15 +5565,15 @@
       ]
     },
     "wacc": {
-      "wacc": 3.65,
-      "costOfEquity": 4.2700000000000005,
+      "wacc": 3.37,
+      "costOfEquity": 3.9,
       "costOfDebt": 0.95,
       "taxRate": 13,
-      "beta": -0.0812,
-      "marketCap": 75906269271
+      "beta": -0.1187,
+      "marketCap": 78957806139
     },
     "beta": {
-      "beta5y": -0.0812
+      "beta5y": -0.1187
     },
     "price": [
       {
@@ -7627,19 +7627,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
         "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7738,23 +7738,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.82,
-        "industryAvg": 30.65
+        "value": 17.5,
+        "industryAvg": 31.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.74,
-        "industryAvg": 5.11
+        "value": 1.81,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.06,
-        "industryAvg": 6.74
+        "value": 4.23,
+        "industryAvg": 6.86
       },
       {
         "metric": "ROE",
         "value": 6.15,
-        "industryAvg": 12.24
+        "industryAvg": 12.26
       },
       {
         "metric": "ROA",
@@ -7764,17 +7764,17 @@
       {
         "metric": "Gross Margin",
         "value": 21.15,
-        "industryAvg": 20.810000000000002
+        "industryAvg": 20.82
       },
       {
         "metric": "EBITDA Margin",
         "value": 16.5,
-        "industryAvg": 15.03
+        "industryAvg": 15.040000000000001
       },
       {
         "metric": "Net Margin",
         "value": 10.11,
-        "industryAvg": 6.41
+        "industryAvg": 6.419999999999999
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -2.3911,
       "ttmPe": 3518.87,
-      "marketCap": 290988000000,
-      "psRatio": 4.86,
-      "pbRatio": 2.53,
+      "marketCap": 289235700000,
+      "psRatio": 4.83,
+      "pbRatio": 2.52,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6198,15 +6198,15 @@
       ]
     },
     "wacc": {
-      "wacc": 20.61,
-      "costOfEquity": 24.060000000000002,
+      "wacc": 20.669999999999998,
+      "costOfEquity": 24.15,
       "costOfDebt": 0.65,
       "taxRate": 12,
-      "beta": 2.4057,
-      "marketCap": 290988000000
+      "beta": 2.406,
+      "marketCap": 289235700000
     },
     "beta": {
-      "beta5y": 2.4057
+      "beta5y": 2.406
     },
     "price": [
       {
@@ -8223,7 +8223,7 @@
         "high": 55,
         "low": 49.16,
         "close": 54.47,
-        "volume": 128605100
+        "volume": 129277900
       }
     ],
     "news": [
@@ -8300,11 +8300,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
-        "title": "Why Arm Holdings Stock Was Moving Higher Today",
+        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
+        "title": "Why Intel Stock Is Sinking Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
+        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
         "type": "STORY"
       }
     ],
@@ -8369,17 +8369,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 3518.87,
-        "industryAvg": 17.34
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.86,
-        "industryAvg": 8.48
+        "value": 4.83,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.53,
-        "industryAvg": 7.72
+        "value": 2.52,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

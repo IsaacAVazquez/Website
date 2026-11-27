@@ -1,8 +1,8 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 25.76,
-      "marketCap": 84864566760,
-      "psRatio": 7.71,
-      "pbRatio": 24.13,
+      "ttmPe": 26.01,
+      "marketCap": 85681509480,
+      "psRatio": 7.78,
+      "pbRatio": 24.36,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,15 +6462,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.720000000000001,
-      "costOfEquity": 11.469999999999999,
+      "wacc": 7.71,
+      "costOfEquity": 11.41,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8245,
-      "marketCap": 84864566760
+      "beta": 0.8182,
+      "marketCap": 85681509480
     },
     "beta": {
-      "beta5y": 0.8245
+      "beta5y": 0.8182
     },
     "price": [
       {
@@ -8524,19 +8524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
         "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -8564,11 +8564,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c1cf2d5-2670-3073-8a6b-d5f6c022aeea",
-        "title": "NYSE Content Advisory: Pre-Market update + Dick's Sporting Goods to acquire Foot Locker",
-        "publisher": "PR Newswire",
+        "uuid": "fde3659a-77b8-363f-be17-a13c3aa95ee9",
+        "title": "American Tower Corporation (AMT) Underpinned by Strong Demand Driven by Secular Growth in Mobile Data",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500511.html",
+        "link": "https://finance.yahoo.com/news/american-tower-corporation-amt-underpinned-125628591.html",
         "type": "STORY"
       }
     ],
@@ -8633,18 +8633,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.76,
-        "industryAvg": 34.49
+        "value": 26.01,
+        "industryAvg": 34.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.71,
-        "industryAvg": 6.39
+        "value": 7.78,
+        "industryAvg": 6.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.13,
-        "industryAvg": 4.13
+        "value": 24.36,
+        "industryAvg": 4.14
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 25.54,
-      "marketCap": 101338630076,
-      "psRatio": 3.56,
-      "pbRatio": 6.91,
-      "pegRatio": 2.21
+      "ttmPe": 25.96,
+      "marketCap": 103002568926,
+      "psRatio": 3.62,
+      "pbRatio": 7.02,
+      "pegRatio": 2.25
     },
     "profitability": {
       "roe": 5.41,
@@ -3678,15 +3678,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.33,
-      "costOfEquity": 8.75,
+      "wacc": 7.249999999999999,
+      "costOfEquity": 8.63,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.4822,
-      "marketCap": 101338630076
+      "beta": 0.4711,
+      "marketCap": 103002568926
     },
     "beta": {
-      "beta5y": 0.4822
+      "beta5y": 0.4711
     },
     "price": [
       {
@@ -5708,19 +5708,19 @@
     ],
     "news": [
       {
-        "uuid": "cb38c028-4465-3a17-b3b6-be65defe0342",
-        "title": "2 Oversold Stocks Primed to Rebound and 1 Facing Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2026-01-19",
-        "link": "https://finance.yahoo.com/news/2-oversold-stocks-primed-rebound-043639375.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dbc13d65-21f1-3f0b-ad2a-366e91da0177",
         "title": "Marsh & McLennan Companies' (NYSE:MRSH) investors will be pleased with their decent 75% return over the last five years",
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-19",
         "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-nyse-mrsh-110019060.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cb38c028-4465-3a17-b3b6-be65defe0342",
+        "title": "2 Oversold Stocks Primed to Rebound and 1 Facing Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2026-01-19",
+        "link": "https://finance.yahoo.com/news/2-oversold-stocks-primed-rebound-043639375.html",
         "type": "STORY"
       },
       {
@@ -5748,14 +5748,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
-        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
-        "publisher": "Business Wire",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
         "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
         "publisher": "Simply Wall St.",
@@ -5769,6 +5761,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
+        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
+        "publisher": "Business Wire",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
         "type": "STORY"
       },
       {
@@ -5856,18 +5856,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.54,
-        "industryAvg": 25.01
+        "value": 25.96,
+        "industryAvg": 25.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.56,
-        "industryAvg": 3.5
+        "value": 3.62,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.91,
-        "industryAvg": 4.45
+        "value": 7.02,
+        "industryAvg": 4.52
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6201,
-      "ttmPe": 25.65,
-      "marketCap": 256935094224,
-      "psRatio": 8.33,
-      "pbRatio": 10.03,
-      "pegRatio": 0.6
+      "ttmPe": 24.66,
+      "marketCap": 246951638932,
+      "psRatio": 8.01,
+      "pbRatio": 9.64,
+      "pegRatio": 0.57
     },
     "profitability": {
       "roe": 10.25,
@@ -6401,15 +6401,15 @@
       ]
     },
     "wacc": {
-      "wacc": 17.87,
-      "costOfEquity": 18.32,
+      "wacc": 18.01,
+      "costOfEquity": 18.490000000000002,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.6845,
-      "marketCap": 256935094224
+      "beta": 1.7002,
+      "marketCap": 246951638932
     },
     "beta": {
-      "beta5y": 1.6845
+      "beta5y": 1.7002
     },
     "price": [
       {
@@ -8426,7 +8426,7 @@
         "high": 311.55,
         "low": 289.47,
         "close": 311.18,
-        "volume": 11700800
+        "volume": 11719400
       }
     ],
     "news": [
@@ -8463,19 +8463,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
-        "title": "3 Cash-Heavy Stocks with Exciting Potential",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
         "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
+        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
         "type": "STORY"
       },
       {
@@ -8487,11 +8487,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
-        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
-        "publisher": "Zacks",
+        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
+        "title": "3 Cash-Heavy Stocks with Exciting Potential",
+        "publisher": "StockStory",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
+        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
         "type": "STORY"
       },
       {
@@ -8580,18 +8580,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.65,
-        "industryAvg": 31.24
+        "value": 24.66,
+        "industryAvg": 30.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.33,
-        "industryAvg": 9.23
+        "value": 8.01,
+        "industryAvg": 8.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.03,
-        "industryAvg": 12.82
+        "value": 9.64,
+        "industryAvg": 12.05
       },
       {
         "metric": "ROE",

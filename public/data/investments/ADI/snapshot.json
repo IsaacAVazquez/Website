@@ -1,8 +1,8 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -32,19 +32,19 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "Analog Devices, Inc. engages in the design, manufacture, testing, and marketing of integrated circuits (ICs), software, and subsystems products in the United States, rest of North and South America, Europe, Japan, China, and rest of Asia. It provides data converter products, which translate real-world analog signals into digital data, as well as translates digital data into analog signals; power management and reference products for power conversion, driver monitoring, sequencing, and energy management applications in the automotive, communications, industrial, and consumer markets; and power ICs that include performance, integration, and software design simulation tools for accurate power supply designs. The company also offers amplifiers to condition analog signals; and radio frequency and microwave ICs to support cellular infrastructure; and micro-electro-mechanical systems technology solutions, including accelerometers used to sense acceleration, gyroscopes for sense rotation, inertial measurement units to sense multiple degrees of freedom, and broadband switches for radio and instrument systems, as well as isolators. In addition, it provides digital signal processing and system products for numeric calculations. The company serves clients in the industrial, automotive, consumer, instrumentation, aerospace, defense and healthcare, and communications markets through a direct sales force, third-party distributors, and independent sales representatives, as well as online. The company was incorporated in 1965 and is headquartered in Wilmington, Massachusetts.",
-      "fullTimeEmployees": 24500,
+      "longBusinessSummary": "Analog Devices, Inc. design, manufacture, tests, and markets portfolio of solutions, including integrated circuits (ICs); software and subsystems; analog and mixed signal; and digital technologies products in the United States, rest of North and South America, Europe, Japan, China, and rest of Asia. The company provides data converter products, which translate real-world analog signals into digital data, as well as translates digital data into analog signals; power management and reference products for power conversion, driver monitoring, sequencing, and energy management applications in the automotive, communications, industrial, and consumer markets; and power ICs that include performance, integration, and software design simulation tools for accurate power supply designs. It offers amplifiers to condition analog signals; and radio frequency and microwave ICs to support cellular infrastructure; and micro-electro-mechanical systems technology solutions, including accelerometers used to sense acceleration, gyroscopes for sense rotation, inertial measurement units to sense multiple degrees of freedom, and broadband switches for radio and instrument systems, as well as isolators. In addition, the company provides digital signal processing and system products for numeric calculations. It serves clients in the industrial, automotive, consumer, instrumentation, aerospace, defense and healthcare, and communications markets through a direct sales force, third-party distributors, and independent sales representatives, as well as online. The company was incorporated in 1965 and is headquartered in Wilmington, Massachusetts.",
+      "fullTimeEmployees": 24800,
       "website": "https://www.analog.com",
       "shortName": "Analog Devices, Inc.",
       "longName": "Analog Devices, Inc."
     },
     "fundamentals": {
-      "ttmEps": 8.4268,
-      "ttmPe": 37.14,
-      "marketCap": 151644773225,
-      "psRatio": 10.92,
-      "pbRatio": 4.52,
-      "pegRatio": 0.23
+      "ttmEps": 10.2297,
+      "ttmPe": 32.56,
+      "marketCap": 160784335604,
+      "psRatio": 11.58,
+      "pbRatio": 4.79,
+      "pegRatio": 0.29
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 162.61
+        "yoyGrowth": 112.89
       }
     ],
     "income_statement": {
@@ -6102,15 +6102,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.75,
-      "costOfEquity": 15.590000000000002,
+      "wacc": 14.66,
+      "costOfEquity": 15.440000000000001,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.3415,
-      "marketCap": 151644773225
+      "beta": 1.3201,
+      "marketCap": 160784335604
     },
     "beta": {
-      "beta5y": 1.3415
+      "beta5y": 1.3201
     },
     "price": [
       {
@@ -8228,10 +8228,6 @@
         "totalPay": 111163
       },
       {
-        "name": "Jeff Ambrosi",
-        "title": "Head of Investor Relations"
-      },
-      {
         "name": "Mr. Martin Cotter",
         "title": "Chief Business Units Officer & EMEA President",
         "age": 60,
@@ -8250,6 +8246,12 @@
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 2119759
+      },
+      {
+        "name": "Mr. Rob Oshana",
+        "title": "Chief of Software, Digital & AI Technologies",
+        "age": 64,
+        "yearBorn": 1961
       },
       {
         "name": "Mr. Vincent T. Roche",
@@ -8281,18 +8283,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.14,
-        "industryAvg": 17.34
+        "value": 32.56,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.92,
-        "industryAvg": 8.48
+        "value": 11.58,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.52,
-        "industryAvg": 7.72
+        "value": 4.79,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

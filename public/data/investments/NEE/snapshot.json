@@ -1,8 +1,8 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.5559,
-      "ttmPe": 15.22,
-      "marketCap": 177364260000,
-      "psRatio": 6.15,
-      "pbRatio": 2.88,
+      "ttmPe": 15.37,
+      "marketCap": 179104770000,
+      "psRatio": 6.21,
+      "pbRatio": 2.91,
       "pegRatio": 0.16
     },
     "profitability": {
@@ -6068,15 +6068,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.970000000000001,
-      "costOfEquity": 9.51,
+      "wacc": 5.94,
+      "costOfEquity": 9.43,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.5776,
-      "marketCap": 177364260000
+      "beta": 0.571,
+      "marketCap": 179104770000
     },
     "beta": {
-      "beta5y": 0.5776
+      "beta5y": 0.571
     },
     "price": [
       {
@@ -8106,19 +8106,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
-        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "03e55f62-1ff6-3798-8ef9-27158b99013d",
         "title": "SunRun and Other Solar Stocks Fall on Tax Bill",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/m/03e55f62-1ff6-3798-8ef9-27158b99013d/sunrun-and-other-solar-stocks.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
+        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
         "type": "STORY"
       },
       {
@@ -8154,19 +8154,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
-        "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
         "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
         "publisher": "TipRanks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
+        "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
         "type": "STORY"
       },
       {
@@ -8242,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.22,
-        "industryAvg": 15.95
+        "value": 15.37,
+        "industryAvg": 16.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.15,
-        "industryAvg": 2.24
+        "value": 6.21,
+        "industryAvg": 2.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.88,
-        "industryAvg": 1.75
+        "value": 2.91,
+        "industryAvg": 1.74
       },
       {
         "metric": "ROE",

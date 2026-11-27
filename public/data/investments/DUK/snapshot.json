@@ -1,8 +1,8 @@
 {
   "symbol": "DUK",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8569,
-      "ttmPe": 26.96,
-      "marketCap": 102148800000,
-      "psRatio": 3.02,
-      "pbRatio": 1.84,
+      "ttmPe": 27.16,
+      "marketCap": 102882000000,
+      "psRatio": 3.04,
+      "pbRatio": 1.86,
       "pegRatio": 1.61
     },
     "profitability": {
@@ -6551,15 +6551,15 @@
       ]
     },
     "wacc": {
-      "wacc": 4.16,
-      "costOfEquity": 7.180000000000001,
+      "wacc": 4.130000000000001,
+      "costOfEquity": 7.1,
       "costOfDebt": 1.03,
       "taxRate": 15,
-      "beta": 0.2858,
-      "marketCap": 102148800000
+      "beta": 0.281,
+      "marketCap": 102882000000
     },
     "beta": {
-      "beta5y": 0.2858
+      "beta5y": 0.281
     },
     "price": [
       {
@@ -8727,18 +8727,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.96,
-        "industryAvg": 15.95
+        "value": 27.16,
+        "industryAvg": 16.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.02,
-        "industryAvg": 2.24
+        "value": 3.04,
+        "industryAvg": 2.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.84,
-        "industryAvg": 1.75
+        "value": 1.86,
+        "industryAvg": 1.74
       },
       {
         "metric": "ROE",

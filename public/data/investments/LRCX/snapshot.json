@@ -1,8 +1,8 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 29.2,
-      "marketCap": 245032283200,
-      "psRatio": 9.38,
-      "pbRatio": 17.62,
-      "pegRatio": 0.38
+      "ttmPe": 27.54,
+      "marketCap": 231104316450,
+      "psRatio": 8.85,
+      "pbRatio": 16.62,
+      "pegRatio": 0.36
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,15 +5781,15 @@
       ]
     },
     "wacc": {
-      "wacc": 20.7,
-      "costOfEquity": 21,
+      "wacc": 20.919999999999998,
+      "costOfEquity": 21.240000000000002,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 2.0211,
-      "marketCap": 245032283200
+      "beta": 2.0434,
+      "marketCap": 231104316450
     },
     "beta": {
-      "beta5y": 2.0211
+      "beta5y": 2.0434
     },
     "price": [
       {
@@ -7806,7 +7806,7 @@
         "high": 185.18,
         "low": 171.53,
         "close": 185.01,
-        "volume": 21472400
+        "volume": 21505500
       }
     ],
     "news": [
@@ -7827,14 +7827,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
-        "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
         "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
         "publisher": "Zacks",
@@ -7843,11 +7835,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
-        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
+        "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
+        "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
         "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
         "type": "STORY"
       },
       {
@@ -7859,11 +7851,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
-        "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
+        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
+        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
         "publisher": "Zacks",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-091900222.html",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
         "type": "STORY"
       },
       {
@@ -7872,6 +7864,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/3-reasons-growth-investors-love-164507608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
+        "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-091900222.html",
         "type": "STORY"
       },
       {
@@ -7958,18 +7958,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.2,
-        "industryAvg": 31.24
+        "value": 27.54,
+        "industryAvg": 30.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.38,
-        "industryAvg": 9.23
+        "value": 8.85,
+        "industryAvg": 8.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.62,
-        "industryAvg": 12.82
+        "value": 16.62,
+        "industryAvg": 12.05
       },
       {
         "metric": "ROE",

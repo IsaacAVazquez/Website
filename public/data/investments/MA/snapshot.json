@@ -1,8 +1,8 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 46.79,
-      "marketCap": 565215120000,
-      "psRatio": 15.58,
-      "pbRatio": 83.7,
+      "ttmPe": 47.69,
+      "marketCap": 576153810000,
+      "psRatio": 15.88,
+      "pbRatio": 85.32,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,15 +5641,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.440000000000001,
-      "costOfEquity": 10.85,
+      "wacc": 10.35,
+      "costOfEquity": 10.74,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.7464,
-      "marketCap": 565215120000
+      "beta": 0.7348,
+      "marketCap": 576153810000
     },
     "beta": {
-      "beta5y": 0.7464
+      "beta5y": 0.7348
     },
     "price": [
       {
@@ -7695,19 +7695,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
         "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
         "type": "STORY"
       },
       {
@@ -7735,19 +7735,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
-        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
         "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
+        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
         "type": "STORY"
       }
     ],
@@ -7817,18 +7817,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.79,
-        "industryAvg": 22.69
+        "value": 47.69,
+        "industryAvg": 23.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.58,
-        "industryAvg": 5.35
+        "value": 15.88,
+        "industryAvg": 5.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 83.7,
-        "industryAvg": 5.85
+        "value": 85.32,
+        "industryAvg": 5.96
       },
       {
         "metric": "ROE",

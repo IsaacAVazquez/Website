@@ -1,8 +1,8 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 8.49,
-      "marketCap": 712292490000,
-      "psRatio": 5.35,
-      "pbRatio": 5.15,
+      "ttmPe": 8.1,
+      "marketCap": 680013750000,
+      "psRatio": 5.11,
+      "pbRatio": 4.91,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,15 +5964,15 @@
       ]
     },
     "wacc": {
-      "wacc": 24.4,
-      "costOfEquity": 24.58,
+      "wacc": 24.610000000000003,
+      "costOfEquity": 24.8,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.4711,
-      "marketCap": 712292490000
+      "beta": 2.488,
+      "marketCap": 680013750000
     },
     "beta": {
-      "beta5y": 2.4711
+      "beta5y": 2.488
     },
     "price": [
       {
@@ -7989,7 +7989,7 @@
         "high": 604.95,
         "low": 548.13,
         "close": 601.25,
-        "volume": 52470000
+        "volume": 52988400
       }
     ],
     "news": [
@@ -8042,11 +8042,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
-        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
-        "publisher": "MT Newswires",
+        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
+        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "publisher": "Zacks",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
+        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
         "type": "STORY"
       },
       {
@@ -8066,11 +8066,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
-        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
-        "publisher": "Zacks",
+        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
+        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
+        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
         "type": "STORY"
       }
     ],
@@ -8080,7 +8080,7 @@
         "title": "President & Chief Technology and Products Officer",
         "age": 59,
         "yearBorn": 1966,
-        "totalPay": 1974634
+        "totalPay": 3115660
       },
       {
         "name": "Mr. Anand Bahl",
@@ -8091,14 +8091,14 @@
         "title": "President & COO",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 2262010
+        "totalPay": 3653648
       },
       {
         "name": "Mr. Mark J. Murphy",
         "title": "Executive VP & CFO",
         "age": 57,
         "yearBorn": 1968,
-        "totalPay": 2116665
+        "totalPay": 3506506
       },
       {
         "name": "Mr. Michael Charles Ray Ph.D.",
@@ -8117,7 +8117,7 @@
         "title": "CEO & Chairman",
         "age": 66,
         "yearBorn": 1959,
-        "totalPay": 5580117
+        "totalPay": 9723800
       },
       {
         "name": "Mr. Satya Kumar",
@@ -8134,24 +8134,24 @@
         "title": "Senior Advisor to the CEO",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2314316
+        "totalPay": 3816400
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.49,
-        "industryAvg": 17.34
+        "value": 8.1,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.35,
-        "industryAvg": 8.48
+        "value": 5.11,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.15,
-        "industryAvg": 7.72
+        "value": 4.91,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

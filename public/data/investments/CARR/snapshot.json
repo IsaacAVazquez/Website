@@ -1,8 +1,8 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.9451,
-      "ttmPe": 55.78,
-      "marketCap": 43495375992,
-      "psRatio": 1.91,
-      "pbRatio": 4.33,
+      "ttmPe": 57.03,
+      "marketCap": 44468906790,
+      "psRatio": 1.95,
+      "pbRatio": 4.42,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -6228,15 +6228,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.030000000000001,
-      "costOfEquity": 15.160000000000002,
+      "wacc": 12.01,
+      "costOfEquity": 15.06,
       "costOfDebt": 0.98,
       "taxRate": 40,
-      "beta": 1.2872,
-      "marketCap": 43495375992
+      "beta": 1.2734,
+      "marketCap": 44468906790
     },
     "beta": {
-      "beta5y": 1.2872
+      "beta5y": 1.2734
     },
     "price": [
       {
@@ -8330,22 +8330,15 @@
         "type": "STORY"
       },
       {
-        "uuid": "ce4bb8f1-5b90-36fe-99e1-fe15757eab25",
-        "title": "Mizuho Adjusts Price Target on Carrier Global to $88 From $80, Keeps Outperform Rating",
+        "uuid": "b5ace3c5-cba2-3947-b295-a968d700daff",
+        "title": "JPMorgan Adjusts Price Target on Carrier Global to $79 From $66, Maintains Overweight Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-carrier-103753974.html",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-carrier-103720777.html",
         "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Mr. Ajay Agrawal",
-        "title": "Senior VP of Global Services & Chief Business Development Officer",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 1192833
-      },
       {
         "name": "Mr. David L. Gitlin",
         "title": "Chairman & CEO",
@@ -8396,29 +8389,23 @@
         "title": "VP, Controller & Chief Accounting Officer",
         "age": 46,
         "yearBorn": 1979
-      },
-      {
-        "name": "Ms. Nadia Villeneuve",
-        "title": "Senior VP and Chief People & Communications",
-        "age": 51,
-        "yearBorn": 1974
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.78,
-        "industryAvg": 26.53
+        "value": 57.03,
+        "industryAvg": 26.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.91,
-        "industryAvg": 2.1
+        "value": 1.95,
+        "industryAvg": 2.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.33,
-        "industryAvg": 3.67
+        "value": 4.42,
+        "industryAvg": 3.76
       },
       {
         "metric": "ROE",

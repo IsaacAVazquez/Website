@@ -1,8 +1,8 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 23.8359,
-      "ttmPe": 13.3,
-      "marketCap": 842090760000,
-      "psRatio": 4.24,
+      "ttmPe": 13.29,
+      "marketCap": 841134744000,
+      "psRatio": 4.23,
       "pbRatio": 2.26,
       "pegRatio": 1.37
     },
@@ -6412,11 +6412,11 @@
       "costOfEquity": 13.059999999999999,
       "costOfDebt": 4.9,
       "taxRate": 24,
-      "beta": 1.0238,
-      "marketCap": 842090760000
+      "beta": 1.0232,
+      "marketCap": 841134744000
     },
     "beta": {
-      "beta5y": 1.0238
+      "beta5y": 1.0232
     },
     "price": [
       {
@@ -8591,18 +8591,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.3,
-        "industryAvg": 11.83
+        "value": 13.29,
+        "industryAvg": 11.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.24,
-        "industryAvg": 3.24
+        "value": 4.23,
+        "industryAvg": 3.23
       },
       {
         "metric": "P/B Ratio",
         "value": 2.26,
-        "industryAvg": 1.49
+        "industryAvg": 1.48
       },
       {
         "metric": "ROE",

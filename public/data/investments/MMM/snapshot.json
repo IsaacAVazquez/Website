@@ -1,8 +1,8 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7093,
-      "ttmPe": 27.89,
-      "marketCap": 96700777344,
-      "psRatio": 3.83,
-      "pbRatio": 23.43,
-      "pegRatio": 0.4
+      "ttmPe": 28.29,
+      "marketCap": 98090779968,
+      "psRatio": 3.89,
+      "pbRatio": 23.77,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 38.79,
@@ -6486,15 +6486,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.75,
-      "costOfEquity": 12.23,
+      "wacc": 10.68,
+      "costOfEquity": 12.13,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 16,
-      "beta": 0.9192,
-      "marketCap": 96700777344
+      "beta": 0.9077,
+      "marketCap": 98090779968
     },
     "beta": {
-      "beta5y": 0.9192
+      "beta5y": 0.9077
     },
     "price": [
       {
@@ -8524,14 +8524,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
-        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d0d4523-46ca-314f-bd26-a36814c66eee",
         "title": "Rogers, Enviri, 3M, Gates Industrial Corporation, and Helios Stocks Trade Up, What You Need To Know",
         "publisher": "StockStory",
@@ -8540,11 +8532,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
-        "title": "3M Annual Meeting Results",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
+        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
+        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
         "type": "STORY"
       },
       {
@@ -8553,6 +8545,14 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/3m-board-declares-quarterly-dividend-201500097.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
+        "title": "3M Annual Meeting Results",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
         "type": "STORY"
       },
       {
@@ -8658,18 +8658,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.89,
-        "industryAvg": 17.96
+        "value": 28.29,
+        "industryAvg": 17.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.83,
-        "industryAvg": 1.19
+        "value": 3.89,
+        "industryAvg": 1.22
       },
       {
         "metric": "P/B Ratio",
-        "value": 23.43,
-        "industryAvg": 2.42
+        "value": 23.77,
+        "industryAvg": 2.45
       },
       {
         "metric": "ROE",

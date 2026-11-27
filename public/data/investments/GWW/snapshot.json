@@ -1,8 +1,8 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 45.7228,
-      "ttmPe": 30.58,
-      "marketCap": 65548823938,
-      "psRatio": 3.38,
-      "pbRatio": 15.1,
+      "ttmPe": 30.97,
+      "marketCap": 66387161710,
+      "psRatio": 3.43,
+      "pbRatio": 15.29,
       "pegRatio": 0.3
     },
     "profitability": {
@@ -5319,15 +5319,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.66,
-      "costOfEquity": 12.18,
+      "wacc": 11.59,
+      "costOfEquity": 12.1,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 24,
-      "beta": 0.9133,
-      "marketCap": 65548823938
+      "beta": 0.9042,
+      "marketCap": 66387161710
     },
     "beta": {
-      "beta5y": 0.9133
+      "beta5y": 0.9042
     },
     "price": [
       {
@@ -7413,19 +7413,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
-        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
         "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
+        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
         "type": "STORY"
       }
     ],
@@ -7497,18 +7497,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.58,
-        "industryAvg": 26.43
+        "value": 30.97,
+        "industryAvg": 26.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.38,
-        "industryAvg": 1.67
+        "value": 3.43,
+        "industryAvg": 1.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.1,
-        "industryAvg": 4.78
+        "value": 15.29,
+        "industryAvg": 4.83
       },
       {
         "metric": "ROE",

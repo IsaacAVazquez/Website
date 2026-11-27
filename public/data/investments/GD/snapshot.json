@@ -1,8 +1,8 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.007,
-      "ttmPe": 20.08,
-      "marketCap": 92395283800,
-      "psRatio": 1.63,
-      "pbRatio": 3.39,
-      "pegRatio": 1.29
+      "ttmPe": 21.18,
+      "marketCap": 97473642444,
+      "psRatio": 1.72,
+      "pbRatio": 3.57,
+      "pegRatio": 1.36
     },
     "profitability": {
       "roe": 4.54,
@@ -5311,15 +5311,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.02,
-      "costOfEquity": 7.670000000000001,
+      "wacc": 6.74,
+      "costOfEquity": 7.33,
       "costOfDebt": 0.5,
       "taxRate": 17,
-      "beta": 0.3459,
-      "marketCap": 92395283800
+      "beta": 0.3093,
+      "marketCap": 97473642444
     },
     "beta": {
-      "beta5y": 0.3459
+      "beta5y": 0.3093
     },
     "price": [
       {
@@ -7365,19 +7365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
-        "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
         "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
+        "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
         "type": "STORY"
       },
       {
@@ -7489,23 +7489,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.08,
-        "industryAvg": 30.65
+        "value": 21.18,
+        "industryAvg": 31.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.63,
-        "industryAvg": 5.11
+        "value": 1.72,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.39,
-        "industryAvg": 6.74
+        "value": 3.57,
+        "industryAvg": 6.86
       },
       {
         "metric": "ROE",
         "value": 4.54,
-        "industryAvg": 12.24
+        "industryAvg": 12.26
       },
       {
         "metric": "ROA",
@@ -7515,17 +7515,17 @@
       {
         "metric": "Gross Margin",
         "value": 15.440000000000001,
-        "industryAvg": 20.810000000000002
+        "industryAvg": 20.82
       },
       {
         "metric": "EBITDA Margin",
         "value": 12.120000000000001,
-        "industryAvg": 15.03
+        "industryAvg": 15.040000000000001
       },
       {
         "metric": "Net Margin",
         "value": 8.44,
-        "industryAvg": 6.41
+        "industryAvg": 6.419999999999999
       }
     ]
   }

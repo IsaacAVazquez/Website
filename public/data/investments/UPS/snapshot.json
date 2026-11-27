@@ -1,8 +1,8 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.1909,
-      "ttmPe": 20.46,
-      "marketCap": 90382598000,
-      "psRatio": 0.99,
-      "pbRatio": 6.03,
+      "ttmPe": 21.47,
+      "marketCap": 94849823000,
+      "psRatio": 1.04,
+      "pbRatio": 6.33,
       "pegRatio": 3.46
     },
     "profitability": {
@@ -5612,15 +5612,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.11,
-      "costOfEquity": 11.93,
+      "wacc": 9.28,
+      "costOfEquity": 12.02,
       "costOfDebt": 0.95,
       "taxRate": 26,
-      "beta": 0.8816,
-      "marketCap": 90382598000
+      "beta": 0.8943,
+      "marketCap": 94849823000
     },
     "beta": {
-      "beta5y": 0.8816
+      "beta5y": 0.8943
     },
     "price": [
       {
@@ -7706,19 +7706,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
-        "title": "Freight industry layoffs surge across California, Texas",
-        "publisher": "FreightWaves",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0fba0a98-39a0-3601-a7ee-58e518cda02b",
         "title": "Argus Cuts Price Target on United Parcel Service to $120 From $150",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/argus-cuts-price-target-united-183911996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
+        "title": "Freight industry layoffs surge across California, Texas",
+        "publisher": "FreightWaves",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
         "type": "STORY"
       }
     ],
@@ -7786,18 +7786,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.46,
-        "industryAvg": 15.9
+        "value": 21.47,
+        "industryAvg": 16.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.99,
-        "industryAvg": 0.94
+        "value": 1.04,
+        "industryAvg": 0.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.03,
-        "industryAvg": 2.66
+        "value": 6.33,
+        "industryAvg": 2.75
       },
       {
         "metric": "ROE",

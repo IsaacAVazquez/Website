@@ -1,8 +1,8 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 13.14,
-      "marketCap": 144755434580,
-      "psRatio": 2.32,
-      "pbRatio": 1.98,
-      "pegRatio": 2.9
+      "ttmPe": 13.32,
+      "marketCap": 146737593340,
+      "psRatio": 2.35,
+      "pbRatio": 2,
+      "pegRatio": 2.94
     },
     "profitability": {
       "roe": 3.83,
@@ -5728,15 +5728,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.370000000000001,
-      "costOfEquity": 7.08,
+      "wacc": 6.279999999999999,
+      "costOfEquity": 6.97,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2721,
-      "marketCap": 144755434580
+      "beta": 0.264,
+      "marketCap": 146737593340
     },
     "beta": {
-      "beta5y": 0.2721
+      "beta5y": 0.264
     },
     "price": [
       {
@@ -7758,14 +7758,6 @@
     ],
     "news": [
       {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
@@ -7774,11 +7766,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
-        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
         "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7787,6 +7779,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
+        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
         "type": "STORY"
       },
       {
@@ -7822,19 +7822,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
-        "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
         "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
+        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
         "type": "STORY"
       }
     ],
@@ -7902,18 +7902,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.14,
-        "industryAvg": 32.78
+        "value": 13.32,
+        "industryAvg": 33.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.32,
-        "industryAvg": 4
+        "value": 2.35,
+        "industryAvg": 4.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.98,
-        "industryAvg": 5.42
+        "value": 2,
+        "industryAvg": 5.02
       },
       {
         "metric": "ROE",

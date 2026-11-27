@@ -1,11 +1,14 @@
 {
   "symbol": "DE",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
-    }
+    },
+    "retainedSections": [
+      "info"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -39,12 +42,12 @@
       "longName": "Deere & Company"
     },
     "fundamentals": {
-      "ttmEps": 17.9915,
-      "ttmPe": 33.86,
-      "marketCap": 164269274950,
-      "psRatio": 3.5,
-      "pbRatio": 5.87,
-      "pegRatio": 4.66
+      "ttmEps": 17.9531,
+      "ttmPe": 35.71,
+      "marketCap": 172835273908,
+      "psRatio": 3.69,
+      "pbRatio": 6.17,
+      "pegRatio": 5.17
     },
     "profitability": {
       "roe": 4.97,
@@ -81,7 +84,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 7.26
+        "yoyGrowth": -0.98
       }
     ],
     "income_statement": {
@@ -6785,15 +6788,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.9,
-      "costOfEquity": 12.06,
+      "wacc": 8.92,
+      "costOfEquity": 11.93,
       "costOfDebt": 1.11,
       "taxRate": 28.000000000000004,
-      "beta": 0.8982,
-      "marketCap": 164269274950
+      "beta": 0.8834,
+      "marketCap": 172835273908
     },
     "beta": {
-      "beta5y": 0.8982
+      "beta5y": 0.8834
     },
     "price": [
       {
@@ -8887,11 +8890,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "eb1c925a-7dc4-3517-af71-a95b66837f2b",
-        "title": "Deere Q2 Earnings Top Estimates, Dip Y/Y on Lower Shipment Volumes",
+        "uuid": "e2172edb-fe3c-3850-92bd-2d27a0683b0d",
+        "title": "Company News for May 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/deere-q2-earnings-top-estimates-164200944.html",
+        "link": "https://finance.yahoo.com/news/company-news-may-16-2025-132700526.html",
         "type": "STORY"
       }
     ],
@@ -8955,23 +8958,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.86,
-        "industryAvg": 21.95
+        "value": 35.71,
+        "industryAvg": 23.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.5,
-        "industryAvg": 2.13
+        "value": 3.69,
+        "industryAvg": 2.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.87,
-        "industryAvg": 4.36
+        "value": 6.17,
+        "industryAvg": 4.63
       },
       {
         "metric": "ROE",
         "value": 4.97,
-        "industryAvg": 19.7
+        "industryAvg": 19.73
       },
       {
         "metric": "ROA",
@@ -8986,12 +8989,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.869999999999997,
-        "industryAvg": 17.5
+        "industryAvg": 17.51
       },
       {
         "metric": "Net Margin",
         "value": 11.15,
-        "industryAvg": 9.17
+        "industryAvg": 9.180000000000001
       }
     ]
   }

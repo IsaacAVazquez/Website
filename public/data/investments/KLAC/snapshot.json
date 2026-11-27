@@ -1,8 +1,8 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.0009,
-      "ttmPe": 33.4,
-      "marketCap": 174678277950,
-      "psRatio": 12.04,
-      "pbRatio": 26.78,
+      "ttmPe": 33.54,
+      "marketCap": 175397118600,
+      "psRatio": 12.09,
+      "pbRatio": 26.89,
       "pegRatio": 0.85
     },
     "profitability": {
@@ -6461,15 +6461,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.38,
-      "costOfEquity": 16.91,
+      "wacc": 16.400000000000002,
+      "costOfEquity": 16.93,
       "costOfDebt": 1.13,
       "taxRate": 15,
-      "beta": 1.5079,
-      "marketCap": 174678277950
+      "beta": 1.5063,
+      "marketCap": 175397118600
     },
     "beta": {
-      "beta5y": 1.5079
+      "beta5y": 1.5063
     },
     "price": [
       {
@@ -8563,11 +8563,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
-        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
-        "publisher": "StockStory",
+        "uuid": "7b284d14-6b62-3ee7-a618-c21dd56b00bc",
+        "title": "KLA Corp (KLAC) Q3 2025 Earnings Call Highlights: Surpassing Revenue Expectations and Strategic ...",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-q3-2025-071854024.html",
         "type": "STORY"
       }
     ],
@@ -8637,18 +8637,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.4,
-        "industryAvg": 31.24
+        "value": 33.54,
+        "industryAvg": 30.09
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.04,
-        "industryAvg": 9.23
+        "value": 12.09,
+        "industryAvg": 8.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.78,
-        "industryAvg": 12.82
+        "value": 26.89,
+        "industryAvg": 12.05
       },
       {
         "metric": "ROE",

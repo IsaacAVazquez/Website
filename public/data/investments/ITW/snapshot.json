@@ -1,8 +1,8 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.2185,
-      "ttmPe": 25.29,
-      "marketCap": 80812000000,
-      "psRatio": 4.85,
-      "pbRatio": 25.73,
-      "pegRatio": 3.84
+      "ttmPe": 25.41,
+      "marketCap": 81190784000,
+      "psRatio": 4.88,
+      "pbRatio": 25.85,
+      "pegRatio": 3.86
     },
     "profitability": {
       "roe": 28.33,
@@ -6330,15 +6330,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.9,
-      "costOfEquity": 12.08,
+      "wacc": 10.85,
+      "costOfEquity": 12.030000000000001,
       "costOfDebt": 0.89,
       "taxRate": 24,
-      "beta": 0.9002,
-      "marketCap": 80812000000
+      "beta": 0.8952,
+      "marketCap": 81190784000
     },
     "beta": {
-      "beta5y": 0.9002
+      "beta5y": 0.8952
     },
     "price": [
       {
@@ -8384,14 +8384,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f6581e87-f1ee-3e5e-96fd-d911447ff624",
-        "title": "Citigroup Adjusts Price Target on Illinois Tool Works to $254 From $253",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/citigroup-adjusts-price-target-illinois-144053765.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "884ed253-b5ca-32ef-bff6-8ce35782c6f2",
         "title": "Goldman Sachs Adjusts Price Target on Illinois Tool Works to $253 From $257",
         "publisher": "MT Newswires",
@@ -8400,11 +8392,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d4dcfc3a-dd7b-30fd-bd95-f92a9a333c07",
-        "title": "ITW Board of Directors Declares Quarterly Dividend",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
+        "uuid": "f6581e87-f1ee-3e5e-96fd-d911447ff624",
+        "title": "Citigroup Adjusts Price Target on Illinois Tool Works to $254 From $253",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/citigroup-adjusts-price-target-illinois-144053765.html",
         "type": "STORY"
       },
       {
@@ -8416,6 +8408,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "d4dcfc3a-dd7b-30fd-bd95-f92a9a333c07",
+        "title": "ITW Board of Directors Declares Quarterly Dividend",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "ed51c756-82f9-31a9-949e-c2e0b518469a",
         "title": "Miller Simplifies TIG Welding With the New Syncrowave® 212",
         "publisher": "Business Wire",
@@ -8424,11 +8424,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
-        "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
-        "publisher": "Zacks",
+        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
+        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
+        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
         "type": "STORY"
       },
       {
@@ -8508,18 +8508,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.29,
-        "industryAvg": 25.15
+        "value": 25.41,
+        "industryAvg": 24.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.85,
-        "industryAvg": 3.04
+        "value": 4.88,
+        "industryAvg": 2.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.73,
-        "industryAvg": 5.51
+        "value": 25.85,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",

@@ -1,11 +1,14 @@
 {
   "symbol": "WFC",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
-    }
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0962,
-      "ttmPe": 11.44,
-      "marketCap": 243703062291,
+      "ttmPe": 11.41,
+      "marketCap": 242952652566,
       "psRatio": 2.79,
-      "pbRatio": 1.39,
+      "pbRatio": 1.38,
       "pegRatio": 0.89
     },
     "profitability": {
@@ -6678,15 +6681,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.450000000000001,
+      "wacc": 8.44,
       "costOfEquity": 12.19,
       "costOfDebt": 5.1499999999999995,
       "taxRate": 16,
-      "beta": 0.9148,
-      "marketCap": 243703062291
+      "beta": 0.9147,
+      "marketCap": 242952652566
     },
     "beta": {
-      "beta5y": 0.9148
+      "beta5y": 0.9147
     },
     "price": [
       {
@@ -8812,13 +8815,6 @@
         "title": "Director of Investor Relations"
       },
       {
-        "name": "Mr. Kleber R. Santos",
-        "title": "CEO of Consumer Banking & Lending",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 8271000
-      },
-      {
         "name": "Mr. Michael P. Santomassimo",
         "title": "Senior EVP & CFO",
         "age": 50,
@@ -8831,6 +8827,12 @@
         "age": 63,
         "yearBorn": 1962,
         "totalPay": 4616050
+      },
+      {
+        "name": "Ms. Bei Ling",
+        "title": "Senior EVP & Head of Human Resources",
+        "age": 54,
+        "yearBorn": 1971
       },
       {
         "name": "Ms. Bridget E. Engle",

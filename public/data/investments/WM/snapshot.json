@@ -1,8 +1,8 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.624,
-      "ttmPe": 32.1,
-      "marketCap": 97325522838,
-      "psRatio": 3.73,
-      "pbRatio": 9.86,
+      "ttmPe": 32.44,
+      "marketCap": 98351634762,
+      "psRatio": 3.77,
+      "pbRatio": 9.97,
       "pegRatio": 0.86
     },
     "profitability": {
@@ -5681,15 +5681,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.370000000000001,
-      "costOfEquity": 7.71,
+      "wacc": 6.3,
+      "costOfEquity": 7.61,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 0.3518,
-      "marketCap": 97325522838
+      "beta": 0.3446,
+      "marketCap": 98351634762
     },
     "beta": {
-      "beta5y": 0.3518
+      "beta5y": 0.3446
     },
     "price": [
       {
@@ -7751,11 +7751,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
-        "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
-        "publisher": "StockStory",
+        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
+        "title": "Why Waste Management Stock Is Sinking Today",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
+        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
         "type": "STORY"
       },
       {
@@ -7767,11 +7767,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
-        "title": "Why Waste Management Stock Is Sinking Today",
-        "publisher": "Motley Fool",
+        "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
+        "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
+        "publisher": "StockStory",
         "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
+        "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
         "type": "STORY"
       },
       {
@@ -7857,18 +7857,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.1,
-        "industryAvg": 33.6
+        "value": 32.44,
+        "industryAvg": 33.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.73,
-        "industryAvg": 3.78
+        "value": 3.77,
+        "industryAvg": 3.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.86,
-        "industryAvg": 5.93
+        "value": 9.97,
+        "industryAvg": 5.99
       },
       {
         "metric": "ROE",

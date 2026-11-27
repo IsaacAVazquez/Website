@@ -1,8 +1,8 @@
 {
   "symbol": "FDX",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     },
@@ -43,8 +43,8 @@
     },
     "fundamentals": {
       "ttmEps": 11.8824,
-      "ttmPe": 25.95,
-      "marketCap": 72139860000,
+      "ttmPe": 25.99,
+      "marketCap": 72275580000,
       "psRatio": 0.76,
       "pbRatio": 2.09,
       "pegRatio": 0.51
@@ -5728,7 +5728,7 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.2477
+      "beta5y": 1.2442
     },
     "price": [
       {
@@ -7898,8 +7898,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.95,
-        "industryAvg": 19.91
+        "value": 25.99,
+        "industryAvg": 16.39
       },
       {
         "metric": "P/S Ratio",
@@ -7909,7 +7909,7 @@
       {
         "metric": "P/B Ratio",
         "value": 2.09,
-        "industryAvg": 3.44
+        "industryAvg": 2.75
       },
       {
         "metric": "ROE",

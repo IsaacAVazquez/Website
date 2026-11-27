@@ -1,8 +1,8 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.3707,
-      "ttmPe": 56.57,
-      "marketCap": 87728240000,
-      "psRatio": 6.96,
-      "pbRatio": 28.59,
+      "ttmPe": 57.73,
+      "marketCap": 89535500000,
+      "psRatio": 7.1,
+      "pbRatio": 29.17,
       "pegRatio": 3.66
     },
     "profitability": {
@@ -6877,15 +6877,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.22,
-      "costOfEquity": 11.360000000000001,
+      "wacc": 10.12,
+      "costOfEquity": 11.23,
       "costOfDebt": 1.09,
       "taxRate": 24,
-      "beta": 0.81,
-      "marketCap": 87728240000
+      "beta": 0.7955,
+      "marketCap": 89535500000
     },
     "beta": {
-      "beta5y": 0.81
+      "beta5y": 0.7955
     },
     "price": [
       {
@@ -8915,19 +8915,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
         "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8963,20 +8963,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "e5cfdc65-d24d-3cc6-81aa-bae9f462c029",
-        "title": "Motorola Agrees to Acquire Radio Maker Silvus for $4.4 Billion",
-        "publisher": "Bloomberg",
+        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
+        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-agrees-acquire-radio-maker-210344797.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9ee82bdb-47b7-3377-992d-1c0127ffd46d",
-        "title": "Motorola to Acquire Silvus Technologies, Expand Security Portfolio",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-acquire-silvus-technologies-expand-154400833.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
@@ -8984,6 +8976,14 @@
         "publisher": "Reuters",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e5cfdc65-d24d-3cc6-81aa-bae9f462c029",
+        "title": "Motorola Agrees to Acquire Radio Maker Silvus for $4.4 Billion",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/motorola-agrees-acquire-radio-maker-210344797.html",
         "type": "STORY"
       }
     ],
@@ -9055,18 +9055,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.57,
-        "industryAvg": 21.05
+        "value": 57.73,
+        "industryAvg": 21.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.96,
-        "industryAvg": 3.32
+        "value": 7.1,
+        "industryAvg": 3.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.59,
-        "industryAvg": 4.51
+        "value": 29.17,
+        "industryAvg": 4.53
       },
       {
         "metric": "ROE",

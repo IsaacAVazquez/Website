@@ -1,8 +1,8 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.7184,
-      "ttmPe": 18.82,
-      "marketCap": 60341248800,
-      "psRatio": 4.37,
-      "pbRatio": 4.99,
+      "ttmPe": 19.1,
+      "marketCap": 61238553920,
+      "psRatio": 4.44,
+      "pbRatio": 5.07,
       "pegRatio": 0.47
     },
     "profitability": {
@@ -6139,15 +6139,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.63,
-      "costOfEquity": 19.509999999999998,
+      "wacc": 16.64,
+      "costOfEquity": 19.48,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.8336,
-      "marketCap": 60341248800
+      "beta": 1.824,
+      "marketCap": 61238553920
     },
     "beta": {
-      "beta5y": 1.8336
+      "beta5y": 1.824
     },
     "price": [
       {
@@ -8177,19 +8177,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
-        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
         "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
         "publisher": "Investopedia",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
+        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
         "type": "STORY"
       },
       {
@@ -8209,14 +8209,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
-        "title": "3 Profitable Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
         "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
         "publisher": "Simply Wall St.",
@@ -8225,11 +8217,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ef3f3b0-301b-3d63-8d2e-52dffba1a0b4",
-        "title": "Estimating The Intrinsic Value Of NXP Semiconductors N.V. (NASDAQ:NXPI)",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
+        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
+        "title": "3 Profitable Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
         "type": "STORY"
       },
       {
@@ -8238,6 +8230,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ef3f3b0-301b-3d63-8d2e-52dffba1a0b4",
+        "title": "Estimating The Intrinsic Value Of NXP Semiconductors N.V. (NASDAQ:NXPI)",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
         "type": "STORY"
       },
       {
@@ -8313,18 +8313,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.82,
-        "industryAvg": 17.34
+        "value": 19.1,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.37,
-        "industryAvg": 8.48
+        "value": 4.44,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.99,
-        "industryAvg": 7.72
+        "value": 5.07,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 22.1957,
-      "ttmPe": 40.83,
-      "marketCap": 114186240000,
-      "psRatio": 5.1,
-      "pbRatio": 7.15,
+      "ttmPe": 40.45,
+      "marketCap": 113135400000,
+      "psRatio": 5.05,
+      "pbRatio": 7.09,
       "pegRatio": 1.76
     },
     "profitability": {
@@ -6531,15 +6531,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12,
-      "costOfEquity": 13.74,
+      "wacc": 12.02,
+      "costOfEquity": 13.77,
       "costOfDebt": 0.84,
       "taxRate": 22,
-      "beta": 1.1097,
-      "marketCap": 114186240000
+      "beta": 1.1116,
+      "marketCap": 113135400000
     },
     "beta": {
-      "beta5y": 1.1097
+      "beta5y": 1.1116
     },
     "price": [
       {
@@ -8705,18 +8705,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.83,
-        "industryAvg": 25.15
+        "value": 40.45,
+        "industryAvg": 24.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.1,
-        "industryAvg": 3.04
+        "value": 5.05,
+        "industryAvg": 2.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.15,
-        "industryAvg": 5.51
+        "value": 7.09,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",

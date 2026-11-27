@@ -1,8 +1,8 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-11-24T20:01:11.907403+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-24T20:01:11.907403+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0536,
-      "ttmPe": 22.35,
-      "marketCap": 67733640000,
-      "psRatio": 1.84,
-      "pbRatio": 2.6,
+      "ttmPe": 23.63,
+      "marketCap": 71615520000,
+      "psRatio": 1.94,
+      "pbRatio": 2.75,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -6210,15 +6210,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.040000000000001,
-      "costOfEquity": 11.78,
+      "wacc": 9.89,
+      "costOfEquity": 11.52,
       "costOfDebt": 1.04,
       "taxRate": 23,
-      "beta": 0.863,
-      "marketCap": 67733640000
+      "beta": 0.8313,
+      "marketCap": 71615520000
     },
     "beta": {
-      "beta5y": 0.863
+      "beta5y": 0.8313
     },
     "price": [
       {
@@ -8296,6 +8296,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
+        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
         "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
         "publisher": "Insider Monkey",
@@ -8309,14 +8317,6 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-best-falling-220831710.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
-        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
         "type": "STORY"
       }
     ],
@@ -8386,23 +8386,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.35,
-        "industryAvg": 17.03
+        "value": 23.63,
+        "industryAvg": 17.61
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.84,
-        "industryAvg": 1.56
+        "value": 1.94,
+        "industryAvg": 1.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.6,
-        "industryAvg": 2.11
+        "value": 2.75,
+        "industryAvg": 2.18
       },
       {
         "metric": "ROE",
         "value": 2.82,
-        "industryAvg": 11.64
+        "industryAvg": 11.63
       },
       {
         "metric": "ROA",

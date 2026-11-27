@@ -1,8 +1,8 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.5663,
-      "ttmPe": 17.12,
-      "marketCap": 138354249792,
-      "psRatio": 1.87,
-      "pbRatio": 4.38,
-      "pegRatio": 0.37
+      "ttmPe": 17.73,
+      "marketCap": 143219755219,
+      "psRatio": 1.93,
+      "pbRatio": 4.54,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 6.279999999999999,
@@ -6020,15 +6020,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.95,
-      "costOfEquity": 13.05,
+      "wacc": 11.86,
+      "costOfEquity": 12.920000000000002,
       "costOfDebt": 0.77,
       "taxRate": 27,
-      "beta": 1.0228,
-      "marketCap": 138354249792
+      "beta": 1.0068,
+      "marketCap": 143219755219
     },
     "beta": {
-      "beta5y": 1.0228
+      "beta5y": 1.0068
     },
     "price": [
       {
@@ -8194,18 +8194,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.12,
-        "industryAvg": 15.65
+        "value": 17.73,
+        "industryAvg": 16.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.87,
-        "industryAvg": 1.48
+        "value": 1.93,
+        "industryAvg": 1.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.38,
-        "industryAvg": 3.45
+        "value": 4.54,
+        "industryAvg": 3.56
       },
       {
         "metric": "ROE",

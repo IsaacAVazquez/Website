@@ -1,8 +1,8 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 35.79,
-      "marketCap": 23935505165,
-      "psRatio": 3.76,
-      "pbRatio": 3.17,
-      "pegRatio": 1.35
+      "ttmPe": 36.37,
+      "marketCap": 24320871080,
+      "psRatio": 3.82,
+      "pbRatio": 3.22,
+      "pegRatio": 1.38
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,15 +6084,15 @@
       ]
     },
     "wacc": {
-      "wacc": 18.62,
+      "wacc": 18.66,
       "costOfEquity": 22.06,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.1544,
-      "marketCap": 23935505165
+      "beta": 2.1454,
+      "marketCap": 24320871080
     },
     "beta": {
-      "beta5y": 2.1544
+      "beta5y": 2.1454
     },
     "price": [
       {
@@ -8138,11 +8138,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
-        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
-        "publisher": "Investing.com",
+        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
+        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
         "type": "STORY"
       },
       {
@@ -8154,19 +8154,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
-        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
+        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
+        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
-        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
         "type": "STORY"
       },
       {
@@ -8175,6 +8167,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
+        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
         "type": "STORY"
       },
       {
@@ -8250,18 +8250,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.79,
-        "industryAvg": 17.34
+        "value": 36.37,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.76,
-        "industryAvg": 8.48
+        "value": 3.82,
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.17,
-        "industryAvg": 7.72
+        "value": 3.22,
+        "industryAvg": 7.54
       },
       {
         "metric": "ROE",

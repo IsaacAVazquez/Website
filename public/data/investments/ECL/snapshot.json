@@ -1,8 +1,8 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-27T18:44:31.715019+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-27T18:44:31.715019+00:00",
     "sections": {
       "price": "2026-11-25"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 41.76,
-      "marketCap": 86100126204,
-      "psRatio": 4.96,
-      "pbRatio": 8.26,
+      "ttmPe": 42,
+      "marketCap": 86590701254,
+      "psRatio": 4.98,
+      "pbRatio": 8.31,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,15 +6315,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.959999999999999,
-      "costOfEquity": 11.450000000000001,
+      "wacc": 9.93,
+      "costOfEquity": 11.4,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8221,
-      "marketCap": 86100126204
+      "beta": 0.8169,
+      "marketCap": 86590701254
     },
     "beta": {
-      "beta5y": 0.8221
+      "beta5y": 0.8169
     },
     "price": [
       {
@@ -8393,19 +8393,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
-        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
         "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
         "publisher": "Business Wire",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
+        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
         "type": "STORY"
       },
       {
@@ -8491,18 +8491,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.76,
-        "industryAvg": 29.77
+        "value": 42,
+        "industryAvg": 29.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.96,
-        "industryAvg": 2.43
+        "value": 4.98,
+        "industryAvg": 2.19
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.26,
-        "industryAvg": 3.3
+        "value": 8.31,
+        "industryAvg": 3.07
       },
       {
         "metric": "ROE",
