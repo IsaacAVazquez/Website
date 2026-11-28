@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.1588,
-      "ttmPe": 14.25,
-      "marketCap": 3357491400000,
-      "psRatio": 7.13,
-      "pbRatio": 4.96,
+      "ttmPe": 14.35,
+      "marketCap": 3380358240000,
+      "psRatio": 7.18,
+      "pbRatio": 4.99,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -6098,25 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.889999999999999,
-      "costOfEquity": 14.45,
+      "wacc": 13.94,
+      "costOfEquity": 14.499999999999998,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 18,
-      "beta": 1.1976,
-      "marketCap": 3357491400000
+      "beta": 1.2061,
+      "marketCap": 3380358240000
     },
     "beta": {
-      "beta5y": 1.1976
+      "beta5y": 1.2061
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 326.21,
-        "high": 328.83,
-        "low": 317.65,
-        "close": 323.44,
-        "volume": 88632100
-      },
       {
         "date": "2025-11-26",
         "open": 320.68,
@@ -8124,6 +8116,14 @@
         "low": 262.73,
         "close": 273.1,
         "volume": 41283700
+      },
+      {
+        "date": "2026-11-27",
+        "open": 279.14,
+        "high": 279.58,
+        "low": 270.03,
+        "close": 274.96,
+        "volume": 22623000
       }
     ],
     "news": [
@@ -8133,6 +8133,14 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-06-13",
         "link": "https://finance.yahoo.com/news/how-waymo-got-the-edge-on-the-competition-and-teslas-robotaxi-so-far-090019552.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
         "type": "STORY"
       },
       {
@@ -8160,14 +8168,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
         "title": "Top Research Reports for Alphabet, IBM & RTX",
         "publisher": "Zacks",
@@ -8192,19 +8192,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
+        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
         "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-        "title": "3 Growth Stocks to Buy and Forget About",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -8278,18 +8278,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.25,
-        "industryAvg": 15.26
+        "value": 14.35,
+        "industryAvg": 15.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.13,
-        "industryAvg": 6.51
+        "value": 7.18,
+        "industryAvg": 6.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.96,
-        "industryAvg": 4.74
+        "value": 4.99,
+        "industryAvg": 4.8
       },
       {
         "metric": "ROE",

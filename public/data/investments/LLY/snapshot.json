@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 23.218,
-      "ttmPe": 59.96,
+      "ttmPe": 59.97,
       "pegRatio": 1.54,
-      "marketCap": 1310357464000,
+      "marketCap": 1310508056000,
       "psRatio": 15.16,
       "pbRatio": 32.54
     },
@@ -6202,25 +6202,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.79,
-      "costOfEquity": 8.03,
+      "wacc": 7.84,
+      "costOfEquity": 8.08,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.3971,
-      "marketCap": 1310357464000
+      "beta": 0.3959,
+      "marketCap": 1310508056000
     },
     "beta": {
-      "beta5y": 0.3971
+      "beta5y": 0.3959
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 1075.83,
-        "high": 1111.11,
-        "low": 1073.25,
-        "close": 1109.9399,
-        "volume": 4181500
-      },
       {
         "date": "2025-11-26",
         "open": 1102,
@@ -8228,6 +8220,14 @@
         "low": 1370.76,
         "close": 1392.22,
         "volume": 2927400
+      },
+      {
+        "date": "2026-11-27",
+        "open": 1387.98,
+        "high": 1404.28,
+        "low": 1383,
+        "close": 1392.38,
+        "volume": 1761400
       }
     ],
     "news": [
@@ -8256,19 +8256,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
-        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
         "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
+        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
         "type": "STORY"
       },
       {
@@ -8296,19 +8296,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
-        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
         "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
+        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
         "type": "STORY"
       }
     ],
@@ -8379,8 +8379,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 59.96,
-        "industryAvg": 30.23
+        "value": 59.97,
+        "industryAvg": 30.25
       },
       {
         "metric": "P/S Ratio",
@@ -8390,7 +8390,7 @@
       {
         "metric": "P/B Ratio",
         "value": 32.54,
-        "industryAvg": 6.33
+        "industryAvg": 6.34
       },
       {
         "metric": "ROE",

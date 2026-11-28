@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 29.58,
-      "marketCap": 83694658140,
-      "psRatio": 10.24,
-      "pbRatio": 25.61,
-      "pegRatio": 1.67
+      "ttmPe": 29.74,
+      "marketCap": 84132615354,
+      "psRatio": 10.29,
+      "pbRatio": 25.74,
+      "pegRatio": 1.68
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,25 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.81,
-      "costOfEquity": 14.99,
+      "wacc": 13.87,
+      "costOfEquity": 15.049999999999999,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.266,
-      "marketCap": 83694658140
+      "beta": 1.2752,
+      "marketCap": 84132615354
     },
     "beta": {
-      "beta5y": 1.266
+      "beta5y": 1.2752
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 481.53,
-        "high": 487.35,
-        "low": 480.52,
-        "close": 485.67,
-        "volume": 473600
-      },
       {
         "date": "2025-11-26",
         "open": 484.95,
@@ -8658,6 +8650,14 @@
         "low": 478.41,
         "close": 485.69,
         "volume": 693400
+      },
+      {
+        "date": "2026-11-27",
+        "open": 485.46,
+        "high": 489.71,
+        "low": 483.34,
+        "close": 487.94,
+        "volume": 338500
       }
     ],
     "news": [
@@ -8686,19 +8686,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
-        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
         "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
+        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
         "type": "STORY"
       },
       {
@@ -8718,14 +8718,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
         "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
@@ -8740,22 +8732,38 @@
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Mr. Andrew Weinberg",
-        "title": "Chief Compliance Officer"
+        "name": "Chelsey Remme",
+        "title": "Chief Audit Executive"
+      },
+      {
+        "name": "Chris Cashman",
+        "title": "Senior Vice President of Corporate Affairs - Corporate & Enterprise Communications"
+      },
+      {
+        "name": "Mr. Daniel Keane",
+        "title": "Chief Tax Officer"
+      },
+      {
+        "name": "Mr. Francisco Martinez-Garcia",
+        "title": "Chief Diversity, Equity & Inclusion Officer"
       },
       {
         "name": "Mr. Jason Phillips",
         "title": "Chief Accounting Officer & Corporate Controller",
         "age": 48,
         "yearBorn": 1977
-      },
-      {
-        "name": "Mr. Michael Adler",
-        "title": "Senior Vice President of Corporate Communications"
       },
       {
         "name": "Mr. Michael L. West",
@@ -8765,13 +8773,6 @@
         "totalPay": 2299671
       },
       {
-        "name": "Mr. Richard Steele",
-        "title": "Senior VP & General Counsel",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 1205813
-      },
-      {
         "name": "Mr. Robert Scott Fauber",
         "title": "President, CEO & Director",
         "age": 55,
@@ -8779,10 +8780,12 @@
         "totalPay": 3368212
       },
       {
-        "name": "Ms. Maral Kazanjian",
-        "title": "Senior VP & Chief People Officer",
-        "age": 51,
-        "yearBorn": 1974
+        "name": "Ms. Atsi Sheth",
+        "title": "Chief Credit Officer"
+      },
+      {
+        "name": "Ms. Deepali Chawla",
+        "title": "Chief Treasury Officer"
       },
       {
         "name": "Ms. Noemie Clemence Heuland CPA",
@@ -8790,31 +8793,23 @@
         "age": 47,
         "yearBorn": 1978,
         "totalPay": 1894500
-      },
-      {
-        "name": "Ms. Shivani Kak",
-        "title": "Head of Investor Relations"
-      },
-      {
-        "name": "Ms. Tameka Brown Alsop P.M.P.",
-        "title": "Senior VP & Chief Administrative Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.58,
-        "industryAvg": 25.98
+        "value": 29.74,
+        "industryAvg": 26.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.24,
-        "industryAvg": 7.95
+        "value": 10.29,
+        "industryAvg": 8.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.61,
-        "industryAvg": 4.47
+        "value": 25.74,
+        "industryAvg": 4.55
       },
       {
         "metric": "ROE",

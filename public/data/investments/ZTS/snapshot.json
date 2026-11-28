@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4519,
-      "ttmPe": 18.55,
+      "ttmPe": 18.52,
       "pegRatio": 7.61,
-      "marketCap": 34209120400,
-      "psRatio": 3.6,
-      "pbRatio": 10.36
+      "marketCap": 34146997300,
+      "psRatio": 3.59,
+      "pbRatio": 10.34
     },
     "profitability": {
       "roe": 18.32,
@@ -6195,25 +6195,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.89,
-      "costOfEquity": 9.879999999999999,
+      "wacc": 8.02,
+      "costOfEquity": 10.040000000000001,
       "costOfDebt": 0.67,
       "taxRate": 19,
-      "beta": 0.6276,
-      "marketCap": 34209120400
+      "beta": 0.643,
+      "marketCap": 34146997300
     },
     "beta": {
-      "beta5y": 0.6276
+      "beta5y": 0.643
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 123.78,
-        "high": 129.04,
-        "low": 123.45,
-        "close": 127.89,
-        "volume": 6021600
-      },
       {
         "date": "2025-11-26",
         "open": 127.55,
@@ -8221,6 +8213,14 @@
         "low": 81.33,
         "close": 82.6,
         "volume": 4324700
+      },
+      {
+        "date": "2026-11-27",
+        "open": 82.5,
+        "high": 82.81,
+        "low": 81.8,
+        "close": 82.45,
+        "volume": 1892300
       }
     ],
     "news": [
@@ -8249,11 +8249,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
-        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
-        "publisher": "Zacks",
+        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
+        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
+        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
         "type": "STORY"
       },
       {
@@ -8265,19 +8265,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
-        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
-        "publisher": "Insider Monkey",
+        "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
+        "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
+        "publisher": "Zacks",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
+        "link": "https://finance.yahoo.com/news/zoetis-zts-upgraded-buy-heres-160008317.html",
         "type": "STORY"
       },
       {
-        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
-        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
-        "publisher": "Business Wire",
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8289,11 +8289,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
+        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
+        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
         "type": "STORY"
       },
       {
@@ -8351,18 +8351,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.55,
-        "industryAvg": 38.23
+        "value": 18.52,
+        "industryAvg": 38.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.6,
-        "industryAvg": 2.45
+        "value": 3.59,
+        "industryAvg": 2.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.36,
-        "industryAvg": 2.57
+        "value": 10.34,
+        "industryAvg": 2.58
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.3073,
-      "ttmPe": 16.04,
-      "marketCap": 3605147100000,
-      "psRatio": 11.9,
-      "pbRatio": 15.74,
+      "ttmPe": 16.17,
+      "marketCap": 3633882030000,
+      "psRatio": 11.99,
+      "pbRatio": 15.87,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5937,25 +5937,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.25,
-      "costOfEquity": 23.49,
+      "wacc": 23.05,
+      "costOfEquity": 23.29,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.3237,
-      "marketCap": 3605147100000
+      "beta": 2.3137,
+      "marketCap": 3633882030000
     },
     "beta": {
-      "beta5y": 2.3237
+      "beta5y": 2.3137
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 174.91,
-        "high": 178.16,
-        "low": 169.55,
-        "close": 177.82,
-        "volume": 320600300
-      },
       {
         "date": "2025-11-26",
         "open": 181.63,
@@ -7963,6 +7955,14 @@
         "low": 141.17,
         "close": 149.3,
         "volume": 366571900
+      },
+      {
+        "date": "2026-11-27",
+        "open": 151.9,
+        "high": 151.98,
+        "low": 145.39,
+        "close": 150.49,
+        "volume": 185759600
       }
     ],
     "news": [
@@ -7999,19 +7999,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
-        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
         "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-22",
         "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
         "type": "STORY"
       },
       {
@@ -8031,19 +8031,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
         "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
       }
     ],
@@ -8111,18 +8111,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.04,
-        "industryAvg": 16.98
+        "value": 16.17,
+        "industryAvg": 17.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.9,
-        "industryAvg": 8.31
+        "value": 11.99,
+        "industryAvg": 8.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.74,
-        "industryAvg": 7.56
+        "value": 15.87,
+        "industryAvg": 7.84
       },
       {
         "metric": "ROE",

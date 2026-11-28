@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6027,
-      "ttmPe": 9.42,
+      "ttmPe": 9.6,
       "pegRatio": 0.06,
-      "marketCap": 103756800000,
+      "marketCap": 105740800000,
       "psRatio": 0.25,
-      "pbRatio": 1.29
+      "pbRatio": 1.31
     },
     "profitability": {
       "roe": 2.71,
@@ -5798,25 +5798,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.92,
-      "costOfEquity": 9.67,
+      "wacc": 5.93,
+      "costOfEquity": 9.62,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 24,
-      "beta": 0.6012,
-      "marketCap": 103756800000
+      "beta": 0.5896,
+      "marketCap": 105740800000
     },
     "beta": {
-      "beta5y": 0.6012
+      "beta5y": 0.5896
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 78.35,
-        "high": 78.91,
-        "low": 78.19,
-        "close": 78.47,
-        "volume": 4732600
-      },
       {
         "date": "2025-11-26",
         "open": 78.79,
@@ -7824,17 +7816,17 @@
         "low": 80.02,
         "close": 81.06,
         "volume": 10407500
+      },
+      {
+        "date": "2026-11-27",
+        "open": 81.59,
+        "high": 83.25,
+        "low": 81.35,
+        "close": 82.61,
+        "volume": 5954000
       }
     ],
     "news": [
-      {
-        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
-        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
-        "type": "STORY"
-      },
       {
         "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
         "title": "3 things we've learned from healthcare earnings",
@@ -7849,6 +7841,14 @@
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
+        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
         "type": "STORY"
       },
       {
@@ -7884,19 +7884,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
-        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
         "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
+        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
         "type": "STORY"
       },
       {
@@ -7978,8 +7978,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.42,
-        "industryAvg": 16
+        "value": 9.6,
+        "industryAvg": 16.19
       },
       {
         "metric": "P/S Ratio",
@@ -7988,8 +7988,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.29,
-        "industryAvg": 2.15
+        "value": 1.31,
+        "industryAvg": 2.11
       },
       {
         "metric": "ROE",

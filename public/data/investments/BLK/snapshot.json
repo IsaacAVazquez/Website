@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 42.7592,
-      "ttmPe": 26.8,
-      "marketCap": 185886066000,
-      "psRatio": 6.51,
-      "pbRatio": 3.2,
-      "pegRatio": 0.84
+      "ttmPe": 27.29,
+      "marketCap": 189280912000,
+      "psRatio": 6.63,
+      "pbRatio": 3.26,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 2.87,
@@ -5659,25 +5659,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.46,
-      "costOfEquity": 15.57,
+      "wacc": 14.510000000000002,
+      "costOfEquity": 15.61,
       "costOfDebt": 0.89,
       "taxRate": 27,
-      "beta": 1.3388,
-      "marketCap": 185886066000
+      "beta": 1.3454,
+      "marketCap": 189280912000
     },
     "beta": {
-      "beta5y": 1.3388
+      "beta5y": 1.3454
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 1019.49,
-        "high": 1033,
-        "low": 1010.92,
-        "close": 1029.77,
-        "volume": 688700
-      },
       {
         "date": "2025-11-26",
         "open": 1031.11,
@@ -7685,6 +7677,14 @@
         "low": 1103.49,
         "close": 1141.86,
         "volume": 650100
+      },
+      {
+        "date": "2026-11-27",
+        "open": 1166.8101,
+        "high": 1174.96,
+        "low": 1161.24,
+        "close": 1166.96,
+        "volume": 374200
       }
     ],
     "news": [
@@ -7705,19 +7705,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7835,18 +7835,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.8,
-        "industryAvg": 18.6
+        "value": 27.29,
+        "industryAvg": 19.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.51,
-        "industryAvg": 3.29
+        "value": 6.63,
+        "industryAvg": 3.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.2,
-        "industryAvg": 2.71
+        "value": 3.26,
+        "industryAvg": 2.79
       },
       {
         "metric": "ROE",

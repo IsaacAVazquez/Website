@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.9699,
-      "ttmPe": 10.32,
+      "ttmPe": 10.35,
       "pegRatio": 0.13,
-      "marketCap": 137080642145,
-      "psRatio": 2.71,
-      "pbRatio": 4.15
+      "marketCap": 137415229995,
+      "psRatio": 2.72,
+      "pbRatio": 4.16
     },
     "profitability": {
       "roe": 7.630000000000001,
@@ -6359,25 +6359,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.06,
-      "costOfEquity": 10.27,
+      "wacc": 9.17,
+      "costOfEquity": 10.39,
       "costOfDebt": 1.17,
       "taxRate": 22,
-      "beta": 0.6762,
-      "marketCap": 137080642145
+      "beta": 0.6872,
+      "marketCap": 137415229995
     },
     "beta": {
-      "beta5y": 0.6762
+      "beta5y": 0.6872
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 45.98,
-        "high": 47.21,
-        "low": 45.94,
-        "close": 47.06,
-        "volume": 30458600
-      },
       {
         "date": "2025-11-26",
         "open": 48.53,
@@ -8385,6 +8377,14 @@
         "low": 39.93,
         "close": 40.97,
         "volume": 10266900
+      },
+      {
+        "date": "2026-11-27",
+        "open": 40.6,
+        "high": 41.27,
+        "low": 40.58,
+        "close": 41.07,
+        "volume": 5904400
       }
     ],
     "news": [
@@ -8429,19 +8429,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
-        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5f09b787-e949-3a08-babf-84e7425b5e17",
         "title": "Novo Nordisk strikes $1bn deal for Lexicon’s oral obesity drug",
         "publisher": "Pharmaceutical Technology",
         "reportDate": "2025-03-29",
         "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
+        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
         "type": "STORY"
       },
       {
@@ -8536,18 +8536,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.32,
-        "industryAvg": 30.23
+        "value": 10.35,
+        "industryAvg": 30.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.71,
+        "value": 2.72,
         "industryAvg": 5.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.15,
-        "industryAvg": 6.33
+        "value": 4.16,
+        "industryAvg": 6.34
       },
       {
         "metric": "ROE",

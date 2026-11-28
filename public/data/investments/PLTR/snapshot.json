@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4267,
-      "ttmPe": 114.66,
-      "marketCap": 394113339270,
-      "psRatio": 54.08,
-      "pbRatio": 35.1,
-      "pegRatio": 0.84
+      "ttmPe": 120.68,
+      "marketCap": 414783872010,
+      "psRatio": 56.91,
+      "pbRatio": 36.94,
+      "pegRatio": 0.88
     },
     "profitability": {
       "roe": 10.74,
@@ -5301,25 +5301,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.98,
-      "costOfEquity": 17.990000000000002,
+      "wacc": 17.79,
+      "costOfEquity": 17.8,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6379,
-      "marketCap": 394113339270
+      "beta": 1.6213,
+      "marketCap": 414783872010
     },
     "beta": {
-      "beta5y": 1.6379
+      "beta5y": 1.6213
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 160.07,
-        "high": 164.65,
-        "low": 156.555,
-        "close": 163.55,
-        "volume": 36523500
-      },
       {
         "date": "2025-11-26",
         "open": 166.85,
@@ -7327,23 +7319,31 @@
         "low": 151.51,
         "close": 163.59,
         "volume": 21486000
+      },
+      {
+        "date": "2026-11-27",
+        "open": 169.89,
+        "high": 173.22,
+        "low": 164.8,
+        "close": 172.17,
+        "volume": 15054500
       }
     ],
     "news": [
-      {
-        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
-        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
         "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
         "type": "STORY"
       },
       {
@@ -7395,20 +7395,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7479,18 +7479,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 114.66,
-        "industryAvg": 29.17
+        "value": 120.68,
+        "industryAvg": 29.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 54.08,
-        "industryAvg": 6.88
+        "value": 56.91,
+        "industryAvg": 7
       },
       {
         "metric": "P/B Ratio",
-        "value": 35.1,
-        "industryAvg": 7.43
+        "value": 36.94,
+        "industryAvg": 7.56
       },
       {
         "metric": "ROE",

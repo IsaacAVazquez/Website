@@ -1,10 +1,10 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5458,
-      "ttmPe": 36.29,
+      "ttmPe": 34.39,
       "pegRatio": 3.82,
-      "marketCap": 143017169112,
-      "psRatio": 11.04,
-      "pbRatio": 6.84
+      "marketCap": 135525576282,
+      "psRatio": 10.46,
+      "pbRatio": 6.48
     },
     "profitability": {
       "roe": 3.18,
@@ -5661,25 +5661,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.7,
-      "costOfEquity": 6.98,
+      "wacc": 6.909999999999999,
+      "costOfEquity": 7.22,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 17,
-      "beta": 0.2659,
-      "marketCap": 143017169112
+      "beta": 0.2877,
+      "marketCap": 135525576282
     },
     "beta": {
-      "beta5y": 0.2659
+      "beta5y": 0.2877
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 425.92,
-        "high": 431.5,
-        "low": 424.12,
-        "close": 429.82,
-        "volume": 1550100
-      },
       {
         "date": "2025-11-26",
         "open": 432.43,
@@ -7687,6 +7679,14 @@
         "low": 550.56,
         "close": 564.12,
         "volume": 1617400
+      },
+      {
+        "date": "2026-11-27",
+        "open": 517.37,
+        "high": 535.46,
+        "low": 502.9,
+        "close": 534.57,
+        "volume": 2130900
       }
     ],
     "news": [
@@ -7715,20 +7715,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
         "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
+        "type": "STORY"
       },
       {
         "uuid": "f9f53c24-fd35-3af4-8128-7145d69de473",
@@ -7755,19 +7755,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
-        "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
         "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
         "publisher": "StockStory",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
+        "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
         "type": "STORY"
       }
     ],
@@ -7839,23 +7839,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.29,
-        "industryAvg": 23.49
+        "value": 34.39,
+        "industryAvg": 23.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.04,
-        "industryAvg": 11.02
+        "value": 10.46,
+        "industryAvg": 11.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.84,
-        "industryAvg": 4.69
+        "value": 6.48,
+        "industryAvg": 4.71
       },
       {
         "metric": "ROE",
         "value": 3.18,
-        "industryAvg": -18.09
+        "industryAvg": -18.099999999999998
       },
       {
         "metric": "ROA",
@@ -7870,12 +7870,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.83,
-        "industryAvg": -29.439999999999998
+        "industryAvg": -29.43
       },
       {
         "metric": "Net Margin",
         "value": 19,
-        "industryAvg": -32.23
+        "industryAvg": -32.24
       }
     ]
   }

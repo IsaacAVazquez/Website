@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.6391,
-      "ttmPe": 81.39,
-      "marketCap": 171603478860,
-      "psRatio": 12.11,
-      "pbRatio": 13.46,
-      "pegRatio": 1.04
+      "ttmPe": 86.5,
+      "marketCap": 182383367562,
+      "psRatio": 12.87,
+      "pbRatio": 14.31,
+      "pegRatio": 1.11
     },
     "profitability": {
       "roe": 3.63,
@@ -6031,25 +6031,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.88,
-      "costOfEquity": 26.06,
+      "wacc": 25.7,
+      "costOfEquity": 25.869999999999997,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6442,
-      "marketCap": 171603478860
+      "beta": 2.6388,
+      "marketCap": 182383367562
     },
     "beta": {
-      "beta5y": 2.6442
+      "beta5y": 2.6388
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 154.58,
-        "high": 158.31,
-        "low": 151.38,
-        "close": 157.37,
-        "volume": 8587900
-      },
       {
         "date": "2025-11-26",
         "open": 158.32,
@@ -8057,6 +8049,14 @@
         "low": 123.74,
         "close": 133.4,
         "volume": 7334900
+      },
+      {
+        "date": "2026-11-27",
+        "open": 139.045,
+        "high": 142.59,
+        "low": 138.603,
+        "close": 141.78,
+        "volume": 6223800
       }
     ],
     "news": [
@@ -8077,14 +8077,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
-        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
         "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
         "publisher": "GlobeNewswire",
@@ -8093,11 +8085,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
-        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
         "type": "STORY"
       },
       {
@@ -8106,6 +8098,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
+        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
         "type": "STORY"
       },
       {
@@ -8201,18 +8201,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 81.39,
-        "industryAvg": 26.46
+        "value": 86.5,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.11,
-        "industryAvg": 4.51
+        "value": 12.87,
+        "industryAvg": 4.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.46,
-        "industryAvg": 4.79
+        "value": 14.31,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",

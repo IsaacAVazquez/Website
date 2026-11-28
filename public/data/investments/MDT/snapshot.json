@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.1952,
-      "ttmPe": 18.49,
+      "ttmPe": 18.37,
       "pegRatio": 0.17,
-      "marketCap": 122961305214,
-      "psRatio": 3.28,
-      "pbRatio": 2.45
+      "marketCap": 122129274729,
+      "psRatio": 3.25,
+      "pbRatio": 2.43
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.630000000000001,
-      "costOfEquity": 9.25,
+      "wacc": 7.71,
+      "costOfEquity": 9.36,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5489,
-      "marketCap": 122961305214
+      "beta": 0.558,
+      "marketCap": 122129274729
     },
     "beta": {
-      "beta5y": 0.5489
+      "beta5y": 0.558
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 103.8,
-        "high": 105.6,
-        "low": 103.8,
-        "close": 105.35,
-        "volume": 9482900
-      },
       {
         "date": "2025-11-26",
         "open": 105.06,
@@ -7972,23 +7964,31 @@
         "low": 94.13,
         "close": 96.06,
         "volume": 12304600
+      },
+      {
+        "date": "2026-11-27",
+        "open": 96.9,
+        "high": 96.9,
+        "low": 94.6,
+        "close": 95.41,
+        "volume": 4558100
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.49,
-        "industryAvg": 26.41
+        "value": 18.37,
+        "industryAvg": 26.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.28,
+        "value": 3.25,
         "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.45,
-        "industryAvg": 3.2
+        "value": 2.43,
+        "industryAvg": 3.21
       },
       {
         "metric": "ROE",

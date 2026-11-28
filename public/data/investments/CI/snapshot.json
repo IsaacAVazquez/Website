@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 17.198,
-      "ttmPe": 15.78,
+      "ttmPe": 15.82,
       "pegRatio": 1.13,
-      "marketCap": 71573454000,
+      "marketCap": 71758044000,
       "psRatio": 0.25,
       "pbRatio": 1.65
     },
@@ -6089,25 +6089,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.220000000000001,
-      "costOfEquity": 7.109999999999999,
+      "wacc": 5.21,
+      "costOfEquity": 7.1,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 19,
-      "beta": 0.2817,
-      "marketCap": 71573454000
+      "beta": 0.272,
+      "marketCap": 71758044000
     },
     "beta": {
-      "beta5y": 0.2817
+      "beta5y": 0.272
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 273.69,
-        "high": 280.19,
-        "low": 271.24,
-        "close": 278.2,
-        "volume": 1862100
-      },
       {
         "date": "2025-11-26",
         "open": 278.2,
@@ -8115,6 +8107,14 @@
         "low": 269.3,
         "close": 271.42,
         "volume": 4483400
+      },
+      {
+        "date": "2026-11-27",
+        "open": 273,
+        "high": 275.39,
+        "low": 272.07,
+        "close": 272.12,
+        "volume": 1787100
       }
     ],
     "news": [
@@ -8151,19 +8151,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
-        "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cigna-announced-agreement-copay-caps-021100886.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
         "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
         "publisher": "TipRanks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cms-recover-uncollected-overpayments-amid-205523484.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
+        "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cigna-announced-agreement-copay-caps-021100886.html",
         "type": "STORY"
       },
       {
@@ -8261,8 +8261,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.78,
-        "industryAvg": 16
+        "value": 15.82,
+        "industryAvg": 16.19
       },
       {
         "metric": "P/S Ratio",
@@ -8272,7 +8272,7 @@
       {
         "metric": "P/B Ratio",
         "value": 1.65,
-        "industryAvg": 2.15
+        "industryAvg": 2.11
       },
       {
         "metric": "ROE",

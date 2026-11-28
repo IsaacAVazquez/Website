@@ -1,11 +1,14 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
-    }
+      "price": "2026-11-27"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7236,
-      "ttmPe": 44.04,
-      "marketCap": 206824188000,
-      "psRatio": 17.39,
-      "pbRatio": 12.58,
-      "pegRatio": 0.53
+      "ttmPe": 46.93,
+      "marketCap": 220369476000,
+      "psRatio": 18.53,
+      "pbRatio": 13.4,
+      "pegRatio": 0.57
     },
     "profitability": {
       "roe": 9.99,
@@ -5487,17 +5490,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5953
+      "beta5y": 1.5848
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 122.4,
-        "high": 125.91,
-        "low": 122.32,
-        "close": 125.04,
-        "volume": 7143400
-      },
       {
         "date": "2025-11-26",
         "open": 127.475,
@@ -7505,6 +7500,14 @@
         "low": 154.51,
         "close": 163.99,
         "volume": 8264300
+      },
+      {
+        "date": "2026-11-27",
+        "open": 170.13,
+        "high": 175.09,
+        "low": 166.86,
+        "close": 174.73,
+        "volume": 4406200
       }
     ],
     "news": [
@@ -7541,19 +7544,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
-        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
         "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
+        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
         "type": "STORY"
       },
       {
@@ -7581,11 +7584,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f090691f-d60d-31b4-8801-b74f7623f74f",
-        "title": "Buy 5 Internet-Centric AI Stocks on the Dip to Boost Portfolio Returns",
+        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
+        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/buy-5-internet-centric-ai-120200754.html",
+        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
         "type": "STORY"
       }
     ],

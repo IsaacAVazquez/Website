@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.3716,
-      "ttmPe": 19.76,
-      "marketCap": 2642532730000,
-      "psRatio": 3.56,
-      "pbRatio": 4.31,
+      "ttmPe": 20.54,
+      "marketCap": 2747291320000,
+      "psRatio": 3.7,
+      "pbRatio": 4.48,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5103,25 +5103,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.93,
-      "costOfEquity": 16.42,
+      "wacc": 14.99,
+      "costOfEquity": 16.43,
       "costOfDebt": 0.62,
       "taxRate": 23,
-      "beta": 1.4432,
-      "marketCap": 2642532730000
+      "beta": 1.4484,
+      "marketCap": 2747291320000
     },
     "beta": {
-      "beta5y": 1.4432
+      "beta5y": 1.4484
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 226.38,
-        "high": 230.52,
-        "low": 223.8,
-        "close": 229.67,
-        "volume": 39379300
-      },
       {
         "date": "2025-11-26",
         "open": 230.74,
@@ -7129,6 +7121,14 @@
         "low": 235.96,
         "close": 244.43,
         "volume": 62479500
+      },
+      {
+        "date": "2026-11-27",
+        "open": 250.45,
+        "high": 255.28,
+        "low": 248.45,
+        "close": 254.12,
+        "volume": 27263100
       }
     ],
     "news": [
@@ -7149,19 +7149,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
-        "title": "Game On: Discord reportedly in talks for IPO in 2025",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
         "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
+        "title": "Game On: Discord reportedly in talks for IPO in 2025",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
         "type": "STORY"
       },
       {
@@ -7276,18 +7276,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.76,
-        "industryAvg": 22.84
+        "value": 20.54,
+        "industryAvg": 23.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.56,
-        "industryAvg": 2.07
+        "value": 3.7,
+        "industryAvg": 2.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.31,
-        "industryAvg": 3.05
+        "value": 4.48,
+        "industryAvg": 3.16
       },
       {
         "metric": "ROE",

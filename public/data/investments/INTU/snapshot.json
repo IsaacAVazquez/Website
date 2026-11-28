@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.5043,
-      "ttmPe": 15.52,
-      "marketCap": 71883797720,
+      "ttmPe": 15.54,
+      "marketCap": 71941998940,
       "psRatio": 3.28,
-      "pbRatio": 3.94,
-      "pegRatio": 0.24
+      "pbRatio": 3.95,
+      "pegRatio": 0.25
     },
     "profitability": {
       "roe": 3.73,
@@ -6818,25 +6818,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.53,
-      "costOfEquity": 12.690000000000001,
+      "wacc": 11.44,
+      "costOfEquity": 12.590000000000002,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 28.000000000000004,
-      "beta": 0.9771,
-      "marketCap": 71883797720
+      "beta": 0.9651,
+      "marketCap": 71941998940
     },
     "beta": {
-      "beta5y": 0.9771
+      "beta5y": 0.9651
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 651.95,
-        "high": 658.47,
-        "low": 640.34,
-        "close": 648.07,
-        "volume": 1921900
-      },
       {
         "date": "2025-11-26",
         "open": 647.43,
@@ -8844,6 +8836,14 @@
         "low": 268.86,
         "close": 271.72,
         "volume": 3819700
+      },
+      {
+        "date": "2026-11-27",
+        "open": 274.26,
+        "high": 278,
+        "low": 271.22,
+        "close": 271.94,
+        "volume": 1666100
       }
     ],
     "news": [
@@ -8888,6 +8888,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
         "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
         "publisher": "The Wall Street Journal",
@@ -8904,11 +8912,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
-        "title": "Morning Movers: Apple slips following President Trump tariff threat",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       },
       {
@@ -8918,14 +8926,6 @@
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-        "title": "US High Growth Tech Stocks to Watch in May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
-        "type": "STORY"
       }
     ],
     "officers": [
@@ -8934,78 +8934,74 @@
         "title": "Senior Vice President of Investor Relations, Corporate & Strategic Finance"
       },
       {
-        "name": "Kendra Goodenough",
-        "title": "VP & Head of Investor Relations"
+        "name": "Mr. David Hahn",
+        "title": "Executive VP & GM of Services Group"
       },
       {
-        "name": "Mr. Alex G. Balazs",
-        "title": "Executive VP & CTO",
-        "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 1704000
+        "name": "Mr. Gregory N. Johnson",
+        "title": "Executive VP & Chief Commercial Officer",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 1585000
       },
       {
-        "name": "Mr. Mark Notarainni",
-        "title": "Executive VP & GM of Consumer Group",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 1704000
+        "name": "Mr. Lionel Mohri",
+        "title": "Senior VP & Chief Transformation Officer"
       },
       {
         "name": "Mr. Sandeep Singh Aujla",
         "title": "Executive VP & CFO",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1771300
+        "totalPay": 1677800
       },
       {
         "name": "Mr. Sasan K. Goodarzi",
         "title": "CEO, President & Chairman",
         "age": 57,
         "yearBorn": 1968,
-        "totalPay": 3910000
+        "totalPay": 3932500
       },
       {
         "name": "Mr. Scott D. Cook",
         "title": "Founder & Director",
         "age": 73,
         "yearBorn": 1952,
-        "totalPay": 1300000
+        "totalPay": 1235000
       },
       {
-        "name": "Mr. Tyler Cozzens",
-        "title": "Executive VP, General Counsel and Corporate Secretary",
-        "age": 57,
-        "yearBorn": 1968
-      },
-      {
-        "name": "Ms. Lauren D. Hotz",
-        "title": "Senior VP & Chief Accounting Officer",
+        "name": "Ms. Ashley Still",
+        "title": "Executive VP & GM of Mid-Market Group and Small Business Group",
         "age": 49,
         "yearBorn": 1976
       },
       {
-        "name": "Ms. Shveta Mujumdar",
-        "title": "Vice President of Corporate Development",
-        "age": 46,
-        "yearBorn": 1979
+        "name": "Ms. Laura A. Fennell J.D.",
+        "title": "Executive Officer",
+        "age": 64,
+        "yearBorn": 1961,
+        "totalPay": 1657800
+      },
+      {
+        "name": "Ms. Sarah Kim",
+        "title": "Executive VP & Chief Customer Success Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.52,
-        "industryAvg": 26.46
+        "value": 15.54,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
         "value": 3.28,
-        "industryAvg": 4.51
+        "industryAvg": 4.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.94,
-        "industryAvg": 4.79
+        "value": 3.95,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",

@@ -1,14 +1,11 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-27"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.1397,
-      "ttmPe": 11.3,
-      "marketCap": 90473060000,
-      "psRatio": 2.99,
-      "pbRatio": 1.36,
-      "pegRatio": 1.07
+      "ttmPe": 11.54,
+      "marketCap": 92373820000,
+      "psRatio": 3.06,
+      "pbRatio": 1.39,
+      "pegRatio": 1.1
     },
     "profitability": {
       "roe": 3.1300000000000003,
@@ -5833,25 +5830,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.76,
+      "wacc": 8.81,
       "costOfEquity": 12.950000000000001,
       "costOfDebt": 4.53,
       "taxRate": 21,
-      "beta": 1.01,
-      "marketCap": 90473060000
+      "beta": 1.0103,
+      "marketCap": 92373820000
     },
     "beta": {
-      "beta5y": 1.01
+      "beta5y": 1.0103
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 48.05,
-        "high": 49.19,
-        "low": 47.98,
-        "close": 48.91,
-        "volume": 10153100
-      },
       {
         "date": "2025-11-26",
         "open": 48.92,
@@ -7859,6 +7848,14 @@
         "low": 57.03,
         "close": 58.55,
         "volume": 6889000
+      },
+      {
+        "date": "2026-11-27",
+        "open": 59.22,
+        "high": 59.7,
+        "low": 59,
+        "close": 59.29,
+        "volume": 4060700
       }
     ],
     "news": [
@@ -7879,19 +7876,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a9b01abd-af73-3a12-8386-195b818437d4",
-        "title": "U.S. Bank Avvance Added to Pure Finance Group’s Home Improvement Lending Platform",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/u-bank-avvance-added-pure-153000962.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d119e81-aafb-368f-9975-7bef99a50a08",
         "title": "Bank Honored for Financial Literacy, Support to High School for Teen Moms",
         "publisher": "ACCESS Newswire",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/bank-honored-financial-literacy-support-140000123.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a9b01abd-af73-3a12-8386-195b818437d4",
+        "title": "U.S. Bank Avvance Added to Pure Finance Group’s Home Improvement Lending Platform",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/u-bank-avvance-added-pure-153000962.html",
         "type": "STORY"
       },
       {
@@ -8004,23 +8001,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.91,
-        "industryAvg": 10.85
+        "value": 11.54,
+        "industryAvg": 11.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.89,
-        "industryAvg": 2.85
+        "value": 3.06,
+        "industryAvg": 2.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.31,
-        "industryAvg": 1.2
+        "value": 1.39,
+        "industryAvg": 1.24
       },
       {
         "metric": "ROE",
         "value": 3.1300000000000003,
-        "industryAvg": 10.41
+        "industryAvg": 10.42
       },
       {
         "metric": "ROA",
@@ -8030,7 +8027,7 @@
       {
         "metric": "Net Margin",
         "value": 26.36,
-        "industryAvg": 24.91
+        "industryAvg": 24.94
       }
     ]
   }

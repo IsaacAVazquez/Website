@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 16.02,
-      "marketCap": 162287674072,
-      "psRatio": 6,
-      "pbRatio": 3.15,
+      "ttmPe": 16.05,
+      "marketCap": 162546891952,
+      "psRatio": 6.01,
+      "pbRatio": 3.16,
       "pegRatio": 0.56
     },
     "profitability": {
@@ -6240,25 +6240,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.780000000000001,
-      "costOfEquity": 10.51,
+      "wacc": 8.88,
+      "costOfEquity": 10.63,
       "costOfDebt": 2.45,
       "taxRate": 23,
-      "beta": 0.7041,
-      "marketCap": 162287674072
+      "beta": 0.7172,
+      "marketCap": 162546891952
     },
     "beta": {
-      "beta5y": 0.7041
+      "beta5y": 0.7172
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 90.29,
-        "high": 91.14,
-        "low": 89.5,
-        "close": 90.74,
-        "volume": 8979600
-      },
       {
         "date": "2025-11-26",
         "open": 91,
@@ -8266,9 +8258,25 @@
         "low": 92.02,
         "close": 93.45,
         "volume": 10793100
+      },
+      {
+        "date": "2026-11-27",
+        "open": 94.89,
+        "high": 95.1,
+        "low": 93.58,
+        "close": 94.06,
+        "volume": 4708800
       }
     ],
     "news": [
+      {
+        "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
+        "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
+        "type": "STORY"
+      },
       {
         "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
         "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
@@ -8283,14 +8291,6 @@
         "publisher": "Motley Fool",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
-        "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
         "type": "STORY"
       },
       {
@@ -8342,11 +8342,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
-        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
-        "publisher": "Bloomberg",
+        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
+        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
+        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
         "type": "STORY"
       }
     ],
@@ -8411,23 +8411,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.02,
-        "industryAvg": 13.33
+        "value": 16.05,
+        "industryAvg": 13.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 6,
-        "industryAvg": 1.86
+        "value": 6.01,
+        "industryAvg": 1.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.15,
-        "industryAvg": 2.15
+        "value": 3.16,
+        "industryAvg": 2.18
       },
       {
         "metric": "ROE",
         "value": 5.53,
-        "industryAvg": 15.9
+        "industryAvg": 15.89
       },
       {
         "metric": "ROA",
@@ -8440,12 +8440,12 @@
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 6.43
+        "industryAvg": 6.38
       },
       {
         "metric": "Net Margin",
         "value": 39.2,
-        "industryAvg": 20.32
+        "industryAvg": 20.31
       }
     ]
   }

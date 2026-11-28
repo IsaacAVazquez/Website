@@ -1,10 +1,10 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.803,
-      "ttmPe": 11.63,
-      "marketCap": 86845177212,
-      "psRatio": 3.44,
-      "pbRatio": 1.39,
-      "pegRatio": 0.81
+      "ttmPe": 11.84,
+      "marketCap": 88465927020,
+      "psRatio": 3.51,
+      "pbRatio": 1.42,
+      "pegRatio": 0.83
     },
     "profitability": {
       "roe": 3.16,
@@ -5766,25 +5766,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.630000000000001,
-      "costOfEquity": 12.049999999999999,
+      "wacc": 7.66,
+      "costOfEquity": 12.04,
       "costOfDebt": 3.51,
       "taxRate": 20,
-      "beta": 0.8968,
-      "marketCap": 86845177212
+      "beta": 0.895,
+      "marketCap": 88465927020
     },
     "beta": {
-      "beta5y": 0.8968
+      "beta5y": 0.895
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 190,
-        "high": 193.83,
-        "low": 188.5,
-        "close": 192.59,
-        "volume": 1889600
-      },
       {
         "date": "2025-11-26",
         "open": 192.34,
@@ -7792,6 +7784,14 @@
         "low": 215.02,
         "close": 220.33,
         "volume": 1149800
+      },
+      {
+        "date": "2026-11-27",
+        "open": 223.31,
+        "high": 224.72,
+        "low": 221.97,
+        "close": 222.7,
+        "volume": 734000
       }
     ],
     "news": [
@@ -7812,19 +7812,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
         "title": "Company News for Apr 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -7868,11 +7868,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d501b543-8a7b-30e2-a6ea-7ee6a98823b0",
-        "title": "PNC Bank Agrees to Acquire Aqueduct Capital Group to Complement Harris Williams Capabilities",
-        "publisher": "PR Newswire",
+        "uuid": "808e1989-20d7-31bc-a90a-c9e60cbf69d7",
+        "title": "PNC Financial Services' PNC Bank to Buy Aqueduct Capital",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/pnc-bank-agrees-acquire-aqueduct-202800063.html",
+        "link": "https://finance.yahoo.com/news/pnc-financial-services-apos-pnc-204926054.html",
         "type": "STORY"
       }
     ],
@@ -7885,15 +7885,22 @@
         "totalPay": 2840120
       },
       {
-        "name": "Mr. Bryan K. Gill",
-        "title": "EVP, Director of Investor Relations"
+        "name": "Mr. Christian Brown",
+        "title": "Head of Corporate Banking for Houston Market"
       },
       {
-        "name": "Mr. Mark Kenneth Wiedman J.D.",
-        "title": "President",
+        "name": "Mr. D. Jermaine Johnson",
+        "title": "Regional President of Greater Washington Area"
+      },
+      {
+        "name": "Mr. David Bentzinger",
+        "title": "Senior Vice President"
+      },
+      {
+        "name": "Mr. Richard Kevin Bynum",
+        "title": "Executive Officer",
         "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 4822359
+        "yearBorn": 1971
       },
       {
         "name": "Mr. Robert Q. Reilly",
@@ -7910,12 +7917,6 @@
         "totalPay": 10670221
       },
       {
-        "name": "Ms. Amanda Rosseter Schab",
-        "title": "Executive VP, Chief Communications & Brand Officer",
-        "age": 56,
-        "yearBorn": 1969
-      },
-      {
         "name": "Ms. Deborah Guild",
         "title": "Executive VP & Head of Technology",
         "age": 56,
@@ -7923,37 +7924,29 @@
         "totalPay": 3448477
       },
       {
-        "name": "Ms. Jenn Garbach",
-        "title": "Chief Marketing Officer"
+        "name": "Scott M. Kowalski",
+        "title": "Head of Corporate Banking for Southeast Michigan"
       },
       {
-        "name": "Ms. Laura L. Long J.D.",
-        "title": "Executive VP, General Counsel & Chief Administrative Officer",
-        "age": 52,
-        "yearBorn": 1973
-      },
-      {
-        "name": "Ms. Vicki C. Henn",
-        "title": "Executive VP & Chief Human Resources Officer",
-        "age": 56,
-        "yearBorn": 1969
+        "name": "Thomas Byargeon",
+        "title": "Head of PNC's Energy Group"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.63,
-        "industryAvg": 11.04
+        "value": 11.84,
+        "industryAvg": 11.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.44,
-        "industryAvg": 2.87
+        "value": 3.51,
+        "industryAvg": 2.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.39,
-        "industryAvg": 1.21
+        "value": 1.42,
+        "industryAvg": 1.24
       },
       {
         "metric": "ROE",

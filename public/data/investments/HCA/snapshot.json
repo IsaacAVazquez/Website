@@ -1,10 +1,10 @@
 {
   "symbol": "HCA",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 30.1817,
-      "ttmPe": 16.27,
-      "pegRatio": 3.62,
-      "marketCap": 107022159933,
-      "psRatio": 1.36,
-      "pbRatio": -13.25
+      "ttmPe": 16.6,
+      "pegRatio": 3.69,
+      "marketCap": 109193074401,
+      "psRatio": 1.39,
+      "pbRatio": -13.52
     },
     "profitability": {
       "roe": -21.46,
@@ -5109,25 +5109,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.17,
-      "costOfEquity": 13.22,
+      "wacc": 9.27,
+      "costOfEquity": 13.28,
       "costOfDebt": 1.16,
       "taxRate": 22,
-      "beta": 1.0432,
-      "marketCap": 107022159933
+      "beta": 1.0519,
+      "marketCap": 109193074401
     },
     "beta": {
-      "beta5y": 1.0432
+      "beta5y": 1.0519
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 501.3,
-        "high": 517.4,
-        "low": 501.12,
-        "close": 515.85,
-        "volume": 1240900
-      },
       {
         "date": "2025-11-26",
         "open": 515.22,
@@ -7135,6 +7127,14 @@
         "low": 472.24,
         "close": 491.01,
         "volume": 865500
+      },
+      {
+        "date": "2026-11-27",
+        "open": 493.69,
+        "high": 506.43,
+        "low": 488,
+        "close": 500.97,
+        "volume": 727200
       }
     ],
     "news": [
@@ -7195,19 +7195,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c8ca2118-b547-3e6f-b568-3d5b3ca77a34",
-        "title": "Encompass Health to Expand Florida Presence With New 50-bed Facility",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/encompass-health-expand-florida-presence-122800690.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f094d677-ad3e-3647-b0c9-8ed468075ca2",
         "title": "2 Safe-and-Steady Stocks for Long-Term Investors and 1 to Avoid",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/2-safe-steady-stocks-long-043946111.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c8ca2118-b547-3e6f-b568-3d5b3ca77a34",
+        "title": "Encompass Health to Expand Florida Presence With New 50-bed Facility",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/encompass-health-expand-florida-presence-122800690.html",
         "type": "STORY"
       },
       {
@@ -7284,18 +7284,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.27,
-        "industryAvg": 15.26
+        "value": 16.6,
+        "industryAvg": 15.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.36,
-        "industryAvg": 1.02
+        "value": 1.39,
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
-        "value": -13.25,
-        "industryAvg": 1.88
+        "value": -13.52,
+        "industryAvg": 1.9
       },
       {
         "metric": "ROE",

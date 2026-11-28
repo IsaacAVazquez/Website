@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-25T19:08:50.574547+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-25T19:08:50.574547+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 25.36,
-      "marketCap": 111106752425,
-      "psRatio": 15.94,
-      "pbRatio": 4.18,
-      "pegRatio": 1.56
+      "ttmPe": 25.67,
+      "marketCap": 112489973110,
+      "psRatio": 16.13,
+      "pbRatio": 4.24,
+      "pegRatio": 1.58
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.2,
-      "costOfEquity": 6.36,
+      "wacc": 6.21,
+      "costOfEquity": 6.370000000000001,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1823,
-      "marketCap": 111106752425
+      "beta": 0.1808,
+      "marketCap": 112489973110
     },
     "beta": {
-      "beta5y": 0.1823
+      "beta5y": 0.1808
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 273.01,
-        "high": 277.64,
-        "low": 273.01,
-        "close": 276.98,
-        "volume": 1514500
-      },
       {
         "date": "2025-11-26",
         "open": 278.01,
@@ -7637,6 +7629,14 @@
         "low": 309.79,
         "close": 311.74,
         "volume": 1368900
+      },
+      {
+        "date": "2026-11-27",
+        "open": 312.5,
+        "high": 314.58,
+        "low": 311,
+        "close": 313.1,
+        "volume": 704000
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
-        "title": "XRP futures bag $19M on launch day",
-        "publisher": "TheStreet",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
         "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
         "publisher": "CoinDesk",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
+        "title": "XRP futures bag $19M on launch day",
+        "publisher": "TheStreet",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
         "type": "STORY"
       },
       {
@@ -7787,18 +7787,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.36,
-        "industryAvg": 25.98
+        "value": 25.67,
+        "industryAvg": 26.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.94,
-        "industryAvg": 7.95
+        "value": 16.13,
+        "industryAvg": 8.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.18,
-        "industryAvg": 4.47
+        "value": 4.24,
+        "industryAvg": 4.55
       },
       {
         "metric": "ROE",

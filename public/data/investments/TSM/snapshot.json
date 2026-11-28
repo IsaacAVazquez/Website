@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.5375,
-      "ttmPe": 22.03,
-      "marketCap": 1775537509160,
-      "psRatio": 11.44,
-      "pbRatio": 8.09,
-      "pegRatio": 0.38
+      "ttmPe": 22.74,
+      "marketCap": 1832588723160,
+      "psRatio": 11.81,
+      "pbRatio": 8.35,
+      "pegRatio": 0.39
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -7175,25 +7175,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.35,
-      "costOfEquity": 16.650000000000002,
+      "wacc": 16.21,
+      "costOfEquity": 16.5,
       "costOfDebt": 0.3,
       "taxRate": 16,
-      "beta": 1.4711,
-      "marketCap": 1775537509160
+      "beta": 1.4577,
+      "marketCap": 1832588723160
     },
     "beta": {
-      "beta5y": 1.4711
+      "beta5y": 1.4577
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 282.73,
-        "high": 285.4,
-        "low": 273.08,
-        "close": 284.68,
-        "volume": 13726800
-      },
       {
         "date": "2025-11-26",
         "open": 289.1,
@@ -9201,6 +9193,14 @@
         "low": 321.1,
         "close": 342.34,
         "volume": 22861100
+      },
+      {
+        "date": "2026-11-27",
+        "open": 352.64,
+        "high": 354.36,
+        "low": 344.6,
+        "close": 353.34,
+        "volume": 9487400
       }
     ],
     "news": [
@@ -9261,19 +9261,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
-        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
-        "publisher": "TipRanks",
-        "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
         "title": "5 Brilliant Stocks to Buy in June",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-01",
         "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5104baf1-a7b2-3c68-af66-0a502166bcb2",
+        "title": "TSMC Stock Maintains High-Conviction AI Play Status With $220 Price Target",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-01",
+        "link": "https://finance.yahoo.com/news/tsmc-stock-maintains-high-conviction-183500555.html",
         "type": "STORY"
       },
       {
@@ -9332,18 +9332,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.03,
-        "industryAvg": 16.98
+        "value": 22.74,
+        "industryAvg": 17.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.44,
-        "industryAvg": 8.31
+        "value": 11.81,
+        "industryAvg": 8.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.09,
-        "industryAvg": 7.56
+        "value": 8.35,
+        "industryAvg": 7.84
       },
       {
         "metric": "ROE",

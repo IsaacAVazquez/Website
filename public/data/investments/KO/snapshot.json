@@ -1,10 +1,10 @@
 {
   "symbol": "KO",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.3915,
-      "ttmPe": 28.77,
+      "ttmPe": 28.72,
       "pegRatio": 3.4,
-      "marketCap": 419832180000,
-      "psRatio": 8.22,
-      "pbRatio": 11.23
+      "marketCap": 419014800000,
+      "psRatio": 8.21,
+      "pbRatio": 11.21
     },
     "profitability": {
       "roe": 10.91,
@@ -6299,25 +6299,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.3100000000000005,
-      "costOfEquity": 6.859999999999999,
+      "wacc": 6.419999999999999,
+      "costOfEquity": 6.99,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 16,
-      "beta": 0.2511,
-      "marketCap": 419832180000
+      "beta": 0.2585,
+      "marketCap": 419014800000
     },
     "beta": {
-      "beta5y": 0.2511
+      "beta5y": 0.2585
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 72.8,
-        "high": 72.93,
-        "low": 72.14,
-        "close": 72.61,
-        "volume": 17451200
-      },
       {
         "date": "2025-11-26",
         "open": 72.6,
@@ -8325,23 +8317,31 @@
         "low": 97.49,
         "close": 97.59,
         "volume": 24905500
+      },
+      {
+        "date": "2026-11-27",
+        "open": 96.79,
+        "high": 97.81,
+        "low": 96.5,
+        "close": 97.4,
+        "volume": 9315100
       }
     ],
     "news": [
-      {
-        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
-        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
         "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
+        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
         "type": "STORY"
       },
       {
@@ -8475,18 +8475,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.77,
-        "industryAvg": 24.19
+        "value": 28.72,
+        "industryAvg": 24.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.22,
+        "value": 8.21,
         "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.23,
-        "industryAvg": 6.43
+        "value": 11.21,
+        "industryAvg": 6.28
       },
       {
         "metric": "ROE",

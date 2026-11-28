@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-11-26T18:56:25.059930+00:00",
+  "lastUpdated": "2026-11-28T17:27:54.105227+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-26T18:56:25.059930+00:00",
+    "snapshotBuiltAt": "2026-11-28T17:27:54.105227+00:00",
     "sections": {
-      "price": "2026-11-25"
+      "price": "2026-11-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.3877,
-      "ttmPe": 66.41,
-      "marketCap": 95654430627.84,
-      "psRatio": 6.2,
-      "pbRatio": 7.3,
+      "ttmPe": 66.87,
+      "marketCap": 96318697507.2,
+      "psRatio": 6.24,
+      "pbRatio": 7.35,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5623,25 +5623,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.97,
-      "costOfEquity": 12.959999999999999,
+      "wacc": 11.940000000000001,
+      "costOfEquity": 12.920000000000002,
       "costOfDebt": 0.96,
       "taxRate": 25,
-      "beta": 1.0113,
-      "marketCap": 95654430627.84
+      "beta": 1.0068,
+      "marketCap": 96318697507.2
     },
     "beta": {
-      "beta5y": 1.0113
+      "beta5y": 1.0068
     },
     "price": [
-      {
-        "date": "2025-11-25",
-        "open": 162.474,
-        "high": 166.18,
-        "low": 162.2,
-        "close": 165.062,
-        "volume": 7280000
-      },
       {
         "date": "2025-11-26",
         "open": 163.45,
@@ -7649,6 +7641,14 @@
         "low": 86.85,
         "close": 92.16,
         "volume": 15479100
+      },
+      {
+        "date": "2026-11-27",
+        "open": 93.2,
+        "high": 94.57,
+        "low": 92.04,
+        "close": 92.8,
+        "volume": 7116100
       }
     ],
     "news": [
@@ -7701,19 +7701,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
-        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
         "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
         "publisher": "TipRanks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d66b766-bead-3972-a483-2318d3521577",
+        "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
         "type": "STORY"
       },
       {
@@ -7796,18 +7796,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 66.41,
-        "industryAvg": 26.46
+        "value": 66.87,
+        "industryAvg": 26.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.2,
-        "industryAvg": 4.51
+        "value": 6.24,
+        "industryAvg": 4.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.3,
-        "industryAvg": 4.79
+        "value": 7.35,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",
