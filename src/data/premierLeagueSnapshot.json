@@ -99,6 +99,46 @@
       },
       {
         "position": 5,
+        "playedGames": 12,
+        "won": 5,
+        "draw": 5,
+        "lost": 2,
+        "points": 20,
+        "goalsFor": 23,
+        "goalsAgainst": 11,
+        "goalDifference": 12,
+        "team": {
+          "id": "402",
+          "name": "Brentford FC",
+          "shortName": "Brentford",
+          "tla": "BRE",
+          "crest": "https://crests.football-data.org/402.png",
+          "venue": null,
+          "accentColor": "#E30613"
+        }
+      },
+      {
+        "position": 6,
+        "playedGames": 12,
+        "won": 5,
+        "draw": 5,
+        "lost": 2,
+        "points": 20,
+        "goalsFor": 17,
+        "goalsAgainst": 9,
+        "goalDifference": 8,
+        "team": {
+          "id": "341",
+          "name": "Leeds United FC",
+          "shortName": "Leeds United",
+          "tla": "LEE",
+          "crest": "https://crests.football-data.org/341.png",
+          "venue": null,
+          "accentColor": "#1D428A"
+        }
+      },
+      {
+        "position": 7,
         "playedGames": 11,
         "won": 5,
         "draw": 3,
@@ -115,46 +155,6 @@
           "crest": "https://crests.football-data.org/bournemouth.png",
           "venue": null,
           "accentColor": "#DA020E"
-        }
-      },
-      {
-        "position": 6,
-        "playedGames": 11,
-        "won": 4,
-        "draw": 5,
-        "lost": 2,
-        "points": 17,
-        "goalsFor": 20,
-        "goalsAgainst": 11,
-        "goalDifference": 9,
-        "team": {
-          "id": "402",
-          "name": "Brentford FC",
-          "shortName": "Brentford",
-          "tla": "BRE",
-          "crest": "https://crests.football-data.org/402.png",
-          "venue": null,
-          "accentColor": "#E30613"
-        }
-      },
-      {
-        "position": 7,
-        "playedGames": 11,
-        "won": 4,
-        "draw": 5,
-        "lost": 2,
-        "points": 17,
-        "goalsFor": 14,
-        "goalsAgainst": 9,
-        "goalDifference": 5,
-        "team": {
-          "id": "341",
-          "name": "Leeds United FC",
-          "shortName": "Leeds United",
-          "tla": "LEE",
-          "crest": "https://crests.football-data.org/341.png",
-          "venue": null,
-          "accentColor": "#1D428A"
         }
       },
       {
@@ -299,14 +299,14 @@
       },
       {
         "position": 15,
-        "playedGames": 11,
+        "playedGames": 12,
         "won": 4,
         "draw": 0,
-        "lost": 7,
+        "lost": 8,
         "points": 12,
         "goalsFor": 13,
-        "goalsAgainst": 21,
-        "goalDifference": -8,
+        "goalsAgainst": 24,
+        "goalDifference": -11,
         "team": {
           "id": "1076",
           "name": "Coventry City FC",
@@ -379,14 +379,14 @@
       },
       {
         "position": 19,
-        "playedGames": 11,
+        "playedGames": 12,
         "won": 1,
         "draw": 5,
-        "lost": 5,
+        "lost": 6,
         "points": 8,
         "goalsFor": 14,
-        "goalsAgainst": 23,
-        "goalDifference": -9,
+        "goalsAgainst": 26,
+        "goalDifference": -12,
         "team": {
           "id": "66",
           "name": "Manchester United FC",
@@ -630,58 +630,6 @@
     ],
     "upcomingFixtures": [
       {
-        "id": "560652",
-        "utcDate": "2026-11-28T15:00:00Z",
-        "status": "TIMED",
-        "matchday": 12,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "341",
-          "name": "Leeds United FC",
-          "shortName": "Leeds United",
-          "tla": "LEE",
-          "crest": "https://crests.football-data.org/341.png"
-        },
-        "awayTeam": {
-          "id": "1076",
-          "name": "Coventry City FC",
-          "shortName": "Coventry City",
-          "tla": "COV",
-          "crest": "https://crests.football-data.org/1076.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
-        "id": "560655",
-        "utcDate": "2026-11-28T15:00:00Z",
-        "status": "TIMED",
-        "matchday": 12,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "66",
-          "name": "Manchester United FC",
-          "shortName": "Man United",
-          "tla": "MUN",
-          "crest": "https://crests.football-data.org/66.png"
-        },
-        "awayTeam": {
-          "id": "402",
-          "name": "Brentford FC",
-          "shortName": "Brentford",
-          "tla": "BRE",
-          "crest": "https://crests.football-data.org/402.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
         "id": "560653",
         "utcDate": "2026-11-28T17:30:00Z",
         "status": "TIMED",
@@ -830,6 +778,58 @@
           "shortName": "Hull City",
           "tla": "HUL",
           "crest": "https://crests.football-data.org/322.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560654",
+        "utcDate": "2026-11-29T16:30:00Z",
+        "status": "TIMED",
+        "matchday": 12,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
+        },
+        "awayTeam": {
+          "id": "65",
+          "name": "Manchester City FC",
+          "shortName": "Man City",
+          "tla": "MCI",
+          "crest": "https://crests.football-data.org/65.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560668",
+        "utcDate": "2026-12-01T20:00:00Z",
+        "status": "TIMED",
+        "matchday": 13,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "1076",
+          "name": "Coventry City FC",
+          "shortName": "Coventry City",
+          "tla": "COV",
+          "crest": "https://crests.football-data.org/1076.png"
+        },
+        "awayTeam": {
+          "id": "349",
+          "name": "Ipswich Town FC",
+          "shortName": "Ipswich Town",
+          "tla": "IPS",
+          "crest": "https://crests.football-data.org/349.png"
         },
         "score": {
           "winner": null,
@@ -1055,7 +1055,7 @@
         "teamName": "Aston Villa",
         "goals": 6,
         "assists": 1,
-        "appearances": 10
+        "appearances": 11
       },
       {
         "rank": 5,
@@ -1104,12 +1104,12 @@
       },
       {
         "rank": 10,
-        "name": "Keane Lewis-Potter",
-        "teamId": "402",
-        "teamName": "Brentford",
-        "goals": 4,
-        "assists": 1,
-        "appearances": 11
+        "name": "Dominic Calvert-Lewin",
+        "teamId": "341",
+        "teamName": "Leeds United",
+        "goals": 5,
+        "assists": 2,
+        "appearances": 12
       }
     ],
     "goalsPerMatchday": [
@@ -1162,7 +1162,7 @@
         "totalGoals": 5
       }
     ],
-    "generatedAt": "2026-11-28T07:53:35.455Z"
+    "generatedAt": "2026-11-28T16:54:45.797Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1459,7 +1459,7 @@
         "goalsFor": 7,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "58": {
       "team": {
@@ -1755,7 +1755,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "61": {
       "team": {
@@ -2051,7 +2051,7 @@
         "goalsFor": 5,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "62": {
       "team": {
@@ -2347,7 +2347,7 @@
         "goalsFor": 4,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "63": {
       "team": {
@@ -2643,7 +2643,7 @@
         "goalsFor": 5,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "64": {
       "team": {
@@ -2939,7 +2939,7 @@
         "goalsFor": 11,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "65": {
       "team": {
@@ -3235,7 +3235,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "66": {
       "team": {
@@ -3253,6 +3253,32 @@
         "manager": "Michael Carrick"
       },
       "recentFixtures": [
+        {
+          "id": "560655",
+          "utcDate": "2026-11-28T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "66",
+            "name": "Manchester United FC",
+            "shortName": "Man United",
+            "tla": "MUN",
+            "crest": "https://crests.football-data.org/66.png"
+          },
+          "awayTeam": {
+            "id": "402",
+            "name": "Brentford FC",
+            "shortName": "Brentford",
+            "tla": "BRE",
+            "crest": "https://crests.football-data.org/402.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 4
+          }
+        },
         {
           "id": "560645",
           "utcDate": "2026-11-22T16:30:00Z",
@@ -3356,61 +3382,9 @@
             "home": 0,
             "away": 3
           }
-        },
-        {
-          "id": "560605",
-          "utcDate": "2026-10-18T13:00:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "341",
-            "name": "Leeds United FC",
-            "shortName": "Leeds United",
-            "tla": "LEE",
-            "crest": "https://crests.football-data.org/341.png"
-          },
-          "awayTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 1,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560655",
-          "utcDate": "2026-11-28T15:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "awayTeam": {
-            "id": "402",
-            "name": "Brentford FC",
-            "shortName": "Brentford",
-            "tla": "BRE",
-            "crest": "https://crests.football-data.org/402.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560670",
           "utcDate": "2026-12-02T20:15:00Z",
@@ -3514,24 +3488,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560703",
+          "utcDate": "2026-12-27T16:30:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "66",
+            "name": "Manchester United FC",
+            "shortName": "Man United",
+            "tla": "MUN",
+            "crest": "https://crests.football-data.org/66.png"
+          },
+          "awayTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
+          "L",
           "D",
           "L",
-          "L",
-          "D"
+          "L"
         ],
         "wins": 0,
-        "draws": 2,
-        "losses": 3,
-        "points": 2,
-        "goalsFor": 5,
-        "goalsAgainst": 14
+        "draws": 1,
+        "losses": 4,
+        "points": 1,
+        "goalsFor": 4,
+        "goalsAgainst": 17
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "67": {
       "team": {
@@ -3827,7 +3827,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "71": {
       "team": {
@@ -4123,7 +4123,7 @@
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "73": {
       "team": {
@@ -4419,7 +4419,7 @@
         "goalsFor": 9,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "322": {
       "team": {
@@ -4715,7 +4715,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "341": {
       "team": {
@@ -4733,6 +4733,32 @@
         "manager": "Daniel Farke"
       },
       "recentFixtures": [
+        {
+          "id": "560652",
+          "utcDate": "2026-11-28T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 0
+          }
+        },
         {
           "id": "560642",
           "utcDate": "2026-11-21T15:00:00Z",
@@ -4836,61 +4862,9 @@
             "home": 0,
             "away": 0
           }
-        },
-        {
-          "id": "560605",
-          "utcDate": "2026-10-18T13:00:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "341",
-            "name": "Leeds United FC",
-            "shortName": "Leeds United",
-            "tla": "LEE",
-            "crest": "https://crests.football-data.org/341.png"
-          },
-          "awayTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 1,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560652",
-          "utcDate": "2026-11-28T15:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "341",
-            "name": "Leeds United FC",
-            "shortName": "Leeds United",
-            "tla": "LEE",
-            "crest": "https://crests.football-data.org/341.png"
-          },
-          "awayTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560669",
           "utcDate": "2026-12-02T19:30:00Z",
@@ -4994,24 +4968,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560702",
+          "utcDate": "2026-12-26T12:30:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "58",
+            "name": "Aston Villa FC",
+            "shortName": "Aston Villa",
+            "tla": "AVL",
+            "crest": "https://crests.football-data.org/58.png"
+          },
+          "awayTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
+          "W",
           "L",
-          "D",
           "D"
         ],
-        "wins": 2,
-        "draws": 2,
+        "wins": 3,
+        "draws": 1,
         "losses": 1,
-        "points": 8,
-        "goalsFor": 6,
-        "goalsAgainst": 4
+        "points": 10,
+        "goalsFor": 8,
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "349": {
       "team": {
@@ -5307,7 +5307,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "351": {
       "team": {
@@ -5603,7 +5603,7 @@
         "goalsFor": 7,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "354": {
       "team": {
@@ -5899,7 +5899,7 @@
         "goalsFor": 3,
         "goalsAgainst": 15
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "397": {
       "team": {
@@ -6195,7 +6195,7 @@
         "goalsFor": 8,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "402": {
       "team": {
@@ -6213,6 +6213,32 @@
         "manager": "Keith Andrews"
       },
       "recentFixtures": [
+        {
+          "id": "560655",
+          "utcDate": "2026-11-28T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "66",
+            "name": "Manchester United FC",
+            "shortName": "Man United",
+            "tla": "MUN",
+            "crest": "https://crests.football-data.org/66.png"
+          },
+          "awayTeam": {
+            "id": "402",
+            "name": "Brentford FC",
+            "shortName": "Brentford",
+            "tla": "BRE",
+            "crest": "https://crests.football-data.org/402.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 4
+          }
+        },
         {
           "id": "560649",
           "utcDate": "2026-11-23T20:00:00Z",
@@ -6316,61 +6342,9 @@
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "560611",
-          "utcDate": "2026-10-17T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "402",
-            "name": "Brentford FC",
-            "shortName": "Brentford",
-            "tla": "BRE",
-            "crest": "https://crests.football-data.org/402.png"
-          },
-          "awayTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560655",
-          "utcDate": "2026-11-28T15:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "66",
-            "name": "Manchester United FC",
-            "shortName": "Man United",
-            "tla": "MUN",
-            "crest": "https://crests.football-data.org/66.png"
-          },
-          "awayTeam": {
-            "id": "402",
-            "name": "Brentford FC",
-            "shortName": "Brentford",
-            "tla": "BRE",
-            "crest": "https://crests.football-data.org/402.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560667",
           "utcDate": "2026-12-02T20:15:00Z",
@@ -6474,24 +6448,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560711",
+          "utcDate": "2026-12-26T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "349",
+            "name": "Ipswich Town FC",
+            "shortName": "Ipswich Town",
+            "tla": "IPS",
+            "crest": "https://crests.football-data.org/349.png"
+          },
+          "awayTeam": {
+            "id": "402",
+            "name": "Brentford FC",
+            "shortName": "Brentford",
+            "tla": "BRE",
+            "crest": "https://crests.football-data.org/402.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
+          "W",
           "L",
           "W",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 2,
+        "wins": 3,
         "draws": 1,
-        "losses": 2,
-        "points": 7,
-        "goalsFor": 8,
-        "goalsAgainst": 5
+        "losses": 1,
+        "points": 10,
+        "goalsFor": 11,
+        "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "1044": {
       "team": {
@@ -6787,7 +6787,7 @@
         "goalsFor": 11,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     },
     "1076": {
       "team": {
@@ -6805,6 +6805,32 @@
         "manager": "Frank Lampard"
       },
       "recentFixtures": [
+        {
+          "id": "560652",
+          "utcDate": "2026-11-28T15:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 0
+          }
+        },
         {
           "id": "560650",
           "utcDate": "2026-11-21T15:00:00Z",
@@ -6908,61 +6934,9 @@
             "home": 0,
             "away": 1
           }
-        },
-        {
-          "id": "560606",
-          "utcDate": "2026-10-19T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "awayTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560652",
-          "utcDate": "2026-11-28T15:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "341",
-            "name": "Leeds United FC",
-            "shortName": "Leeds United",
-            "tla": "LEE",
-            "crest": "https://crests.football-data.org/341.png"
-          },
-          "awayTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560668",
           "utcDate": "2026-12-01T20:00:00Z",
@@ -7066,24 +7040,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560706",
+          "utcDate": "2026-12-27T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
-          "W",
           "L",
           "W",
           "L",
+          "W",
           "L"
         ],
         "wins": 2,
         "draws": 0,
         "losses": 3,
         "points": 6,
-        "goalsFor": 8,
+        "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-28T07:53:35.455Z"
+      "generatedAt": "2026-11-28T16:54:45.797Z"
     }
   }
 }
