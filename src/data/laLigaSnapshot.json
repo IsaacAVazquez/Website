@@ -1,8 +1,8 @@
 {
   "season": "2026/27",
   "matchday": 14,
-  "generatedAt": "2026-11-27T14:05:51.838Z",
-  "updatedAt": "2026-11-27",
+  "generatedAt": "2026-11-28T00:12:38.952Z",
+  "updatedAt": "2026-11-28",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
     "standings": "https://www.football-data.org/documentation/api",
@@ -91,11 +91,27 @@
       "accentColor": "#0067B1"
     },
     {
+      "id": "san",
+      "code": "SAN",
+      "name": "Real Racing Club de Santander",
+      "shortName": "Santander",
+      "position": 6,
+      "points": 20,
+      "played": 14,
+      "won": 6,
+      "drawn": 2,
+      "lost": 6,
+      "goalsFor": 23,
+      "goalsAgainst": 33,
+      "goalDifference": -10,
+      "accentColor": "#00953B"
+    },
+    {
       "id": "sev",
       "code": "SEV",
       "name": "Sevilla FC",
       "shortName": "Sevilla FC",
-      "position": 6,
+      "position": 7,
       "points": 19,
       "played": 13,
       "won": 5,
@@ -105,22 +121,6 @@
       "goalsAgainst": 20,
       "goalDifference": -2,
       "accentColor": "#D2001C"
-    },
-    {
-      "id": "san",
-      "code": "SAN",
-      "name": "Real Racing Club de Santander",
-      "shortName": "Santander",
-      "position": 7,
-      "points": 17,
-      "played": 13,
-      "won": 5,
-      "drawn": 2,
-      "lost": 6,
-      "goalsFor": 20,
-      "goalsAgainst": 32,
-      "goalDifference": -12,
-      "accentColor": "#00953B"
     },
     {
       "id": "ath",
@@ -241,13 +241,13 @@
       "shortName": "Levante",
       "position": 15,
       "points": 12,
-      "played": 13,
+      "played": 14,
       "won": 2,
       "drawn": 6,
-      "lost": 5,
-      "goalsFor": 17,
-      "goalsAgainst": 22,
-      "goalDifference": -5,
+      "lost": 6,
+      "goalsFor": 18,
+      "goalsAgainst": 25,
+      "goalDifference": -7,
       "accentColor": "#00285E"
     },
     {
@@ -355,9 +355,9 @@
       "name": "Yassir Zabiri",
       "clubId": "san",
       "clubCode": "SAN",
-      "total": 11,
-      "appearances": 13,
-      "perMatch": 0.8461538461538461
+      "total": 12,
+      "appearances": 14,
+      "perMatch": 0.8571428571428571
     },
     {
       "rank": 4,
@@ -531,9 +531,39 @@
     {
       "matchday": 13,
       "totalGoals": 27
+    },
+    {
+      "matchday": 14,
+      "totalGoals": 4
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564765",
+      "utcDate": "2026-11-27T20:00:00Z",
+      "status": "FINISHED",
+      "matchday": 14,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "88",
+        "name": "Levante UD",
+        "shortName": "Levante",
+        "tla": "LEV",
+        "crest": "https://crests.football-data.org/88.png"
+      },
+      "awayTeam": {
+        "id": "5335",
+        "name": "Real Racing Club de Santander",
+        "shortName": "Santander",
+        "tla": "SAN",
+        "crest": "https://crests.football-data.org/5335.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 1,
+        "away": 3
+      }
+    },
     {
       "id": "564757",
       "utcDate": "2026-11-23T20:00:00Z",
@@ -713,32 +743,6 @@
       "score": {
         "winner": "DRAW",
         "home": 1,
-        "away": 1
-      }
-    },
-    {
-      "id": "564751",
-      "utcDate": "2026-11-21T15:15:00Z",
-      "status": "FINISHED",
-      "matchday": 13,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "87",
-        "name": "Rayo Vallecano de Madrid",
-        "shortName": "Rayo Vallecano",
-        "tla": "RAY",
-        "crest": "https://crests.football-data.org/87.png"
-      },
-      "awayTeam": {
-        "id": "95",
-        "name": "Valencia CF",
-        "shortName": "Valencia",
-        "tla": "VAL",
-        "crest": "https://crests.football-data.org/95.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 0,
         "away": 1
       }
     }
@@ -1429,7 +1433,7 @@
         "goalsFor": 8,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "fcb": {
       "team": {
@@ -1724,7 +1728,7 @@
         "goalsFor": 17,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "cel": {
       "team": {
@@ -2020,7 +2024,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "elc": {
       "team": {
@@ -2316,7 +2320,7 @@
         "goalsFor": 4,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "esp": {
       "team": {
@@ -2612,7 +2616,7 @@
         "goalsFor": 3,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "get": {
       "team": {
@@ -2908,7 +2912,7 @@
         "goalsFor": 4,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "lev": {
       "team": {
@@ -2924,6 +2928,32 @@
         "manager": "Luís Castro"
       },
       "recentFixtures": [
+        {
+          "id": "564765",
+          "utcDate": "2026-11-27T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "5335",
+            "name": "Real Racing Club de Santander",
+            "shortName": "Santander",
+            "tla": "SAN",
+            "crest": "https://crests.football-data.org/5335.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
         {
           "id": "564757",
           "utcDate": "2026-11-23T20:00:00Z",
@@ -3027,61 +3057,9 @@
             "home": 2,
             "away": 1
           }
-        },
-        {
-          "id": "564685",
-          "utcDate": "2026-10-21T18:00:00Z",
-          "status": "FINISHED",
-          "matchday": 6,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "88",
-            "name": "Levante UD",
-            "shortName": "Levante",
-            "tla": "LEV",
-            "crest": "https://crests.football-data.org/88.png"
-          },
-          "awayTeam": {
-            "id": "77",
-            "name": "Athletic Club",
-            "shortName": "Athletic",
-            "tla": "ATH",
-            "crest": "https://crests.football-data.org/77.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564765",
-          "utcDate": "2026-11-27T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 14,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "88",
-            "name": "Levante UD",
-            "shortName": "Levante",
-            "tla": "LEV",
-            "crest": "https://crests.football-data.org/88.png"
-          },
-          "awayTeam": {
-            "id": "5335",
-            "name": "Real Racing Club de Santander",
-            "shortName": "Santander",
-            "tla": "SAN",
-            "crest": "https://crests.football-data.org/5335.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564777",
           "utcDate": "2026-12-05T15:15:00Z",
@@ -3187,24 +3165,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564810",
+          "utcDate": "2027-01-10T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 19,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "86",
+            "name": "Real Madrid CF",
+            "shortName": "Real Madrid",
+            "tla": "RMA",
+            "crest": "https://crests.football-data.org/86.png"
+          },
+          "awayTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "D",
           "D",
           "L",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "draws": 2,
-        "losses": 2,
-        "points": 5,
-        "goalsFor": 5,
-        "goalsAgainst": 6
+        "losses": 3,
+        "points": 2,
+        "goalsFor": 3,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "mal": {
       "team": {
@@ -3500,7 +3505,7 @@
         "goalsFor": 5,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "osa": {
       "team": {
@@ -3796,7 +3801,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "ray": {
       "team": {
@@ -4091,7 +4096,7 @@
         "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "bet": {
       "team": {
@@ -4387,7 +4392,7 @@
         "goalsFor": 7,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "rma": {
       "team": {
@@ -4682,7 +4687,7 @@
         "goalsFor": 14,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "rso": {
       "team": {
@@ -4977,7 +4982,7 @@
         "goalsFor": 11,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "sev": {
       "team": {
@@ -5273,7 +5278,7 @@
         "goalsFor": 5,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "val": {
       "team": {
@@ -5569,7 +5574,7 @@
         "goalsFor": 3,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "vil": {
       "team": {
@@ -5865,7 +5870,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "ala": {
       "team": {
@@ -6161,7 +6166,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "ath": {
       "team": {
@@ -6456,7 +6461,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "dep": {
       "team": {
@@ -6752,7 +6757,7 @@
         "goalsFor": 4,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     },
     "san": {
       "team": {
@@ -6768,6 +6773,32 @@
         "manager": "José Alberto López"
       },
       "recentFixtures": [
+        {
+          "id": "564765",
+          "utcDate": "2026-11-27T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "88",
+            "name": "Levante UD",
+            "shortName": "Levante",
+            "tla": "LEV",
+            "crest": "https://crests.football-data.org/88.png"
+          },
+          "awayTeam": {
+            "id": "5335",
+            "name": "Real Racing Club de Santander",
+            "shortName": "Santander",
+            "tla": "SAN",
+            "crest": "https://crests.football-data.org/5335.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 1,
+            "away": 3
+          }
+        },
         {
           "id": "564750",
           "utcDate": "2026-11-22T15:15:00Z",
@@ -6871,61 +6902,9 @@
             "home": 2,
             "away": 1
           }
-        },
-        {
-          "id": "564715",
-          "utcDate": "2026-10-18T12:00:00Z",
-          "status": "FINISHED",
-          "matchday": 9,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "79",
-            "name": "CA Osasuna",
-            "shortName": "Osasuna",
-            "tla": "OSA",
-            "crest": "https://crests.football-data.org/79.png"
-          },
-          "awayTeam": {
-            "id": "5335",
-            "name": "Real Racing Club de Santander",
-            "shortName": "Santander",
-            "tla": "SAN",
-            "crest": "https://crests.football-data.org/5335.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 2,
-            "away": 0
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564765",
-          "utcDate": "2026-11-27T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 14,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "88",
-            "name": "Levante UD",
-            "shortName": "Levante",
-            "tla": "LEV",
-            "crest": "https://crests.football-data.org/88.png"
-          },
-          "awayTeam": {
-            "id": "5335",
-            "name": "Real Racing Club de Santander",
-            "shortName": "Santander",
-            "tla": "SAN",
-            "crest": "https://crests.football-data.org/5335.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564772",
           "utcDate": "2026-12-05T13:00:00Z",
@@ -7031,24 +7010,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564813",
+          "utcDate": "2027-01-10T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 19,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "78",
+            "name": "Club Atlético de Madrid",
+            "shortName": "Atleti",
+            "tla": "ATL",
+            "crest": "https://crests.football-data.org/78.png"
+          },
+          "awayTeam": {
+            "id": "5335",
+            "name": "Real Racing Club de Santander",
+            "shortName": "Santander",
+            "tla": "SAN",
+            "crest": "https://crests.football-data.org/5335.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
-          "L",
           "W",
-          "L"
+          "L",
+          "W"
         ],
-        "wins": 3,
+        "wins": 4,
         "draws": 0,
-        "losses": 2,
-        "points": 9,
-        "goalsFor": 7,
-        "goalsAgainst": 9
+        "losses": 1,
+        "points": 12,
+        "goalsFor": 10,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T14:05:51.838Z"
+      "generatedAt": "2026-11-28T00:12:38.952Z"
     }
   }
 }
