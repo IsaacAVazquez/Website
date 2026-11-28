@@ -159,14 +159,14 @@
       },
       {
         "position": 8,
-        "playedGames": 11,
+        "playedGames": 12,
         "won": 5,
         "draw": 1,
-        "lost": 5,
+        "lost": 6,
         "points": 16,
-        "goalsFor": 20,
-        "goalsAgainst": 20,
-        "goalDifference": 0,
+        "goalsFor": 22,
+        "goalsAgainst": 23,
+        "goalDifference": -1,
         "team": {
           "id": "61",
           "name": "Chelsea FC",
@@ -279,6 +279,26 @@
       },
       {
         "position": 14,
+        "playedGames": 12,
+        "won": 3,
+        "draw": 3,
+        "lost": 6,
+        "points": 12,
+        "goalsFor": 12,
+        "goalsAgainst": 17,
+        "goalDifference": -5,
+        "team": {
+          "id": "351",
+          "name": "Nottingham Forest FC",
+          "shortName": "Nottingham",
+          "tla": "NOT",
+          "crest": "https://crests.football-data.org/351.png",
+          "venue": null,
+          "accentColor": "#DD0000"
+        }
+      },
+      {
+        "position": 15,
         "playedGames": 11,
         "won": 4,
         "draw": 0,
@@ -298,7 +318,7 @@
         }
       },
       {
-        "position": 15,
+        "position": 16,
         "playedGames": 11,
         "won": 2,
         "draw": 5,
@@ -318,7 +338,7 @@
         }
       },
       {
-        "position": 16,
+        "position": 17,
         "playedGames": 11,
         "won": 3,
         "draw": 2,
@@ -335,26 +355,6 @@
           "crest": "https://crests.football-data.org/349.png",
           "venue": null,
           "accentColor": "#3A64A3"
-        }
-      },
-      {
-        "position": 17,
-        "playedGames": 11,
-        "won": 2,
-        "draw": 3,
-        "lost": 6,
-        "points": 9,
-        "goalsFor": 9,
-        "goalsAgainst": 15,
-        "goalDifference": -6,
-        "team": {
-          "id": "351",
-          "name": "Nottingham Forest FC",
-          "shortName": "Nottingham",
-          "tla": "NOT",
-          "crest": "https://crests.football-data.org/351.png",
-          "venue": null,
-          "accentColor": "#DD0000"
         }
       },
       {
@@ -419,6 +419,32 @@
       }
     ],
     "recentFixtures": [
+      {
+        "id": "560658",
+        "utcDate": "2026-11-27T20:00:00Z",
+        "status": "FINISHED",
+        "matchday": 12,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "351",
+          "name": "Nottingham Forest FC",
+          "shortName": "Nottingham",
+          "tla": "NOT",
+          "crest": "https://crests.football-data.org/351.png"
+        },
+        "awayTeam": {
+          "id": "61",
+          "name": "Chelsea FC",
+          "shortName": "Chelsea",
+          "tla": "CHE",
+          "crest": "https://crests.football-data.org/61.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 3,
+          "away": 2
+        }
+      },
       {
         "id": "560649",
         "utcDate": "2026-11-23T20:00:00Z",
@@ -600,61 +626,9 @@
           "home": 2,
           "away": 0
         }
-      },
-      {
-        "id": "560648",
-        "utcDate": "2026-11-21T15:00:00Z",
-        "status": "FINISHED",
-        "matchday": 11,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "73",
-          "name": "Tottenham Hotspur FC",
-          "shortName": "Tottenham",
-          "tla": "TOT",
-          "crest": "https://crests.football-data.org/73.png"
-        },
-        "awayTeam": {
-          "id": "349",
-          "name": "Ipswich Town FC",
-          "shortName": "Ipswich Town",
-          "tla": "IPS",
-          "crest": "https://crests.football-data.org/349.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 2,
-          "away": 0
-        }
       }
     ],
     "upcomingFixtures": [
-      {
-        "id": "560658",
-        "utcDate": "2026-11-27T20:00:00Z",
-        "status": "TIMED",
-        "matchday": 12,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "351",
-          "name": "Nottingham Forest FC",
-          "shortName": "Nottingham",
-          "tla": "NOT",
-          "crest": "https://crests.football-data.org/351.png"
-        },
-        "awayTeam": {
-          "id": "61",
-          "name": "Chelsea FC",
-          "shortName": "Chelsea",
-          "tla": "CHE",
-          "crest": "https://crests.football-data.org/61.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
       {
         "id": "560652",
         "utcDate": "2026-11-28T15:00:00Z",
@@ -830,6 +804,32 @@
           "shortName": "Tottenham",
           "tla": "TOT",
           "crest": "https://crests.football-data.org/73.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560661",
+        "utcDate": "2026-11-29T14:05:00Z",
+        "status": "TIMED",
+        "matchday": 12,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "354",
+          "name": "Crystal Palace FC",
+          "shortName": "Crystal Palace",
+          "tla": "CRY",
+          "crest": "https://crests.football-data.org/354.png"
+        },
+        "awayTeam": {
+          "id": "322",
+          "name": "Hull City AFC",
+          "shortName": "Hull City",
+          "tla": "HUL",
+          "crest": "https://crests.football-data.org/322.png"
         },
         "score": {
           "winner": null,
@@ -1091,7 +1091,7 @@
         "teamName": "Chelsea",
         "goals": 5,
         "assists": 2,
-        "appearances": 11
+        "appearances": 12
       },
       {
         "rank": 9,
@@ -1156,9 +1156,13 @@
       {
         "matchday": 11,
         "totalGoals": 30
+      },
+      {
+        "matchday": 12,
+        "totalGoals": 5
       }
     ],
-    "generatedAt": "2026-11-27T13:55:08.313Z"
+    "generatedAt": "2026-11-28T00:03:58.855Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1455,7 +1459,7 @@
         "goalsFor": 7,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "58": {
       "team": {
@@ -1751,7 +1755,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "61": {
       "team": {
@@ -1769,6 +1773,32 @@
         "manager": "Xabi Alonso"
       },
       "recentFixtures": [
+        {
+          "id": "560658",
+          "utcDate": "2026-11-27T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
         {
           "id": "560642",
           "utcDate": "2026-11-21T15:00:00Z",
@@ -1872,61 +1902,9 @@
             "home": 0,
             "away": 2
           }
-        },
-        {
-          "id": "560603",
-          "utcDate": "2026-10-17T11:30:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560658",
-          "utcDate": "2026-11-27T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "351",
-            "name": "Nottingham Forest FC",
-            "shortName": "Nottingham",
-            "tla": "NOT",
-            "crest": "https://crests.football-data.org/351.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560665",
           "utcDate": "2026-12-02T19:30:00Z",
@@ -2030,24 +2008,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560706",
+          "utcDate": "2026-12-27T14:00:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
           "L",
-          "W",
           "L",
-          "W"
+          "W",
+          "L"
         ],
-        "wins": 2,
+        "wins": 1,
         "draws": 0,
-        "losses": 3,
-        "points": 6,
+        "losses": 4,
+        "points": 3,
         "goalsFor": 5,
-        "goalsAgainst": 7
+        "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "62": {
       "team": {
@@ -2343,7 +2347,7 @@
         "goalsFor": 4,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "63": {
       "team": {
@@ -2639,7 +2643,7 @@
         "goalsFor": 5,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "64": {
       "team": {
@@ -2935,7 +2939,7 @@
         "goalsFor": 11,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "65": {
       "team": {
@@ -3231,7 +3235,7 @@
         "goalsFor": 6,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "66": {
       "team": {
@@ -3527,7 +3531,7 @@
         "goalsFor": 5,
         "goalsAgainst": 14
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "67": {
       "team": {
@@ -3823,7 +3827,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "71": {
       "team": {
@@ -4119,7 +4123,7 @@
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "73": {
       "team": {
@@ -4415,7 +4419,7 @@
         "goalsFor": 9,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "322": {
       "team": {
@@ -4711,7 +4715,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "341": {
       "team": {
@@ -5007,7 +5011,7 @@
         "goalsFor": 6,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "349": {
       "team": {
@@ -5303,7 +5307,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "351": {
       "team": {
@@ -5321,6 +5325,32 @@
         "manager": "Oliver Glasner"
       },
       "recentFixtures": [
+        {
+          "id": "560658",
+          "utcDate": "2026-11-27T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 2
+          }
+        },
         {
           "id": "560647",
           "utcDate": "2026-11-21T15:00:00Z",
@@ -5424,61 +5454,9 @@
             "home": 1,
             "away": 1
           }
-        },
-        {
-          "id": "560608",
-          "utcDate": "2026-10-18T15:30:00Z",
-          "status": "FINISHED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "351",
-            "name": "Nottingham Forest FC",
-            "shortName": "Nottingham",
-            "tla": "NOT",
-            "crest": "https://crests.football-data.org/351.png"
-          },
-          "awayTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560658",
-          "utcDate": "2026-11-27T20:00:00Z",
-          "status": "TIMED",
-          "matchday": 12,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "351",
-            "name": "Nottingham Forest FC",
-            "shortName": "Nottingham",
-            "tla": "NOT",
-            "crest": "https://crests.football-data.org/351.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560664",
           "utcDate": "2026-12-02T19:30:00Z",
@@ -5582,24 +5560,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560703",
+          "utcDate": "2026-12-27T16:30:00Z",
+          "status": "TIMED",
+          "matchday": 17,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "66",
+            "name": "Manchester United FC",
+            "shortName": "Man United",
+            "tla": "MUN",
+            "crest": "https://crests.football-data.org/66.png"
+          },
+          "awayTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "L",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 1,
+        "wins": 2,
         "draws": 1,
-        "losses": 3,
-        "points": 4,
-        "goalsFor": 4,
-        "goalsAgainst": 7
+        "losses": 2,
+        "points": 7,
+        "goalsFor": 7,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "354": {
       "team": {
@@ -5895,7 +5899,7 @@
         "goalsFor": 3,
         "goalsAgainst": 15
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "397": {
       "team": {
@@ -6191,7 +6195,7 @@
         "goalsFor": 8,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "402": {
       "team": {
@@ -6487,7 +6491,7 @@
         "goalsFor": 8,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "1044": {
       "team": {
@@ -6783,7 +6787,7 @@
         "goalsFor": 11,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     },
     "1076": {
       "team": {
@@ -7079,7 +7083,7 @@
         "goalsFor": 8,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-27T13:55:08.313Z"
+      "generatedAt": "2026-11-28T00:03:58.855Z"
     }
   }
 }
