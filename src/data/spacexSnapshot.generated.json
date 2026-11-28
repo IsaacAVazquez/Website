@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T03:22:26.244Z",
+  "generatedAt": "2026-11-28T17:40:34.966Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-29T04:39:00Z",
-      "dateUnix": 1795927140,
-      "dateLocal": "2026-11-29T04:39:00Z",
+      "dateUtc": "2026-11-29T06:26:45Z",
+      "dateUnix": 1795933605,
+      "dateLocal": "2026-11-29T06:26:45Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-29T04:39:00Z",
-      "dateUnix": 1795927140,
-      "dateLocal": "2026-11-29T04:39:00Z",
+      "dateUtc": "2026-11-29T06:26:45Z",
+      "dateUnix": 1795933605,
+      "dateLocal": "2026-11-29T06:26:45Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-28T03:22:19.312Z"
+    "generatedAt": "2026-11-28T17:40:17.786Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-29T04:39:00Z",
-      "dateUnix": 1795927140,
-      "dateLocal": "2026-11-29T04:39:00Z",
+      "dateUtc": "2026-11-29T06:26:45Z",
+      "dateUnix": 1795933605,
+      "dateLocal": "2026-11-29T06:26:45Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -200,9 +200,9 @@
       "upcoming": true,
       "success": null,
       "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
-      "dateUtc": "2026-11-29T15:47:00Z",
-      "dateUnix": 1795967220,
-      "dateLocal": "2026-11-29T15:47:00Z",
+      "dateUtc": "2026-11-29T15:47:23Z",
+      "dateUnix": 1795967243,
+      "dateLocal": "2026-11-29T15:47:23Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of rocket stage drop zones being exact fits with previous Starlink Group 15 launches.",
-      "dateUtc": "2026-11-29T04:39:00Z",
-      "dateUnix": 1795927140,
-      "dateLocal": "2026-11-29T04:39:00Z",
+      "dateUtc": "2026-11-29T06:26:45Z",
+      "dateUnix": 1795933605,
+      "dateLocal": "2026-11-29T06:26:45Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2188,105 +2188,6 @@
           "landpadLocation": null
         }
       ]
-    },
-    "c1bd775a-2fff-45bb-9726-765b69817c19": {
-      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
-      "name": "USSF-75",
-      "flightNumber": 772,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified payload for the United States Space Force",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6630",
-          "name": "USSF-75",
-          "type": "Government/Top Secret",
-          "customers": [
-            "United States Space Force"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Geostationary Orbit",
-          "regime": "Direct-GEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
     },
     "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
@@ -2530,9 +2431,9 @@
       "upcoming": true,
       "success": null,
       "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
-      "dateUtc": "2026-11-29T15:47:00Z",
-      "dateUnix": 1795967220,
-      "dateLocal": "2026-11-29T15:47:00Z",
+      "dateUtc": "2026-11-29T15:47:23Z",
+      "dateUnix": 1795967243,
+      "dateLocal": "2026-11-29T15:47:23Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -3031,6 +2932,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-28T03:22:25.896Z"
+    "generatedAt": "2026-11-28T17:40:34.595Z"
   }
 }
