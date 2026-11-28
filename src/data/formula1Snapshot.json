@@ -10,7 +10,7 @@
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11420"
   },
   "season": 2026,
-  "generatedAt": "2026-11-28T11:37:10.120Z",
+  "generatedAt": "2026-11-28T19:55:13.403Z",
   "defaultMeetingKey": "1301",
   "standingsMeetingKey": "1300",
   "meetings": [
